@@ -520,7 +520,7 @@ const hasActiveFilters =
 
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
+    <div className="min-h-screen bg-gradient-to-r from-blue-100 via-purple-100 to-indigo-100">
       {/* Header */}
       <header
         className={`bg-white shadow-sm border-b fixed w-full z-50 transition-transform duration-300 ${
