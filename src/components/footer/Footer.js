@@ -72,7 +72,7 @@ const Footer = () => {
               </a>
             </div>
             <div className="flex items-start justify-center">
-              <div className="px-2">
+              <div className="px-4">
                 <Dropdown
                   title="Help"
                   className="text-brandBlue font-bold flex items-center"
@@ -138,7 +138,7 @@ const Footer = () => {
                 />
               </div>
 
-              <div className="px-2">
+              <div className="px-4">
                 <Dropdown
                   title="About"
                   className="text-brandBlue font-bold flex items-center"
@@ -204,14 +204,14 @@ const Footer = () => {
                 />
               </div>
               
-              <div className="px-2">
+              <div className="px-4">
                 <a href="/klarna"
                   className="text-brandBlue font-bold"
                 >
                   <span>Links </span>
                 </a>
               </div>
-              <div className="px-2">
+              <div className="px-4">
                 <a href="/klarna"
                   className="text-brandBlue font-bold"
                 >
