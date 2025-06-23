@@ -274,7 +274,7 @@ const Footer = () => {
                 <a href="/klarna"
                   className="text-brandBlue font-bold"
                 >
-                  <span>Links </span>
+                  <span>Klarna </span>
                 </a>
               </div>
               <div className="px-4">
