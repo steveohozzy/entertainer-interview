@@ -72,10 +72,10 @@ const Footer = () => {
               </a>
             </div>
             <div className="flex flex-wrap items-start justify-center">
-              <div className="px-4 w-full md:w-auto flex flex-col items-center justify-center md:justify-start">
+              <div className="px-4 w-full md:w-auto flex flex-col items-center justify-center md:justify-start flex flex-col items-center justify-center md:justify-start">
                 <Dropdown
                   title="Help"
-                  className="text-brandBlue font-bold"
+                  className="text-brandBlue font-bold flex items-center"
                   answer={
                     <ul className="text-brandBlue text-center md:text-left">
                       <li className="mt-2">
@@ -138,7 +138,7 @@ const Footer = () => {
                 />
               </div>
 
-              <div className="px-4 w-full md:w-auto">
+              <div className="px-4 w-full md:w-auto flex flex-col items-center justify-center md:justify-start">
                 <Dropdown
                   title="About"
                   className="text-brandBlue font-bold flex items-center"
@@ -204,7 +204,7 @@ const Footer = () => {
                 />
               </div>
 
-              <div className="px-4 w-full md:w-auto">
+              <div className="px-4 w-full md:w-auto flex flex-col items-center justify-center md:justify-start">
                 <Dropdown
                   title="Links"
                   className="text-brandBlue font-bold flex items-center"
@@ -270,14 +270,14 @@ const Footer = () => {
                 />
               </div>
               
-              <div className="px-4 w-full md:w-auto">
+              <div className="px-4 w-full md:w-auto flex flex-col items-center justify-center md:justify-start">
                 <a href="/klarna"
                   className="text-brandBlue font-bold"
                 >
                   <span>Klarna </span>
                 </a>
               </div>
-              <div className="px-4 w-full md:w-auto">
+              <div className="px-4 w-full md:w-auto flex flex-col items-center justify-center md:justify-start">
                 <a href="/klarna"
                   className="text-brandBlue font-bold"
                 >
