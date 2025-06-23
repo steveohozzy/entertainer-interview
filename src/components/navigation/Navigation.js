@@ -8,7 +8,7 @@ const Navigation = () => {
 
     return (
         <>
-            <button onClick={() => setShowMenu(true)}>
+            <button className="transition-all hover:scale-110" onClick={() => setShowMenu(true)}>
                 <MenuIcon />
             </button>
              
@@ -43,17 +43,17 @@ const Navigation = () => {
                         title="Brands"
                         answer={
                            
-                            <ul class="sub-navigation-list">
-                                <li class="flex justify-between w-full p-3 border-b border-b-2 border-blue-300 text-textBlue text-lg">
+                            <ul className="sub-navigation-list">
+                                <li className="flex justify-between w-full p-3 border-b border-b-2 border-blue-300 text-textBlue text-lg">
                                     <a href="/brands/squishmallows" title="Squishmallows">Squishmallows</a>
                                 </li>
-                                <li class="flex justify-between w-full p-3 border-b border-b-2 border-blue-300 text-textBlue text-lg">
+                                <li className="flex justify-between w-full p-3 border-b border-b-2 border-blue-300 text-textBlue text-lg">
                                     <a href="/brands/lego" title="LEGO">LEGO</a>
                                 </li>
-                                <li class="flex justify-between w-full p-3 border-b border-b-2 border-blue-300 text-textBlue text-lg">
+                                <li className="flex justify-between w-full p-3 border-b border-b-2 border-blue-300 text-textBlue text-lg">
                                     <a href="/brands/barbie" title="Barbie">Barbie</a>
                                 </li>
-                                <li class="flex justify-between w-full p-3 border-b border-b-2 border-blue-300 text-textBlue text-lg">
+                                <li className="flex justify-between w-full p-3 border-b border-b-2 border-blue-300 text-textBlue text-lg">
                                     <a href="/brands/fuggler" title="Fuggler">Fuggler</a>
                                 </li>
                             </ul>
@@ -70,17 +70,17 @@ const Navigation = () => {
                                 isSubNav={true}
                                 answer={
                                 
-                                    <ul class="sub-navigation-list px-3">
-                                        <li class="flex justify-between w-full p-3 border-b border-b-2 border-blue-300 text-textBlue text-lg">
+                                    <ul className="sub-navigation-list px-3">
+                                        <li className="flex justify-between w-full p-3 border-b border-b-2 border-blue-300 text-textBlue text-lg">
                                             <a href="/brands/squishmallows" title="Squishmallows">Squishmallows</a>
                                         </li>
-                                        <li class="flex justify-between w-full p-3 border-b border-b-2 border-blue-300 text-textBlue text-lg">
+                                        <li className="flex justify-between w-full p-3 border-b border-b-2 border-blue-300 text-textBlue text-lg">
                                             <a href="/brands/lego" title="LEGO">LEGO</a>
                                         </li>
-                                        <li class="flex justify-between w-full p-3 border-b border-b-2 border-blue-300 text-textBlue text-lg">
+                                        <li className="flex justify-between w-full p-3 border-b border-b-2 border-blue-300 text-textBlue text-lg">
                                             <a href="/brands/barbie" title="Barbie">Barbie</a>
                                         </li>
-                                        <li class="flex justify-between w-full p-3 border-b border-b-2 border-blue-300 text-textBlue text-lg">
+                                        <li className="flex justify-between w-full p-3 border-b border-b-2 border-blue-300 text-textBlue text-lg">
                                             <a href="/brands/fuggler" title="Fuggler">Fuggler</a>
                                         </li>
                                     </ul>

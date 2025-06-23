@@ -5,13 +5,17 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import { CartProvider } from './contexts/cartContext';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <div className="min-h-screen bg-gradient-to-r from-blue-100 via-purple-100 to-indigo-100">
-        <App />
-      </div>
+      <CartProvider>
+        <div className="min-h-screen bg-gradient-to-r from-blue-100 via-purple-100 to-indigo-100">
+          <App />
+        </div>
+      </CartProvider>
     </BrowserRouter>
   </React.StrictMode>
 );
