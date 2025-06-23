@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import Button from '../../components/button/Button'
 import CartProductTile from '../../components/cartProductTile/CartProductTile'
 import Dropdown from '../../components/dropdown/Dropdown'
@@ -53,7 +53,7 @@ const products = [
 
 const Cart = () => {
   const [stuck, setStuck] = useState(false)
-  const ref = React.createRef()
+  const ref = useRef()
 
   useEffect(() => {
     const cachedRef = ref.current
