@@ -11,7 +11,7 @@ const Button = ({children, iconpath, iconalt, link, ...otherProps}) => {
         {children}
         {iconpath &&
           <span className="transition-all group-hover:rotate-[20deg] ml-1">
-            iconpath
+            {iconpath}
           </span>
         }
         <span className="scale-75 mt-2 group-hover:scale-100">
