@@ -77,6 +77,7 @@ const Footer = () => {
               <div className="px-2">
                 <Dropdown
                   title="Help"
+                  className="text-brandBlue font-bold flex items-center"
                   answer={
                     <ul className="text-brandBlue">
                       <li className="mt-2">
@@ -142,6 +143,7 @@ const Footer = () => {
               <div className="px-2">
                 <Dropdown
                   title="About"
+                  className="text-brandBlue font-bold flex items-center"
                   answer={
                     <ul className="text-brandBlue">
                       <li className="mt-2">
