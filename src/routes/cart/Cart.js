@@ -1,4 +1,4 @@
-
+import { useEffect, useState } from 'react'
 import Button from '../../components/button/Button'
 import CartProductTile from '../../components/cartProductTile/CartProductTile'
 import Dropdown from '../../components/dropdown/Dropdown'
