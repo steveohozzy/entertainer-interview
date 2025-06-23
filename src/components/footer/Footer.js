@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import Dropdown from "../dropdown/Dropdown";
+
 const Footer = () => {
   const [accordionOpen, setAccordionOpen] = useState(false);
 
@@ -73,26 +75,9 @@ const Footer = () => {
             </div>
             <div className="flex items-start justify-center">
               <div className="px-2">
-                <button
-                  onClick={() => setAccordionOpen(!accordionOpen)}
-                  className="text-brandBlue font-bold flex items-center"
-                >
-                  <span className="mr-2">Help </span>
-                  <span
-                    className={`w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-t-[8px] border-brandBlue transition-all ${
-                      accordionOpen && "rotate-180"
-                    }`}
-                  ></span>
-                </button>
-
-                <div
-                  className={`grid overflow-hidden transition-all duration-300 ease-in-out text-slate-600 text-sm ${
-                    accordionOpen
-                      ? "grid-rows-[1fr] opacity-100"
-                      : "grid-rows-[0fr] opacity-0"
-                  }`}
-                >
-                  <div className="overflow-hidden">
+                <Dropdown
+                  title={Help}
+                  answer={
                     <ul className="text-brandBlue">
                       <li className="mt-2">
                         <a
@@ -150,8 +135,8 @@ const Footer = () => {
                         </a>
                       </li>
                     </ul>
-                  </div>
-                </div>
+                  }
+                />
               </div>
               <div className="px-2">
                 <button
