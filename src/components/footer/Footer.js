@@ -203,6 +203,72 @@ const Footer = () => {
                   }
                 />
               </div>
+
+              <div className="px-4">
+                <Dropdown
+                  title="Links"
+                  className="text-brandBlue font-bold flex items-center"
+                  answer={
+                    <ul className="text-brandBlue">
+                      <li className="mt-2">
+                        <a
+                          href="https://theentertainer.zendesk.com/hc/en-gb/articles/6495305266833-Contact-Us"
+                          title="Contact Us"
+                        >
+                          Contact Us
+                        </a>
+                      </li>
+                      <li className="mt-2">
+                        <a
+                          href="https://theentertainer.zendesk.com/hc/en-gb/articles/6480509734289-Delivery-information"
+                          title="Delivery Options"
+                        >
+                          Delivery Options
+                        </a>
+                      </li>
+                      <li className="mt-2">
+                        <a href="/help" title="Help Centre">
+                          Help Centre
+                        </a>
+                      </li>
+                      <li className="mt-2">
+                        <a
+                          href="https://www.thetoyshop.com/product-safety-notices"
+                          title="Product Safety Notices"
+                        >
+                          Product Safety
+                        </a>
+                      </li>
+                      <li className="mt-2">
+                        <a
+                          href="https://theentertainer.zendesk.com/hc/en-gb/articles/4402417396241-Our-Returns-Policy"
+                          title="Returns"
+                        >
+                          Returns
+                        </a>
+                      </li>
+                      <li className="mt-2">
+                        <a href="/my-account/orders" title="Track Your Order">
+                          Track Your Order
+                        </a>
+                      </li>
+                      <li className="mt-2">
+                        <a href="/privacy" title="Your Privacy">
+                          Your Privacy
+                        </a>
+                      </li>
+                      <li className="mt-2">
+                        <a
+                          href="https://theentertainer.zendesk.com/hc/en-gb/articles/32765165894801-How-to-complain"
+                          title="How To Complain"
+                        >
+                          How To Complain
+                        </a>
+                      </li>
+                    </ul>
+                  }
+                />
+              </div>
               
               <div className="px-4">
                 <a href="/klarna"
