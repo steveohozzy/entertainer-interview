@@ -72,7 +72,7 @@ const Footer = () => {
               </a>
             </div>
             <div className="flex items-start justify-center">
-              <div className="px-4">
+              <div className="px-4 w-full md:w-auto">
                 <Dropdown
                   title="Help"
                   className="text-brandBlue font-bold flex items-center"
@@ -138,7 +138,7 @@ const Footer = () => {
                 />
               </div>
 
-              <div className="px-4">
+              <div className="px-4 w-full md:w-auto">
                 <Dropdown
                   title="About"
                   className="text-brandBlue font-bold flex items-center"
@@ -204,7 +204,7 @@ const Footer = () => {
                 />
               </div>
 
-              <div className="px-4">
+              <div className="px-4 w-full md:w-auto">
                 <Dropdown
                   title="Links"
                   className="text-brandBlue font-bold flex items-center"
@@ -270,14 +270,14 @@ const Footer = () => {
                 />
               </div>
               
-              <div className="px-4">
+              <div className="px-4 w-full md:w-auto">
                 <a href="/klarna"
                   className="text-brandBlue font-bold"
                 >
                   <span>Klarna </span>
                 </a>
               </div>
-              <div className="px-4">
+              <div className="px-4 w-full md:w-auto">
                 <a href="/klarna"
                   className="text-brandBlue font-bold"
                 >
