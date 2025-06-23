@@ -3,7 +3,7 @@ const Footer = () => {
   return (
         <>
         <footer>
-            <div className="bg-['#AFCB17'] p-4">
+            <div className="bg-brandMediumGreen p-4">
                 <div className="max-w-7xl mx-auto px-4 pr-0 sm:px-6 lg:px-8">
                     <div className="flex items-center justify-center text-center mb-4">
                         <div className="text-xl text-brandBlue font-bold">
