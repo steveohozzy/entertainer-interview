@@ -71,13 +71,13 @@ const Footer = () => {
                 </svg>
               </a>
             </div>
-            <div className="flex items-start justify-center">
+            <div className="flex flex-wrap items-start justify-center">
               <div className="px-4 w-full md:w-auto">
                 <Dropdown
                   title="Help"
-                  className="text-brandBlue font-bold flex items-center"
+                  className="text-brandBlue font-bold flex items-center justify-center md:justify-start"
                   answer={
-                    <ul className="text-brandBlue">
+                    <ul className="text-brandBlue flex flex-col justify-center md:justify-start">
                       <li className="mt-2">
                         <a
                           href="https://theentertainer.zendesk.com/hc/en-gb/articles/6495305266833-Contact-Us"
