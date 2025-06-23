@@ -83,7 +83,7 @@ const Cart = () => {
   return (
     <>
         <div className="bg-white">
-            <div className={`bg-white shadow-sm w-full sticky left-0 md:hidden ${showHeader ? 'top-[108px]' : 'top-0'}`}>
+            <div className={`bg-white shadow-sm w-full sticky left-0 p-4 md:hidden ${showHeader ? 'top-[108px]' : 'top-0'}`}>
               <Button 
                 className='shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-lg rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-2 transition-all hover:bg-brandLightGreen hover:scale-105'
                 iconpath={
