@@ -58,7 +58,7 @@ const Cart = () => {
   useEffect(() => {
     const cachedRef = ref.current
     const observer = new IntersectionObserver(
-      ([e]) => setStuck(e.intersectionRatio > 0),
+      ([e]) => setStuck(e.intersectionRatio <= 0),
       { threshold: [1] }
     )
     observer.observe(cachedRef)
