@@ -1,9 +1,7 @@
-import { useState } from "react";
 
 import Dropdown from "../dropdown/Dropdown";
 
 const Footer = () => {
-  const [accordionOpen, setAccordionOpen] = useState(false);
 
   return (
     <>

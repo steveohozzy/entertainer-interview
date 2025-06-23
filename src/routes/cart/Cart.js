@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Button from '../../components/button/Button'
 import CartProductTile from '../../components/cartProductTile/CartProductTile'
+import Dropdown from '../../components/dropdown/Dropdown'
 
 const products = [
   {
@@ -92,23 +93,16 @@ const Cart = () => {
                         </div>
 
                         <div className='mt-6 bg-gray-200 border-4 border-gray-400 p-6 px-4 rounded-md'>
-                          <button onClick={() => setAccordionOpen(!accordionOpen)} className='text-brandBlue font-bold flex items-center justify-center w-full'>
-                            <span className='mr-2'>Use a promo code </span>
-                            <span className={`w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-t-[8px] border-brandBlue transition-all ${accordionOpen && "rotate-180"}`}></span>
-                          </button>
-                          
-                          <div className={`grid overflow-hidden transition-all duration-300 ease-in-out text-slate-600 text-sm ${
-                              accordionOpen
-                                ? "grid-rows-[1fr] opacity-100"
-                                : "grid-rows-[0fr] opacity-0"
-                            }`}>
-                            <div className="overflow-hidden">
-                                <form className='flex items-center py-4 px-2'>
-                                    <input type="search" placeholder="Add a promo code" className="h-[40px] px-3 rounded-3xl w-full border border-[3px] border-brandBlue text-textBlue placeholder:text-gray-200 mr-2" />
-                                    <button className="group text-white font-bold bg-brandBlue rounded-[50px] px-5 h-[40px] transition-all hover:bg-blue-500 hover:scale-105"><span className="block transition-all group-hover:rotate-[10deg]">Apply</span></button>
-                                </form>
-                            </div>
-                          </div>
+                          <Dropdown 
+                            title="Use a promo code"
+                            className="text-brandBlue font-bold flex items-center justify-center w-full"
+                            answer={
+                              <form className='flex items-center py-4 px-2'>
+                                  <input type="search" placeholder="Add a promo code" className="h-[40px] px-3 rounded-3xl w-full border border-[3px] border-brandBlue text-textBlue placeholder:text-gray-200 mr-2" />
+                                  <button className="group text-white font-bold bg-brandBlue rounded-[50px] px-5 h-[40px] transition-all hover:bg-blue-500 hover:scale-105"><span className="block transition-all group-hover:rotate-[10deg]">Apply</span></button>
+                              </form>
+                            }
+                          />
                         </div>
                         <div className='flex items-start mt-6 text-center text-brandBlue'>
                           <div className='w-[50%]'>
