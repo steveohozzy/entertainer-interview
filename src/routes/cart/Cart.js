@@ -67,12 +67,6 @@ const Cart = () => {
         setShowHeader(true)
       }
   
-      if (currentScrollY > 400) {
-        setShowBackToTop(true)
-      } else {
-        setShowBackToTop(false)
-      }
-  
       setLastScrollY(currentScrollY)
     }
   
