@@ -120,7 +120,7 @@ const Footer = () => {
                           href="https://www.thetoyshop.com/product-safety-notices"
                           title="Product Safety Notices"
                         >
-                          Product Safety Notices
+                          Product Safety
                         </a>
                       </li>
                       <li className="mt-2">
@@ -201,7 +201,7 @@ const Footer = () => {
                           href="https://www.thetoyshop.com/product-safety-notices"
                           title="Product Safety Notices"
                         >
-                          Product Safety Notices
+                          Product Safety
                         </a>
                       </li>
                       <li className="mt-2">
