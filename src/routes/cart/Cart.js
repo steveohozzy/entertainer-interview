@@ -58,7 +58,7 @@ const Cart = () => {
   useEffect(() => {
     const cachedRef = ref.current
     const observer = new IntersectionObserver(
-      ([e]) => setStuck(e.intersectionRatio < 1),
+      ([e]) => setStuck(e.intersectionRatio > 0),
       { threshold: [1] }
     )
     observer.observe(cachedRef)
@@ -154,7 +154,7 @@ const Cart = () => {
                             <p className='mt-2'>Collect from our stores or other locations</p>
                           </div>
                         </div>
-                        <div className={`<div className="sticky top-0 bottom-0 bg-orange-600 h-28"> w-full md:hidden md:p-0`} ref={ref}>
+                        <div className={`sticky bottom-0 left-0 p-3 bg-white ${stuck && 'shadow-[10px_10px_20px] shadow-gray-500'} w-full md:hidden md:p-0`} ref={ref}>
                           <Button 
                             className='shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-lg rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-2 transition-all hover:bg-brandLightGreen hover:scale-105'
                             iconpath={
