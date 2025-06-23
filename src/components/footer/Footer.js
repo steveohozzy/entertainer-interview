@@ -72,12 +72,12 @@ const Footer = () => {
               </a>
             </div>
             <div className="flex flex-wrap items-start justify-center">
-              <div className="px-4 w-full md:w-auto">
+              <div className="px-4 w-full md:w-auto flex flex-col items-center justify-center md:justify-start">
                 <Dropdown
                   title="Help"
-                  className="text-brandBlue font-bold flex items-center justify-center md:justify-start"
+                  className="text-brandBlue font-bold"
                   answer={
-                    <ul className="text-brandBlue flex flex-col justify-center md:justify-start">
+                    <ul className="text-brandBlue text-center md:text-left">
                       <li className="mt-2">
                         <a
                           href="https://theentertainer.zendesk.com/hc/en-gb/articles/6495305266833-Contact-Us"
