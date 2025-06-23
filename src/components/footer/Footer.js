@@ -5,16 +5,16 @@ const Footer = () => {
         <footer>
             <div className="bg-brandLightGreen p-4">
                 <div className="max-w-7xl mx-auto px-4 pr-0 sm:px-6 lg:px-8">
-                    <div className="flex items-center mb-4">
+                    <div className="flex items-center justify-center text-center mb-4">
                         <div className="text-xl text-brandBlue font-bold">
                             Follow us on
                         </div>
-                        <a href="http://facebook.com" target="_blank" rel="noreferrer">
+                        <a href="http://facebook.com" target="_blank" rel="noreferrer" className="ml-1">
                             <svg width="12" height="18" viewBox="0 0 12 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M9.77894 9.38609L7.458 9.71228L8.43221 16.6442L5.33762 17.0791L4.36341 10.1472L1.85679 10.4995L1.45232 7.62151L3.95894 7.26923L3.6545 5.10301C3.48053 3.86518 3.68756 2.86833 4.27559 2.11247C4.86072 1.33598 5.72062 0.868001 6.8553 0.708532C7.18539 0.662141 7.53901 0.633481 7.91616 0.622552C8.29041 0.590993 8.58359 0.581346 8.79569 0.593613L9.1095 0.581067L9.45308 3.02579L8.21525 3.19976C7.63759 3.28094 7.23641 3.49511 7.01171 3.84226C6.80473 4.16588 6.73169 4.54431 6.79258 4.97756L7.05353 6.83431L9.80771 6.44723L9.77894 9.38609Z" fill="#00548B"/>
                             </svg>
                         </a>
-                        <a href="http://tiktok.com" target="_blank" rel="noreferrer">
+                        <a href="http://tiktok.com" target="_blank" rel="noreferrer" className="ml-1">
                             <svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg" className="ml-1">
                                 <path d="M16.0182 8.46397L15.9872 8.45962C14.605 8.26536 13.403 7.6862 12.3814 6.72214L11.6073 12.2305C11.4101 13.6334 10.7483 14.7501 9.62173 15.5805C8.51292 16.4345 7.25707 16.7629 5.85419 16.5658C4.47194 16.3715 3.35527 15.7097 2.50418 14.5802C1.67081 13.4743 1.35126 12.2302 1.54553 10.848C1.74269 9.44509 2.39422 8.32697 3.50014 7.49361C4.62958 6.64251 5.89574 6.31555 7.29862 6.51271C7.52555 6.5446 7.75104 6.58681 7.97508 6.63934L7.58365 9.42446C7.36541 9.33068 7.14283 9.26784 6.91589 9.23595C6.27634 9.14606 5.69774 9.29616 5.18008 9.68625C4.66242 10.0763 4.35865 10.5912 4.26876 11.2307C4.18178 11.8496 4.33333 12.4179 4.72342 12.9356C5.1135 13.4532 5.618 13.7555 6.23692 13.8425C6.87647 13.9324 7.45507 13.7823 7.97273 13.3922C8.49039 13.0021 8.79417 12.4873 8.88405 11.8478L10.4019 1.04767L13.1251 1.43039C13.1222 1.45102 13.1208 1.46134 13.1208 1.46134C13.0889 1.68828 13.0791 1.9078 13.0914 2.1199C13.1469 3.22169 13.5879 4.12519 14.4145 4.83043C14.9754 5.33002 15.6376 5.63346 16.4009 5.74074L16.3965 5.77168L16.0182 8.46397Z" fill="#00548B"/>
                             </svg>
@@ -28,7 +28,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className="bg-brandBlue p-4 text-white">
-                <div className="max-w-7xl mx-auto px-4 pr-0 sm:px-6 lg:px-8">
+                <div className="max-w-7xl mx-auto px-4 pr-0 sm:px-6 lg:px-8 flex">
                     <div className="w-full md:w-[70%]">
                         <div className="text-xl text-brandBlue font-bold">
                             Follow us on
