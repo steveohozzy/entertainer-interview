@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Button from '../../components/button/Button'
 import CartProductTile from '../../components/cartProductTile/CartProductTile'
 import Dropdown from '../../components/dropdown/Dropdown'
@@ -52,7 +52,18 @@ const products = [
 ]
 
 const Cart = () => {
-  const [accordionOpen, setAccordionOpen] = useState(false);
+  const [stuck, setStuck] = useState(false)
+  const ref = React.createRef()
+
+  useEffect(() => {
+    const cachedRef = ref.current
+    const observer = new IntersectionObserver(
+      ([e]) => setStuck(e.intersectionRatio < 1),
+      { threshold: [1] }
+    )
+    observer.observe(cachedRef)
+    return () => observer.unobserve(cachedRef)
+  }, [ref])
 
   return (
     <>
@@ -86,7 +97,7 @@ const Cart = () => {
                         ))}
                     </div>
                     <div className='w-full md:w-[33.3333333%] px-3'>
-                        <div className='fixed bottom-0 left-0 p-3 bg-white shadow-[10px_10px_20px] shadow-gray-500 w-full md:static md:p-0 md:shadow-none'>
+                        <div className='bg-white w-full'>
                           <Button 
                             className='shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-lg rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-2 transition-all hover:bg-brandLightGreen hover:scale-105'
                             iconpath={
@@ -143,7 +154,7 @@ const Cart = () => {
                             <p className='mt-2'>Collect from our stores or other locations</p>
                           </div>
                         </div>
-                        <div className='sticky bottom-0 left-0 p-3 bg-white shadow-[10px_10px_20px] shadow-gray-500 w-full md:hidden md:p-0'>
+                        <div className={`sticky bottom-0 left-0 p-3 bg-white ${stuck && 'shadow-[10px_10px_20px] shadow-gray-500'} w-full md:hidden md:p-0`} ref={ref}>
                           <Button 
                             className='shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-lg rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-2 transition-all hover:bg-brandLightGreen hover:scale-105'
                             iconpath={
