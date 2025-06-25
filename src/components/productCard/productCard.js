@@ -1,12 +1,16 @@
-import { useContext, useState } from 'react'
+import { useState } from 'react'
 import { Star, Heart, ShoppingCart, Eye, Plus, Minus } from "lucide-react"
 
-import { CartContext } from '../../contexts/cartContext'
+import { useDispatch } from 'react-redux';
+
+import { addItemToCart } from '../../store/cart/cartReducer';
 
 
 const ProductCard = ({product}) => {
     const { name, price, image, originalPrice, isNew, isBestseller, brand, size, inStock, rating, reviews } = product;
-    const { addItemToCart} = useContext(CartContext);
+    const dispatch = useDispatch();
+
+    const addProductToCart = () => dispatch(addItemToCart(product));
 
     // Quick view modal state
     const [quickViewProduct, setQuickViewProduct] = useState(null)
@@ -26,9 +30,6 @@ const ProductCard = ({product}) => {
     setQuantity(1)
     }
 
-    const addItemToCartHandler = () => {
-        addItemToCart(product)
-    }
     return (
         <>
 
@@ -54,7 +55,7 @@ const ProductCard = ({product}) => {
                         <img
                             src={quickViewProduct.images[selectedImageIndex] || "/placeholder.svg"}
                             alt={quickViewProduct.name}
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-cover aspect-square"
                         />
                         </div>
                         <div className="flex gap-2 overflow-x-auto">
@@ -157,7 +158,7 @@ const ProductCard = ({product}) => {
                             name="Add to cart"
                             className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium bg-primary text-white hover:bg-primary/90 h-10 px-4 py-2 flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 transition-all hover:scale-105 hover:shadow-md"
                             disabled={!quickViewProduct.inStock}
-                            onClick={addItemToCartHandler}
+                            onClick={addProductToCart}
                             >
                             <ShoppingCart className="h-4 w-4 mr-2" />
                             Add to Cart
@@ -201,7 +202,7 @@ const ProductCard = ({product}) => {
                 <img
                   src={image || "/placeholder.svg"}
                   alt={name}
-                  className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="w-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
 
                 {/* Alternate image on hover */}
@@ -255,7 +256,7 @@ const ProductCard = ({product}) => {
                     )}
                   </div>
                   <button
-                    onClick={addItemToCartHandler}
+                    onClick={addProductToCart}
                     name="Add to cart"
                     className="text-white inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm h-9 rounded-md px-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 transition-all hover:scale-105 hover:shadow-md"
                   >

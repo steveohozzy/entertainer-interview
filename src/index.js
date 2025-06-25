@@ -5,18 +5,19 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import { CartProvider } from './contexts/cartContext';
+import { Provider } from 'react-redux';
+import { store } from './store/store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <CartProvider>
+    <Provider store={store}>
+      <BrowserRouter>
         <div className="min-h-screen bg-gradient-to-r from-blue-100 via-purple-100 to-indigo-100">
           <App />
         </div>
-      </CartProvider>
-    </BrowserRouter>
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>
 );
 
