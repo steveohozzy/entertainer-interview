@@ -8,7 +8,7 @@ import { addItemToCart } from '../../store/cart/cartReducer';
 
 
 const ProductCard = ({product}) => {
-    const { name, price, image, originalPrice, isNew, isBestseller, brand, size, inStock, rating, reviews } = product;
+    const { name, price, image, originalPrice, isNew, isBestseller, brand, size, inStock, rating, reviews, alternateImage } = product;
     const dispatch = useDispatch();
     const navigate = useNavigate();
     
@@ -202,7 +202,7 @@ const ProductCard = ({product}) => {
 
 
             <div
-              className="flex flex-col rounded-lg border bg-white shadow-sm group hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden"
+              className="flex flex-col rounded-lg border bg-white shadow-sm group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 overflow-hidden"
             >
               
               <div className="relative overflow-hidden">
@@ -215,9 +215,9 @@ const ProductCard = ({product}) => {
 
                   {/* Alternate image on hover */}
                   <img
-                    src={"/placeholder-alt.svg"}
+                    src={alternateImage}
                     alt={`${name} - alternate view`}
-                    className="absolute inset-0 w-full h-64 object-cover opacity-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300"
+                    className="absolute inset-0 w-full object-cover opacity-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300"
                   />
                 </button>
                 <div className="absolute top-3 left-3 flex gap-2">
