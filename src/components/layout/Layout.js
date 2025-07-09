@@ -110,8 +110,8 @@ const Layout = () => {
                         <button className="shadow-md group text-white font-bold bg-brandRed rounded-full h-[40px] w-[54px] absolute right-0 top-0 transition-all hover:bg-brandGreen hover:scale-105">
                             <span className="block transition-all group-hover:rotate-[20deg]">
                                 <span className="inline-block rotate-[-10deg] text-lg">G</span>
-                                <span className="inline-block translate-y-[-2px] rotate-[-10deg] text-sm">O</span>
-                                <span className="inline-block translate-y-[-2px] rotate-[5deg] text-xs">!</span>
+                                <span className="inline-block translate-y-[-2px] rotate-[-10deg] text-sm ml-[2px]">O</span>
+                                <span className="inline-block translate-y-[-2px] rotate-[5deg] text-xs ml-[2px]">!</span>
                             </span>
                         </button>
                     </form>
