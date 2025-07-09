@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import { Star, Heart, ShoppingCart, Eye, Plus, Minus } from "lucide-react"
 
 import { useDispatch } from 'react-redux';
@@ -9,6 +10,11 @@ import { addItemToCart } from '../../store/cart/cartReducer';
 const ProductCard = ({product}) => {
     const { name, price, image, originalPrice, isNew, isBestseller, brand, size, inStock, rating, reviews } = product;
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+    
+    const goToLinkHandler = () => {
+        navigate('/product-details/' + product.id);
+    };
 
     const addProductToCart = () => dispatch(addItemToCart(product));
 
@@ -198,19 +204,22 @@ const ProductCard = ({product}) => {
             <div
               className="flex flex-col rounded-lg border bg-white shadow-sm group hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden"
             >
+              
               <div className="relative overflow-hidden">
-                <img
-                  src={image || "/placeholder.svg"}
-                  alt={name}
-                  className="w-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
+                <button onClick={goToLinkHandler}>
+                  <img
+                    src={image || "/placeholder.svg"}
+                    alt={name}
+                    className="w-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
 
-                {/* Alternate image on hover */}
-                <img
-                  src={"/placeholder-alt.svg"}
-                  alt={`${name} - alternate view`}
-                  className="absolute inset-0 w-full h-64 object-cover opacity-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300"
-                />
+                  {/* Alternate image on hover */}
+                  <img
+                    src={"/placeholder-alt.svg"}
+                    alt={`${name} - alternate view`}
+                    className="absolute inset-0 w-full h-64 object-cover opacity-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300"
+                  />
+                </button>
                 <div className="absolute top-3 left-3 flex gap-2">
                   {isNew && <div className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs bg-green-800 text-white">NEW</div>}
                   {isBestseller && <div className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs bg-orange-800 text-white">BESTSELLER</div>}
@@ -240,21 +249,25 @@ const ProductCard = ({product}) => {
                     </div>
                   )}
                 </div>
-                <h2 className="font-semibold text-lg mb-2 line-clamp-2 grow">{name}</h2>
-                <div className="flex items-center gap-2 mb-3">
-                  <div className="flex items-center">
-                    <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                    <span className="text-sm font-medium ml-1">{rating}</span>
+                <button onClick={goToLinkHandler}>
+                  <h2 className="font-semibold text-lg mb-2 line-clamp-2 grow">{name}</h2>
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="flex items-center">
+                      <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                      <span className="text-sm font-medium ml-1">{rating}</span>
+                    </div>
+                    <span className="text-sm text-gray-500">({reviews} reviews)</span>
                   </div>
-                  <span className="text-sm text-gray-500">({reviews} reviews)</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <span className="text-xl font-bold text-blue-600">£{price}</span>
-                    {originalPrice && (
-                      <span className="text-sm text-gray-500 line-through">£{originalPrice}</span>
-                    )}
-                  </div>
+                </button>
+                  <div className="flex items-center justify-between">
+                    <button onClick={goToLinkHandler}>
+                      <div className="flex items-center gap-2">
+                        <span className="text-xl font-bold text-blue-600">£{price}</span>
+                        {originalPrice && (
+                          <span className="text-sm text-gray-500 line-through">£{originalPrice}</span>
+                        )}
+                      </div>
+                    </button>
                   <button
                     onClick={addProductToCart}
                     name="Add to cart"

@@ -1,4 +1,5 @@
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import {
   clearItemFromCart,
@@ -10,6 +11,11 @@ const CartProductTile = ({product, nocontrols}) => {
     const { name, price, image, originalPrice, brand, quantity } = product;
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+    
+    const goToLinkHandler = () => {
+        navigate('/product-details/' + product.id);
+    };
     
     const clearItemHandler = () =>
     dispatch(clearItemFromCart(product));
@@ -19,19 +25,23 @@ const CartProductTile = ({product, nocontrols}) => {
   return (
     <div className="flex items-start flex-wrap w-100 py-6 relative after:w-full after:absolute after:bottom-0 after:left-0 after:border-b-[3px] after:md:w-[50%] last:after:hidden">
         <div className="w-[30%] md:w-[20%] border-[4px] border-brandLightBlue rounded-lg">
-            <img
-                src={image || "/placeholder.svg"}
-                alt={name}
-                className="w-full"
-            />
+            <button className='block' onClick={goToLinkHandler}>
+                <img
+                    src={image || "/placeholder.svg"}
+                    alt={name}
+                    className="w-full block"
+                />
+            </button>
         </div>
         <div className="w-[70%] md:w-[80%]">
             <div className="flex flex-wrap">
                 <div className={`w-full ${nocontrols ? 'md:w-[70%]' : 'md:w-[50%]'} px-4 text-textBlue font-bold text-lg`}>
-                    {name}
-                    <div className="text-sm font-normal">
-                        {brand}
-                    </div>
+                    <button onClick={goToLinkHandler}>
+                        {name}
+                        <div className="text-sm font-normal">
+                            {brand}
+                        </div>
+                    </button>
                 </div>
                 <div className={`w-full ${nocontrols ? 'md:w-[30%]' : 'md:w-[50%]'} px-4 md:px-0`}>
                     <div className="flex flex-wrap justify-between items-start">

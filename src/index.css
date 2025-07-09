@@ -8,4 +8,13 @@
        clip-path: polygon(0 0,100% 0,calc(100% - 14px) 50%,100% 100%,0 100%, 14px 50%);
        filter:url(#round);
    }
+   :root {
+    --swiper-pagination-color: #407EC9;
+    --swiper-pagination-bullet-inactive-color: #407EC9;
+    --swiper-pagination-bullet-inactive-opacity: 0.5;
+    --swiper-pagination-bottom: 0;
+    }
+    .h-auto {
+        height: auto !important;
+    }
 }

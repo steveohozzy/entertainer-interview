@@ -64,12 +64,17 @@ const Layout = () => {
                                 Register/Sign in
                             </a>
                         </div>
-                        <div className="flex items-center space-x-4 pt-2 ml-8 md:pt-4 md:ml-0">
-                            <a href="/">
+                        <div className="flex items-center space-x-4 pt-2 ml-8 md:pt-4 md:ml-0 group">
+                            <a href="/" className="flex">
                                 <img
-                                    src="/entertainer-logo.svg"
+                                    src="/jack-logo.svg"
                                     alt="The Entertainer"
-                                    className="w-[117px] md:w-[198px]"
+                                    className="w-[29px] md:w-[49px] transition-all translate-y-2 group-hover:translate-y-0 group-hover:scale-105"
+                                />
+                                <img
+                                    src="/text-logo.svg"
+                                    alt="The Entertainer"
+                                    className="w-[85px] md:w-[144px] "
                                 />
                             </a>
                         </div>
@@ -98,7 +103,7 @@ const Layout = () => {
                     </div>
                 </div>
             </div>
-            <div className="search bg-brandLightBlue pt-6">
+            <div className="search bg-brandLightBlue pt-6 z-index-2 relative">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <form className="relative">
                         <input type="search" placeholder="I'm looking for..." className="h-[40px] px-3 rounded-3xl w-full border border-[3px] border-brandBlue font-bold text-textBlue placeholder:text-textBlue" />
