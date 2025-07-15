@@ -146,7 +146,7 @@ const Checkout = () => {
                                       answer={
                                         <>
                                         <div className='py-6 px-4'>
-                                          <form className='flex flex-col'>
+                                          <form id="delivery-form" className='flex flex-col'>
                                             <label className='border-b-[3px] border-gray-300 pb-4 mb-4'>
                                               <input type="radio" name="option" id="option1" className="hidden" />
                                               <div className='flex flex-wrap text-gray-400 label-checked:text-textBlue label-checked:[&>.icon]:rotate-[-45deg] label-checked:[&>.icon]:text-brandGreen label-checked:[&>.cost]:text-brandGreen'>
@@ -306,7 +306,7 @@ const Checkout = () => {
                                             <span className='font-bold'>Payment details</span>
                                             <span className='text-xs block'>(* Mandatory)</span>
                                           </div>
-                                          <form>
+                                          <form id="checkout-form">
                                             <div className='flex mt-5 h-[40px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative'>
                                               <input type="text" placeholder="Name on card*" className="outline-none w-full text-textBlue placeholder:text-textBlue" />
                                             </div>
@@ -345,7 +345,7 @@ const Checkout = () => {
                                   title="Delivery Address (*Mandatory)"
                                   className="bg-brandLightBlue p-4 rounded-md text-brandBlue font-bold flex items-center justify-between w-full"
                                   answer={
-                                    <form className='py-6 px-4'>
+                                    <form id="address-form" className='py-6 px-4'>
                                         <div className='flex h-[40px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative'>
                                           <span
                                             className="absolute left-[calc(15%-30px)] z-[2] top-[14px] w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[6px] border-gray-400 transition-all"></span>
@@ -432,7 +432,7 @@ const Checkout = () => {
                               }
                             >
                               <div>
-                                <form className='py-6 px-4'>
+                                <form id="manual-address-form" className='py-6 px-4'>
                                   <div className='flex h-[40px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative'>
                                     <input type="text" placeholder="Enter city, town or postcode" className="outline-none w-full text-textBlue placeholder:text-textBlue" />
                                   </div>
@@ -453,7 +453,7 @@ const Checkout = () => {
                                     Click & Collect options
                                   </div>
                                   <div className='mt-4'>
-                                    <form className='flex'>
+                                    <form id="pickup-form" className='flex'>
                                       <label className='text-sm text-textBlue mr-6'>
                                         <input type="radio" name="option" id="option1" className='accent-brandGreen mr-2' />
                                         Entertainer stores

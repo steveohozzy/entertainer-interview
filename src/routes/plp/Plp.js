@@ -376,7 +376,7 @@ const hasActiveFilters =
               <p className="text-gray-600 text-center order-3 text-xs md:text-sm w-full md:order-2 md:w-auto">
                 Showing {visibleFilteredProducts.length} of {filteredProducts.length} results
               </p>
-              <form className="max-w-sm md:order-3">
+              <form id="sort-by-form" className="max-w-sm md:order-3">
                 <label htmlFor="sort" className="sr-only">Select an option</label>
                 <select id="sort" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5">
                   <option value="Relevance">Relevance</option>
