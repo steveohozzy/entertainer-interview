@@ -144,10 +144,10 @@ const ProductDetails = () => {
                                     Other styles
                                 </span>
                                 <div className="flex items-center">
-                                    <button className="rounded-full bg-brandNeonBlue w-[20px] md:w-[25px] h-[20px] md:h-[25px] border-[3px] border-brandBlue ml-3"></button>
-                                    <button className="rounded-full bg-orange-300 w-[20px] md:w-[25px] h-[20px] md:h-[25px] border-[3px] border-orange-300 ml-3 transition-all hover:border-orange-500"></button>
-                                    <button className="rounded-full bg-black w-[20px] md:w-[25px] h-[20px] md:h-[25px] border-[3px] border-black ml-3 transition-all hover:border-gray-500"></button>
-                                    <button className="rounded-full bg-red-500 w-[20px] md:w-[25px] h-[20px] md:h-[25px] border-[3px] border-red-500 ml-3 transition-all hover:border-red-700"></button>
+                                    <button className="rounded-full bg-brandNeonBlue w-[20px] md:w-[25px] h-[20px] md:h-[25px] border-[3px] border-brandBlue ml-3"><span className="sr-only">Blue</span></button>
+                                    <button className="rounded-full bg-orange-300 w-[20px] md:w-[25px] h-[20px] md:h-[25px] border-[3px] border-orange-300 ml-3 transition-all hover:border-orange-500"><span className="sr-only">Orange</span></button>
+                                    <button className="rounded-full bg-black w-[20px] md:w-[25px] h-[20px] md:h-[25px] border-[3px] border-black ml-3 transition-all hover:border-gray-500"><span className="sr-only">Black</span></button>
+                                    <button className="rounded-full bg-red-500 w-[20px] md:w-[25px] h-[20px] md:h-[25px] border-[3px] border-red-500 ml-3 transition-all hover:border-red-700"><span className="sr-only">red</span></button>
                                 </div>
                             </span>
                         </div>

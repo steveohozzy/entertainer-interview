@@ -110,7 +110,7 @@ export const products = [
     originalPrice: 39.99,
     rating: 4.7,
     reviews: 89,
-    image: "http://thetoyshop.com/medias/300Wx300H-567373-Primary?context=bWFzdGVyfGltYWdlc3w4MTM4MHxpbWFnZS9qcGVnfGFHSXlMMmcwWVM4eE1qQTVOVFl5TlRNMk16UTROaTh6TURCWGVETXdNRWhmTlRZM016Y3pYMUJ5YVcxaGNua3w1ZGUyMTMzNDZiMWJiYjUyOTY1ZTlmMzJhODRhMGNmMjU4YjczNTg1ZDJhNmQ5MzgxMGY4Yzc5MzRhOWRlOWEz",
+    image: "https://thetoyshop.com/medias/300Wx300H-567373-Primary?context=bWFzdGVyfGltYWdlc3w4MTM4MHxpbWFnZS9qcGVnfGFHSXlMMmcwWVM4eE1qQTVOVFl5TlRNMk16UTROaTh6TURCWGVETXdNRWhmTlRZM016Y3pYMUJ5YVcxaGNua3w1ZGUyMTMzNDZiMWJiYjUyOTY1ZTlmMzJhODRhMGNmMjU4YjczNTg1ZDJhNmQ5MzgxMGY4Yzc5MzRhOWRlOWEz",
     alternateImage: "https://www.thetoyshop.com/medias/300Wx300H-567376-Primary?context=bWFzdGVyfGltYWdlc3w3ODAyOXxpbWFnZS9qcGVnfGFHVTBMMmd4WlM4eE1qQTVOVFl5TmpNME5qVXlOaTh6TURCWGVETXdNRWhmTlRZM016YzJYMUJ5YVcxaGNua3w0Y2I5YjJlOTY3OWUyZjAwMGFjNTQ4MDc1OTYxMDg3YmQ5ODc3ZWQxMTlkNTBkMDIwMjk2NjhkYmIxOTE2Yzcz",
     images: [
       "/placeholder.svg?height=400&width=400",
