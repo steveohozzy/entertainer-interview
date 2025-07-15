@@ -1,5 +1,6 @@
 
 import Dropdown from "../dropdown/Dropdown";
+import Button from "../button/Button";
 
 const Footer = () => {
 
@@ -8,6 +9,72 @@ const Footer = () => {
       <footer>
         <div className="bg-brandMediumGreen p-4">
           <div className="max-w-7xl mx-auto px-4 pr-0 sm:px-6 lg:px-8">
+            <div className="mb-4 flex flex-col md:flex-row">
+            <div className="mb-6 flex flex-col items-center md:w-1/3 md:items-stretch md:pr-4">
+              <span className="font-[26px] font-bold text-brandBlue">Be in the know with</span>
+              <img src="/footer-logo.svg" alt="The Entertainer" className="w-[225px] lg:w-[275px]" width="225" height="33" />
+              <span className="mt-3 w-[225px] text-center text-sm font-bold text-brandBlue md:font-[20px] lg:w-[275px]">Sign up to our emails</span>
+            </div>
+            <div className="flex flex-col md:w-2/3">
+              <form className="flex flex-wrap">
+                <div className="mb-4 w-full md:w-1/2">
+                  <input
+                    type="text"
+                    placeholder="First Name*"
+                    className="h-[34px] w-full rounded-lg border-[3px] border-gray-300 px-3 text-textBlue transition-all placeholder:text-gray-400 focus:border-textBlue focus:outline-none"
+                  />
+                  <input
+                    type="email"
+                    placeholder="Email Address*"
+                    className="mt-4 h-[34px] w-full rounded-lg border-[3px] border-gray-300 px-3 text-textBlue transition-all placeholder:text-gray-400 focus:border-textBlue focus:outline-none"
+                  />
+                </div>
+                <div className="w-full px-4 md:w-1/2 md:pl-6">
+                  <label className="relative mb-4 flex items-start text-xs font-bold text-brandBlue">
+                    <input
+                      type="checkbox"
+                      className="relative mt-1 block size-[20px] appearance-none rounded-md border-[3px] border-textBlue bg-white outline-none transition-all checked:bg-textBlue"
+                      name="signup"
+                      value="signup"
+                    />
+                    <span className="absolute top-[3px]">
+                      <svg viewBox="0 0 24 24" width="20px" height="20px" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                        <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                          {' '}
+                          <path
+                            d="M4.89163 13.2687L9.16582 17.5427L18.7085 8"
+                            stroke="#ffffff"
+                            strokeWidth="2.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          ></path>{' '}
+                        </g>
+                      </svg>
+                    </span>
+                    <span className="ml-2 w-[calc(100%-30px)]">
+                      I would like to receive emails about special offers, new toys and voucher codes from The Entertainer
+                    </span>
+                  </label>
+                  <Button
+                    className="shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-lg rounded-[30px] bg-brandRed text-white py-2 px-4 pl-2 transition-all hover:bg-brandLightRed hover:scale-105"
+                    iconpath={
+                      <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
+                        <path
+                          d="M18.9028 4.35492C19.4873 4.15932 20.0692 4.72983 19.8174 5.31534L14.818 18.0558C14.6532 18.532 14.0752 18.697 13.686 18.4229L10.2385 15.9994L7.77668 17.9694C7.23857 18.3984 6.44087 17.9419 6.59633 17.2082L7.121 14.7319L16.356 7.32912C16.5477 7.17808 16.3485 6.91226 16.1633 7.03273L5.7505 12.9082L2.77086 10.8394C2.26592 10.5088 2.37319 9.70103 2.98825 9.51191L18.9028 4.35492Z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    }
+                    link="#"
+                  >
+                    Submit
+                  </Button>
+                </div>
+              </form>
+            </div>
+          </div>
             <div className="flex items-center justify-center text-center mb-4">
               <div className="text-xl text-brandBlue font-bold mr-2">
                 Follow us on

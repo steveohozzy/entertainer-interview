@@ -67,7 +67,6 @@ const ProductDetails = () => {
                                 </video>
                             </SwiperSlide>
                         }
-                        <SwiperSlide><img className="object-cover w-full h-full" src={product.image} alt={product.name} /></SwiperSlide>
                         {product.images.map((image) => (
                             <SwiperSlide><img className="object-cover w-full h-full" src={image} alt={product.name} /></SwiperSlide>
                         ))}
