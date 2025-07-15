@@ -227,11 +227,11 @@ const ProductCard = ({product}) => {
                   {isNew && <div className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs bg-green-800 text-white">NEW</div>}
                   {isBestseller && <div className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs bg-orange-800 text-white">BESTSELLER</div>}
                 </div>
-                <div className="absolute top-3 right-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 opacity-100 md:opacity-0 transition-opacity">
+                <div className="absolute top-3 right-1 flex flex-col gap-2 opacity-0 group-hover:opacity-100 opacity-100 md:opacity-0 transition-opacity">
                   <button onClick={() => setAddedToFavourties(!addedToFavourites)} name="Add to favourites" className={`relative inline-flex items-center justify-center gap-2 whitespace-nowrap text-lg  h-9  transition-all hover:scale-105 hover:text-brandPink`}>
                     <Heart className={`h-8 w-8 ${addedToFavourites ? 'text-brandPink animate-bigheart' : 'text-brandBlue'}`} fill={addedToFavourites ? "#FF7BAC" : "transparent"} />
-                    <Heart className={`absolute bottom-0 left-0 h-2 w-2 opacity-0 text-transparent ${addedToFavourites ? 'animate-miniheartleft text-brandPink' : 'text-brandBlue'}`} fill={addedToFavourites ? "#FF7BAC" : "transparent"} />
-                    <Heart className={`absolute bottom-0 right-0 h-2 w-2 opacity-0 text-transparent ${addedToFavourites ? 'animate-miniheartright text-brandPink' : 'text-brandBlue'}`} fill={addedToFavourites ? "#FF7BAC" : "transparent"} />
+                    <Heart className={`absolute bottom-0 left-1 h-2 w-2 opacity-0 text-transparent ${addedToFavourites ? 'animate-miniheartleft text-brandPink' : 'text-brandBlue'}`} fill={addedToFavourites ? "#FF7BAC" : "transparent"} />
+                    <Heart className={`absolute bottom-0 right-2 h-2 w-2 opacity-0 text-transparent ${addedToFavourites ? 'animate-miniheartright text-brandPink' : 'text-brandBlue'}`} fill={addedToFavourites ? "#FF7BAC" : "transparent"} />
                     <span className="sr-only">Add to favourites</span>
                   </button>
                   <button name="quick view" className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium h-9 rounded-md px-3 transition-all hover:scale-105" onClick={() => openQuickView(product)}>
