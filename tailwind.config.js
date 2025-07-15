@@ -19,6 +19,48 @@ module.exports = {
         brandLightGreen: "#C4D600",
         brandMediumGreen: "#AFCB17",
         brandBeige: "#C4D600",
+        brandPink: "#FF7BAC",
+      },
+      animation: {
+        'bigheart': 'bigheart 0.6s ease-in-out',
+        'miniheartleft': 'miniheartleft 0.8s ease-in-out',
+        'miniheartright': 'miniheartright 0.8s ease-in-out',
+      },
+      keyframes: {
+        bigheart: {
+          '0%, 100%': {
+            transform: 'rotate(0deg) translateY(0) translateX(0)',
+          },
+          '50%': {
+            transform: 'rotate(-20deg) translateY(-7px) translateX(4px) scale(1.1)',
+          }
+        },
+        miniheartleft: {
+          '0%, 100%': {
+            transform: 'rotate(-10deg) translateY(0) translateX(8px)',
+            opacity: '0'
+          },
+          '50%': {
+            transform: 'rotate(-30deg) translateY(-20px) translateX(4px) scale(1.2)',
+            opacity: '0.6'
+          },
+          '75%': {
+            opacity: '0'
+          }
+        },
+        miniheartright: {
+          '0%, 100%': {
+            transform: 'rotate(15deg) translateY(0) translateX(-8px)',
+            opacity: '0'
+          },
+          '50%': {
+            transform: 'rotate(20deg) translateY(-20px) translateX(0) scale(1.2)',
+            opacity: '0.6'
+          },
+          '70%': {
+            opacity: '0'
+          }
+        },
       },
     },
   },

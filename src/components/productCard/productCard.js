@@ -36,6 +36,9 @@ const ProductCard = ({product}) => {
     setQuantity(1)
     }
 
+    // Add to favourites
+    const [addedToFavourites, setAddedToFavourties] = useState(false);
+
     return (
         <>
 
@@ -225,13 +228,15 @@ const ProductCard = ({product}) => {
                   {isBestseller && <div className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs bg-orange-800 text-white">BESTSELLER</div>}
                 </div>
                 <div className="absolute top-3 right-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 opacity-100 md:opacity-0 transition-opacity">
-                  <button name="quick view" className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium bg-gray-200 hover:bg-gray-300 h-9 rounded-md px-3 transition-all hover:scale-105 hover:shadow-md" onClick={() => openQuickView(product)}>
-                    <Eye className="h-4 w-4" />
-                    <span className="sr-only">Open quick view</span>
-                  </button>
-                  <button name="Add to favourites" className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium bg-gray-200 hover:bg-gray-300 h-9 rounded-md px-3 transition-all hover:scale-105 hover:shadow-md">
-                    <Heart className="h-4 w-4" />
+                  <button onClick={() => setAddedToFavourties(!addedToFavourites)} name="Add to favourites" className={`relative inline-flex items-center justify-center gap-2 whitespace-nowrap text-lg  h-9  transition-all hover:scale-105 hover:text-brandPink`}>
+                    <Heart className={`h-8 w-8 ${addedToFavourites ? 'text-brandPink animate-bigheart' : 'text-brandBlue'}`} fill={addedToFavourites ? "#FF7BAC" : "transparent"} />
+                    <Heart className={`absolute bottom-0 left-0 h-2 w-2 opacity-0 text-transparent ${addedToFavourites ? 'animate-miniheartleft text-brandPink' : 'text-brandBlue'}`} fill={addedToFavourites ? "#FF7BAC" : "transparent"} />
+                    <Heart className={`absolute bottom-0 right-0 h-2 w-2 opacity-0 text-transparent ${addedToFavourites ? 'animate-miniheartright text-brandPink' : 'text-brandBlue'}`} fill={addedToFavourites ? "#FF7BAC" : "transparent"} />
                     <span className="sr-only">Add to favourites</span>
+                  </button>
+                  <button name="quick view" className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium h-9 rounded-md px-3 transition-all hover:scale-105" onClick={() => openQuickView(product)}>
+                    <Eye className="h-8 w-8 text-brandNeonBlue hover:text-brandMediumGreen transition-all" />
+                    <span className="sr-only">Open quick view</span>
                   </button>
                 </div>
               </div>

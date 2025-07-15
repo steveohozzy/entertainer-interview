@@ -1,4 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 import { useDispatch } from 'react-redux';
 
@@ -12,7 +13,7 @@ import 'swiper/css/autoplay';
 import 'swiper/css/pagination';
 
 import { products } from "../../data/products";
-import { Star } from "lucide-react";
+import { Star, Heart } from "lucide-react";
 import Button from "../../components/button/Button";
 import Dropdown from "../../components/dropdown/Dropdown";
 import HeadingRibbon from "../../components/headingRibbon/headingRibbon";
@@ -24,12 +25,15 @@ const ProductDetails = () => {
     const product = products.find(item => item.id === parseInt(id));
 
     const addProductToCart = () => dispatch(addItemToCart(product));
+    // Add to favourites
+    const [addedToFavourites, setAddedToFavourties] = useState(false);
+    
 
   return (
     <>
     <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8'>
         <div className="rounded-xl flex flex-wrap bg-white items-start">
-            <div className="w-full md:w-2/5 p-4 border-[3px] border-brandNeonBlue rounded-xl [&_.swiper-pagination]:relative">
+            <div className="relative w-full md:w-2/5 p-4 border-[3px] border-brandNeonBlue rounded-xl [&_.swiper-pagination]:relative">
                 <Swiper
                     modules={[Autoplay, Pagination]}
                     spaceBetween={20}
@@ -68,6 +72,14 @@ const ProductDetails = () => {
                             <SwiperSlide><img className="object-cover w-full h-full" src={image} alt={product.name} /></SwiperSlide>
                         ))}
                     </Swiper>
+                <div className="absolute top-3 right-3 z-[1]">
+                    <button onClick={() => setAddedToFavourties(!addedToFavourites)} name="Add to favourites" className={`relative inline-flex items-center justify-center gap-2 whitespace-nowrap text-lg  h-10  transition-all hover:scale-105 hover:text-brandPink`}>
+                        <Heart className={`h-10 w-10 ${addedToFavourites ? 'text-brandPink animate-bigheart' : 'text-brandBlue'}`} fill={addedToFavourites ? "#FF7BAC" : "transparent"} />
+                        <Heart className={`absolute bottom-0 left-[-6px] 0 h-[10px] w-[10px] opacity-0 text-transparent ${addedToFavourites ? 'animate-miniheartleft text-brandPink' : 'text-brandBlue'}`} fill={addedToFavourites ? "#FF7BAC" : "transparent"} />
+                        <Heart className={`absolute bottom-0 right-[-4px] h-[10px] w-[10px] opacity-0 text-transparent ${addedToFavourites ? 'animate-miniheartright text-brandPink' : 'text-brandBlue'}`} fill={addedToFavourites ? "#FF7BAC" : "transparent"} />
+                        <span className="sr-only">Add to favourites</span>
+                    </button>
+                </div>
             </div>
             <div className="w-full md:w-3/5 p-4 px-6">
                 <h1 className="text-xl md:text-3xl font-bold text-brandBlue text-center mb-4 md:mb-10">{product.name}</h1>
