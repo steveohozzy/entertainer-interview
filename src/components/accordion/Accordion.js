@@ -37,15 +37,17 @@ const Accordion = ({ title, answer, isSubNav, ...otherProps}) => {
           />
         </svg>
       </li>
-      <ul
-        className={`grid overflow-hidden transition-all duration-300 ease-in-out text-slate-600 text-sm ${
-          accordionOpen
-            ? "grid-rows-[1fr] opacity-100"
-            : "grid-rows-[0fr] opacity-0"
-        }`}
-      >
-        <li className="overflow-hidden">{answer}</li>
-      </ul>
+      <li>
+        <ul
+          className={`grid overflow-hidden transition-all duration-300 ease-in-out text-slate-600 text-sm ${
+            accordionOpen
+              ? "grid-rows-[1fr] opacity-100"
+              : "grid-rows-[0fr] opacity-0"
+          }`}
+        >
+          <li className="overflow-hidden">{answer}</li>
+        </ul>
+      </li>
     </ul>
   );
 };

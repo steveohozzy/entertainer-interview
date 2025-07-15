@@ -8,8 +8,9 @@ const Navigation = () => {
 
     return (
         <>
-            <button className="transition-all hover:scale-110" onClick={() => setShowMenu(true)}>
+            <button name="Activate Menu" className="transition-all hover:scale-110" onClick={() => setShowMenu(true)}>
                 <MenuIcon />
+                <span className="sr-only">Activate Menu</span>
             </button>
              
         {/* Filter Panel Overlay */}

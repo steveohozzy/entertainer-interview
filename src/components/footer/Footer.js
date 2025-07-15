@@ -19,8 +19,8 @@ const Footer = () => {
                 className="ml-1 transition-all hover:rotate-[20deg]"
               >
                 <svg
-                  width="12"
-                  height="18"
+                  width="18"
+                  height="26"
                   viewBox="0 0 12 18"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -30,6 +30,7 @@ const Footer = () => {
                     fill="#00548B"
                   />
                 </svg>
+                <span className="sr-only">Visit us on Facebook</span>
               </a>
               <a
                 href="http://tiktok.com"
@@ -38,8 +39,8 @@ const Footer = () => {
                 className="ml-1"
               >
                 <svg
-                  width="17"
-                  height="18"
+                  width="23"
+                  height="24"
                   viewBox="0 0 17 18"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -50,6 +51,7 @@ const Footer = () => {
                     fill="#00548B"
                   />
                 </svg>
+                <span className="sr-only">Visit us on TikTok</span>
               </a>
               <a
                 href="http://instagram.com"
@@ -58,8 +60,8 @@ const Footer = () => {
                 className="ml-2 transition-all hover:rotate-[20deg]"
               >
                 <svg
-                  width="16"
-                  height="16"
+                  width="22"
+                  height="22"
                   viewBox="0 0 16 16"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -69,6 +71,7 @@ const Footer = () => {
                     fill="#00548B"
                   />
                 </svg>
+                <span className="sr-only">Visit us on Instagram</span>
               </a>
             </div>
             <div className="flex flex-wrap items-start justify-center">

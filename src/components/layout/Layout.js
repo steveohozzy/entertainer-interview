@@ -95,9 +95,9 @@ const Layout = () => {
                                 <span className="text-sm ml-2 hidden md:block">£{cartTotal.toFixed(2)}</span>
                             </button>
                             <a href="https://www.elc.co.uk/" rel="noreferrer" target="_blank" className="py-2 rounded-md rounded-tr-[0] md:rounded-br-2xl md:rounded-tr-md md:rounded-br-md px-2 md:px-3 bg-white hover:bg-grey-100 transition-all hover:scale-105 hover:shadow-md">
-                                <img src="/elc-logo-full.svg" alt="visit Early Learning Centre website" className="h-7 hidden md:block" />
-                                <img src="/elc-logo-small.svg" alt="visit Early Learning Centre website" className="h-7 md:hidden" />
-                                <span className="sr-only">visit Early Learning Centre website</span>
+                                <img src="/elc-logo-full.svg" alt="visit Early Learning Centre" className="h-7 hidden md:block" />
+                                <img src="/elc-logo-small.svg" alt="visit Early Learning Centre" className="h-7 md:hidden" />
+                                <span className="sr-only">visit the Early Learning Centre website</span>
                             </a>
                         </div>
                     </div>
