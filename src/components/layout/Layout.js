@@ -47,7 +47,7 @@ const Layout = () => {
         <header
             id="site-header"
             className={`text-white rounded-b-2xl md:rounded-b-3xl border-b sticky top-0 w-full z-50 transition-transform duration-300 ${
-                showHeader ? "translate-y-0" : "-translate-y-full shadow-none md:shadow-none"
+                showHeader ? "translate-y-0" : "translate-y-[-100vh] shadow-none md:shadow-none"
             }`}
         >
             <div className="bg-brandBlue shadow-sm md:shadow-md rounded-b-2xl md:rounded-b-3xl">
