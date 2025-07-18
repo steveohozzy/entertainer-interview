@@ -415,7 +415,7 @@ const ProductCard = ({ product }) => {
               </div>
             )}
           </div>
-          <div className="absolute top-3 right-1 flex flex-col md:gap-2 opacity-0 group-hover:opacity-100 opacity-100 md:opacity-0 transition-opacity">
+          <div className="absolute top-1 right-0 md:top-3 md:right-1 flex flex-col md:gap-2 opacity-0 group-hover:opacity-100 opacity-100 md:opacity-0 transition-opacity">
             <button
               onClick={() => setAddedToFavourties(!addedToFavourites)}
               name="Add to favourites"
