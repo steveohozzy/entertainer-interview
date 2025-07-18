@@ -348,7 +348,7 @@ const ProductCard = ({ product }) => {
                                 <Minus className="h-4 w-4" />
                                 <span className="sr-only">Reduce quantity</span>
                             </button>
-                            <span className="px-4 py-1 md:py-2 min-w-[3rem] text-center text-brandBlue text-lg font-bold">{quantity}</span>
+                            <span className="px-3 md:px-4 py-1 md:py-2 min-w-[3rem] text-center text-brandBlue text-lg font-bold">{quantity}</span>
                             <button
                                 name="Increase quantity"
                                 className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 h-9 px-3 text-brandBlue"
@@ -361,7 +361,7 @@ const ProductCard = ({ product }) => {
                           </div>
                         </div>
                         <Button
-                          className="shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-sm min-h-[40px] md:text-lg rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-2 transition-all hover:bg-brandLightGreen hover:scale-105"
+                          className="shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-xs min-h-[40px] md:text-lg rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-2 transition-all hover:bg-brandLightGreen hover:scale-105"
                           iconpath={
                             <svg
                               width="22"
