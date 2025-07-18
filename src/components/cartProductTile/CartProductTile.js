@@ -8,7 +8,7 @@ import {
 } from '../../store/cart/cartReducer';
 
 const CartProductTile = ({product, nocontrols}) => {
-    const { name, price, image, originalPrice, brand, quantity } = product;
+    const { name, price, image, originalPrice, quantity } = product;
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
