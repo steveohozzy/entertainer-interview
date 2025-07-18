@@ -217,7 +217,7 @@ const Checkout = () => {
                                     <Dropdown 
                                       expanded={true}
                                       title="Delivery Options"
-                                      className="relative bg-brandLightBlue p-4 rounded-md text-brandBlue font-bold flex items-center justify-between w-full"
+                                      className="relative bg-brandLightBlue p-4 px-2 sm:px-4 rounded-md text-brandBlue font-bold flex items-center justify-between w-full"
                                       answer={
                                         <>
                                         <div className='py-6 px-4'>
@@ -394,7 +394,7 @@ const Checkout = () => {
                                             </div>
                                             {showPaymentOptions &&
                                               <Button 
-                                                className='mt-6 h-[40px] shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-lg rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-2 transition-all hover:bg-brandLightGreen hover:scale-105'
+                                                className='mt-6 h-[40px] shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-boldtext-sm md:text-lg rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-2 transition-all hover:bg-brandLightGreen hover:scale-105'
                                                 iconpath={
                                                   <svg width="18" height="19" viewBox="0 0 18 19" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M3.76153 9.47138C3.35391 9.55775 3.03767 9.77382 2.81279 10.1196C2.58791 10.4654 2.51866 10.8421 2.60503 11.2497L3.8487 17.1194C3.93507 17.527 4.15114 17.8433 4.49693 18.0682C4.84272 18.293 5.21942 18.3623 5.62704 18.2759L16.3881 15.9958C16.7958 15.9095 17.112 15.6934 17.3369 15.3476C17.5618 15.0018 17.631 14.6251 17.5446 14.2175L16.301 8.34781C16.2146 7.9402 15.9985 7.62395 15.6527 7.39907C15.3069 7.1742 14.9302 7.10494 14.5226 7.19131L13.7889 7.34677L13.3225 5.14563C13.0505 3.86164 12.3711 2.86627 11.2843 2.15951C10.1728 1.4367 8.97512 1.21132 7.69112 1.48337C6.40713 1.75543 5.41392 2.44503 4.71148 3.55217C3.98435 4.64325 3.75681 5.83079 4.02886 7.11479L4.49524 9.31592L3.76153 9.47138ZM6.94095 8.79772L6.47457 6.59659C6.34502 5.98516 6.4489 5.42011 6.78621 4.90143C7.12353 4.38274 7.5979 4.05863 8.20932 3.92908C8.82075 3.79953 9.3858 3.90341 9.90449 4.24072C10.4232 4.57804 10.7473 5.05241 10.8768 5.66383L11.3432 7.86497L6.94095 8.79772Z" />
@@ -419,7 +419,7 @@ const Checkout = () => {
                                 <Dropdown 
                                   expanded={true}
                                   title="Delivery Address (*Mandatory)"
-                                  className="bg-brandLightBlue p-4 rounded-md text-brandBlue font-bold flex items-center justify-between w-full"
+                                  className="bg-brandLightBlue p-4 px-2 sm:px-4 rounded-md text-brandBlue font-bold flex items-center justify-between w-full"
                                   answer={
                                     <form id="address-form" className='py-6 px-4'>
                                         <div className={`flex h-[40px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative ${name && 'border-red-600'}`}>
@@ -546,7 +546,7 @@ const Checkout = () => {
                             <div className='bg-white p-4 w-full'>
                           {!showDeliveryOptions &&
                             <Button 
-                              className={`h-[40px] shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-lg rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-2 transition-all hover:bg-brandLightGreen hover:scale-105 ${!selectDelivery && 'pointer-events-none bg-gray-400'}`}
+                              className={`h-[40px] shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-sm md:text-lg rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-2 transition-all hover:bg-brandLightGreen hover:scale-105 ${!selectDelivery && 'pointer-events-none bg-gray-400'}`}
                               iconpath={
                                 <svg width="23" height="21" viewBox="0 0 23 21" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                   <path d="M20.2166 15.5378C20.4612 15.5897 20.654 15.8861 20.6021 16.1306L20.3949 17.1089C20.3366 17.384 20.0467 17.5462 19.8021 17.4944L18.3347 17.1835C17.9914 18.8038 16.3983 19.8398 14.778 19.4965C13.1577 19.1532 12.1217 17.5601 12.465 15.9398L8.55185 15.1107C8.20854 16.731 6.61544 17.767 4.99516 17.4237C3.37488 17.0804 2.33885 15.4873 2.68216 13.867L2.19302 13.7634C1.36759 13.5885 0.86162 12.8105 1.03651 11.985L3.1093 2.20222C3.27772 1.40737 4.06222 0.870826 4.88764 1.04572L14.6705 3.11851C15.4653 3.28692 15.9954 4.102 15.827 4.89685L15.516 6.36427L16.8612 6.64928C17.228 6.72701 17.5866 6.99465 17.8034 7.32809L20.1887 10.9959C20.4056 11.3294 20.5048 11.7656 20.4271 12.1325L19.7275 15.4342L20.2166 15.5378ZM5.30608 15.9563C6.10094 16.1247 6.90953 15.6252 7.08442 14.7998C7.25284 14.0049 6.72277 13.1899 5.92792 13.0214C5.1025 12.8465 4.31799 13.3831 4.14958 14.1779C3.97469 15.0034 4.48066 15.7814 5.30608 15.9563ZM15.0889 18.0291C15.8838 18.1975 16.6924 17.698 16.8672 16.8726C17.0357 16.0777 16.5056 15.2626 15.7107 15.0942C14.8853 14.9193 14.1008 15.4559 13.9324 16.2507C13.7575 17.0762 14.2635 17.8542 15.0889 18.0291ZM18.8819 12.1884L18.9596 11.8216L16.5503 8.11671L15.2051 7.8317L14.4797 11.2557L18.8819 12.1884Z"/>
