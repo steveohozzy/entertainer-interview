@@ -224,7 +224,7 @@ const Cart = () => {
                           </div>
                         </div>
                     </div>
-                    <div className='bg-white p-4 w-full sticky bottom-0 left-0 md:hidden'>
+                    <div className='bg-white p-4 px-0 md:px-4 w-full sticky bottom-0 left-0 md:hidden'>
                       <Button 
                         className='h-[40px] shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-lg rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-2 transition-all hover:bg-brandLightGreen hover:scale-105'
                         iconpath={
