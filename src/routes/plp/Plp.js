@@ -376,7 +376,7 @@ const hasActiveFilters =
               <p className="text-gray-600 text-center order-3 text-xs md:text-sm w-full md:order-2 md:w-auto">
                 Showing {visibleFilteredProducts.length} of {filteredProducts.length} results
               </p>
-              <form id="sort-by-form" className="max-w-1/2 md:order-3">
+              <form id="sort-by-form" className="max-[100px] md:order-3">
                 <label htmlFor="sort" className="sr-only">Select an option</label>
                 <select id="sort" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5">
                   <option value="Relevance">Relevance</option>
@@ -432,7 +432,7 @@ const hasActiveFilters =
         </div>
 
         {/* Products Grid */}
-        <div className="grid gap-3 grid-cols-2 lg:grid-cols-4 xl:grid-cols-5">
+        <div className="grid gap-2 md:gap-5 grid-cols-2 lg:grid-cols-4 xl:grid-cols-5">
           {visibleFilteredProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
