@@ -378,7 +378,7 @@ const hasActiveFilters =
               </p>
               <form id="sort-by-form" className="max-[100px] md:order-3">
                 <label htmlFor="sort" className="sr-only">Select an option</label>
-                <select id="sort" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5">
+                <select id="sort" className="max-[100px] bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5">
                   <option value="Relevance">Relevance</option>
                   <option value="Price (lowest first)">Price (lowest first)</option>
                   <option value="Price (highest first)">Price (highest first)</option>
