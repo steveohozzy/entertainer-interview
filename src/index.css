@@ -4,6 +4,9 @@
 @tailwind utilities;
 
 @layer utilities {
+    body {
+        letter-spacing: 0;
+    }
    .ribbon {
        clip-path: polygon(0 0,100% 0,calc(100% - 14px) 50%,100% 100%,0 100%, 14px 50%);
        filter:url(#round);
