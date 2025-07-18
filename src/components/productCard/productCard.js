@@ -66,7 +66,7 @@ const ProductCard = ({ product }) => {
                   <button
                     name="Close quick view"
                     onClick={() => closeQuickView()}
-                    className="absolute right-[-10px] top-[-15px] rounded-sm opacity-70 transition-opacity hover:opacity-100 z-[2]"
+                    className="absolute right-[-10px] top-[-15px] text-textBlue rounded-full border-[2px] border-textBlue"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -78,7 +78,7 @@ const ProductCard = ({ product }) => {
                       strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      className="lucide lucide-x h-6 w-6"
+                      className="lucide lucide-x h-5 w-5"
                     >
                       <path d="M18 6 6 18"></path>
                       <path d="m6 6 12 12"></path>
