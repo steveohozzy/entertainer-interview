@@ -125,7 +125,7 @@ const Cart = () => {
             </div>
             <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
                 <div className='flex flex-wrap py-6'>
-                    <div className='w-full md:w-[66.6666666%] px-3'>
+                    <div className='w-full md:w-[66.6666666%] px-1 md:px-3'>
                         <div className='flex items-end'>
                             <h1 className='text-base md:text-xl font-bold text-textBlue mr-1 md:mr-2'>Basket</h1>
                             {cartItems.length &&
