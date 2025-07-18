@@ -344,7 +344,7 @@ const hasActiveFilters =
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pt-10">
-        {/* Hero Section */}
+        {/* Hero Section 
         <div className="text-center mb-8">
           <h1 className="text-2xl md:text-4xl !leading-[1.2] font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mb-4">
             Action Figures Collection
@@ -353,7 +353,7 @@ const hasActiveFilters =
             Discover the best action figures for kids, featuring popular characters from Marvel, Star Wars,
             Transformers, DC Comics, and more! Bring your favorite heroes and villains to life.
           </p>
-        </div>
+        </div>*/}
 
         
 
@@ -432,7 +432,7 @@ const hasActiveFilters =
         </div>
 
         {/* Products Grid */}
-        <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="grid gap-6 grid-cols-2 lg:grid-cols-4 xl:grid-cols-5">
           {visibleFilteredProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}

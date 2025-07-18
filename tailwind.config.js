@@ -11,6 +11,7 @@ module.exports = {
       colors: {
         brandBlue: "#0D5D9C",
         brandLightBlue: "#DBE3FF",
+        brandVLightBlue: "#deeeee",
         brandNeonBlue: "#00BBDC",
         textBlue: "#407EC9",
         brandRed: "#EE3224",
@@ -20,6 +21,7 @@ module.exports = {
         brandMediumGreen: "#AFCB17",
         brandBeige: "#C4D600",
         brandPink: "#FF7BAC",
+        eee: "#eeeeee",
       },
       animation: {
         'bigheart': 'bigheart 0.6s ease-in-out',
