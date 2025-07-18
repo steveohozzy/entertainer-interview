@@ -123,11 +123,11 @@ const Cart = () => {
                     <div className='w-[69%] ml-[1%] border-b-4 border-dashed border-gray-200'></div>
                 </div>
             </div>
-            <div className='max-w-7xl mx-auto px-2 sm:px-6 lg:px-8'>
+            <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
                 <div className='flex flex-wrap py-6'>
                     <div className='w-full md:w-[66.6666666%] px-3'>
                         <div className='flex items-end'>
-                            <h1 className='text-xl font-bold text-textBlue mr-2'>Basket</h1>
+                            <h1 className='text-lg md:text-xl font-bold text-textBlue mr-1 md:mr-2'>Basket</h1>
                             {cartItems.length &&
                             <>
                               <span className='text-gray-500'>Delivery | </span>
@@ -143,7 +143,7 @@ const Cart = () => {
                           <div>Your cart is empty</div>
                         )}
                     </div>
-                    <div className='w-full md:w-[33.3333333%] px-3'>
+                    <div className='w-full md:w-[33.3333333%] md:px-3'>
                         <div className='bg-white w-full hidden md:block'>
                           <Button 
                             className='shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-lg rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-2 transition-all hover:bg-brandLightGreen hover:scale-105'

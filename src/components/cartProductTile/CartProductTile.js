@@ -38,9 +38,6 @@ const CartProductTile = ({product, nocontrols}) => {
                 <div className={`w-full ${nocontrols ? 'md:w-[70%]' : 'md:w-[50%]'} px-4 text-textBlue font-bold text-lg`}>
                     <button onClick={goToLinkHandler}>
                         {name}
-                        <div className="text-sm font-normal">
-                            {brand}
-                        </div>
                     </button>
                 </div>
                 <div className={`w-full ${nocontrols ? 'md:w-[30%]' : 'md:w-[50%]'} px-4 md:px-0`}>
