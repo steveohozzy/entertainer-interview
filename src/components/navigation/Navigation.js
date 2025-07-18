@@ -8,7 +8,7 @@ const Navigation = () => {
 
     return (
         <>
-            <button name="Activate Menu" className="transition-all shadow-lg flex flex-col items-center text-brandBlue bg-white p-2 px-3 rounded-xl hover:scale-105" onClick={() => setShowMenu(true)}>
+            <button name="Activate Menu" className="transition-all shadow-lg flex flex-col items-center text-brandBlue bg-white p-1 px-3 pl rounded-xl hover:scale-105 rounded-tl-[0] rounded-bl-[0] md:rounded-tl-xl md:rounded-bl-xl" onClick={() => setShowMenu(true)}>
                 <MenuIcon />
                 <span className="text-[10px] mt-[-3px] relative">Menu</span>
                 <span className="sr-only">Activate Menu</span>
