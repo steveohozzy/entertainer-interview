@@ -123,7 +123,7 @@ const Checkout = () => {
                 <div className='flex flex-wrap py-6'>
                     <div className='w-full md:w-[66.6666666%] md:px-3'>
                         <div className='border-[3px] border-gray-300 rounded-xl md:hidden'>
-                          <div className='flex items-end justify-between p-4'>
+                          <div className='flex items-end justify-between p-4 px-2 sm:px-4'>
                             <span className='font-bold text-lg text-textBlue flex items-center'>
                               <span className='mr-2'>
                                 <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -133,7 +133,7 @@ const Checkout = () => {
                               </span>
                               Checkout
                             </span>
-                            <span className='text-sm text-textBlue'>
+                            <span className='text-sm text-textBlue mb-[3px]'>
                               Total
                               <span className='text-brandRed ml-1'>
                                 £{cartTotal.toFixed(2)}
