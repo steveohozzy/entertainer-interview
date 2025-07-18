@@ -42,9 +42,9 @@ const CartProductTile = ({product, nocontrols}) => {
                 </div>
                 <div className={`w-full ${nocontrols ? 'md:w-[30%]' : 'md:w-[50%]'} px-4 md:px-0`}>
                     <div className="flex flex-wrap justify-between items-start">
-                        <div className={`flex flex-col w-full md:w-[30%] ${nocontrols && 'md:w-full text-right'}`}>
+                        <div className={`flex justify-center my-2 md:my-0 md:justify-start md:flex-col w-full md:w-[30%] ${nocontrols && 'md:w-full text-right'}`}>
                             <span className="text-brandRed font-bold">{price}</span>
-                            <span className="line-through text-gray-400">{originalPrice}</span>
+                            <span className="line-through text-gray-400 ml-1 md:ml-0">{originalPrice}</span>
                         </div>
                         {!nocontrols &&
                             <div className="flex justify-between items-center w-full md:w-[70%] text-gray-500 font-bold">
