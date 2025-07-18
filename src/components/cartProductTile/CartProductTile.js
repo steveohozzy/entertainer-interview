@@ -49,7 +49,6 @@ const CartProductTile = ({product, nocontrols}) => {
                         {!nocontrols &&
                             <div className="flex justify-between items-center w-full md:w-[70%] text-gray-500 font-bold">
                                 <div className="flex items-center">
-                                    <span className="text-md mr-2 font-normal">Qty</span>
                                     <div className="flex items-center border border-gray-400 rounded-lg">
                                         <button onClick={removeItemHandler} className="px-2">-</button>
                                         <span className="px-2 b-l-1 border-gray-400 border-x mt-1 mb-1">{quantity}</span>

@@ -155,8 +155,8 @@ const Checkout = () => {
                           </div>
                           <div className={`grid overflow-hidden transition-all duration-300 ease-in-out text-slate-600 text-sm ${
                             accordionOpen
-                              ? "grid-rows-[1fr] opacity-100 px-4"
-                              : "grid-rows-[0fr] opacity-0 px-4"
+                              ? "grid-rows-[1fr] opacity-100 px-2 sm:px-4"
+                              : "grid-rows-[0fr] opacity-0 px-2 sm:px-4"
                           }`}>
                             <div className="overflow-hidden">
                               {(
