@@ -8,7 +8,7 @@ import {
 } from '../../store/cart/cartReducer';
 
 const CartProductTile = ({product, nocontrols}) => {
-    const { name, price, image, originalPrice, brand, quantity } = product;
+    const { name, price, image, originalPrice, quantity } = product;
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -38,21 +38,17 @@ const CartProductTile = ({product, nocontrols}) => {
                 <div className={`w-full ${nocontrols ? 'md:w-[70%]' : 'md:w-[50%]'} px-4 text-textBlue font-bold text-lg`}>
                     <button onClick={goToLinkHandler}>
                         {name}
-                        <div className="text-sm font-normal">
-                            {brand}
-                        </div>
                     </button>
                 </div>
                 <div className={`w-full ${nocontrols ? 'md:w-[30%]' : 'md:w-[50%]'} px-4 md:px-0`}>
                     <div className="flex flex-wrap justify-between items-start">
-                        <div className={`flex flex-col w-full md:w-[30%] ${nocontrols && 'md:w-full text-right'}`}>
+                        <div className={`flex justify-center my-2 md:my-0 md:justify-start md:flex-col w-full md:w-[30%] ${nocontrols && 'md:w-full text-right'}`}>
                             <span className="text-brandRed font-bold">{price}</span>
-                            <span className="line-through text-gray-400">{originalPrice}</span>
+                            <span className="line-through text-gray-400 ml-1 md:ml-0">{originalPrice}</span>
                         </div>
                         {!nocontrols &&
                             <div className="flex justify-between items-center w-full md:w-[70%] text-gray-500 font-bold">
                                 <div className="flex items-center">
-                                    <span className="text-md mr-2 font-normal">Qty</span>
                                     <div className="flex items-center border border-gray-400 rounded-lg">
                                         <button onClick={removeItemHandler} className="px-2">-</button>
                                         <span className="px-2 b-l-1 border-gray-400 border-x mt-1 mb-1">{quantity}</span>

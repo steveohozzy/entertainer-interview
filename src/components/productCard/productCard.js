@@ -149,7 +149,7 @@ const ProductCard = ({ product }) => {
                             className={`relative inline-flex items-center justify-center gap-2 whitespace-nowrap text-lg  h-10  transition-all hover:scale-105 hover:text-brandPink`}
                           >
                             <Heart
-                              className={`h-10 w-10 ${
+                              className={`h-6 md:h-10 w-6 md:w-10 ${
                                 addedToFavourites
                                   ? "text-brandPink animate-bigheart"
                                   : "text-brandBlue"
@@ -159,7 +159,7 @@ const ProductCard = ({ product }) => {
                               }
                             />
                             <Heart
-                              className={`absolute bottom-0 left-[-6px] 0 h-[10px] w-[10px] opacity-0 text-transparent ${
+                              className={`absolute bottom-0 left-[-6px] 0 h-[5px] md:h-[10px] w-[5px] md:w-[10px] opacity-0 text-transparent ${
                                 addedToFavourites
                                   ? "animate-miniheartleft text-brandPink"
                                   : "text-brandBlue"
@@ -169,7 +169,7 @@ const ProductCard = ({ product }) => {
                               }
                             />
                             <Heart
-                              className={`absolute bottom-0 right-[-4px] h-[10px] w-[10px] opacity-0 text-transparent ${
+                              className={`absolute bottom-0 right-[-4px] h-[5px] md:h-[10px] w-[5px] md:w-[10px] opacity-0 text-transparent ${
                                 addedToFavourites
                                   ? "animate-miniheartright text-brandPink"
                                   : "text-brandBlue"
@@ -348,7 +348,7 @@ const ProductCard = ({ product }) => {
                                 <Minus className="h-4 w-4" />
                                 <span className="sr-only">Reduce quantity</span>
                             </button>
-                            <span className="px-4 py-1 md:py-2 min-w-[3rem] text-center text-brandBlue text-lg font-bold">{quantity}</span>
+                            <span className="px-3 md:px-4 py-1 md:py-2 min-w-[3rem] text-center text-brandBlue text-lg font-bold">{quantity}</span>
                             <button
                                 name="Increase quantity"
                                 className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 h-9 px-3 text-brandBlue"
@@ -361,7 +361,7 @@ const ProductCard = ({ product }) => {
                           </div>
                         </div>
                         <Button
-                          className="shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-sm min-h-[40px] md:text-lg rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-2 transition-all hover:bg-brandLightGreen hover:scale-105"
+                          className="shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-xs min-h-[40px] md:text-lg rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-2 transition-all hover:bg-brandLightGreen hover:scale-105"
                           iconpath={
                             <svg
                               width="22"
@@ -405,24 +405,24 @@ const ProductCard = ({ product }) => {
           </button>
           <div className="absolute top-2 left-1/2 -translate-x-1/2 flex w-full flex justify-center">
             {isNew && (
-              <div className="shadow-text-green inline-flex items-center rounded-lg px-2 py-0.5 text-sm font-bold bg-brandGreen text-white">
+              <div className="shadow-text-green inline-flex items-center rounded-lg px-2 py-0.5 text-xs md:text-sm font-bold bg-brandGreen text-white">
                 NEW TOYS
               </div>
             )}
             {isBestseller && (
-              <div className="shadow-text-red inline-flex items-center rounded-lg px-2 py-0.5 text-sm font-bold bg-brandRed text-white">
+              <div className="shadow-text-red inline-flex items-center rounded-lg px-2 py-0.5 text-xs md:text-sm font-bold bg-brandRed text-white">
                 33% OFF
               </div>
             )}
           </div>
-          <div className="absolute top-3 right-1 flex flex-col gap-2 opacity-0 group-hover:opacity-100 opacity-100 md:opacity-0 transition-opacity">
+          <div className="absolute top-2 right-[-5px] md:top-3 md:right-1 flex flex-col md:gap-2 opacity-0 group-hover:opacity-100 opacity-100 md:opacity-0 transition-opacity">
             <button
               onClick={() => setAddedToFavourties(!addedToFavourites)}
               name="Add to favourites"
-              className={`relative inline-flex items-center justify-center gap-2 whitespace-nowrap text-lg  h-9  transition-all hover:scale-105 hover:text-brandPink`}
+              className={`relative inline-flex items-center justify-center md:gap-2 whitespace-nowrap text-lg h-4 md:h-9  transition-all hover:scale-105 hover:text-brandPink`}
             >
               <Heart
-                className={`h-8 w-8 ${
+                className={`h-5 md:h-8 w-5 md:w-8 ${
                   addedToFavourites
                     ? "text-brandPink animate-bigheart"
                     : "text-brandBlue"
@@ -452,7 +452,7 @@ const ProductCard = ({ product }) => {
               className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium h-9 rounded-md px-3 transition-all hover:scale-105"
               onClick={() => openQuickView(product)}
             >
-              <Eye className="h-8 w-8 text-brandNeonBlue hover:text-brandMediumGreen transition-all" />
+              <Eye className="h-5 md:h-8 w-5 md:w-8 text-brandNeonBlue hover:text-brandMediumGreen transition-all" />
               <span className="sr-only">Open quick view</span>
             </button>
           </div>
