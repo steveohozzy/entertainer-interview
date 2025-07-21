@@ -533,7 +533,7 @@ const Checkout = () => {
                                           <div className="flex mt-5 h-[40px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative">
                                             <span
                                               className="absolute right-[15px] z-[2] top-[14px] w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[6px] border-gray-400 transition-all"></span>
-                                            <select className='relative w-full appearance-none border-gray-400 pr-4 mr-2 text-textBlue font-bold outline-none'>
+                                            <select className='relative w-full appearance-none border-gray-400 bg-white pr-4 mr-2 text-textBlue font-bold outline-none'>
                                               <option>United Kingdom</option>
                                             </select>
                                           </div>
