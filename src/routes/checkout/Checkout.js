@@ -32,6 +32,7 @@ const Checkout = () => {
   const [addressfinder, setAddressFinder] = useState(false);
   const [selectDelivery, setSelectDelivery] = useState(false);
   const [showManualDelivery, setShowManualDelivery] = useState(false);
+  const [showStoreResults, setShowStoreResults] = useState(false);
 
   const handleNameChange = (e) => {
     setName(!e.target.value);
@@ -93,6 +94,10 @@ const Checkout = () => {
   const handleShowManualAddress = (e) => {
     e.preventDefault();
     setShowManualDelivery(true);
+  }
+
+  const handleShowStoreResults = () => {
+    setShowStoreResults(!showStoreResults);
   }
 
   useEffect(() => {
@@ -466,22 +471,34 @@ const Checkout = () => {
                                         {!showManualDelivery &&
                                         <>
                                           <div className={`flex mt-5 h-[40px] pr-3 pl-8 rounded-lg w-full border border-[3px] border-brandBlue relative group ${lookup && 'border-red-600'}`}>
-                                            <input type="text" placeholder="Address 1" onChange={handleLookupChange} onBlur={handleLookupChange} className="peer text-base m-0 block h-[32px] w-full bg-transparent text-textBlue transition duration-200 ease-linear placeholder:text-transparent focus:outline-none" />
+                                            <input type="text" placeholder="Type address or postcode" onChange={handleLookupChange} onBlur={handleLookupChange} className="peer text-base m-0 block h-[32px] w-full bg-transparent text-textBlue transition duration-200 ease-linear placeholder:text-transparent focus:outline-none" />
                                             <label className="pr-3 pl-[30px] pointer-events-none absolute left-0 top-[2px] origin-[0_0] border border-solid border-transparent text-base text-gray-400 transition-[opacity,_transform] duration-200 ease-linear peer-focus:-translate-y-7 peer-focus:translate-x-[0.15rem] peer-focus:scale-[0.85] peer-focus:text-brandBlue peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:translate-x-[0.15rem] peer-[:not(:placeholder-shown)]:scale-[0.85] peer-[:not(:placeholder-shown)]:text-brandBlue motion-reduce:transition-none">Type address or postcode</label>
                                             <span className="absolute p-1 h-full w-[20px] flex items-center justify-center top-0 left-2 text-gray-300 peer-[:not(:placeholder-shown)]:text-brandGreen">
                                               <svg width="18" height="34" viewBox="0 0 18 34" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M17.7539 23.8242C17.918 23.9883 18 24.1875 18 24.4219C18 24.6562 17.918 24.8555 17.7539 25.0195L16.7695 26.0039C16.6055 26.168 16.4062 26.25 16.1719 26.25C15.9375 26.25 15.7383 26.168 15.5742 26.0039L12.0586 22.4883C11.8945 22.3242 11.8125 22.125 11.8125 21.8906V21.3281C10.5 22.3594 9 22.875 7.3125 22.875C5.29688 22.875 3.57422 22.1602 2.14453 20.7305C0.714844 19.3008 0 17.5781 0 15.5625C0 13.5469 0.714844 11.8242 2.14453 10.3945C3.57422 8.96484 5.29688 8.25 7.3125 8.25C9.32812 8.25 11.0508 8.96484 12.4805 10.3945C13.9102 11.8242 14.625 13.5469 14.625 15.5625C14.625 17.25 14.1094 18.75 13.0781 20.0625H13.6406C13.875 20.0625 14.0742 20.1445 14.2383 20.3086L17.7539 23.8242ZM4.11328 18.7617C5.00391 19.6289 6.07031 20.0625 7.3125 20.0625C8.55469 20.0625 9.60938 19.6289 10.4766 18.7617C11.3672 17.8711 11.8125 16.8047 11.8125 15.5625C11.8125 14.3203 11.3672 13.2656 10.4766 12.3984C9.60938 11.5078 8.55469 11.0625 7.3125 11.0625C6.07031 11.0625 5.00391 11.5078 4.11328 12.3984C3.24609 13.2656 2.8125 14.3203 2.8125 15.5625C2.8125 16.8047 3.24609 17.8711 4.11328 18.7617Z" fill="currentColor"/>
                                               </svg>
                                             </span>
-                                            <span className="absolute h-full w-[20px] flex items-center justify-center top-0 right-2 text-gray-300 peer-[:not(:placeholder-shown)]:text-brandGreen">
+                                            <span onClick={handleShowStoreResults} className="absolute h-full w-[20px] flex items-center justify-center top-0 right-2 text-gray-300 peer-[:not(:placeholder-shown)]:text-brandGreen">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none" className="w-full h-auto">
                                                   <path d="M12.9102 6.21625C13.1167 6.21625 13.22 6.31953 13.22 6.52609V7.55891C13.22 7.76547 13.1167 7.86875 12.9102 7.86875H12.1355C11.9462 9.0737 11.4126 10.1151 10.5347 10.993C9.67401 11.8537 8.6412 12.3787 7.43625 12.568V13.3427C7.43625 13.5492 7.33297 13.6525 7.12641 13.6525H6.09359C5.88703 13.6525 5.78375 13.5492 5.78375 13.3427V12.568C4.5788 12.3787 3.53738 11.8537 2.65949 10.993C1.79882 10.1151 1.2738 9.0737 1.08445 7.86875H0.309844C0.103281 7.86875 0 7.76547 0 7.55891V6.52609C0 6.31953 0.103281 6.21625 0.309844 6.21625H1.08445C1.2738 5.0113 1.79882 3.97849 2.65949 3.11781C3.53738 2.23992 4.5788 1.7063 5.78375 1.51695V0.742344C5.78375 0.535781 5.88703 0.4325 6.09359 0.4325H7.12641C7.33297 0.4325 7.43625 0.535781 7.43625 0.742344V1.51695C8.6412 1.7063 9.67401 2.23992 10.5347 3.11781C11.4126 3.97849 11.9462 5.0113 12.1355 6.21625H12.9102ZM7.43625 10.8897C8.19365 10.7176 8.83915 10.3647 9.37277 9.83109C9.92361 9.28026 10.2851 8.62615 10.4572 7.86875H9.39859C9.19203 7.86875 9.08875 7.76547 9.08875 7.55891V6.52609C9.08875 6.31953 9.19203 6.21625 9.39859 6.21625H10.4572C10.2851 5.45885 9.92361 4.81335 9.37277 4.27973C8.83915 3.72889 8.19365 3.36741 7.43625 3.19527V4.25391C7.43625 4.46047 7.33297 4.56375 7.12641 4.56375H6.09359C5.88703 4.56375 5.78375 4.46047 5.78375 4.25391V3.19527C5.02635 3.36741 4.37224 3.72889 3.82141 4.27973C3.28779 4.81335 2.93491 5.45885 2.76277 6.21625H3.82141C4.02797 6.21625 4.13125 6.31953 4.13125 6.52609V7.55891C4.13125 7.76547 4.02797 7.86875 3.82141 7.86875H2.76277C2.93491 8.62615 3.28779 9.28026 3.82141 9.83109C4.37224 10.3647 5.02635 10.7176 5.78375 10.8897V9.83109C5.78375 9.62453 5.88703 9.52125 6.09359 9.52125H7.12641C7.33297 9.52125 7.43625 9.62453 7.43625 9.83109V10.8897ZM7.17805 6.47445C7.35018 6.62937 7.43625 6.81872 7.43625 7.0425C7.43625 7.26628 7.35018 7.46423 7.17805 7.63637C7.02313 7.79129 6.83378 7.86875 6.61 7.86875C6.38622 7.86875 6.18827 7.79129 6.01613 7.63637C5.86121 7.46423 5.78375 7.26628 5.78375 7.0425C5.78375 6.81872 5.86121 6.62937 6.01613 6.47445C6.18827 6.30232 6.38622 6.21625 6.61 6.21625C6.83378 6.21625 7.02313 6.30232 7.17805 6.47445Z" fill="currentColor"/>
                                                 </svg>
                                               </span>
                                           </div>
-                                          <button onClick={handleShowManualAddress} className='text-xs text-gray-400 underline mt-4'>
-                                            Enter address manually
-                                          </button>
+                                          {showStoreResults &&
+                                            <div className="text-xs text-gray-400 flex flex-col mt-3">
+                                              <span>The Entertainer, TEAL House, Anglo Office Park,</span>
+                                              <span>67 White Lion Road, Amersham,</span>
+                                              <span>Buckinghamshire, HP7 9FB, United Kingdom</span>
+                                              <button onClick={handleShowStoreResults} className="text-textBlue text-left underline mt-3">
+                                                Edit address
+                                              </button>
+                                            </div>
+                                          }
+                                          {!showStoreResults &&
+                                            <button onClick={handleShowManualAddress} className='text-xs text-gray-400 underline mt-4'>
+                                              Enter address manually
+                                            </button>
+                                          }
                                         </>
                                         }
                                         <div className={`overflow-hiddden transition-all ${showManualDelivery ? 'h-auto opacity-100' : 'h-0 opacity-0'}`}>
