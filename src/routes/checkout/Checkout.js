@@ -424,8 +424,8 @@ const Checkout = () => {
                                     <form id="address-form" className='py-6 px-4'>
                                         <div className={`flex h-[40px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative ${name && 'border-red-600'}`}>
                                           <span
-                                            className="absolute left-[calc(15%-30px)] z-[2] top-[14px] w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[6px] border-gray-400 transition-all"></span>
-                                          <select className='relative w-[15%] appearance-none border-r-[3px] bg-white border-gray-400 pr-4 mr-2 text-textBlue font-bold outline-none'>
+                                            className="absolute left-[calc(20%-20px)] z-[2] top-[14px] w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[6px] border-gray-400 transition-all"></span>
+                                          <select className='relative w-[20%] appearance-none border-r-[3px] bg-white border-gray-400 pr-4 mr-2 text-textBlue font-bold outline-none'>
                                             <option>Mr</option>
                                           </select>
                                           <div className="relative w-full">
@@ -449,8 +449,8 @@ const Checkout = () => {
                                         </div>
                                         <div className={`flex mt-5 h-[40px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative ${phone && 'border-red-600'}`}>
                                           <span
-                                            className="absolute left-[calc(15%-30px)] z-[2] top-[14px] w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[6px] border-gray-400 transition-all"></span>
-                                          <select className='relative w-[15%] appearance-none border-r-[3px] bg-white border-gray-400 pr-4 mr-2 text-textBlue font-bold outline-none'>
+                                            className="absolute left-[calc(20%-20px)] z-[2] top-[14px] w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[6px] border-gray-400 transition-all"></span>
+                                          <select className='relative w-[20%] appearance-none border-r-[3px] bg-white border-gray-400 pr-4 mr-2 text-textBlue font-bold outline-none'>
                                             <option>+44</option>
                                           </select>
                                           <div className="relative w-full">
