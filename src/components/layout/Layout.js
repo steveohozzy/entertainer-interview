@@ -1,5 +1,6 @@
 import { Outlet, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { ChevronUp } from "lucide-react";
 
 import {  useSelector } from 'react-redux';
 import {
@@ -13,6 +14,7 @@ import Footer from "../footer/Footer";
 const Layout = () => {
     const [showHeader, setShowHeader] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
+    const [showBackToTop, setShowBackToTop] = useState(false);
 
     const cartCount = useSelector(selectCartCount);
     const cartTotal = useSelector(selectCartTotal);
@@ -20,6 +22,15 @@ const Layout = () => {
 
     const goToCartHandler = () => {
         navigate('/cart');
+    };
+
+    // Scroll to top
+    const scrollToTop = () => {
+        window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "smooth",
+        });
     };
 
     // Handle scroll for header visibility
@@ -33,6 +44,12 @@ const Layout = () => {
         } else {
         // Scrolling up or at top
         setShowHeader(true)
+        }
+
+        if (currentScrollY > 400) {
+            setShowBackToTop(true);
+        } else {
+            setShowBackToTop(false);
         }
 
         setLastScrollY(currentScrollY)
@@ -120,6 +137,16 @@ const Layout = () => {
         </header>
         <Outlet />
         <Footer />
+        {showBackToTop && (
+        <button
+          name="Scroll to to of site"
+          onClick={scrollToTop}
+          className="fixed border-[2px] border-brandBlue bottom-4 right-4 inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm text-brandBlue bg-brandLightBlue hover:bg-brandBlue h-9 rounded-md px-3 shadow-md transition-all hover:scale-105 hover:shadow-lg hover:text-white hover:border-white"
+        >
+          <ChevronUp className="h-4 w-4" />
+          <span className="sr-only">Back to top</span>
+        </button>
+      )}
         </>
     )
 }

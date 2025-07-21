@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { X, Search, ChevronUp, ChevronLeft, ChevronRight } from "lucide-react";
+import { X, Search, ChevronUp } from "lucide-react";
 import {
   products,
   brands,
@@ -25,7 +25,6 @@ const Plp = () => {
   const [brandSearch, setBrandSearch] = useState("");
   const [visibleProducts, setVisibleProducts] = useState(10);
   const [showHeader, setShowHeader] = useState(true);
-  const [showBackToTop, setShowBackToTop] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const PRODUCTS_PER_PAGE = 10
@@ -43,12 +42,6 @@ const Plp = () => {
         setShowHeader(true);
       }
 
-      if (currentScrollY > 400) {
-        setShowBackToTop(true);
-      } else {
-        setShowBackToTop(false);
-      }
-
       setLastScrollY(currentScrollY);
     };
 
@@ -59,15 +52,6 @@ const Plp = () => {
    useEffect(() => {
     setCurrentPage(1)
   }, [selectedBrands, selectedAgeGroups, selectedFeatures, selectedSizes, priceRange, showInStockOnly])
-
-  // Scroll to top
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "smooth",
-    });
-  };
 
   const toggleBrand = (brandName) => {
     setSelectedBrands((prev) =>
@@ -211,7 +195,7 @@ const Plp = () => {
             :
             <img src="/train-cart.svg" alt="pagination-step" className="h-10 w-10 z-[2]" />
           }
-          <span className={`absolute z-[2] ${currentPage === i ? '' : 'opacity-[0.6]'} ${i === endPage ? 'left-[28px] md:left-[32px] top-[3px]' : 'left-[16px] md:left-[25px] top-[7px]'}`}>{i}</span>
+          <span className={`absolute z-[2] ${currentPage === i ? '' : 'opacity-[0.6]'} ${i === endPage ? 'left-[28px] md:left-[30px] top-[3px]' : 'left-[16px] md:left-[21px] top-[7px]'}`}>{i}</span>
           <span className={`h-[3px] left-0 z-[1] absolute block bg-brandBlue bottom-[16px] ${i === endPage ? 'w-[calc(100%-15px)] bottom-[14px]' : 'w-full'}`}>&nbsp;</span>
         </button>,
       )
@@ -269,7 +253,7 @@ const Plp = () => {
 
         {/* Filter and Sort Header */}
         <div
-          className={`sticky z-40 bg-transparent pb-2 mb-4 transition-all duration-300 ${
+          className={`sticky z-40 bg-brandLightBlue py-2 mb-4 transition-all duration-300 ${
             showHeader ? "top-[108px] md:top-[137px]" : "top-0"
           }`}
         >
@@ -314,7 +298,7 @@ const Plp = () => {
                 >
                   <div className="p-3 h-full overflow-y-auto]">
                     {hasActiveFilters && (
-                      <>
+                      <div className="flex flex-wrap gap-2 items-start">
                         {selectedBrands.map((brand) => (
                           <div
                             key={`brand-${brand}`}
@@ -373,7 +357,7 @@ const Plp = () => {
                             />
                           </div>
                         )}
-                        <div className="mb-4 mt-4">
+                        <div className="mb-4 mt-2 w-full">
                           <button
                             name="Clear filters"
                             onClick={clearFilters}
@@ -382,7 +366,7 @@ const Plp = () => {
                             Clear all filters
                           </button>
                         </div>
-                      </>
+                      </div>
                     )}
 
                     {/* Brand Filters with Search */}
@@ -784,17 +768,6 @@ const Plp = () => {
           </div>
         </div>
       </div>
-
-      {showBackToTop && (
-        <button
-          name="Scroll to to of site"
-          onClick={scrollToTop}
-          className="fixed bottom-4 right-4 inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium bg-gray-200 hover:bg-gray-300 h-9 rounded-md px-3 shadow-md transition-all hover:scale-105 hover:shadow-lg"
-        >
-          <ChevronUp className="h-4 w-4" />
-          <span className="sr-only">Back to top</span>
-        </button>
-      )}
     </>
   );
 };
