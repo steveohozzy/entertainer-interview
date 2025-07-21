@@ -25,4 +25,13 @@
     .shadow-text-green {
         text-shadow: -1px -1px 0 #000, 1px -1px 0 #067F3D, -1px 1px 0 #067F3D, 1px 1px 0 #067F3D;
     }
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .no-scrollbar {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
 }

@@ -343,7 +343,7 @@ export const products = [
     },
   },
   // quick array with randoms for dummy products added after few load mores
-  ...Array.from({ length: 22 }, (_, i) => ({
+  ...Array.from({ length: 60 }, (_, i) => ({
     id: i + 11,
     name: `Action Figure ${i + 11}`,
     brand: brands[i % brands.length].name,
