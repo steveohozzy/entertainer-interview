@@ -179,7 +179,7 @@ const Plp = () => {
       // )
       if (startPage > 2) {
         buttons.push(
-          <span key="ellipsis1" className="px-2">
+          <span key="ellipsis2" className="px-2 text-brandBlue text-2xl font-bold">
             ...
           </span>,
         )
@@ -191,7 +191,7 @@ const Plp = () => {
       buttons.push(
         <button className={`relative px-[2px] md:px-[5px] md:px-[10px] text-white ${currentPage === i ? 'font-bold' : ''}`} key={i} onClick={() => goToPage(i)}>
           {i === endPage ?
-            <img src="/train-front.svg" alt="pagination-step" className="h-[60px] w-auto mt-[-25px] relative z-[2]" />
+            <img src="/train-front.svg" alt="pagination-step" className={`h-[60px] w-auto ${currentPage === startPage ? 'mt-[-25px]' : 'mt-[-23px]'} relative z-[2]`} />
             :
             <img src="/train-cart.svg" alt="pagination-step" className="h-10 w-10 z-[2]" />
           }
