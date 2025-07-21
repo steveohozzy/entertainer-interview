@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { X, Search, ChevronUp } from "lucide-react";
+import { X, Search } from "lucide-react";
 import {
   products,
   brands,
