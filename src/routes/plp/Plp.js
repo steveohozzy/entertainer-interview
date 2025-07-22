@@ -94,7 +94,7 @@ const Plp = () => {
   };
 
   const loadMoreProducts = () => {
-    setVisibleProducts((prev) => Math.min(prev + 8, filteredProducts.length));
+    setVisibleProducts((prev) => Math.min(prev + 10, filteredProducts.length));
   };
 
   // Filter brands based on search typing
@@ -717,9 +717,28 @@ const Plp = () => {
 
         {location.pathname !== "/category/pagination" ? 
           <>
+             <div className="max-w-[300px] mx-auto mt-8 flex flex-wrap justify-between items-center">
+                {(visibleFilteredProducts.length / filteredProducts.length * 100).toFixed() > 99 ?
+                  <div className="transition-all" style={{marginLeft: `${(visibleFilteredProducts.length / filteredProducts.length * 100 - 30).toFixed()}%`}}>
+                    <img src='ship-finish.svg' alt='pirate ship indicator finsihed' />
+                  </div>
+                  :
+                  <div style={{marginLeft: `${(visibleFilteredProducts.length / filteredProducts.length * 100 - 10).toFixed()}%`}}>
+                    <img src='ship.svg' alt='pirate ship indicator' />
+                  </div>
+                }
+                <span className={`transition-all ${(visibleFilteredProducts.length / filteredProducts.length * 100).toFixed() > 99 ? 'text-brandLightGreen' : 'text-gray-300 rotate-[10deg]' }`}>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 20 18" fill="none">
+                    <path d="M3.52997 0.660034H6.14996L3.89996 5.89005H0.599976L3.53998 0.660034H3.52997ZM0.589966 6.94003H3.88998L7.90997 15.18C7.90997 15.18 7.90996 15.26 7.85995 15.29C7.80995 15.32 7.76997 15.32 7.74997 15.27L0.589966 6.94003ZM5.42996 6.94003H14.58L10.1 17.33C10.1 17.33 10.05 17.4 9.99997 17.4C9.94997 17.4 9.91996 17.38 9.89996 17.33L5.41998 6.94003H5.42996ZM12.29 0.660034L14.54 5.89005H5.44998L7.69998 0.660034H12.28H12.29ZM12.09 15.17L16.11 6.93002H19.41L12.25 15.26C12.25 15.26 12.19 15.31 12.14 15.28C12.09 15.25 12.07 15.21 12.09 15.17ZM16.47 0.660034L19.41 5.89005H16.11L13.85 0.660034H16.47Z" fill="currentColor"/>
+                  </svg>
+                </span>
+                <div className="bg-gray-300 w-full h-4 rounded-full">
+                  <div className="rounded-full h-full bg-brandLightGreen transition-all" style={{width: `${(visibleFilteredProducts.length / filteredProducts.length * 100).toFixed()}%`}}></div>
+                </div>
+              </div>
             {/* Load More */}
             {visibleFilteredProducts.length < filteredProducts.length && (
-              <div className="text-center mt-12">
+              <div className="text-center mt-4">
                 <button
                   name="Load more products"
                   className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm text-white font-bold border border-input bg-brandBlue hover:bg-textBlue h-11 rounded-full px-8 transition-all hover:scale-105 hover:shadow-md"
