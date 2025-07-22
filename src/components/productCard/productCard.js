@@ -2,7 +2,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Star, Heart, Eye, Plus, Minus } from "lucide-react";
 
-import { useDispatch } from "react-redux";
+import { useDispatch } from 'react-redux';
+
+import { setIsCartOpen } from '../../store/cart/cartReducer';
 
 import { addItemToCart } from "../../store/cart/cartReducer";
 
@@ -33,7 +35,10 @@ const ProductCard = ({ product }) => {
     navigate("/product-details/" + product.id);
   };
 
-  const addProductToCart = () => dispatch(addItemToCart(product));
+  const addProductToCart = () => {
+    dispatch(addItemToCart(product));
+    dispatch(setIsCartOpen(true));
+  }
 
   // Quick view modal state
   const [quickViewProduct, setQuickViewProduct] = useState(null);
