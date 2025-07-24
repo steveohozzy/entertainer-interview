@@ -17,6 +17,7 @@ import { Star, Heart } from "lucide-react";
 import Button from "../../components/button/Button";
 import Dropdown from "../../components/dropdown/Dropdown";
 import HeadingRibbon from "../../components/headingRibbon/headingRibbon";
+import { setIsCartOpen } from '../../store/cart/cartReducer';
 
 const ProductDetails = () => {
     const dispatch = useDispatch();
@@ -24,7 +25,12 @@ const ProductDetails = () => {
     const navigate = useNavigate();
     const product = products.find(item => item.id === parseInt(id));
 
-    const addProductToCart = () => dispatch(addItemToCart(product));
+    const addProductToCart = () => {
+        dispatch(addItemToCart(product));
+        dispatch(setIsCartOpen(true));
+        document.body.classList.add('body-noscroll');
+        window.scrollBy(0 , -2)
+    }
     // Add to favourites
     const [addedToFavourites, setAddedToFavourties] = useState(false);
     

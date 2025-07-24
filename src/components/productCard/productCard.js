@@ -37,7 +37,10 @@ const ProductCard = ({ product }) => {
 
   const addProductToCart = () => {
     dispatch(addItemToCart(product));
+    closeQuickView();
     dispatch(setIsCartOpen(true));
+    document.body.classList.add('body-noscroll');
+    window.scrollBy(0 , -2)
   }
 
   // Quick view modal state

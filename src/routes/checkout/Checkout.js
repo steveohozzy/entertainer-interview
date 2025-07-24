@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch  } from 'react-redux';
 import Button from '../../components/button/Button'
 import CartProductTile from '../../components/cartProductTile/CartProductTile'
 import Tabs from '../../components/tabs/Tabs';
@@ -7,6 +7,7 @@ import Tab from '../../components/tabs/Tab';
 import Dropdown from '../../components/dropdown/Dropdown';
 
 import { selectCartItems } from '../../store/cart/cartSelector';
+import { setIsCartOpen } from '../../store/cart/cartReducer';
 import {
   selectCartTotal,
 } from '../../store/cart/cartSelector';
@@ -33,6 +34,7 @@ const Checkout = () => {
   const [selectDelivery, setSelectDelivery] = useState(false);
   const [showManualDelivery, setShowManualDelivery] = useState(false);
   const [showStoreResults, setShowStoreResults] = useState(false);
+  const dispatch = useDispatch();
 
   const handleNameChange = (e) => {
     setName(!e.target.value);
@@ -102,7 +104,9 @@ const Checkout = () => {
 
   useEffect(() => {
     setanimateTrainDelivery(true)
-  }, [animateTrainDelivery])
+    dispatch(setIsCartOpen(false));
+    document.body.classList.remove('body-noscroll');
+  }, [animateTrainDelivery, dispatch])
   
 
   return (
@@ -668,6 +672,19 @@ const Checkout = () => {
                               {(
                                 cartItems.map((item) => <CartProductTile key={item.id} product={item} nocontrols={true} />)
                               )}
+                        </div>
+
+                        <div className='mt-6 bg-gray-200 border-4 border-gray-400 p-6 px-4 rounded-md'>
+                          <Dropdown 
+                            title="Use a promo code"
+                            className="text-brandBlue font-bold flex items-center justify-center w-full"
+                            answer={
+                              <form id="promo-form" className='flex items-center py-4 px-2'>
+                                  <input type="search" placeholder="Add a promo code" className="outline-0 h-[40px] px-3 rounded-3xl w-full border border-[3px] border-brandBlue text-textBlue placeholder:text-gray-300 mr-2" />
+                                  <button className="group text-white font-bold bg-brandBlue rounded-[50px] px-5 h-[40px] transition-all hover:bg-blue-500 hover:scale-105"><span className="block transition-all group-hover:rotate-[10deg]">Apply</span></button>
+                              </form>
+                            }
+                          />
                         </div>
 
                         <div className='mt-6 bg-brandBeige text-brandBlue bg-opacity-30 font-bold text-center p-6 rounded-2xl'>

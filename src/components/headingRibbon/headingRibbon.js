@@ -1,5 +1,5 @@
 
-const HeadingRibbon = ({children, fullWidth}) => {
+const HeadingRibbon = ({children, fullWidth, smallerText}) => {
   return (
     <>
         <svg className='invisible absolute' width="0" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1">
@@ -11,7 +11,7 @@ const HeadingRibbon = ({children, fullWidth}) => {
             </defs>
         </svg>
         
-        <div className={`${fullWidth ? 'w-full' : 'inline-block'} ribbon bg-brandRed px-20 text-center text-xl font-bold text-white p-inline-[3.8em] py-2 leading-[1.8]`}>
+        <div className={`${fullWidth ? 'w-full' : 'inline-block'} ribbon bg-brandRed px-16 text-center ${smallerText ? 'text-sm' : 'text-xl'} font-bold text-white p-inline-[3.8em] py-2 leading-[1.8]`}>
             {children}
         </div>
     </>
