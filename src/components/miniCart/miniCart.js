@@ -144,7 +144,7 @@ const MiniCart = () => {
             )}
           </div>
 
-          <div className='bg-gray-200 border-4 border-gray-400 p-6 px-4 rounded-md'>
+          <div className='bg-gray-200 border-4 border-gray-400 py-3 px-4 rounded-md'>
             <Dropdown 
               title="Use a promo code"
               className="text-brandBlue font-bold flex items-center justify-center w-full"
