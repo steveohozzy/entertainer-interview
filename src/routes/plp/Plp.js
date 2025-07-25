@@ -231,6 +231,90 @@ const Plp = () => {
 
   const location = useLocation();
 
+  // Calculate dynamic counts for each filter option
+  const getBrandCount = (brandName) => {
+    return products.filter((product) => {
+      const matchesBrand = product.brand === brandName
+      const matchesAgeGroup = selectedAgeGroups.length === 0 || selectedAgeGroups.includes(product.ageGroup)
+      const matchesFeatures =
+        selectedFeatures.length === 0 || selectedFeatures.some((feature) => product.features.includes(feature))
+      const matchesSize = selectedSizes.length === 0 || selectedSizes.includes(product.size)
+      const matchesPrice = product.price >= priceRange[0] && product.price <= priceRange[1]
+      const matchesStock = !showInStockOnly || product.inStock
+
+      return (
+        matchesBrand &&
+        matchesAgeGroup &&
+        matchesFeatures &&
+        matchesSize &&
+        matchesPrice &&
+        matchesStock 
+      )
+    }).length
+  }
+
+  const getAgeGroupCount = (ageGroup) => {
+    return products.filter((product) => {
+      const matchesBrand = selectedBrands.length === 0 || selectedBrands.includes(product.brand)
+      const matchesAgeGroup = product.ageGroup === ageGroup
+      const matchesFeatures =
+        selectedFeatures.length === 0 || selectedFeatures.some((feature) => product.features.includes(feature))
+      const matchesSize = selectedSizes.length === 0 || selectedSizes.includes(product.size)
+      const matchesPrice = product.price >= priceRange[0] && product.price <= priceRange[1]
+      const matchesStock = !showInStockOnly || product.inStock
+
+      return (
+        matchesBrand &&
+        matchesAgeGroup &&
+        matchesFeatures &&
+        matchesSize &&
+        matchesPrice &&
+        matchesStock 
+      )
+    }).length
+  }
+
+  const getFeatureCount = (featureName) => {
+    return products.filter((product) => {
+      const matchesBrand = selectedBrands.length === 0 || selectedBrands.includes(product.brand)
+      const matchesAgeGroup = selectedAgeGroups.length === 0 || selectedAgeGroups.includes(product.ageGroup)
+      const matchesFeatures = product.features.includes(featureName)
+      const matchesSize = selectedSizes.length === 0 || selectedSizes.includes(product.size)
+      const matchesPrice = product.price >= priceRange[0] && product.price <= priceRange[1]
+      const matchesStock = !showInStockOnly || product.inStock
+
+      return (
+        matchesBrand &&
+        matchesAgeGroup &&
+        matchesFeatures &&
+        matchesSize &&
+        matchesPrice &&
+        matchesStock 
+      )
+    }).length
+  }
+
+  const getSizeCount = (sizeName) => {
+    return products.filter((product) => {
+      const matchesBrand = selectedBrands.length === 0 || selectedBrands.includes(product.brand)
+      const matchesAgeGroup = selectedAgeGroups.length === 0 || selectedAgeGroups.includes(product.ageGroup)
+      const matchesFeatures =
+        selectedFeatures.length === 0 || selectedFeatures.some((feature) => product.features.includes(feature))
+      const matchesSize = product.size === sizeName
+      const matchesPrice = product.price >= priceRange[0] && product.price <= priceRange[1]
+      const matchesStock = !showInStockOnly || product.inStock
+
+      return (
+        matchesBrand &&
+        matchesAgeGroup &&
+        matchesFeatures &&
+        matchesSize &&
+        matchesPrice &&
+        matchesStock 
+      )
+    }).length
+  }
+
   const sortProducts = (products, option) => {
     const sortedProducts = [...products]
 
@@ -424,24 +508,27 @@ const Plp = () => {
                             />
                           </div>
                           <div className="flex flex-wrap gap-2 max-h-40 overflow-y-auto">
-                            {filteredBrands.map((brand) => (
-                              <div
-                                key={brand.name}
-                                variant={
-                                  selectedBrands.includes(brand.name)
-                                    ? "default"
-                                    : "outline"
-                                }
-                                className={`inline-flex items-center rounded-full border px-2.5 py-0.5 cursor-pointer transition-all hover:scale-105 text-sm hover:bg-brandBlue hover:text-white ${
-                                  selectedBrands.includes(brand.name)
-                                    ? `bg-brandBlue text-white`
-                                    : "hover:bg-brandBlue"
-                                }`}
-                                onClick={() => toggleBrand(brand.name)}
-                              >
-                                {brand.name} ({brand.count})
-                              </div>
-                            ))}
+                            {filteredBrands.map((brand) => {
+                              const count = getBrandCount(brand.name)
+                              return (
+                                <div
+                                  key={brand.name}
+                                  variant={
+                                    selectedBrands.includes(brand.name)
+                                      ? "default"
+                                      : "outline"
+                                  }
+                                  className={`inline-flex items-center rounded-full border px-2.5 py-0.5 cursor-pointer transition-all hover:scale-105 text-sm hover:bg-brandBlue hover:text-white ${
+                                    selectedBrands.includes(brand.name)
+                                      ? `bg-brandBlue text-white`
+                                      : "hover:bg-brandBlue"
+                                  }`}
+                                  onClick={() => toggleBrand(brand.name)}
+                                >
+                                  {brand.name} ({count})
+                                </div>
+                              )
+                            })}
                           </div>
                         </>
                       }
@@ -452,16 +539,63 @@ const Plp = () => {
                       className="w-full text-brandBlue flex items-center border-b-2 border-b-textBlue py-3"
                       answer={
                         <div className="space-y-3 pt-3">
-                          {ageGroups.map((age) => (
+                          {ageGroups.map((age) => {
+                            const count = getAgeGroupCount(age.name)
+                            return (
+                              <label
+                                key={age.name}
+                                className="relative flex items-center space-x-2 cursor-pointer"
+                              >
+                                <input
+                                  id={age.name}
+                                  type="checkbox"
+                                  checked={selectedAgeGroups.includes(age.name)}
+                                  onChange={() => toggleAgeGroup(age.name)}
+                                  className="relative mt-1 block size-[20px] appearance-none rounded-md border-[3px] border-textBlue bg-white outline-none transition-all checked:bg-textBlue"
+                                />
+                                <span className="absolute top-[3px] left-[-8px]">
+                                  <svg viewBox="0 0 24 24" width="20px" height="20px" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                                    <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+                                    <g id="SVGRepo_iconCarrier">
+                                      {' '}
+                                      <path
+                                        d="M4.89163 13.2687L9.16582 17.5427L18.7085 8"
+                                        stroke="#ffffff"
+                                        strokeWidth="2.5"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                      ></path>{' '}
+                                    </g>
+                                  </svg>
+                                </span>
+                                <span className="text-sm text-brandBlue">
+                                  {age.name} ({count})
+                                </span>
+                              </label>
+                            )
+                          })}
+                        </div>
+                      }
+                    />
+                    {/* Features Filters */}
+                    <Dropdown
+                      title="Features"
+                       className="w-full text-brandBlue flex items-center border-b-2 border-b-textBlue py-3"
+                       answer={
+                        <div className="space-y-3 pt-3">
+                        {features.map((feature) => {
+                          const count = getFeatureCount(feature.name)
+                          return (
                             <label
-                              key={age.name}
+                              key={feature.name}
                               className="relative flex items-center space-x-2 cursor-pointer"
                             >
                               <input
-                                id={age.name}
+                                id={feature.name}
                                 type="checkbox"
-                                checked={selectedAgeGroups.includes(age.name)}
-                                onChange={() => toggleAgeGroup(age.name)}
+                                checked={selectedFeatures.includes(feature.name)}
+                                onChange={() => toggleFeature(feature.name)}
                                 className="relative mt-1 block size-[20px] appearance-none rounded-md border-[3px] border-textBlue bg-white outline-none transition-all checked:bg-textBlue"
                               />
                               <span className="absolute top-[3px] left-[-8px]">
@@ -481,52 +615,11 @@ const Plp = () => {
                                 </svg>
                               </span>
                               <span className="text-sm text-brandBlue">
-                                {age.name} ({age.count})
+                                {feature.name} ({count})
                               </span>
                             </label>
-                          ))}
-                        </div>
-                      }
-                    />
-                    {/* Features Filters */}
-                    <Dropdown
-                      title="Features"
-                       className="w-full text-brandBlue flex items-center border-b-2 border-b-textBlue py-3"
-                       answer={
-                        <div className="space-y-3 pt-3">
-                        {features.map((feature) => (
-                          <label
-                            key={feature.name}
-                            className="relative flex items-center space-x-2 cursor-pointer"
-                          >
-                            <input
-                              id={feature.name}
-                              type="checkbox"
-                              checked={selectedFeatures.includes(feature.name)}
-                              onChange={() => toggleFeature(feature.name)}
-                              className="relative mt-1 block size-[20px] appearance-none rounded-md border-[3px] border-textBlue bg-white outline-none transition-all checked:bg-textBlue"
-                            />
-                            <span className="absolute top-[3px] left-[-8px]">
-                              <svg viewBox="0 0 24 24" width="20px" height="20px" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-                                <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
-                                <g id="SVGRepo_iconCarrier">
-                                  {' '}
-                                  <path
-                                    d="M4.89163 13.2687L9.16582 17.5427L18.7085 8"
-                                    stroke="#ffffff"
-                                    strokeWidth="2.5"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                  ></path>{' '}
-                                </g>
-                              </svg>
-                            </span>
-                            <span className="text-sm text-brandBlue">
-                              {feature.name} ({feature.count})
-                            </span>
-                          </label>
-                        ))}
+                          )
+                       })}
                       </div>
                        }
                       />
@@ -537,39 +630,42 @@ const Plp = () => {
                       className="w-full text-brandBlue flex items-center border-b-2 border-b-textBlue py-3"
                       answer={
                         <div className="space-y-3 pt-3">
-                        {sizes.map((size) => (
-                          <label
-                            key={size.name}
-                            className="relative flex items-center space-x-2 cursor-pointer"
-                          >
-                            <input
-                              id={size.name}
-                              type="checkbox"
-                              checked={selectedSizes.includes(size.name)}
-                              onChange={() => toggleSize(size.name)}
-                              className="relative mt-1 block size-[20px] appearance-none rounded-md border-[3px] border-textBlue bg-white outline-none transition-all checked:bg-textBlue"
-                            />
-                            <span className="absolute top-[3px] left-[-8px]">
-                              <svg viewBox="0 0 24 24" width="20px" height="20px" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-                                <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
-                                <g id="SVGRepo_iconCarrier">
-                                  {' '}
-                                  <path
-                                    d="M4.89163 13.2687L9.16582 17.5427L18.7085 8"
-                                    stroke="#ffffff"
-                                    strokeWidth="2.5"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                  ></path>{' '}
-                                </g>
-                              </svg>
-                            </span>
-                            <span className="text-sm text-brandBlue">
-                              {size.name} ({size.count})
-                            </span>
-                          </label>
-                        ))}
+                        {sizes.map((size) => {
+                          const count = getSizeCount(size.name)
+                          return (
+                            <label
+                              key={size.name}
+                              className="relative flex items-center space-x-2 cursor-pointer"
+                            >
+                              <input
+                                id={size.name}
+                                type="checkbox"
+                                checked={selectedSizes.includes(size.name)}
+                                onChange={() => toggleSize(size.name)}
+                                className="relative mt-1 block size-[20px] appearance-none rounded-md border-[3px] border-textBlue bg-white outline-none transition-all checked:bg-textBlue"
+                              />
+                              <span className="absolute top-[3px] left-[-8px]">
+                                <svg viewBox="0 0 24 24" width="20px" height="20px" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                                  <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+                                  <g id="SVGRepo_iconCarrier">
+                                    {' '}
+                                    <path
+                                      d="M4.89163 13.2687L9.16582 17.5427L18.7085 8"
+                                      stroke="#ffffff"
+                                      strokeWidth="2.5"
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                    ></path>{' '}
+                                  </g>
+                                </svg>
+                              </span>
+                              <span className="text-sm text-brandBlue">
+                                {size.name} ({count})
+                              </span>
+                            </label>
+                          )
+                        })}
                       </div>
                       }
                     />
@@ -758,11 +854,11 @@ const Plp = () => {
              <div className="max-w-[300px] mx-auto mt-8 flex flex-wrap justify-between items-center">
                 {(visibleFilteredProducts.length / filteredProducts.length * 100).toFixed() > 99 ?
                   <div className="transition-all" style={{marginLeft: `${(visibleFilteredProducts.length / filteredProducts.length * 100 - 30).toFixed()}%`}}>
-                    <img src='ship-finish.svg' alt='pirate ship indicator finsihed' />
+                    <img src='/ship-finish.svg' alt='pirate ship indicator finsihed' />
                   </div>
                   :
                   <div style={{marginLeft: `${(visibleFilteredProducts.length / filteredProducts.length * 100 - 10).toFixed()}%`}}>
-                    <img src='ship.svg' alt='pirate ship indicator' />
+                    <img src='/ship.svg' alt='pirate ship indicator' />
                   </div>
                 }
                 <span className={`transition-all ${(visibleFilteredProducts.length / filteredProducts.length * 100).toFixed() > 99 ? 'text-brandLightGreen' : 'text-gray-300 rotate-[10deg]' }`}>

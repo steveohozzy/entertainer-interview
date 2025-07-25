@@ -130,7 +130,7 @@ const MiniCart = () => {
               <span>Payment</span>
           </div>
           <div className='mx-auto max-w-[335px] mt-3'>
-              <img src='train-icon.svg' alt='train' />
+              <img src='/train-icon.svg' alt='train' />
               <div className='flex items-center mt-4 max-w-[335px]'>
                   <div className='w-[30%] border-b-4 border-dashed border-brandLightGreen'></div>
                   <div className='w-[69%] ml-[1%] border-b-4 border-dashed border-gray-200'></div>

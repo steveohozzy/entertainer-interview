@@ -15,6 +15,7 @@ import { setIsCartOpen } from '../../store/cart/cartReducer';
 import Navigation from "../navigation/Navigation";
 import Footer from "../footer/Footer";
 import MiniCart from "../miniCart/miniCart";
+import SearchBar from "../searchBar/searchBar";
 
 const Layout = () => {
     const [showHeader, setShowHeader] = useState(true);
@@ -64,7 +65,12 @@ const Layout = () => {
 
     const toggleIsCartOpen = () => {
         dispatch(setIsCartOpen(!isCartOpen));
-        document.body.classList.toggle('body-noscroll');
+
+        if (isCartOpen) {
+            document.body.classList.remove('body-noscroll');
+        } else {
+            document.body.classList.add('body-noscroll');
+        }
     }
 
     return (
@@ -132,20 +138,7 @@ const Layout = () => {
                     </div>
                 </div>
             </div>
-            <div className="search bg-brandLightBlue pt-6 z-index-2 relative">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <form id="search-form" className="relative">
-                        <input name="search" type="search" placeholder="I'm looking for..." className="h-[40px] px-3 rounded-3xl w-full border border-[3px] border-brandBlue font-bold text-textBlue placeholder:text-textBlue" />
-                        <button className="shadow-md group text-white font-bold bg-brandRed rounded-full h-[40px] w-[54px] absolute right-0 top-0 transition-all hover:bg-brandGreen hover:scale-105">
-                            <span className="block transition-all group-hover:rotate-[20deg]">
-                                <span className="inline-block rotate-[-10deg] text-lg">G</span>
-                                <span className="inline-block translate-y-[-2px] rotate-[-10deg] text-sm ml-[1.2px]">O</span>
-                                <span className="inline-block translate-y-[-2px] rotate-[5deg] text-xs ml-[2px]">!</span>
-                            </span>
-                        </button>
-                    </form>
-                </div>
-            </div>
+            <SearchBar />
         </header>
         <Outlet />
         <Footer />

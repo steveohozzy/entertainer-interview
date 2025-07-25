@@ -33,6 +33,9 @@ const ProductDetails = () => {
     }
     // Add to favourites
     const [addedToFavourites, setAddedToFavourties] = useState(false);
+
+    // slide out tab
+    const [tabOpen, setTabOpen] = useState(false);
     
 
   return (
@@ -206,7 +209,7 @@ const ProductDetails = () => {
 
         <div className='w-full text-center mt-12'>
             <HeadingRibbon>
-                You may also like
+                Top Picks
             </HeadingRibbon>
             <div className='bg-white pt-12 pb-8 px-8 rounded-xl mt-[-27px]'>
                 <div className='flex gap-4 justify-center mx-auto [&_.swiper-pagination]:relative [&_.swiper-pagination]:top-[-20px!important]'>
@@ -225,7 +228,7 @@ const ProductDetails = () => {
                             <img
                                 src={product.image || "/placeholder.svg"}
                                 alt={product.name}
-                                className="w-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                className="w-full object-cover group-hover:scale-105 transition-transform duration-300 rounded-lg"
                             />
                         </div>
                         <div className="w-full md:w-1/2 flex flex-col justify-between items-center px-2">
@@ -241,7 +244,7 @@ const ProductDetails = () => {
                                 </div>
                                 <Button 
                                     className='shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-xs lg:text-sm rounded-[30px] bg-brandGreen text-white py-2 px-2 lg:px-4 lg:pl-0 pl-0 transition-all hover:bg-brandLightGreen hover:scale-105 mt-2'
-                                    onClick={() => { navigate(`/product-details/${product.id}`)}}>
+                                    onClick={() => { navigate(`/product-details/${product.id}`); window.scrollTo({top: 0,left: 0,behavior: "smooth",});}}>
                                         Details
                                 </Button>
                             </div>
@@ -251,6 +254,50 @@ const ProductDetails = () => {
                     </SwiperSlide>
                 ))}
                 </Swiper>
+                </div>
+            </div>
+        </div>
+
+        <button onClick={() => setTabOpen(!tabOpen)} className={`fixed z-[600] top-1/2 -translate-y-1/2 transition-all -rotate-90 bg-brandRed py-2 px-6 text-lg rounded-tr-xl rounded-tl-xl font-bold text-white shadow-[-5px_-5px_10px_1px_#bbb] ${tabOpen ? 'right-[138px]' : 'right-[-52px]'}`}>
+            you may like
+        </button>
+        {tabOpen &&
+            <div onClick={() => setTabOpen(false)} className="fixed inset-0 z-50 top-0 left-0 bg-brandBlue/60 w-screen h-screen"></div>
+        }
+        <div className={`fixed top-0 z-[9999] max-w-[190px] transition-all ${tabOpen ? 'right-0' : 'right-[-100vw]'}`}>
+            <div className='w-full text-center'>
+                <div className='bg-white p-5 rounded-tl-lg rounded-bl-lg max-h-screen overflow-auto no-scrollbar'>
+                    <div className='flex flex-col gap-4 justify-start'>
+                    {products.slice(0, 6).map((product) => (
+                        <div className="flex flex-col w-full border-[2px] border-brandLightBlue rounded-xl">
+                            <div className="w-full">
+                                <img
+                                    src={product.image || "/placeholder.svg"}
+                                    alt={product.name}
+                                    className="w-full object-cover group-hover:scale-105 transition-transform duration-300 rounded-xl"
+                                />
+                            </div>
+                            <div className="w-full flex flex-col justify-between items-center p-2">
+                                <div className="text-xs lg:text-sm xl:text-base text-brandBlue font-bold leading-[1.2] xl:leading-[1.1] mb-2 md:mb-0">{product.name}</div>
+                                <div>
+                                    <div className="price">
+                                        <div className="flex items-end justify-center">
+                                            <span className="text-brandRed font-bold text-xs md:text-sm">£{product.price}</span>
+                                            {product.originalPrice &&
+                                                <span className="line-through text-gray-400 text-[10px] md:text-xs ml-1">£{product.originalPrice}</span>
+                                            }
+                                        </div>
+                                    </div>
+                                    <Button 
+                                        className='shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-xs lg:text-sm rounded-[30px] bg-brandGreen text-white py-2 px-2 lg:px-4 lg:pl-0 pl-0 transition-all hover:bg-brandLightGreen hover:scale-105 mt-2'
+                                        onClick={() => { navigate(`/product-details/${product.id}`); setTabOpen(false)}}>
+                                            Details
+                                    </Button>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                    </div>
                 </div>
             </div>
         </div>

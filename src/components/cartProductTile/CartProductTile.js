@@ -5,6 +5,7 @@ import {
   clearItemFromCart,
   addItemToCart,
   removeItemFromCart,
+  setIsCartOpen
 } from '../../store/cart/cartReducer';
 
 const CartProductTile = ({product, nocontrols, isMiniCart}) => {
@@ -15,6 +16,8 @@ const CartProductTile = ({product, nocontrols, isMiniCart}) => {
     
     const goToLinkHandler = () => {
         navigate('/product-details/' + product.id);
+        dispatch(setIsCartOpen(false));
+        document.body.classList.remove('body-noscroll');
     };
     
     const clearItemHandler = () =>
