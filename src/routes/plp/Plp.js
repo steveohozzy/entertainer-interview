@@ -26,6 +26,7 @@ const Plp = () => {
   const [visibleProducts, setVisibleProducts] = useState(10);
   const [showHeader, setShowHeader] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [sortOption, setSortOption] = useState("sortby")
   const [currentPage, setCurrentPage] = useState(1);
   const PRODUCTS_PER_PAGE = 10
 
@@ -48,6 +49,7 @@ const Plp = () => {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
+  
 
    useEffect(() => {
     setCurrentPage(1)
@@ -127,20 +129,12 @@ const Plp = () => {
     );
   });
 
-  // Get the visible subset of filtered products
-  const visibleFilteredProducts = filteredProducts.slice(0, visibleProducts);
-
   const hasActiveFilters =
     selectedBrands.length > 0 ||
     selectedAgeGroups.length > 0 ||
     selectedFeatures.length > 0 ||
     selectedSizes.length > 0 ||
     showInStockOnly;
-
-  const totalPages = Math.ceil(filteredProducts.length / PRODUCTS_PER_PAGE)
-  const startIndex = (currentPage - 1) * PRODUCTS_PER_PAGE
-  const endIndex = startIndex + PRODUCTS_PER_PAGE
-  const currentProducts = filteredProducts.slice(startIndex, endIndex)
 
   const goToPage = (page) => {
     setCurrentPage(page)
@@ -235,7 +229,49 @@ const Plp = () => {
     return buttons
   }
 
-  const location = useLocation() 
+  const location = useLocation();
+
+  const sortProducts = (products, option) => {
+    const sortedProducts = [...products]
+
+    switch (option) {
+      case "price-low":
+        return sortedProducts.sort((a, b) => a.price - b.price)
+      case "price-high":
+        return sortedProducts.sort((a, b) => b.price - a.price)
+      case "rating":
+        return sortedProducts.sort((a, b) => b.rating - a.rating)
+      case "newest":
+        // Assuming newer products have higher IDs or using isNew flag
+        return sortedProducts.sort((a, b) => {
+          if (a.isNew && !b.isNew) return -1
+          if (!a.isNew && b.isNew) return 1
+          return b.id - a.id
+        })
+      case "relevance":
+         // For relevance, prioritize bestsellers and new items
+        return sortedProducts.sort((a, b) => {
+          if (a.isBestseller && !b.isBestseller) return -1
+          if (!a.isBestseller && b.isBestseller) return 1
+          if (a.isNew && !b.isNew) return -1
+          if (!a.isNew && b.isNew) return 1
+          return 0
+        })
+      default:
+        return sortedProducts;
+    }
+  }
+
+  // Apply sorting to filtered products
+  const sortedFilteredProducts = sortProducts(filteredProducts, sortOption)
+
+  const totalPages = Math.ceil(sortedFilteredProducts.length / PRODUCTS_PER_PAGE)
+  const startIndex = (currentPage - 1) * PRODUCTS_PER_PAGE
+  const endIndex = startIndex + PRODUCTS_PER_PAGE
+  const currentProducts = sortedFilteredProducts.slice(startIndex, endIndex)
+
+  // Get the visible subset of filtered products
+  const visibleFilteredProducts = sortedFilteredProducts.slice(0, visibleProducts);
 
   return (
     <>
@@ -266,17 +302,19 @@ const Plp = () => {
                 <select
                   id="sort"
                   className="bg-brandBlue text-white text-sm rounded-tl-full rounded-bl-full block h-full w-full px-3 outline-0 cursor-pointer"
+                  value={sortOption}
+                  onChange={(e) => setSortOption(e.target.value)}
                 >
                   <option value="Sort">Sort</option>
-                  <option value="Relevance">Relevance</option>
-                  <option value="Price (lowest first)">
+                  <option value="relevance">Relevance</option>
+                  <option value="price-low">
                     Price (lowest first)
                   </option>
-                  <option value="Price (highest first)">
+                  <option value="price-high">
                     Price (highest first)
                   </option>
-                  <option value="Name (A-Z)">Name (A-Z)</option>
-                  <option value="Name (Z-A)">Name (Z-A)</option>
+                  <option value="rating">Rating</option>
+                  <option value="newest">Newest</option>
                 </select>
               </form>
               <div className={`relative z-[2] bg-white border-[3px] border-brandBlue border-b-brandBlue ${showFilters && 'border-b-white'}`}>
@@ -621,8 +659,8 @@ const Plp = () => {
                 </div>
               </div>
               <p className="flex items-center justify-center bg-brandBlue text-white text-xs rounded-tr-full rounded-br-full block h-full w-full px-3">
-                ({visibleFilteredProducts.length} of{" "}
-                {filteredProducts.length}) items
+                 {startIndex + 1}-{Math.min(endIndex, sortedFilteredProducts.length)} of{" "}
+                  {sortedFilteredProducts.length} products
               </p>
             </div>
 

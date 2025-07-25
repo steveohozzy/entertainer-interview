@@ -168,7 +168,7 @@ const MiniCart = () => {
               <div className='bg-brandLightBlue pt-12 pb-8 px-8 rounded-xl mt-[-27px]'>
                 <div className='grid grid-cols-3 gap-3 max-w-[800px] mx-auto'>
                   {recs.map((product) => (
-                    <div className="flex flex-col h-full">
+                    <div className="flex flex-col h-full" key={product.id}>
                       <img
                         src={product.image || "/placeholder.svg"}
                         alt={product.name}
