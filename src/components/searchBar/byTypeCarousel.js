@@ -6,7 +6,7 @@ import 'swiper/css/autoplay';
 
 const ByTypeCarousel = () => {
   return (
-    <div className="mt-2">
+    <div className="mt-1">
       <div className="text-lg text-textBlue font-bold mb-2">
         By Type
       </div>

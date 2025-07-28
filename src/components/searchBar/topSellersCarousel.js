@@ -270,7 +270,7 @@ const recs = [
 
 const TopSellersCarousel = () => {
   return (
-    <div className="mt-2">
+    <div className="mt-1">
       <div className="text-lg text-textBlue font-bold mb-2">
         Top Picks
       </div>
