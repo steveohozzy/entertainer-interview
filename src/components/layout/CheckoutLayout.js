@@ -2,6 +2,8 @@ import { Outlet } from "react-router-dom";
 
 import ReducedFooter from "../footer/ReducedFooter";
 
+import { Link } from "react-router-dom";
+
 const CheckoutLayout = () => {
 
     return (
@@ -14,13 +16,13 @@ const CheckoutLayout = () => {
                 <div className="max-w-7xl mx-auto px-4 pr-0 sm:px-6 lg:px-8">
                     <div className="flex items-center justify-between">
                         <div className="flex items-center space-x-4 pt-2 ml-8 md:pt-4 md:ml-0">
-                            <a href="/">
+                             <Link to="/">
                                 <img
                                     src="/entertainer-logo.svg"
                                     alt="The Entertainer"
                                     className="w-[117px] md:w-[198px]"
                                 />
-                            </a>
+                            </Link>
                         </div>
                         <div className="flex items-center space-x-2 mr-2">
                             <span className="rotate-[12deg]">

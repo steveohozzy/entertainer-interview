@@ -373,7 +373,7 @@ const Footer = () => {
                 Amersham, Bucks. HP7 9FB Registered Company Number 02057757 Trading as The Entertainer since 1981</p>
               </div>
             </div>
-            <div className="w-full md:w-[20%] flex justify-end">
+            <div className="w-[70%] mx-auto md:mx-0 md:w-[20%] flex justify-end">
               <div className="flex flex-wrap">
                 <div className="p-1 w-[25%]">
                   <img

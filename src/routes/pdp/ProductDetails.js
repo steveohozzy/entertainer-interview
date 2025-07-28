@@ -41,7 +41,7 @@ const ProductDetails = () => {
   return (
     <>
     <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8'>
-        <div className="rounded-xl flex flex-wrap bg-white items-start">
+        <div className="rounded-xl flex flex-wrap bg-white items-start shadow-sm">
             <div className="relative w-full md:w-2/5 p-4 border-[3px] border-brandNeonBlue rounded-xl [&_.swiper-pagination]:relative">
                 <Swiper
                     modules={[Autoplay, Pagination]}
@@ -211,7 +211,7 @@ const ProductDetails = () => {
             <HeadingRibbon>
                 Top Picks
             </HeadingRibbon>
-            <div className='bg-white pt-12 pb-8 px-8 rounded-xl mt-[-27px]'>
+            <div className='bg-white pt-12 pb-8 px-8 rounded-xl mt-[-27px] shadow-sm'>
                 <div className='flex gap-4 justify-center mx-auto [&_.swiper-pagination]:relative [&_.swiper-pagination]:top-[-20px!important]'>
                 <Swiper
                     modules={[Autoplay, Pagination]}
@@ -306,7 +306,7 @@ const ProductDetails = () => {
             <HeadingRibbon fullWidth={true}>
                 Reviews
             </HeadingRibbon>
-            <div className='bg-white pt-12 pb-8 px-8 rounded-xl mt-[-27px]'>
+            <div className='bg-white pt-12 pb-8 px-8 rounded-xl mt-[-27px] shadow-sm'>
                 <div className='flex justify-between flex-wrap'>
                     <div className="w-[260px]">
                         <div className="rating mb-4">

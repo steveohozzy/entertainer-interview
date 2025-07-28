@@ -38,9 +38,20 @@ const Plp = () => {
       if (currentScrollY > lastScrollY && currentScrollY > 100) {
         // Scrolling down & past threshold
         setShowHeader(false);
+        const filtersBar = document.getElementById("filters-bar");
+
+        if (filtersBar) {
+            filtersBar.style.top = "0px";
+        }
       } else {
         // Scrolling up or at top
         setShowHeader(true);
+        const headerHeight = document.getElementById("site-header").offsetHeight;
+        const filtersBar = document.getElementById("filters-bar");
+
+        if (filtersBar) {
+            filtersBar.style.top = headerHeight+"px";
+        }
       }
 
       setLastScrollY(currentScrollY);
@@ -52,6 +63,7 @@ const Plp = () => {
   
 
    useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
     setCurrentPage(1)
   }, [selectedBrands, selectedAgeGroups, selectedFeatures, selectedSizes, priceRange, showInStockOnly])
 
@@ -373,9 +385,8 @@ const Plp = () => {
 
         {/* Filter and Sort Header */}
         <div
-          className={`sticky z-40 bg-brandLightBlue py-2 mb-4 transition-all duration-300 ${
-            showHeader ? "top-[108px] md:top-[137px]" : "top-0"
-          }`}
+          id="filters-bar"
+          className={`sticky z-40 bg-brandLightBlue py-2 mb-4 transition-all duration-300 ${showHeader && ''}`}
         >
           <div className="shadow flex items-center gap-3 justify-between shadow-sm flex-wrap bg-brandLightBlue">
             <div className="grid grid-cols-3 gap-2 w-full flex-wrap">
