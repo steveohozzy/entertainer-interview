@@ -51,7 +51,7 @@ const Account = () => {
           <div className={`w-full md:w-1/2 py-6 px-4 ${registerForm ? 'block' : 'hidden md:block'}`}>
             <h2 className="text-textBlue font-bold text-lg md:text-xl">Create an account</h2>
             <form id="address-form">
-              <div className={`flex h-[40px] px-3 mt-6 rounded-lg w-full border border-[3px] border-brandBlue relative ${name && 'border-red-600'}`}>
+              <div className={`flex h-[40px] px-3 mt-5 rounded-lg w-full border border-[3px] border-brandBlue relative ${name && 'border-red-600'}`}>
                 <span
                   className="absolute left-[calc(20%-20px)] md:left-[calc(15%-10px)] z-[2] top-[14px] w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[6px] border-gray-400 transition-all"></span>
                 <select className='relative w-[20%] appearance-none border-r-[3px] bg-white border-gray-400 pr-4 mr-2 text-textBlue font-bold outline-none'>
