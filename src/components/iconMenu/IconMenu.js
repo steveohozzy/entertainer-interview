@@ -10,9 +10,9 @@ const IconMenu = () => {
         <nav className="max-w-7xl mx-auto text-brandBlue grid grid-cols-6 py-5 lg:grid-cols-12 gap-2 md:gap-5 justify-center px-3 md:px-6">
           <Link
             to="/account"
-            className="transition-all text-brandBlue flex flex-col items-center group text-xs md:text-sm"
+            className="transition-all text-brandBlue flex flex-col items-center hover:scale-110 group text-xs md:text-sm"
           >
-            <span className="transition-all w-9 h-9 transition-duration-500 group-hover:rotate-[20deg] bg-brandBlue text-brandLightblue rounded-full md:w-12 md:h-12 p-2 flex items-center justify-center">
+            <span className="transition-all w-9 h-9 transition-duration-500 group-hover:rotate-[20deg] group-hover:shadow-lg bg-brandBlue text-brandLightblue rounded-full md:w-12 md:h-12 p-2 flex items-center justify-center">
               <svg
                 viewBox="0 0 48 48"
                 xmlns="http://www.w3.org/2000/svg"
@@ -39,9 +39,9 @@ const IconMenu = () => {
           </Link>
           <Link
             to="/account"
-            className="transition-all text-brandBlue flex flex-col items-center group text-xs md:text-sm"
+            className="transition-all text-brandBlue flex flex-col items-center hover:scale-110 group text-xs md:text-sm"
           >
-            <span className="transition-all w-9 h-9 transition-duration-500 group-hover:rotate-[20deg] text-brandLightBlue bg-brandBlue rounded-full md:w-12 md:h-12 p-2 md:p-3 flex items-center justify-center">
+            <span className="transition-all w-9 h-9 transition-duration-500 group-hover:rotate-[20deg] group-hover:shadow-lg text-brandLightBlue bg-brandBlue rounded-full md:w-12 md:h-12 p-2 md:p-3 flex items-center justify-center">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
                 <g
                   id="SVGRepo_bgCarrier"
@@ -83,18 +83,18 @@ const IconMenu = () => {
           </Link>
           <Link
             to="/category"
-            className="transition-all text-brandBlue flex flex-col items-center group text-xs md:text-sm"
+            className="transition-all text-brandBlue flex flex-col items-center hover:scale-110 group text-xs md:text-sm"
           >
-            <span className="transition-all w-9 h-9 transition-duration-500 group-hover:rotate-[20deg] text-brandLightBlue bg-brandBlue rounded-full md:w-12 md:h-12 p-1 flex items-center justify-center text-s">
+            <span className="transition-all w-9 h-9 transition-duration-500 group-hover:rotate-[20deg] group-hover:shadow-lg text-brandLightBlue bg-brandBlue rounded-full md:w-12 md:h-12 p-1 flex items-center justify-center text-s">
               <Star className="h-7 w-7" fill="currentColor" />
             </span>
             New Toys
           </Link>
           <Link
             to="/category"
-            className="transition-all text-brandBlue flex flex-col items-center group text-xs md:text-sm"
+            className="transition-all text-brandBlue flex flex-col items-center hover:scale-110 group text-xs md:text-sm"
           >
-            <span className="transition-all w-9 h-9 transition-duration-500 group-hover:rotate-[20deg] text-brandLightBlue bg-brandBlue rounded-full md:w-12 md:h-12 p-2 flex items-center justify-center">
+            <span className="transition-all w-9 h-9 transition-duration-500 group-hover:rotate-[20deg] group-hover:shadow-lg text-brandLightBlue bg-brandBlue rounded-full md:w-12 md:h-12 p-2 flex items-center justify-center">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path
                   fill="currentColor"
@@ -107,9 +107,9 @@ const IconMenu = () => {
           </Link>
           <Link
             to="/category"
-            className="transition-all text-brandBlue flex flex-col items-center group text-xs md:text-sm"
+            className="transition-all text-brandBlue flex flex-col items-center hover:scale-110 group text-xs md:text-sm"
           >
-            <span className="transition-all w-9 h-9 transition-duration-500 group-hover:rotate-[20deg] text-brandLightBlue bg-brandBlue rounded-full md:w-12 md:h-12 p-2 flex items-center justify-center">
+            <span className="transition-all w-9 h-9 transition-duration-500 group-hover:rotate-[20deg] group-hover:shadow-lg text-brandLightBlue bg-brandBlue rounded-full md:w-12 md:h-12 p-2 flex items-center justify-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="800px"
@@ -135,9 +135,9 @@ const IconMenu = () => {
           </Link>
           <a
             href="https://theentertainer.zendesk.com/hc/en-gb"
-            className="transition-all text-brandBlue flex flex-col items-center group text-xs md:text-sm"
+            className="transition-all text-brandBlue flex flex-col items-center hover:scale-110 group text-xs md:text-sm"
           >
-            <span className="transition-all w-9 h-9 transition-duration-500 group-hover:rotate-[20deg] text-brandLightBlue bg-brandBlue rounded-full md:w-12 md:h-12 p-2 flex items-center justify-center">
+            <span className="transition-all w-9 h-9 transition-duration-500 group-hover:rotate-[20deg] group-hover:shadow-lg text-brandLightBlue bg-brandBlue rounded-full md:w-12 md:h-12 p-2 flex items-center justify-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="800px"
@@ -164,9 +164,9 @@ const IconMenu = () => {
             Discover
           </a>
           <HashLink to="/#toy-types"
-            className="transition-all text-brandBlue flex flex-col items-center group text-xs md:text-sm"
+            className="transition-all text-brandBlue flex flex-col items-center hover:scale-110 group text-xs md:text-sm"
           >
-            <span className="transition-all w-9 h-9 transition-duration-500 group-hover:rotate-[20deg] text-brandLightBlue bg-brandBlue rounded-full md:w-12 md:h-12 p-2 flex items-center justify-center">
+            <span className="transition-all w-9 h-9 transition-duration-500 group-hover:rotate-[20deg] group-hover:shadow-lg text-brandLightBlue bg-brandBlue rounded-full md:w-12 md:h-12 p-2 flex items-center justify-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="37"
@@ -183,9 +183,9 @@ const IconMenu = () => {
             Toy Types
           </HashLink>
           <HashLink to="/#age"
-            className="transition-all text-brandBlue flex flex-col items-center group text-xs md:text-sm"
+            className="transition-all text-brandBlue flex flex-col items-center hover:scale-110 group text-xs md:text-sm"
           >
-            <span className="transition-all w-9 h-9 transition-duration-500 group-hover:rotate-[20deg] text-brandLightBlue bg-brandBlue rounded-full md:w-12 md:h-12 p-2 md:p-3 flex items-center justify-center">
+            <span className="transition-all w-9 h-9 transition-duration-500 group-hover:rotate-[20deg] group-hover:shadow-lg text-brandLightBlue bg-brandBlue rounded-full md:w-12 md:h-12 p-2 md:p-3 flex items-center justify-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 16 16"
@@ -269,9 +269,9 @@ const IconMenu = () => {
             Age
           </HashLink>
           <HashLink to="/#brands"
-            className="transition-all text-brandBlue flex flex-col items-center group text-xs md:text-sm"
+            className="transition-all text-brandBlue flex flex-col items-center hover:scale-110 group text-xs md:text-sm"
           >
-            <span className="transition-all w-9 h-9 transition-duration-500 group-hover:rotate-[20deg] text-brandLightBlue bg-brandBlue rounded-full md:w-12 md:h-12 p-2 md:p-3 flex items-center justify-center">
+            <span className="transition-all w-9 h-9 transition-duration-500 group-hover:rotate-[20deg] group-hover:shadow-lg text-brandLightBlue bg-brandBlue rounded-full md:w-12 md:h-12 p-2 md:p-3 flex items-center justify-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="800px"
@@ -290,9 +290,9 @@ const IconMenu = () => {
             Brands
           </HashLink>
           <HashLink to="/#top-picks"
-            className="transition-all text-brandBlue flex flex-col items-center group text-xs md:text-sm"
+            className="transition-all text-brandBlue flex flex-col items-center hover:scale-110 group text-xs md:text-sm"
           >
-            <span className="transition-all w-9 h-9 transition-duration-500 group-hover:rotate-[20deg] text-brandLightBlue bg-brandBlue rounded-full md:w-12 md:h-12 p-2 md:p-3 flex items-center justify-center">
+            <span className="transition-all w-9 h-9 transition-duration-500 group-hover:rotate-[20deg] group-hover:shadow-lg text-brandLightBlue bg-brandBlue rounded-full md:w-12 md:h-12 p-2 md:p-3 flex items-center justify-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 version="1.0"
@@ -309,9 +309,9 @@ const IconMenu = () => {
             Top Picks
           </HashLink>
           <HashLink to="/#blogs"
-            className="transition-all text-brandBlue flex flex-col items-center group text-xs md:text-sm"
+            className="transition-all text-brandBlue flex flex-col items-center hover:scale-110 group text-xs md:text-sm"
           >
-            <span className="transition-all w-9 h-9 transition-duration-500 group-hover:rotate-[20deg] text-brandLightBlue bg-brandBlue rounded-full md:w-12 md:h-12 p-2 flex items-center justify-center">
+            <span className="transition-all w-9 h-9 transition-duration-500 group-hover:rotate-[20deg] group-hover:shadow-lg text-brandLightBlue bg-brandBlue rounded-full md:w-12 md:h-12 p-2 flex items-center justify-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
@@ -326,9 +326,9 @@ const IconMenu = () => {
             Content
           </HashLink>
           <HashLink to="/#delivery"
-            className="transition-all text-brandBlue flex flex-col items-center group text-xs md:text-sm"
+            className="transition-all text-brandBlue flex flex-col items-center hover:scale-110 group text-xs md:text-sm"
           >
-            <span className="transition-all w-9 h-9 transition-duration-500 group-hover:rotate-[20deg] text-brandLightBlue bg-brandBlue rounded-full md:w-12 md:h-12 p-2 md:p-3 flex items-center justify-center">
+            <span className="transition-all w-9 h-9 transition-duration-500 group-hover:rotate-[20deg] group-hover:shadow-lg text-brandLightBlue bg-brandBlue rounded-full md:w-12 md:h-12 p-2 md:p-3 flex items-center justify-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 16 19"
