@@ -36,7 +36,7 @@ const HomeTopPicks = () => {
                     >
                 {products.slice(0, 6).map((product) => (
                     <SwiperSlide>
-                    <div className="flex flex-wrap bg-white shadow-lg mb-5 rounded-lg">
+                    <div  onClick={() => { navigate(`/product-details/${product.id}`); window.scrollTo({top: 0,left: 0,behavior: "smooth",});}} className="cursor-pointer flex flex-wrap bg-white shadow-lg mb-5 rounded-lg">
                         <div className="border-[3px] border-brandBlue rounded-lg w-1/2">
                             <img
                                 src={product.image || "/placeholder.svg"}
