@@ -42,6 +42,7 @@ export const sizes = [
 
 export const products = [
   {
+    sku: 557860,
     id: 1,
     name: "Spider-Man Advanced Suit Figure",
     brand: "Marvel",
@@ -73,6 +74,7 @@ export const products = [
     },
   },
   {
+    sku: 557860,
     id: 2,
     name: "Batman Dark Knight Figure",
     brand: "DC Comics",
@@ -103,6 +105,7 @@ export const products = [
     },
   },
   {
+    sku: 557860,
     id: 3,
     name: "Darth Vader Deluxe Figure",
     brand: "Star Wars",
@@ -133,6 +136,7 @@ export const products = [
     },
   },
   {
+    sku: 557860,
     id: 4,
     name: "Leonardo TMNT Figure",
     brand: "TMNT",
@@ -163,6 +167,7 @@ export const products = [
     },
   },
   {
+    sku: 557860,
     id: 5,
     name: "Optimus Prime Figure",
     brand: "Transformers",
@@ -193,6 +198,7 @@ export const products = [
     },
   },
   {
+    sku: 557860,
     id: 6,
     name: "Godzilla King of Monsters",
     brand: "Monster Verse",
@@ -223,6 +229,7 @@ export const products = [
     },
   },
   {
+    sku: 557860,
     id: 7,
     name: "Pikachu Deluxe Figure",
     brand: "Pokemon",
@@ -253,6 +260,7 @@ export const products = [
     },
   },
   {
+    sku: 557860,
     id: 8,
     name: "Goku Super Saiyan Figure",
     brand: "Dragon Ball Z",
@@ -283,6 +291,7 @@ export const products = [
     },
   },
   {
+    sku: 557860,
     id: 9,
     name: "Wonder Woman 1984 Figure",
     brand: "DC Comics",
@@ -313,6 +322,7 @@ export const products = [
     },
   },
   {
+    sku: 557860,
     id: 10,
     name: "Iron Man Mark 85 Figure",
     brand: "Marvel",
@@ -344,6 +354,7 @@ export const products = [
   },
   // quick array with randoms for dummy products added after few load mores
   ...Array.from({ length: 60 }, (_, i) => ({
+    sku: 557860,
     id: i + 11,
     name: `Action Figure ${i + 11}`,
     brand: brands[i % brands.length].name,

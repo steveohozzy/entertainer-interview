@@ -9,7 +9,7 @@ import {
 } from '../../store/cart/cartReducer';
 
 const CartProductTile = ({product, nocontrols, isMiniCart}) => {
-    const { name, price, image, originalPrice, quantity } = product;
+    const { name, price, image, originalPrice, quantity, sku } = product;
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -37,15 +37,16 @@ const CartProductTile = ({product, nocontrols, isMiniCart}) => {
             </button>
         </div>
         <div className={`w-[70%] ${isMiniCart ? 'md:w-[60%]' : 'md:w-[80%]'}`}>
-            <div className="flex flex-wrap">
-                <div className={`w-full ${nocontrols ? 'md:w-[70%]' : 'md:w-[50%]'} ${isMiniCart && 'md:w-full'} text-textBlue font-bold  ${isMiniCart ? 'text-sm px-2 mb-1' : 'px-4'}`}>
-                    <button className={`${isMiniCart && 'text-left'}`} onClick={goToLinkHandler}>
+            <div className="flex flex-wrap py-1">
+                <div className={`w-full ${nocontrols ? 'md:w-[70%]' : 'md:w-[50%]'} ${isMiniCart && 'md:w-full'} text-textBlue font-bold ${isMiniCart ? 'text-sm px-2 mb-1' : 'px-4 text-lg'}`}>
+                    <button className={`flex flex-wrap text-left ${isMiniCart && 'text-left'}`} onClick={goToLinkHandler}>
                         {name}
+                        <span className={`text-textBlue w-full ${isMiniCart ? 'text-[10px]' : 'text-xs mt-3'}`}>Product #{sku}</span>
                     </button>
                 </div>
                 <div className={`w-full ${nocontrols ? 'md:w-[30%]' : 'md:w-[50%]'} px-4 md:px-0 ${isMiniCart && 'md:w-full md:px-2'}`}>
                     <div className="flex flex-wrap justify-between items-start">
-                        <div className={`flex justify-center my-2 md:my-0 md:justify-start w-full md:w-[30%] ${nocontrols && 'md:w-full text-right'} ${isMiniCart ? 'md:w-full text-sm md:flex-row' : 'md:flex-col'}`}>
+                        <div className={`flex justify-center my-2 ${!isMiniCart && 'md:my-0'} md:justify-start w-full md:w-[30%] ${nocontrols && 'md:w-full text-right'} ${isMiniCart ? 'md:w-full text-sm md:flex-row' : 'md:flex-col'}`}>
                             <span className="text-brandRed font-bold">{price}</span>
                             <span className={`line-through text-gray-400 ml-1 ${isMiniCart ? 'ml-1 mb-2' : 'md:ml-0'}`}>{originalPrice}</span>
                         </div>
