@@ -36,6 +36,9 @@ const ProductDetails = () => {
 
     // slide out tab
     const [tabOpen, setTabOpen] = useState(false);
+
+     // swap colours
+    const [swatchColor, setSwatchColor] = useState('blue');
     
 
   return (
@@ -77,7 +80,7 @@ const ProductDetails = () => {
                             </SwiperSlide>
                         }
                         {product.images.map((image) => (
-                            <SwiperSlide><img className="object-cover w-full h-full" src={image} alt={product.name} /></SwiperSlide>
+                            <SwiperSlide><img className="object-cover w-full h-full" src={image} alt={product.name} />{swatchColor === 'orange' && <span className="absolute top-1/2 left-1/2 -rotate-45 text-orange-600 font-bold text-[100px] -translate-y-1/2 -translate-x-1/2">ORANGE</span>}</SwiperSlide>
                         ))}
                     </Swiper>
                 <div className="absolute top-3 right-3 z-[1]">
@@ -90,7 +93,7 @@ const ProductDetails = () => {
                 </div>
             </div>
             <div className="w-full md:w-3/5 p-4 px-6">
-                <h1 className="text-xl md:text-3xl font-bold text-brandBlue text-center mb-4 md:mb-10">{product.name}</h1>
+                <h1 className="text-xl md:text-3xl font-bold text-brandBlue text-center mb-4 md:mb-10">{product.name} {swatchColor === 'orange' && <span className="text-orange-600">ORANGE</span>}</h1>
                 <Button 
                     className='shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-lg rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-2 transition-all hover:bg-brandLightGreen hover:scale-105'
                     iconpath={
@@ -152,10 +155,10 @@ const ProductDetails = () => {
                                     Other styles
                                 </span>
                                 <div className="flex items-center">
-                                    <button className="rounded-full bg-brandNeonBlue w-[20px] md:w-[25px] h-[20px] md:h-[25px] border-[3px] border-brandBlue ml-3"><span className="sr-only">Blue</span></button>
-                                    <button className="rounded-full bg-orange-300 w-[20px] md:w-[25px] h-[20px] md:h-[25px] border-[3px] border-orange-300 ml-3 transition-all hover:border-orange-500"><span className="sr-only">Orange</span></button>
-                                    <button className="rounded-full bg-black w-[20px] md:w-[25px] h-[20px] md:h-[25px] border-[3px] border-black ml-3 transition-all hover:border-gray-500"><span className="sr-only">Black</span></button>
-                                    <button className="rounded-full bg-red-500 w-[20px] md:w-[25px] h-[20px] md:h-[25px] border-[3px] border-red-500 ml-3 transition-all hover:border-red-700"><span className="sr-only">red</span></button>
+                                    <button onClick={() => setSwatchColor('blue')} className={`transition-all rounded-full bg-brandNeonBlue w-[20px] md:w-[25px] h-[20px] md:h-[25px] border-[3px] ml-3 hover:border-brandBlue ${swatchColor === 'blue' ? 'border-brandBlue' : 'border-brandNeonBlue'}`}><span className="sr-only">Blue</span></button>
+                                    <button onClick={() => setSwatchColor('orange')} className={`rounded-full bg-orange-300 w-[20px] md:w-[25px] h-[20px] md:h-[25px] border-[3px]  ml-3 transition-all hover:border-orange-500 ${swatchColor === 'orange' ? 'border-orange-500' : 'border-orange-300'}`}><span className="sr-only">Orange</span></button>
+                                    <button onClick={() => setSwatchColor('black')}  className={`rounded-full bg-black w-[20px] md:w-[25px] h-[20px] md:h-[25px] border-[3px] ml-3 transition-all hover:border-gray-500 ${swatchColor === 'black' ? 'border-gray-500' : 'border-black'}`}><span className="sr-only">Black</span></button>
+                                    <button onClick={() => setSwatchColor('red')}  className={`rounded-full bg-red-500 w-[20px] md:w-[25px] h-[20px] md:h-[25px] border-[3px] ml-3 transition-all hover:border-red-700 ${swatchColor === 'red' ? 'border-red-700' : 'border-red-500'}`}><span className="sr-only">red</span></button>
                                 </div>
                             </span>
                         </div>
@@ -223,7 +226,7 @@ const ProductDetails = () => {
                     >
                 {products.slice(0, 6).map((product) => (
                     <SwiperSlide>
-                    <div className="flex flex-wrap">
+                    <div onClick={() => { navigate(`/product-details/${product.id}`); window.scrollTo({top: 0,left: 0,behavior: "smooth",});}} className="cursor-pointer flex flex-wrap">
                         <div className="border-[2px] border-brandLightBlue rounded-lg w-full md:w-1/2 mb-3 md:mb-0">
                             <img
                                 src={product.image || "/placeholder.svg"}
@@ -231,7 +234,7 @@ const ProductDetails = () => {
                                 className="w-full object-cover group-hover:scale-105 transition-transform duration-300 rounded-lg"
                             />
                         </div>
-                        <div className="w-full md:w-1/2 flex flex-col justify-between items-center px-2">
+                        <div onClick={() => { navigate(`/product-details/${product.id}`); window.scrollTo({top: 0,left: 0,behavior: "smooth",});}} className="cursor-pointer w-full md:w-1/2 flex flex-col justify-between items-center px-2">
                             <div className="text-xs lg:text-sm xl:text-lg text-brandBlue font-bold leading-[1.2] xl:leading-[1.1] mb-2 md:mb-0">{product.name}</div>
                             <div>
                                 <div className="price">
@@ -269,7 +272,7 @@ const ProductDetails = () => {
                 <div className='bg-white p-5 rounded-tl-lg rounded-bl-lg max-h-screen overflow-auto no-scrollbar'>
                     <div className='flex flex-col gap-4 justify-start'>
                     {products.slice(0, 6).map((product) => (
-                        <div className="flex flex-col w-full border-[2px] border-brandLightBlue rounded-xl">
+                        <div onClick={() => { navigate(`/product-details/${product.id}`); window.scrollTo({top: 0,left: 0,behavior: "smooth",}); setTabOpen(false)}} className="cursor-pointer flex flex-col w-full border-[2px] border-brandLightBlue rounded-xl">
                             <div className="w-full">
                                 <img
                                     src={product.image || "/placeholder.svg"}

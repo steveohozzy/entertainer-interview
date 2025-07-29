@@ -8,6 +8,7 @@ import Cart from "./routes/cart/Cart";
 import ProductDetails from "./routes/pdp/ProductDetails";
 import Home from "./routes/home/Home";
 import Account from "./routes/account/Account";
+import HomeTabs from "./routes/home/HomeTabs";
 
 const App = () => {
 
@@ -15,6 +16,7 @@ const App = () => {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route path="/" element={<Home />} />
+        <Route path="/tabs" element={<HomeTabs />} />
         <Route path="/category/*" element={<Plp />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/product-details/:id" element={<ProductDetails />} />

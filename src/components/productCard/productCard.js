@@ -31,6 +31,9 @@ const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  // swap colours
+  const [swatchColor, setSwatchColor] = useState('blue');
+
   const goToLinkHandler = () => {
     navigate("/product-details/" + product.id);
   };
@@ -145,6 +148,7 @@ const ProductCard = ({ product }) => {
                                 src={image}
                                 alt={product.name}
                               />
+                              {swatchColor === 'orange' && <span className="absolute top-1/2 left-1/2 -rotate-45 text-orange-600 font-bold text-[100px] -translate-y-1/2 -translate-x-1/2">ORANGE</span>}
                             </SwiperSlide>
                           ))}
                         </Swiper>
@@ -195,7 +199,7 @@ const ProductCard = ({ product }) => {
                     {/* Product Details */}
                     <div className="space-y-3 md:space-y-6">
                       <h1 className="text-xl md:text-3xl font-bold text-brandBlue text-left md:mb-4">
-                        {product.name}
+                        {product.name} {swatchColor === 'orange' && <span className="text-orange-600">ORANGE</span>}
                       </h1>
                       <div className="flex flex-wrap items-start justify-between mt-0">
                         <div className="flex flex-col items-start w-1/2 md:w-auto justify-between">
@@ -234,18 +238,10 @@ const ProductCard = ({ product }) => {
                             <span className="flex items-center justify-between text-brandNeonBlue border-[2px] border-brandNeonBlue p-2 rounded-md mb-2 md:mb-0 w-full md:w-auto font-bold">
                               <span>Other styles</span>
                               <div className="flex items-center">
-                                <button className="rounded-full bg-brandNeonBlue w-[20px] md:w-[25px] h-[20px] md:h-[25px] border-[3px] border-brandBlue ml-3">
-                                  <span className="sr-only">Blue</span>
-                                </button>
-                                <button className="rounded-full bg-orange-300 w-[20px] md:w-[25px] h-[20px] md:h-[25px] border-[3px] border-orange-300 ml-3 transition-all hover:border-orange-500">
-                                  <span className="sr-only">Orange</span>
-                                </button>
-                                <button className="rounded-full bg-black w-[20px] md:w-[25px] h-[20px] md:h-[25px] border-[3px] border-black ml-3 transition-all hover:border-gray-500">
-                                  <span className="sr-only">Black</span>
-                                </button>
-                                <button className="rounded-full bg-red-500 w-[20px] md:w-[25px] h-[20px] md:h-[25px] border-[3px] border-red-500 ml-3 transition-all hover:border-red-700">
-                                  <span className="sr-only">red</span>
-                                </button>
+                                <button onClick={() => setSwatchColor('blue')} className={`transition-all rounded-full bg-brandNeonBlue w-[20px] md:w-[25px] h-[20px] md:h-[25px] border-[3px] ml-3 hover:border-brandBlue ${swatchColor === 'blue' ? 'border-brandBlue' : 'border-brandNeonBlue'}`}><span className="sr-only">Blue</span></button>
+                                <button onClick={() => setSwatchColor('orange')} className={`rounded-full bg-orange-300 w-[20px] md:w-[25px] h-[20px] md:h-[25px] border-[3px]  ml-3 transition-all hover:border-orange-500 ${swatchColor === 'orange' ? 'border-orange-500' : 'border-orange-300'}`}><span className="sr-only">Orange</span></button>
+                                <button onClick={() => setSwatchColor('black')}  className={`rounded-full bg-black w-[20px] md:w-[25px] h-[20px] md:h-[25px] border-[3px] ml-3 transition-all hover:border-gray-500 ${swatchColor === 'black' ? 'border-gray-500' : 'border-black'}`}><span className="sr-only">Black</span></button>
+                                <button onClick={() => setSwatchColor('red')}  className={`rounded-full bg-red-500 w-[20px] md:w-[25px] h-[20px] md:h-[25px] border-[3px] ml-3 transition-all hover:border-red-700 ${swatchColor === 'red' ? 'border-red-700' : 'border-red-500'}`}><span className="sr-only">red</span></button>
                               </div>
                             </span>
                           </div>
@@ -466,8 +462,8 @@ const ProductCard = ({ product }) => {
           </div>
         </div>
         <div className="p-4 flex flex-col grow">
-          <button onClick={goToLinkHandler}>
-            <h2 className="text-brandBlue font-bold text-sm mb-2 leading-tight line-clamp-2 grow">
+          <button className="flex flex-col h-full" onClick={goToLinkHandler}>
+            <h2 className="text-brandBlue flex-grow font-bold text-sm mb-2 leading-tight line-clamp-2 grow">
               {name}
             </h2>
             <div className="flex items-center justify-center gap-2">

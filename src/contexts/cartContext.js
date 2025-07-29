@@ -32,7 +32,7 @@ const removeCartItem = (cartItems, cartItemToRemove) => {
     );
 
     //If quantity was 1 remove as it is now 0
-    if(existingCartItem.quantity === 1) {
+    if(existingCartItem.quantity ) {
         return (
             cartItems.filter((cartItem) => 
                 cartItem.id !== cartItemToRemove.id)
