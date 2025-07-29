@@ -33,6 +33,7 @@ const Checkout = () => {
   const [addressfinder, setAddressFinder] = useState(false);
   const [selectDelivery, setSelectDelivery] = useState(false);
   const [showManualDelivery, setShowManualDelivery] = useState(false);
+  const [showManualCollect, setShowManualCollect] = useState(false);
   const [showStoreResults, setShowStoreResults] = useState(false);
   const dispatch = useDispatch();
 
@@ -96,6 +97,11 @@ const Checkout = () => {
   const handleShowManualAddress = (e) => {
     e.preventDefault();
     setShowManualDelivery(true);
+  }
+
+  const handleShowManualAddressCollect = (e) => {
+    e.preventDefault();
+    setShowManualCollect(true);
   }
 
   const handleShowStoreResults = () => {
@@ -169,7 +175,7 @@ const Checkout = () => {
                           }`}>
                             <div className="overflow-hidden">
                               {(
-                                cartItems.map((item) => <CartProductTile key={item.id} product={item} />)
+                                cartItems.map((item) => <CartProductTile key={item.id} product={item} nocontrols={true} />)
                               )}
                             </div>
                           </div>
@@ -606,62 +612,140 @@ const Checkout = () => {
                                   </svg>
                               }
                             >
-                              <div>
-                                <form id="manual-address-form" className='py-6 px-4'>
-                                  <div className={`flex h-[40px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative ${addressfinder && 'border-red-600'}`}>
-                                    <input type="text" placeholder="Enter city, town or postcode" onChange={handleAddressFinderChange} onBlur={handleAddressFinderChange} className="peer text-base m-0 block h-[32px] w-full bg-transparent text-textBlue transition duration-200 ease-linear placeholder:text-transparent focus:outline-none" />
-                                    <label className="pointer-events-none absolute left-0 top-[2px] origin-[0_0] border border-solid border-transparent px-3 text-base text-textBlue transition-[opacity,_transform] duration-200 ease-linear peer-focus:-translate-y-7 peer-focus:translate-x-[0.15rem] peer-focus:scale-[0.85] peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:translate-x-[0.15rem] peer-[:not(:placeholder-shown)]:scale-[0.85] motion-reduce:transition-none">Enter city, town or postcode</label>
-                                  </div>
-                                  <button className='text-xs text-gray-400 underline mt-2'>
-                                    Enter address manually
-                                  </button>
-                                </form>
-                                <div className='px-5 w-full'>
-                                  <Button 
-                                    className={`bg-brandGreen h-[40px] shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-lg rounded-[30px] text-white py-2 px-4 pl-2 transition-all hover:bg-brandLightGreen hover:scale-105 ${addressfinder && 'pointer-events-none bg-gray-400'}`}
-                                    removeIcons={true}
-                                    >
-                                      Find Store
-                                  </Button>
-                                </div>
-                                <div className='mt-6 px-5 w-full'>
-                                  <div className='font-bold text-textBlue'>
-                                    Click & Collect options
-                                  </div>
-                                  <div className='mt-4'>
-                                    <form id="pickup-form" className='flex'>
-                                      <label className='text-sm text-textBlue mr-6'>
-                                        <input type="radio" name="option" id="option1" className='accent-brandGreen mr-2' />
-                                        Entertainer stores
-                                      </label>
-                                      <label className='text-sm text-textBlue'>
-                                        <input type="radio" name="option" id="option1" className='accent-brandGreen mr-2' />
-                                        Entertainer stores
-                                      </label>
-                                    </form>
-                                    <div className='flex justify-between py-3 border-b-[3px] border-gray-300'>
-                                      <div>
-                                        <button className='text-sm text-gray-400 mr-3'>
-                                          List view
+                              <div className='mt-6 rounded-lg border-[3px] border-brandLightBlue w-full'>
+                                <Dropdown 
+                                  expanded={true}
+                                  title="Collect Address"
+                                  className="relative bg-brandLightBlue p-4 rounded-md text-brandBlue font-bold flex items-center justify-between w-full"
+                                  answer={
+                                    <div>
+                                      <form id="manual-address-form" className='py-6 px-4'>
+                                        <div className={`flex h-[40px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative ${addressfinder && 'border-red-600'}`}>
+                                          <input type="text" placeholder="Enter city, town or postcode" onChange={handleAddressFinderChange} onBlur={handleAddressFinderChange} className="peer text-base m-0 block h-[32px] w-full bg-transparent text-textBlue transition duration-200 ease-linear placeholder:text-transparent focus:outline-none" />
+                                          <label className="pointer-events-none absolute left-0 top-[2px] origin-[0_0] border border-solid border-transparent px-3 text-base text-textBlue transition-[opacity,_transform] duration-200 ease-linear peer-focus:-translate-y-7 peer-focus:translate-x-[0.15rem] peer-focus:scale-[0.85] peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:translate-x-[0.15rem] peer-[:not(:placeholder-shown)]:scale-[0.85] motion-reduce:transition-none">Enter city, town or postcode</label>
+                                        </div>
+                                        <button onClick={handleShowManualAddressCollect} className='text-xs text-gray-400 underline mt-2'>
+                                          Enter address manually
                                         </button>
-                                        <button className='text-sm text-gray-400'>
-                                          map view
-                                        </button>
+                                        <div className={`overflow-hiddden transition-all ${showManualCollect ? 'h-auto opacity-100' : 'h-0 opacity-0 overflow-hidden'}`}>
+                                          <div className={`flex mt-5 h-[40px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative group ${address1 && 'border-red-600'}`}>
+                                            <input type="text" placeholder="Address 1" onChange={handleAddress1Change} onBlur={handleAddress1Change} className="peer text-base m-0 block h-[32px] w-full bg-transparent text-textBlue transition duration-200 ease-linear placeholder:text-transparent focus:outline-none" />
+                                            <label className="px-3 pointer-events-none absolute left-0 top-[2px] origin-[0_0] border border-solid border-transparent text-base text-gray-400 transition-[opacity,_transform] duration-200 ease-linear peer-focus:-translate-y-7 peer-focus:translate-x-[0.15rem] peer-focus:scale-[0.85] peer-focus:text-brandBlue peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:translate-x-[0.15rem] peer-[:not(:placeholder-shown)]:scale-[0.85] peer-[:not(:placeholder-shown)]:text-brandBlue motion-reduce:transition-none">Address 1</label>
+                                            <span className="absolute h-full w-[20px] flex items-center justify-center top-0 right-2 text-gray-300 peer-[:not(:placeholder-shown)]:text-brandGreen">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="10" viewBox="0 0 14 10" fill="none" className="w-full h-auto">
+                                                <path d="M4.49273 9.76762L0.180742 5.48145C0.0602474 5.36095 0 5.20603 0 5.01668C0 4.82733 0.0602474 4.67241 0.180742 4.55191L1.13609 3.62238C1.25659 3.48467 1.4029 3.41582 1.57504 3.41582C1.76439 3.41582 1.92792 3.48467 2.06563 3.62238L4.9575 6.51426L11.1544 0.317383C11.2921 0.179674 11.447 0.11082 11.6191 0.11082C11.8085 0.11082 11.9634 0.179674 12.0839 0.317383L13.0393 1.24691C13.1598 1.36741 13.22 1.52233 13.22 1.71168C13.22 1.90103 13.1598 2.05595 13.0393 2.17645L5.42227 9.76762C5.30177 9.90533 5.14685 9.97418 4.9575 9.97418C4.76815 9.97418 4.61323 9.90533 4.49273 9.76762Z" fill="currentColor" />
+                                                </svg>
+                                              </span>
+                                          </div>
+                                          <div className={`flex mt-5 h-[40px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative ${address2 && 'border-red-600'}`}>
+                                            <input type="text" placeholder="Address 2" onChange={handleAddress2Change} onBlur={handleAddress2Change} className="peer text-base m-0 block h-[32px] w-full bg-transparent text-textBlue transition duration-200 ease-linear placeholder:text-transparent focus:outline-none" />
+                                            <label className="px-3 pointer-events-none absolute left-0 top-[2px] origin-[0_0] border border-solid border-transparent text-base text-gray-400 transition-[opacity,_transform] duration-200 ease-linear peer-focus:-translate-y-7 peer-focus:translate-x-[0.15rem] peer-focus:scale-[0.85] peer-focus:text-brandBlue peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:translate-x-[0.15rem] peer-[:not(:placeholder-shown)]:scale-[0.85] peer-[:not(:placeholder-shown)]:text-brandBlue motion-reduce:transition-none">Address 2</label>
+                                            <span className="absolute h-full w-[20px] flex items-center justify-center top-0 right-2 text-gray-300 peer-[:not(:placeholder-shown)]:text-brandGreen">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="10" viewBox="0 0 14 10" fill="none" className="w-full h-auto">
+                                                <path d="M4.49273 9.76762L0.180742 5.48145C0.0602474 5.36095 0 5.20603 0 5.01668C0 4.82733 0.0602474 4.67241 0.180742 4.55191L1.13609 3.62238C1.25659 3.48467 1.4029 3.41582 1.57504 3.41582C1.76439 3.41582 1.92792 3.48467 2.06563 3.62238L4.9575 6.51426L11.1544 0.317383C11.2921 0.179674 11.447 0.11082 11.6191 0.11082C11.8085 0.11082 11.9634 0.179674 12.0839 0.317383L13.0393 1.24691C13.1598 1.36741 13.22 1.52233 13.22 1.71168C13.22 1.90103 13.1598 2.05595 13.0393 2.17645L5.42227 9.76762C5.30177 9.90533 5.14685 9.97418 4.9575 9.97418C4.76815 9.97418 4.61323 9.90533 4.49273 9.76762Z" fill="currentColor" />
+                                                </svg>
+                                              </span>
+                                          </div>
+                                          <div className={`flex mt-5 h-[40px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative ${town && 'border-red-600'}`}>
+                                            <input type="text" placeholder="Town/City" onChange={handleTownChange} onBlur={handleTownChange} className="peer text-base m-0 block h-[32px] w-full bg-transparent text-textBlue transition duration-200 ease-linear placeholder:text-transparent focus:outline-none" />
+                                            <label className="px-3 pointer-events-none absolute left-0 top-[2px] origin-[0_0] border border-solid border-transparent text-base text-gray-400 transition-[opacity,_transform] duration-200 ease-linear peer-focus:-translate-y-7 peer-focus:translate-x-[0.15rem] peer-focus:scale-[0.85] peer-focus:text-brandBlue peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:translate-x-[0.15rem] peer-[:not(:placeholder-shown)]:scale-[0.85] peer-[:not(:placeholder-shown)]:text-brandBlue motion-reduce:transition-none">Town/City</label>
+                                            <span className="absolute h-full w-[20px] flex items-center justify-center top-0 right-2 text-gray-300 peer-[:not(:placeholder-shown)]:text-brandGreen">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="10" viewBox="0 0 14 10" fill="none" className="w-full h-auto">
+                                                <path d="M4.49273 9.76762L0.180742 5.48145C0.0602474 5.36095 0 5.20603 0 5.01668C0 4.82733 0.0602474 4.67241 0.180742 4.55191L1.13609 3.62238C1.25659 3.48467 1.4029 3.41582 1.57504 3.41582C1.76439 3.41582 1.92792 3.48467 2.06563 3.62238L4.9575 6.51426L11.1544 0.317383C11.2921 0.179674 11.447 0.11082 11.6191 0.11082C11.8085 0.11082 11.9634 0.179674 12.0839 0.317383L13.0393 1.24691C13.1598 1.36741 13.22 1.52233 13.22 1.71168C13.22 1.90103 13.1598 2.05595 13.0393 2.17645L5.42227 9.76762C5.30177 9.90533 5.14685 9.97418 4.9575 9.97418C4.76815 9.97418 4.61323 9.90533 4.49273 9.76762Z" fill="currentColor" />
+                                                </svg>
+                                              </span>
+                                          </div>
+                                          <div className={`flex mt-5 h-[40px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative ${county && 'border-red-600'}`}>
+                                            <input type="text" placeholder="County" onChange={handleCountyChange} onBlur={handleCountyChange} className="peer text-base m-0 block h-[32px] w-full bg-transparent text-textBlue transition duration-200 ease-linear placeholder:text-transparent focus:outline-none" />
+                                            <label className="px-3 pointer-events-none absolute left-0 top-[2px] origin-[0_0] border border-solid border-transparent text-base text-gray-400 transition-[opacity,_transform] duration-200 ease-linear peer-focus:-translate-y-7 peer-focus:translate-x-[0.15rem] peer-focus:scale-[0.85] peer-focus:text-brandBlue peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:translate-x-[0.15rem] peer-[:not(:placeholder-shown)]:scale-[0.85] peer-[:not(:placeholder-shown)]:text-brandBlue motion-reduce:transition-none">County</label>
+                                            <span className="absolute h-full w-[20px] flex items-center justify-center top-0 right-2 text-gray-300 peer-[:not(:placeholder-shown)]:text-brandGreen">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="10" viewBox="0 0 14 10" fill="none" className="w-full h-auto">
+                                                <path d="M4.49273 9.76762L0.180742 5.48145C0.0602474 5.36095 0 5.20603 0 5.01668C0 4.82733 0.0602474 4.67241 0.180742 4.55191L1.13609 3.62238C1.25659 3.48467 1.4029 3.41582 1.57504 3.41582C1.76439 3.41582 1.92792 3.48467 2.06563 3.62238L4.9575 6.51426L11.1544 0.317383C11.2921 0.179674 11.447 0.11082 11.6191 0.11082C11.8085 0.11082 11.9634 0.179674 12.0839 0.317383L13.0393 1.24691C13.1598 1.36741 13.22 1.52233 13.22 1.71168C13.22 1.90103 13.1598 2.05595 13.0393 2.17645L5.42227 9.76762C5.30177 9.90533 5.14685 9.97418 4.9575 9.97418C4.76815 9.97418 4.61323 9.90533 4.49273 9.76762Z" fill="currentColor" />
+                                                </svg>
+                                              </span>
+                                          </div>
+                                          <div className={`flex mt-5 h-[40px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative ${postcode && 'border-red-600'}`}>
+                                            <input type="text" placeholder="Postcode" onChange={handlePostcodeChange} onBlur={handlePostcodeChange} className="peer text-base m-0 block h-[32px] w-full bg-transparent text-textBlue transition duration-200 ease-linear placeholder:text-transparent focus:outline-none" />
+                                            <label className="px-3 pointer-events-none absolute left-0 top-[2px] origin-[0_0] border border-solid border-transparent text-base text-gray-400 transition-[opacity,_transform] duration-200 ease-linear peer-focus:-translate-y-7 peer-focus:translate-x-[0.15rem] peer-focus:scale-[0.85] peer-focus:text-brandBlue peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:translate-x-[0.15rem] peer-[:not(:placeholder-shown)]:scale-[0.85] peer-[:not(:placeholder-shown)]:text-brandBlue motion-reduce:transition-none">Postcode</label>
+                                            <span className="absolute h-full w-[20px] flex items-center justify-center top-0 right-2 text-gray-300 peer-[:not(:placeholder-shown)]:text-brandGreen">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="10" viewBox="0 0 14 10" fill="none" className="w-full h-auto">
+                                                <path d="M4.49273 9.76762L0.180742 5.48145C0.0602474 5.36095 0 5.20603 0 5.01668C0 4.82733 0.0602474 4.67241 0.180742 4.55191L1.13609 3.62238C1.25659 3.48467 1.4029 3.41582 1.57504 3.41582C1.76439 3.41582 1.92792 3.48467 2.06563 3.62238L4.9575 6.51426L11.1544 0.317383C11.2921 0.179674 11.447 0.11082 11.6191 0.11082C11.8085 0.11082 11.9634 0.179674 12.0839 0.317383L13.0393 1.24691C13.1598 1.36741 13.22 1.52233 13.22 1.71168C13.22 1.90103 13.1598 2.05595 13.0393 2.17645L5.42227 9.76762C5.30177 9.90533 5.14685 9.97418 4.9575 9.97418C4.76815 9.97418 4.61323 9.90533 4.49273 9.76762Z" fill="currentColor" />
+                                                </svg>
+                                              </span>
+                                          </div>
+                                          <div className="flex mt-5 h-[40px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative">
+                                            <span
+                                              className="absolute right-[15px] z-[2] top-[14px] w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[6px] border-gray-400 transition-all"></span>
+                                            <select className='relative w-full appearance-none border-gray-400 bg-white pr-4 mr-2 text-textBlue font-bold outline-none'>
+                                              <option>United Kingdom</option>
+                                            </select>
+                                          </div>
+                                        </div>
+                                      </form>
+                                      <div className='px-5 w-full'>
+                                        <Button 
+                                          className={`bg-brandGreen h-[40px] shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-lg rounded-[30px] text-white py-2 px-4 pl-2 transition-all hover:bg-brandLightGreen hover:scale-105 ${addressfinder && 'pointer-events-none bg-gray-400'}`}
+                                          removeIcons={true}
+                                          >
+                                            Find Store
+                                        </Button>
                                       </div>
-                                      <span className='text-sm text-gray-400'>
-                                        Results
-                                      </span>
-                                    </div>
-                                    <div className='text-sm text-brandBlue py-4'>
-                                      The Entertainer Amersham<br />
-                                      2 Sycamore Road, Amersham HP^ 5DR
-                                      <div className='text-gray-400'>
-                                        Collect withi 30 minutes for fREE
+                                      <div className='mt-6 px-5 w-full'>
+                                        <div className='font-bold text-textBlue'>
+                                          Click & Collect options
+                                        </div>
+                                        <div className='mt-4'>
+                                          <form id="pickup-form" className='flex'>
+                                            <label className='text-sm text-textBlue mr-6'>
+                                              <input type="radio" name="option" id="option1" className='accent-brandGreen mr-2' />
+                                              Entertainer stores
+                                            </label>
+                                            <label className='text-sm text-textBlue'>
+                                              <input type="radio" name="option" id="option1" className='accent-brandGreen mr-2' />
+                                              Entertainer stores
+                                            </label>
+                                          </form>
+                                          <div className='flex justify-between py-3 border-b-[3px] border-gray-300'>
+                                            <div>
+                                              <button className='text-sm text-gray-400 mr-3'>
+                                                List view
+                                              </button>
+                                              <button className='text-sm text-gray-400'>
+                                                map view
+                                              </button>
+                                            </div>
+                                            <span className='text-sm text-gray-400'>
+                                              Results
+                                            </span>
+                                          </div>
+                                          <div className='text-sm text-brandBlue py-4'>
+                                            The Entertainer Amersham<br />
+                                            2 Sycamore Road, Amersham HP^ 5DR
+                                            <div className='text-gray-400'>
+                                              Collect withi 30 minutes for fREE
+                                            </div>
+                                          </div>
+                                        </div>
                                       </div>
                                     </div>
-                                  </div>
-                                </div>
+                                  }
+                                />
                               </div>
+                              {!showDeliveryOptions &&
+                            <Button 
+                              className={`h-[40px] mt-3 shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-sm md:text-lg rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-2 transition-all hover:bg-brandLightGreen hover:scale-105 ${!selectDelivery && 'pointer-events-none bg-gray-400'}`}
+                              iconpath={
+                                <svg width="23" height="21" viewBox="0 0 23 21" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M20.2166 15.5378C20.4612 15.5897 20.654 15.8861 20.6021 16.1306L20.3949 17.1089C20.3366 17.384 20.0467 17.5462 19.8021 17.4944L18.3347 17.1835C17.9914 18.8038 16.3983 19.8398 14.778 19.4965C13.1577 19.1532 12.1217 17.5601 12.465 15.9398L8.55185 15.1107C8.20854 16.731 6.61544 17.767 4.99516 17.4237C3.37488 17.0804 2.33885 15.4873 2.68216 13.867L2.19302 13.7634C1.36759 13.5885 0.86162 12.8105 1.03651 11.985L3.1093 2.20222C3.27772 1.40737 4.06222 0.870826 4.88764 1.04572L14.6705 3.11851C15.4653 3.28692 15.9954 4.102 15.827 4.89685L15.516 6.36427L16.8612 6.64928C17.228 6.72701 17.5866 6.99465 17.8034 7.32809L20.1887 10.9959C20.4056 11.3294 20.5048 11.7656 20.4271 12.1325L19.7275 15.4342L20.2166 15.5378ZM5.30608 15.9563C6.10094 16.1247 6.90953 15.6252 7.08442 14.7998C7.25284 14.0049 6.72277 13.1899 5.92792 13.0214C5.1025 12.8465 4.31799 13.3831 4.14958 14.1779C3.97469 15.0034 4.48066 15.7814 5.30608 15.9563ZM15.0889 18.0291C15.8838 18.1975 16.6924 17.698 16.8672 16.8726C17.0357 16.0777 16.5056 15.2626 15.7107 15.0942C14.8853 14.9193 14.1008 15.4559 13.9324 16.2507C13.7575 17.0762 14.2635 17.8542 15.0889 18.0291ZM18.8819 12.1884L18.9596 11.8216L16.5503 8.11671L15.2051 7.8317L14.4797 11.2557L18.8819 12.1884Z"/>
+                                </svg>
+                              }
+                              onClick={() => {
+                                setShowDeliveryOptions(!showDeliveryOptions)
+                                setShowPaymentOptions(false)
+                              }}>
+                                Select delivery options
+                            </Button>
+                          }
                             </Tab>
                           </Tabs>
                         </div>
