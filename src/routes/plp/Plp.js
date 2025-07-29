@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { X, Search } from "lucide-react";
 import {
   products,
@@ -29,6 +29,8 @@ const Plp = () => {
   const [sortOption, setSortOption] = useState("sortby")
   const [currentPage, setCurrentPage] = useState(1);
   const PRODUCTS_PER_PAGE = 10
+
+  const wrapperRef = useRef(null);
 
   // Handle scroll for header visibility
   useEffect(() => {
@@ -66,6 +68,28 @@ const Plp = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
     setCurrentPage(1)
   }, [selectedBrands, selectedAgeGroups, selectedFeatures, selectedSizes, priceRange, showInStockOnly])
+
+  function useOutsideAlerter(ref) {
+    useEffect(() => {
+      /**
+       * Alert if clicked on outside of element
+       */
+      function handleClickOutside(event) {
+        if (ref.current && !ref.current.contains(event.target)) {
+          setShowFilters(false)
+          document.body.classList.remove('body-noscroll');
+        }
+      }
+      // Bind the event listener
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        // Unbind the event listener on clean up
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [ref]);
+  }
+
+  useOutsideAlerter(wrapperRef);
 
   const toggleBrand = (brandName) => {
     setSelectedBrands((prev) =>
@@ -424,7 +448,7 @@ const Plp = () => {
                   </span>
                 </button>
                 {/* Sliding Filter Panel */}
-                <div
+                <div ref={wrapperRef}
                   className={`absolute overflow-hidden bg-white shadow-xl z-[1] transition-all ease-in-out w-[calc(100vw-60px)] md:w-[calc(100%+40px)] left-[calc(-100%+5px)] md:left-[-20px] no-scrollbar ${
                     showFilters ? "max-h-[calc(100vh-250px)] overflow-y-auto border border-brandBlue border-[3px] rounded-bl-lg rounded-br-lg top-[calc(100%-3px)]" : "max-h-0 top-full "
                   }`}
