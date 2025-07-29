@@ -234,7 +234,7 @@ const ProductDetails = () => {
                                 className="w-full object-cover group-hover:scale-105 transition-transform duration-300 rounded-lg"
                             />
                         </div>
-                        <div onClick={() => { navigate(`/product-details/${product.id}`); window.scrollTo({top: 0,left: 0,behavior: "smooth",});}} className="cursor-pointer w-full md:w-1/2 flex flex-col justify-between items-center px-2">
+                        <div onClick={() => { navigate(`/product-details/${product.id}`); window.scrollTo({top: 0,left: 0,behavior: "smooth",});}} className=" md:py-2 cursor-pointer w-full md:w-1/2 flex flex-col justify-between items-center px-2">
                             <div className="text-xs lg:text-sm xl:text-lg text-brandBlue font-bold leading-[1.2] xl:leading-[1.1] mb-2 md:mb-0">{product.name}</div>
                             <div>
                                 <div className="price">

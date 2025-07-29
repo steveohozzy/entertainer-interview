@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { selectIsCartOpen } from "../../store/cart/cartSelector";
 import { setIsCartOpen } from "../../store/cart/cartReducer";
@@ -34,6 +34,10 @@ const MiniCart = () => {
     dispatch(setIsCartOpen(false));
     document.body.classList.remove("body-noscroll");
   };
+
+  useEffect(() => {
+      localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    }, [cartItems])
   return (
     <>
       {isCartOpen && (
