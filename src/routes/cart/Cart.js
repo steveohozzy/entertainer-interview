@@ -150,17 +150,22 @@ const Cart = () => {
             </div>
             <div className="w-full text-center mt-12">
               <HeadingRibbon>You may also like</HeadingRibbon>
-              <div className="bg-brandLightBlue pt-12 pb-8 px-8 rounded-xl mt-[-27px] [&_.swiper-pagination]:relative">
+              <div className="bg-brandLightBlue pt-12 pb-8 px-4 md:px-8 rounded-xl mt-[-27px] [&_.swiper-pagination]:relative">
                 <Swiper
                   modules={[Autoplay, Pagination]}
                   spaceBetween={10}
-                  slidesPerView={3}
+                  slidesPerView={2.25}
+                  breakpoints={{
+                    768: {
+                      slidesPerView: 3,
+                    },
+                  }}
                   pagination={{ clickable: true }}
                   autoplay={true}
                   loop
                 >
                   {products.slice(0, 6).map((product) => (
-                    <SwiperSlide>
+                    <SwiperSlide className="h-auto">
                       <div
                         onClick={() => {
                           navigate(`/product-details/${product.id}`);
@@ -170,9 +175,9 @@ const Cart = () => {
                             behavior: "smooth",
                           });
                         }}
-                        className="cursor-pointer flex flex-wrap"
+                        className="cursor-pointer flex flex-wrap bg-white rounded-xl shadow-md h-full"
                       >
-                        <div className="border-[2px] border-brandLightBlue rounded-lg w-full md:w-1/2 mb-3 md:mb-0">
+                        <div className="border-[3px] border-brandBlue rounded-lg w-full md:w-1/2 mb-3 md:mb-0">
                           <img
                             src={product.image || "/placeholder.svg"}
                             alt={product.name}
@@ -188,7 +193,7 @@ const Cart = () => {
                               behavior: "smooth",
                             });
                           }}
-                          className="cursor-pointer w-full md:w-1/2 flex flex-col justify-between items-center px-2 md:py-2"
+                          className="cursor-pointer w-full md:w-1/2 flex flex-col justify-between items-center px-2 pb-2 md:py-2"
                         >
                           <div className="text-xs lg:text-sm xl:text-lg text-brandBlue font-bold leading-[1.2] xl:leading-[1.1] mb-2 md:mb-0">
                             {product.name}
@@ -227,7 +232,7 @@ const Cart = () => {
                 </Swiper>
               </div>
             </div>
-            <div className="bg-white p-4 px-0 md:px-4 w-full sticky bottom-0 left-0 md:hidden">
+            <div className="bg-white p-4 px-0 md:px-4 w-full sticky bottom-0 left-0 md:hidden z-20">
               <Button
                 className="h-[40px] shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-sm md:text-lg rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-2 transition-all hover:bg-brandLightGreen hover:scale-105"
                 iconpath={

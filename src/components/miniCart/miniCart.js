@@ -137,9 +137,9 @@ const MiniCart = () => {
                           behavior: "smooth",
                         });
                       }}
-                      className="cursor-pointer flex flex-col h-full"
+                      className="cursor-pointer flex flex-col h-full bg-white rounded-xl pb-2"
                     >
-                      <div className="border-[2px] border-brandLightBlue rounded-lg w-full mb-3">
+                      <div className="border-[3px] border-brandBlue rounded-lg w-full mb-3">
                         <img
                           src={product.image || "/placeholder.svg"}
                           alt={product.name}
