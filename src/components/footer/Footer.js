@@ -11,7 +11,7 @@ const Footer = () => {
           <div className="max-w-7xl mx-auto px-4 pr-0 sm:px-6 lg:px-8">
             <div className="mb-4 flex flex-col md:flex-row">
             <div className="mb-6 flex flex-col items-center md:w-1/3 md:items-stretch md:pr-4">
-              <span className="font-[26px] font-bold text-brandBlue">Be in the know with</span>
+              <span className="font-[26px] font-bold text-brandBlue text-center w-[275px]">Be in the know with</span>
               <img src="/footer-logo.svg" alt="The Entertainer" className="w-[225px] lg:w-[275px]" width="225" height="33" />
               <span className="mt-3 w-[225px] text-center text-sm font-bold text-brandBlue md:font-[20px] lg:w-[275px]">Sign up to our emails</span>
             </div>
