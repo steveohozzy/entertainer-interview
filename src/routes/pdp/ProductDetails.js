@@ -227,7 +227,7 @@ const ProductDetails = () => {
                 {products.slice(0, 6).map((product) => (
                     <SwiperSlide>
                     <div onClick={() => { navigate(`/product-details/${product.id}`); window.scrollTo({top: 0,left: 0,behavior: "smooth",});}} className="cursor-pointer flex flex-wrap">
-                        <div className="border-[2px] border-brandLightBlue rounded-lg w-full md:w-1/2 mb-3 md:mb-0">
+                        <div className="border-[3px] border-brandLightBlue rounded-lg w-full md:w-1/2 mb-3 md:mb-0">
                             <img
                                 src={product.image || "/placeholder.svg"}
                                 alt={product.name}
