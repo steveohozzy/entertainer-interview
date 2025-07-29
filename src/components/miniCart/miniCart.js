@@ -38,12 +38,12 @@ const MiniCart = () => {
     <>
       {isCartOpen && (
         <div
-          className="fixed h-screen inset-0 bg-black bg-opacity-50 z-40 top-[44px] md:top-[72px] left-[-20px]"
+          className="fixed h-screen inset-0 bg-brandBlue bg-opacity-50 z-40 top-[44px] md:top-[72px] left-[-20px]"
           onClick={() => toggleIsCartOpen(false)}
         />
       )}
       <div
-        className={`absolute max-w-[90vw] overflow-hidden w-[320px] transition-all right-0  ${
+        className={`absolute max-w-[90vw] overflow-hidden w-[320px] duration-300 ease-in-out right-0  ${
           isCartOpen ? "max-h-[calc(100vh-100px)]" : "max-h-0"
         } top-full md:top-[calc(100%+10px)] z-[9999] bg-white rounded-xl text-black`}
       >
