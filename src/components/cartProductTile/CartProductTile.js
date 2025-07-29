@@ -38,7 +38,7 @@ const CartProductTile = ({product, nocontrols, isMiniCart}) => {
         </div>
         <div className={`w-[70%] ${isMiniCart ? 'md:w-[60%]' : 'md:w-[80%]'}`}>
             <div className="flex flex-wrap">
-                <div className={`w-full ${nocontrols ? 'md:w-[70%]' : 'md:w-[50%]'} ${isMiniCart && 'md:w-full'} text-textBlue font-bold text-lg  ${isMiniCart ? 'text-sm px-2 mb-1' : 'px-4'}`}>
+                <div className={`w-full ${nocontrols ? 'md:w-[70%]' : 'md:w-[50%]'} ${isMiniCart && 'md:w-full'} text-textBlue font-bold  ${isMiniCart ? 'text-sm px-2 mb-1' : 'px-4'}`}>
                     <button className={`${isMiniCart && 'text-left'}`} onClick={goToLinkHandler}>
                         {name}
                     </button>

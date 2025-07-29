@@ -130,8 +130,8 @@ const Checkout = () => {
             </div>
             <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
                 <div className='flex flex-wrap py-6'>
-                    <div className='w-full md:w-[66.6666666%] md:px-3'>
-                        <div className='border-[3px] border-gray-300 rounded-xl md:hidden'>
+                    <div className='w-full lg:w-[66.6666666%] md:px-3'>
+                        <div className='border-[3px] border-gray-300 rounded-xl lg:hidden'>
                           <div className='flex items-end justify-between p-4 px-2 sm:px-4'>
                             <span className='font-bold text-lg text-textBlue flex items-center'>
                               <span className='mr-2'>
@@ -505,7 +505,7 @@ const Checkout = () => {
                                           }
                                         </>
                                         }
-                                        <div className={`overflow-hiddden transition-all ${showManualDelivery ? 'h-auto opacity-100' : 'h-0 opacity-0'}`}>
+                                        <div className={`overflow-hiddden transition-all ${showManualDelivery ? 'h-auto opacity-100' : 'h-0 opacity-0 overflow-hidden'}`}>
                                           <div className={`flex mt-5 h-[40px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative group ${address1 && 'border-red-600'}`}>
                                             <input type="text" placeholder="Address 1" onChange={handleAddress1Change} onBlur={handleAddress1Change} className="peer text-base m-0 block h-[32px] w-full bg-transparent text-textBlue transition duration-200 ease-linear placeholder:text-transparent focus:outline-none" />
                                             <label className="px-3 pointer-events-none absolute left-0 top-[2px] origin-[0_0] border border-solid border-transparent text-base text-gray-400 transition-[opacity,_transform] duration-200 ease-linear peer-focus:-translate-y-7 peer-focus:translate-x-[0.15rem] peer-focus:scale-[0.85] peer-focus:text-brandBlue peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:translate-x-[0.15rem] peer-[:not(:placeholder-shown)]:scale-[0.85] peer-[:not(:placeholder-shown)]:text-brandBlue motion-reduce:transition-none">Address 1</label>
@@ -667,8 +667,8 @@ const Checkout = () => {
                         </div>
                         
                     </div>
-                    <div className='w-full md:w-[33.3333333%] px-3'>
-                        <div className='border-[3px] border-gray-300 rounded-xl md:px-3 hidden md:block'>
+                    <div className='w-full lg:w-[33.3333333%] px-3'>
+                        <div className='border-[3px] border-gray-300 rounded-xl md:px-3 hidden lg:block'>
                               {(
                                 cartItems.map((item) => <CartProductTile key={item.id} product={item} nocontrols={true} />)
                               )}
