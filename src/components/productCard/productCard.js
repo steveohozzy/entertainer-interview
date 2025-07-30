@@ -1,12 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Star, Heart, Eye, Plus, Minus } from "lucide-react";
+import { useSelector } from "react-redux";
 
 import { useDispatch } from 'react-redux';
 
 import { setIsCartOpen } from '../../store/cart/cartReducer';
 
 import { addItemToCart } from "../../store/cart/cartReducer";
+
+import { addItemToWishlist, removeItemFromWishlist } from "../../store/wishlist/wishlistReducer";
+
+import { selectWishlistItems } from "../../store/wishlist/wishlistSelector";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
@@ -46,6 +51,14 @@ const ProductCard = ({ product }) => {
     window.scrollBy(0 , -2)
   }
 
+  const addProductToWishlist = () => {
+    dispatch(addItemToWishlist(product));
+  }
+
+  const removeProductFromWishlist = () => {
+    dispatch(removeItemFromWishlist(product));
+  }
+
   // Quick view modal state
   const [quickViewProduct, setQuickViewProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
@@ -63,7 +76,11 @@ const ProductCard = ({ product }) => {
   };
 
   // Add to favourites
-  const [addedToFavourites, setAddedToFavourties] = useState(false);
+  const wishlistItems = useSelector(selectWishlistItems);
+
+  useEffect(() => {
+    localStorage.setItem("wishlistItems", JSON.stringify(wishlistItems));
+  }, [wishlistItems])
 
   return (
     <>
@@ -154,40 +171,38 @@ const ProductCard = ({ product }) => {
                         </Swiper>
                         <div className="absolute top-3 right-3 z-[1]">
                           <button
-                            onClick={() =>
-                              setAddedToFavourties(!addedToFavourites)
-                            }
+                            onClick={wishlistItems.some(item => product.id === item.id) ? removeProductFromWishlist : addProductToWishlist}
                             name="Add to favourites"
                             className={`relative inline-flex items-center justify-center gap-2 whitespace-nowrap text-lg  h-10  transition-all hover:scale-105 hover:text-brandPink`}
                           >
                             <Heart
                               className={`h-6 md:h-10 w-6 md:w-10 ${
-                                addedToFavourites
+                                wishlistItems.some(item => product.id === item.id)
                                   ? "text-brandPink animate-bigheart"
                                   : "text-brandBlue"
                               }`}
                               fill={
-                                addedToFavourites ? "#FF7BAC" : "transparent"
+                                wishlistItems.some(item => product.id === item.id) ? "#FF7BAC" : "transparent"
                               }
                             />
                             <Heart
                               className={`absolute bottom-0 left-[-6px] 0 h-[5px] md:h-[10px] w-[5px] md:w-[10px] opacity-0 text-transparent ${
-                                addedToFavourites
+                                wishlistItems.some(item => product.id === item.id)
                                   ? "animate-miniheartleft text-brandPink"
                                   : "text-brandBlue"
                               }`}
                               fill={
-                                addedToFavourites ? "#FF7BAC" : "transparent"
+                                wishlistItems.some(item => product.id === item.id) ? "#FF7BAC" : "transparent"
                               }
                             />
                             <Heart
                               className={`absolute bottom-0 right-[-4px] h-[5px] md:h-[10px] w-[5px] md:w-[10px] opacity-0 text-transparent ${
-                                addedToFavourites
+                                wishlistItems.some(item => product.id === item.id)
                                   ? "animate-miniheartright text-brandPink"
                                   : "text-brandBlue"
                               }`}
                               fill={
-                                addedToFavourites ? "#FF7BAC" : "transparent"
+                                wishlistItems.some(item => product.id === item.id) ? "#FF7BAC" : "transparent"
                               }
                             />
                             <span className="sr-only">Add to favourites</span>
@@ -421,33 +436,33 @@ const ProductCard = ({ product }) => {
           </div>
           <div className="absolute top-2 right-[-5px] md:top-3 md:right-1 flex flex-col md:gap-2 opacity-0 group-hover:opacity-100 opacity-100 md:opacity-0 transition-opacity">
             <button
-              onClick={() => setAddedToFavourties(!addedToFavourites)}
+              onClick={wishlistItems.some(item => product.id === item.id) ? removeProductFromWishlist : addProductToWishlist}
               name="Add to favourites"
               className={`relative inline-flex items-center justify-center md:gap-2 whitespace-nowrap text-lg h-4 md:h-9  transition-all hover:scale-105 hover:text-brandPink`}
             >
               <Heart
                 className={`h-5 md:h-8 w-5 md:w-8 ${
-                  addedToFavourites
+                  wishlistItems.some(item => product.id === item.id)
                     ? "text-brandPink animate-bigheart"
                     : "text-brandBlue"
                 }`}
-                fill={addedToFavourites ? "#FF7BAC" : "transparent"}
+                fill={wishlistItems.some(item => product.id === item.id) ? "#FF7BAC" : "transparent"}
               />
               <Heart
                 className={`absolute bottom-0 left-1 h-2 w-2 opacity-0 text-transparent ${
-                  addedToFavourites
+                  wishlistItems.some(item => product.id === item.id)
                     ? "animate-miniheartleft text-brandPink"
                     : "text-brandBlue"
                 }`}
-                fill={addedToFavourites ? "#FF7BAC" : "transparent"}
+                fill={wishlistItems.some(item => product.id === item.id) ? "#FF7BAC" : "transparent"}
               />
               <Heart
                 className={`absolute bottom-0 right-2 h-2 w-2 opacity-0 text-transparent ${
-                  addedToFavourites
+                  wishlistItems.some(item => product.id === item.id)
                     ? "animate-miniheartright text-brandPink"
                     : "text-brandBlue"
                 }`}
-                fill={addedToFavourites ? "#FF7BAC" : "transparent"}
+                fill={wishlistItems.some(item => product.id === item.id) ? "#FF7BAC" : "transparent"}
               />
               <span className="sr-only">Add to favourites</span>
             </button>

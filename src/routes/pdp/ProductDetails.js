@@ -1,9 +1,13 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { addItemToCart } from '../../store/cart/cartReducer';
+
+import { selectWishlistItems } from "../../store/wishlist/wishlistSelector";
+
+import { addItemToWishlist } from "../../store/wishlist/wishlistReducer";
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
@@ -31,8 +35,19 @@ const ProductDetails = () => {
         document.body.classList.add('body-noscroll');
         window.scrollBy(0 , -2)
     }
+
+    const addProductToWishlist = () => {
+        dispatch(addItemToWishlist(product));
+        setAddedToFavourties(true);
+      }
+    
     // Add to favourites
     const [addedToFavourites, setAddedToFavourties] = useState(false);
+    const wishlistItems = useSelector(selectWishlistItems);
+
+    useEffect(() => {
+        localStorage.setItem("wishlistItems", JSON.stringify(wishlistItems));
+    }, [wishlistItems])
 
     // slide out tab
     const [tabOpen, setTabOpen] = useState(false);
@@ -84,7 +99,7 @@ const ProductDetails = () => {
                         ))}
                     </Swiper>
                 <div className="absolute top-3 right-3 z-[1]">
-                    <button onClick={() => setAddedToFavourties(!addedToFavourites)} name="Add to favourites" className={`relative inline-flex items-center justify-center gap-2 whitespace-nowrap text-lg  h-10  transition-all hover:scale-105 hover:text-brandPink`}>
+                    <button onClick={addProductToWishlist} name="Add to favourites" className={`relative inline-flex items-center justify-center gap-2 whitespace-nowrap text-lg  h-10  transition-all hover:scale-105 hover:text-brandPink`}>
                         <Heart className={`h-10 w-10 ${addedToFavourites ? 'text-brandPink animate-bigheart' : 'text-brandBlue'}`} fill={addedToFavourites ? "#FF7BAC" : "transparent"} />
                         <Heart className={`absolute bottom-0 left-[-6px] 0 h-[10px] w-[10px] opacity-0 text-transparent ${addedToFavourites ? 'animate-miniheartleft text-brandPink' : 'text-brandBlue'}`} fill={addedToFavourites ? "#FF7BAC" : "transparent"} />
                         <Heart className={`absolute bottom-0 right-[-4px] h-[10px] w-[10px] opacity-0 text-transparent ${addedToFavourites ? 'animate-miniheartright text-brandPink' : 'text-brandBlue'}`} fill={addedToFavourites ? "#FF7BAC" : "transparent"} />

@@ -13,6 +13,8 @@ import {
 
 import { setIsCartOpen } from "../../store/cart/cartReducer";
 
+import { selectWishlistItems } from "../../store/wishlist/wishlistSelector";
+
 import Footer from "../footer/Footer";
 import MiniCart from "../miniCart/miniCart";
 import SearchBar from "../searchBar/searchBar";
@@ -63,6 +65,12 @@ const Layout = () => {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
+
+  const wishlistItems = useSelector(selectWishlistItems);
+
+  useEffect(() => {
+      localStorage.setItem("wishlistItems", JSON.stringify(wishlistItems));
+    }, [wishlistItems])
 
   const toggleIsCartOpen = () => {
     dispatch(setIsCartOpen(!isCartOpen));

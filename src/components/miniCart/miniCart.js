@@ -20,6 +20,7 @@ import { selectCartItems } from "../../store/cart/cartSelector";
 
 import { selectCartTotal } from "../../store/cart/cartSelector";
 
+
 import { products } from "../../data/products";
 
 const MiniCart = () => {
@@ -29,6 +30,7 @@ const MiniCart = () => {
   const isCartOpen = useSelector(selectIsCartOpen);
   const cartItems = useSelector(selectCartItems);
   const cartTotal = useSelector(selectCartTotal);
+
 
   const toggleIsCartOpen = () => {
     dispatch(setIsCartOpen(false));

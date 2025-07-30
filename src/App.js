@@ -9,6 +9,7 @@ import ProductDetails from "./routes/pdp/ProductDetails";
 import Home from "./routes/home/Home";
 import Account from "./routes/account/Account";
 import HomeTabs from "./routes/home/HomeTabs";
+import Wishlist from "./routes/wishlist/Wishlist";
 
 const App = () => {
 
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="/tabs" element={<HomeTabs />} />
         <Route path="/category/*" element={<Plp />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/product-details/:id" element={<ProductDetails />} />
         <Route path="/account" element={<Account />} />
       </Route>
