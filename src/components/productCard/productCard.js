@@ -5,9 +5,7 @@ import { useSelector } from "react-redux";
 
 import { useDispatch } from 'react-redux';
 
-import { setIsCartOpen } from '../../store/cart/cartReducer';
-
-import { addItemToCart } from "../../store/cart/cartReducer";
+import { setIsCartOpen, addItemToCart } from '../../store/cart/cartReducer';
 
 import { addItemToWishlist, removeItemFromWishlist } from "../../store/wishlist/wishlistReducer";
 

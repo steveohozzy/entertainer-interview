@@ -12,13 +12,13 @@ export const selectWishlistItems = createSelector(
   (wishlist) => wishlist.wishlistItems
 );
 
-export const selectWishlistTotal = createSelector([selectWishlistItems], (cartItems) =>
-  cartItems.reduce(
-    (total, cartItem) => total + cartItem.quantity * cartItem.price,
+export const selectWishlistTotal = createSelector([selectWishlistItems], (wishlistItems) =>
+  wishlistItems.reduce(
+    (total, wishlistItem) => total + wishlistItem.quantity * wishlistItem.price,
     0
   )
 );
 
-export const selectCartCount = createSelector([selectWishlistItems], (cartItems) =>
-  cartItems.reduce((total, cartItem) => total + cartItem.quantity, 0)
+export const selectWishlistCount = createSelector([selectWishlistItems], (wishlistItems) =>
+  wishlistItems.reduce((total, wishlistItem) => total + wishlistItem.quantity, 0)
 );

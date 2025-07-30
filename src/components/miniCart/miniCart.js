@@ -49,9 +49,9 @@ const MiniCart = () => {
         />
       )}
       <div
-        className={`absolute max-w-[90vw] overflow-hidden w-[320px] duration-300 ease-in-out right-0  ${
+        className={`absolute max-w-[90vw] overflow-hidden w-[320px] duration-300 ease-in-out right-[-60px] md:right-0  ${
           isCartOpen ? "max-h-[calc(100vh-100px)]" : "max-h-0"
-        } top-full md:top-[calc(100%+10px)] z-[9999] bg-white rounded-xl text-black`}
+        } top-[calc(100%+10px)] md:top-[calc(100%+20px)] z-[9999] bg-white rounded-xl text-black`}
       >
         <div className="max-h-[calc(100vh-100px)] overflow-y-auto w-full px-3">
           <div className="text-xs text-gray-500 flex items-center justify-center pt-4">
