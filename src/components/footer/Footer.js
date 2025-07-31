@@ -1,8 +1,10 @@
+import { useNavigate } from "react-router-dom";
 
 import Dropdown from "../dropdown/Dropdown";
 import Button from "../button/Button";
 
 const Footer = () => {
+  const navigate = useNavigate();
 
   return (
     <>
@@ -348,11 +350,11 @@ const Footer = () => {
                 </a>
               </div>
               <div className="px-4 w-full md:w-auto flex flex-col items-center items-center md:items-start mb-4">
-                <a href="/klarna"
+                <button onClick={() => { navigate(`/events`); window.scrollTo({top: 0,left: 0,behavior: "smooth",});}}
                   className="text-brandBlue font-bold"
                 >
                   <span>Events </span>
-                </a>
+                </button>
               </div>
             </div>
           </div>
