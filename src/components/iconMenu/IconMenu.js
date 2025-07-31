@@ -112,8 +112,8 @@ const IconMenu = () => {
             <span className="transition-all w-9 h-9 transition-duration-500 group-hover:rotate-[20deg] group-hover:shadow-lg text-brandLightBlue bg-brandBlue rounded-full md:w-12 md:h-12 p-2 flex items-center justify-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="800px"
-                height="800px"
+                width=" 22"
+                height=" 22"
                 viewBox="0 0 24 24"
                 fill="none"
               >
@@ -140,8 +140,8 @@ const IconMenu = () => {
             <span className="transition-all w-9 h-9 transition-duration-500 group-hover:rotate-[20deg] group-hover:shadow-lg text-brandLightBlue bg-brandBlue rounded-full md:w-12 md:h-12 p-2 flex items-center justify-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="800px"
-                height="800px"
+                width=" 22"
+                height=" 22"
                 viewBox="0 0 24 24"
                 fill="none"
               >
@@ -274,8 +274,8 @@ const IconMenu = () => {
             <span className="transition-all w-9 h-9 transition-duration-500 group-hover:rotate-[20deg] group-hover:shadow-lg text-brandLightBlue bg-brandBlue rounded-full md:w-12 md:h-12 p-2 md:p-3 flex items-center justify-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="800px"
-                height="800px"
+                width=" 22"
+                height=" 22"
                 viewBox="0 0 24 24"
                 fill="none"
               >
