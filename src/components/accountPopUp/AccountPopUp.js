@@ -9,7 +9,6 @@ import { selectIsSignedIn } from "../../store/account/accountSelector";
 import { setIsSignedIn } from "../../store/account/accountReducer";
 
 import Button from "../button/Button";
-import { button } from "react-router-dom";
 import { Heart, Star } from "lucide-react";
 
 const AccountPopUp = () => {
