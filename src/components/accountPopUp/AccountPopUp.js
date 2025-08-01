@@ -5,13 +5,16 @@ import { useNavigate } from "react-router-dom";
 import { selectIsAccountOpen } from "../../store/account/accountSelector";
 import { setIsAccountOpen } from "../../store/account/accountReducer";
 
+import { selectIsSignedIn } from "../../store/account/accountSelector";
+import { setIsSignedIn } from "../../store/account/accountReducer";
+
 import Button from "../button/Button";
-import { Link } from "react-router-dom";
+import { button } from "react-router-dom";
 import { Heart, Star } from "lucide-react";
 
 const AccountPopUp = () => {
   const isAccountOpen = useSelector(selectIsAccountOpen);
-  const [signedIn, setSignedIn] = useState(false);
+  const isSignedIn = useSelector(selectIsSignedIn);
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState(false);
   const [password, setPassword] = useState(false);
@@ -25,6 +28,10 @@ const AccountPopUp = () => {
     dispatch(setIsAccountOpen(!isAccountOpen));
   };
 
+  const handleSignIn = () => {
+    dispatch(setIsSignedIn(true));
+  };
+
   const closeAccountPopUp = () => {
     dispatch(setIsAccountOpen(false));
   };
@@ -32,6 +39,11 @@ const AccountPopUp = () => {
   const handleFindOutMore = () => {
     dispatch(setIsAccountOpen(!isAccountOpen));
     navigate('/account')
+  }
+
+  const handleGoToAccount = () => {
+    navigate('/account');
+    dispatch(setIsAccountOpen(false));
   }
 
   const handleEmailChange = (e) => {
@@ -62,8 +74,7 @@ const AccountPopUp = () => {
 
   return (
     <>
-    <div>{isAccountOpen}</div>
-      {!signedIn ? (
+      {!isSignedIn ? (
         <button
           onClick={handleAccountPopUp}
           className="transition-all hover:text-brandLightBlue md:flex items-center ml-3 text-sm group md:w-[122px] flex"
@@ -82,9 +93,9 @@ const AccountPopUp = () => {
           <span className="hidden md:block">Register/Sign in</span>
         </button>
       ) : (
-        <Link
+        <button
           className="transition-all hover:text-brandLightBlue md:flex items-center ml-2 text-sm group md:w-[122px] group flex"
-          to="/account"
+          onClick={handleGoToAccount}
         >
           <span className="hidden md:block">Hi Jack!</span>
           <span className="transition-all text-white md:text-brandLightBlue ml-1 group-hover:rotate-[25deg]">
@@ -99,12 +110,12 @@ const AccountPopUp = () => {
               <path d="M408.781 128.007C386.356 127.578 368 146.36 368 168.79V256h-8V79.79c0-22.43-18.356-41.212-40.781-40.783C297.488 39.423 280 57.169 280 79v177h-8V40.79C272 18.36 253.644-.422 231.219.007 209.488.423 192 18.169 192 40v216h-8V80.79c0-22.43-18.356-41.212-40.781-40.783C121.488 40.423 104 58.169 104 80v235.992l-31.648-43.519c-12.993-17.866-38.009-21.817-55.877-8.823-17.865 12.994-21.815 38.01-8.822 55.877l125.601 172.705A48 48 0 0 0 172.073 512h197.59c22.274 0 41.622-15.324 46.724-37.006l26.508-112.66a192.011 192.011 0 0 0 5.104-43.975V168c.001-21.831-17.487-39.577-39.218-39.993z" />
             </svg>
           </span>
-        </Link>
+        </button>
       )}
       {isAccountOpen && (
         <div className="fixed h-screen top-0 left-0 inset-0 z-[99999] bg-brandBlue/60">
           <div ref={wrapperRef} className="absolute left-[50%] top-[50%] z-50 grid w-full translate-x-[-50%] translate-y-[-50%] gap-3 border bg-white p-3 pb-6 shadow-lg sm:rounded-lg max-w-[320px] max-h-[90vh] overflow-y-auto">
-            {!signedIn ? (
+            {!isSignedIn ? (
               <>
                 <div className="relative flex flex-col gap-2">
                   <button
@@ -213,7 +224,7 @@ const AccountPopUp = () => {
                   </form>
                   <Button
                     className="shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold rounded-[30px] bg-brandGreen text-white py-2 px-2 lg:px-4 lg:pl-0 pl-0 transition-all hover:bg-brandLightGreen hover:scale-105 mt-1"
-                    onClick={() => setSignedIn(true)}
+                    onClick={handleSignIn}
                     iconpath={
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -315,8 +326,8 @@ const AccountPopUp = () => {
                   </div>
                 </div>
                 <div className="grid grid-cols-5 gap-4 py-3">
-                  <Link
-                    to="/account"
+                  <button
+                    onClick={handleGoToAccount}
                     className="transition-all text-brandBlue flex flex-col items-center hover:scale-110 group text-xs "
                   >
                     <span className="transition-all w-9 h-9 transition-duration-500 rotate-[-20deg] group-hover:rotate-[20deg] group-hover:shadow-lg bg-brandBlue text-brandLightblue rounded-full  p-2 flex items-center justify-center mb-1">
@@ -331,9 +342,9 @@ const AccountPopUp = () => {
                       </svg>
                     </span>
                     Track
-                  </Link>
-                  <Link
-                    to="/account"
+                  </button>
+                  <button
+                    onClick={handleGoToAccount}
                     className="transition-all text-brandBlue flex flex-col items-center hover:scale-110 group text-xs "
                   >
                     <span className="transition-all w-9 h-9 transition-duration-500 group-hover:rotate-[20deg] group-hover:shadow-lg text-brandLightBlue bg-brandBlue rounded-full  p-2  flex items-center justify-center mb-1">
@@ -360,9 +371,9 @@ const AccountPopUp = () => {
                       </svg>
                     </span>
                     Details
-                  </Link>
-                  <Link
-                    to="/category"
+                  </button>
+                  <button
+                    onClick={handleGoToAccount}
                     className="transition-all text-brandBlue flex flex-col items-center hover:scale-110 group text-xs "
                   >
                     <span className="transition-all w-9 h-9 p-2 transition-duration-500 group-hover:rotate-[20deg] group-hover:shadow-lg text-brandLightBlue bg-brandBlue rounded-full  p-1 flex items-center justify-center mb-1">
@@ -382,9 +393,9 @@ const AccountPopUp = () => {
                       </svg>
                     </span>
                     Email
-                  </Link>
-                  <Link
-                    to="/category"
+                  </button>
+                  <button
+                    onClick={handleGoToAccount}
                     className="transition-all text-brandBlue flex flex-col items-center hover:scale-110 group text-xs "
                   >
                     <span className="transition-all w-9 h-9 transition-duration-500 group-hover:rotate-[20deg] group-hover:shadow-lg text-brandLightBlue bg-brandBlue rounded-full  p-2 flex items-center justify-center mb-1">
@@ -401,9 +412,9 @@ const AccountPopUp = () => {
                       </svg>
                     </span>
                     Password
-                  </Link>
-                  <Link
-                    to="/category"
+                  </button>
+                  <button
+                    onClick={handleGoToAccount}
                     className="transition-all text-brandBlue flex flex-col items-center hover:scale-110 group text-xs "
                   >
                     <span className="transition-all w-9 h-9 transition-duration-500 group-hover:rotate-[20deg] group-hover:shadow-lg text-brandLightBlue bg-brandBlue rounded-full  p-2 flex items-center justify-center mb-1">
@@ -421,9 +432,9 @@ const AccountPopUp = () => {
                       </svg>
                     </span>
                     Address
-                  </Link>
-                  <a
-                    href="https://theentertainer.zendesk.com/hc/en-gb"
+                  </button>
+                  <button
+                    onClick={handleGoToAccount}
                     className="transition-all text-brandBlue flex flex-col items-center hover:scale-110 group text-xs "
                   >
                     <span className="transition-all w-9 h-9 transition-duration-500 group-hover:rotate-[20deg] group-hover:shadow-lg text-brandLightBlue bg-brandBlue rounded-full  p-2 flex items-center justify-center mb-1">
@@ -437,9 +448,9 @@ const AccountPopUp = () => {
                       </svg>
                     </span>
                     Payment
-                  </a>
-                  <Link
-                    to="/#toy-types"
+                  </button>
+                  <button
+                    onClick={handleGoToAccount}
                     className="transition-all text-brandBlue flex flex-col items-center hover:scale-110 group text-xs "
                   >
                     <span className="transition-all w-9 h-9 transition-duration-500 group-hover:rotate-[20deg] group-hover:shadow-lg text-brandLightBlue bg-brandBlue rounded-full  p-2 flex items-center justify-center mb-1">
@@ -454,18 +465,18 @@ const AccountPopUp = () => {
                       </svg>
                     </span>
                     Baskets
-                  </Link>
-                  <Link
-                    to="/#age"
+                  </button>
+                  <button
+                    onClick={handleGoToAccount}
                     className="transition-all text-brandBlue flex flex-col items-center hover:scale-110 group text-xs "
                   >
                     <span className="transition-all w-9 h-9 transition-duration-500 group-hover:rotate-[20deg] group-hover:shadow-lg text-brandLightBlue bg-brandBlue rounded-full  p-2  flex items-center justify-center mb-1">
                       <Heart fill="currentColor" />
                     </span>
                     Wishlist
-                  </Link>
-                  <Link
-                    to="/#brands"
+                  </button>
+                  <button
+                    onClick={handleGoToAccount}
                     className="transition-all text-brandBlue flex flex-col items-center hover:scale-110 group text-xs "
                   >
                     <span className="transition-all w-9 h-9 transition-duration-500 group-hover:rotate-[20deg] group-hover:shadow-lg text-brandLightBlue bg-brandBlue rounded-full  p-2  flex items-center justify-center mb-1">
@@ -550,9 +561,9 @@ const AccountPopUp = () => {
                       </svg>
                     </span>
                     Birthday
-                  </Link>
-                  <Link
-                    to="/#top-picks"
+                  </button>
+                  <button
+                    onClick={handleGoToAccount}
                     className="transition-all text-brandBlue flex flex-col items-center hover:scale-110 group text-xs "
                   >
                     <span className="transition-all w-9 h-9 transition-duration-500 group-hover:rotate-[20deg] group-hover:shadow-lg text-brandLightBlue bg-brandBlue rounded-full  p-2  flex items-center justify-center mb-1">
@@ -565,7 +576,7 @@ const AccountPopUp = () => {
                       </svg>
                     </span>
                     Interests
-                  </Link>
+                  </button>
                 </div>
               </>
             )}

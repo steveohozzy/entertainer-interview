@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const ACCOUNT_INITIAL_STATE = {
   isAccountOpen: false,
+  isSignedIn: false,
 };
 
 export const accountSlice = createSlice({
@@ -10,12 +11,16 @@ export const accountSlice = createSlice({
   reducers: {
     setIsAccountOpen(state, action) {
       state.isAccountOpen = action.payload
+    },
+
+    setIsSignedIn(state, action) {
+      state.isSignedIn = action.payload
     }
   }
 })
 
 //replaces the action
-export const { setIsAccountOpen } = accountSlice.actions;
+export const { setIsAccountOpen, setIsSignedIn } = accountSlice.actions;
 
 //generates the reducer
 export const accountReducer = accountSlice.reducer;

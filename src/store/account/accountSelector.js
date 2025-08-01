@@ -6,3 +6,8 @@ export const selectIsAccountOpen = createSelector(
   [selectAccountReducer],
   (account) => account.isAccountOpen
 );
+
+export const selectIsSignedIn = createSelector(
+  [selectAccountReducer],
+  (account) => account.isSignedIn
+);
