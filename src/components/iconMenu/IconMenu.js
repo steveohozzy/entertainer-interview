@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { selectIsAccountOpen } from "../../store/account/accountSelector";
