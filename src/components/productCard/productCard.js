@@ -91,7 +91,7 @@ const ProductCard = ({ product }) => {
                 <>
                   <button
                     name="Close quick view"
-                    onClick={() => closeQuickView}
+                    onClick={closeQuickView}
                     className="absolute right-[-10px] top-[-15px] text-textBlue rounded-full border-[2px] border-textBlue z-[2]"
                   >
                     <svg
@@ -151,7 +151,6 @@ const ProductCard = ({ product }) => {
                                 autoplay=""
                                 loop
                                 muted
-                                playsInline
                               >
                                 <source src={product.video} type="video/mp4" />
                               </video>
