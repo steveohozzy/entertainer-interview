@@ -1,19 +1,32 @@
 import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
+import { selectIsAccountOpen } from "../../store/account/accountSelector";
+import { setIsAccountOpen } from "../../store/account/accountReducer";
 
 import Button from "../button/Button";
 import { Link } from "react-router-dom";
 import { Heart, Star } from "lucide-react";
 
 const AccountPopUp = () => {
-  const [popUpShown, setPopUpShown] = useState(false);
+  const isAccountOpen = useSelector(selectIsAccountOpen);
   const [signedIn, setSignedIn] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState(false);
   const [password, setPassword] = useState(false);
 
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const handleAccountPopUp = () => {
-    setPopUpShown(!popUpShown);
+    dispatch(setIsAccountOpen(!isAccountOpen));
   };
+
+  const handleFindOutMore = () => {
+    dispatch(setIsAccountOpen(!isAccountOpen));
+    navigate('/account')
+  }
 
   const handleEmailChange = (e) => {
     setEmail(!e.target.value);
@@ -25,6 +38,7 @@ const AccountPopUp = () => {
 
   return (
     <>
+    <div>{isAccountOpen}</div>
       {!signedIn ? (
         <button
           onClick={handleAccountPopUp}
@@ -63,8 +77,8 @@ const AccountPopUp = () => {
           </span>
         </Link>
       )}
-      {popUpShown && (
-        <div className="fixed h-screen top-0 left-0 inset-0 z-50 bg-brandBlue/60">
+      {isAccountOpen && (
+        <div className="fixed h-screen top-0 left-0 inset-0 z-[99999] bg-brandBlue/60">
           <div className="absolute left-[50%] top-[50%] z-50 grid w-full translate-x-[-50%] translate-y-[-50%] gap-3 border bg-white p-3 pb-6 shadow-lg sm:rounded-lg max-w-[320px] max-h-[90vh] overflow-y-auto">
             {!signedIn ? (
               <>
@@ -94,7 +108,7 @@ const AccountPopUp = () => {
                   <div className="text-textBlue font-bold text-lg mb-2">
                     Existing Customer?
                   </div>
-                  <form id="address-form">
+                  <form id="sign-in-form">
                     <div
                       className={`flex h-[40px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative group ${
                         email && "border-red-600"
@@ -187,7 +201,7 @@ const AccountPopUp = () => {
                       >
                         <defs></defs>
                         <path
-                          class="cls-1"
+                          className="cls-1"
                           d="M794,356h32a4,4,0,0,1,4,4v26a4,4,0,0,1-4,4H794a4,4,0,0,1-4-4V360A4,4,0,0,1,794,356Zm18,17.445V378a2,2,0,0,1-4,0v-4.555A4,4,0,1,1,812,373.445ZM796,352v-6a10,10,0,0,0-20,0v6h-6v-6a16,16,0,0,1,32,0v6h-6Z"
                           id="unlock"
                           transform="translate(-770 -330)"
@@ -209,7 +223,7 @@ const AccountPopUp = () => {
                 </p>
                 <Button
                   className="shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold rounded-[30px] bg-brandBlue text-white py-2 px-2 lg:px-4 lg:pl-0 pl-0 transition-all hover:bg-textBlue hover:scale-105 mt-2"
-                  link="/account"
+                  onClick={handleFindOutMore}
                   iconpath={
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -304,11 +318,11 @@ const AccountPopUp = () => {
                         xmlns="http://www.w3.org/2000/svg"
                         fill="currentColor"
                       >
-                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                         <g
                           id="SVGRepo_tracerCarrier"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         ></g>
                         <g id="SVGRepo_iconCarrier">
                           {" "}
@@ -375,8 +389,8 @@ const AccountPopUp = () => {
                         fill="none"
                       >
                         <path
-                          fill-rule="evenodd"
-                          clip-rule="evenodd"
+                          fillRule="evenodd"
+                          clipRule="evenodd"
                           d="M3.5 0C2.67157 0 2 0.671573 2 1.5V4H1V5H2V10H1V11H2V13.5C2 14.3284 2.67157 15 3.5 15H12.5C13.3284 15 14 14.3284 14 13.5V1.5C14 0.671573 13.3284 0 12.5 0H3.5ZM6 5C6 3.89543 6.89543 3 8 3C9.10457 3 10 3.89543 10 5C10 6.10457 9.10457 7 8 7C6.89543 7 6 6.10457 6 5ZM5 10.9999C5 9.343 6.34318 8 8 8C9.65685 8 11 9.34315 11 11V12H5V10.9999Z"
                           fill="currentColor"
                         />
@@ -435,18 +449,18 @@ const AccountPopUp = () => {
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 16 16"
                         version="1.1"
-                        class="si-glyph si-glyph-birthday-cake"
+                        className="si-glyph si-glyph-birthday-cake"
                       >
                         <g
                           stroke="none"
-                          stroke-width="1"
+                          strokeWidth="1"
                           fill="none"
-                          fill-rule="evenodd"
+                          fillRule="evenodd"
                         >
                           <g fill="currentColor">
                             <path
                               d="M2.002,13.062 L2.002,14.169 C2.002,15.474 1.895,15.944 3.484,15.944 L12.394,15.944 C13.982,15.944 13.874,15.473 13.874,14.169 L13.874,13.062 L2.002,13.062 L2.002,13.062 Z"
-                              class="si-glyph-fill"
+                              className="si-glyph-fill"
                             ></path>
 
                             <rect
@@ -454,7 +468,7 @@ const AccountPopUp = () => {
                               y="3"
                               width="0.935"
                               height="3.072"
-                              class="si-glyph-fill"
+                              className="si-glyph-fill"
                             ></rect>
 
                             <rect
@@ -462,7 +476,7 @@ const AccountPopUp = () => {
                               y="3"
                               width="1"
                               height="2.969"
-                              class="si-glyph-fill"
+                              className="si-glyph-fill"
                             ></rect>
 
                             <rect
@@ -470,33 +484,33 @@ const AccountPopUp = () => {
                               y="3"
                               width="0.99"
                               height="2.851"
-                              class="si-glyph-fill"
+                              className="si-glyph-fill"
                             ></rect>
 
                             <path
                               d="M4.965,0.975 C5.065,1.381 4.907,1.848 4.528,1.89 C4.174,1.93 3.903,1.473 4.175,1.02 C4.454,0.56 4.528,0.06 4.528,0.06 C4.528,0.06 4.848,0.487 4.965,0.975 L4.965,0.975 Z"
-                              class="si-glyph-fill"
+                              className="si-glyph-fill"
                             ></path>
 
                             <path
                               d="M7.938,1.021 C8.043,1.447 7.877,1.939 7.469,1.983 C7.088,2.025 6.797,1.544 7.091,1.069 C7.391,0.584 7.469,0.059 7.469,0.059 C7.469,0.059 7.811,0.509 7.938,1.021 L7.938,1.021 Z"
-                              class="si-glyph-fill"
+                              className="si-glyph-fill"
                             ></path>
 
                             <path
                               d="M11.974,1.023 C12.086,1.449 11.908,1.939 11.476,1.983 C11.072,2.025 10.762,1.545 11.075,1.07 C11.394,0.587 11.476,0.062 11.476,0.062 C11.476,0.062 11.839,0.512 11.974,1.023 L11.974,1.023 Z"
-                              class="si-glyph-fill"
+                              className="si-glyph-fill"
                             ></path>
 
                             <g transform="translate(2.000000, 6.000000)">
                               <path
                                 d="M1.146,2.437 C1.561,2.437 2.162,2.043 2.339,1.905 C2.344,1.899 3.066,1.221 3.941,1.221 C4.812,1.221 5.564,1.893 5.595,1.922 C5.757,2.062 6.293,2.437 6.769,2.437 C7.331,2.437 7.877,1.932 7.877,1.932 C7.917,1.894 8.664,1.221 9.565,1.221 C10.47,1.221 11.191,1.899 11.221,1.928 C11.382,2.066 11.685,2.269 11.958,2.37 C11.927,1.069 11.329,0.03 9.782,0.03 L2.259,0.03 C0.868,0.03 0.241,0.867 0.105,1.979 C0.33,2.146 0.793,2.437 1.146,2.437 L1.146,2.437 Z"
-                                class="si-glyph-fill"
+                                className="si-glyph-fill"
                               ></path>
 
                               <path
                                 d="M10.717,3.469 C10.699,3.453 10.16,2.95 9.566,2.95 C8.967,2.95 8.401,3.457 8.394,3.463 C8.368,3.486 7.643,4.163 6.77,4.163 C5.905,4.163 5.129,3.496 5.096,3.467 C4.933,3.321 4.414,2.95 3.942,2.95 C3.38,2.95 2.838,3.453 2.831,3.457 C2.716,3.549 1.899,4.163 1.147,4.163 C0.761,4.163 0.375,4.004 0.077,3.838 L0.077,5.945 L11.966,5.945 L11.966,4.131 C11.355,4.004 10.789,3.53 10.717,3.469 L10.717,3.469 Z"
-                                class="si-glyph-fill"
+                                className="si-glyph-fill"
                               ></path>
                             </g>
 
@@ -505,7 +519,7 @@ const AccountPopUp = () => {
                               y="14"
                               width="15.851"
                               height="1.935"
-                              class="si-glyph-fill"
+                              className="si-glyph-fill"
                             ></rect>
                           </g>
                         </g>

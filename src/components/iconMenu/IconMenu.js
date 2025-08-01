@@ -1,15 +1,27 @@
+import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+
+import { selectIsAccountOpen } from "../../store/account/accountSelector";
+import { setIsAccountOpen } from "../../store/account/accountReducer";
+
 import { Star } from "lucide-react";
 import { HashLink } from "react-router-hash-link";
 import { Link } from "react-router-dom";
 
 const IconMenu = () => {
+  const isAccountOpen = useSelector(selectIsAccountOpen);
+  const dispatch = useDispatch();
+
+  const handleAccountPopUp = () => {
+    dispatch(setIsAccountOpen(!isAccountOpen));
+  };
 
   return (
     <div className="overflow-hidden">
       <div className="bg-brandLightBlue">
         <nav className="max-w-7xl mx-auto text-brandBlue grid grid-cols-6 py-5 lg:grid-cols-12 gap-2 md:gap-5 justify-center px-3 md:px-6">
           <Link
-            to="/account"
+            onClick={handleAccountPopUp}
             className="transition-all text-brandBlue flex flex-col items-center hover:scale-110 group text-xs md:text-sm"
           >
             <span className="transition-all w-9 h-9 transition-duration-500 group-hover:rotate-[20deg] group-hover:shadow-lg bg-brandBlue text-brandLightblue rounded-full md:w-12 md:h-12 p-2 flex items-center justify-center">
@@ -18,11 +30,11 @@ const IconMenu = () => {
                 xmlns="http://www.w3.org/2000/svg"
                 fill="#deeeee"
               >
-                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                 <g
                   id="SVGRepo_tracerCarrier"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 ></g>
                 <g id="SVGRepo_iconCarrier">
                   {" "}
@@ -38,14 +50,14 @@ const IconMenu = () => {
             Login
           </Link>
           <Link
-            to="/account"
+            onClick={handleAccountPopUp}
             className="transition-all text-brandBlue flex flex-col items-center hover:scale-110 group text-xs md:text-sm"
           >
             <span className="transition-all w-9 h-9 transition-duration-500 group-hover:rotate-[20deg] group-hover:shadow-lg text-brandLightBlue bg-brandBlue rounded-full md:w-12 md:h-12 p-2 md:p-3 flex items-center justify-center">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
                 <g
                   id="SVGRepo_bgCarrier"
-                  stroke-width="0"
+                  strokeWidth="0"
                   transform="matrix(16.940857, 0, 0, 16.940857, 19.580658, 5.832413)"
                 />
                 <g
@@ -63,16 +75,16 @@ const IconMenu = () => {
                       d="M21.2799 6.40005L11.7399 15.94C10.7899 16.89 7.96987 17.33 7.33987 16.7C6.70987 16.07 7.13987 13.25 8.08987 12.3L17.6399 2.75002C17.8754 2.49308 18.1605 2.28654 18.4781 2.14284C18.7956 1.99914 19.139 1.92124 19.4875 1.9139C19.8359 1.90657 20.1823 1.96991 20.5056 2.10012C20.8289 2.23033 21.1225 2.42473 21.3686 2.67153C21.6147 2.91833 21.8083 3.21243 21.9376 3.53609C22.0669 3.85976 22.1294 4.20626 22.1211 4.55471C22.1128 4.90316 22.0339 5.24635 21.8894 5.5635C21.7448 5.88065 21.5375 6.16524 21.2799 6.40005V6.40005Z"
                       stroke="currentColor"
                       fill="#deeeee"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     />
                     <path
                       d="M 11 4 L 6 4 C 4.939 4 3.922 4.421 3.172 5.171 C 2.421 5.921 2 6.939 2 8 L 2 18 C 2 19.061 2.421 20.078 3.172 20.828 C 3.922 21.578 4.939 22 6 22 L 17 22 C 19.21 22 20 20.2 20 18 L 20 13"
                       stroke="currentColor"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       fill="none"
                     />
                   </g>
@@ -154,8 +166,8 @@ const IconMenu = () => {
                   fill="currentColor"
                 />
                 <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
                   d="M14.4467 16.3769L20.2935 10.5476C21.1356 9.70811 21.5566 9.28836 21.7783 8.75458C22.0001 8.22081 22.0001 7.62719 22.0001 6.43996V5.87277C22.0001 4.04713 22.0001 3.13431 21.4312 2.56715C20.8624 2 19.9468 2 18.1157 2H17.5468C16.356 2 15.7606 2 15.2252 2.2211C14.6898 2.4422 14.2688 2.86195 13.4268 3.70146L7.57991 9.53078C6.59599 10.5117 5.98591 11.12 5.74966 11.7075C5.67502 11.8931 5.6377 12.0767 5.6377 12.2692C5.6377 13.0713 6.2851 13.7168 7.57991 15.0077L7.75393 15.1812L9.79245 13.1123C10.0832 12.8172 10.558 12.8137 10.8531 13.1044C11.1481 13.3951 11.1516 13.87 10.8609 14.1651L8.8162 16.2403L8.95326 16.3769C10.2481 17.6679 10.8955 18.3133 11.7 18.3133C11.8777 18.3133 12.0478 18.2818 12.2189 18.2188C12.8222 17.9966 13.438 17.3826 14.4467 16.3769ZM17.1935 9.5312C16.435 10.2874 15.2053 10.2874 14.4468 9.5312C13.6883 8.775 13.6883 7.54895 14.4468 6.79274C15.2053 6.03653 16.435 6.03653 17.1935 6.79274C17.952 7.54895 17.952 8.775 17.1935 9.5312Z"
                   fill="currentColor"
                 />
@@ -190,18 +202,18 @@ const IconMenu = () => {
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 16 16"
                 version="1.1"
-                class="si-glyph si-glyph-birthday-cake"
+                className="si-glyph si-glyph-birthday-cake"
               >
                 <g
                   stroke="none"
-                  stroke-width="1"
+                  strokeWidth="1"
                   fill="none"
-                  fill-rule="evenodd"
+                  fillRule="evenodd"
                 >
                   <g fill="currentColor">
                     <path
                       d="M2.002,13.062 L2.002,14.169 C2.002,15.474 1.895,15.944 3.484,15.944 L12.394,15.944 C13.982,15.944 13.874,15.473 13.874,14.169 L13.874,13.062 L2.002,13.062 L2.002,13.062 Z"
-                      class="si-glyph-fill"
+                      className="si-glyph-fill"
                     ></path>
 
                     <rect
@@ -209,7 +221,7 @@ const IconMenu = () => {
                       y="3"
                       width="0.935"
                       height="3.072"
-                      class="si-glyph-fill"
+                      className="si-glyph-fill"
                     ></rect>
 
                     <rect
@@ -217,7 +229,7 @@ const IconMenu = () => {
                       y="3"
                       width="1"
                       height="2.969"
-                      class="si-glyph-fill"
+                      className="si-glyph-fill"
                     ></rect>
 
                     <rect
@@ -225,33 +237,33 @@ const IconMenu = () => {
                       y="3"
                       width="0.99"
                       height="2.851"
-                      class="si-glyph-fill"
+                      className="si-glyph-fill"
                     ></rect>
 
                     <path
                       d="M4.965,0.975 C5.065,1.381 4.907,1.848 4.528,1.89 C4.174,1.93 3.903,1.473 4.175,1.02 C4.454,0.56 4.528,0.06 4.528,0.06 C4.528,0.06 4.848,0.487 4.965,0.975 L4.965,0.975 Z"
-                      class="si-glyph-fill"
+                      className="si-glyph-fill"
                     ></path>
 
                     <path
                       d="M7.938,1.021 C8.043,1.447 7.877,1.939 7.469,1.983 C7.088,2.025 6.797,1.544 7.091,1.069 C7.391,0.584 7.469,0.059 7.469,0.059 C7.469,0.059 7.811,0.509 7.938,1.021 L7.938,1.021 Z"
-                      class="si-glyph-fill"
+                      className="si-glyph-fill"
                     ></path>
 
                     <path
                       d="M11.974,1.023 C12.086,1.449 11.908,1.939 11.476,1.983 C11.072,2.025 10.762,1.545 11.075,1.07 C11.394,0.587 11.476,0.062 11.476,0.062 C11.476,0.062 11.839,0.512 11.974,1.023 L11.974,1.023 Z"
-                      class="si-glyph-fill"
+                      className="si-glyph-fill"
                     ></path>
 
                     <g transform="translate(2.000000, 6.000000)">
                       <path
                         d="M1.146,2.437 C1.561,2.437 2.162,2.043 2.339,1.905 C2.344,1.899 3.066,1.221 3.941,1.221 C4.812,1.221 5.564,1.893 5.595,1.922 C5.757,2.062 6.293,2.437 6.769,2.437 C7.331,2.437 7.877,1.932 7.877,1.932 C7.917,1.894 8.664,1.221 9.565,1.221 C10.47,1.221 11.191,1.899 11.221,1.928 C11.382,2.066 11.685,2.269 11.958,2.37 C11.927,1.069 11.329,0.03 9.782,0.03 L2.259,0.03 C0.868,0.03 0.241,0.867 0.105,1.979 C0.33,2.146 0.793,2.437 1.146,2.437 L1.146,2.437 Z"
-                        class="si-glyph-fill"
+                        className="si-glyph-fill"
                       ></path>
 
                       <path
                         d="M10.717,3.469 C10.699,3.453 10.16,2.95 9.566,2.95 C8.967,2.95 8.401,3.457 8.394,3.463 C8.368,3.486 7.643,4.163 6.77,4.163 C5.905,4.163 5.129,3.496 5.096,3.467 C4.933,3.321 4.414,2.95 3.942,2.95 C3.38,2.95 2.838,3.453 2.831,3.457 C2.716,3.549 1.899,4.163 1.147,4.163 C0.761,4.163 0.375,4.004 0.077,3.838 L0.077,5.945 L11.966,5.945 L11.966,4.131 C11.355,4.004 10.789,3.53 10.717,3.469 L10.717,3.469 Z"
-                        class="si-glyph-fill"
+                        className="si-glyph-fill"
                       ></path>
                     </g>
 
@@ -260,7 +272,7 @@ const IconMenu = () => {
                       y="14"
                       width="15.851"
                       height="1.935"
-                      class="si-glyph-fill"
+                      className="si-glyph-fill"
                     ></rect>
                   </g>
                 </g>
@@ -280,8 +292,8 @@ const IconMenu = () => {
                 fill="none"
               >
                 <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
                   d="M1.94971 4.44987C1.94969 3.06915 3.06898 1.94985 4.4497 1.94984L12.0209 1.94983C12.8165 1.94983 13.5796 2.2659 14.1422 2.82851L22.0417 10.728C23.6038 12.2901 23.6038 14.8228 22.0417 16.3849L16.3848 22.0417C14.8227 23.6038 12.2901 23.6038 10.728 22.0417L2.82846 14.1422C2.26586 13.5796 1.94979 12.8166 1.94978 12.0209L1.94971 4.44987ZM8.5 10C9.32843 10 10 9.32843 10 8.5C10 7.67157 9.32843 7 8.5 7C7.67157 7 7 7.67157 7 8.5C7 9.32843 7.67157 10 8.5 10Z"
                   fill="currentColor"
                 />
@@ -298,7 +310,7 @@ const IconMenu = () => {
                 version="1.0"
                 id="Layer_1"
                 viewBox="0 0 64 64"
-                enable-background="new 0 0 64 64"
+                enableBackground="new 0 0 64 64"
               >
                 <path
                   fill="currentColor"

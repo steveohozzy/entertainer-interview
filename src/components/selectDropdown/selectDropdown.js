@@ -3,7 +3,7 @@ const selectDropdown = () => {
   return (
     <div>
   <h1>Custom Dropdown</h1>
-  <div class="container">
+  <div className="container">
     <label for="select">Custom Select</label>
     <button
       role="combobox"
@@ -31,7 +31,7 @@ const selectDropdown = () => {
       <li role="option">Pluto (I'm a planet)</li>
     </ul>
   </div>
-  <div class="container">
+  <div className="container">
       <label for="select2">Default Select</label>
       <select id="select2">
       <option>Mecury</option>

@@ -50,7 +50,7 @@ const Account = () => {
         <div className="w-full flex gap-3">
           <div className={`w-full md:w-1/2 py-6 px-4 ${registerForm ? 'block' : 'hidden md:block'}`}>
             <h2 className="text-textBlue font-bold text-lg md:text-xl">Create an account</h2>
-            <form id="address-form">
+            <form id="sign-up-form">
               <div className={`flex h-[40px] px-3 mt-5 rounded-lg w-full border border-[3px] border-brandBlue relative ${name && 'border-red-600'}`}>
                 <span
                   className="absolute left-[calc(20%-20px)] md:left-[calc(15%-10px)] z-[2] top-[14px] w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[6px] border-gray-400 transition-all"></span>
@@ -115,7 +115,7 @@ const Account = () => {
           </div>
           <div className={`w-full md:w-1/2 py-6 px-4 ${loginForm ? 'block' : 'hidden md:block'}`}>
             <h2 className="text-textBlue font-bold text-lg md:text-xl">Existing Customers</h2>
-            <form id="address-form">
+            <form id="sign-in-form">
              <div className={`flex mt-5 h-[40px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative group ${email && 'border-red-600'}`}>
                 <input type="email" placeholder="Email" onChange={handleEmailChange} onBlur={handleEmailChange} className="peer text-base m-0 block h-[32px] w-full bg-transparent text-textBlue transition duration-200 ease-linear placeholder:text-transparent focus:outline-none" />
                 <label className="px-3 pointer-events-none absolute left-0 top-[2px] origin-[0_0] border border-solid border-transparent text-base text-gray-400 transition-[opacity,_transform] duration-200 ease-linear peer-focus:-translate-y-7 peer-focus:translate-x-[0.15rem] peer-focus:scale-[0.85] peer-focus:text-brandBlue peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:translate-x-[0.15rem] peer-[:not(:placeholder-shown)]:scale-[0.85] peer-[:not(:placeholder-shown)]:text-brandBlue motion-reduce:transition-none">Email</label>
