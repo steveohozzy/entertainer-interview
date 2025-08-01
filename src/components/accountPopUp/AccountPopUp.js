@@ -25,6 +25,10 @@ const AccountPopUp = () => {
     dispatch(setIsAccountOpen(!isAccountOpen));
   };
 
+  const closeAccountPopUp = () => {
+    dispatch(setIsAccountOpen(false));
+  };
+
   const handleFindOutMore = () => {
     dispatch(setIsAccountOpen(!isAccountOpen));
     navigate('/account')
@@ -37,24 +41,24 @@ const AccountPopUp = () => {
   const handlePasswordChange = (e) => {
     setPassword(!e.target.value);
   };
-  
-    function useOutsideAlerter(ref) {
-      useEffect(() => {
-        function handleClickOutside(event) {
-          if (ref.current && !ref.current.contains(event.target)) {
-           handleAccountPopUp()
-          }
+
+  function useOutsideAlerter(ref) {
+    useEffect(() => {
+      function handleClickOutside(event) {
+        if (ref.current && !ref.current.contains(event.target)) {
+         closeAccountPopUp()
         }
-        // Bind the event listener
-        document.addEventListener("mousedown", handleClickOutside);
-        return () => {
-          // Unbind the event listener on clean up
-          document.removeEventListener("mousedown", handleClickOutside);
-        };
-      }, [ref]);
-    }
-  
-    useOutsideAlerter(wrapperRef);
+      }
+      // Bind the event listener
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        // Unbind the event listener on clean up
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [ref]);
+  }
+
+  useOutsideAlerter(wrapperRef);
 
   return (
     <>
