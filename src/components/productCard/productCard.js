@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Star, Heart, Eye, Plus, Minus } from "lucide-react";
 import { useSelector } from "react-redux";
@@ -36,6 +36,8 @@ const ProductCard = ({ product }) => {
 
   // swap colours
   const [swatchColor, setSwatchColor] = useState('blue');
+
+  const wrapperRef = useRef(null);
 
   const goToLinkHandler = () => {
     navigate("/product-details/" + product.id);
@@ -80,12 +82,30 @@ const ProductCard = ({ product }) => {
     localStorage.setItem("wishlistItems", JSON.stringify(wishlistItems));
   }, [wishlistItems])
 
+  function useOutsideAlerter(ref) {
+    useEffect(() => {
+      function handleClickOutside(event) {
+        if (ref.current && !ref.current.contains(event.target)) {
+         closeQuickView();
+        }
+      }
+      // Bind the event listener
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        // Unbind the event listener on clean up
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [ref]);
+  }
+
+  useOutsideAlerter(wrapperRef);
+
   return (
     <>
       {/* Quick View Modal */}
       {quickViewProduct && (
         <div className="fixed inset-0 z-50 bg-brandBlue/60">
-          <div className="fixed left-[50%] top-[50%] z-50 grid w-full translate-x-[-50%] translate-y-[-50%] gap-4 border bg-white p-6 shadow-lg sm:rounded-lg max-w-4xl max-h-[90vh] overflow-y-auto">
+          <div ref={wrapperRef} className="fixed left-[50%] top-[50%] z-50 grid w-full translate-x-[-50%] translate-y-[-50%] gap-4 border bg-white p-6 shadow-lg sm:rounded-lg max-w-4xl max-h-[90vh] overflow-y-auto">
             <div className="relative flex flex-col gap-4">
               {quickViewProduct && (
                 <>

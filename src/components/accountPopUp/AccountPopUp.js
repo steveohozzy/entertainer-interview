@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -19,6 +19,8 @@ const AccountPopUp = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const wrapperRef = useRef(null);
+
   const handleAccountPopUp = () => {
     dispatch(setIsAccountOpen(!isAccountOpen));
   };
@@ -35,6 +37,24 @@ const AccountPopUp = () => {
   const handlePasswordChange = (e) => {
     setPassword(!e.target.value);
   };
+  
+    function useOutsideAlerter(ref) {
+      useEffect(() => {
+        function handleClickOutside(event) {
+          if (ref.current && !ref.current.contains(event.target)) {
+           handleAccountPopUp()
+          }
+        }
+        // Bind the event listener
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+          // Unbind the event listener on clean up
+          document.removeEventListener("mousedown", handleClickOutside);
+        };
+      }, [ref]);
+    }
+  
+    useOutsideAlerter(wrapperRef);
 
   return (
     <>
@@ -79,7 +99,7 @@ const AccountPopUp = () => {
       )}
       {isAccountOpen && (
         <div className="fixed h-screen top-0 left-0 inset-0 z-[99999] bg-brandBlue/60">
-          <div className="absolute left-[50%] top-[50%] z-50 grid w-full translate-x-[-50%] translate-y-[-50%] gap-3 border bg-white p-3 pb-6 shadow-lg sm:rounded-lg max-w-[320px] max-h-[90vh] overflow-y-auto">
+          <div ref={wrapperRef} className="absolute left-[50%] top-[50%] z-50 grid w-full translate-x-[-50%] translate-y-[-50%] gap-3 border bg-white p-3 pb-6 shadow-lg sm:rounded-lg max-w-[320px] max-h-[90vh] overflow-y-auto">
             {!signedIn ? (
               <>
                 <div className="relative flex flex-col gap-2">
