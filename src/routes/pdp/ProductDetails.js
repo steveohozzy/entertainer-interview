@@ -92,7 +92,7 @@ const ProductDetails = () => {
                     >
                         {product.video &&
                             <SwiperSlide className="h-auto">
-                                <video className="object-cover w-full h-full" autoplay="" loop muted>
+                                <video className="object-cover w-full h-full" autoplay="" playsInline loop muted>
                                     <source src={product.video} type="video/mp4" />
                                 </video>
                             </SwiperSlide>

@@ -151,6 +151,7 @@ const ProductCard = ({ product }) => {
                                 autoplay=""
                                 loop
                                 muted
+                                playsInline
                               >
                                 <source src={product.video} type="video/mp4" />
                               </video>

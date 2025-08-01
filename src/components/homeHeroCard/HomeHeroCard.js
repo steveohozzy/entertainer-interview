@@ -49,6 +49,7 @@ const HomeHeroCard = () => {
             autoplay=""
             loop
             muted
+            playsInline
           >
             <source
               src="https://www.thetoyshop.com/medias/Green-Machine-Video.mp4?context=bWFzdGVyfHJvb3R8MzEzNzQzMHx2aWRlby9tcDR8YUdSbUwyZzNaUzh4TWpVMU56Z3hNamcxT0RreE1DOUhjbVZsYmlCTllXTm9hVzVsSUZacFpHVnZMbTF3TkF8YjlmMGY4Njk3YzEzYzBhMzMwNWVjZTU3NmE3NjU2ZTk2ZGUxMTZiNTUxODg0NWYxZTJiMjExNjk2OTFhNDQxMQ"

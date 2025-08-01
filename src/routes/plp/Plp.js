@@ -436,7 +436,7 @@ const Plp = () => {
                   <option value="newest">Newest</option>
                 </select>
               </form>
-              <div className={`relative z-[2] bg-white border-[3px] border-brandBlue border-b-brandBlue ${showFilters && 'border-b-white'}`}>
+              <div ref={wrapperRef} className={`relative z-[2] bg-white border-[3px] border-brandBlue border-b-brandBlue ${showFilters && 'border-b-white'}`}>
                 <button
                   name="Show filters"
                   onClick={() => setShowFilters(!showFilters)}
