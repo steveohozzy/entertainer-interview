@@ -1,4 +1,4 @@
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { ChevronUp, Heart, MenuIcon } from "lucide-react";
 import IconMenu from "../iconMenu/IconMenu";
@@ -15,6 +15,8 @@ import { setIsCartOpen } from "../../store/cart/cartReducer";
 
 import { selectWishlistItems, selectWishlistCount } from "../../store/wishlist/wishlistSelector";
 
+import { setIsSignedIn } from "../../store/account/accountReducer";
+
 import Footer from "../footer/Footer";
 import MiniCart from "../miniCart/miniCart";
 import SearchBar from "../searchBar/searchBar";
@@ -30,6 +32,7 @@ const Layout = () => {
   const cartTotal = useSelector(selectCartTotal);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const isCartOpen = useSelector(selectIsCartOpen);
 
   // Scroll to top
@@ -97,6 +100,11 @@ const Layout = () => {
     }, "450");
   }
 
+  const goToWishlistHandler = () => {
+    dispatch(setIsSignedIn(true));
+    navigate('/account');
+  }
+
   return (
     <>
       <header
@@ -121,13 +129,13 @@ const Layout = () => {
                   <span className="sr-only">Activate Menu</span>
                 </button>
                 <AccountPopUp />
-                <Link to="/wishlist" className="group flex md:hidden ml-2" name="View your favourites">
+                <button onClick={goToWishlistHandler} className="group flex md:hidden ml-2" name="View your favourites">
                     <Heart className="transition-all h-5 w-5 group-hover:scale-110 group-hover:rotate-[20deg]" fill="white" />
                     <span className="sr-only">View your favourites</span>
                     <div className="hidden md:block ml-1 text-xs bg-brandRed w-[20px] h-[20px] flex items-center justify-center rounded-full z-20">
                         {wishlistCount}
                     </div>
-                </Link>
+                </button>
               </div>
               <div className="flex items-center space-x-4 pt-2 ml-2 md:pt-4 md:ml-0 group">
                 <Link to="/" className="flex">
@@ -144,13 +152,13 @@ const Layout = () => {
                 </Link>
               </div>
               <div className="flex items-center space-x-4">
-                <Link to="/wishlist" className="group hidden md:flex" name="View your favourites">
+                <button onClick={goToWishlistHandler} className="group hidden md:flex" name="View your favourites">
                     <Heart className="transition-all h-5 w-5 group-hover:scale-110 group-hover:rotate-[20deg]" fill="white" />
                     <span className="sr-only">View your favourites</span>
                     <div className="ml-1 text-xs bg-brandRed w-[20px] h-[20px] flex items-center justify-center rounded-full z-20">
                         {wishlistCount}
                     </div>
-                </Link>
+                </button>
                 <div className="relative">
                     <button
                     onClick={toggleIsCartOpen}

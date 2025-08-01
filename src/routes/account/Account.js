@@ -5,6 +5,7 @@ import { selectIsSignedIn } from "../../store/account/accountSelector";
 import { setIsSignedIn } from "../../store/account/accountReducer";
 
 import Button from "../../components/button/Button";
+import AccountTabs from "../../components/accountTabs/AccountTabs";
 
 const Account = () => {
   const [name, setName] = useState(false);
@@ -169,7 +170,9 @@ const Account = () => {
         </div>
       ) : (
         <>
-          <div>signed in</div>
+          <div>
+            <AccountTabs />
+          </div>
           <div className="max-w-xl mx-auto mt-6">
             <Button
               onClick={handleSignOut}
