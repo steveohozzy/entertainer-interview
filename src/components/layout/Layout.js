@@ -124,7 +124,7 @@ const Layout = () => {
                 <Link to="/wishlist" className="group flex md:hidden ml-2" name="View your favourites">
                     <Heart className="transition-all h-5 w-5 group-hover:scale-110 group-hover:rotate-[20deg]" fill="white" />
                     <span className="sr-only">View your favourites</span>
-                    <div className="ml-1 text-xs bg-brandRed w-[20px] h-[20px] flex items-center justify-center rounded-full z-20">
+                    <div className="hidden md:block ml-1 text-xs bg-brandRed w-[20px] h-[20px] flex items-center justify-center rounded-full z-20">
                         {wishlistCount}
                     </div>
                 </Link>

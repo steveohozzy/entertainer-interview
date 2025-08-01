@@ -84,7 +84,7 @@ const ProductCard = ({ product }) => {
     <>
       {/* Quick View Modal */}
       {quickViewProduct && (
-        <div className="fixed inset-0 z-50 md:bg-brandBlue/60">
+        <div className="fixed inset-0 z-50 bg-brandBlue/60">
           <div className="fixed left-[50%] top-[50%] z-50 grid w-full translate-x-[-50%] translate-y-[-50%] gap-4 border bg-white p-6 shadow-lg sm:rounded-lg max-w-4xl max-h-[90vh] overflow-y-auto">
             <div className="relative flex flex-col gap-4">
               {quickViewProduct && (
