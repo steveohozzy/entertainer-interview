@@ -3,6 +3,8 @@ import { useState } from "react";
 
 import WishlistContainer from "../wishlistContainer/WishlistContainer";
 import MeAccountSection from "../meAccountSection/MeAccountSection";
+import BankAccountSection from "../bankAccountSection/BankAccountSection";
+import OrdersAccountSection from "../ordersAccountSection/OrdersAccountSection";
 
 const AccountTabs = () => {
   const [tabSelected, setTabSelected] = useState("wishlist");
@@ -248,16 +250,16 @@ const AccountTabs = () => {
       <div className={`transition duration-300 ease-in-out bg-white opacity-0 max-h-0 rounded-tr-xl rounded-br-xl rounded-bl-xl ${tabSelected === 'wishlist' ? 'opacity-100 p-6 max-h-none' : 'overflow-hidden '}`}>
         <WishlistContainer />
       </div>
-      <div className={`transition duration-300 ease-in-out bg-white opacity-0 max-h-0 rounded-tr-xl rounded-br-xl rounded-bl-xl ${tabSelected === 'me' ? 'opacity-100 p-6 max-h-none' : 'overflow-hidden'}`}>
+      <div className={`transition duration-300 ease-in-out bg-white opacity-0 max-h-0 rounded-tr-xl rounded-tl-xl rounded-br-xl rounded-bl-xl ${tabSelected === 'me' ? 'opacity-100 p-6 max-h-none' : 'overflow-hidden'}`}>
         <MeAccountSection />
       </div>
-      <div className={`transition duration-300 ease-in-out bg-white opacity-0 max-h-0 overflow-hidden rounded-tr-xl rounded-br-xl rounded-bl-xl ${tabSelected === 'bank' ? 'opacity-100 p-6 max-h-none' : ''}`}>
-        Bank
+      <div className={`transition duration-300 ease-in-out bg-white opacity-0 max-h-0 overflow-hidden rounded-tr-xl rounded-tl-xl rounded-br-xl rounded-bl-xl ${tabSelected === 'bank' ? 'opacity-100 p-6 max-h-none' : ''}`}>
+        <BankAccountSection />
       </div>
-      <div className={`transition duration-300 ease-in-out bg-white opacity-0 max-h-0 overflow-hidden rounded-tr-xl rounded-br-xl rounded-bl-xl ${tabSelected === 'orders' ? 'opacity-100 p-6 max-h-none' : ''}`}>
-        Orders
+      <div className={`transition duration-300 ease-in-out bg-white opacity-0 max-h-0 overflow-hidden rounded-tr-xl rounded-tl-xl rounded-br-xl rounded-bl-xl ${tabSelected === 'orders' ? 'opacity-100 p-6 max-h-none' : ''}`}>
+        <OrdersAccountSection />
       </div>
-      <div className={`transition duration-300 ease-in-out bg-white opacity-0 max-h-0 overflow-hidden rounded-tr-xl rounded-br-xl rounded-bl-xl ${tabSelected === 'peeks' ? 'opacity-100 p-6 max-h-none' : ''}`}>
+      <div className={`transition duration-300 ease-in-out bg-white opacity-0 max-h-0 overflow-hidden rounded-tl-xl rounded-br-xl rounded-bl-xl ${tabSelected === 'peeks' ? 'opacity-100 p-6 max-h-none' : ''}`}>
         Peeks
       </div>
     </>
