@@ -5,6 +5,7 @@ import WishlistContainer from "../wishlistContainer/WishlistContainer";
 import MeAccountSection from "../meAccountSection/MeAccountSection";
 import BankAccountSection from "../bankAccountSection/BankAccountSection";
 import OrdersAccountSection from "../ordersAccountSection/OrdersAccountSection";
+import PeeksAccountSection from "../peeksAccountSection/PeeksAccountSection";
 
 const AccountTabs = () => {
   const [tabSelected, setTabSelected] = useState("wishlist");
@@ -260,7 +261,7 @@ const AccountTabs = () => {
         <OrdersAccountSection />
       </div>
       <div className={`transition duration-300 ease-in-out bg-white opacity-0 max-h-0 overflow-hidden rounded-tl-xl rounded-br-xl rounded-bl-xl ${tabSelected === 'peeks' ? 'opacity-100 p-6 max-h-none' : ''}`}>
-        Peeks
+        <PeeksAccountSection />
       </div>
     </>
   );
