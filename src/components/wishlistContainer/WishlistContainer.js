@@ -49,7 +49,7 @@ const WishlistContainer = () => {
                   Buy this list
             </Button>
           </div>
-            <button className="transition-all border-[3px] border-brandRed rounded-full w-9 h-9 md:w-12 md:h-12 p-1 md:p-2 flex items-center justify-center hover:rotate-[45deg]">
+            <button className="transition-all border-[3px] border-brandRed rounded-full w-9 h-9 md:w-12 md:h-12 p-2 flex items-center justify-center hover:rotate-[45deg]">
               <span className="flex items-center w-9 h-9 text-brandRed">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -69,7 +69,7 @@ const WishlistContainer = () => {
                 </svg>
               </span>
             </button>
-            <button className="transition-all border-[3px] border-brandRed rounded-full w-9 h-9 md:w-12 md:h-12 p-1 md:p-2 flex items-center justify-center hover:rotate-[45deg]">
+            <button className="transition-all border-[3px] border-brandRed rounded-full w-9 h-9 md:w-12 md:h-12 p-2 flex items-center justify-center hover:rotate-[45deg]">
               <span className="flex items-center w-9 h-9 text-brandRed">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
                   height="24" fill="none">
