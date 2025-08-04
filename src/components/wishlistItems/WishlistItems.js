@@ -29,7 +29,7 @@ const WishlistItemsList = () => {
     dispatch(clearItemFromWishlist(product));
 
   return (
-    <div className="grid grid-cols-4 gap-6 mt-6">
+    <div className="grid grid-cols-4 gap-2 md:gap-6 mt-6">
       {wishlistItems.length && (
         <>
           {wishlistItems.map((product) => (
@@ -40,28 +40,6 @@ const WishlistItemsList = () => {
                     alt={product.name}
                     className="w-full object-cover group-hover:scale-105 transition-transform duration-300 rounded-lg"
                 />
-                <button
-                  name={`remove' ${product.name}`}
-                  onClick={() => {clearItemHandler(product)}}
-                  className="absolute right-1 top-1 text-textBlue rounded-full border-[2px] border-textBlue z-[2]"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="lucide lucide-x h-5 w-5"
-                  >
-                    <path d="M18 6 6 18"></path>
-                    <path d="m6 6 12 12"></path>
-                  </svg>
-                  <span className="sr-only">Remove</span>
-                </button>
               </div>
               <div className="flex flex-col justify-between items-center py-3">
                 <div className="price">
@@ -77,6 +55,11 @@ const WishlistItemsList = () => {
                   onClick={() => {addProductToCart(product)}}>
                     Buy
                 </button>
+                <button
+                  name={`remove' ${product.name}`}
+                  onClick={() => {clearItemHandler(product)}}
+                  className="mt-1 text-xs font-bold text-brandRed underline"
+                >remove</button>
               </div>
             </div>
           ))}
