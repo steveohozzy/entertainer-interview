@@ -57,6 +57,9 @@ const ProductDetails = () => {
 
      // swap colours
     const [swatchColor, setSwatchColor] = useState('blue');
+
+    //show stores
+    const [storesOpen, setStoresOpen] = useState(false);
     
 
   return (
@@ -182,16 +185,56 @@ const ProductDetails = () => {
                         </div>
                     </div>
                     <div className="w-full py-4 pt-0 md:pt-8">
-                        <div className="flex items-center">
+                        <div className="flex items-center flex-wrap">
                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
                                 <path d="M6.61 0.639062C10.1216 0.639062 13.0134 3.53094 13.0134 7.0425C13.0134 10.5799 10.1216 13.4459 6.61 13.4459C3.07262 13.4459 0.206563 10.5799 0.206563 7.0425C0.206563 3.53094 3.07262 0.639062 6.61 0.639062ZM6.61 1.87844C3.74395 1.87844 1.44594 4.20227 1.44594 7.0425C1.44594 9.90855 3.74395 12.2066 6.61 12.2066C9.45023 12.2066 11.7741 9.90855 11.7741 7.0425C11.7741 4.20227 9.45023 1.87844 6.61 1.87844ZM10.2248 5.2609C10.3281 5.36418 10.3281 5.57074 10.2248 5.69984L5.75793 10.1151C5.62883 10.2442 5.44809 10.2442 5.31898 10.1151L2.96934 7.73965C2.86605 7.63637 2.86605 7.4298 2.96934 7.3007L3.5632 6.73266C3.6923 6.60355 3.87305 6.60355 4.00215 6.73266L5.55137 8.28187L9.19203 4.66703C9.32113 4.53793 9.5277 4.53793 9.63098 4.66703L10.2248 5.2609Z" fill="#328320"/>
                             </svg>
                             <span className="font-bold ml-3 text-sm md:text-md text-brandGreen">
                                 3 in stock in Amersham
                             </span>
-                            <button className="text-xs text-gray-400 underline ml-3">
+                            <button onClick={() => setStoresOpen(!storesOpen)} className="text-xs text-gray-400 underline ml-3">
                                 Select another store
                             </button>
+                            <div className={`grid overflow-hidden transition-all duration-300 ease-in-out w-full ${
+                            storesOpen
+                                ? "grid-rows-[1fr] opacity-100"
+                                : "grid-rows-[0fr] opacity-0"
+                            }`}>
+                                <div className="w-full md:w-1/2 overflow-hidden">
+                                    <div className='mt-4'>
+                                        <form id="pickup-form" className='flex'>
+                                        <label className='text-sm text-textBlue mr-6'>
+                                            <input type="radio" name="option" id="option1" className='accent-brandGreen mr-2' defaultChecked />
+                                            Entertainer stores
+                                        </label>
+                                        <label className='text-sm text-textBlue'>
+                                            <input type="radio" name="option" id="option1" className='accent-brandGreen mr-2' />
+                                            Tesco stores
+                                        </label>
+                                        </form>
+                                        <div className='flex justify-between py-3 border-b-[3px] border-gray-300'>
+                                        <div>
+                                            <button className='text-sm text-gray-400 mr-3'>
+                                            List view
+                                            </button>
+                                            <button className='text-sm text-gray-400'>
+                                            map view
+                                            </button>
+                                        </div>
+                                        <span className='text-sm text-gray-400'>
+                                            Results
+                                        </span>
+                                        </div>
+                                        <div className='text-sm text-brandBlue py-4'>
+                                        The Entertainer Amersham<br />
+                                        2 Sycamore Road, Amersham HP^ 5DR
+                                        <div className='text-gray-400'>
+                                            Collect withi 30 minutes for fREE
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -290,7 +333,7 @@ const ProductDetails = () => {
                 <div className='bg-white p-5 rounded-tl-lg rounded-bl-lg max-h-screen overflow-auto no-scrollbar'>
                     <div className='flex flex-col gap-4 justify-start'>
                     {products.slice(0, 6).map((product) => (
-                        <div onClick={() => { navigate(`/product-details/${product.id}`); window.scrollTo({top: 0,left: 0,behavior: "smooth",}); setTabOpen(false)}} className="cursor-pointer flex flex-col w-full border-[2px] border-brandLightBlue rounded-xl">
+                        <div key={product.id} onClick={() => { navigate(`/product-details/${product.id}`); window.scrollTo({top: 0,left: 0,behavior: "smooth",}); setTabOpen(false)}} className="cursor-pointer flex flex-col w-full border-[2px] border-brandLightBlue rounded-xl">
                             <div className="w-full">
                                 <img
                                     src={product.image || "/placeholder.svg"}

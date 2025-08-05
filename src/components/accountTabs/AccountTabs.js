@@ -105,7 +105,7 @@ const AccountTabs = () => {
               version="1.0"
               id="Layer_1"
               viewBox="0 0 64 64"
-              enable-background="new 0 0 64 64"
+              enableBackground="new 0 0 64 64"
             >
               <g>
                 <rect x="2" y="20" fill="#506C7F" width="60" height="8" />
@@ -196,9 +196,9 @@ const AccountTabs = () => {
                 x2="22.523"
                 y2="82.083"
               >
-                <stop offset="0" stop-color="#424242"></stop>
+                <stop offset="0" stopColor="#424242"></stop>
 
-                <stop offset="1" stop-color="#212121"></stop>
+                <stop offset="1" stopColor="#212121"></stop>
               </linearGradient>
 
               <path
@@ -233,9 +233,9 @@ const AccountTabs = () => {
                   x2="82.209"
                   y2="82.083"
                 >
-                  <stop offset="0" stop-color="#424242"></stop>
+                  <stop offset="0" stopColor="#424242"></stop>
 
-                  <stop offset="1" stop-color="#212121"></stop>
+                  <stop offset="1" stopColor="#212121"></stop>
                 </linearGradient>
 
                 <path

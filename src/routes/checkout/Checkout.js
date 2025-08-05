@@ -702,7 +702,7 @@ const Checkout = () => {
                                             </label>
                                             <label className='text-sm text-textBlue'>
                                               <input type="radio" name="option" id="option1" className='accent-brandGreen mr-2' />
-                                              Entertainer stores
+                                              Tesco stores
                                             </label>
                                           </form>
                                           <div className='flex justify-between py-3 border-b-[3px] border-gray-300'>
