@@ -53,7 +53,7 @@ const OrdersAccountSection = () => {
         <div className="text-xl font-bold text-textBlue mb-3 mt-8">
           Previous Orders
         </div>
-        <div className="flex gap-2 items-start mb-3">
+        <div className="flex gap-2 items-start mb-6">
           <div className="flex gap-3 md:gap-6 w-2/3 items-start">
             <div className="border-[3px] border-brandLightblue rounded-lg relative w-1/3">
               <img
@@ -85,7 +85,7 @@ const OrdersAccountSection = () => {
             </Button>
           </div>
         </div>
-        <div className="flex gap-2 items-start mb-3">
+        <div className="flex gap-2 items-start mb-6">
           <div className="flex gap-3 md:gap-6 w-2/3 items-start">
             <div className="border-[3px] border-brandLightblue rounded-lg relative w-1/3">
               <img
