@@ -722,7 +722,7 @@ const Checkout = () => {
                                             The Entertainer Amersham<br />
                                             2 Sycamore Road, Amersham HP^ 5DR
                                             <div className='text-gray-400'>
-                                              Collect withi 30 minutes for fREE
+                                              Collect withi 30 minutes for FREE
                                             </div>
                                           </div>
                                         </div>
