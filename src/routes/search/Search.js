@@ -912,7 +912,7 @@ const SearchResults = () => {
                 </div>
               </div>
             {/* Load More */}
-            {searchResults.length < searchResults.length && (
+            {searchResults.length < visibleProducts.length && (
               <div className="text-center mt-4">
                 <button
                   name="Load more products"
