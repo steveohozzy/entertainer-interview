@@ -140,7 +140,7 @@ const SearchBar = () => {
                         Top Searches
                       </div>
                       <div className="flex flex-col space-y-1 mt-2">
-                        <button className="text textBlue text-sm md:text-base flex items-center justify-between">
+                        <button onClick={handleSelectSearch} className="text textBlue text-sm md:text-base flex items-center justify-between">
                           <span className="flex items-center">
                             <span className="w-4 md:w-5 h-4 md:h-5 mr-1 block">
                               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
@@ -149,10 +149,10 @@ const SearchBar = () => {
                                 </g>
                               </svg>
                             </span>
-                            <span>LEGO</span>
+                            <span>Pokemon</span>
                           </span>
                         </button>
-                        <button className="text textBlue text-sm md:text-base flex items-center justify-between">
+                        <button onClick={handleSelectSearch} className="text textBlue text-sm md:text-base flex items-center justify-between">
                           <span className="flex items-center">
                             <span className="w-4 md:w-5 h-4 md:h-5 mr-1 block">
                               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
@@ -161,13 +161,13 @@ const SearchBar = () => {
                                 </g>
                               </svg>
                             </span>
-                            <span>Squishmallows 7 inch</span>
+                            <span>Star War</span>
                           </span>
                           <span className="rounded-lg bg-brandRed px-2 text-white text-[10px] md:text-sm ml-2">
                             <span className="font-bold">10% off</span> code - SQUISH10
                           </span>
                         </button>
-                        <button className="text textBlue text-sm md:text-base flex items-center justify-between">
+                        <button onClick={handleSelectSearch} className="text textBlue text-sm md:text-base flex items-center justify-between">
                           <span className="flex items-center">
                             <span className="w-4 md:w-5 h-4 md:h-5 mr-1 block">
                               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
@@ -176,7 +176,7 @@ const SearchBar = () => {
                                 </g>
                               </svg>
                             </span>
-                            <span>Barbie Dreamhouse set</span>
+                            <span>DC comics</span>
                           </span>
                           <span className="rounded-lg bg-orange-400 px-2 text-white text-[10px] md:text-sm ml-2">
                             <span className="font-bold">HOT TOY</span> code - Trending
