@@ -42,10 +42,10 @@ const SearchBar = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    if (searchQuery === '') {
+    if (searchQuery.trim().length === 0) {
       return
     }
-    navigate('/search/'+searchQuery);
+    navigate('/search/'+searchQuery.trim());
     setShowSearchBox(false);
     document.body.classList.remove('body-noscroll');
     searchInput.current.blur();
