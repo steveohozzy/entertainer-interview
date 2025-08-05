@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch  } from 'react-redux';
+import { Link } from 'react-router-dom';
 import Button from '../../components/button/Button'
 import CartProductTile from '../../components/cartProductTile/CartProductTile'
 import Tabs from '../../components/tabs/Tabs';
@@ -119,7 +120,7 @@ const Checkout = () => {
     <>
         <div className="bg-white">
             <div className='text-sm text-gray-500 flex items-center justify-center pt-6'>
-                <span className='text-gray-300'>Basket</span>
+                <span className='text-gray-300'><Link to="/cart">Basket</Link></span>
                 <img src='/stars-icon.svg' alt='stars' className='mx-4' />
                 <span className={`text-gray-300 ${animateTrainDelivery && !animateTrainPayment && 'text-gray-500 font-bold'}`}>Delivery</span>
                 <img src='/rocket-icon.svg' alt='stars' className='mx-4' />

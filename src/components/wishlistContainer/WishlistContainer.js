@@ -137,10 +137,10 @@ const WishlistContainer = () => {
         </div>
         <div className="w-1/2 md:w-2/3 pl-4 md:pl-6">
           <div className="flex h-full gap-2 md:gap-3 flex-nowrap overflow-auto">
-            <button className="bg-brandRed bg-opacity-70 rounded-xl flex items-center justify-center text-white p-3 w-[55px] flex-shrink-0">
+            <button className="bg-red-700 bg-opacity-80 rounded-xl flex items-center justify-center text-white p-3 w-[55px] flex-shrink-0">
               Jack
             </button>
-            <button className="bg-brandRed bg-opacity-70 rounded-xl flex items-center justify-center text-white p-3 w-[55px] flex-shrink-0">
+            <button className="bg-red-700 bg-opacity-80 rounded-xl flex items-center justify-center text-white p-3 w-[55px] flex-shrink-0">
               Mum
             </button>
             <button className="bg-gray-400 bg-opacity-70 rounded-xl flex items-center justify-center p-3 w-[55px] flex-shrink-0 text-brandBlue text-xl">
