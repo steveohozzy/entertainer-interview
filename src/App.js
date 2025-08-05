@@ -11,6 +11,7 @@ import Account from "./routes/account/Account";
 import HomeTabs from "./routes/home/HomeTabs";
 import Wishlist from "./routes/wishlist/Wishlist";
 import Events from "./routes/events/Events";
+import SearchResults from "./routes/search/Search";
 
 const App = () => {
 
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/tabs" element={<HomeTabs />} />
         <Route path="/category/*" element={<Plp />} />
+        <Route path="/search/:id" element={<SearchResults />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/product-details/:id" element={<ProductDetails />} />
