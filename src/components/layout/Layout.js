@@ -1,5 +1,5 @@
 import { Outlet, Link, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ChevronUp, Heart, MenuIcon } from "lucide-react";
 import IconMenu from "../iconMenu/IconMenu";
 
@@ -105,9 +105,33 @@ const Layout = () => {
     navigate('/account');
   }
 
+  const menuRef = useRef(null);
+  
+  function useOutsideAlerter(ref) {
+      useEffect(() => {
+        /**
+         * Alert if clicked on outside of element
+         */
+        function handleClickOutside(event) {
+          if (ref.current && !ref.current.contains(event.target)) {
+            setShowMenu(false);
+          }
+        }
+        // Bind the event listener
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+          // Unbind the event listener on clean up
+          document.removeEventListener("mousedown", handleClickOutside);
+        };
+      }, [ref]);
+    }
+  
+    useOutsideAlerter(menuRef);
+
   return (
     <>
       <header
+        ref={menuRef}
         id="site-header"
         className={`text-white rounded-b-2xl md:rounded-b-3xl border-b sticky top-0 w-full z-50 transition-transform duration-300 ${
           showHeader
@@ -228,7 +252,7 @@ const Layout = () => {
                 : "grid-rows-[0fr] opacity-0"
             }`}
           >
-            <IconMenu />
+            <IconMenu setShowMenu={setShowMenu} setShowHeader={setShowHeader} />
           </div>
         </div>
         <SearchBar />

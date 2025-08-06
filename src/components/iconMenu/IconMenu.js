@@ -7,12 +7,13 @@ import { Star } from "lucide-react";
 import { HashLink } from "react-router-hash-link";
 import { Link } from "react-router-dom";
 
-const IconMenu = () => {
+const IconMenu = ({setShowMenu}) => {
   const isAccountOpen = useSelector(selectIsAccountOpen);
   const dispatch = useDispatch();
 
   const handleAccountPopUp = () => {
     dispatch(setIsAccountOpen(!isAccountOpen));
+    setShowMenu(false);
   };
 
   return (
@@ -93,7 +94,15 @@ const IconMenu = () => {
             Register
           </Link>
           <Link
-            to="/category"
+            onClick={() => {
+              setShowMenu(false);
+              window.scrollTo({
+                top: 10,
+                left: 0,
+                behavior: "smooth",
+              });
+            }}
+            to="/category/new-toys"
             className="transition-all text-brandBlue flex flex-col items-center hover:scale-110 group text-xs md:text-sm"
           >
             <span className="transition-all w-9 h-9 transition-duration-500 group-hover:rotate-[20deg] group-hover:shadow-lg text-brandLightBlue bg-brandBlue rounded-full md:w-12 md:h-12 p-1 flex items-center justify-center text-s">
@@ -102,6 +111,14 @@ const IconMenu = () => {
             New Toys
           </Link>
           <Link
+            onClick={() => {
+              setShowMenu(false);
+              window.scrollTo({
+                top: 10,
+                left: 0,
+                behavior: "smooth",
+              });
+            }}
             to="/category"
             className="transition-all text-brandBlue flex flex-col items-center hover:scale-110 group text-xs md:text-sm"
           >
@@ -117,6 +134,14 @@ const IconMenu = () => {
             Outdoor
           </Link>
           <Link
+            onClick={() => {
+              setShowMenu(false);
+              window.scrollTo({
+                top: 10,
+                left: 0,
+                behavior: "smooth",
+              });
+            }}
             to="/category"
             className="transition-all text-brandBlue flex flex-col items-center hover:scale-110 group text-xs md:text-sm"
           >
@@ -174,7 +199,11 @@ const IconMenu = () => {
             </span>
             Discover
           </a>
-          <HashLink to="/#toy-types"
+          <HashLink
+            onClick={() => {
+              setShowMenu(false);
+            }}
+            to="/#toy-types"
             className="transition-all text-brandBlue flex flex-col items-center hover:scale-110 group text-xs md:text-sm"
           >
             <span className="transition-all w-9 h-9 transition-duration-500 group-hover:rotate-[20deg] group-hover:shadow-lg text-brandLightBlue bg-brandBlue rounded-full md:w-12 md:h-12 p-2 flex items-center justify-center">
@@ -193,7 +222,11 @@ const IconMenu = () => {
             </span>
             Toy Types
           </HashLink>
-          <HashLink to="/#age"
+          <HashLink
+            onClick={() => {
+              setShowMenu(false);
+            }}
+            to="/#age"
             className="transition-all text-brandBlue flex flex-col items-center hover:scale-110 group text-xs md:text-sm"
           >
             <span className="transition-all w-9 h-9 transition-duration-500 group-hover:rotate-[20deg] group-hover:shadow-lg text-brandLightBlue bg-brandBlue rounded-full md:w-12 md:h-12 p-2 md:p-3 flex items-center justify-center">
@@ -279,7 +312,11 @@ const IconMenu = () => {
             </span>
             Age
           </HashLink>
-          <HashLink to="/#brands"
+          <HashLink
+            onClick={() => {
+              setShowMenu(false);
+            }}
+            to="/#brands"
             className="transition-all text-brandBlue flex flex-col items-center hover:scale-110 group text-xs md:text-sm"
           >
             <span className="transition-all w-9 h-9 transition-duration-500 group-hover:rotate-[20deg] group-hover:shadow-lg text-brandLightBlue bg-brandBlue rounded-full md:w-12 md:h-12 p-2 md:p-3 flex items-center justify-center">
@@ -300,7 +337,11 @@ const IconMenu = () => {
             </span>
             Brands
           </HashLink>
-          <HashLink to="/#top-picks"
+          <HashLink
+            onClick={() => {
+              setShowMenu(false);
+            }}
+            to="/#top-picks"
             className="transition-all text-brandBlue flex flex-col items-center hover:scale-110 group text-xs md:text-sm"
           >
             <span className="transition-all w-9 h-9 transition-duration-500 group-hover:rotate-[20deg] group-hover:shadow-lg text-brandLightBlue bg-brandBlue rounded-full md:w-12 md:h-12 p-2 md:p-3 flex items-center justify-center">
@@ -319,7 +360,11 @@ const IconMenu = () => {
             </span>
             Top Picks
           </HashLink>
-          <HashLink to="/#blogs"
+          <HashLink
+            onClick={() => {
+              setShowMenu(false);
+            }}
+            to="/#blogs"
             className="transition-all text-brandBlue flex flex-col items-center hover:scale-110 group text-xs md:text-sm"
           >
             <span className="transition-all w-9 h-9 transition-duration-500 group-hover:rotate-[20deg] group-hover:shadow-lg text-brandLightBlue bg-brandBlue rounded-full md:w-12 md:h-12 p-2 flex items-center justify-center">
@@ -336,7 +381,11 @@ const IconMenu = () => {
             </span>
             Content
           </HashLink>
-          <HashLink to="/#delivery"
+          <HashLink 
+            onClick={() => {
+              setShowMenu(false);
+            }}
+            to="/#delivery"
             className="transition-all text-brandBlue flex flex-col items-center hover:scale-110 group text-xs md:text-sm"
           >
             <span className="transition-all w-9 h-9 transition-duration-500 group-hover:rotate-[20deg] group-hover:shadow-lg text-brandLightBlue bg-brandBlue rounded-full md:w-12 md:h-12 p-2 md:p-3 flex items-center justify-center">
