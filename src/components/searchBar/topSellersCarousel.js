@@ -3,6 +3,7 @@ import { Autoplay } from 'swiper/modules';
 
 import 'swiper/css';
 import 'swiper/css/autoplay';
+import { useNavigate } from 'react-router-dom';
 
 const recs = [
   {
@@ -268,7 +269,9 @@ const recs = [
   }
 ]
 
-const TopSellersCarousel = () => {
+const TopSellersCarousel = ({setShowSearchBox}) => {
+  const navigate = useNavigate();
+
   return (
     <div className="mt-1">
       <div className="text-lg text-textBlue font-bold mb-2">
@@ -292,7 +295,7 @@ const TopSellersCarousel = () => {
         >
           {recs.map((product) => (
             <SwiperSlide>
-              <div className="flex flex-col h-full" key={product.id}>
+              <div onClick={() => { navigate(`/product-details/${product.id}`); window.scrollTo({top: 0,left: 0,behavior: "smooth",}); setShowSearchBox(false);}} className="cursor-pointer flex flex-col h-full" key={product.id}>
                 <img
                   src={product.image || "/placeholder.svg"}
                   alt={product.name}

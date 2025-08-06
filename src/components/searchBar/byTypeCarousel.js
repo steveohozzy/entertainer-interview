@@ -3,8 +3,11 @@ import { Autoplay } from 'swiper/modules';
 
 import 'swiper/css';
 import 'swiper/css/autoplay';
+import { useNavigate } from 'react-router-dom';
 
-const ByTypeCarousel = () => {
+const ByTypeCarousel = ({setShowSearchBox}) => {
+  const navigate = useNavigate();
+
   return (
     <div className="mt-1">
       <div className="text-lg text-textBlue font-bold mb-2">
@@ -27,7 +30,7 @@ const ByTypeCarousel = () => {
         }}
         >
           <SwiperSlide>
-            <div className="flex flex-col py-1 text-center border-[3px] border-brandBlue rounded-lg items-center">
+            <div className="flex flex-col py-1 text-center border-[3px] border-brandBlue rounded-lg items-center cursor-pointer" onClick={() => {navigate('/category'); setShowSearchBox(false);}}>
               <div className="aspect-square max-w-[50%] mb-1 mx-auto">
                 <img src="/action-toys.jfif" alt="Action Toys" title="Action Toys" />
               </div>
@@ -37,7 +40,7 @@ const ByTypeCarousel = () => {
             </div>
         </SwiperSlide>
         <SwiperSlide>
-            <div className="flex flex-col py-1 py-1 text-center border-[3px] border-brandBlue rounded-lg items-center">
+            <div className="flex flex-col py-1 py-1 text-center border-[3px] border-brandBlue rounded-lg items-center cursor-pointer" onClick={() => {navigate('/category'); setShowSearchBox(false);}}>
               <div className="aspect-square max-w-[50%] mb-1 mx-auto">
                 <img className="" src="/construction-toys.jfif" alt="Action Toys" title="Action Toys" />
               </div>
@@ -47,7 +50,7 @@ const ByTypeCarousel = () => {
             </div>
         </SwiperSlide>
         <SwiperSlide>
-            <div className="flex flex-col py-1 py-1 text-center border-[3px] border-brandBlue rounded-lg items-center">
+            <div className="flex flex-col py-1 py-1 text-center border-[3px] border-brandBlue rounded-lg items-center cursor-pointer" onClick={() => {navigate('/category'); setShowSearchBox(false);}}>
               <div className="aspect-square max-w-[50%] mb-1 mx-auto">
                 <img className="" src="/preschool-toys.jfif" alt="Action Toys" title="Action Toys" />
               </div>
@@ -57,7 +60,7 @@ const ByTypeCarousel = () => {
             </div>
         </SwiperSlide>
         <SwiperSlide>
-            <div className="flex flex-col py-1 py-1 text-center border-[3px] border-brandBlue rounded-lg items-center">
+            <div className="flex flex-col py-1 py-1 text-center border-[3px] border-brandBlue rounded-lg items-center cursor-pointer" onClick={() => {navigate('/category'); setShowSearchBox(false);}}>
               <div className="aspect-square max-w-[50%] mb-1 mx-auto">
                 <img className="" src="/arts-and-crafts-toys.jpg" alt="Action Toys" title="Action Toys" />
               </div>
@@ -67,7 +70,7 @@ const ByTypeCarousel = () => {
             </div>
         </SwiperSlide>
         <SwiperSlide>
-            <div className="flex flex-col py-1 py-1 text-center border-[3px] border-brandBlue rounded-lg items-center">
+            <div className="flex flex-col py-1 py-1 text-center border-[3px] border-brandBlue rounded-lg items-center cursor-pointer" onClick={() => {navigate('/category'); setShowSearchBox(false);}}>
               <div className="aspect-square max-w-[50%] mb-1 mx-auto">
                 <img className="" src="/games-and-puzzles-toys.jpg" alt="Action Toys" title="Action Toys" />
               </div>
@@ -77,7 +80,7 @@ const ByTypeCarousel = () => {
             </div>
         </SwiperSlide>
         <SwiperSlide>
-            <div className="flex flex-col py-1 py-1 text-center border-[3px] border-brandBlue rounded-lg items-center">
+            <div className="flex flex-col py-1 py-1 text-center border-[3px] border-brandBlue rounded-lg items-center cursor-pointer" onClick={() => {navigate('/category'); setShowSearchBox(false);}}>
               <div className="aspect-square max-w-[50%] mb-1 mx-auto">
                 <img className="" src="/electronic-toys.jpg" alt="Action Toys" title="Action Toys" />
               </div>
@@ -87,7 +90,7 @@ const ByTypeCarousel = () => {
             </div>
         </SwiperSlide>
         <SwiperSlide>
-            <div className="flex flex-col py-1 py-1 text-center border-[3px] border-brandBlue rounded-lg items-center">
+            <div className="flex flex-col py-1 py-1 text-center border-[3px] border-brandBlue rounded-lg items-center cursor-pointer" onClick={() => {navigate('/category'); setShowSearchBox(false);}}>
               <div className="aspect-square max-w-[50%] mb-1 mx-auto">
                 <img className="" src="/dolls.jfif" alt="Action Toys" title="Action Toys" />
               </div>
@@ -97,7 +100,7 @@ const ByTypeCarousel = () => {
             </div>
         </SwiperSlide>
         <SwiperSlide>
-            <div className="flex flex-col py-1 py-1 text-center border-[3px] border-brandBlue rounded-lg items-center">
+            <div className="flex flex-col py-1 py-1 text-center border-[3px] border-brandBlue rounded-lg items-center cursor-pointer" onClick={() => {navigate('/category'); setShowSearchBox(false);}}>
               <div className="aspect-square max-w-[50%] mb-1 mx-auto">
                 <img className="" src="/outdoor-toys.jfif" alt="Action Toys" title="Action Toys" />
               </div>
@@ -107,7 +110,7 @@ const ByTypeCarousel = () => {
             </div>
         </SwiperSlide>
         <SwiperSlide>
-            <div className="flex flex-col py-1 py-1 text-center border-[3px] border-brandBlue rounded-lg items-center">
+            <div className="flex flex-col py-1 py-1 text-center border-[3px] border-brandBlue rounded-lg items-center cursor-pointer" onClick={() => {navigate('/category'); setShowSearchBox(false);}}>
               <div className="aspect-square max-w-[50%] mb-1 mx-auto">
                 <img className="" src="/dress-up.png" alt="Action Toys" title="Action Toys" />
               </div>
@@ -117,7 +120,7 @@ const ByTypeCarousel = () => {
             </div>
         </SwiperSlide>
         <SwiperSlide>
-            <div className="flex flex-col py-1 py-1 text-center border-[3px] border-brandBlue rounded-lg items-center">
+            <div className="flex flex-col py-1 py-1 text-center border-[3px] border-brandBlue rounded-lg items-center cursor-pointer" onClick={() => {navigate('/category'); setShowSearchBox(false);}}>
               <div className="aspect-square max-w-[50%] mb-1 mx-auto">
                 <img className="" src="/educational-toys.jfif" alt="Action Toys" title="Action Toys" />
               </div>

@@ -197,9 +197,9 @@ const SearchBar = () => {
                     </div>
                   </div>
                 </div>
-                <ByTypeCarousel />
-                <ByAgeCarousel />
-                <TopSellersCarousel />
+                <ByTypeCarousel setShowSearchBox={setShowSearchBox} />
+                <ByAgeCarousel setShowSearchBox={setShowSearchBox} />
+                <TopSellersCarousel setShowSearchBox={setShowSearchBox} />
               </div>
             </div>
       </div>

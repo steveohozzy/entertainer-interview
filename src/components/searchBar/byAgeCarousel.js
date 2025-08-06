@@ -3,8 +3,11 @@ import { Autoplay } from 'swiper/modules';
 
 import 'swiper/css';
 import 'swiper/css/autoplay';
+import { useNavigate } from 'react-router-dom';
 
-const ByAgeCarousel = () => {
+const ByAgeCarousel = ({setShowSearchBox}) => {
+  const navigate = useNavigate();
+
   return (
     <div className="mt-2">
       <div className="text-lg text-textBlue font-bold mb-2">
@@ -26,7 +29,7 @@ const ByAgeCarousel = () => {
         }}
         >
           <SwiperSlide>
-            <button className="transition-all flex flex-col rounded-full items-center scale-90 justify-center bg-yellow-600 w-[95px] h-[95px] shadow-sm hover:shadow-md hover:rotate-[20deg] hover:scale-100 text-white font-bold text-shadow-sm">
+            <button className="transition-all flex flex-col rounded-full items-center scale-90 justify-center bg-yellow-600 w-[95px] h-[95px] shadow-sm hover:shadow-md hover:rotate-[20deg] hover:scale-100 text-white font-bold text-shadow-sm" onClick={() => {navigate('/category'); setShowSearchBox(false);}}>
               <div className="text-3xl text-shadow-sm leading-[1]">
                 0-3
               </div>
@@ -36,7 +39,7 @@ const ByAgeCarousel = () => {
             </button>
         </SwiperSlide>
         <SwiperSlide>
-            <button className="transition-all flex flex-col rounded-full items-center scale-90 justify-center bg-brandRed w-[95px] h-[95px] shadow-sm hover:shadow-md hover:rotate-[20deg] hover:scale-100 text-white font-bold text-shadow-sm">
+            <button className="transition-all flex flex-col rounded-full items-center scale-90 justify-center bg-brandRed w-[95px] h-[95px] shadow-sm hover:shadow-md hover:rotate-[20deg] hover:scale-100 text-white font-bold text-shadow-sm" onClick={() => {navigate('/category'); setShowSearchBox(false);}}>
               <div className="text-3xl text-shadow-sm leading-[1]">
                 3-5
               </div>
@@ -46,7 +49,7 @@ const ByAgeCarousel = () => {
             </button>
         </SwiperSlide>
         <SwiperSlide>
-            <button className="transition-all flex flex-col rounded-full items-center scale-90 justify-center bg-purple-700 w-[95px] h-[95px] shadow-sm hover:shadow-md hover:rotate-[20deg] hover:scale-100 text-white font-bold text-shadow-sm">
+            <button className="transition-all flex flex-col rounded-full items-center scale-90 justify-center bg-purple-700 w-[95px] h-[95px] shadow-sm hover:shadow-md hover:rotate-[20deg] hover:scale-100 text-white font-bold text-shadow-sm" onClick={() => {navigate('/category'); setShowSearchBox(false);}}>
               <div className="text-3xl text-shadow-sm leading-[1]">
                 5-8
               </div>
@@ -56,7 +59,7 @@ const ByAgeCarousel = () => {
             </button>
         </SwiperSlide>
         <SwiperSlide>
-            <button className="transition-all flex flex-col rounded-full items-center scale-90 justify-center bg-cyan-500 w-[95px] h-[95px] shadow-sm hover:shadow-md hover:rotate-[20deg] hover:scale-100 text-white font-bold text-shadow-sm">
+            <button className="transition-all flex flex-col rounded-full items-center scale-90 justify-center bg-cyan-500 w-[95px] h-[95px] shadow-sm hover:shadow-md hover:rotate-[20deg] hover:scale-100 text-white font-bold text-shadow-sm" onClick={() => {navigate('/category'); setShowSearchBox(false);}}>
               <div className="text-3xl text-shadow-sm leading-[1]">
                 8-11
               </div>
@@ -66,7 +69,7 @@ const ByAgeCarousel = () => {
             </button>
         </SwiperSlide>
         <SwiperSlide>
-            <button className="transition-all flex flex-col rounded-full items-center scale-90 justify-center bg-green-500 w-[95px] h-[95px] shadow-sm hover:shadow-md hover:rotate-[20deg] hover:scale-100 text-white font-bold text-shadow-sm">
+            <button className="transition-all flex flex-col rounded-full items-center scale-90 justify-center bg-green-500 w-[95px] h-[95px] shadow-sm hover:shadow-md hover:rotate-[20deg] hover:scale-100 text-white font-bold text-shadow-sm" onClick={() => {navigate('/category'); setShowSearchBox(false);}}>
               <div className="text-3xl text-shadow-sm leading-[1]">
                 11+
               </div>
@@ -76,7 +79,7 @@ const ByAgeCarousel = () => {
             </button>
         </SwiperSlide>
         <SwiperSlide>
-            <button className="transition-all flex flex-col rounded-full items-center scale-90 justify-center bg-green-900 w-[95px] h-[95px] shadow-sm hover:shadow-md hover:rotate-[20deg] hover:scale-100 text-white font-bold text-shadow-sm">
+            <button className="transition-all flex flex-col rounded-full items-center scale-90 justify-center bg-green-900 w-[95px] h-[95px] shadow-sm hover:shadow-md hover:rotate-[20deg] hover:scale-100 text-white font-bold text-shadow-sm" onClick={() => {navigate('/category'); setShowSearchBox(false);}}>
               <div className="text-3xl text-shadow-sm leading-[1]">
                 Big
               </div>

@@ -3,6 +3,11 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 import { X, Search } from "lucide-react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/autoplay";
 import {
   products,
   brands,
@@ -13,6 +18,10 @@ import {
 
 import ProductCard from "../../components/productCard/productCard";
 import Dropdown from "../../components/dropdown/Dropdown";
+import { useNavigate } from "react-router-dom";
+import Button from "../../components/button/Button";
+
+
 import { useLocation } from "react-router-dom";
 
 const SearchResults = () => {
@@ -29,7 +38,9 @@ const SearchResults = () => {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [sortOption, setSortOption] = useState("sortby")
   const [currentPage, setCurrentPage] = useState(1);
-  const PRODUCTS_PER_PAGE = 10
+  const PRODUCTS_PER_PAGE = 10;
+
+  const navigate = useNavigate();
 
   const wrapperRef = useRef(null);
 
@@ -796,8 +807,17 @@ const SearchResults = () => {
                 </div>
               </div>
               <p className="flex items-center justify-center bg-brandBlue text-white text-xs rounded-tr-full rounded-br-full block h-full w-full px-3">
-                 {startIndex + 1}-{Math.min(endIndex, searchResults.length)} of{" "}
-                  {sortedFilteredProducts.length} products
+                {searchResults.length !== 0 ? (
+                  <>
+                    {startIndex + 1}-{Math.min(endIndex, searchResults.length)} of{" "}
+                    {sortedFilteredProducts.length} products
+                  </>
+                ) : (
+                  <>
+                    0 products
+                  </>
+                )
+                }
               </p>
             </div>
 
@@ -876,7 +896,69 @@ const SearchResults = () => {
             )}
           </div>
         </div>
-        {location.pathname !== "/category/pagination" ? 
+        {searchResults.length === 0 &&
+          <>
+            <div className="text-textBlue text-2xl text-center w-full font-bold mt-4">
+              Hmm there doesn't seem to be any results for that
+            </div>
+            <div className="text-textBlue text-xl text-center w-full font-bold">
+              Try these instead
+            </div>
+            <div className='pt-5 rounded-xl my-4'>
+                <div className='flex gap-4 justify-center mx-auto'>
+                <Swiper
+                    modules={[Autoplay]}
+                    spaceBetween={20}
+                    slidesPerView={1.5}
+                    autoplay={true}
+                    breakpoints={{
+                      768: {
+                        slidesPerView: 2.5,
+                      },
+                      1024: {
+                        slidesPerView: 3.5,
+                      },
+                    }}
+                    loop
+                    >
+                {products.slice(0, 6).map((product) => (
+                    <SwiperSlide>
+                    <div  onClick={() => { navigate(`/product-details/${product.id}`); window.scrollTo({top: 0,left: 0,behavior: "smooth",});}} className="cursor-pointer flex flex-wrap bg-white shadow-lg mb-5 rounded-lg">
+                        <div className="border-[3px] border-brandBlue rounded-lg w-1/2">
+                            <img
+                                src={product.image || "/placeholder.svg"}
+                                alt={product.name}
+                                className="w-full object-cover group-hover:scale-105 transition-transform duration-300 rounded-lg"
+                            />
+                        </div>
+                        <div className="w-1/2 flex flex-col justify-between items-center py-1 md:py-3 px-2">
+                            <div className="text-xs lg:text-sm xl:text-lg text-brandBlue font-bold leading-[1.2] xl:leading-[1.1] mb-2 md:mb-0">{product.name}</div>
+                            <div>
+                                <div className="price">
+                                    <div className="flex items-end justify-center">
+                                        <span className="text-brandRed font-bold text-xs md:text-sm">£{product.price}</span>
+                                        {product.originalPrice &&
+                                            <span className="line-through text-gray-400 text-[10px] md:text-xs ml-1">£{product.originalPrice}</span>
+                                        }
+                                    </div>
+                                </div>
+                                <Button 
+                                    className='shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-xs lg:text-sm rounded-[30px] bg-brandGreen text-white py-2 px-2 lg:px-4 lg:pl-0 pl-0 transition-all hover:bg-brandLightGreen hover:scale-105 mt-2'
+                                    onClick={() => { navigate(`/product-details/${product.id}`); window.scrollTo({top: 0,left: 0,behavior: "smooth",});}}>
+                                        Details
+                                </Button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    </SwiperSlide>
+                ))}
+                </Swiper>
+                </div>
+            </div>
+          </>
+        }
+        {location.pathname !== "/search/pagination" ? 
           <div className="grid gap-2 lg:gap-6 grid-cols-2 lg:grid-cols-4 xl:grid-cols-5">
             {searchResults.map((product) => (
               <ProductCard key={product.id} product={product} />
@@ -890,7 +972,7 @@ const SearchResults = () => {
             </div>
           }
 
-        {location.pathname !== "/category/pagination" ? 
+        {location.pathname !== "/search/pagination" && searchResults.length !== 0 ? 
           <>
              <div className="max-w-[300px] mx-auto mt-8 flex flex-wrap justify-between items-center">
                 {(searchResults.length / searchResults.length * 100).toFixed() > 99 ?
