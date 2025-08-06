@@ -54,6 +54,9 @@ const BankAccountSection = () => {
               }
             </span>
           </button>
+          <button className="bg-gray-400 bg-opacity-70 rounded-xl flex items-center justify-center p-3 w-[70px] flex-shrink-0 text-brandBlue text-xl transition-all hover:bg-gray-400">
+            +
+          </button>
         </div>
         <div className={`grid overflow-hidden transition-all duration-300 ease-in-out text-slate-600 text-sm ${
               selectedCard === 'visa'

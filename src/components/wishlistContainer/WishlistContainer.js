@@ -5,7 +5,8 @@ import WishlistItemsList from "../wishlistItems/WishlistItems";
 
 const WishlistContainer = () => {
   const [dateType, setDateType] = useState("text");
-  const [isChecked, setIsChecked] = useState(true)
+  const [isChecked, setIsChecked] = useState(true);
+  const [wishlistName, setWishlistName] = useState('jack');
 
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked)
@@ -24,8 +25,8 @@ const WishlistContainer = () => {
       <div className="border-[3px] border-brandRed p-3 md:p-5 rounded-xl">
         <div className="flex items-end justify-between">
           <div className="text-xl font-bold text-brandRed flex items-center">
-            Jack 
-            <span className="ml-2">
+            <input className="outline-0" type="text" size={wishlistName.length > 3 ? wishlistName.length-1 : 3} value={wishlistName} onChange={(e) => setWishlistName(e.target.value)} />
+            <span>
               <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" viewBox="0 0 24 24" fill="none">
                 <path d="M17.0671 2.27157C17.5 2.09228 17.9639 2 18.4324 2C18.9009 2 19.3648 2.09228 19.7977 2.27157C20.2305 2.45086 20.6238 2.71365 20.9551 3.04493C21.2864 3.37621 21.5492 3.7695 21.7285 4.20235C21.9077 4.63519 22 5.09911 22 5.56761C22 6.03611 21.9077 6.50003 21.7285 6.93288C21.5492 7.36572 21.2864 7.75901 20.9551 8.09029L20.4369 8.60845L15.3916 3.56308L15.9097 3.04493C16.241 2.71365 16.6343 2.45086 17.0671 2.27157Z" fill="currentColor"/>
                 <path d="M13.9774 4.9773L3.6546 15.3001C3.53154 15.4231 3.44273 15.5762 3.39694 15.7441L2.03526 20.7369C1.94084 21.0831 2.03917 21.4534 2.29292 21.7071C2.54667 21.9609 2.91693 22.0592 3.26314 21.9648L8.25597 20.6031C8.42387 20.5573 8.57691 20.4685 8.69996 20.3454L19.0227 10.0227L13.9774 4.9773Z" fill="currentColor"/>
@@ -113,7 +114,7 @@ const WishlistContainer = () => {
                     className='sr-only'
                   />
                   <div
-                    className={`box block h-6 w-[70px] md:w-[80px] rounded-full text-white px-3 flex items-center transition-all text-xs ${
+                    className={`box block h-6 w-[55px] md:w-[80px] rounded-full text-white px-3 flex items-center transition-all text-xs ${
                       isChecked ? 'bg-brandGreen' : 'bg-brandBlue justify-end'
                     }`}
                   >{isChecked ? 'On' : 'Off'}</div>
@@ -137,28 +138,28 @@ const WishlistContainer = () => {
         </div>
         <div className="w-1/2 md:w-2/3 pl-4 md:pl-6">
           <div className="flex h-full gap-2 md:gap-3 flex-nowrap overflow-auto">
-            <button className="bg-red-700 bg-opacity-80 rounded-xl flex items-center justify-center text-white p-3 w-[55px] flex-shrink-0">
+            <button className="bg-red-700 bg-opacity-80 rounded-xl flex items-center justify-center text-white p-3 w-[55px] flex-shrink-0 transition-all hover:bg-opacity-100">
               Jack
             </button>
-            <button className="bg-red-700 bg-opacity-80 rounded-xl flex items-center justify-center text-white p-3 w-[55px] flex-shrink-0">
+            <button className="bg-red-700 bg-opacity-80 rounded-xl flex items-center justify-center text-white p-3 w-[55px] flex-shrink-0 transition-all hover:bg-opacity-100">
               Mum
             </button>
-            <button className="bg-gray-400 bg-opacity-70 rounded-xl flex items-center justify-center p-3 w-[55px] flex-shrink-0 text-brandBlue text-xl">
+            <button className="bg-gray-400 bg-opacity-70 rounded-xl flex items-center justify-center p-3 w-[55px] flex-shrink-0 text-brandBlue text-xl transition-all hover:bg-gray-400">
               +
             </button>
-            <button className="bg-gray-400 bg-opacity-70 rounded-xl flex items-center justify-center p-3 w-[55px] flex-shrink-0 text-brandBlue text-xl">
+            <button className="bg-gray-400 bg-opacity-70 rounded-xl flex items-center justify-center p-3 w-[55px] flex-shrink-0 text-brandBlue text-xl transition-all hover:bg-gray-400">
               +
             </button>
-            <button className="bg-gray-400 bg-opacity-70 rounded-xl flex items-center justify-center p-3 w-[55px] flex-shrink-0 text-brandBlue text-xl">
+            <button className="bg-gray-400 bg-opacity-70 rounded-xl flex items-center justify-center p-3 w-[55px] flex-shrink-0 text-brandBlue text-xl transition-all hover:bg-gray-400">
               +
             </button>
-            <button className="bg-gray-400 bg-opacity-70 rounded-xl flex items-center justify-center p-3 w-[55px] flex-shrink-0 text-brandBlue text-xl">
+            <button className="bg-gray-400 bg-opacity-70 rounded-xl flex items-center justify-center p-3 w-[55px] flex-shrink-0 text-brandBlue text-xl transition-all hover:bg-gray-400">
               +
             </button>
-            <button className="bg-gray-400 bg-opacity-70 rounded-xl flex items-center justify-center p-3 w-[55px] flex-shrink-0 text-brandBlue text-xl">
+            <button className="bg-gray-400 bg-opacity-70 rounded-xl flex items-center justify-center p-3 w-[55px] flex-shrink-0 text-brandBlue text-xl transition-all hover:bg-gray-400">
               +
             </button>
-            <button className="bg-gray-400 bg-opacity-70 rounded-xl flex items-center justify-center p-3 w-[55px] flex-shrink-0 text-brandBlue text-xl">
+            <button className="bg-gray-400 bg-opacity-70 rounded-xl flex items-center justify-center p-3 w-[55px] flex-shrink-0 text-brandBlue text-xl transition-all hover:bg-gray-400">
               +
             </button>
           </div>
