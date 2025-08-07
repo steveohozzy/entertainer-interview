@@ -120,7 +120,7 @@ const WishlistContainer = () => {
                   >{isChecked ? 'On' : 'Off'}</div>
                   <div
                     className={`absolute left-1 top-1 flex h-4 w-4 items-center justify-center rounded-full transition ${
-                      isChecked ? 'translate-x-[45px] md:translate-x-[55px] bg-brandLightGreen' : 'bg-brandLightBlue'
+                      isChecked ? 'translate-x-[30px] md:translate-x-[55px] bg-brandLightGreen' : 'bg-brandLightBlue'
                     }`}
                   ></div>
                 </div>

@@ -1,67 +1,23 @@
 import { useNavigate } from "react-router-dom"
-import { useDispatch, useSelector } from 'react-redux';
-
-import { setIsCartOpen, addItemToCart } from '../../store/cart/cartReducer';
+import { useSelector } from 'react-redux';
 
 import { selectWishlistItems } from "../../store/wishlist/wishlistSelector";
-
-import {
-  clearItemFromWishlist,
-  removeItemFromWishlist,
-} from "../../store/wishlist/wishlistReducer";
+import WishlistAccountProductCard from "../wishlistAccountProductTile/WishlistAccountProductCard";
 
 
 const WishlistItemsList = () => {
   const wishlistItems = useSelector(selectWishlistItems);
 
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-
-  const addProductToCart = (product) => {
-    dispatch(addItemToCart(product));
-    dispatch(setIsCartOpen(true));
-    dispatch(removeItemFromWishlist(product));
-    document.body.classList.add("body-noscroll");
-    window.scrollBy(0, -2);
-  }
-
-  const clearItemHandler = (product) =>
-    dispatch(clearItemFromWishlist(product));
 
   return (
     <div className="grid grid-cols-4 gap-2 md:gap-6 mt-6">
       {wishlistItems && (
         <>
           {wishlistItems.map((product) => (
-            <div key={product.id} className="flex flex-col">
-              <div className="border-[3px] border-brandLightblue rounded-lg relative">
-                <img
-                    src={product.image || "/placeholder.svg"}
-                    alt={product.name}
-                    className="w-full object-cover group-hover:scale-105 transition-transform duration-300 rounded-lg"
-                />
-              </div>
-              <div className="flex flex-col justify-between items-center py-3">
-                <div className="price">
-                  <div className="flex items-end justify-center">
-                      <span className="text-brandRed font-bold text-xs md:text-sm">£{product.price}</span>
-                      {product.originalPrice &&
-                          <span className="line-through text-gray-400 text-[10px] md:text-xs ml-1">£{product.originalPrice}</span>
-                      }
-                  </div>
-                </div>
-                <button
-                  className='shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-xs lg:text-sm rounded-[30px] bg-brandGreen text-white py-2 px-4 transition-all hover:bg-brandLightGreen hover:scale-105 mt-2 add-to-basket'
-                  onClick={() => {addProductToCart(product)}}>
-                    Buy
-                </button>
-                <button
-                  name={`remove' ${product.name}`}
-                  onClick={() => {clearItemHandler(product)}}
-                  className="mt-1 text-xs font-bold text-brandRed underline"
-                >remove</button>
-              </div>
-            </div>
+            <>
+            <WishlistAccountProductCard product={product} />
+            </>
           ))}
         </>
       )}
