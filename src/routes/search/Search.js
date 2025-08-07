@@ -143,11 +143,17 @@ const SearchResults = () => {
   const { id } = useParams();
   const searchResults = products.filter((product) => {
       const searchTerm = id.toLowerCase()
+      console.log('£'+product.price.toString())
+      
       return (
         product.name.toLowerCase().includes(searchTerm) ||
         product.brand.toLowerCase().includes(searchTerm) ||
         product.features.some((feature) => feature.toLowerCase().includes(searchTerm)) ||
-        product.description.toLowerCase().includes(searchTerm)
+        product.description.toLowerCase().includes(searchTerm) || 
+        product.specifications.Material.toLowerCase().includes(searchTerm) ||
+        product.size.toLowerCase().includes(searchTerm) ||
+        product.ageGroup.toLowerCase().includes(searchTerm) ||
+        '£'+product.price.toString() === searchTerm
       )
     })
 
@@ -959,11 +965,18 @@ const SearchResults = () => {
           </>
         }
         {location.pathname !== "/search/pagination" ? 
-          <div className="grid gap-2 lg:gap-6 grid-cols-2 lg:grid-cols-4 xl:grid-cols-5">
-            {searchResults.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
+          <>
+            {searchResults.length !== 0 &&
+              <div className="text-textBlue text-2xl text-center font-bold w-full my-4">
+                  Search results for <span className="text-brandBlue">{id}</span>
+              </div>
+            }
+            <div className="grid gap-2 lg:gap-6 grid-cols-2 lg:grid-cols-4 xl:grid-cols-5">
+              {searchResults.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
+          </>
               :
             <div className="grid gap-2 lg:gap-6 grid-cols-2 lg:grid-cols-4 xl:grid-cols-5">
               {currentProducts.map((product) => (
