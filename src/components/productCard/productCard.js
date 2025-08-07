@@ -426,9 +426,9 @@ const ProductCard = ({ product }) => {
         </div>
       )}
 
-      <div className="flex flex-col rounded-xl border-[3px] border-gray-200 bg-white shadow-sm group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 overflow-hidden">
+      <div className="flex flex-col rounded-xl border-[3px] border-gray-200 bg-white shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 overflow-hidden">
         <div className="relative">
-          <button className="pt-4" onClick={goToLinkHandler}>
+          <button className="group pt-4" onClick={goToLinkHandler}>
             <img
               src={image || "/placeholder.svg"}
               alt={name}
