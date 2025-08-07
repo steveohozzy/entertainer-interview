@@ -27,6 +27,8 @@ const WishlistAccountProductCard = ({ product }) => {
 
   // swap colours
   const [swatchColor, setSwatchColor] = useState('blue');
+  //show stores
+  const [storesOpen, setStoresOpen] = useState(false);
 
   const wrapperRef = useRef(null);
 
@@ -232,7 +234,7 @@ const WishlistAccountProductCard = ({ product }) => {
                           </div>
                         </div>
                         <div className="w-full py-4 pt-0 md:pt-4">
-                          <div className="flex items-center">
+                          <div className="flex items-center flex-wrap">
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               width="14"
@@ -248,12 +250,64 @@ const WishlistAccountProductCard = ({ product }) => {
                             <span className="font-bold ml-3 text-sm md:text-md text-brandGreen">
                               3 in stock in Amersham
                             </span>
-                            <button className="text-xs text-gray-400 underline ml-3">
+                            <button className="text-xs text-gray-400 underline ml-3"
+                              onClick={() => setStoresOpen(!storesOpen)}
+                            >
                               Select another store
                             </button>
+                            <div
+                              className={`grid overflow-hidden transition-all duration-300 ease-in-out w-full ${
+                                storesOpen
+                                  ? "grid-rows-[1fr] opacity-100"
+                                  : "grid-rows-[0fr] opacity-0"
+                              }`}
+                            >
+                              <div className="w-full overflow-hidden">
+                                <div className="mt-4">
+                                  <form id="pickup-form" className="flex">
+                                    <label className="text-sm text-textBlue mr-6">
+                                      <input
+                                        type="radio"
+                                        name="option"
+                                        id="option1"
+                                        className="accent-brandGreen mr-2"
+                                        defaultChecked
+                                      />
+                                      Entertainer stores
+                                    </label>
+                                    <label className="text-sm text-textBlue">
+                                      <input
+                                        type="radio"
+                                        name="option"
+                                        id="option1"
+                                        className="accent-brandGreen mr-2"
+                                      />
+                                      Tesco stores
+                                    </label>
+                                  </form>
+                                  <div className="flex justify-between py-3 border-b-[3px] border-gray-300">
+                                    <div>
+                                      <button className="text-sm text-gray-400 mr-3">
+                                        List view
+                                      </button>
+                                      <button className="text-sm text-gray-400">
+                                        map view
+                                      </button>
+                                    </div>
+                                    <span className="text-sm text-gray-400">Results</span>
+                                  </div>
+                                  <div className="text-sm text-brandBlue py-4">
+                                    The Entertainer Amersham
+                                    <br />2 Sycamore Road, Amersham HP^ 5DR
+                                    <div className="text-gray-400">
+                                      Collect withi 30 minutes for FREE
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
                           </div>
                         </div>
-                        
                         <Dropdown
                           arrowAgainstWord={true}
                           title="More Details"
@@ -391,12 +445,12 @@ const WishlistAccountProductCard = ({ product }) => {
           </span>
           </div>
         </div>
-        <div className="flex flex-col justify-between items-center py-3">
+        <div className="flex flex-col justify-between items-center py-2 md:py-3">
           <div className="price">
             <div onClick={() => {goToLinkHandler(product)}} className="cursor-pointer flex items-end justify-center">
-                <span className="text-brandRed font-bold text-xs md:text-sm">£{product.price}</span>
+                <span className="text-brandRed font-bold text-[10px] md:text-sm">£{product.price}</span>
                 {product.originalPrice &&
-                    <span className="line-through text-gray-400 text-[10px] md:text-xs ml-1">£{product.originalPrice}</span>
+                    <span className="line-through text-gray-400 text-[8px] md:text-xs ml-1">£{product.originalPrice}</span>
                 }
             </div>
           </div>

@@ -2,9 +2,10 @@ import { useState } from "react"
 
 const MeAccountSection = () => {
   const [termsOpen, setTermsOpen] = useState();
+  const [defaultAddress, setDefaultAddress] = useState('1')
   return (
     <>
-    <div className="flex gap-6 flex-wrap md:flex-nowrap">
+    <div className="flex gap-6 flex-wrap md:flex-nowrap items-start">
       <div className="flex items-center justify-between w-full flex-wrap md:w-2/3">
         <div className="flex flex-col w-[100px]">
           <div className="text-lg font-bold md:text-xl text-textBlue">
@@ -237,6 +238,47 @@ const MeAccountSection = () => {
             </div>
         </div>
         <button className="text-white w-full font-bold mt-4 transition-all rounded-full bg-brandGreen py-2 px-4 hover:bg-brandLightGreen hover:scale-110">Save</button>
+        </div>
+        <div className="text-lg text-textBlue font-bold my-4">
+          Saved Addresses
+        </div>
+        <div className="space-y-3">
+          <div className="text-textBlue border-[3px] border-brandLightBlue rounded-xl p-3">
+            Mr. steven hoskins {defaultAddress === '1' && <span className="font-bold text-brandBlue)">(Default)</span>}<br />
+            42 Lomond Road<br />
+            Hemel Hempstead, Hertfordshire<br />
+            United Kingdom HP2 6PA <br />
+            07850678115
+            <div className={`flex ${defaultAddress === '1' ? 'justify-end' : 'justify-between'} mt-3`}>
+              {defaultAddress !== '1' &&
+                <button onClick={() => {setDefaultAddress('1')}} className="text-sm underline text-gray-400">
+                  Make Default
+                </button>
+              }
+              
+              <button onClick={(e) => {e.target.closest('.border-brandLightBlue').remove()}} className="text-sm text-brandRed font-bold underline">
+                remove
+              </button>
+            </div>
+          </div>
+          <div className="text-textBlue border-[3px] border-brandLightBlue rounded-xl p-3">
+            Mr. steven hoskins {defaultAddress === '2' && <span className="font-bold text-brandBlue)">(Default)</span>}<br />
+            42 Lomond Road<br />
+            Hemel Hempstead, Hertfordshire<br />
+            United Kingdom HP2 6PA <br />
+            07850678115
+            <div className={`flex ${defaultAddress === '2' ? 'justify-end' : 'justify-between'} mt-3`}>
+              {defaultAddress !== '2' &&
+                <button onClick={() => {setDefaultAddress('2')}} className="text-sm underline text-gray-400">
+                  Make Default
+                </button>
+              }
+              
+              <button onClick={(e) => {e.target.closest('.border-brandLightBlue').remove()}} className="text-sm text-brandRed font-bold underline">
+                remove
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
