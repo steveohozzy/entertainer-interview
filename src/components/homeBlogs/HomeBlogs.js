@@ -88,6 +88,25 @@ const HomeBlogs = () => {
                             </div>
                         </div>
                     </SwiperSlide>
+                    <SwiperSlide>
+                        <div className="flex flex-wrap bg-white shadow-lg mb-5 rounded-xl">
+                            <div className="rounded-xl w-full">
+                                <img
+                                    src="https://www.thetoyshop.com/medias/1-4.jpg?context=bWFzdGVyfHJvb3R8ODE0MDd8aW1hZ2UvanBlZ3xhRGczTDJnMVlpOHhNalUyTmpFNE56VTBNRFV4TUM4eElEUXVhbkJufDZjZjE0ZDU2OWQ4NjNkYTE4Njk4MjkxZmUyYzEwMmEwYTRkODUwZjA4MWVjYzk4ZjViNzk2NDAyMzFlOWJjNDE"
+                                    alt="The Must-Have Toys for Road Trips"
+                                    className="w-full object-cover group-hover:scale-105 transition-transform duration-300 rounded-xl"
+                                />
+                            </div>
+                            <div className="w-full flex flex-col justify-between items-center py-1 md:py-3 px-2">
+                                <div className="text-lg xl:text-xl text-brandBlue font-bold leading-[1.2] xl:leading-[1.1] mb-5 mt-3">The Must-Have Toys for Road Trips</div>
+                                <Button
+                                    className='shadow-md hover:shadow-lg group inline-flex items-center justify-center font-bold rounded-[30px] bg-brandGreen text-white py-2 px-2 lg:px-4 lg:pl-0 pl-0 transition-all hover:bg-brandLightGreen hover:scale-105 mt-2'
+                                    onClick={() => { navigate(`/`); window.scrollTo({top: 0,left: 0,behavior: "smooth",});}}>
+                                        Read the post
+                                </Button>
+                            </div>
+                        </div>
+                    </SwiperSlide>
                 </Swiper>
                 </div>
             </div>
