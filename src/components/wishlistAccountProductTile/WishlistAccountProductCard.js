@@ -386,7 +386,7 @@ const WishlistAccountProductCard = ({ product }) => {
               alt={product.name}
               className="w-full object-cover group-hover:scale-105 transition-transform duration-300 rounded-l"
           />
-            <span className="absolute top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%] opacity-0 transition-all w-9 h-9 transition-duration-500 group-hover:shadow-lg group-hover:opacity-85 text-brandLightBlue bg-brandBlue rounded-full md:w-16 md:h-16 p-2 md:p-3 flex items-center justify-center">
+            <span className="absolute top-[50%] left-[50%] scale-0 translate-y-[-50%] translate-x-[-50%] opacity-0 transition-all w-9 h-9 transition-duration-600 group-hover:shadow-lg group-hover:opacity-85 group-hover:scale-100 text-brandLightBlue bg-brandBlue rounded-full md:w-16 md:h-16 p-2 md:p-3 flex items-center justify-center">
             <Eye className="h-5 md:h-8 w-5 md:w-8 hover:text-brandMediumGreen transition-all" />
           </span>
           </div>
