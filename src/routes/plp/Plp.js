@@ -788,7 +788,7 @@ const Plp = () => {
               </div>
               <p className="flex items-center justify-center bg-brandBlue text-white text-xs rounded-tr-full rounded-br-full block h-full w-full px-3">
                  {startIndex + 1}-{Math.min(endIndex, sortedFilteredProducts.length)} of{" "}
-                  {sortedFilteredProducts.length} products
+                  {sortedFilteredProducts.length} <span className="hidden md:block ml-1">products</span>
               </p>
             </div>
 
