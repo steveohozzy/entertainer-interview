@@ -156,9 +156,11 @@ const Layout = () => {
                 <button onClick={goToWishlistHandler} className="group flex md:hidden ml-2" name="View your favourites">
                     <Heart className="transition-all h-5 w-5 group-hover:scale-110 group-hover:rotate-[20deg]" fill="white" />
                     <span className="sr-only">View your favourites</span>
-                    <div className="hidden md:block ml-1 text-xs bg-brandRed w-[20px] h-[20px] flex items-center justify-center rounded-full z-20">
-                        {wishlistCount}
-                    </div>
+                    {wishlistCount > 0 &&
+                      <div className="hidden md:block ml-1 text-xs bg-brandRed w-[20px] h-[20px] flex items-center justify-center rounded-full z-20">
+                          {wishlistCount}
+                      </div>
+                    }
                 </button>
               </div>
               <div className="flex items-center space-x-4 pt-2 ml-2 md:pt-4 md:ml-0 group">
@@ -180,7 +182,7 @@ const Layout = () => {
                     <Heart className="transition-all h-5 w-5 group-hover:scale-110 group-hover:rotate-[20deg]" fill="white" />
                     <span className="sr-only">View your favourites</span>
                     <div className="ml-1 text-xs bg-brandRed w-[20px] h-[20px] flex items-center justify-center rounded-full z-20">
-                        {wishlistCount}
+                        <span className="ml-[-1px] w-full text-center">{wishlistCount}</span>
                     </div>
                 </button>
                 <div className="relative">
@@ -205,7 +207,7 @@ const Layout = () => {
                         </svg>
                     </span>
 
-                    <div className="ml-1 text-xs bg-brandRed w-[24px] h-[24px] flex items-center justify-center rounded-full relarive z-20">
+                    <div className="ml-1 text-xs bg-brandRed w-[24px] h-[24px] flex items-center justify-center rounded-full relative z-20">
                         {cartCount}
                     </div>
                     <span className="sr-only">View your cart</span>
