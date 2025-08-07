@@ -427,8 +427,8 @@ const ProductCard = ({ product }) => {
       )}
 
       <div className="flex flex-col rounded-xl border-[3px] border-gray-200 bg-white shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 overflow-hidden">
-        <div className="relative">
-          <button className="group pt-4" onClick={goToLinkHandler}>
+        <div className="relative group">
+          <button className="pt-4" onClick={goToLinkHandler}>
             <img
               src={image || "/placeholder.svg"}
               alt={name}
