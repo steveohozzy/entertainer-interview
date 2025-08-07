@@ -111,7 +111,7 @@ const MiniCart = () => {
                 className="flex items-center"
                 onClick={() => setRecsDetailsOpen(!recsDetailsOpen)}
               >
-                You may also like...{" "}
+                You may also like...
                 <span
                   className={`w-0 h-0 ml-2 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-t-[8px] border-white transition-all ${
                     recsDetailsOpen && "rotate-180"
@@ -138,6 +138,7 @@ const MiniCart = () => {
                           left: 0,
                           behavior: "smooth",
                         });
+                        setRecsDetailsOpen(false)
                       }}
                       className="cursor-pointer flex flex-col h-full bg-white rounded-xl pb-2"
                     >
@@ -156,6 +157,7 @@ const MiniCart = () => {
                             left: 0,
                             behavior: "smooth",
                           });
+                          setRecsDetailsOpen(false)
                         }}
                         className="cursor-pointer w-full flex flex-col justify-between items-center px-2 flex-grow"
                       >
@@ -184,6 +186,7 @@ const MiniCart = () => {
                                 left: 0,
                                 behavior: "smooth",
                               });
+                              setRecsDetailsOpen(false)
                             }}
                           >
                             Details
