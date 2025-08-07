@@ -181,9 +181,11 @@ const Layout = () => {
                 <button onClick={goToWishlistHandler} className="group hidden md:flex" name="View your favourites">
                     <Heart className="transition-all h-5 w-5 group-hover:scale-110 group-hover:rotate-[20deg]" fill="white" />
                     <span className="sr-only">View your favourites</span>
-                    <div className="ml-1 text-xs bg-brandRed w-[20px] h-[20px] flex items-center justify-center rounded-full z-20">
-                        <span className="ml-[-1px] w-full text-center">{wishlistCount}</span>
-                    </div>
+                    {wishlistCount > 0 &&
+                      <div className="ml-1 text-xs bg-brandRed w-[20px] h-[20px] flex items-center justify-center rounded-full z-20">
+                          <span className="ml-[-1px] w-full text-center">{wishlistCount}</span>
+                      </div>
+                    }
                 </button>
                 <div className="relative">
                     <button
