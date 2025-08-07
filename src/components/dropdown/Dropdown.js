@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const Dropdown = ({ title, answer, expanded, arrowAgainstWord, ...otherProps}) => {
+const Dropdown = ({ title, activeTitle, swapActiveTitle, answer, expanded, arrowAgainstWord, ...otherProps}) => {
   const [accordionOpen, setAccordionOpen] = useState(false);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ const Dropdown = ({ title, answer, expanded, arrowAgainstWord, ...otherProps}) =
             onClick={() => setAccordionOpen(!accordionOpen)}
             {...otherProps}
         >
-            <span className={`mr-2 flex  ${arrowAgainstWord ? null : 'w-full'}`}>{title} </span>
+            <span className={`mr-2 flex  ${arrowAgainstWord ? null : 'w-full'}`}>{swapActiveTitle ? (accordionOpen ? activeTitle : title) : title} </span>
             <span
             className={`w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-t-[8px] border-brandBlue transition-all ${
                 accordionOpen && "rotate-180"
