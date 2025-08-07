@@ -268,8 +268,8 @@ const Events = () => {
                     data-hidden="false"
                   >
                     <div className="flex flex-wrap">
-                      <div className="w-full md:w-1/3 p-4 md:border-r-[3px] md-border-brandLightBlue">
-                        <p className="text-textBlue text-lg mb-6 text-center font-bold">
+                      <div className="w-full md:w-1/3 p-4 md:border-r-[3px] md-border-brandLightBlue flex flex-col justify-start items-center">
+                        <p className="text-textBlue text-lg mb-4 text-center font-bold">
                           Meet Paw Patroller
                         </p>
                         <img
@@ -388,8 +388,8 @@ const Events = () => {
                     data-hidden="false"
                   >
                     <div className="flex flex-wrap">
-                      <div className="w-full md:w-1/3 p-4 md:border-r-[3px] md-border-brandLightBlue">
-                        <p className="text-textBlue text-lg mb-6 text-center font-bold">
+                      <div className="w-full md:w-1/3 p-4 md:border-r-[3px] md-border-brandLightBlue flex flex-col justify-start items-center">
+                        <p className="text-textBlue text-lg mb-4 text-center font-bold">
                           Meet Chase
                         </p>
                         <img

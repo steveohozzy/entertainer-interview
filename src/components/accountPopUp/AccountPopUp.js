@@ -97,9 +97,9 @@ const AccountPopUp = () => {
           onClick={handleGoToAccount}
         >
           <span className="hidden md:block">Hi Jack!</span>
-          <span className="transition-all text-white md:text-brandLightBlue ml-1 group-hover:rotate-[25deg]">
+          <span className="transition-all text-white md:text-brandLightBlue rotate-[20deg] group-hover:animate-wave">
             <svg
-            className="rotate-[25deg]"
+              className="animate-wave translate-x-[2px] translate-y-[-3px]"
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
               width="20"
@@ -313,6 +313,7 @@ const AccountPopUp = () => {
                   </div>
                   <div className="text-textBlue opacity-75 rotate-[20deg] flex items-start">
                     <svg
+                      className="animate-wave translate-x-[2px] translate-y-[-3px]"
                       xmlns="http://www.w3.org/2000/svg"
                       fill="currentColor"
                       width="22"
