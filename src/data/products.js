@@ -260,6 +260,38 @@ export const products = [
     },
   },
   {
+    sku: 557868,
+    id: 11,
+    name: "Captain America 30cm Figure Titan Hero",
+    brand: "Marvel",
+    price: 24.99,
+    originalPrice: 29.99,
+    rating: 4.8,
+    reviews: 156,
+    image: "https://www.thetoyshop.com/medias/515Wx515H-574503-Primary?context=bWFzdGVyfGltYWdlc3w4Mzc5M3xpbWFnZS9qcGVnfGFEa3pMMmd6TkM4eE1qUTVORFkxT0RrMk1UUXpPQzgxTVRWWGVEVXhOVWhmTlRjME5UQXpYMUJ5YVcxaGNua3w5YWE5ZDI4MDk0ZjBmNGFjMWYxNmM2NzI1OTY4ZDk5MzA5Yjc5YWU1NDM5MmJhMWFiNThlZGQ0ZDhkNWJlZjk3",
+    alternateImage: "https://www.thetoyshop.com/medias/515Wx515H-574503-574503-2.jpg?context=bWFzdGVyfGltYWdlc3w5MjMwMnxpbWFnZS9qcGVnfGFHRTRMMmhqWXk4eE1qUTVORFl4TURZeU9EWXpPQzgxTVRWWGVEVXhOVWhmTlRjME5UQXpYelUzTkRVd015MHlMbXB3Wnd8ZTljMDZmYmVjZmEwYzY0MjU3ZTI0ZTI1ZmU1N2IzMTNiY2FmNWFmNGU2ODBhNWY1OGIyMzU2YjFlN2Y2MmEyZg",
+    images: [
+      "https://www.thetoyshop.com/medias/515Wx515H-574503-Primary?context=bWFzdGVyfGltYWdlc3w4Mzc5M3xpbWFnZS9qcGVnfGFEa3pMMmd6TkM4eE1qUTVORFkxT0RrMk1UUXpPQzgxTVRWWGVEVXhOVWhmTlRjME5UQXpYMUJ5YVcxaGNua3w5YWE5ZDI4MDk0ZjBmNGFjMWYxNmM2NzI1OTY4ZDk5MzA5Yjc5YWU1NDM5MmJhMWFiNThlZGQ0ZDhkNWJlZjk3I",
+      "https://www.thetoyshop.com/medias/515Wx515H-574503-574503-2.jpg?context=bWFzdGVyfGltYWdlc3w5MjMwMnxpbWFnZS9qcGVnfGFHRTRMMmhqWXk4eE1qUTVORFl4TURZeU9EWXpPQzgxTVRWWGVEVXhOVWhmTlRjME5UQXpYelUzTkRVd015MHlMbXB3Wnd8ZTljMDZmYmVjZmEwYzY0MjU3ZTI0ZTI1ZmU1N2IzMTNiY2FmNWFmNGU2ODBhNWY1OGIyMzU2YjFlN2Y2MmEyZg",
+      "/placeholder.svg?height=400&width=400",
+    ],
+    video: "https://www.thetoyshop.com/medias/lego-test-video.mp4?context=bWFzdGVyfHJvb3R8MTg0NTg0MXx2aWRlby9tcDR8YUdVd0wyZ3laUzh4TWpVeU1qWTVNVFE1TXpreE9DOXNaV2R2TFhSbGMzUXRkbWxrWlc4dWJYQTB8MzE5MWY1M2FiYmQ4ODA4NDc4NmYzMDUwOWU5MmZiMzIyNTQxNDYwZTBhMzI3NmUyODNmMDIzYjA1YWMzZTRiYQ",
+    isNew: true,
+    isBestseller: false,
+    ageGroup: "6-8 years",
+    features: ["Articulated", "With Accessories"],
+    size: "6 inches",
+    inStock: true,
+    description:
+      "Super-size your crime-fighting adventures with the patriotic soldier Captain America. This 12-inch Captain America figure will use his super-strength and indestructible shield to open up a big-time attack on evil everywhere. With him on your side, there's no telling where your Avengers adventures will take you.",
+    specifications: {
+      Material: "High-quality plastic",
+      "Articulation Points": "20+",
+      Accessories: "Comes with a shield accessory, alternate hands",
+      Manufacturer: "Marvel Toys",
+    },
+  },
+  {
     sku: 557860,
     id: 8,
     name: "Goku Super Saiyan Figure",
@@ -353,10 +385,10 @@ export const products = [
     },
   },
   // quick array with randoms for dummy products added after few load mores
-  ...Array.from({ length: 40 }, (_, i) => ({
+  ...Array.from({ length: 39 }, (_, i) => ({
     sku: 557860,
-    id: i + 11,
-    name: `Action Figure ${i + 11}`,
+    id: i + 1,
+    name: `Action Figure ${i + 10}`,
     brand: brands[i % brands.length].name,
     price: Math.floor(Math.random() * 40) + 15,
     originalPrice: Math.random() > 0.5 ? Math.floor(Math.random() * 50) + 20 : null,

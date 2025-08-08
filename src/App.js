@@ -12,6 +12,7 @@ import HomeTabs from "./routes/home/HomeTabs";
 import Wishlist from "./routes/wishlist/Wishlist";
 import Events from "./routes/events/Events";
 import SearchResults from "./routes/search/Search";
+import Brands from "./routes/brandsPage/Brands";
 
 const App = () => {
 
@@ -27,6 +28,7 @@ const App = () => {
         <Route path="/product-details/:id" element={<ProductDetails />} />
         <Route path="/account" element={<Account />} />
         <Route path="/events" element={<Events />} />
+        <Route path="/brands/*" element={<Brands />} />
       </Route>
       <Route path="/" element={<CheckoutLayout />}>
         <Route path="/checkout" element={<Checkout />} />
