@@ -13,6 +13,7 @@ import Wishlist from "./routes/wishlist/Wishlist";
 import Events from "./routes/events/Events";
 import SearchResults from "./routes/search/Search";
 import Brands from "./routes/brandsPage/Brands";
+import PresentFinder from "./routes/presentFinder/PresentFinder";
 
 const App = () => {
 
@@ -29,6 +30,7 @@ const App = () => {
         <Route path="/account" element={<Account />} />
         <Route path="/events" element={<Events />} />
         <Route path="/brands/*" element={<Brands />} />
+        <Route path="/present-finder/*" element={<PresentFinder />} />
       </Route>
       <Route path="/" element={<CheckoutLayout />}>
         <Route path="/checkout" element={<Checkout />} />
