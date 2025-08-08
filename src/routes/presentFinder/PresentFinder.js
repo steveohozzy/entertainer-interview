@@ -50,17 +50,6 @@ const PresentFinder = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [
-    selectedBrands,
-    selectedAgeGroups,
-    selectedFeatures,
-    selectedSizes,
-    priceRange,
-    showInStockOnly,
-  ]);
-
   function useOutsideAlerter(ref) {
     useEffect(() => {
       function handleClickOutside(event) {
