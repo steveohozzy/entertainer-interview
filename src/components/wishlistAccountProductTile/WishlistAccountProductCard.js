@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { Star, Eye, Plus, Minus } from "lucide-react";
+import { Star, Eye } from "lucide-react";
 import { useSelector } from "react-redux";
 
 import { useDispatch } from 'react-redux';
@@ -51,18 +51,14 @@ const WishlistAccountProductCard = ({ product }) => {
 
   // Quick view modal state
   const [quickViewProduct, setQuickViewProduct] = useState(null);
-  const [quantity, setQuantity] = useState(1);
 
   // Reset modal state when opening
   const openQuickView = (product) => {
     setQuickViewProduct(product);
-    setQuantity(1);
   };
 
   const closeQuickView = () => {
     setQuickViewProduct(null);
-
-    setQuantity(1);
   };
 
   // Add to favourites
@@ -187,7 +183,11 @@ const WishlistAccountProductCard = ({ product }) => {
                         <h2 className="text-xl md:text-3xl font-bold text-brandBlue text-left">
                           {product.name} {swatchColor === 'orange' && <span className="text-orange-600">ORANGE</span>}
                         </h2>
-                        <button className="text-gray-400 text-xs underline mt-0" onClick={() => {goToLinkHandler(product)}}>View full product</button>
+                        <button className="text-gray-400 text-xs underline mt-0" onClick={() => {goToLinkHandler(product); window.scrollTo({
+                          top: 0,
+                          left: 0,
+                          behavior: "smooth",
+                        });}}>View full product</button>
                       </div>
                       <div className="flex flex-wrap items-start justify-between mt-0 md:mt-4">
                         <div className="flex flex-col items-start w-1/2 md:w-auto justify-between">
@@ -383,7 +383,7 @@ const WishlistAccountProductCard = ({ product }) => {
                         />
                       </div>
                       <div className="flex items-center gap-4">
-                        <div className="flex items-center gap-4">
+                        {/* <div className="flex items-center gap-4">
                           <div className="flex items-center border-[3px] border-gray-300 rounded-full">
                             <button
                                 name="Reduce quanitity"
@@ -405,7 +405,7 @@ const WishlistAccountProductCard = ({ product }) => {
                                 <span className="sr-only">Increase quanitity</span>
                             </button>
                           </div>
-                        </div>
+                        </div> */}
                         <Button
                           className="shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-xs min-h-[40px] md:text-lg rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-2 transition-all hover:bg-brandLightGreen hover:scale-105"
                           iconpath={
