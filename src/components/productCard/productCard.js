@@ -43,6 +43,11 @@ const ProductCard = ({ product }) => {
 
   const goToLinkHandler = () => {
     navigate("/product-details/" + product.id);
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
   };
 
   const addProductToCart = () => {
