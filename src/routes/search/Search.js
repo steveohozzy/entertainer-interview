@@ -143,7 +143,6 @@ const SearchResults = () => {
   const { id } = useParams();
   const searchResults = products.filter((product) => {
       const searchTerm = id.toLowerCase()
-      console.log('£'+product.price.toString())
       
       return (
         product.name.toLowerCase().includes(searchTerm) ||

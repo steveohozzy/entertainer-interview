@@ -3,6 +3,7 @@ import ByTypeCarousel from "./byTypeCarousel";
 import ByAgeCarousel from "./byAgeCarousel";
 import TopSellersCarousel from "./topSellersCarousel";
 import { useNavigate } from "react-router-dom";
+import { products } from "../../data/products";
 
 export const brands = [
   { name: "Marvel"},
@@ -17,6 +18,11 @@ export const brands = [
   { name: "Dragon Ball Z"},
   { name: "Naruto"},
   { name: "One Piece"},
+  { name: "Spider-man"},
+  { name: "Godzilla"},
+  { name: "Action figures"},
+  { name: "Pikachu"},
+  { name: "Goku"},
 ]
 
 const SearchBar = () => {
@@ -77,7 +83,7 @@ const SearchBar = () => {
 
   const handleChange = (e) => {
     setSearchQuery(e.target.value);
-    console.log(searchQuery.trim().length);
+    
     if (searchQuery.trim().length-1 > 0) {
       setStartedSearch(true);
     } else {
@@ -85,18 +91,50 @@ const SearchBar = () => {
     }
   }
 
-  const filteredBrands = brands.filter((brand) => {
+  const handleKeyCode = (e) => {
+    if( e.keyCode === 46 || e.keyCode === 8 ) {
+      
+      if (searchQuery.trim().length === 3 || searchQuery.trim().length === 2 || searchQuery.trim().length === 1) {
+        setTimeout(() => {
+          setStartedSearch(false);
+        }, 0)
+      }
+    }
+  }
+
+  const filteredSearch = brands.filter((term) => {
       return (
-        brand.name.toLowerCase().includes(searchQuery.toLowerCase())
+        term.name.toLowerCase().includes(searchQuery.toLowerCase())
       )
     }
-    );
+  );
+
+  const filteredProducts =products.filter((product) => {
+    const searchTerm = searchQuery.toLowerCase();
+    
+    if (startedSearch === true) {
+      return (
+        product.brand.toLowerCase().includes(searchTerm) ||
+        product.name.toLowerCase().includes(searchTerm) ||
+        product.features.some((feature) => feature.toLowerCase().includes(searchTerm)) ||
+        product.description.toLowerCase().includes(searchTerm) || 
+        product.specifications.Material.toLowerCase().includes(searchTerm) ||
+        product.size.toLowerCase().includes(searchTerm) ||
+        product.ageGroup.toLowerCase().includes(searchTerm) ||
+        '£'+product.price.toString() === searchTerm
+      )
+    } else {
+      return {
+        product
+      }
+    }
+  });
 
   return (
     <div ref={wrapperRef} className="search bg-brandLightBlue pt-5 z-index-2 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <form id="search-form" className="relative" onSubmit={handleSearch}>
-              <input ref={searchInput} onFocus={handleFocus} onChange={handleChange} name="search" type="search" placeholder="I'm looking for..." className="relative z-20 outline-0 h-[40px] px-3 rounded-3xl w-full border border-[3px] border-brandBlue font-bold text-textBlue placeholder:text-textBlue" />
+              <input ref={searchInput} onFocus={handleFocus} onChange={handleChange} onKeyDown={handleKeyCode} name="search" type="search" placeholder="I'm looking for..." className="relative z-20 outline-0 h-[40px] px-3 rounded-3xl w-full border border-[3px] border-brandBlue font-bold text-textBlue placeholder:text-textBlue" />
               <button onClick={handleSearch} className="shadow-md z-20 group text-white font-bold bg-brandRed rounded-full h-[40px] w-[54px] absolute right-0 top-0 transition-all hover:bg-brandGreen hover:scale-105">
                   <span className="block transition-all group-hover:rotate-[20deg]">
                       <span className="inline-block rotate-[-10deg] text-lg">G</span>
@@ -110,15 +148,15 @@ const SearchBar = () => {
               <div className="w-full bg-white rounded-lg p-4 pt-11 pb-3 text-brandBlue border-b-[3px] border-red-500 shadow-md mb-4">
                 <div className="flex items-start justify-between w-full">
                   <div className="flex flex-col w-full md:w-2/3 max-w-[400px]">
-                  {startedSearch ? (
+                  {startedSearch & filteredSearch.length > 0 ? (
                     <>
                       <div className="text-lg font-bold text-textBlue">
                         Do You Mean?
                       </div>
                       <div className="flex flex-col space-y-1 mt-2">
-                        {filteredBrands.map((brand) => {
+                        {filteredSearch.slice(0, 3).map((term) => {
                           return (
-                            <button onClick={handleSelectSearch} id={brand.name} key={brand.name} className="text textBlue text-sm md:text-base flex items-center justify-between">
+                            <button onClick={handleSelectSearch} id={term.name} key={term.name} className="text textBlue text-sm md:text-base flex items-center justify-between">
                               <span className="flex items-center">
                                 <span className="w-4 md:w-5 h-4 md:h-5 mr-1 block">
                                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
@@ -127,7 +165,7 @@ const SearchBar = () => {
                                     </g>
                                   </svg>
                                 </span>
-                                <span>{brand.name}</span>
+                                <span>{term.name}</span>
                               </span>
                             </button>
                           )
@@ -197,9 +235,9 @@ const SearchBar = () => {
                     </div>
                   </div>
                 </div>
-                <ByTypeCarousel setShowSearchBox={setShowSearchBox} />
+                <TopSellersCarousel setShowSearchBox={setShowSearchBox} filteredProducts={filteredProducts} startedSearch={startedSearch} />
                 <ByAgeCarousel setShowSearchBox={setShowSearchBox} />
-                <TopSellersCarousel setShowSearchBox={setShowSearchBox} />
+                <ByTypeCarousel setShowSearchBox={setShowSearchBox} />
               </div>
             </div>
       </div>
