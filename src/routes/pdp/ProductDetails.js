@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 
@@ -31,6 +31,7 @@ const ProductDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const product = products.find((item) => item.id === parseInt(id));
+  const swiperRef = useRef(null);
 
   const addProductToCart = () => {
     dispatch(addItemToCart(product));
@@ -70,6 +71,7 @@ const ProductDetails = () => {
         <div className="rounded-xl flex flex-wrap bg-white items-start shadow-sm">
           <div className="relative w-full md:w-2/5 p-4 border-[3px] border-brandNeonBlue rounded-xl [&_.swiper-pagination]:relative">
             <Swiper
+              ref={swiperRef}
               modules={[Autoplay, Pagination]}
               spaceBetween={20}
               slidesPerView={1}
@@ -459,6 +461,8 @@ const ProductDetails = () => {
                     <div
                       onClick={() => {
                         navigate(`/product-details/${product.id}`);
+                        swiperRef.current.swiper.slideTo(0);
+                        setSwatchColor('blue');
                         window.scrollTo({
                           top: 0,
                           left: 0,
@@ -551,6 +555,8 @@ const ProductDetails = () => {
                     key={product.id}
                     onClick={() => {
                       navigate(`/product-details/${product.id}`);
+                      swiperRef.current.swiper.slideTo(0);
+                      setSwatchColor('blue');
                       window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
                       setTabOpen(false);
                     }}
