@@ -199,11 +199,6 @@ const Plp = () => {
 
     // First page
     if (startPage > 1) {
-      // buttons.push(
-      //   <button key={1} onClick={() => goToPage(1)}>
-      //     1
-      //   </button>,
-      // )
       if (startPage > 2) {
         buttons.push(
           <span key="ellipsis2" className="px-2 text-brandBlue text-2xl font-bold">

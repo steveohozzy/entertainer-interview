@@ -201,11 +201,6 @@ const Brands = () => {
 
     // First page
     if (startPage > 1) {
-      // buttons.push(
-      //   <button key={1} onClick={() => goToPage(1)}>
-      //     1
-      //   </button>,
-      // )
       if (startPage > 2) {
         buttons.push(
           <span key="ellipsis2" className="px-2 text-brandBlue text-2xl font-bold">
@@ -949,21 +944,21 @@ const Brands = () => {
           )}
 
         {/* Info Sections */}
-        <p className="font-bold mt-7 text-brandBlue">Explore our range of Barbie toys, from magical Dreamtopia dolls to inspiring career dolls that spark big dreams. You’ll find fashion dolls, playsets, vehicles, and accessories, which are perfect as gifts for kids who love imaginative play. With Barbie and friends, there’s always a new story to create and fun to be had!</p>
+        <p className="font-bold mt-7 text-brandBlue">Explore our range of Marvel toys, from magical Dreamtopia dolls to inspiring career dolls that spark big dreams. You’ll find fashion dolls, playsets, vehicles, and accessories, which are perfect as gifts for kids who love imaginative play. With Marvel and friends, there’s always a new story to create and fun to be had!</p>
         <div className="flex flex-col items-center justify-center my-7">
           <Dropdown
             className="text-brandBlue font-bold flex items-center text-xl"
-            title={'What Types of Barbie Dolls and Toys Can I Collect?'}
+            title={'What Types of Marvel Dolls and Toys Can I Collect?'}
             expanded={true}
             answer={
               <div className="text-brandBlue text-base">
-                <p className="mt-4">Barbie has been empowering imaginations for decades, and with over 200 careers under her belt, there’s no end to the role-play possibilities. From a doctor to a fashion designer or even an astronaut, Barbie Careers dolls let children explore a world of endless opportunities.</p>
+                <p className="mt-4">Marvel has been empowering imaginations for decades, and with over 200 careers under her belt, there’s no end to the role-play possibilities. From a doctor to a fashion designer or even an astronaut, Marvel Careers dolls let children explore a world of endless opportunities.</p>
 
-                <p className="mt-4">Learn all about the 200 careers that Barbie's had. Do any of them surprise you?</p>
+                <p className="mt-4">Learn all about the 200 careers that Marvel's had. Do any of them surprise you?</p>
 
-                <p>The Barbie Dreamtopia range opens the door to magical adventures with mermaids, princesses, and fairytale characters. Immerse yourself in the ultimate fashion adventure with the Barbie Fashionistas range or bring the pink screen to life with Barbie Movie dolls.</p>
+                <p>The Marvel Dreamtopia range opens the door to magical adventures with mermaids, princesses, and fairytale characters. Immerse yourself in the ultimate fashion adventure with the Marvel Fashionistas range or bring the pink screen to life with Marvel Movie dolls.</p>
 
-                <p className="mt-4">Whether you're interested in Barbie's wide range of career dolls or magical Dreamtopia toys, there's something for everyone. Explore the possibilities and discover which Barbie dolls will inspire your child’s next adventure.</p>
+                <p className="mt-4">Whether you're interested in Marvel's wide range of career dolls or magical Dreamtopia toys, there's something for everyone. Explore the possibilities and discover which Marvel dolls will inspire your child’s next adventure.</p>
               </div>
             }
           />
@@ -971,12 +966,12 @@ const Brands = () => {
         <div className="flex flex-col items-center justify-center my-7">
           <Dropdown
             className="text-brandBlue font-bold flex items-center text-xl"
-            title={'Who Are the Most Popular Barbie Characters?'}
+            title={'Who Are the Most Popular Marvel Characters?'}
             answer={
               <div className="text-brandBlue text-base">
-                <p className="mt-4">Barbie isn’t just about the dolls. Barbie's iconic friends add depth and excitement to her world. Among the Barbie squad, you’ll come across her sister Skipper, best friend Chelsea, and boyfriend Ken, each with their own personalities and stories. From Barbie’s adventurous escapades to her sister’s dreams of stardom, there are endless ways to create your own Barbie stories.</p>
+                <p className="mt-4">Marvel isn’t just about the dolls. Marvel's iconic friends add depth and excitement to her world. Among the Marvel squad, you’ll come across her sister Skipper, best friend Chelsea, and boyfriend Ken, each with their own personalities and stories. From Marvel’s adventurous escapades to her sister’s dreams of stardom, there are endless ways to create your own Marvel stories.</p>
 
-                <p className="mt-4">Dive into Barbie’s world and discover which characters your child will connect with the most. With such a diverse cast, Barbie fans can experience a variety of adventures, whether it's an exciting career path or a fun-filled day at Barbie's Dreamhouse!</p>
+                <p className="mt-4">Dive into Marvel’s world and discover which characters your child will connect with the most. With such a diverse cast, Marvel fans can experience a variety of adventures, whether it's an exciting career path or a fun-filled day at Marvel's Dreamhouse!</p>
               </div>
             }
           />
@@ -984,12 +979,12 @@ const Brands = () => {
         <div className="flex flex-col items-center justify-center my-7">
           <Dropdown
             className="text-brandBlue font-bold flex items-center text-xl"
-            title={'Timeless Barbie Gifts for All'}
+            title={'Timeless Marvel Gifts for All'}
             answer={
               <div className="text-brandBlue text-base">
-                <p className="mt-4">If you’re looking for the perfect gift for a Barbie lover, we’ve got you covered! From stylish fashion dolls to collectable special edition Barbie dolls, there’s something for every age and interest. With a variety of fashion outfits, doll accessories, and playsets, there's a perfect gift for everyone, whether they're starting their collection or are already well-established fans.</p>
+                <p className="mt-4">If you’re looking for the perfect gift for a Marvel lover, we’ve got you covered! From stylish fashion dolls to collectable special edition Marvel dolls, there’s something for every age and interest. With a variety of fashion outfits, doll accessories, and playsets, there's a perfect gift for everyone, whether they're starting their collection or are already well-established fans.</p>
 
-                <p className="mt-4">For those who appreciate the finer details, Barbie’s collectable dolls make a stunning gift for older children and collectors alike. Need help choosing the right gift? Our guide to the best Barbie toys offers advice to make the perfect choice when it comes to gift-giving. No matter the occasion, a Barbie doll is always a gift that inspires creativity and fun!</p>
+                <p className="mt-4">For those who appreciate the finer details, Marvel’s collectable dolls make a stunning gift for older children and collectors alike. Need help choosing the right gift? Our guide to the best Marvel toys offers advice to make the perfect choice when it comes to gift-giving. No matter the occasion, a Marvel doll is always a gift that inspires creativity and fun!</p>
               </div>
             }
           />

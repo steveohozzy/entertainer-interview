@@ -43,7 +43,7 @@ export const sizes = [
 export const products = [
   {
     sku: 557860,
-    id: 1,
+    id: 557860,
     name: "Spider-Man Advanced Suit Figure",
     brand: "Marvel",
     price: 24.99,
@@ -387,7 +387,7 @@ export const products = [
   // quick array with randoms for dummy products added after few load mores
   ...Array.from({ length: 39 }, (_, i) => ({
     sku: 557860,
-    id: i + 1,
+    id: i + 30,
     name: `Action Figure ${i + 10}`,
     brand: brands[i % brands.length].name,
     price: Math.floor(Math.random() * 40) + 15,

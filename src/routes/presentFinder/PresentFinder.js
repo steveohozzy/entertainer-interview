@@ -5,6 +5,8 @@ import { products, ageGroups, features } from "../../data/products";
 
 import ProductCard from "../../components/productCard/productCard";
 import Button from "../../components/button/Button";
+import { Link } from "react-router-dom";
+import { Star } from "lucide-react";
 
 const PresentFinder = () => {
   const [selectedBrands, setSelectedBrands] = useState([]);
@@ -279,7 +281,8 @@ const PresentFinder = () => {
               how much you’re looking to spend, and we’ll recommend all the best
               presents! Please select at least one step to reveal your results.
             </p>
-            <div className="bg-white rounded-2xl shadow-lg py-7 px-5 md:px-12 mt-6 border-[3px] border-textBlue">
+            <div className="bg-white rounded-2xl shadow-lg py-7 px-5 md:px-12 mt-6 border-[3px] border-textBlue relative">
+              <img src="/balloons.svg" alt="balloons" className="absolute text-brandLightBlue h-[200px] md:h-2/3 opacity-40 rotate-[40deg] right-10 bottom-20" />
               <div className="w-[300px] mx-auto mb-1">
                 <div className="flex justify-end">
                   <span
@@ -525,6 +528,85 @@ const PresentFinder = () => {
                   </div>
                 </>
               )}
+            </div>
+            <div className="max-w-[800px] my-10 mx-auto">
+              <h3 className="text-xl text-brandBlue text-center font-bold">Still not sure?</h3>
+              <p className="text-brandBlue text-center">Try these popular categories</p>
+              <div className="flex justify-center items-center gap-4 mt-6">
+                <Link
+            onClick={() => {
+              window.scrollTo({
+                top: 10,
+                left: 0,
+                behavior: "smooth",
+              });
+            }}
+            to="/category/new-toys"
+            className="transition-all text-brandBlue flex flex-col items-center hover:scale-110 group text-[9px] md:text-sm"
+          >
+            <span className="transition-all w-9 h-9 transition-duration-500 group-hover:rotate-[20deg] group-hover:shadow-lg text-brandLightBlue bg-brandBlue rounded-full md:w-12 md:h-12 p-1 flex items-center justify-center text-s">
+              <Star className="h-7 w-7" fill="currentColor" />
+            </span>
+            New Toys
+          </Link>
+          <Link
+            onClick={() => {
+              window.scrollTo({
+                top: 10,
+                left: 0,
+                behavior: "smooth",
+              });
+            }}
+            to="/category"
+            className="transition-all text-brandBlue flex flex-col items-center hover:scale-110 group text-[9px] md:text-sm"
+          >
+            <span className="transition-all w-9 h-9 transition-duration-500 group-hover:rotate-[20deg] group-hover:shadow-lg text-brandLightBlue bg-brandBlue rounded-full md:w-12 md:h-12 p-2 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path
+                  fill="currentColor"
+                  d="M17,8C8,10,5.9,16.17,3.82,21.34L5.71,22l1-2.3A4.49,4.49,0,0,0,8,20C19,20,22,3,22,3,21,5,14,5.25,9,6.25S2,11.5,2,13.5a6.22,6.22,0,0,0,1.75,3.75C7,8,17,8,17,8Z"
+                />
+                <rect width="24" height="24" fill="none" />
+              </svg>
+            </span>
+            Outdoor
+          </Link>
+            <Link
+              onClick={() => {
+                window.scrollTo({
+                  top: 10,
+                  left: 0,
+                  behavior: "smooth",
+                });
+              }}
+              to="/category"
+              className="transition-all text-brandBlue flex flex-col items-center hover:scale-110 group text-[9px] md:text-sm"
+            >
+              <span className="transition-all w-9 h-9 transition-duration-500 group-hover:rotate-[20deg] group-hover:shadow-lg text-brandLightBlue bg-brandBlue rounded-full md:w-12 md:h-12 p-2 flex items-center justify-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width=" 22"
+                  height=" 22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                >
+                  <path
+                    d="M21.4143 3.29285C21.8048 3.68337 21.8048 4.31653 21.4143 4.70706L4.70718 21.4142C4.31666 21.8047 3.68349 21.8047 3.29297 21.4142L2.58586 20.7071C2.19534 20.3165 2.19534 19.6834 2.58586 19.2928L19.293 2.58574C19.6835 2.19522 20.3167 2.19522 20.7072 2.58574L21.4143 3.29285Z"
+                    fill="currentColor"
+                  />
+                  <path
+                    d="M7.50009 2.99997C5.5671 2.99997 4.00009 4.56697 4.00009 6.49997C4.00009 8.43297 5.5671 9.99997 7.50009 9.99997C9.43309 9.99997 11.0001 8.43297 11.0001 6.49997C11.0001 4.56697 9.43309 2.99997 7.50009 2.99997Z"
+                    fill="currentColor"
+                  />
+                  <path
+                    d="M16.5001 14C14.5671 14 13.0001 15.567 13.0001 17.5C13.0001 19.433 14.5671 21 16.5001 21C18.4331 21 20.0001 19.433 20.0001 17.5C20.0001 15.567 18.4331 14 16.5001 14Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </span>
+              Clearance
+            </Link>
+              </div>
             </div>
           </>
         )}
