@@ -1,12 +1,19 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { products, ageGroups, features } from "../../data/products";
 
 import ProductCard from "../../components/productCard/productCard";
 import Button from "../../components/button/Button";
 import { Link } from "react-router-dom";
 import { Star } from "lucide-react";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/autoplay";
 
 const PresentFinder = () => {
   const [selectedBrands, setSelectedBrands] = useState([]);
@@ -21,6 +28,7 @@ const PresentFinder = () => {
   const [step, setStep] = useState(1);
 
   const wrapperRef = useRef(null);
+  const navigate = useNavigate();
 
   // Handle scroll for header visibility
   useEffect(() => {
@@ -171,11 +179,19 @@ const PresentFinder = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pt-10">
         {showResults ? (
           <>
-            <div className="grid gap-2 lg:gap-6 grid-cols-2 lg:grid-cols-4 xl:grid-cols-5">
-              {visibleFilteredProducts.map((product) => (
-                <ProductCard key={product.id} product={product} />
-              ))}
-            </div>
+            {visibleFilteredProducts.length > 0 ?
+              <div className="grid gap-2 lg:gap-6 grid-cols-2 lg:grid-cols-4 xl:grid-cols-5">
+                {visibleFilteredProducts.map((product) => (
+                  <ProductCard key={product.id} product={product} />
+                ))}
+              </div>
+              :
+              <>
+              <div className="text-textBlue text-2xl text-center w-full font-bold mt-4">
+                Hmm there doesn't seem to be any results for that
+              </div>
+            </>
+            }
             <div className="flex justify-center ">
               <Button
                 className="shadow-md hover:shadow-lg group inline-flex items-center justify-center font-bold text-lg rounded-[30px] bg-brandGreen text-white py-2 px-6 pl-2 transition-all hover:bg-brandLightGreen hover:scale-105 mt-8"
@@ -184,6 +200,65 @@ const PresentFinder = () => {
                 Try our present finder again
               </Button>
             </div>
+            {visibleFilteredProducts.length === 0 &&
+            <>
+              <div className="text-textBlue text-xl text-center w-full font-bold mt-6">
+              Or try these instead
+            </div>
+            <div className='pt-5 rounded-xl my-4'>
+                <div className='flex gap-4 justify-center mx-auto'>
+                <Swiper
+                    modules={[Autoplay]}
+                    spaceBetween={20}
+                    slidesPerView={1.5}
+                    autoplay={true}
+                    breakpoints={{
+                      768: {
+                        slidesPerView: 2.5,
+                      },
+                      1024: {
+                        slidesPerView: 3.5,
+                      },
+                    }}
+                    loop
+                    >
+                {products.slice(0, 6).map((product) => (
+                    <SwiperSlide>
+                    <div  onClick={() => { navigate(`/product-details/${product.id}`); window.scrollTo({top: 0,left: 0,behavior: "smooth",});}} className="cursor-pointer flex flex-wrap bg-white shadow-lg mb-5 rounded-lg">
+                        <div className="border-[3px] border-brandBlue rounded-lg w-1/2">
+                            <img
+                                src={product.image || "/placeholder.svg"}
+                                alt={product.name}
+                                className="w-full object-cover group-hover:scale-105 transition-transform duration-300 rounded-lg"
+                            />
+                        </div>
+                        <div className="w-1/2 flex flex-col justify-between items-center py-1 md:py-3 px-2">
+                            <div className="text-xs lg:text-sm xl:text-lg text-brandBlue font-bold leading-[1.2] xl:leading-[1.1] mb-2 md:mb-0">{product.name}</div>
+                            <div>
+                                <div className="price">
+                                    <div className="flex items-end justify-center">
+                                        <span className="text-brandRed font-bold text-xs md:text-sm">£{product.price}</span>
+                                        {product.originalPrice &&
+                                            <span className="line-through text-gray-400 text-[10px] md:text-xs ml-1">£{product.originalPrice}</span>
+                                        }
+                                    </div>
+                                </div>
+                                <Button 
+                                    className='shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-xs lg:text-sm rounded-[30px] bg-brandGreen text-white py-2 px-2 lg:px-4 lg:pl-0 pl-0 transition-all hover:bg-brandLightGreen hover:scale-105 mt-2'
+                                    onClick={() => { navigate(`/product-details/${product.id}`); window.scrollTo({top: 0,left: 0,behavior: "smooth",});}}>
+                                        Details
+                                </Button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    </SwiperSlide>
+                ))}
+                </Swiper>
+                </div>
+              </div>
+            </>
+            }
             <div className="max-w-[300px] mx-auto mt-8 flex flex-wrap justify-between items-center">
               {(
                 (visibleFilteredProducts.length / filteredProducts.length) *

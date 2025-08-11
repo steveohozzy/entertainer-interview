@@ -46,7 +46,7 @@ const WishlistContainer = () => {
           </div>
         </div>
         <WishlistItemsList />
-        <div className="flex gap-4 justify-center">
+        <div className="flex gap-4 justify-center mt-4">
           <div className="w-2/3 md:w-1/2">
             <Button 
               className='shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-sm md:text-lg rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-2 transition-all hover:bg-brandLightGreen hover:scale-105'
