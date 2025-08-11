@@ -55,6 +55,16 @@ const ProductDetails = () => {
 
   useOutsideAlerter(wrapperRef);
 
+  const searchTerm = product.brand;
+
+  const searchResults = products.filter((product) => {
+    return (
+      product.brand.includes(searchTerm)
+    )
+  })
+
+  const bundleTotalPrice = '£'+searchResults.slice(0,3).reduce((sum, item) => sum + item.price, 0).toFixed(2);
+
   const addProductToCart = () => {
     dispatch(addItemToCart(product));
     dispatch(setIsCartOpen(true));
@@ -345,7 +355,7 @@ const ProductDetails = () => {
                                     ></path>
                                   </svg>
                                 </div>
-                                <p className="content">
+                                <p className="text-sm md:text-base">
                                   Add item(s) to your cart and head to the
                                   checkout.
                                 </p>
@@ -384,7 +394,7 @@ const ProductDetails = () => {
                                     </defs>
                                   </svg>
                                 </div>
-                                <p className="content">
+                                <p className="text-sm md:text-base">
                                   Select Klarna at the checkout to pay as you
                                   like for your purchase.
                                 </p>
@@ -405,7 +415,7 @@ const ProductDetails = () => {
                                     ></path>
                                   </svg>
                                 </div>
-                                <p className="content">
+                                <p className="text-sm md:text-base">
                                   Manage your orders and payments in the Klarna
                                   app.
                                 </p>
@@ -611,14 +621,14 @@ const ProductDetails = () => {
 
         <div className="w-full text-center mt-12">
           <HeadingRibbon>Frequently Bought Together</HeadingRibbon>
-          <div className="bg-white pt-12 pb-8 px-8 rounded-xl mt-[-27px] shadow-sm">
+          <div className="bg-white pt-12 pb-8 px-6 md:px-8 rounded-xl mt-[-27px] shadow-sm">
             <div
               id="bundle"
               className="grid grid-cols-3 md:grid-cols-4 md:gap-4"
             >
-              {products.slice(0, 3).map((product, i) => (
-                <div className="flex items-center relative">
-                  <div className="w-[calc(100%-20px)] relative">
+              {searchResults.slice(0, 3).map((product, i) => (
+                <div className="flex items-center relative" key={i}>
+                  <div className="w-[calc(100%-10px)] md:w-[calc(100%-20px)] relative">
                     <BundlesProductCard product={product} />
                     <label className="flex items-center space-x-3 cursor-pointer mb-6 absolute z-20 top-1 right-1">
                       <input
@@ -655,7 +665,7 @@ const ProductDetails = () => {
                     </label>
                   </div>
                   {i < 2 && (
-                    <span className="text-2xl text-gray-400 font-bold absolute right-1 top-[20%] md:right-0 md:top-[40%]">
+                    <span className="text-xl md:text-3xl text-gray-400 font-bold absolute right-0 md:right-[-4px] top-[20%] md:top-[35%]">
                       +
                     </span>
                   )}
@@ -666,7 +676,7 @@ const ProductDetails = () => {
                   <div className="text-xl font-bold text-textBlue">
                     Buy all for
                   </div>
-                  <div className="text-xl text-brandRed font-bold">£82.97</div>
+                  <div className="text-xl text-brandRed font-bold">{bundleTotalPrice}</div>
                 </div>
                 <Button
                   className="shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-lg rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-2 transition-all hover:bg-brandLightGreen hover:scale-105"
