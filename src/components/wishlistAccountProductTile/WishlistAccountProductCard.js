@@ -448,7 +448,11 @@ const WishlistAccountProductCard = ({ product }) => {
         </div>
         <div className="flex flex-col justify-between items-center py-2 md:py-3">
           <div className="price">
-            <div onClick={() => {goToLinkHandler(product)}} className="cursor-pointer flex items-end justify-center">
+            <div onClick={() => {goToLinkHandler(product); window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });}} className="cursor-pointer flex items-end justify-center">
                 <span className="text-brandRed font-bold text-[10px] md:text-sm">£{product.price}</span>
                 {product.originalPrice &&
                     <span className="line-through text-gray-400 text-[8px] md:text-xs ml-1">£{product.originalPrice}</span>

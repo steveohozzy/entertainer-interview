@@ -33,6 +33,27 @@ const ProductDetails = () => {
   const navigate = useNavigate();
   const product = products.find((item) => item.id === parseInt(id));
   const swiperRef = useRef(null);
+  const [klarnaOpen, setKlarnaOpen] = useState(false);
+
+  const wrapperRef = useRef(null);
+
+  function useOutsideAlerter(ref) {
+    useEffect(() => {
+      function handleClickOutside(event) {
+        if (ref.current && !ref.current.contains(event.target)) {
+          setKlarnaOpen(false);
+        }
+      }
+      // Bind the event listener
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        // Unbind the event listener on clean up
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [ref]);
+  }
+
+  useOutsideAlerter(wrapperRef);
 
   const addProductToCart = () => {
     dispatch(addItemToCart(product));
@@ -42,12 +63,15 @@ const ProductDetails = () => {
   };
 
   const addBundleToCart = (e) => {
-    const bundleItems = e.target.closest('#bundle').querySelectorAll('input');
+    const bundleItems = e.target.closest("#bundle").querySelectorAll("input");
     bundleItems.forEach((item) => {
       if (item.checked) {
-        item.closest('.flex.items-center.relative').querySelector('.add-to-basket').click()
+        item
+          .closest(".flex.items-center.relative")
+          .querySelector(".add-to-basket")
+          .click();
       }
-    })
+    });
     dispatch(setIsCartOpen(true));
     document.body.classList.add("body-noscroll");
     window.scrollBy(0, -2);
@@ -226,7 +250,14 @@ const ProductDetails = () => {
                   </div>
                 </div>
                 <div className="rating mt-2 md:mt-0 md:mb-1 md:ml-2 xl:ml-8">
-                  <button onClick={() => document.getElementById('reviews')?.scrollIntoView({behavior: "smooth"})} className="flex items-end">
+                  <button
+                    onClick={() =>
+                      document
+                        .getElementById("reviews")
+                        ?.scrollIntoView({ behavior: "smooth" })
+                    }
+                    className="flex items-end"
+                  >
                     <Star className="h-5 w-5 fill-yellow-400 text-yellow-400" />
                     <Star className="h-5 w-5 fill-yellow-400 text-yellow-400" />
                     <Star className="h-5 w-5 fill-yellow-400 text-yellow-400" />
@@ -253,15 +284,136 @@ const ProductDetails = () => {
                   <div className="flex items-center">
                     <img src="/klarna-logo.svg" alt="Klarna" />
                     <p className="text-sm leading-[1.2] ml-2">
-                      Make 3 payments of £00.00.
+                      Make 3 payments of £12.56.
                       <br />
                       <span className="text-xs">
-                        <a href="/" className="underline">
+                        <button
+                          onClick={() => setKlarnaOpen(!klarnaOpen)}
+                          className="underline mr-1"
+                        >
                           Learn more
-                        </a>{" "}
+                        </button>
                         Interest-free payments.
                       </span>
                     </p>
+                    {klarnaOpen && (
+                      <div className="fixed inset-0 z-50 bg-brandBlue/60">
+                        <div
+                          ref={wrapperRef}
+                          className="fixed left-[50%] top-[50%] z-50 grid w-full translate-x-[-50%] translate-y-[-50%] gap-4 border bg-white p-6 shadow-lg sm:rounded-lg max-w-4xl max-h-[90vh] overflow-y-auto"
+                        >
+                          <div className="relative flex flex-col gap-4">
+                            <button
+                              name="Close Klarna view"
+                              onClick={() => setKlarnaOpen(!klarnaOpen)}
+                              className="absolute right-[-10px] top-[-15px] text-textBlue rounded-full border-[2px] border-textBlue z-[2]"
+                            >
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="lucide lucide-x h-5 w-5"
+                              >
+                                <path d="M18 6 6 18"></path>
+                                <path d="m6 6 12 12"></path>
+                              </svg>
+                              <span className="sr-only">Close</span>
+                            </button>
+                          </div>
+                            <h2 className="text-textBlue text-2xl font-bold text-center mb-4">
+                              How to shop with Klarna
+                            </h2>
+                            <div className="flex items-start gap-4 pb-4">
+                              <div className="w-1/3">
+                                <div className="w-auto">
+                                  <svg
+                                    aria-labelledby="osm-klarna-shopping-cart"
+                                    viewBox="0 0 50 47"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="h-[60px] mx-auto mb-4"
+                                  >
+                                    <path
+                                      d="M44.0879 34.8453L39.6426 12.4H34C34 6.88631 29.5137 2.39999 24 2.39999C18.4864 2.39999 14 6.88631 14 12.4H8.35745L3.91213 34.8443C3.44337 37.2018 4.04885 39.6188 5.57423 41.4762C7.09964 43.3346 9.35354 44.4 11.7578 44.4H36.2422C38.6465 44.4 40.9004 43.3346 42.4258 41.4762C43.9512 39.6188 44.5567 37.2018 44.0879 34.8453ZM24 6.39999C27.3086 6.39999 30 9.09139 30 12.4H18C18 9.09139 20.6914 6.39999 24 6.39999ZM39.334 38.9381C38.5703 39.8668 37.4434 40.4 36.2422 40.4H11.7579C10.5567 40.4 9.42974 39.8668 8.66606 38.9381C7.90434 38.0094 7.60159 36.8014 7.83401 35.6227L11.6426 16.4H36.3575L40.1661 35.6236C40.3985 36.8014 40.0957 38.0094 39.334 38.9381ZM29.6314 20.4H33.7979C32.8687 24.9586 28.8289 28.4 24 28.4C19.1712 28.4 15.1314 24.9586 14.2022 20.4H18.3687C19.1968 22.723 21.396 24.4 24 24.4C26.604 24.4 28.8033 22.723 29.6314 20.4Z"
+                                      fill="#0B051D"
+                                    ></path>
+                                  </svg>
+                                </div>
+                                <p className="content">
+                                  Add item(s) to your cart and head to the
+                                  checkout.
+                                </p>
+                              </div>
+
+                              <div className="w-1/3">
+                                <div className="h-[60px] mb-4 text-center">
+                                  <svg
+                                    part="osm-badge"
+                                    role="img"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="95"
+                                    height="40"
+                                    viewBox="0 0 71.25 30"
+                                    aria-label="Klarna"
+                                    version="2.1"
+                                    className="mx-auto"
+                                  >
+                                    <g clip-path="url(#a)">
+                                      <path
+                                        fill="#FFA8CD"
+                                        d="M62.7688 0H8.48123C3.79718 0 0 3.79718 0 8.48123V21.5188C0 26.2028 3.79718 30 8.48123 30H62.7688c4.684 0 8.4812-3.7972 8.4812-8.4812V8.48123C71.25 3.79718 67.4528 0 62.7688 0Z"
+                                      ></path>
+                                      <path
+                                        fill="#0B051D"
+                                        d="M57.412 19.1418c-1.2436 0-2.2134-1.0286-2.2134-2.2776 0-1.2491.9698-2.2776 2.2134-2.2776 1.2441 0 2.2135 1.0285 2.2135 2.2776 0 1.249-.9694 2.2776-2.2135 2.2776Zm-.6215 2.4062c1.0608 0 2.4145-.4041 3.1645-1.9837l.0731.0367c-.329.8633-.329 1.3776-.329 1.5062v.202h2.6704v-8.8901h-2.6704v.2021c0 .1286 0 .6428.329 1.5061l-.0731.0368c-.75-1.5797-2.1037-1.9838-3.1645-1.9838-2.543 0-4.3355 2.0205-4.3355 4.6839 0 2.6633 1.7925 4.6838 4.3355 4.6838Zm-8.9822-9.3677c-1.2073 0-2.1586.4225-2.9268 1.9838l-.0732-.0368c.3292-.8633.3292-1.3775.3292-1.5061v-.2021h-2.6708v8.8901h2.744v-4.6838c0-1.2307.7134-2.0021 1.8659-2.0021 1.1526 0 1.7193.6612 1.7193 1.9837v4.7022H51.54v-5.6573c0-2.0205-1.5731-3.4716-3.7317-3.4716Zm-9.3112 1.9838-.0731-.0368c.3293-.8633.3293-1.3775.3293-1.5061v-.2021h-2.6708v8.8901h2.7439l.0183-4.2797c0-1.249.6586-2.0021 1.7379-2.0021.2926 0 .5305.0367.8048.1102v-2.7185c-1.2073-.2571-2.2866.2021-2.8903 1.745Zm-8.7257 4.9777c-1.244 0-2.2135-1.0286-2.2135-2.2776 0-1.2491.9695-2.2776 2.2135-2.2776 1.2439 0 2.2134 1.0285 2.2134 2.2776 0 1.249-.9695 2.2776-2.2134 2.2776Zm-.622 2.4062c1.061 0 2.4147-.4041 3.1647-1.9837l.0732.0367c-.3293.8633-.3293 1.3776-.3293 1.5062v.202h2.6708v-8.8901H32.058v.2021c0 .1286 0 .6428.3293 1.5061l-.0732.0368c-.75-1.5797-2.1037-1.9838-3.1647-1.9838-2.5428 0-4.3355 2.0205-4.3355 4.6839 0 2.6633 1.7927 4.6838 4.3355 4.6838Zm-8.1588-.2388h2.744V8.45166h-2.744V21.3092ZM18.9784 8.45166h-2.7988c0 2.29594-1.4086 4.35314-3.5489 5.82264l-.8415.5878V8.45166H8.88062V21.3092h2.90858v-6.3736l4.8111 6.3736h3.5489L15.521 15.211c2.1037-1.5245 3.4757-3.894 3.4574-6.75934Z"
+                                      ></path>
+                                    </g>
+                                    <defs>
+                                      <clipPath id="a">
+                                        <path
+                                          fill="#fff"
+                                          d="M0 0h71.25v30H0z"
+                                        ></path>
+                                      </clipPath>
+                                    </defs>
+                                  </svg>
+                                </div>
+                                <p className="content">
+                                  Select Klarna at the checkout to pay as you
+                                  like for your purchase.
+                                </p>
+                              </div>
+
+                              <div className="w-1/3">
+                                <div className="w-auto">
+                                  <svg
+                                    aria-hidden="true"
+                                    viewBox="0 0 50 47"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="h-[60px] mx-auto mb-4"
+                                  >
+                                    <path
+                                      d="M21.9922 37C21.9922 35.281 22.7111 34.3475 23.988 34.3475C25.2649 34.3475 25.9922 35.281 25.9922 37C25.9922 38.719 25.2649 39.6525 23.988 39.6525C22.7111 39.6525 21.9922 38.719 21.9922 37ZM31.9922 46H15.9922C11.5801 46 7.99219 42.4121 7.99219 38V9.99999C7.99219 5.58789 11.5801 1.99998 15.9922 1.99998H31.9922C36.4043 1.99998 39.9922 5.58789 39.9922 9.99999V38C39.9922 42.4121 36.4043 46 31.9922 46ZM15.9922 5.99999C13.7871 5.99999 11.9922 7.79491 11.9922 9.99999V38C11.9922 40.2051 13.7871 42 15.9922 42H31.9922C34.1973 42 35.9922 40.2051 35.9922 38V9.99999C35.9922 7.79491 34.1973 5.99999 31.9922 5.99999H15.9922Z"
+                                      fill="#0B051D"
+                                    ></path>
+                                  </svg>
+                                </div>
+                                <p className="content">
+                                  Manage your orders and payments in the Klarna
+                                  app.
+                                </p>
+                              </div>
+                            </div>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -460,80 +612,81 @@ const ProductDetails = () => {
         <div className="w-full text-center mt-12">
           <HeadingRibbon>Frequently Bought Together</HeadingRibbon>
           <div className="bg-white pt-12 pb-8 px-8 rounded-xl mt-[-27px] shadow-sm">
-              <div id="bundle" className="grid grid-cols-3 md:grid-cols-4 md:gap-4">
-                {products.slice(0, 3).map((product, i) => (
-                  <div className="flex items-center relative">
-                    <div className="w-[calc(100%-20px)] relative">
-                      <BundlesProductCard product={product} />
-                      <label
-                        className="flex items-center space-x-3 cursor-pointer mb-6 absolute z-20 top-1 right-1"
-                      >
-                        <input
-                          type="checkbox"
-                          className="relative mt-1 size-[20px] block md:size-[30px] appearance-none rounded-md border-[3px] border-textBlue bg-white outline-none transition-all checked:bg-textBlue"
-                          defaultChecked
-                        />
-                        <span className="absolute top-[3px] left-[-12px] md:top-[3px] md:left-[-12px]">
-                          <svg
-                            viewBox="0 0 24 24"
-                            width="20px"
-                            height="20px"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="w-[20px] h-[20px] md:w-[30px] md:h-[30px]"
-                          >
-                            <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-                            <g
-                              id="SVGRepo_tracerCarrier"
+            <div
+              id="bundle"
+              className="grid grid-cols-3 md:grid-cols-4 md:gap-4"
+            >
+              {products.slice(0, 3).map((product, i) => (
+                <div className="flex items-center relative">
+                  <div className="w-[calc(100%-20px)] relative">
+                    <BundlesProductCard product={product} />
+                    <label className="flex items-center space-x-3 cursor-pointer mb-6 absolute z-20 top-1 right-1">
+                      <input
+                        type="checkbox"
+                        className="relative mt-1 size-[20px] block md:size-[30px] appearance-none rounded-md border-[3px] border-textBlue bg-white outline-none transition-all checked:bg-textBlue"
+                        defaultChecked
+                      />
+                      <span className="absolute top-[3px] left-[-12px] md:top-[3px] md:left-[-12px]">
+                        <svg
+                          viewBox="0 0 24 24"
+                          width="20px"
+                          height="20px"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="w-[20px] h-[20px] md:w-[30px] md:h-[30px]"
+                        >
+                          <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                          <g
+                            id="SVGRepo_tracerCarrier"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          ></g>
+                          <g id="SVGRepo_iconCarrier">
+                            <path
+                              d="M4.89163 13.2687L9.16582 17.5427L18.7085 8"
+                              stroke="#ffffff"
+                              strokeWidth="2.5"
                               strokeLinecap="round"
                               strokeLinejoin="round"
-                            ></g>
-                            <g id="SVGRepo_iconCarrier">
-                              <path
-                                d="M4.89163 13.2687L9.16582 17.5427L18.7085 8"
-                                stroke="#ffffff"
-                                strokeWidth="2.5"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                              ></path>
-                            </g>
-                          </svg>
-                        </span>
-                      </label>
-                    </div>
-                    {i < 2 &&
-                      <span className="text-2xl text-gray-400 font-bold absolute right-1 top-[20%] md:right-0 md:top-[40%]">+</span>
-                    }
+                            ></path>
+                          </g>
+                        </svg>
+                      </span>
+                    </label>
                   </div>
-                ))}
-                <div className="flex flex-col justify-between col-span-3 md:col-span-1">
-                  <div>
-                    <div className="text-xl font-bold text-textBlue">
-                      Buy all for
-                    </div>
-                    <div className="text-xl text-brandRed font-bold">
-                      £82.97
-                    </div>
-                  </div>
-                  <Button
-                    className="shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-lg rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-2 transition-all hover:bg-brandLightGreen hover:scale-105"
-                    iconpath={
-                      <svg
-                        width="22"
-                        height="18"
-                        viewBox="0 0 22 18"
-                        fill="currentColor"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path d="M21.2401 7.57V8.14C21.2401 8.38 21.1601 8.58 20.9901 8.75C20.8201 8.92 20.6201 9 20.3801 9H20.0901L19.1601 15.57C19.0901 16 18.8901 16.35 18.5701 16.63C18.2501 16.9 17.8701 17.04 17.4401 17.04H4.36006C3.93006 17.04 3.55006 16.9 3.23006 16.63C2.91006 16.35 2.71006 16 2.64006 15.57L1.71006 9H1.42006C1.18006 9 0.980059 8.92 0.810059 8.75C0.640059 8.58 0.560059 8.38 0.560059 8.14V7.57C0.560059 7.33 0.640059 7.13 0.810059 6.96C0.980059 6.79 1.18006 6.71 1.42006 6.71H3.83006L7.67006 1.43C7.86006 1.17 8.11006 1.01 8.42006 0.960001C8.73006 0.910001 9.02006 0.980002 9.28006 1.18C9.54006 1.37 9.70006 1.62 9.75006 1.93C9.80006 2.24 9.73006 2.53 9.53006 2.79L6.66006 6.71H15.1401L12.2701 2.79C12.0801 2.53 12.0101 2.24 12.0501 1.93C12.1001 1.62 12.2501 1.37 12.5201 1.18C12.7801 0.990002 13.0701 0.920001 13.3801 0.960001C13.6901 1.01 13.9401 1.16 14.1301 1.43L17.9701 6.71H20.3801C20.6201 6.71 20.8201 6.79 20.9901 6.96C21.1601 7.13 21.2401 7.33 21.2401 7.57ZM7.73006 13.89V9.87C7.73006 9.63 7.65006 9.43 7.48006 9.26C7.31006 9.09 7.11006 9.01 6.87006 9.01C6.63006 9.01 6.43006 9.09 6.26006 9.26C6.09006 9.43 6.01006 9.63 6.01006 9.87V13.89C6.01006 14.13 6.09006 14.33 6.26006 14.5C6.43006 14.67 6.63006 14.75 6.87006 14.75C7.11006 14.75 7.31006 14.67 7.48006 14.5C7.65006 14.33 7.73006 14.13 7.73006 13.89ZM11.7501 13.89V9.87C11.7501 9.63 11.6701 9.43 11.5001 9.26C11.3301 9.09 11.1301 9.01 10.8901 9.01C10.6501 9.01 10.4501 9.09 10.2801 9.26C10.1101 9.43 10.0301 9.63 10.0301 9.87V13.89C10.0301 14.13 10.1101 14.33 10.2801 14.5C10.4501 14.67 10.6501 14.75 10.8901 14.75C11.1301 14.75 11.3301 14.67 11.5001 14.5C11.6701 14.33 11.7501 14.13 11.7501 13.89ZM15.7701 13.89V9.87C15.7701 9.63 15.6901 9.43 15.5201 9.26C15.3501 9.09 15.1501 9.01 14.9101 9.01C14.6701 9.01 14.4701 9.09 14.3001 9.26C14.1301 9.43 14.0501 9.63 14.0501 9.87V13.89C14.0501 14.13 14.1301 14.33 14.3001 14.5C14.4701 14.67 14.6701 14.75 14.9101 14.75C15.1501 14.75 15.3501 14.67 15.5201 14.5C15.6901 14.33 15.7701 14.13 15.7701 13.89Z" />
-                      </svg>
-                    }
-                    onClick={addBundleToCart}
-                  >
-                    Add all to Basket
-                  </Button>
+                  {i < 2 && (
+                    <span className="text-2xl text-gray-400 font-bold absolute right-1 top-[20%] md:right-0 md:top-[40%]">
+                      +
+                    </span>
+                  )}
                 </div>
+              ))}
+              <div className="flex flex-col justify-between col-span-3 md:col-span-1">
+                <div>
+                  <div className="text-xl font-bold text-textBlue">
+                    Buy all for
+                  </div>
+                  <div className="text-xl text-brandRed font-bold">£82.97</div>
+                </div>
+                <Button
+                  className="shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-lg rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-2 transition-all hover:bg-brandLightGreen hover:scale-105"
+                  iconpath={
+                    <svg
+                      width="22"
+                      height="18"
+                      viewBox="0 0 22 18"
+                      fill="currentColor"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M21.2401 7.57V8.14C21.2401 8.38 21.1601 8.58 20.9901 8.75C20.8201 8.92 20.6201 9 20.3801 9H20.0901L19.1601 15.57C19.0901 16 18.8901 16.35 18.5701 16.63C18.2501 16.9 17.8701 17.04 17.4401 17.04H4.36006C3.93006 17.04 3.55006 16.9 3.23006 16.63C2.91006 16.35 2.71006 16 2.64006 15.57L1.71006 9H1.42006C1.18006 9 0.980059 8.92 0.810059 8.75C0.640059 8.58 0.560059 8.38 0.560059 8.14V7.57C0.560059 7.33 0.640059 7.13 0.810059 6.96C0.980059 6.79 1.18006 6.71 1.42006 6.71H3.83006L7.67006 1.43C7.86006 1.17 8.11006 1.01 8.42006 0.960001C8.73006 0.910001 9.02006 0.980002 9.28006 1.18C9.54006 1.37 9.70006 1.62 9.75006 1.93C9.80006 2.24 9.73006 2.53 9.53006 2.79L6.66006 6.71H15.1401L12.2701 2.79C12.0801 2.53 12.0101 2.24 12.0501 1.93C12.1001 1.62 12.2501 1.37 12.5201 1.18C12.7801 0.990002 13.0701 0.920001 13.3801 0.960001C13.6901 1.01 13.9401 1.16 14.1301 1.43L17.9701 6.71H20.3801C20.6201 6.71 20.8201 6.79 20.9901 6.96C21.1601 7.13 21.2401 7.33 21.2401 7.57ZM7.73006 13.89V9.87C7.73006 9.63 7.65006 9.43 7.48006 9.26C7.31006 9.09 7.11006 9.01 6.87006 9.01C6.63006 9.01 6.43006 9.09 6.26006 9.26C6.09006 9.43 6.01006 9.63 6.01006 9.87V13.89C6.01006 14.13 6.09006 14.33 6.26006 14.5C6.43006 14.67 6.63006 14.75 6.87006 14.75C7.11006 14.75 7.31006 14.67 7.48006 14.5C7.65006 14.33 7.73006 14.13 7.73006 13.89ZM11.7501 13.89V9.87C11.7501 9.63 11.6701 9.43 11.5001 9.26C11.3301 9.09 11.1301 9.01 10.8901 9.01C10.6501 9.01 10.4501 9.09 10.2801 9.26C10.1101 9.43 10.0301 9.63 10.0301 9.87V13.89C10.0301 14.13 10.1101 14.33 10.2801 14.5C10.4501 14.67 10.6501 14.75 10.8901 14.75C11.1301 14.75 11.3301 14.67 11.5001 14.5C11.6701 14.33 11.7501 14.13 11.7501 13.89ZM15.7701 13.89V9.87C15.7701 9.63 15.6901 9.43 15.5201 9.26C15.3501 9.09 15.1501 9.01 14.9101 9.01C14.6701 9.01 14.4701 9.09 14.3001 9.26C14.1301 9.43 14.0501 9.63 14.0501 9.87V13.89C14.0501 14.13 14.1301 14.33 14.3001 14.5C14.4701 14.67 14.6701 14.75 14.9101 14.75C15.1501 14.75 15.3501 14.67 15.5201 14.5C15.6901 14.33 15.7701 14.13 15.7701 13.89Z" />
+                    </svg>
+                  }
+                  onClick={addBundleToCart}
+                >
+                  Add all to Basket
+                </Button>
               </div>
+            </div>
           </div>
         </div>
 
@@ -555,7 +708,7 @@ const ProductDetails = () => {
                       onClick={() => {
                         navigate(`/product-details/${product.id}`);
                         swiperRef.current.swiper.slideTo(0);
-                        setSwatchColor('blue');
+                        setSwatchColor("blue");
                         window.scrollTo({
                           top: 0,
                           left: 0,
@@ -649,7 +802,7 @@ const ProductDetails = () => {
                     onClick={() => {
                       navigate(`/product-details/${product.id}`);
                       swiperRef.current.swiper.slideTo(0);
-                      setSwatchColor('blue');
+                      setSwatchColor("blue");
                       window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
                       setTabOpen(false);
                     }}
