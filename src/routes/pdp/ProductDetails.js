@@ -213,14 +213,14 @@ const ProductDetails = () => {
                   </div>
                 </div>
                 <div className="rating mt-2 md:mt-0 md:mb-1 md:ml-2 xl:ml-8">
-                  <div className="flex items-end">
+                  <button onClick={() => document.getElementById('reviews')?.scrollIntoView({behavior: "smooth"})} className="flex items-end">
                     <Star className="h-5 w-5 fill-yellow-400 text-yellow-400" />
                     <Star className="h-5 w-5 fill-yellow-400 text-yellow-400" />
                     <Star className="h-5 w-5 fill-yellow-400 text-yellow-400" />
                     <Star className="h-5 w-5 fill-yellow-400 text-yellow-400" />
                     <Star className="h-5 w-5 fill-yellow-400 text-yellow-400" />
                     <span className="text-xs ml-1 text-brandBlue">(3)</span>
-                  </div>
+                  </button>
                 </div>
               </div>
               <div className="w-1/2 md:w-auto">
@@ -604,7 +604,7 @@ const ProductDetails = () => {
           </div>
         </div>
 
-        <div className="w-full text-center mt-12">
+        <div id="reviews" className="w-full text-center mt-12">
           <HeadingRibbon fullWidth={true}>Reviews</HeadingRibbon>
           <div className="bg-white pt-12 pb-8 px-8 rounded-xl mt-[-27px] shadow-sm">
             <div className="flex justify-between flex-wrap">
