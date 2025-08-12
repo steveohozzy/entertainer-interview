@@ -80,14 +80,11 @@ const ProductDetails = () => {
           .closest(".flex.items-center.relative")
           .querySelector(".add-to-basket")
           .click();
-          setTimeout(() => {
-            window.scrollBy(0, -2);
-          }, 500)
       }
     });
-    dispatch(setIsCartOpen(true));
     document.body.classList.add("body-noscroll");
     window.scrollBy(0, -2);
+    dispatch(setIsCartOpen(true));
   };
 
   // Add to favourites
