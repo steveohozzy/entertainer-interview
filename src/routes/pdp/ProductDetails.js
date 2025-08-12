@@ -83,10 +83,10 @@ const ProductDetails = () => {
       }
     });
     setTimeout(() => {
+      dispatch(setIsCartOpen(true));
       document.body.classList.add("body-noscroll");
       window.scrollBy(0, -2);
-      dispatch(setIsCartOpen(true));
-    }, 500);
+    }, 100);
     };
 
   // Add to favourites
