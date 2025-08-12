@@ -80,7 +80,9 @@ const ProductDetails = () => {
           .closest(".flex.items-center.relative")
           .querySelector(".add-to-basket")
           .click();
-          window.scrollBy(0, -2);
+          setTimeout(() => {
+            window.scrollBy(0, -2);
+          }, 500)
       }
     });
     dispatch(setIsCartOpen(true));
