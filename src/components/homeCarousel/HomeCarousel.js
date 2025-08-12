@@ -11,7 +11,7 @@ const HomeCarousel = () => {
   const navigate = useNavigate();
 
   const goToLinkHandler = () => {
-      navigate("/category");
+      navigate("/category/?brand=lego");
       window.scrollTo({top: 0,left: 0,behavior: "smooth",});
   };
 
@@ -116,7 +116,7 @@ const HomeCarousel = () => {
           </div>
           <div className="w-full md:w-1/2 rounded-xl overflow-hidden">
             <video
-              className="object-cover w-full h-full rounded-xl"
+              className="object-cover w-full h-[calc(100%+1px)] rounded-xl"
               autoplay=""
               loop
               muted

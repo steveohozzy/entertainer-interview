@@ -28,6 +28,7 @@ const Plp = () => {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [sortOption, setSortOption] = useState("sortby")
   const [currentPage, setCurrentPage] = useState(1);
+  const [directFilterApplied, setDirectFilterApplied] = useState(false)
   const PRODUCTS_PER_PAGE = 10
 
   const wrapperRef = useRef(null);
@@ -384,6 +385,46 @@ const Plp = () => {
 
   // Get the visible subset of filtered products
   const visibleFilteredProducts = sortedFilteredProducts.slice(0, visibleProducts);
+
+  useEffect(() => {
+    // Check for URL parameters to apply filters directly
+    const urlParams = new URLSearchParams(window.location.search)
+    const ageFilter = urlParams.get("age")
+
+    if (ageFilter === "3-5" && !directFilterApplied) {
+      setSelectedAgeGroups(["3-5 years"])
+      setDirectFilterApplied(true)
+    } else if (ageFilter === "0-3" && !directFilterApplied) {
+      setSelectedAgeGroups(["0-3 years"])
+      setDirectFilterApplied(true)
+    } else if (ageFilter === "5-8" && !directFilterApplied) {
+      setSelectedAgeGroups(["5-8 years"])
+      setDirectFilterApplied(true)
+    } else if (ageFilter === "8-11" && !directFilterApplied) {
+      setSelectedAgeGroups(["8-11 years"])
+      setDirectFilterApplied(true)
+    } else if (ageFilter === "11-plus" && !directFilterApplied) {
+      setSelectedAgeGroups(["11+ years"])
+      setDirectFilterApplied(true)
+    } else if (ageFilter === "big-kids" && !directFilterApplied) {
+      setSelectedAgeGroups(["Big Kids"])
+      setDirectFilterApplied(true)
+    }
+  }, [directFilterApplied])
+
+  useEffect(() => {
+    // Check for URL parameters to apply filters directly
+    const urlParams = new URLSearchParams(window.location.search)
+    const brandFilter = urlParams.get("brand")
+
+    if (brandFilter === "lego" && !directFilterApplied) {
+      setSelectedBrands(["Lego"])
+      setDirectFilterApplied(true)
+    } else if (brandFilter === "marvel" && !directFilterApplied) {
+      setSelectedBrands(["Marvel"])
+      setDirectFilterApplied(true)
+    }
+  }, [directFilterApplied])
 
   return (
     <>
