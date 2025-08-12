@@ -45,7 +45,7 @@ const HomeCarousel = () => {
       <SwiperSlide className="h-auto shadow-lg rounded-xl overflow-hidden">
         <div className="rounded-xl bg-yellow-300 flex flex-wrap flex-row-reverse md:flex-row h-full">
           <div className="w-full md:w-1/2 flex flex-col justify-center items-center p-6 lg:p-12">
-            <div className="mb-5">
+            <div className="mb-5 hidden md:block">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="90"
@@ -97,7 +97,7 @@ const HomeCarousel = () => {
                   </button>
                 </h2>
               </div>
-              <div className="text-brandBlue mb-5 text-center">
+              <div className="text-brandBlue mb-5 text-center hidden md:block">
                 <button onClick={goToLinkHandler}>
                   ...and that's the way it is. Unleash her creative potential
                   with LEGO sets
@@ -131,7 +131,8 @@ const HomeCarousel = () => {
         </div>
       </SwiperSlide>
       <SwiperSlide className="shadow-lg rounded-xl overflow-hidden">
-        <img src="https://www.thetoyshop.com/medias/ELC-TE-BOGOF-2025-HP-hero-DT-1800x560-28-jul.jpg?context=bWFzdGVyfHJvb3R8MzgyMjI1fGltYWdlL2pwZWd8YURjeEwyZ3dPUzh4TWpVMU16Y3hOVGt3T0RZek9DOUZURU5mVkVWZlFrOUhUMFpmTWpBeU5WOUlVQ0JvWlhKdklFUlVJREU0TURCNE5UWXdYekk0SUdwMWJDNXFjR2N8MjY4ZjllNGFkOTI2YmJlMjBhZGQ0ZDQ5ZTZlODg5Y2EzOTQzNGVjMDFiYzE3MmU0OThhYmNmZDJkNzQ0MjBlOQ" alt="promo" />
+        <img className="hidden md:block" src="https://www.thetoyshop.com/medias/TE-BOGOHP-2025-Addo-ELC-Digital-Assets-v2-TE-BOGOHP-selected-toys-2025-HP-hero-DT-1800x560.jpg?context=bWFzdGVyfHJvb3R8NjQyNjYyfGltYWdlL2pwZWd8YURsaUwyZ3paaTh4TWpVM01UTTJNRE15T1RjMU9DOVVSVjlDVDBkUFNGQmZNakF5TlY5QlpHUnZJRVZNUTE5RWFXZHBkR0ZzSUVGemMyVjBjeUIyTWw5VVJWOUNUMGRQU0ZBZ2MyVnNaV04wWldRZ2RHOTVjMTh5TURJMVgwaFFJR2hsY204Z1JGUWdNVGd3TUhnMU5qQXVhbkJufGFiMmVkNjJiNzQ4ODQ5N2YzNGJlYzY3MmE4NmQ1NDFmYTY0YTFmYjRlODBiYTI2OWVkYjlmNDJjMDMxOTdhYzc" alt="promo" />
+        <img className="md:hidden" src="https://www.thetoyshop.com/medias/TE-BOGOHP-2025-Addo-ELC-Digital-Assets-v2-TE-BOGOHP-selected-toys-2025-HP-450x480px.jpg?context=bWFzdGVyfHJvb3R8MjczNTU2fGltYWdlL2pwZWd8YUdNd0wyZzBPUzh4TWpVM01UTTJNREF6TkRnME5pOVVSVjlDVDBkUFNGQmZNakF5TlY5QlpHUnZJRVZNUTE5RWFXZHBkR0ZzSUVGemMyVjBjeUIyTWw5VVJWOUNUMGRQU0ZBZ2MyVnNaV04wWldRZ2RHOTVjMTh5TURJMVgwaFFJRFExTUhnME9EQndlQzVxY0djfDZlYmQ0OTBjNGNlMTI0MDZjMTk4YzVhN2FiYjBkMGVjMTA4ZjBjYjE4OTU2NjgzMWRjMjk1NDRkZDNkZTVhZTI" alt="promo" />
       </SwiperSlide>
     </Swiper>
   );
