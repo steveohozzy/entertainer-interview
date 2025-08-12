@@ -63,7 +63,21 @@ const ProductDetails = () => {
     )
   })
 
-  const bundleTotalPrice = '£'+searchResults.slice(0,3).reduce((sum, item) => sum + item.price, 0).toFixed(2);
+  const [bundleTotalPrice, setBundleTotalPrice] = useState('£'+searchResults.slice(0,3).reduce((sum, item) => sum + item.price, 0).toFixed(2))
+
+  const changeBundleHandler = (e) => {
+    const bundlePrices = [];
+    const bundleItems = e.target.closest("#bundle").querySelectorAll("input:checked");
+    bundleItems.forEach((item) => {
+      bundlePrices.push(item.closest(".flex.items-center.relative").querySelector(".pricevalue").textContent);
+    })
+
+    const result  = bundlePrices.map((x) => +x);
+
+    const bundleTotalPriceInit = result.reduce((a, b) => a + b,  0);
+
+    setBundleTotalPrice('£'+bundleTotalPriceInit.toFixed(2));
+  }
 
   const addProductToCart = () => {
     dispatch(addItemToCart(product));
@@ -88,6 +102,26 @@ const ProductDetails = () => {
       window.scrollBy(0, -2);
     }, 100);
     };
+
+    const checkAllBundle = () => {
+      const checkboxes = document.querySelector("#bundle").querySelectorAll("input");
+      checkboxes.forEach(function(box){
+        box.checked = true;
+        setTimeout(() => {
+          const bundlePrices = [];
+          const bundleItems = box.closest("#bundle").querySelectorAll("input:checked");
+          bundleItems.forEach((item) => {
+            bundlePrices.push(item.closest(".flex.items-center.relative").querySelector(".pricevalue").textContent);
+          })
+
+          const result  = bundlePrices.map((x) => +x);
+
+          const bundleTotalPriceInit = result.reduce((a, b) => a + b,  0);
+
+          setBundleTotalPrice('£'+bundleTotalPriceInit.toFixed(2));
+        }, 750);
+      });
+    }
 
   // Add to favourites
   const addProductToWishlist = () => {
@@ -635,14 +669,15 @@ const ProductDetails = () => {
               {searchResults.slice(0, 3).map((product, i) => (
                 <div className="flex items-center relative" key={i}>
                   <div className="w-[calc(100%-10px)] md:w-[calc(100%-20px)] relative">
-                    <BundlesProductCard product={product} swiperRef={swiperRef} setSwatchColor={setSwatchColor} />
+                    <BundlesProductCard product={product} swiperRef={swiperRef} setSwatchColor={setSwatchColor} checkAllBundle={checkAllBundle} />
                     <label className="flex items-center space-x-3 cursor-pointer mb-6 absolute z-20 top-1 right-1">
                       <input
                         type="checkbox"
-                        className="relative mt-1 size-[20px] block md:size-[30px] appearance-none rounded-md border-[3px] border-textBlue bg-white outline-none transition-all checked:bg-textBlue"
+                        className="relative size-[25px] block md:size-[30px] appearance-none rounded-md border-[3px] border-textBlue bg-white outline-none transition-all checked:bg-textBlue"
                         defaultChecked
+                        onChange={changeBundleHandler}
                       />
-                      <span className="absolute top-[3px] left-[-12px] md:top-[3px] md:left-[-12px]">
+                      <span className="absolute top-[2px] left-[-10px] md:top-0 md:left-[-12px]">
                         <svg
                           viewBox="0 0 24 24"
                           width="20px"
@@ -679,10 +714,10 @@ const ProductDetails = () => {
               ))}
               <div className="flex flex-col justify-between col-span-3 md:col-span-1">
                 <div>
-                  <div className="text-xl font-bold text-textBlue">
-                    Buy all for
+                  <div className="text-xl font-bold text-textBlue mt-2 md:mt-0 mb-2">
+                    Buy your bundle for
                   </div>
-                  <div className="text-xl text-brandRed font-bold">{bundleTotalPrice}</div>
+                  <div className="text-xl text-brandRed font-bold mb-2">{bundleTotalPrice}</div>
                 </div>
                 <Button
                   className="shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-lg rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-2 transition-all hover:bg-brandLightGreen hover:scale-105"
@@ -725,6 +760,7 @@ const ProductDetails = () => {
                         navigate(`/product-details/${product.id}`);
                         swiperRef.current.swiper.slideTo(0);
                         setSwatchColor("blue");
+                        checkAllBundle();
                         window.scrollTo({
                           top: 0,
                           left: 0,
@@ -741,14 +777,6 @@ const ProductDetails = () => {
                         />
                       </div>
                       <div
-                        onClick={() => {
-                          navigate(`/product-details/${product.id}`);
-                          window.scrollTo({
-                            top: 0,
-                            left: 0,
-                            behavior: "smooth",
-                          });
-                        }}
                         className=" md:py-2 cursor-pointer w-full md:w-1/2 flex flex-col justify-between items-center px-2 grow"
                       >
                         <div className="text-xs lg:text-sm xl:text-lg text-brandBlue font-bold leading-[1.2] xl:leading-[1.1] mb-2 md:mb-0">
@@ -769,14 +797,6 @@ const ProductDetails = () => {
                           </div>
                           <Button
                             className="shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-xs lg:text-sm rounded-[30px] bg-brandGreen text-white py-2 px-2 lg:px-4 lg:pl-0 pl-0 transition-all hover:bg-brandLightGreen hover:scale-105 mt-2"
-                            onClick={() => {
-                              navigate(`/product-details/${product.id}`);
-                              window.scrollTo({
-                                top: 0,
-                                left: 0,
-                                behavior: "smooth",
-                              });
-                            }}
                           >
                             Details
                           </Button>
@@ -819,6 +839,7 @@ const ProductDetails = () => {
                       navigate(`/product-details/${product.id}`);
                       swiperRef.current.swiper.slideTo(0);
                       setSwatchColor("blue");
+                      checkAllBundle();
                       window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
                       setTabOpen(false);
                     }}

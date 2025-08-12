@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import { setIsCartOpen, addItemToCart } from '../../store/cart/cartReducer';
 
-const BundlesProductCard = ({ product, setSwatchColor, swiperRef }) => {
+const BundlesProductCard = ({ product, setSwatchColor, swiperRef, checkAllBundle }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -25,7 +25,7 @@ const BundlesProductCard = ({ product, setSwatchColor, swiperRef }) => {
     <>
       <div key={product.id} className="cursor-pointer flex flex-col">
         <div className="flex flex-col rounded-xl border-[3px] border-gray-200 bg-white shadow-sm hover:border-brandBlue transition-all duration-300 overflow-hidden">
-        <div className="relative group" onClick={() => {goToLinkHandler(product); window.scrollTo({
+        <div className="relative group" onClick={() => {goToLinkHandler(product); checkAllBundle(); window.scrollTo({
       top: 0,
       left: 0,
       behavior: "smooth",
@@ -38,13 +38,13 @@ const BundlesProductCard = ({ product, setSwatchColor, swiperRef }) => {
           </div>
         </div>
         <div className="flex flex-col justify-between items-center py-2 md:py-3">
-          <div className="price" onClick={() => {goToLinkHandler(product); window.scrollTo({
+          <div className="price" onClick={() => {goToLinkHandler(product); checkAllBundle(); window.scrollTo({
       top: 0,
       left: 0,
       behavior: "smooth",
     });}}>
             <div className="cursor-pointer flex items-end justify-center">
-                <span className="text-brandRed font-bold text-[10px] md:text-sm">£{product.price}</span>
+                <span className="text-brandRed font-bold text-[10px] md:text-sm">£<span className="pricevalue">{product.price}</span></span>
                 {product.originalPrice &&
                     <span className="line-through text-gray-400 text-[8px] md:text-xs ml-1">£{product.originalPrice}</span>
                 }
