@@ -23,13 +23,13 @@ const BundlesProductCard = ({ product, setSwatchColor, swiperRef }) => {
 
   return (
     <>
-      <div onClick={() => {goToLinkHandler(product); window.scrollTo({
+      <div key={product.id} className="cursor-pointer flex flex-col">
+        <div className="flex flex-col rounded-xl border-[3px] border-gray-200 bg-white shadow-sm hover:border-brandBlue transition-all duration-300 overflow-hidden">
+        <div className="relative group" onClick={() => {goToLinkHandler(product); window.scrollTo({
       top: 0,
       left: 0,
       behavior: "smooth",
-    });}} key={product.id} className="cursor-pointer flex flex-col">
-        <div className="flex flex-col rounded-xl border-[3px] border-gray-200 bg-white shadow-sm hover:border-brandBlue transition-all duration-300 overflow-hidden">
-        <div className="relative group">
+    });}}>
           <img
               src={product.image || "/placeholder.svg"}
               alt={product.name}
@@ -38,7 +38,11 @@ const BundlesProductCard = ({ product, setSwatchColor, swiperRef }) => {
           </div>
         </div>
         <div className="flex flex-col justify-between items-center py-2 md:py-3">
-          <div className="price">
+          <div className="price" onClick={() => {goToLinkHandler(product); window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });}}>
             <div className="cursor-pointer flex items-end justify-center">
                 <span className="text-brandRed font-bold text-[10px] md:text-sm">£{product.price}</span>
                 {product.originalPrice &&
