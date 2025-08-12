@@ -256,8 +256,10 @@ const Layout = () => {
         </div>
         <SearchBar />
       </header>
-      <Outlet />
-      <Footer />
+      <div className="selection:bg-purple-300 selection:text-purple-900">
+        <Outlet />
+        <Footer />
+      </div>
       {showBackToTop && (
         <button
           name="Scroll to to of site"
