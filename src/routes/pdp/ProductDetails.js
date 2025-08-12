@@ -715,7 +715,7 @@ const ProductDetails = () => {
               <div className="flex flex-col justify-between col-span-3 md:col-span-1">
                 <div>
                   <div className="text-xl font-bold text-textBlue mt-2 md:mt-0 mb-2">
-                    Buy your bundle for
+                    Buy selected bundle for
                   </div>
                   <div className="text-xl text-brandRed font-bold mb-2">{bundleTotalPrice}</div>
                 </div>
