@@ -812,7 +812,7 @@ const ProductDetails = () => {
 
         <button
           onClick={() => setTabOpen(!tabOpen)}
-          className={`fixed z-[600] top-1/2 -translate-y-1/2 transition-all -rotate-90 bg-brandRed py-2 px-6 text-lg rounded-tr-xl rounded-tl-xl font-bold text-white shadow-[-5px_-5px_10px_1px_#bbb] ${
+          className={`fixed z-10 top-1/2 -translate-y-1/2 transition-all -rotate-90 bg-brandRed py-2 px-6 text-lg rounded-tr-xl rounded-tl-xl font-bold text-white shadow-[-5px_-5px_10px_1px_#bbb] ${
             tabOpen ? "right-[138px]" : "right-[-52px]"
           }`}
         >
