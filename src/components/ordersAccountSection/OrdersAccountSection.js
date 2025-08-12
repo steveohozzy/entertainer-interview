@@ -155,7 +155,7 @@ const OrdersAccountSection = () => {
                 <HeadingRibbon className="text-sm mt-6 lg:mt-0" fullWidth={true}>
                   You may also like
               </HeadingRibbon>
-                <div className='bg-white p-5 rounded-tl-lg rounded-bl-lg max-h-screen overflow-auto no-scrollbar'>
+                <div className='bg-white p-5 rounded-tl-lg rounded-bl-lg'>
                     <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-2 gap-2 justify-start'>
                     {products.slice(0, 6).map((product) => (
                         <div key={product.id} onClick={() => { navigate(`/product-details/${product.id}`); window.scrollTo({top: 0,left: 0,behavior: "smooth",})}} className="cursor-pointer flex flex-col border-[2px] border-brandLightBlue rounded-xl">
