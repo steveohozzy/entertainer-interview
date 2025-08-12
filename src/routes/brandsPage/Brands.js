@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { useParams } from "react-router-dom";
 import { X, Search } from "lucide-react";
 import {
   products,
@@ -33,6 +34,8 @@ const Brands = () => {
   const PRODUCTS_PER_PAGE = 10
 
   const wrapperRef = useRef(null);
+
+  const { id } = useParams();
 
   // Handle scroll for header visibility
   useEffect(() => {
@@ -406,7 +409,7 @@ const Brands = () => {
     <>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pt-10">
         <div className="text-center mb-8">
-          <HeadingRibbon><h1 className="text-3xl">Marvel Toys</h1></HeadingRibbon>
+          <HeadingRibbon><h1 className="text-3xl capitalize">{id.replace('-', ' ')} Toys</h1></HeadingRibbon>
         </div>
         {/* Filter and Sort Header */}
         <div
