@@ -633,7 +633,7 @@ const ProductDetails = () => {
               {searchResults.slice(0, 3).map((product, i) => (
                 <div className="flex items-center relative" key={i}>
                   <div className="w-[calc(100%-10px)] md:w-[calc(100%-20px)] relative">
-                    <BundlesProductCard product={product} />
+                    <BundlesProductCard product={product} swiperRef={swiperRef} setSwatchColor={setSwatchColor} />
                     <label className="flex items-center space-x-3 cursor-pointer mb-6 absolute z-20 top-1 right-1">
                       <input
                         type="checkbox"

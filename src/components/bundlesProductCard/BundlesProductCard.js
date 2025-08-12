@@ -4,12 +4,14 @@ import { useDispatch } from 'react-redux';
 
 import { setIsCartOpen, addItemToCart } from '../../store/cart/cartReducer';
 
-const BundlesProductCard = ({ product }) => {
+const BundlesProductCard = ({ product, setSwatchColor, swiperRef }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const goToLinkHandler = () => {
     navigate("/product-details/" + product.id);
+    swiperRef.current.swiper.slideTo(0);
+    setSwatchColor("blue");
   };
 
   const addProductToCart = () => {
