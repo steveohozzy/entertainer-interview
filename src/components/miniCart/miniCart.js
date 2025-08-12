@@ -138,17 +138,17 @@ const MiniCart = () => {
                           left: 0,
                           behavior: "smooth",
                         });
-                        setRecsDetailsOpen(false)
                       }}
-                      className="cursor-pointer flex flex-col h-full bg-white rounded-xl pb-2"
+                      className={`cursor-pointer flex flex-col h-full bg-white rounded-xl ${recsDetailsOpen && 'pb-2'}`}
                     >
-                      <div className="border-[3px] border-brandBlue rounded-lg w-full mb-3">
+                      <div className={`border-[3px] border-brandBlue rounded-lg w-full ${recsDetailsOpen && 'mb-3'}`}>
                         <img
                           src={product.image || "/placeholder.svg"}
                           alt={product.name}
                           className="w-full object-cover group-hover:scale-105 transition-transform duration-300 rounded-lg"
                         />
                       </div>
+                      {recsDetailsOpen &&
                       <div
                         onClick={() => {
                           navigate(`/product-details/${product.id}`);
@@ -157,7 +157,6 @@ const MiniCart = () => {
                             left: 0,
                             behavior: "smooth",
                           });
-                          setRecsDetailsOpen(false)
                         }}
                         className="cursor-pointer w-full flex flex-col justify-between items-center px-2 flex-grow"
                       >
@@ -193,6 +192,7 @@ const MiniCart = () => {
                           </Button>
                         </div>
                       </div>
+                      }
                     </div>
                   </SwiperSlide>
                 ))}
