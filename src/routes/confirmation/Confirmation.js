@@ -15,7 +15,7 @@ const Confirmation = () => {
   const navigate = useNavigate();
   return (
     <>
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="rounded-xl bg-white shadow-sm p-8">
           <h1 className="text-2xl text-textBlue font-bold">Thanks for your order!</h1>
           <div className="text-lg text-textBlue mt-6">
@@ -27,7 +27,7 @@ const Confirmation = () => {
         </div>
 
         <div className="rounded-xl bg-white shadow-sm p-8 mt-6">
-          <h2 className="text-xl text-textBlue font-bold mb-6">Order Summary</h2>
+          <h2 className="text-2xl text-textBlue font-bold mb-8">Order Summary</h2>
             <div className="flex items-end flex-wrap">
               <div className="w-full">
                 {products.slice(0,3).map((item) => (
@@ -61,9 +61,15 @@ const Confirmation = () => {
                 ))
               }
             </div>
-            <div className="w-full border-t-[2px] pt-4">
-              <span className="text-textBlue text-lg font-bold block mb-1">Total</span>
-              <span className="text-xl text-brandRed font-bold">£56.78</span>
+            <div className="w-full border-t-[2px] pt-4 text-right pr-2 md:pr-8">
+              <div className="flex text-lg font-bold mb-3 gap-3 justify-end">
+                <span className="text-textBlue">Delivery</span>
+                <span className="text-lg text-brandRed font-bold w-[80px]">£3.99</span>
+              </div>
+              <div className="flex text-xl font-bold gap-3 justify-end">
+                <span className="text-textBlue">Total</span>
+                <span className="text-brandRed font-bold w-[80px]">£56.78</span>
+              </div>
             </div>
           </div>
         </div>
