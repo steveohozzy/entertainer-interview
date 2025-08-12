@@ -48,7 +48,9 @@ const CartProductTile = ({product, nocontrols, isMiniCart}) => {
                     <div className="flex flex-wrap justify-between items-start">
                         <div className={`flex justify-start my-2 ${!isMiniCart && 'md:my-0'} w-full md:w-[30%] ${nocontrols && 'md:w-full text-right'} ${isMiniCart ? 'md:w-full text-sm md:flex-row' : 'md:flex-col'}`}>
                             <span className="text-brandRed font-bold">£{price}</span>
-                            <span className={`line-through text-gray-400 ml-1 ${isMiniCart ? 'ml-1 mb-2' : 'md:ml-0'}`}>£{originalPrice}</span>
+                            {originalPrice &&
+                                <span className={`line-through text-gray-400 ml-1 ${isMiniCart ? 'ml-1 mb-2' : 'md:ml-0'}`}>£{originalPrice}</span>
+                            }
                         </div>
                         {!nocontrols &&
                             <div className={`flex justify-between items-center w-full md:w-[70%] text-gray-500 font-bold ${isMiniCart && 'text-sm'}`}>

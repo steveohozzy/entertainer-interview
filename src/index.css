@@ -38,4 +38,9 @@
     .body-noscroll {
         overflow: hidden;
     }
+
+    ::selection {
+        color: #fff;
+        background: #009E44;
+    }
 }
