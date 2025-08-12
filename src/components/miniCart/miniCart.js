@@ -138,6 +138,7 @@ const MiniCart = () => {
                           left: 0,
                           behavior: "smooth",
                         });
+                        toggleIsCartOpen(false)
                       }}
                       className={`cursor-pointer flex flex-col h-full bg-white rounded-xl ${recsDetailsOpen && 'pb-2'}`}
                     >
@@ -157,6 +158,7 @@ const MiniCart = () => {
                             left: 0,
                             behavior: "smooth",
                           });
+                          toggleIsCartOpen(false)
                         }}
                         className="cursor-pointer w-full flex flex-col justify-between items-center px-2 flex-grow"
                       >
@@ -185,7 +187,7 @@ const MiniCart = () => {
                                 left: 0,
                                 behavior: "smooth",
                               });
-                              setRecsDetailsOpen(false)
+                              toggleIsCartOpen(false)
                             }}
                           >
                             Details
