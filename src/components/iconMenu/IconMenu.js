@@ -126,6 +126,11 @@ const IconMenu = ({setShowMenu}) => {
             Clearance
           </Link>
           <Link
+            onClick={() => window.scrollTo({
+              top: 10,
+              left: 0,
+              behavior: "smooth",
+            })}
             to="/present-finder"
             className="transition-all text-brandBlue flex flex-col items-center hover:scale-110 group text-[9px] md:text-sm"
           >

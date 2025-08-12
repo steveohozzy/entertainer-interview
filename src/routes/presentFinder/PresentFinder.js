@@ -397,7 +397,7 @@ const PresentFinder = () => {
                   <div className="font-bold text-xl md:text-2xl text-textBlue text-center mb-4">
                     What age range are you buying the gift for?
                   </div>
-                  <div className="mt-3 pt-3 grid grid-cols-2 md:grid-cols-3 justify-center max-w-[800px] mx-auto">
+                  <div className="mt-3 pt-3 grid grid-cols-2 md:grid-cols-3 pl-8 md:pl-20 justify-center max-w-[800px] mx-auto">
                     {ageGroups.map((age) => {
                       return (
                         <label
@@ -464,7 +464,7 @@ const PresentFinder = () => {
                   <div className="font-bold text-xl md:text-2xl text-textBlue text-center mb-4">
                     Is there a particular type of toy you are looking for?
                   </div>
-                  <div className="mt-3 pt-3 grid grid-cols-2 md:grid-cols-3 items-center justify-center max-w-[800px] mx-auto">
+                  <div className="mt-3 pt-3 grid grid-cols-2 md:grid-cols-3 items-center justify-center max-w-[800px] mx-auto md:pl-20">
                     {features.map((feature) => {
                       return (
                         <label
@@ -607,7 +607,7 @@ const PresentFinder = () => {
             <div className="max-w-[800px] my-10 mx-auto">
               <h3 className="text-xl text-brandBlue text-center font-bold">Still not sure?</h3>
               <p className="text-brandBlue text-center">Try these popular categories</p>
-              <div className="flex justify-center items-center gap-4 mt-6">
+              <div className="flex justify-center items-center gap-6 mt-6">
                 <Link
             onClick={() => {
               window.scrollTo({
@@ -617,10 +617,10 @@ const PresentFinder = () => {
               });
             }}
             to="/category/new-toys"
-            className="transition-all text-brandBlue flex flex-col items-center hover:scale-110 group text-[9px] md:text-sm"
+            className="transition-all text-brandBlue flex flex-col items-center hover:scale-110 group text-xs md:text-sm"
           >
-            <span className="transition-all w-9 h-9 transition-duration-500 group-hover:rotate-[20deg] group-hover:shadow-lg text-brandLightBlue bg-brandBlue rounded-full md:w-12 md:h-12 p-1 flex items-center justify-center text-s">
-              <Star className="h-7 w-7" fill="currentColor" />
+            <span className="transition-all w-12 h-12 transition-duration-500 group-hover:rotate-[20deg] group-hover:shadow-lg text-brandLightBlue bg-brandBlue rounded-full md:w-16 md:h-16 p-1 flex items-center justify-center text-s">
+              <Star className="h-7 w-7 md:h-10 md:w-10" fill="currentColor" />
             </span>
             New Toys
           </Link>
@@ -633,9 +633,9 @@ const PresentFinder = () => {
               });
             }}
             to="/category"
-            className="transition-all text-brandBlue flex flex-col items-center hover:scale-110 group text-[9px] md:text-sm"
+            className="transition-all text-brandBlue flex flex-col items-center hover:scale-110 group text-xs md:text-sm"
           >
-            <span className="transition-all w-9 h-9 transition-duration-500 group-hover:rotate-[20deg] group-hover:shadow-lg text-brandLightBlue bg-brandBlue rounded-full md:w-12 md:h-12 p-2 flex items-center justify-center">
+            <span className="transition-all w-12 h-12 transition-duration-500 group-hover:rotate-[20deg] group-hover:shadow-lg text-brandLightBlue bg-brandBlue rounded-full md:w-16 md:h-16 p-2 md:p-3 flex items-center justify-center">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path
                   fill="currentColor"
@@ -655,13 +655,11 @@ const PresentFinder = () => {
                 });
               }}
               to="/category"
-              className="transition-all text-brandBlue flex flex-col items-center hover:scale-110 group text-[9px] md:text-sm"
+              className="transition-all text-brandBlue flex flex-col items-center hover:scale-110 group text-xs md:text-sm"
             >
-              <span className="transition-all w-9 h-9 transition-duration-500 group-hover:rotate-[20deg] group-hover:shadow-lg text-brandLightBlue bg-brandBlue rounded-full md:w-12 md:h-12 p-2 flex items-center justify-center">
+              <span className="transition-all w-12 h-12 transition-duration-500 group-hover:rotate-[20deg] group-hover:shadow-lg text-brandLightBlue bg-brandBlue rounded-full md:w-16 md:h-16 p-3 md:p-4 flex items-center justify-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width=" 22"
-                  height=" 22"
                   viewBox="0 0 24 24"
                   fill="none"
                 >

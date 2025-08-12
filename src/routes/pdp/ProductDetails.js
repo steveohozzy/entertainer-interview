@@ -13,7 +13,7 @@ import {
 } from "../../store/wishlist/wishlistReducer";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay } from "swiper/modules";
+import { Zoom, Pagination, Autoplay } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/autoplay";
@@ -116,14 +116,15 @@ const ProductDetails = () => {
     <>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="rounded-xl flex flex-wrap bg-white items-start shadow-sm">
-          <div className="relative w-full md:w-2/5 p-4 border-[3px] border-brandNeonBlue rounded-xl [&_.swiper-pagination]:relative">
+          <div className="relative w-full md:w-2/5 p-4 border-[3px] border-brandNeonBlue rounded-xl [&_.swiper-pagination]:relative [&_.swiper-slide-zoomed]:cursor-move">
             <Swiper
               ref={swiperRef}
-              modules={[Autoplay, Pagination]}
+              modules={[Autoplay, Pagination, Zoom]}
               spaceBetween={20}
               slidesPerView={1}
               pagination={{ clickable: true }}
               autoplay={false}
+              zoom={true}
               onTransitionEnd={() => {
                 const slides = document.querySelectorAll(".swiper-slide");
 
@@ -158,16 +159,19 @@ const ProductDetails = () => {
               )}
               {product.images.map((image) => (
                 <SwiperSlide>
-                  <img
-                    className="object-cover w-full h-full"
-                    src={image}
-                    alt={product.name}
-                  />
+                  <div className="swiper-zoom-container">
+                    <img
+                      className="object-cover w-full h-full"
+                      src={image}
+                      alt={product.name}
+                    />
+                  </div>
                   {swatchColor === "orange" && (
                     <span className="absolute top-1/2 left-1/2 -rotate-45 text-orange-600 font-bold text-[100px] -translate-y-1/2 -translate-x-1/2">
                       ORANGE
                     </span>
                   )}
+                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 text-xs text-textBlue">double click to zoom</span>
                 </SwiperSlide>
               ))}
             </Swiper>
@@ -294,7 +298,7 @@ const ProductDetails = () => {
                   <div className="flex items-center">
                     <img src="/klarna-logo.svg" alt="Klarna" />
                     <p className="text-sm leading-[1.2] ml-2">
-                      Make 3 payments of £12.56.
+                      Make 3 payments of <span className="text-brandBlue">£{(product.price / 3).toFixed(2)}</span>
                       <br />
                       <span className="text-xs">
                         <button
@@ -665,7 +669,7 @@ const ProductDetails = () => {
                     </label>
                   </div>
                   {i < 2 && (
-                    <span className="text-xl md:text-3xl text-gray-400 font-bold absolute right-0 md:right-[-4px] top-[20%] md:top-[35%]">
+                    <span className="text-xl md:text-3xl text-gray-400 font-bold absolute right-0 md:right-[-4px] top-[23%] md:top-[35%]">
                       +
                     </span>
                   )}
