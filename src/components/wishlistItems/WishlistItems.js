@@ -12,12 +12,10 @@ const WishlistItemsList = () => {
 
   return (
     <div className="grid grid-cols-4 gap-2 md:gap-6 mt-6">
-      {wishlistItems && (
+      {wishlistItems.length && (
         <>
           {wishlistItems.map((product) => (
-            <>
-            <WishlistAccountProductCard product={product} />
-            </>
+            <WishlistAccountProductCard product={product} key={product.id} />
           ))}
         </>
       )}

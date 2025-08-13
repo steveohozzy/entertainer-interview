@@ -46,7 +46,7 @@ const HomeHeroCard = () => {
         <div className="w-full md:w-1/2 rounded-xl overflow-hidden">
           <video
             className="object-cover w-full h-full rounded-xl"
-            autoplay=""
+            autoPlay
             loop
             muted
             playsInline
