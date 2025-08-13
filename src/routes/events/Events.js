@@ -172,7 +172,7 @@ const Events = () => {
   return (
     <>
       <div className="bg-white pt-6 pb-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <HeadingRibbon fullWidth={true}>
             <h1>Store Events</h1>
           </HeadingRibbon>

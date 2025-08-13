@@ -176,7 +176,7 @@ const PresentFinder = () => {
 
   return (
     <>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pt-10">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pt-10">
         {showResults ? (
           <>
             {visibleFilteredProducts.length > 0 ?
@@ -244,7 +244,7 @@ const PresentFinder = () => {
                                     </div>
                                 </div>
                                 <Button 
-                                    className='shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-xs lg:text-sm rounded-[30px] bg-brandGreen text-white py-2 px-2 lg:px-4 lg:pl-0 pl-0 transition-all hover:bg-brandLightGreen hover:scale-105 mt-2'
+                                    className='shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-xs lg:text-sm rounded-[30px] bg-brandGreen text-white py-2 px-2 lg:px-4 lg:pl-0 pl-0 transition-all hover:bg-brandLightGreen hover:scale-105 mt-2 min-h-[44px]'
                                     onClick={() => { navigate(`/product-details/${product.id}`); window.scrollTo({top: 0,left: 0,behavior: "smooth",});}}>
                                         Details
                                 </Button>

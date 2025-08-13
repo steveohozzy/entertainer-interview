@@ -179,7 +179,7 @@ const MiniCart = () => {
                             </div>
                           </div>
                           <Button
-                            className="shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-xs lg:text-sm rounded-[30px] bg-brandGreen text-white py-2 px-2 lg:px-4 lg:pl-0 pl-0 transition-all hover:bg-brandLightGreen hover:scale-105 mt-2"
+                            className="shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-xs lg:text-sm rounded-[30px] bg-brandGreen text-white py-2 px-2 lg:px-4 lg:pl-0 pl-0 transition-all hover:bg-brandLightGreen hover:scale-105 mt-2 min-h-[44px]"
                             onClick={() => {
                               navigate(`/product-details/${product.id}`);
                               window.scrollTo({
@@ -204,7 +204,7 @@ const MiniCart = () => {
 
           <div className="bg-white w-full sticky bottom-0 py-2 z-20">
             <Button
-              className="shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-xs sm:text-sm my-2 rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-2 transition-all hover:bg-brandLightGreen hover:scale-105"
+              className="shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-xs sm:text-sm my-2 rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-2 transition-all hover:bg-brandLightGreen hover:scale-105 min-h-[44px]"
               iconpath={
                 <svg
                   width="22"
@@ -221,7 +221,7 @@ const MiniCart = () => {
               Checkout Securely £{cartTotal.toFixed(2)}
             </Button>
             <button
-              className="shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-xs sm:text-sm rounded-[30px] bg-white text-textBlue py-2 mb-2 px-4 pl-2 transition-all border-[2px] border-textBlue hover:bg-textBlue hover:text-white hover:scale-105"
+              className="shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-xs sm:text-sm rounded-[30px] bg-white text-textBlue py-2 mb-2 px-4 pl-2 transition-all border-[2px] border-textBlue hover:bg-textBlue hover:text-white hover:scale-105 min-h-[44px]"
               onClick={() => toggleIsCartOpen(false)}
             >
               Continue shopping

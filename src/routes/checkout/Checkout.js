@@ -136,7 +136,7 @@ const Checkout = () => {
                     <div className={`w-[39%] ml-[1%] ${animateTrainPayment && 'hidden'} border-b-4 border-dashed border-gray-200`}></div>
                 </div>
             </div>
-            <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+            <div className='max-w-5xl mx-auto px-4 sm:px-6 lg:px-8'>
                 <div className='flex flex-wrap py-6'>
                     <div className='w-full lg:w-[66.6666666%] md:px-3'>
                         <div className='border-[3px] border-gray-300 rounded-xl lg:hidden'>
