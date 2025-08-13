@@ -15,6 +15,7 @@ import SearchResults from "./routes/search/Search";
 import Brands from "./routes/brandsPage/Brands";
 import PresentFinder from "./routes/presentFinder/PresentFinder";
 import Confirmation from "./routes/confirmation/Confirmation";
+import StoreFinderPage from "./routes/storeFinder/StoreFinder";
 
 const App = () => {
 
@@ -33,6 +34,7 @@ const App = () => {
         <Route path="/brands/:id" element={<Brands />} />
         <Route path="/present-finder/*" element={<PresentFinder />} />
         <Route path="/confirmation/" element={<Confirmation />} />
+        <Route path="/store-finder" element={<StoreFinderPage />} />
       </Route>
       <Route path="/" element={<CheckoutLayout />}>
         <Route path="/checkout" element={<Checkout />} />

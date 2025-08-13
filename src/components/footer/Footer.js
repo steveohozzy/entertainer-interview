@@ -150,12 +150,15 @@ const Footer = () => {
                   answer={
                     <ul className="text-brandBlue text-center md:text-left">
                       <li className="mt-2">
-                        <a
-                          href="https://theentertainer.zendesk.com/hc/en-gb/articles/6495305266833-Contact-Us"
-                          title="Contact Us"
+                        <button
+                          onClick={() => {
+                            navigate("/store-finder");
+                            window.scrollTo({top: 0,left: 0,behavior: "smooth",});
+                          }}
+                          title="Store Finder"
                         >
-                          Contact Us
-                        </a>
+                          Store Finder
+                        </button>
                       </li>
                       <li className="mt-2">
                         <a
