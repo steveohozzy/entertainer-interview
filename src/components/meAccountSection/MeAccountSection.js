@@ -64,7 +64,7 @@ const MeAccountSection = () => {
           </button>
         </div>
         <div className="flex flex-col w-full mt-6">
-          <div className={`flex h-[40px] px-3 rounded-lg border border-[3px] border-brandBlue relative`}>
+          <div className={`flex h-[44px] px-3 rounded-lg border border-[3px] border-brandBlue relative`}>
             <span
               className="absolute left-[calc(20%-20px)] md:left-[calc(15%-10px)] z-[2] top-[14px] w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[6px] border-gray-400 transition-all"></span>
             <select className='relative w-[20%] appearance-none border-r-[3px] bg-white border-gray-400 pr-4 mr-2 text-textBlue font-bold outline-none'>
@@ -80,7 +80,7 @@ const MeAccountSection = () => {
               </span>
             </div>
           </div>
-          <div className={`flex mt-5 h-[40px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative group`}>
+          <div className={`flex mt-5 h-[44px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative group`}>
             <input type="text" placeholder="Last Name" className="peer text-base m-0 block h-[32px] w-full bg-transparent text-textBlue transition duration-200 ease-linear placeholder:text-transparent focus:outline-none" />
             <label className="px-3 pointer-events-none absolute left-0 top-[2px] origin-[0_0] border border-solid border-transparent text-base text-gray-400 transition-[opacity,_transform] duration-200 ease-linear peer-focus:-translate-y-7 peer-focus:translate-x-[0.15rem] peer-focus:scale-[0.85] peer-focus:text-brandBlue peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:translate-x-[0.15rem] peer-[:not(:placeholder-shown)]:scale-[0.85] peer-[:not(:placeholder-shown)]:text-brandBlue motion-reduce:transition-none">Last Name</label>
             <span className="absolute h-full w-[20px] flex items-center justify-center top-0 right-2 text-gray-300 peer-[:not(:placeholder-shown)]:text-brandGreen">
@@ -89,7 +89,7 @@ const MeAccountSection = () => {
                 </svg>
               </span>
           </div>
-          <div className={`flex mt-5 h-[40px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative group`}>
+          <div className={`flex mt-5 h-[44px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative group`}>
             <input type="text" placeholder="Email Address" className="peer text-base m-0 block h-[32px] w-full bg-transparent text-textBlue transition duration-200 ease-linear placeholder:text-transparent focus:outline-none" />
             <label className="px-3 pointer-events-none absolute left-0 top-[2px] origin-[0_0] border border-solid border-transparent text-base text-gray-400 transition-[opacity,_transform] duration-200 ease-linear peer-focus:-translate-y-7 peer-focus:translate-x-[0.15rem] peer-focus:scale-[0.85] peer-focus:text-brandBlue peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:translate-x-[0.15rem] peer-[:not(:placeholder-shown)]:scale-[0.85] peer-[:not(:placeholder-shown)]:text-brandBlue motion-reduce:transition-none">Email Address</label>
             <span className="absolute h-full w-[20px] flex items-center justify-center top-0 right-2 text-gray-300 peer-[:not(:placeholder-shown)]:text-brandGreen">
@@ -98,7 +98,7 @@ const MeAccountSection = () => {
                 </svg>
               </span>
           </div>
-          <div className={`flex mt-5 h-[40px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative group`}>
+          <div className={`flex mt-5 h-[44px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative group`}>
             <input type="text" placeholder="Address First Line" className="peer text-base m-0 block h-[32px] w-full bg-transparent text-textBlue transition duration-200 ease-linear placeholder:text-transparent focus:outline-none" />
             <label className="px-3 pointer-events-none absolute left-0 top-[2px] origin-[0_0] border border-solid border-transparent text-base text-gray-400 transition-[opacity,_transform] duration-200 ease-linear peer-focus:-translate-y-7 peer-focus:translate-x-[0.15rem] peer-focus:scale-[0.85] peer-focus:text-brandBlue peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:translate-x-[0.15rem] peer-[:not(:placeholder-shown)]:scale-[0.85] peer-[:not(:placeholder-shown)]:text-brandBlue motion-reduce:transition-none">Address First Line</label>
             <span className="absolute h-full w-[20px] flex items-center justify-center top-0 right-2 text-gray-300 peer-[:not(:placeholder-shown)]:text-brandGreen">
@@ -108,7 +108,7 @@ const MeAccountSection = () => {
               </span>
           </div>
           <div className="flex">
-            <div className={`flex mt-5 h-[40px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative group`}>
+            <div className={`flex mt-5 h-[44px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative group`}>
               <input type="text" placeholder="Address Second Line" className="peer text-base m-0 block h-[32px] w-full bg-transparent text-textBlue transition duration-200 ease-linear placeholder:text-transparent focus:outline-none" />
               <label className="px-3 pointer-events-none absolute left-0 top-[2px] origin-[0_0] border border-solid border-transparent text-base text-gray-400 transition-[opacity,_transform] duration-200 ease-linear peer-focus:-translate-y-7 peer-focus:translate-x-[0.15rem] peer-focus:scale-[0.85] peer-focus:text-brandBlue peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:translate-x-[0.15rem] peer-[:not(:placeholder-shown)]:scale-[0.85] peer-[:not(:placeholder-shown)]:text-brandBlue motion-reduce:transition-none">Address Second Line</label>
               <span className="absolute h-full w-[20px] flex items-center justify-center top-0 right-2 text-gray-300 peer-[:not(:placeholder-shown)]:text-brandGreen">
@@ -125,7 +125,7 @@ const MeAccountSection = () => {
             </button>
           </div>
           <div className="flex flex-wrap md:flex-nowrap gap-3 md:gap-5">
-            <div className={`flex  mt-5 h-[40px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative `}>
+            <div className={`flex  mt-5 h-[44px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative `}>
               <div className="relative w-full">
                 <input type="text" placeholder="Postcode" className="peer text-base m-0 block h-[32px] w-full bg-transparent text-textBlue transition duration-200 ease-linear placeholder:text-transparent focus:outline-none" />
                 <label className="pointer-events-none absolute left-0 top-[2px] origin-[0_0] border border-solid border-transparent text-base text-gray-400 transition-[opacity,_transform] duration-200 ease-linear peer-focus:-translate-y-7 peer-focus:translate-x-[0.15rem] peer-focus:scale-[0.85] peer-focus:text-brandBlue peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:translate-x-[0.15rem] peer-[:not(:placeholder-shown)]:scale-[0.85] peer-[:not(:placeholder-shown)]:text-brandBlue motion-reduce:transition-none">Postcode</label>
@@ -136,7 +136,7 @@ const MeAccountSection = () => {
                 </span>
               </div>
             </div>
-            <div className={`flex mt-2 md:mt-5 h-[40px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative `}>
+            <div className={`flex mt-2 md:mt-5 h-[44px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative `}>
               <span
                 className="absolute left-[calc(20%-20px)] md:left-[calc(25%-10px)] lg:left-[calc(20%-10px)] z-[2] top-[14px] w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[6px] border-gray-400 transition-all"></span>
               <select className='relative w-[20%] md:w-[35%] lg:w-[25%] appearance-none border-r-[3px] bg-white border-gray-400 pr-4 mr-2 text-textBlue font-bold outline-none'>

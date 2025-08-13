@@ -114,7 +114,7 @@ const Wishlist = () => {
                   Wish List Total: £{wishlistTotal.toFixed(2)}
                 </div>
                 <Button
-                  className="w-full mt-4 shadow-md hover:shadow-lg group inline-flex items-center justify-center font-bold text-sm lg:text-lg min-h-[40px] rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-2 transition-all hover:bg-brandLightGreen hover:scale-105 addToBasket"
+                  className="w-full mt-4 shadow-md hover:shadow-lg group inline-flex items-center justify-center font-bold text-sm lg:text-lg min-h-[44px] rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-2 transition-all hover:bg-brandLightGreen hover:scale-105 addToBasket"
                   iconpath={
                   <svg
                       width="22"

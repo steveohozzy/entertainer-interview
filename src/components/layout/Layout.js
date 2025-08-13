@@ -141,11 +141,11 @@ const Layout = () => {
       >
         <div className="bg-brandBlue shadow-sm md:shadow-md rounded-b-2xl md:rounded-b-3xl">
           <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between">
+            <div className="flex items-stretch md:items-center justify-between">
               <div className="flex items-center">
                 <button
                   name="Activate Menu"
-                  className="transition-all shadow-lg flex flex-col items-center text-brandBlue bg-white p-1 px-3 pl rounded-xl hover:scale-105 rounded-tl-[0] rounded-bl-[0] md:rounded-tl-xl md:rounded-bl-xl"
+                  className="transition-all shadow-lg flex flex-col items-center justify-center text-brandBlue bg-white px-3 md:py-1 rounded-xl rounded-tl-none hover:scale-105 h-full md:rounded-tl-xl md:rounded-bl-xl"
                   onClick={toggleMenu}
                 >
                   <MenuIcon />
@@ -163,12 +163,12 @@ const Layout = () => {
                   <img
                     src="/jack-logo.svg"
                     alt="The Entertainer"
-                    className="w-[29px] md:w-[49px] transition-all translate-y-2 group-hover:translate-y-0 group-hover:scale-105"
+                    className="w-[39px] md:w-[59px] transition-all translate-y-2 group-hover:translate-y-0 group-hover:scale-105"
                   />
                   <img
                     src="/text-logo.svg"
                     alt="The Entertainer"
-                    className="w-[85px] md:w-[144px] "
+                    className="w-[95px] md:w-[154px] "
                   />
                 </Link>
               </div>
@@ -223,7 +223,7 @@ const Layout = () => {
                   href="https://www.elc.co.uk/"
                   rel="noreferrer"
                   target="_blank"
-                  className="py-2 rounded-md rounded-tr-[0] md:rounded-br-2xl md:rounded-tr-md md:rounded-br-md px-2 md:px-3 bg-white hover:bg-grey-100 transition-all hover:scale-105 hover:shadow-md"
+                  className="py-2 h-full md:h-auto flex items-center rounded-md rounded-tr-[0] md:rounded-br-2xl md:rounded-tr-md md:rounded-br-md px-2 md:px-3 bg-white hover:bg-grey-100 transition-all hover:scale-105 hover:shadow-md"
                 >
                   <img
                     src="/elc-logo-full.svg"

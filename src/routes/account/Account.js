@@ -69,7 +69,7 @@ const Account = () => {
             <div className={`w-full md:w-1/2 py-6 px-4 ${registerForm ? 'block' : 'hidden md:block'}`}>
               <h2 className="text-textBlue font-bold text-lg md:text-xl">Create an account</h2>
               <form id="sign-up-form">
-                <div className={`flex h-[40px] px-3 mt-5 rounded-lg w-full border border-[3px] border-brandBlue relative ${name && 'border-red-600'}`}>
+                <div className={`flex h-[44px] px-3 mt-5 rounded-lg w-full border border-[3px] border-brandBlue relative ${name && 'border-red-600'}`}>
                   <span
                     className="absolute left-[calc(20%-20px)] md:left-[calc(15%-10px)] z-[2] top-[14px] w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[6px] border-gray-400 transition-all"></span>
                   <select className='relative w-[20%] appearance-none border-r-[3px] bg-white border-gray-400 pr-4 mr-2 text-textBlue font-bold outline-none'>
@@ -87,7 +87,7 @@ const Account = () => {
                     </span>
                   </div>
                 </div>
-                <div className={`flex mt-5 h-[40px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative group ${lastname && 'border-red-600'}`}>
+                <div className={`flex mt-5 h-[44px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative group ${lastname && 'border-red-600'}`}>
                   <input type="text" placeholder="Last Name" onChange={handleLastNameChange} onBlur={handleLastNameChange} className="peer text-base m-0 block h-[32px] w-full bg-transparent text-textBlue transition duration-200 ease-linear placeholder:text-transparent focus:outline-none" />
                   <label className="px-3 pointer-events-none absolute left-0 top-[2px] origin-[0_0] border border-solid border-transparent text-base text-gray-400 transition-[opacity,_transform] duration-200 ease-linear peer-focus:-translate-y-7 peer-focus:translate-x-[0.15rem] peer-focus:scale-[0.85] peer-focus:text-brandBlue peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:translate-x-[0.15rem] peer-[:not(:placeholder-shown)]:scale-[0.85] peer-[:not(:placeholder-shown)]:text-brandBlue motion-reduce:transition-none">Last Name</label>
                   <span className="absolute h-full w-[20px] flex items-center justify-center top-0 right-2 text-gray-300 peer-[:not(:placeholder-shown)]:text-brandGreen">
@@ -96,7 +96,7 @@ const Account = () => {
                     </svg>
                   </span>
                 </div>
-                <div className={`flex mt-5 h-[40px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative group ${email && 'border-red-600'}`}>
+                <div className={`flex mt-5 h-[44px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative group ${email && 'border-red-600'}`}>
                   <input type="email" placeholder="Email" onChange={handleEmailChange} onBlur={handleEmailChange} className="peer text-base m-0 block h-[32px] w-full bg-transparent text-textBlue transition duration-200 ease-linear placeholder:text-transparent focus:outline-none" />
                   <label className="px-3 pointer-events-none absolute left-0 top-[2px] origin-[0_0] border border-solid border-transparent text-base text-gray-400 transition-[opacity,_transform] duration-200 ease-linear peer-focus:-translate-y-7 peer-focus:translate-x-[0.15rem] peer-focus:scale-[0.85] peer-focus:text-brandBlue peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:translate-x-[0.15rem] peer-[:not(:placeholder-shown)]:scale-[0.85] peer-[:not(:placeholder-shown)]:text-brandBlue motion-reduce:transition-none">Email</label>
                   <span className="absolute h-full w-[20px] flex items-center justify-center top-0 right-2 text-gray-300 peer-[:not(:placeholder-shown)]:text-brandGreen">
@@ -105,7 +105,7 @@ const Account = () => {
                     </svg>
                   </span>
                 </div>
-                <div className={`flex mt-5 h-[40px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative group ${password && 'border-red-600'}`}>
+                <div className={`flex mt-5 h-[44px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative group ${password && 'border-red-600'}`}>
                   <input type={`${showPassword ? 'text' : 'password'}`} placeholder="Password" onChange={handlePasswordChange} onBlur={handlePasswordChange} className="peer text-base m-0 block h-[32px] w-full bg-transparent text-textBlue transition duration-200 ease-linear placeholder:text-transparent focus:outline-none pr-[150px]" />
                   <label className="px-3 pointer-events-none absolute left-0 top-[2px] origin-[0_0] border border-solid border-transparent text-base text-gray-400 transition-[opacity,_transform] duration-200 ease-linear peer-focus:-translate-y-7 peer-focus:translate-x-[0.15rem] peer-focus:scale-[0.85] peer-focus:text-brandBlue peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:translate-x-[0.15rem] peer-[:not(:placeholder-shown)]:scale-[0.85] peer-[:not(:placeholder-shown)]:text-brandBlue motion-reduce:transition-none">Password</label>
                   <span className="absolute h-full w-[20px] flex items-center justify-center top-0 right-2 text-gray-300 peer-[:not(:placeholder-shown)]:text-brandGreen">
@@ -117,7 +117,7 @@ const Account = () => {
                     {showPassword ? 'Hide Password' : 'Show Password'}
                   </button>
                 </div>
-                <div className={`flex mt-5 h-[40px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative group ${password && 'border-red-600'}`}>
+                <div className={`flex mt-5 h-[44px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative group ${password && 'border-red-600'}`}>
                   <input type={`${showPassword ? 'text' : 'password'}`} placeholder="Confirm Password" onChange={handlePasswordChange} onBlur={handlePasswordChange} className="peer text-base m-0 block h-[32px] w-full bg-transparent text-textBlue transition duration-200 ease-linear placeholder:text-transparent focus:outline-none pr-[150px]" />
                   <label className="px-3 pointer-events-none absolute left-0 top-[2px] origin-[0_0] border border-solid border-transparent text-base text-gray-400 transition-[opacity,_transform] duration-200 ease-linear peer-focus:-translate-y-7 peer-focus:translate-x-[0.15rem] peer-focus:scale-[0.85] peer-focus:text-brandBlue peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:translate-x-[0.15rem] peer-[:not(:placeholder-shown)]:scale-[0.85] peer-[:not(:placeholder-shown)]:text-brandBlue motion-reduce:transition-none">Confirm Password</label>
                   <span className="absolute h-full w-[20px] flex items-center justify-center top-0 right-2 text-gray-300 peer-[:not(:placeholder-shown)]:text-brandGreen">
@@ -134,7 +134,7 @@ const Account = () => {
             <div className={`w-full md:w-1/2 py-6 px-4 ${loginForm ? 'block' : 'hidden md:block'}`}>
               <h2 className="text-textBlue font-bold text-lg md:text-xl">Existing Customers</h2>
               <form id="sign-in-form">
-              <div className={`flex mt-5 h-[40px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative group ${email && 'border-red-600'}`}>
+              <div className={`flex mt-5 h-[44px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative group ${email && 'border-red-600'}`}>
                   <input type="email" placeholder="Email" onChange={handleEmailChange} onBlur={handleEmailChange} className="peer text-base m-0 block h-[32px] w-full bg-transparent text-textBlue transition duration-200 ease-linear placeholder:text-transparent focus:outline-none" />
                   <label className="px-3 pointer-events-none absolute left-0 top-[2px] origin-[0_0] border border-solid border-transparent text-base text-gray-400 transition-[opacity,_transform] duration-200 ease-linear peer-focus:-translate-y-7 peer-focus:translate-x-[0.15rem] peer-focus:scale-[0.85] peer-focus:text-brandBlue peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:translate-x-[0.15rem] peer-[:not(:placeholder-shown)]:scale-[0.85] peer-[:not(:placeholder-shown)]:text-brandBlue motion-reduce:transition-none">Email</label>
                   <span className="absolute h-full w-[20px] flex items-center justify-center top-0 right-2 text-gray-300 peer-[:not(:placeholder-shown)]:text-brandGreen">
@@ -143,7 +143,7 @@ const Account = () => {
                     </svg>
                   </span>
                 </div>
-                <div className={`flex mt-5 h-[40px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative group ${password && 'border-red-600'}`}>
+                <div className={`flex mt-5 h-[44px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative group ${password && 'border-red-600'}`}>
                   <input type={`${showPassword ? 'text' : 'password'}`} placeholder="Password" onChange={handlePasswordChange} onBlur={handlePasswordChange} className="peer text-base m-0 block h-[32px] w-full bg-transparent text-textBlue transition duration-200 ease-linear placeholder:text-transparent focus:outline-none pr-[150px]" />
                   <label className="px-3 pointer-events-none absolute left-0 top-[2px] origin-[0_0] border border-solid border-transparent text-base text-gray-400 transition-[opacity,_transform] duration-200 ease-linear peer-focus:-translate-y-7 peer-focus:translate-x-[0.15rem] peer-focus:scale-[0.85] peer-focus:text-brandBlue peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:translate-x-[0.15rem] peer-[:not(:placeholder-shown)]:scale-[0.85] peer-[:not(:placeholder-shown)]:text-brandBlue motion-reduce:transition-none">Password</label>
                   <span className="absolute h-full w-[20px] flex items-center justify-center top-0 right-2 text-gray-300 peer-[:not(:placeholder-shown)]:text-brandGreen">

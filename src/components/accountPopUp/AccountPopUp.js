@@ -144,7 +144,7 @@ const AccountPopUp = () => {
                   </div>
                   <form id="sign-in-form">
                     <div
-                      className={`flex h-[40px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative group ${
+                      className={`flex h-[44px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative group ${
                         email && "border-red-600"
                       }`}
                     >
@@ -175,7 +175,7 @@ const AccountPopUp = () => {
                       </span>
                     </div>
                     <div
-                      className={`flex mt-5 h-[40px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative group ${
+                      className={`flex mt-5 h-[44px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative group ${
                         password && "border-red-600"
                       }`}
                     >

@@ -100,9 +100,9 @@ const Cart = () => {
                       <input
                         type="search"
                         placeholder="Add a promo code"
-                        className="outline-0 h-[40px] px-3 rounded-3xl w-full border border-[3px] border-brandBlue text-textBlue placeholder:text-gray-300 mr-2"
+                        className="outline-0 h-[44px] px-3 rounded-3xl w-full border border-[3px] border-brandBlue text-textBlue placeholder:text-gray-300 mr-2"
                       />
-                      <button className="group text-white font-bold bg-brandBlue rounded-[50px] px-5 h-[40px] transition-all hover:bg-blue-500 hover:scale-105">
+                      <button className="group text-white font-bold bg-brandBlue rounded-[50px] px-5 h-[44px] transition-all hover:bg-blue-500 hover:scale-105">
                         <span className="block transition-all group-hover:rotate-[10deg]">
                           Apply
                         </span>
@@ -234,7 +234,7 @@ const Cart = () => {
             </div>
             <div className="bg-white p-4 px-0 md:px-4 w-full sticky bottom-0 left-0 md:hidden z-20">
               <Button
-                className="h-[40px] shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-sm md:text-lg rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-2 transition-all hover:bg-brandLightGreen hover:scale-105"
+                className="h-[44px] shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-sm md:text-lg rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-2 transition-all hover:bg-brandLightGreen hover:scale-105"
                 iconpath={
                   <svg
                     width="22"
@@ -252,7 +252,7 @@ const Cart = () => {
               </Button>
               <Button
                 removeIcons={true}
-                className="shadow-md hover:shadow-lg w-full h-[40px] group inline-flex items-center justify-center font-bold text-sm md:text-lg rounded-[30px] bg-white text-brandBlue py-1 px-4 pl-2 transition-all border-[3px] mt-4 border-brandBlue hover:bg-brandBlue hover:text-white hover:scale-105"
+                className="shadow-md hover:shadow-lg w-full h-[44px] group inline-flex items-center justify-center font-bold text-sm md:text-lg rounded-[30px] bg-white text-brandBlue py-1 px-4 pl-2 transition-all border-[3px] mt-4 border-brandBlue hover:bg-brandBlue hover:text-white hover:scale-105"
                 link="/"
               >
                 Continue Shopping

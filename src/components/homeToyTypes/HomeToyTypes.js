@@ -14,7 +14,7 @@ const HomeToyTypes = () => {
   };
 
   return (
-    <div id="toy-types">
+    <div id="toy-types" className="py-3">
       <Swiper
         modules={[Autoplay]}
         spaceBetween={10}

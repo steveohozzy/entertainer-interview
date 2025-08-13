@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 const HomeBrands = () => {
   const navigate = useNavigate();
   return (
-    <div id="brands" className="flex gap-2 mt-2">
+    <div id="brands" className="flex gap-2 mt-2 py-3">
       <button className=" rounded-xl overflow-hidden transition-all hover:scale-90 shadow-md hover:shadow-lg aspect-square w-1/4 md:w-1/6"
         onClick={() => {
           navigate("/brands/marvel");

@@ -132,13 +132,13 @@ export default function StoreFinderPage() {
           .addTo(mapInstanceRef.current)
           .bindPopup(`
           <div class="p-2">
-            <h4 class="font-semibold text-sm mb-1">${store.name}</h4>
-            <p class="text-xs text-gray-600 mb-1">${store.address}</p>
-            <p class="text-xs text-blue-600 font-medium">
+            <h4 class="font-bold text-sm mb-1 text-brandBlue">${store.name}</h4>
+            <p class="text-xs text-textBlue mb-1">${store.address}</p>
+            <p class="text-xs text-brandBlue font-bold">
               ${store.distance ? `${store.distance.toFixed(1)} miles away` : ""}
             </p>
             <div class="mt-2">
-              <button onclick="window.selectStore(${store.id})" class="text-xs bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-700">
+              <button onclick="window.selectStore(${store.id})" class="text-xs bg-brandGreen text-white px-2 shadow-sm transition-all py-1 rounded-lg hover:bg-brandLightGreen">
                 View Details
               </button>
             </div>

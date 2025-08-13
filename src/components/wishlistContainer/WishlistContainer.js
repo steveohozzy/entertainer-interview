@@ -205,7 +205,7 @@ const WishlistContainer = () => {
         <div className="w-1/2 md:w-1/3">
           <input
             placeholder="Date needed for"
-            className="outline-0 border-[3px] border-gray-300 text-brandBlue focus:border-brandBlue rounded-md w-full px-2 py-1 h-[40px]"
+            className="outline-0 border-[3px] border-gray-300 text-brandBlue focus:border-brandBlue rounded-md w-full px-2 py-1 h-[44px]"
             type={dateType}
             onFocus={() => setDateType('date')}
             onBlur={() => setDateType('text')}

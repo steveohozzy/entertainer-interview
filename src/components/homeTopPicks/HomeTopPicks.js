@@ -13,7 +13,7 @@ const HomeTopPicks = () => {
   const navigate = useNavigate();
 
   return (
-    <div id="top-picks" className='w-full text-center mt-5'>
+    <div id="top-picks" className='w-full text-center mt-5 py-3'>
             <HeadingRibbon fullWidth={true}>
                 Top Picks
             </HeadingRibbon>
