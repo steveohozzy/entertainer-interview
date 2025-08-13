@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef, useCallback } from "react"
-import { Search, MapPin, Phone, Clock, Navigation, Filter, ChevronDown } from "lucide-react"
+import { Search, MapPin, Phone, Clock, Navigation, ChevronDown } from "lucide-react"
 import entertainerStores from "../../data/stores"
 
 import Button from "../../components/button/Button"
@@ -410,20 +410,20 @@ export default function StoreFinderPage() {
         <form onSubmit={handleSearch} className="relative">
           <div className="flex gap-2">
             <div className="flex-1 relative">
-              <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+              <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-brandBlue opacity-50 h-5 w-5" />
               <input
                 type="text"
                 placeholder="Enter postcode or town (e.g., 'London', 'M4 3AQ')"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10 pr-4 py-3 text-lg w-full"
+                className="pl-10 pr-4 py-2 w-full outline-none rounded-xl border-[2px] border-brandLightBlue shadow-sm text-brandBlue placeholder:text-textBlue"
               />
             </div>
             <button
+              id="submit"
               type="submit"
-              size="lg"
               disabled={isLoading}
-              className="shadow-md hover:shadow-lg group inline-flex items-center justify-center font-bold text-xs lg:text-sm rounded-[30px] bg-brandGreen text-white py-2 px-8 transition-all hover:bg-brandLightGreen hover:scale-105"
+              className="shadow-md hover:shadow-lg group inline-flex items-center justify-center font-bold text-xs lg:text-sm rounded-[30px] bg-brandGreen text-white py-2 px-4 lg:px-8 transition-all hover:bg-brandLightGreen hover:scale-105"
             >
               {isLoading ? (
                 <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
@@ -434,6 +434,18 @@ export default function StoreFinderPage() {
                 </>
               )}
             </button>
+            {(searchQuery || searchLocation) && (
+                <button
+                  className="shadow-md hover:shadow-lg group inline-flex items-center justify-center font-bold text-xs lg:text-sm rounded-[30px] bg-gray-600 text-white py-2 px-6 lg:px-10 transition-all hover:bg-gray-400 hover:scale-105"
+                  onClick={() => {
+                    setSearchQuery("")
+                    setSearchLocation(null)
+                    setFilteredStores(entertainerStores)
+                  }}
+                >
+                  Clear
+                </button>
+              )}
           </div>
         </form>
       </div>
@@ -492,8 +504,8 @@ export default function StoreFinderPage() {
               onClick={() => setViewMode("both")}
               className={`px-3 py-2 text-sm ${
                 viewMode === "both"
-                  ? "bg-blue-600 text-white"
-                  : "bg-white text-gray-700 hover:bg-gray-50"
+                  ? "bg-brandGreen text-white"
+                  : "bg-white text-brandBlue hover:bg-gray-50"
               }`}
             >
               Both
@@ -502,8 +514,8 @@ export default function StoreFinderPage() {
               onClick={() => setViewMode("map")}
               className={`px-3 py-2 text-sm border-l ${
                 viewMode === "map"
-                  ? "bg-blue-600 text-white"
-                  : "bg-white text-gray-700 hover:bg-gray-50"
+                  ? "bg-brandGreen text-white"
+                  : "bg-white text-brandBlue hover:bg-gray-50"
               }`}
             >
               Map
@@ -512,8 +524,8 @@ export default function StoreFinderPage() {
               onClick={() => setViewMode("list")}
               className={`px-3 py-2 text-sm border-l ${
                 viewMode === "list"
-                  ? "bg-blue-600 text-white"
-                  : "bg-white text-gray-700 hover:bg-gray-50"
+                  ? "bg-brandGreen text-white"
+                  : "bg-white text-brandBlue hover:bg-gray-50"
               }`}
             >
               List
@@ -529,42 +541,38 @@ export default function StoreFinderPage() {
             <div className="grid md:grid-cols-2 gap-6">
               {/* Services Filter */}
               <div>
-                <h3 className="font-semibold mb-3">Services</h3>
+                <h3 className="font-bold text-brandBlue mb-3">Services</h3>
                 <div className="flex flex-wrap gap-2">
                   {allServices.map((service) => (
-                    <div
+                    <button
                       key={service}
-                      variant={
-                        selectedServices.includes(service)
-                          ? "default"
-                          : "outline"
-                      }
-                      className="cursor-pointer hover:scale-105 transition-transform"
+                      className={`${selectedServices.includes(service)
+                          ? "bg-textBlue"
+                          : "bg-brandBlue"
+                      } text-white px-4 py-2 rounded-full shadow-sm hover:scale-105 hover:bg-textBlue hover:shadow-lg  transition-all`}
                       onClick={() => toggleService(service)}
                     >
                       {service}
-                    </div>
+                    </button>
                   ))}
                 </div>
               </div>
 
               {/* Store Type Filter */}
               <div>
-                <h3 className="font-semibold mb-3">Store Size</h3>
+                <h3 className="font-bold text-brandBlue mb-3">Store Size</h3>
                 <div className="flex flex-wrap gap-2">
                   {allStoreTypes.map((type) => (
-                    <div
+                    <button
                       key={type}
-                      variant={
-                        selectedStoreTypes.includes(type)
-                          ? "default"
-                          : "outline"
-                      }
-                      className="cursor-pointer hover:scale-105 transition-transform capitalize"
+                      className={`${selectedStoreTypes.includes(type)
+                          ? "bg-brandBlue "
+                          : "bg-textBlue"
+                      } text-white px-4 py-2 rounded-full shadow-sm hover:scale-105 hover:bg-brandBlue hover:shadow-lg  transition-all`}
                       onClick={() => toggleStoreType(type)}
                     >
                       {type}
-                    </div>
+                    </button>
                   ))}
                 </div>
               </div>
@@ -572,16 +580,15 @@ export default function StoreFinderPage() {
 
             {(selectedServices.length > 0 || selectedStoreTypes.length > 0) && (
               <div className="mt-4 pt-4 border-t">
-                <Button
-                  variant="outline"
-                  size="sm"
+                <button
                   onClick={() => {
                     setSelectedServices([]);
                     setSelectedStoreTypes([]);
                   }}
+                  className="shadow-md hover:shadow-lg group inline-flex items-center justify-center font-bold text-xs lg:text-sm rounded-[30px] bg-brandGreen text-white py-2 px-4 lg:px-8 transition-all hover:bg-brandLightGreen hover:scale-105"
                 >
                   Clear All Filters
-                </Button>
+                </button>
               </div>
             )}
           </div>
@@ -840,7 +847,9 @@ export default function StoreFinderPage() {
                   className="shadow-md hover:shadow-lg group inline-flex items-center justify-center font-bold rounded-[30px] bg-textBlue text-white py-2 px-4 pl-2 transition-all hover:bg-brandBlue hover:scale-105"
                   onClick={() => {
                     setSearchQuery(city);
-                    handleSearch({ preventDefault: () => {} });
+                    setTimeout(() => {
+                      document.querySelector('#submit').click();
+                    }, 100);
                     window.scrollTo({top: 0,left: 0,behavior: "smooth",});
                   }}
                 >
