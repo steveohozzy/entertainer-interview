@@ -8,6 +8,7 @@ import {
   ageGroups,
   features,
   sizes,
+  types,
 } from "../../data/products";
 
 import ProductCard from "../../components/productCard/productCard";
@@ -19,6 +20,7 @@ const Plp = () => {
   const [selectedAgeGroups, setSelectedAgeGroups] = useState([]);
   const [selectedFeatures, setSelectedFeatures] = useState([]);
   const [selectedSizes, setSelectedSizes] = useState([]);
+  const [selectedTypes, setSelectedTypes] = useState([]);
   const [priceRange, setPriceRange] = useState([0, 100]);
   const [showInStockOnly, setShowInStockOnly] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
@@ -68,7 +70,7 @@ const Plp = () => {
    useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
     setCurrentPage(1)
-  }, [selectedBrands, selectedAgeGroups, selectedFeatures, selectedSizes, priceRange, showInStockOnly])
+  }, [selectedBrands, selectedAgeGroups, selectedFeatures, selectedSizes, selectedTypes, priceRange, showInStockOnly])
 
   function useOutsideAlerter(ref) {
     useEffect(() => {
@@ -119,11 +121,18 @@ const Plp = () => {
     );
   };
 
+  const toggleType = (type) => {
+    setSelectedTypes((prev) =>
+      prev.includes(type) ? prev.filter((t) => t !== type) : [...prev, type]
+    );
+  };
+
   const clearFilters = () => {
     setSelectedBrands([]);
     setSelectedAgeGroups([]);
     setSelectedFeatures([]);
     setSelectedSizes([]);
+    setSelectedTypes([]);
     setPriceRange([0, 100]);
     setShowInStockOnly(false);
     setBrandSearch("");
@@ -149,6 +158,8 @@ const Plp = () => {
       selectedFeatures.some((feature) => product.features.includes(feature));
     const matchesSize =
       selectedSizes.length === 0 || selectedSizes.includes(product.size);
+    const matchesType =
+      selectedTypes.length === 0 || selectedTypes.includes(product.type);
     const matchesPrice =
       product.price >= priceRange[0] && product.price <= priceRange[1];
     const matchesStock = !showInStockOnly || product.inStock;
@@ -158,6 +169,7 @@ const Plp = () => {
       matchesAgeGroup &&
       matchesFeatures &&
       matchesSize &&
+      matchesType &&
       matchesPrice &&
       matchesStock
     );
@@ -168,6 +180,7 @@ const Plp = () => {
     selectedAgeGroups.length > 0 ||
     selectedFeatures.length > 0 ||
     selectedSizes.length > 0 ||
+    selectedTypes.length> 0 ||
     showInStockOnly;
 
   const goToPage = (page) => {
@@ -268,6 +281,7 @@ const Plp = () => {
       const matchesFeatures =
         selectedFeatures.length === 0 || selectedFeatures.some((feature) => product.features.includes(feature))
       const matchesSize = selectedSizes.length === 0 || selectedSizes.includes(product.size)
+      const matchesType = selectedTypes.length === 0 || selectedTypes.includes(product.type)
       const matchesPrice = product.price >= priceRange[0] && product.price <= priceRange[1]
       const matchesStock = !showInStockOnly || product.inStock
 
@@ -276,6 +290,7 @@ const Plp = () => {
         matchesAgeGroup &&
         matchesFeatures &&
         matchesSize &&
+        matchesType &&
         matchesPrice &&
         matchesStock 
       )
@@ -289,6 +304,7 @@ const Plp = () => {
       const matchesFeatures =
         selectedFeatures.length === 0 || selectedFeatures.some((feature) => product.features.includes(feature))
       const matchesSize = selectedSizes.length === 0 || selectedSizes.includes(product.size)
+      const matchesType = selectedTypes.length === 0 || selectedTypes.includes(product.type)
       const matchesPrice = product.price >= priceRange[0] && product.price <= priceRange[1]
       const matchesStock = !showInStockOnly || product.inStock
 
@@ -297,6 +313,7 @@ const Plp = () => {
         matchesAgeGroup &&
         matchesFeatures &&
         matchesSize &&
+        matchesType &&
         matchesPrice &&
         matchesStock 
       )
@@ -309,6 +326,7 @@ const Plp = () => {
       const matchesAgeGroup = selectedAgeGroups.length === 0 || selectedAgeGroups.includes(product.ageGroup)
       const matchesFeatures = product.features.includes(featureName)
       const matchesSize = selectedSizes.length === 0 || selectedSizes.includes(product.size)
+      const matchesType = selectedTypes.length === 0 || selectedTypes.includes(product.type)
       const matchesPrice = product.price >= priceRange[0] && product.price <= priceRange[1]
       const matchesStock = !showInStockOnly || product.inStock
 
@@ -318,6 +336,7 @@ const Plp = () => {
         matchesFeatures &&
         matchesSize &&
         matchesPrice &&
+        matchesType &&
         matchesStock 
       )
     }).length
@@ -330,6 +349,7 @@ const Plp = () => {
       const matchesFeatures =
         selectedFeatures.length === 0 || selectedFeatures.some((feature) => product.features.includes(feature))
       const matchesSize = product.size === sizeName
+      const matchesType = selectedTypes.length === 0 || selectedTypes.includes(product.type)
       const matchesPrice = product.price >= priceRange[0] && product.price <= priceRange[1]
       const matchesStock = !showInStockOnly || product.inStock
 
@@ -338,6 +358,30 @@ const Plp = () => {
         matchesAgeGroup &&
         matchesFeatures &&
         matchesSize &&
+        matchesType &&
+        matchesPrice &&
+        matchesStock 
+      )
+    }).length
+  }
+
+  const getTypeCount = (typeName) => {
+    return products.filter((product) => {
+      const matchesBrand = selectedBrands.length === 0 || selectedBrands.includes(product.brand)
+      const matchesAgeGroup = selectedAgeGroups.length === 0 || selectedAgeGroups.includes(product.ageGroup)
+      const matchesFeatures =
+        selectedFeatures.length === 0 || selectedFeatures.some((feature) => product.features.includes(feature))
+      const matchesSize = selectedSizes.length === 0 || selectedSizes.includes(product.size)
+      const matchesType = product.type === typeName
+      const matchesPrice = product.price >= priceRange[0] && product.price <= priceRange[1]
+      const matchesStock = !showInStockOnly || product.inStock
+
+      return (
+        matchesBrand &&
+        matchesAgeGroup &&
+        matchesFeatures &&
+        matchesSize &&
+        matchesType &&
         matchesPrice &&
         matchesStock 
       )
@@ -422,6 +466,26 @@ const Plp = () => {
       setDirectFilterApplied(true)
     } else if (brandFilter === "marvel" && !directFilterApplied) {
       setSelectedBrands(["Marvel"])
+      setDirectFilterApplied(true)
+    }
+  }, [directFilterApplied])
+
+  useEffect(() => {
+    // Check for URL parameters to apply filters directly
+    const urlParams = new URLSearchParams(window.location.search)
+    const typeFilter = urlParams.get("type")
+
+    if (typeFilter === "action-figures" && !directFilterApplied) {
+      setSelectedTypes(["Action Figures"])
+      setDirectFilterApplied(true)
+    } else if (typeFilter === "pre-school-toys" && !directFilterApplied) {
+      setSelectedTypes(["Pre-school Toys"])
+      setDirectFilterApplied(true)
+    } else if (typeFilter === "arts-and-crafts" && !directFilterApplied) {
+      setSelectedTypes(["Arts and Crafts"])
+      setDirectFilterApplied(true)
+    } else if (typeFilter === "games-and-puzzles" && !directFilterApplied) {
+      setSelectedTypes(["Games and Puzzles"])
       setDirectFilterApplied(true)
     }
   }, [directFilterApplied])
@@ -538,6 +602,18 @@ const Plp = () => {
                             />
                           </div>
                         ))}
+                        {selectedTypes.map((type) => (
+                          <div
+                            key={`type-${type}`}
+                            className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs transition-colors border-transparent bg-brandBlue text-white gap-1"
+                          >
+                            {type}
+                            <X
+                              className="h-3 w-3 cursor-pointer"
+                              onClick={() => toggleType(type)}
+                            />
+                          </div>
+                        ))}
                         {showInStockOnly && (
                           <div className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs transition-colors border-transparent bg-brandBlue text-white gap-1">
                             In Stock Only
@@ -601,6 +677,53 @@ const Plp = () => {
                         </>
                       }
                     />
+
+                    {/* Type Filters */}
+                    <Dropdown
+                      title="Type"
+                      className="w-full text-brandBlue flex items-center border-b-2 border-b-textBlue py-3"
+                      answer={
+                        <div className="space-y-3 pt-3">
+                        {types.map((type) => {
+                          const count = getTypeCount(type.name)
+                          return (
+                            <label
+                              key={type.name}
+                              className="relative flex items-center space-x-2 cursor-pointer"
+                            >
+                              <input
+                                id={type.name}
+                                type="checkbox"
+                                checked={selectedTypes.includes(type.name)}
+                                onChange={() => toggleType(type.name)}
+                                className="relative mt-1 block size-[20px] appearance-none rounded-md border-[3px] border-textBlue bg-white outline-none transition-all checked:bg-textBlue"
+                              />
+                              <span className="absolute top-[3px] left-[-8px]">
+                                <svg viewBox="0 0 24 24" width="20px" height="20px" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                                  <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+                                  <g id="SVGRepo_iconCarrier">
+                                    {' '}
+                                    <path
+                                      d="M4.89163 13.2687L9.16582 17.5427L18.7085 8"
+                                      stroke="#ffffff"
+                                      strokeWidth="2.5"
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                    ></path>{' '}
+                                  </g>
+                                </svg>
+                              </span>
+                              <span className="text-sm text-brandBlue">
+                                {type.name} ({count})
+                              </span>
+                            </label>
+                          )
+                        })}
+                      </div>
+                      }
+                    />
+
                     {/* Age Group Filters */}
                     <Dropdown
                       title="Age Groups"
@@ -879,6 +1002,18 @@ const Plp = () => {
                     <X
                       className="h-3 w-3 cursor-pointer"
                       onClick={() => toggleSize(size)}
+                    />
+                  </div>
+                ))}
+                {selectedTypes.map((type) => (
+                  <div
+                    key={`size-${type}`}
+                    className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs transition-colors border-transparent bg-brandBlue text-white gap-1"
+                  >
+                    {type}
+                    <X
+                      className="h-3 w-3 cursor-pointer"
+                      onClick={() => toggleType(type)}
                     />
                   </div>
                 ))}

@@ -32,7 +32,10 @@ const HomeToyTypes = () => {
         loop
       >
         <SwiperSlide className="h-auto pb-3 pt-5">
-          <button onClick={goToLinkHandler} className="transition-all rounded-xl bg-white px-2 py-2.5 md:py-4 flex flex-col items-center shadow-md justify-center hover:-translate-y-3 hover:shadow-lg">
+          <button onClick={() => {
+            navigate("/category?type=action-figures");
+            window.scrollTo({top: 0,left: 0,behavior: "smooth",});
+          }} className="transition-all rounded-xl bg-white px-2 py-2.5 md:py-4 flex flex-col items-center shadow-md justify-center hover:-translate-y-3 hover:shadow-lg">
             <div className="mb-2">
               <img className="px-3 md:px-6" src="https://www.thetoyshop.com/medias/300Wx300H-573193-Primary?context=bWFzdGVyfGltYWdlc3w0MTkxN3xpbWFnZS9qcGVnfGFERTFMMmd5TlM4eE1qVXlNVEUwTlRrNU1URTVPQzh6TURCWGVETXdNRWhmTlRjek1Ua3pYMUJ5YVcxaGNua3xiMjYwOTU4ZDk0OWQ0YmNmNjY2ODIzMDNmMDc2Yjk3ZWIzMzRjNTljOWY1MzJkMTYyNWQ2OTUyM2YwYTExYWI5" alt="Action Toys" />
             </div>
@@ -42,7 +45,10 @@ const HomeToyTypes = () => {
           </button>
         </SwiperSlide>
         <SwiperSlide className="h-auto pb-3 pt-5">
-          <button onClick={goToLinkHandler} className="transition-all rounded-xl bg-white px-2 py-2.5 md:py-4 flex flex-col items-center shadow-md justify-center hover:-translate-y-3 hover:shadow-lg">
+          <button onClick={() => {
+            navigate("/category?type=pre-school-toys");
+            window.scrollTo({top: 0,left: 0,behavior: "smooth",});
+          }} className="transition-all rounded-xl bg-white px-2 py-2.5 md:py-4 flex flex-col items-center shadow-md justify-center hover:-translate-y-3 hover:shadow-lg">
             <div className="mb-2">
               <img className="px-3 md:px-6" src="https://www.thetoyshop.com/medias/300Wx300H-570341-Primary?context=bWFzdGVyfGltYWdlc3wxMDQzMTZ8aW1hZ2UvanBlZ3xhR1ZpTDJoaVppOHhNak01TVRJM05ESXhOelV3TWk4ek1EQlhlRE13TUVoZk5UY3dNelF4WDFCeWFXMWhjbmt8NWI3NDU5MjJmNDIwNzc0ODAxYjA5MmM3YTE0Y2MyYjdkMzdlMTFjNjFjMTIyYjZhODMwMWI2YjA5ZWU3OTEyYw" alt="Pre-School Toys" />
             </div>
@@ -52,7 +58,10 @@ const HomeToyTypes = () => {
           </button>
         </SwiperSlide>
         <SwiperSlide className="h-auto pb-3 pt-5">
-          <button onClick={goToLinkHandler} className="transition-all rounded-xl bg-white px-2 py-2.5 md:py-4 flex flex-col items-center shadow-md justify-center hover:-translate-y-3 hover:shadow-lg">
+          <button onClick={() => {
+            navigate("/category?type=arts-and-crafts");
+            window.scrollTo({top: 0,left: 0,behavior: "smooth",});
+          }} className="transition-all rounded-xl bg-white px-2 py-2.5 md:py-4 flex flex-col items-center shadow-md justify-center hover:-translate-y-3 hover:shadow-lg">
             <div className="mb-2">
               <img className="px-3 md:px-6" src="https://www.thetoyshop.com/medias/300Wx300H-540775-540775-2.jpg?context=bWFzdGVyfGltYWdlc3w2MzgwOXxpbWFnZS9qcGVnfGFHRm1MMmhqT1M4eE1qUXpNemN6T1RRME9ETTFNQzh6TURCWGVETXdNRWhmTlRRd056YzFYelUwTURjM05TMHlMbXB3Wnd8NTgwNjdlMzE3MWEwY2UwMDc4M2IyNDUwMDUzNjc0NDA0Y2U5ODQ4MjEwNTBjMmNmYmJiNjcyYjgwNGJhY2IzMg" alt="Arts &amp; Crafts" />
             </div>
@@ -62,7 +71,10 @@ const HomeToyTypes = () => {
           </button>
         </SwiperSlide>
         <SwiperSlide className="h-auto pb-3 pt-5">
-          <button onClick={goToLinkHandler} className="transition-all rounded-xl bg-white px-2 py-2.5 md:py-4 flex flex-col items-center shadow-md justify-center hover:-translate-y-3 hover:shadow-lg">
+          <button onClick={() => {
+            navigate("/category?type=games-and-puzzles");
+            window.scrollTo({top: 0,left: 0,behavior: "smooth",});
+          }} className="transition-all rounded-xl bg-white px-2 py-2.5 md:py-4 flex flex-col items-center shadow-md justify-center hover:-translate-y-3 hover:shadow-lg">
             <div className="mb-2">
               <img className="px-3 md:px-6" src="https://www.thetoyshop.com/medias/300Wx300H-530024-530024-2.jpg?context=bWFzdGVyfGltYWdlc3wxMTM4OTB8aW1hZ2UvanBlZ3xhRFE0TDJoaFlTOHhNak0xTVRFNU16TTRNamswTWk4ek1EQlhlRE13TUVoZk5UTXdNREkwWHpVek1EQXlOQzB5TG1wd1p3fDI2YzZkMjcxMzY2ZWQzOGM0ZjIyZWVkNDk4YjE2MjA5MmE3MTIwM2NjZjU3NzI2NmQ0NzcyMGM2MGJmNzgzMjY" alt="Games &amp; Puzzles" />
             </div>

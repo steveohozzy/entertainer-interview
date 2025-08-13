@@ -42,6 +42,13 @@ export const sizes = [
   { name: "18+ inches", count: 67 },
 ]
 
+export const types = [
+  { name: "Action Figures", count: 234 },
+  { name: "Pre-school Toys", count: 345 },
+  { name: "Arts and Crafts", count: 156 },
+  { name: "Games and Puzzles", count: 67 },
+]
+
 export const products = [
   {
     sku: 557860,
@@ -66,6 +73,7 @@ export const products = [
     features: ["Articulated", "With Accessories"],
     size: "6 inches",
     inStock: true,
+    type: 'Action Figures',
     description:
       "Bring the web-slinging action home with this highly detailed Spider-Man figure featuring the Advanced Suit from the hit video game. With multiple points of articulation and authentic detailing.",
     specifications: {
@@ -97,6 +105,7 @@ export const products = [
     features: ["Articulated", "Poseable"],
     size: "6 inches",
     inStock: true,
+    type: 'Action Figures',
     description:
       "The Dark Knight rises with this incredibly detailed Batman figure. Features authentic movie styling and premium articulation for dynamic posing.",
     specifications: {
@@ -128,6 +137,7 @@ export const products = [
     features: ["Light & Sound", "With Accessories"],
     size: "12 inches",
     inStock: true,
+    type: 'Action Figures',
     description:
       "Experience the power of the Dark Side with this premium Darth Vader figure featuring authentic breathing sounds and light-up lightsaber.",
     specifications: {
@@ -159,6 +169,7 @@ export const products = [
     features: ["Articulated", "With Accessories"],
     size: "6 inches",
     inStock: true,
+    type: 'Action Figures',
     description:
       "Cowabunga! Leonardo leads the way with this action-packed figure featuring his signature katanas and ninja gear.",
     specifications: {
@@ -190,6 +201,7 @@ export const products = [
     features: ["Transforming", "Articulated"],
     size: "12 inches",
     inStock: true,
+    type: 'Action Figures',
     description:
       "Autobots, roll out! This premium Optimus Prime figure transforms from robot to truck in 25 steps with authentic movie detailing.",
     specifications: {
@@ -221,6 +233,7 @@ export const products = [
     features: ["Light & Sound", "Poseable"],
     size: "18+ inches",
     inStock: false,
+    type: 'Action Figures',
     description:
       "The King of Monsters returns! This massive Godzilla figure features authentic roaring sounds and atomic breath light effects.",
     specifications: {
@@ -252,6 +265,7 @@ export const products = [
     features: ["Light & Sound", "With Accessories"],
     size: "6 inches",
     inStock: true,
+    type: 'Pre-school Toys',
     description:
       "Gotta catch 'em all! This adorable Pikachu figure features authentic Pokemon sounds and lightning bolt accessories.",
     specifications: {
@@ -284,6 +298,7 @@ export const products = [
     features: ["Articulated", "With Accessories"],
     size: "6 inches",
     inStock: true,
+    type: 'Action Figures',
     description:
       "Super-size your crime-fighting adventures with the patriotic soldier Captain America. This 12-inch Captain America figure will use his super-strength and indestructible shield to open up a big-time attack on evil everywhere. With him on your side, there's no telling where your Avengers adventures will take you.",
     specifications: {
@@ -315,6 +330,7 @@ export const products = [
     features: ["Collectible", "Poseable"],
     size: "6 inches",
     inStock: true,
+    type: 'Arts and Crafts',
     description:
       "Power up with this highly detailed Super Saiyan Goku figure featuring premium paint applications and multiple display options.",
     specifications: {
@@ -346,6 +362,7 @@ export const products = [
     features: ["Articulated", "With Accessories"],
     size: "12 inches",
     inStock: true,
+    type: 'Games and Puzzless',
     description:
       "Embrace your inner warrior with this stunning Wonder Woman figure from the hit movie, complete with golden armor and accessories.",
     specifications: {
@@ -377,6 +394,7 @@ export const products = [
     features: ["Collectible", "Light & Sound", "Articulated"],
     size: "12 inches",
     inStock: true,
+    type: 'Action Figures',
     description:
       "The ultimate Iron Man figure featuring the Mark 85 armor from Avengers: Endgame with LED lights and premium detailing.",
     specifications: {
@@ -409,6 +427,7 @@ export const products = [
     features: features.slice(0, Math.floor(Math.random() * 3) + 1).map((f) => f.name),
     size: sizes[Math.floor(Math.random() * sizes.length)].name,
     inStock: Math.random() > 0.1,
+    type: types[Math.floor(Math.random() * sizes.length)].name,
     description: "An amazing action figure with incredible detail and premium features for collectors and fans alike.",
     specifications: {
       Material: "High-quality plastic",
