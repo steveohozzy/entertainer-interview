@@ -331,8 +331,8 @@ const ProductDetails = () => {
             <div className="flex flex-wrap items-end justify-between py-6 border-b-[3px] border-gray-300 flex-col-reverse md:flex-row">
               <div className="flex flex-wrap items-end w-full md:w-auto justify-between">
                 <div className="price">
-                  <div className="flex items-center">
-                    <img src="/klarna-logo.svg" alt="Klarna" />
+                  <div className="flex items-center mb-4 md:mb-0">
+                    <img src="/klarna-logo.svg" alt="Klarna" className="w-14" />
                     <p className="text-sm leading-[1.2] ml-2">
                       Make 3 payments of <span className="text-brandBlue">£{(product.price / 3).toFixed(2)}</span>
                       <br />
@@ -470,11 +470,11 @@ const ProductDetails = () => {
               <div className="w-full md:w-auto mb-4 md:mb-0">
                 <div className="flex flex-wrap items-center notices justify-end">
                   <span className="flex items-center justify-between text-brandNeonBlue border-[2px] border-brandNeonBlue p-2 rounded-md mb-2 md:mb-0 w-full md:w-auto font-bold">
-                    <span>Other styles</span>
+                    <span className="text-smn">Other styles</span>
                     <div className="flex items-center">
                       <button
                         onClick={() => setSwatchColor("blue")}
-                        className={`transition-all rounded-full bg-brandNeonBlue w-[20px] md:w-[25px] h-[20px] md:h-[25px] border-[3px] ml-3 hover:border-brandBlue ${
+                        className={`transition-all rounded-full bg-brandNeonBlue w-[20px] md:w-[24px] h-[20px] md:h-[24px] border-[3px] ml-3 hover:border-brandBlue ${
                           swatchColor === "blue"
                             ? "border-brandBlue"
                             : "border-brandNeonBlue"
@@ -484,7 +484,7 @@ const ProductDetails = () => {
                       </button>
                       <button
                         onClick={() => setSwatchColor("orange")}
-                        className={`rounded-full bg-orange-300 w-[20px] md:w-[25px] h-[20px] md:h-[25px] border-[3px]  ml-3 transition-all hover:border-orange-500 ${
+                        className={`rounded-full bg-orange-300 w-[20px] md:w-[24px] h-[20px] md:h-[24px] border-[3px]  ml-3 transition-all hover:border-orange-500 ${
                           swatchColor === "orange"
                             ? "border-orange-500"
                             : "border-orange-300"
@@ -494,7 +494,7 @@ const ProductDetails = () => {
                       </button>
                       <button
                         onClick={() => setSwatchColor("black")}
-                        className={`rounded-full bg-black w-[20px] md:w-[25px] h-[20px] md:h-[25px] border-[3px] ml-3 transition-all hover:border-gray-500 ${
+                        className={`rounded-full bg-black w-[20px] md:w-[24px] h-[20px] md:h-[24px] border-[3px] ml-3 transition-all hover:border-gray-500 ${
                           swatchColor === "black"
                             ? "border-gray-500"
                             : "border-black"
@@ -504,7 +504,7 @@ const ProductDetails = () => {
                       </button>
                       <button
                         onClick={() => setSwatchColor("red")}
-                        className={`rounded-full bg-red-500 w-[20px] md:w-[25px] h-[20px] md:h-[25px] border-[3px] ml-3 transition-all hover:border-red-700 ${
+                        className={`rounded-full bg-red-500 w-[20px] md:w-[24px] h-[20px] md:h-[24px] border-[3px] ml-3 transition-all hover:border-red-700 ${
                           swatchColor === "red"
                             ? "border-red-700"
                             : "border-red-500"
@@ -673,7 +673,7 @@ const ProductDetails = () => {
                     <label className="flex items-center space-x-3 cursor-pointer mb-6 absolute z-20 top-1 right-1">
                       <input
                         type="checkbox"
-                        className="relative size-[25px] block md:size-[30px] appearance-none rounded-md border-[3px] border-textBlue bg-white outline-none transition-all checked:bg-textBlue"
+                        className="relative size-[24px] block md:size-[30px] appearance-none rounded-md border-[3px] border-textBlue bg-white outline-none transition-all checked:bg-textBlue"
                         defaultChecked
                         onChange={changeBundleHandler}
                       />
