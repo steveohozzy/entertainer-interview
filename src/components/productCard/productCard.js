@@ -23,6 +23,7 @@ import Dropdown from "../../components/dropdown/Dropdown";
 
 const ProductCard = ({ product }) => {
   const {
+    brand,
     name,
     price,
     image,
@@ -560,6 +561,9 @@ const ProductCard = ({ product }) => {
           </div>
         </div>
         <div className="p-4 flex flex-col grow">
+          <div className="flex flex-wrap justify-center mb-1">
+            <div className="inline-flex items-center text-xs text-gray-400">{brand}</div>
+          </div>
           <button className="flex flex-col h-full" onClick={goToLinkHandler}>
             <h2 className="text-brandBlue flex-grow font-bold text-sm mb-2 leading-tight line-clamp-2 grow">
               {name}

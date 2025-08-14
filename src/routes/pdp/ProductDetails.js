@@ -262,6 +262,7 @@ const ProductDetails = () => {
             </div>
           </div>
           <div className="w-full md:w-3/5 p-4 px-6">
+            <div className="text-center text-gray-400">{product.brand}</div>
             <h1 className="text-xl md:text-3xl font-bold text-brandBlue text-center mb-4 md:mb-10">
               {product.name}{" "}
               {swatchColor === "orange" && (
@@ -779,7 +780,7 @@ const ProductDetails = () => {
                       <div
                         className=" md:py-2 cursor-pointer w-full md:w-1/2 flex flex-col justify-between items-center px-2 grow"
                       >
-                        <div className="text-xs lg:text-sm xl:text-lg text-brandBlue font-bold leading-[1.2] xl:leading-[1.1] mb-2 md:mb-0">
+                        <div className="line-clamp-2 text-xs lg:text-sm xl:text-lg text-brandBlue font-bold leading-[1.2] xl:leading-[1.1] mb-2 md:mb-0">
                           {product.name}
                         </div>
                         <div>
@@ -853,7 +854,7 @@ const ProductDetails = () => {
                       />
                     </div>
                     <div className="w-full flex flex-col justify-between items-center p-2">
-                      <div className="text-xs lg:text-sm xl:text-base text-brandBlue font-bold leading-[1.2] xl:leading-[1.1] mb-2 md:mb-0">
+                      <div className="line-clamp-2 text-xs lg:text-sm xl:text-base text-brandBlue font-bold leading-[1.2] xl:leading-[1.1] mb-2 md:mb-0">
                         {product.name}
                       </div>
                       <div>

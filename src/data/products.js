@@ -4,7 +4,7 @@
 export const brands = [
   { name: "Marvel", count: 156, color: "bg-red-800" },
   { name: "DC Comics", count: 89, color: "bg-blue-600" },
-  { name: "Star Wars", count: 234, color: "bg-yellow-500" },
+  { name: "Ty", count: 234, color: "bg-yellow-500" },
   { name: "TMNT", count: 45, color: "bg-green-800" },
   { name: "Transformers", count: 78, color: "bg-purple-500" },
   { name: "Monster Verse", count: 34, color: "bg-orange-800" },
@@ -53,7 +53,7 @@ export const products = [
   {
     sku: 557860,
     id: 557860,
-    name: "Spider-Man Advanced Suit Figure",
+    name: "MixMashers Spider-Man Figure",
     brand: "Marvel",
     price: 24.99,
     originalPrice: 29.99,
@@ -86,7 +86,7 @@ export const products = [
   {
     sku: 557860,
     id: 2,
-    name: "Batman Dark Knight Figure",
+    name: "Batman Mech Armour 15cm Metal Force Figure",
     brand: "DC Comics",
     price: 22.99,
     originalPrice: null,
@@ -118,8 +118,8 @@ export const products = [
   {
     sku: 557860,
     id: 3,
-    name: "Darth Vader Deluxe Figure",
-    brand: "Star Wars",
+    name: "Squish-a-Boos - Darth Vader 35cm Soft Toy",
+    brand: "Ty",
     price: 34.99,
     originalPrice: 39.99,
     rating: 4.7,
@@ -150,7 +150,7 @@ export const products = [
   {
     sku: 557860,
     id: 4,
-    name: "Leonardo TMNT Figure",
+    name: "Teenage Mutant Ninja Turtles Mutant Mayhem - Leonardo Figure",
     brand: "TMNT",
     price: 18.99,
     originalPrice: null,
@@ -182,7 +182,7 @@ export const products = [
   {
     sku: 557860,
     id: 5,
-    name: "Optimus Prime Figure",
+    name: "EarthSpark Warrior Class Optimus Prime Action Figure",
     brand: "Transformers",
     price: 42.99,
     originalPrice: 49.99,
@@ -214,8 +214,8 @@ export const products = [
   {
     sku: 557860,
     id: 6,
-    name: "Godzilla King of Monsters",
-    brand: "Monster Verse",
+    name: "The New Empire Godzilla Energized 15cm Action Figure",
+    brand: "Godzilla x Kong",
     price: 28.99,
     originalPrice: null,
     rating: 4.5,
@@ -246,8 +246,8 @@ export const products = [
   {
     sku: 557860,
     id: 7,
-    name: "Pikachu Deluxe Figure",
-    brand: "Pokemon",
+    name: "Pikachu Vinyl Figure Pokemon",
+    brand: "Funko Pop!",
     price: 16.99,
     originalPrice: 19.99,
     rating: 4.7,
@@ -311,8 +311,8 @@ export const products = [
   {
     sku: 557860,
     id: 8,
-    name: "Goku Super Saiyan Figure",
-    brand: "Dragon Ball Z",
+    name: "Starter Pack - Special Attack Ventri, Octogan and Trox Figures",
+    brand: "Bakugan",
     price: 31.99,
     originalPrice: null,
     rating: 4.8,
@@ -343,8 +343,8 @@ export const products = [
   {
     sku: 557860,
     id: 9,
-    name: "Wonder Woman 1984 Figure",
-    brand: "DC Comics",
+    name: "Squish-a-Boos - DC Wonder Woman 35cm Soft Toy",
+    brand: "Ty",
     price: 26.99,
     originalPrice: 32.99,
     rating: 4.6,
@@ -375,8 +375,8 @@ export const products = [
   {
     sku: 557860,
     id: 10,
-    name: "Iron Man Mark 85 Figure",
-    brand: "Marvel",
+    name: "Marvel Iron Man MK4 Bust Construction Set 76327",
+    brand: "LEGO",
     price: 45.99,
     originalPrice: 52.99,
     rating: 4.9,
