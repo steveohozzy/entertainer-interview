@@ -22,10 +22,7 @@ const TopSellersCarousel = ({setShowSearchBox, filteredProducts, startedSearch})
           spaceBetween={10}
           breakpoints={{
           768: {
-            slidesPerView: 7,
-          },
-          1024: {
-            slidesPerView: 9,
+            slidesPerView: 5,
           },
         }}
         >

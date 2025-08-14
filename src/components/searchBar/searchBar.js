@@ -145,7 +145,7 @@ const SearchBar = () => {
         <div id="search-backing" className="fixed inset-0 bg-brandBlue/60 h-screen w-screen z-0"></div>
       }
       <div ref={wrapperRef} className="search bg-brandLightBlue pt-5 z-2 relative">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <form id="search-form" className="relative" onSubmit={handleSearch}>
                 <input ref={searchInput} onFocus={handleFocus} onChange={handleChange} onKeyDown={handleKeyCode} name="search" type="search" placeholder="I'm looking for..." className="relative z-20 outline-0 h-[44px] px-3 rounded-3xl w-full border border-[3px] border-brandBlue font-bold text-textBlue placeholder:text-textBlue" />
                 <button onClick={handleSearch} className="shadow-md z-20 group text-white font-bold bg-brandRed rounded-full h-[44px] w-[54px] absolute right-0 top-0 transition-all hover:bg-brandGreen hover:scale-105">
@@ -239,11 +239,8 @@ const SearchBar = () => {
                     </div>
                     <div className="hidden md:block w-1/4">
                       <div className="flex gap-4 pl-4">
-                        <div className="w-full lg:w-1/2">
+                        <div className="w-full">
                           <img src="/promo.jpg" alt="New Toys" title="New Toys" />
-                        </div>
-                        <div className="w-1/2 hidden lg:block">
-                          <img src="/promo2.jpg" alt="New Toys" title="New Toys" />
                         </div>
                       </div>
                     </div>

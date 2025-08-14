@@ -23,9 +23,6 @@ const ByAgeCarousel = ({setShowSearchBox}) => {
           768: {
             slidesPerView: 7,
           },
-          1024: {
-            slidesPerView: 12,
-          },
         }}
         >
           <SwiperSlide>

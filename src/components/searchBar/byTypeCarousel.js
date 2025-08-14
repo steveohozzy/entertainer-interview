@@ -24,9 +24,6 @@ const ByTypeCarousel = ({setShowSearchBox}) => {
           768: {
             slidesPerView: 4.8,
           },
-          1024: {
-            slidesPerView: 7.8,
-          },
         }}
         >
           <SwiperSlide>
