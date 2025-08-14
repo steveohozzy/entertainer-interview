@@ -8,7 +8,7 @@ const Tabs = ({ children }) => {
     <div key={index} className="w-[50%] p-2">
     <Button
         className={`
-            w-full shadow-sm hover:shadow-md text-xs md:text-sm group inline-flex items-center justify-center font-bold rounded-[30px] text-brandBlue border-[3px] border-brandBlue py-2 px-1 pl-2 transition-all hover:bg-brandBlue hover:text-white hover:scale-105
+            w-full shadow-sm hover:shadow-md group inline-flex items-center justify-center font-bold rounded-[40px] text-brandBlue border-[3px] border-brandBlue py-2 px-1 pl-2 transition-all hover:bg-brandBlue hover:text-white hover:scale-105
             ${child.props.className} ${selected === index ? "bg-brandBlue text-white" : "bg-white"} `}
         iconpath={
             child.props.iconpath
