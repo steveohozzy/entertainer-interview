@@ -36,8 +36,8 @@ const HomeTopPicks = () => {
                     >
                 {products.slice(0, 6).map((product) => (
                     <SwiperSlide>
-                    <div  onClick={() => { navigate(`/product-details/${product.id}`); window.scrollTo({top: 0,left: 0,behavior: "smooth",});}} className="cursor-pointer flex flex-wrap bg-white shadow-lg mb-5 rounded-lg">
-                        <div className="border-[3px] border-brandBlue rounded-lg w-1/2">
+                    <div  onClick={() => { navigate(`/product-details/${product.id}`); window.scrollTo({top: 0,left: 0,behavior: "smooth",});}} className="cursor-pointer flex flex-wrap bg-white shadow-lg mb-5 rounded-lg h-full">
+                        <div className="border-[3px] border-brandBlue rounded-lg w-1/2 py-1">
                             <img
                                 src={product.image || "/placeholder.svg"}
                                 alt={product.name}
@@ -45,7 +45,7 @@ const HomeTopPicks = () => {
                             />
                         </div>
                         <div className="w-1/2 flex flex-col justify-between items-center py-1 md:py-3 px-2">
-                            <div className="text-xs lg:text-sm xl:text-lg text-brandBlue font-bold leading-[1.2] xl:leading-[1.1] mb-2 md:mb-0">{product.name}</div>
+                            <div className="text-xs lg:text-sm xl:text-base text-brandBlue font-bold leading-[1.2] xl:leading-[1.1] mb-2 md:mb-0">{product.name}</div>
                             <div>
                                 <div className="price">
                                     <div className="flex items-end justify-center">
