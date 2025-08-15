@@ -195,8 +195,8 @@ const menuCategories = [
               </svg>,
       items: [
         {
-          name: "Ages 3-5",
-          href: "/category",
+          name: "Ages 0-3",
+          href: "/category?age=0-3",
           onClick: (e) => {
             e.preventDefault()
             window.navigateTo("action-figures")
@@ -208,32 +208,36 @@ const menuCategories = [
           },
           hasSubItems: true,
           subItems: [
-            { name: "Soft Figures", href: "/category", },
-            { name: "Large Figures", href: "/category", },
-            { name: "Interactive Toys", href: "/category", },
+            { name: "Soft Figures", href: "/category?age=0-3", },
+            { name: "Large Figures", href: "/category?age=0-3", },
+            { name: "Interactive Toys", href: "/category?age=0-3", },
           ],
         },
         {
-          name: "Ages 6-8",
-          href: "/category",
+          name: "Ages 3-5",
+          href: "/category?age=3-5",
           hasSubItems: true,
           subItems: [
-            { name: "Basic Figures", href: "/category", },
-            { name: "Playsets", href: "/category", },
-            { name: "Vehicles", href: "/category", },
+            { name: "Basic Figures", href: "/category?age=3-5", },
+            { name: "Playsets", href: "/category?age=3-5", },
+            { name: "Vehicles", href: "/category?age=3-5", },
           ],
         },
         {
-          name: "Ages 9-12",
-          href: "/category",
+          name: "Ages 5-8",
+          href: "/category?age=5-8",
         },
         {
-          name: "Ages 13+",
-          href: "/category",
+          name: "Ages 8-11",
+          href: "/category?age=8-11",
         },
         {
-          name: "Adult Collectors",
-          href: "/category",
+          name: "11 +",
+          href: "/category?age=11-plus",
+        },
+        {
+          name: "Big Kids",
+          href: "/category?age=big-kids",
         },
       ],
     },
