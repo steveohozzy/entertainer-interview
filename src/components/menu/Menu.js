@@ -17,6 +17,11 @@ const Menu = () => {
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);
+    if (showMenu) {
+      document.body.classList.remove("body-noscroll");
+    } else {
+      document.body.classList.add("body-noscroll");
+    }
   };
 
   const closeMenu = () => {
@@ -38,7 +43,7 @@ const Menu = () => {
        */
       function handleClickOutside(event) {
         if (ref.current && !ref.current.contains(event.target)) {
-          setShowMenu(false);
+          closeMenu();
         }
       }
       // Bind the event listener
@@ -57,6 +62,7 @@ const Menu = () => {
       ...prev,
       [categoryId]: !prev[categoryId],
     }));
+    document.body.classList.add("body-noscroll");
   };
 
   const toggleSubCategory = (subCategoryId) => {
@@ -64,12 +70,13 @@ const Menu = () => {
       ...prev,
       [subCategoryId]: !prev[subCategoryId],
     }));
+    document.body.classList.add("body-noscroll");
   };
 
   const goToWishlistHandler = () => {
       dispatch(setIsSignedIn(true));
       navigate('/account');
-      setShowMenu(false);
+      closeMenu();
     }
   return (
     <>
@@ -101,7 +108,7 @@ const Menu = () => {
             <div className="h-full w-[40px] bg-brandBlue rounded-full absolute left-0 top-0"></div>
             <div className="w-full flex justify-between absolute -top-[5px] left-[5px]">
               <button
-                onClick={() => setShowMenu(false)}
+                onClick={() => closeMenu()}
               >
                 <X className="h-7 w-7 mt-2" />
               </button>
@@ -109,7 +116,7 @@ const Menu = () => {
                 <button
                 onClick={() => {
                   navigate('/account');
-                  setShowMenu(false);
+                  closeMenu();
                 }}
                 className="transition-all hover:text-brandLightBlue group flex"
               >
