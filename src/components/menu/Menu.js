@@ -74,7 +74,6 @@ const Menu = () => {
       {showMenu && (
         <div
           className="fixed inset-0 bg-textBlue bg-opacity-50 z-40 h-screen"
-          onClick={() => setShowMenu(false)}
         />
       )}
 
@@ -84,7 +83,7 @@ const Menu = () => {
           showMenu ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <div className="bg-white overflow-hidden relative rounded-tl-3xl rounded-bl-3xl rounded-xl shadow-xl">
+        <div ref={menuRef} className="bg-white overflow-hidden relative rounded-tl-3xl rounded-bl-3xl rounded-xl shadow-xl">
           {/* Animated Menu Categories */}
           <nav className="relative space-y-2 pt-6 pb-4">
             <div className="h-full w-[40px] bg-brandBlue rounded-full absolute left-0 top-0"></div>
