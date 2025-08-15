@@ -118,7 +118,7 @@ const Menu = () => {
                   navigate('/account');
                   closeMenu();
                 }}
-                className="transition-all hover:text-brandLightBlue group flex"
+                className="transition-all group flex"
               >
                 <span className="mr-1 transition-all transition-duration-500 group-hover:rotate-[20deg] group-hover:scale-110">
                   <svg
