@@ -28,6 +28,7 @@ module.exports = {
         'miniheartleft': 'miniheartleft 0.8s ease-in-out',
         'miniheartright': 'miniheartright 0.8s ease-in-out',
         'wave': 'wave 0.8s 5 ease-in-out',
+        'fadeIn' : 'fadeIn 0.3s ease-out'
       },
       keyframes: {
         bigheart: {
@@ -70,6 +71,16 @@ module.exports = {
           },
           '50%': {
             transform: 'rotate(-40deg)',
+          }
+        },
+        fadeIn: {
+          'from': { 
+            opacity: '0',
+            transform: 'translateY(-10px)'
+          },
+          'to': {
+            opacity: '1',
+            transform: 'translateY(0)'
           }
         },
       },

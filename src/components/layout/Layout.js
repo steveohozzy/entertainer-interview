@@ -1,7 +1,7 @@
 import { Outlet, Link, useNavigate } from "react-router-dom";
-import { useState, useEffect, useRef } from "react";
-import { ChevronUp, Heart, MenuIcon } from "lucide-react";
-import IconMenu from "../iconMenu/IconMenu";
+import { useState, useEffect } from "react";
+import { ChevronUp, Heart } from "lucide-react";
+import Menu from "../menu/Menu";
 
 import { useSelector, useDispatch } from "react-redux";
 
@@ -26,7 +26,6 @@ const Layout = () => {
   const [showHeader, setShowHeader] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [showBackToTop, setShowBackToTop] = useState(false);
-  const [showMenu, setShowMenu] = useState(false);
 
   const cartCount = useSelector(selectCartCount);
   const cartTotal = useSelector(selectCartTotal);
@@ -87,51 +86,14 @@ const Layout = () => {
     }
   };
 
-  const toggleMenu = () => {
-    setShowMenu(!showMenu);
-    setTimeout(() => {
-        setShowHeader(true);
-        const headerHeight = document.getElementById("site-header").offsetHeight;
-        const filtersBar = document.getElementById("filters-bar");
-
-        if (filtersBar) {
-            filtersBar.style.top = headerHeight+"px";
-        }
-    }, "450");
-  }
-
   const goToWishlistHandler = () => {
     dispatch(setIsSignedIn(true));
     navigate('/account');
   }
 
-  const menuRef = useRef(null);
-  
-  function useOutsideAlerter(ref) {
-      useEffect(() => {
-        /**
-         * Alert if clicked on outside of element
-         */
-        function handleClickOutside(event) {
-          if (ref.current && !ref.current.contains(event.target)) {
-            setShowMenu(false);
-          }
-        }
-        // Bind the event listener
-        document.addEventListener("mousedown", handleClickOutside);
-        return () => {
-          // Unbind the event listener on clean up
-          document.removeEventListener("mousedown", handleClickOutside);
-        };
-      }, [ref]);
-    }
-  
-    useOutsideAlerter(menuRef);
-
   return (
     <>
       <header
-        ref={menuRef}
         id="site-header"
         className={`text-white rounded-b-2xl md:rounded-b-3xl border-b sticky top-0 w-full z-50 transition-transform duration-300 ${
           showHeader
@@ -143,15 +105,7 @@ const Layout = () => {
           <div className="max-w-5xl mx-auto sm:px-6 lg:px-8">
             <div className="flex items-stretch md:items-center justify-between">
               <div className="flex items-center">
-                <button
-                  name="Activate Menu"
-                  className="transition-all shadow-lg flex flex-col items-center justify-center text-brandBlue bg-white px-3 md:py-1 rounded-xl rounded-tl-none hover:scale-105 h-full md:rounded-tl-xl md:rounded-bl-xl"
-                  onClick={toggleMenu}
-                >
-                  <MenuIcon />
-                  <span className="text-[10px] mt-[-3px] relative">Menu</span>
-                  <span className="sr-only">Activate Menu</span>
-                </button>
+                <Menu />
                 <AccountPopUp />
                 <button onClick={goToWishlistHandler} className="group flex md:hidden ml-2" name="View your favourites">
                     <Heart className="transition-all h-5 w-5 group-hover:scale-110 group-hover:rotate-[20deg]" fill="white" />
@@ -241,17 +195,6 @@ const Layout = () => {
                 </a>
               </div>
             </div>
-          </div>
-        </div>
-        <div className="z-[999] relative bg-brandLightBlue">
-          <div
-            className={`grid overflow-hidden transition-all text-sm ${
-              showMenu
-                ? "grid-rows-[1fr] opacity-100"
-                : "grid-rows-[0fr] opacity-0"
-            }`}
-          >
-            <IconMenu setShowMenu={setShowMenu} setShowHeader={setShowHeader} />
           </div>
         </div>
         <SearchBar />
