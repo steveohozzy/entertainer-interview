@@ -58,19 +58,19 @@ const Menu = () => {
   useOutsideAlerter(menuRef);
 
   const toggleCategory = (categoryId) => {
+    document.body.classList.add("body-noscroll");
     setExpandedCategories((prev) => ({
       ...prev,
       [categoryId]: !prev[categoryId],
     }));
-    document.body.classList.add("body-noscroll");
   };
 
   const toggleSubCategory = (subCategoryId) => {
+    document.body.classList.add("body-noscroll");
     setExpandedSubCategories((prev) => ({
       ...prev,
       [subCategoryId]: !prev[subCategoryId],
     }));
-    document.body.classList.add("body-noscroll");
   };
 
   const goToWishlistHandler = () => {
@@ -98,8 +98,8 @@ const Menu = () => {
 
       {/* Sliding Hamburger Menu */}
       <div
-        className={`fixed overflow-y-auto h-screen top-0 left-0 h-full w-80 z-50 transform transition-transform ease-in-out ${
-          showMenu ? "translate-x-0 top-2 left-2" : "-translate-x-full"
+        className={`fixed overflow-y-auto h-screen top-3 left-0 h-full w-80 z-50 transform transition-transform ease-in-out ${
+          showMenu ? "translate-x-0 top-3 left-3" : "-translate-x-full"
         }`}
       >
         <div ref={menuRef} className="bg-white overflow-hidden relative rounded-tl-3xl rounded-bl-3xl rounded-xl shadow-xl">
