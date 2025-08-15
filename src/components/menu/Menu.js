@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from "react";
-import { ChevronRight, Heart, MenuIcon, X, Sparkles } from "lucide-react";
+import { ChevronRight, MenuIcon, X, Sparkles } from "lucide-react";
 
 import menuCategories from "../../data/menuCategories";
 
@@ -80,13 +80,13 @@ const Menu = () => {
 
       {/* Sliding Hamburger Menu */}
       <div
-        className={`fixed  h-screen top-0 left-0 h-full w-80 bg-white shadow-xl z-50 transform transition-transform ease-in-out ${
+        className={`fixed overflow-y-auto h-screen top-0 left-0 h-full w-80 z-50 transform transition-transform ease-in-out ${
           showMenu ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <div className="h-full overflow-y-auto relative">
+        <div className="bg-white overflow-hidden relative rounded-tl-3xl rounded-bl-3xl rounded-xl shadow-xl">
           {/* Animated Menu Categories */}
-          <nav className="relative pt-6 pb-4">
+          <nav className="relative space-y-2 pt-6 pb-4">
             <div className="h-full w-[40px] bg-brandBlue rounded-full absolute left-0 top-0"></div>
             <button
               className="absolute -top-[5px] left-[5px]"
@@ -293,22 +293,6 @@ const Menu = () => {
               </div>
             ))}
           </nav>
-
-          {/* Menu Footer */}
-          <div className="mt-8 pt-6 border-t border-gray-200">
-            <div className="space-y-3">
-              <div className="grid grid-cols-2 gap-2">
-                <button className="flex justify-start text-brandBlue bg-transparent">
-                  <Heart className="h-4 w-4 mr-2" />
-                  Account
-                </button>
-                <button className="flex justify-start text-brandBlue bg-transparent">
-                  <Heart className="h-4 w-4 mr-2" />
-                  Wishlist
-                </button>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </>
