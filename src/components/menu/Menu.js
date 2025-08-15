@@ -80,7 +80,7 @@ const Menu = () => {
       {/* Sliding Hamburger Menu */}
       <div
         className={`fixed overflow-y-auto h-screen top-0 left-0 h-full w-80 z-50 transform transition-transform ease-in-out ${
-          showMenu ? "translate-x-0" : "-translate-x-full"
+          showMenu ? "translate-x-0 top-2 left-2" : "-translate-x-full"
         }`}
       >
         <div ref={menuRef} className="bg-white overflow-hidden relative rounded-tl-3xl rounded-bl-3xl rounded-xl shadow-xl">
