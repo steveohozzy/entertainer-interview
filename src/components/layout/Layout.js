@@ -1,4 +1,4 @@
-import { Outlet, Link, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { ChevronUp, Heart } from "lucide-react";
 import Menu from "../menu/Menu";
@@ -113,7 +113,14 @@ const Layout = () => {
                 </button>
               </div>
               <div className="flex items-center space-x-4 pt-2 ml-2 md:pt-4 md:ml-0 group">
-                <Link to="/" className="flex">
+                <button onClick={() => {
+                  navigate('/');
+                   window.scrollTo({
+                    top: 0,
+                    left: 0,
+                    behavior: "smooth",
+                  });
+                }} className="flex">
                   <img
                     src="/jack-logo.svg"
                     alt="The Entertainer"
@@ -124,7 +131,7 @@ const Layout = () => {
                     alt="The Entertainer"
                     className="w-[95px] md:w-[154px] "
                   />
-                </Link>
+                </button>
               </div>
               <div className="flex items-center space-x-4">
                 <button onClick={goToWishlistHandler} className="group hidden md:flex" name="View your favourites">
