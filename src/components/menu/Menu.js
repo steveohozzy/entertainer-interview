@@ -197,8 +197,8 @@ const Menu = () => {
                                     className={`w-0 h-0 border-l-[8px] border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-brandLightBlue transition-all absolute left-full ${
                                       expandedSubCategories[
                                         `${category.id}-${itemIndex}`
-                                      ] &&
-                                      "rotate-180 border-white left-[calc(100%-8px)]"
+                                      ] ?
+                                      "rotate-180 border-white left-[calc(100%-8px)] z-50" : "left-full"
                                     }`}
                                   ></span>
                                 )}
