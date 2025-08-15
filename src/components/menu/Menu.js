@@ -201,7 +201,7 @@ const Menu = () => {
                               >
                                 {item.hasSubItems && (
                                   <span
-                                    className={`w-0 h-0 border-l-[8px] border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-brandLightBlue transition-all absolute left-full ${
+                                    className={`w-0 h-0 border-l-[8px] border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-brandLightBlue transition-all absolute ${
                                       expandedSubCategories[
                                         `${category.id}-${itemIndex}`
                                       ] ?
