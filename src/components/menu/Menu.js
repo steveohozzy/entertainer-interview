@@ -153,9 +153,9 @@ const Menu = () => {
                           {category.icon}
                         </span>
                         <span
-                          className={`w-0 h-0 border-l-[8px] border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-brandBlue transition-all absolute left-full ${
-                            expandedCategories[category.id] &&
-                            "rotate-180 border-white left-[calc(100%-8px)] z-50"
+                          className={`w-0 h-0 border-l-[8px] border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-brandBlue transition-all absolute ${
+                            expandedCategories[category.id] ?
+                            "rotate-180 border-white left-[calc(100%-8px)] z-50" : "left-full"
                           }`}
                         ></span>
                       </div>
