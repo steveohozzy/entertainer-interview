@@ -144,7 +144,7 @@ const Menu = () => {
                 className={`transform transition-all duration-300 ${
                   showMenu ? "translate-x-0" : "translate-x-full"
                 }`}
-                style={{ transitionDelay: `${categoryIndex * 100}ms` }}
+                style={{ transitionDelay: `${categoryIndex * 75}ms` }}
               >
                 {category.hasSubmenu ? (
                   <>
@@ -156,7 +156,7 @@ const Menu = () => {
                           expandedCategories[category.id] ? "shadow-inner" : ""
                         }`}
                       >
-                        <span className="text-2xl text-white">
+                        <span className="text-2xl text-white max-w-6 [&_svg]:w-full">
                           {category.icon}
                         </span>
                         <span
@@ -225,7 +225,7 @@ const Menu = () => {
                                     <div>
                                       <div className="flex items-center gap-2 mb-1">
                                         <span
-                                          className={`font-bold text-textBlue`}
+                                          className={`font-bold text-textBlue text-left text-base`}
                                         >
                                           {item.name}
                                         </span>
@@ -242,7 +242,7 @@ const Menu = () => {
                                   className={`flex-1 p-3 transition-all duration-300 group`}
                                 >
                                   <div className="flex items-center gap-2 mb-1">
-                                    <span className={`font-bold text-textBlue`}>
+                                    <span className={`font-bold text-textBlue text-left text-baset`}>
                                       {item.name}
                                     </span>
                                     {item.color && (
@@ -312,13 +312,13 @@ const Menu = () => {
                         navigate(category.href);
                         closeMenu();
                       }}
-                      className={`flex-1 p-4 transition-all duration-300 group `}
+                      className={`flex-1 p-4 transition-all duration-300 group ${category.bgColor}`}
                     >
                       <div className="flex items-center justify-between">
-                        <span className={`font-bold text-lg text-brandBlue`}>
+                        <span className={`font-bold text-lg ${category.color ? category.color : 'text-brandBlue'}`}>
                           {category.name}
                         </span>
-                        <ChevronRight className="text-brandBlue" />
+                        <ChevronRight className={`${category.color ? category.color : 'text-brandBlue'}`} />
                       </div>
                     </button>
                   </div>

@@ -2,108 +2,363 @@ import { Star } from "lucide-react"
 
 const menuCategories = [
     {
-      id: "action-toys",
-      name: "Action Toys",
+      id: "brands",
+      name: "Brands",
       hasSubmenu: true,
-      icon: <Star />,
-      color: "from-red-500 to-pink-500",
-      hoverColor: "hover:from-red-600 hover:to-pink-600",
+      icon: <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width=" 22"
+        height=" 22"
+        viewBox="0 0 24 24"
+        fill="none"
+      >
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M1.94971 4.44987C1.94969 3.06915 3.06898 1.94985 4.4497 1.94984L12.0209 1.94983C12.8165 1.94983 13.5796 2.2659 14.1422 2.82851L22.0417 10.728C23.6038 12.2901 23.6038 14.8228 22.0417 16.3849L16.3848 22.0417C14.8227 23.6038 12.2901 23.6038 10.728 22.0417L2.82846 14.1422C2.26586 13.5796 1.94979 12.8166 1.94978 12.0209L1.94971 4.44987ZM8.5 10C9.32843 10 10 9.32843 10 8.5C10 7.67157 9.32843 7 8.5 7C7.67157 7 7 7.67157 7 8.5C7 9.32843 7.67157 10 8.5 10Z"
+          fill="currentColor"
+        />
+      </svg>,
       items: [
         {
-          name: "All Action Toys",
+          name: "All BRands",
           href: "/category",
         },
         {
-          name: "Action Figures",
+          name: "Squishmallows",
           href: "/category",
-          onClick: () => window.navigateTo("action-figures"),
+        },
+        {
+          name: "LEGO",
+          href: "/category",
+        },
+        {
+          name: "Barbie",
+          href: "/category",
+        },
+        {
+          name: "Fuggler",
+          href: "/category",
+        },
+        {
+          name: "Disney",
+          href: "/category",
+        },
+        {
+          name: "XSHOT",
+          href: "/category",
+        },
+        {
+          name: "Bluey",
+          href: "/category",
+        },
+        {
+          name: "Gabbys Dollouse",
+          href: "/category",
+        },
+        {
+          name: "LOL Surprise!",
+          href: "/category",
+        },
+        {
+          name: "Paw Patrol",
+          href: "/category",
+        },
+        {
+          name: "Peppa Pig",
+          href: "/category",
+        },
+        {
+          name: "Spider-Man",
+          href: "/category",
+        },
+        {
+          name: "Tonies",
+          href: "/category",
+        },
+        {
+          name: "Hot Wheels",
+          href: "/category",
+        },
+        {
+          name: "Nerf",
+          href: "/category",
+        },
+        {
+          name: "Sylvanian Families",
+          href: "/category",
+        },
+        {
+          name: "Rainbow High",
+          href: "/category",
+        },
+        {
+          name: "Meccano",
+          href: "/category",
+        },
+        {
+          name: "Funko POP!",
+          href: "/category",
+        },
+      ],
+    },
+    {
+      id: "type-of-toy",
+      name: "Type of toy",
+      hasSubmenu: true,
+      icon: <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="37"
+                height="50"
+                viewBox="0 0 37 50"
+                fill="none"
+              >
+                <path
+                  d="M18.5547 32.5V23.75H22.0547V37.75C22.0547 38.224 21.8724 38.625 21.5078 38.9531C21.1797 39.3177 20.7786 39.5 20.3047 39.5H6.30469C5.83073 39.5 5.41146 39.3177 5.04688 38.9531C4.71875 38.625 4.55469 38.224 4.55469 37.75V23.75H8.05469V32.5H18.5547ZM35.7812 19.2656C36.1458 19.849 36.1641 20.4505 35.8359 21.0703C35.5078 21.6901 34.9974 22 34.3047 22H2.80469C2.11198 22 1.60156 21.6901 1.27344 21.0703C0.945312 20.4505 0.981771 19.849 1.38281 19.2656L6.03125 12.2656C6.35938 11.7552 6.83333 11.5 7.45312 11.5H29.6562C30.276 11.5 30.75 11.7552 31.0781 12.2656L35.7812 19.2656ZM29.0547 38.625V23.75H32.5547V38.625C32.5547 38.8802 32.4635 39.0807 32.2812 39.2266C32.1354 39.4089 31.9349 39.5 31.6797 39.5H29.9297C29.6745 39.5 29.4557 39.4089 29.2734 39.2266C29.1276 39.0807 29.0547 38.8802 29.0547 38.625Z"
+                  fill="currentColor"
+                />
+              </svg>,
+      items: [
+        {
+          name: "Action Toys",
+          href: "/category",
           hasSubItems: true,
           subItems: [
-            { name: "6-inch Figures", href: "/category", },
-            { name: "12-inch Figures", href: "/category", },
-            { name: "Deluxe Figures", href: "/category", },
-            { name: "Exclusive Variants", href: "/category", },
+            { name: "See All", href: "/category", },
+            { name: "Action Figures", href: "/category", },
+            { name: "Action Toy Playsets", href: "/category", },
+            { name: "Battle Toys", href: "/category", },
+            { name: "Pre-School Figures and Playsets", href: "/category", },
           ],
         },
         {
-          name: "Vehicles & Playsets",
+          name: "Dolls",
           href: "/category",
           hasSubItems: true,
           subItems: [
-            { name: "Vehicles", href: "/category", },
-            { name: "Playsets", href: "/category", },
-            { name: "Accessories", href: "/category", },
+            { name: "See All", href: "/category", },
+            { name: "Baby Dolls", href: "/category", },
+            { name: "Fashion Dolls", href: "/category", },
+            { name: "TV & Film Dolls", href: "/category", },
+            { name: "Doll Houses", href: "/category", },
           ],
         },
         {
-          name: "Role Play",
+          name: "Plushies & Soft Toys",
           href: "/category",
           hasSubItems: true,
           subItems: [
-            { name: "Costumes", href: "/category", },
-            { name: "Weapons", href: "/category", },
-            { name: "Masks & Helmets", href: "/category", },
+            { name: "See All", href: "/category", },
+            { name: "Movie & TV Plushies", href: "/category", },
+            { name: "Soft Animal Toys", href: "/category", },
+            { name: "Teddy Bears", href: "/category", },
+            { name: "Puppy Toys", href: "/category", },
+          ],
+        },
+        {
+          name: "Construction Toys",
+          href: "/category",
+          hasSubItems: true,
+          subItems: [
+            { name: "Building Blocks", href: "/category", },
+            { name: "Kids Building Sets", href: "/category", },
+            { name: "Magnetic Tiles & Sets", href: "/category", },
+          ],
+        },
+        {
+          name: "Arts & Crafts For Kids",
+          href: "/category",
+          hasSubItems: true,
+          subItems: [
+            { name: "See All", href: "/category", },
+            { name: "Painting Sets For Kids", href: "/category", },
+            { name: "Activity Books & Stickers", href: "/category", },
+            { name: "Drawing & Colouring Sets", href: "/category", },
+            { name: "Easel Boards & Aqua Mats", href: "/category", },
+          ],
+        },
+        {
+          name: "Games & puzzles",
+          href: "/category",
+          hasSubItems: true,
+          subItems: [
+            { name: "See All", href: "/category", },
+            { name: "Kids Jigsaws & Puzzles", href: "/category", },
+            { name: "Board Games For Kids", href: "/category", },
+            { name: "Board Games For Adults", href: "/category", },
+            { name: "Family Board Games", href: "/category", },
+          ],
+        },
+        {
+          name: "Pre-School Toys",
+          href: "/category",
+          hasSubItems: true,
+          subItems: [
+            { name: "See All", href: "/category", },
+            { name: "Toddler & Baby Activity Toys", href: "/category", },
+            { name: "Baby Playmats & Gyms", href: "/category", },
+            { name: "Rattle & Teething Toys", href: "/category", },
+            { name: "Wooden Baby Toys", href: "/category", },
+          ],
+        },
+        {
+          name: "Outdoor Toys For Kids",
+          href: "/category",
+          hasSubItems: true,
+          subItems: [
+            { name: "See All", href: "/category", },
+            { name: "Kids Bikes", href: "/category", },
+            { name: "Kids Scooters", href: "/category", },
+            { name: "Kids Trampolines", href: "/category", },
+            { name: "Toy Blasters", href: "/category", },
+          ],
+        },
+        {
+          name: "Transport & Car Toys",
+          href: "/category",
+          hasSubItems: true,
+          subItems: [
+            { name: "See All", href: "/category", },
+            { name: "Toy Cars", href: "/category", },
+            { name: "Diggers & Trucks", href: "/category", },
+            { name: "Train Toys", href: "/category", },
+            { name: "Car Race Tracks", href: "/category", },
+          ],
+        },
+        {
+          name: "Kids Fancy Dress Up",
+          href: "/category",
+          hasSubItems: true,
+          subItems: [
+            { name: "See All", href: "/category", },
+            { name: "Princess Dress Up Outfits", href: "/category", },
+            { name: "Kids Superhero Costumes", href: "/category", },
+            { name: "Face Paint For Kids", href: "/category", },
+            { name: "Emergency Services Dress Up", href: "/category", },
+          ],
+        },
+        {
+          name: "Animal Toys & Figures",
+          href: "/category",
+          hasSubItems: true,
+          subItems: [
+            { name: "See All", href: "/category", },
+            { name: "Dinosaur Toys", href: "/category", },
+            { name: "Farm Animal Toys", href: "/category", },
+            { name: "Jungle Animal & Safari Toys", href: "/category", },
+            { name: "Unicorn Toys", href: "/category", },
+          ],
+        },
+        {
+          name: "Pocket Money Toys",
+          href: "/category",
+          hasSubItems: true,
+          subItems: [
+            { name: "Blind Bags & Mystery Figures", href: "/category", },
+            { name: "Yo-Yos", href: "/category", },
+            { name: "Cards & Stickers", href: "/category", },
+          ],
+        },
+        {
+          name: "Electronic Toys",
+          href: "/category",
+          hasSubItems: true,
+          subItems: [
+            { name: "See All", href: "/category", },
+            { name: "Electronic Pet toys", href: "/category", },
+            { name: "Kids Cameras", href: "/category", },
+            { name: "Robot Toys", href: "/category", },
+            { name: "Kids Walkie Talkies", href: "/category", },
+          ],
+        },
+        {
+          name: "Educational Toys & Games",
+          href: "/category",
+          hasSubItems: true,
+          subItems: [
+            { name: "See All", href: "/category", },
+            { name: "Kids Musical Instrument Toys", href: "/category", },
+            { name: "Kids Watches", href: "/category", },
+            { name: "STEM Toys & Kits", href: "/category", },
+            { name: "Electronic Learning Toys", href: "/category", },
           ],
         },
       ],
     },
     {
-      id: "brands",
-      name: "Popular Brands",
+      id: "outdoor",
+      name: "Outdoor",
       hasSubmenu: true,
-      icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+      icon: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path
                   fill="currentColor"
                   d="M17,8C8,10,5.9,16.17,3.82,21.34L5.71,22l1-2.3A4.49,4.49,0,0,0,8,20C19,20,22,3,22,3,21,5,14,5.25,9,6.25S2,11.5,2,13.5a6.22,6.22,0,0,0,1.75,3.75C7,8,17,8,17,8Z"
                 />
                 <rect width="24" height="24" fill="none" />
               </svg>,
-      color: "from-purple-500 to-indigo-500",
-      hoverColor: "hover:from-purple-600 hover:to-indigo-600",
       items: [
         {
-          name: "Marvel",
-          href: "/category",
-          hasSubItems: true,
-          subItems: [
-            { name: "Spider-Man", href: "/category", },
-            { name: "Avengers", href: "/category", },
-            { name: "X-Men", href: "/category", },
-            { name: "Villains", href: "/category", },
-          ],
-        },
-        {
-          name: "Star Wars",
-          href: "/category",
-          hasSubItems: true,
-          subItems: [
-            { name: "Jedi", href: "/category", },
-            { name: "Sith", href: "/category", },
-            { name: "Droids", href: "/category", },
-            { name: "Vehicles", href: "/category", },
-          ],
-        },
-        {
-          name: "DC Comics",
-          href: "/category",
-          hasSubItems: true,
-          subItems: [
-            { name: "Batman", href: "/category", },
-            { name: "Superman", href: "/category", },
-            { name: "Wonder Woman", href: "/category", },
-            { name: "Justice League", href: "/category", },
-          ],
-        },
-        {
-          name: "Transformers",
+          name: "See All",
           href: "/category",
         },
         {
-          name: "Pokemon",
+          name: "Bikes",
           href: "/category",
         },
         {
-          name: "TMNT",
+          name: "Sand & Water Tables",
+          href: "/category",
+        },
+        {
+          name: "Garden Games",
+          href: "/category",
+        },
+        {
+          name: "Slides",
+          href: "/category",
+        },
+        {
+          name: "Scooters",
+          href: "/categorys",
+        },
+        {
+          name: "Sandpits & Sand Toys",
+          href: "/category",
+        },
+        {
+          name: "Garden Play Centres",
+          href: "/category",
+        },
+        {
+          name: "Swings",
+          href: "/category",
+        },
+        {
+          name: "Ride-Ons",
+          href: "/category",
+        },
+        {
+          name: "Paddling Pools",
+          href: "/category",
+        },
+        {
+          name: "Trampolines",
+          href: "/category",
+        },
+        {
+          name: "Bubbles",
+          href: "/category",
+        },
+        {
+          name: "Trikes",
+          href: "/category",
+        },
+        {
+          name: "Water Blasters",
+          href: "/category",
+        },
+        {
+          name: "Playhouses",
           href: "/category",
         },
       ],
@@ -197,31 +452,10 @@ const menuCategories = [
         {
           name: "Ages 0-3",
           href: "/category?age=0-3",
-          onClick: (e) => {
-            e.preventDefault()
-            window.navigateTo("action-figures")
-            setTimeout(() => {
-              if (window.applyKidsFilter) {
-                window.applyKidsFilter()
-              }
-            }, 100)
-          },
-          hasSubItems: true,
-          subItems: [
-            { name: "Soft Figures", href: "/category?age=0-3", },
-            { name: "Large Figures", href: "/category?age=0-3", },
-            { name: "Interactive Toys", href: "/category?age=0-3", },
-          ],
         },
         {
           name: "Ages 3-5",
           href: "/category?age=3-5",
-          hasSubItems: true,
-          subItems: [
-            { name: "Basic Figures", href: "/category?age=3-5", },
-            { name: "Playsets", href: "/category?age=3-5", },
-            { name: "Vehicles", href: "/category?age=3-5", },
-          ],
         },
         {
           name: "Ages 5-8",
@@ -242,29 +476,58 @@ const menuCategories = [
       ],
     },
     {
-      id: "present-finder",
-      name: "Present Finder",
-      hasSubmenu: false,
-      href: "/present-finder",
+      id: "offers",
+      name: "Offers",
+      hasSubmenu: true,
       icon: <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
+                version="1.0"
+                id="Layer_1"
+                viewBox="0 0 64 64"
+                enableBackground="new 0 0 64 64"
               >
                 <path
-                  d="M12 7V20M12 7H8.46429C7.94332 7 7.4437 6.78929 7.07533 6.41421C6.70695 6.03914 6.5 5.53043 6.5 5C6.5 4.46957 6.70695 3.96086 7.07533 3.58579C7.4437 3.21071 7.94332 3 8.46429 3C11.2143 3 12 7 12 7ZM12 7H15.5357C16.0567 7 16.5563 6.78929 16.9247 6.41421C17.293 6.03914 17.5 5.53043 17.5 5C17.5 4.46957 17.293 3.96086 16.9247 3.58579C16.5563 3.21071 16.0567 3 15.5357 3C12.7857 3 12 7 12 7ZM5 12H19V17.8C19 18.9201 19 19.4802 18.782 19.908C18.5903 20.2843 18.2843 20.5903 17.908 20.782C17.4802 21 16.9201 21 15.8 21H8.2C7.07989 21 6.51984 21 6.09202 20.782C5.71569 20.5903 5.40973 20.2843 5.21799 19.908C5 19.4802 5 18.9201 5 17.8V12ZM4.6 12H19.4C19.9601 12 20.2401 12 20.454 11.891C20.6422 11.7951 20.7951 11.6422 20.891 11.454C21 11.2401 21 10.9601 21 10.4V8.6C21 8.03995 21 7.75992 20.891 7.54601C20.7951 7.35785 20.6422 7.20487 20.454 7.10899C20.2401 7 19.9601 7 19.4 7H4.6C4.03995 7 3.75992 7 3.54601 7.10899C3.35785 7.20487 3.20487 7.35785 3.10899 7.54601C3 7.75992 3 8.03995 3 8.6V10.4C3 10.9601 3 11.2401 3.10899 11.454C3.20487 11.6422 3.35785 11.7951 3.54601 11.891C3.75992 12 4.03995 12 4.6 12Z"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+                  fill="currentColor"
+                  d="M60,4H48c0-2.215-1.789-4-4-4H20c-2.211,0-4,1.785-4,4H4C1.789,4,0,5.785,0,8v8c0,8.836,7.164,16,16,16  c0.188,0,0.363-0.051,0.547-0.059C17.984,37.57,22.379,41.973,28,43.43V56h-8c-2.211,0-4,1.785-4,4v4h32v-4c0-2.215-1.789-4-4-4h-8  V43.43c5.621-1.457,10.016-5.859,11.453-11.488C47.637,31.949,47.812,32,48,32c8.836,0,16-7.164,16-16V8C64,5.785,62.211,4,60,4z   M8,16v-4h8v12C11.582,24,8,20.414,8,16z M56,16c0,4.414-3.582,8-8,8V12h8V16z"
                 />
               </svg>,
+      items: [
+        {
+          name: "Buy 1 Get 1 Half Price on Selected Toys",
+          href: "/category",
+        },
+        {
+          name: "Minecraft 2 for £20",
+          href: "/category",
+        },
+        {
+          name: "Hot Wheels 3 for 2 Offer",
+          href: "/category",
+        },
+        {
+          name: "Price Drop",
+          href: "/category",
+        },
+        {
+          name: "Paw Patrol 2 for £15",
+          href: "/categorys",
+        },
+        {
+          name: "Barbie & Polly Pocket 3 for 2",
+          href: "/category",
+        },
+      ],
     },
     {
-      id: "services",
-      name: "Services",
+      id: "new-toys",
+      name: "New Toys",
+      hasSubmenu: false,
+      href: "/category",
+      icon: <Star />,
+    },
+    {
+      id: "discover",
+      name: "Discover",
       hasSubmenu: true,
       icon: <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -274,44 +537,98 @@ const menuCategories = [
                 fill="none"
               >
                 <path
+                  d="M9.03429 5.96305L6.49114 8.49856C6.02369 8.9646 5.59488 9.3921 5.25624 9.77856C5.03877 10.0267 4.82145 10.2984 4.63737 10.5985L4.61259 10.5738C4.56555 10.5269 4.54201 10.5034 4.51839 10.4805C4.07636 10.0516 3.55641 9.71062 2.98636 9.47575C2.9559 9.4632 2.92498 9.45095 2.86314 9.42645L2.48449 9.27641C1.97153 9.07315 1.83482 8.41279 2.22514 8.02365C3.34535 6.90684 4.69032 5.56594 5.33941 5.29662C5.91185 5.05911 6.53023 4.98008 7.12664 5.06822C7.67311 5.14898 8.19006 5.42968 9.03429 5.96305Z"
+                  fill="currentColor"
+                />
+                <path
+                  d="M13.3767 19.3132C13.5816 19.5212 13.7177 19.6681 13.8408 19.8251C14.0031 20.0322 14.1483 20.2523 14.2748 20.4829C14.4172 20.7426 14.5278 21.02 14.749 21.5748C14.929 22.0265 15.5272 22.1459 15.8746 21.7995L15.9586 21.7157C17.0788 20.5988 18.4237 19.2579 18.6938 18.6108C18.9321 18.04 19.0113 17.4235 18.9229 16.8289C18.8419 16.2841 18.5605 15.7688 18.0256 14.9273L15.474 17.4713C14.9959 17.9479 14.5576 18.385 14.1612 18.7273C13.9236 18.9325 13.6637 19.1376 13.3767 19.3132Z"
+                  fill="currentColor"
+                />
+                <path
                   fillRule="evenodd"
                   clipRule="evenodd"
-                  d="M1.94971 4.44987C1.94969 3.06915 3.06898 1.94985 4.4497 1.94984L12.0209 1.94983C12.8165 1.94983 13.5796 2.2659 14.1422 2.82851L22.0417 10.728C23.6038 12.2901 23.6038 14.8228 22.0417 16.3849L16.3848 22.0417C14.8227 23.6038 12.2901 23.6038 10.728 22.0417L2.82846 14.1422C2.26586 13.5796 1.94979 12.8166 1.94978 12.0209L1.94971 4.44987ZM8.5 10C9.32843 10 10 9.32843 10 8.5C10 7.67157 9.32843 7 8.5 7C7.67157 7 7 7.67157 7 8.5C7 9.32843 7.67157 10 8.5 10Z"
+                  d="M14.4467 16.3769L20.2935 10.5476C21.1356 9.70811 21.5566 9.28836 21.7783 8.75458C22.0001 8.22081 22.0001 7.62719 22.0001 6.43996V5.87277C22.0001 4.04713 22.0001 3.13431 21.4312 2.56715C20.8624 2 19.9468 2 18.1157 2H17.5468C16.356 2 15.7606 2 15.2252 2.2211C14.6898 2.4422 14.2688 2.86195 13.4268 3.70146L7.57991 9.53078C6.59599 10.5117 5.98591 11.12 5.74966 11.7075C5.67502 11.8931 5.6377 12.0767 5.6377 12.2692C5.6377 13.0713 6.2851 13.7168 7.57991 15.0077L7.75393 15.1812L9.79245 13.1123C10.0832 12.8172 10.558 12.8137 10.8531 13.1044C11.1481 13.3951 11.1516 13.87 10.8609 14.1651L8.8162 16.2403L8.95326 16.3769C10.2481 17.6679 10.8955 18.3133 11.7 18.3133C11.8777 18.3133 12.0478 18.2818 12.2189 18.2188C12.8222 17.9966 13.438 17.3826 14.4467 16.3769ZM17.1935 9.5312C16.435 10.2874 15.2053 10.2874 14.4468 9.5312C13.6883 8.775 13.6883 7.54895 14.4468 6.79274C15.2053 6.03653 16.435 6.03653 17.1935 6.79274C17.952 7.54895 17.952 8.775 17.1935 9.5312Z"
                   fill="currentColor"
                 />
               </svg>,
-      color: "from-green-500 to-emerald-500",
-      hoverColor: "hover:from-green-600 hover:to-emerald-600",
       items: [
         {
-          name: "Store Finder",
-          href: "/store-finder",
-        },
-        {
-          name: "Click & Collect",
+          name: "Blogs",
           href: "/category",
-          hasSubItems: true,
-          subItems: [
-            { name: "Same Day Collection", href: "/category",},
-            { name: "Next Day Collection", href: "/category", },
-            { name: "Weekend Collection", href: "/category", },
-          ],
         },
         {
           name: "Gift Cards",
           href: "/category",
         },
         {
-          name: "Birthday Parties",
+          name: "Returns",
           href: "/category",
-          hasSubItems: true,
-          subItems: [
-            { name: "Party Packages", href: "/category", },
-            { name: "Entertainment", href: "/category", },
-            { name: "Party Supplies", href: "/category", },
-          ],
+        },
+        {
+          name: "Home of Collectibles",
+          href: "/category",
+        },
+        {
+          name: "About Us",
+          href: "/category",
+        },
+        {
+          name: "Track Your Order",
+          href: "/account",
+        },
+        {
+          name: "Exclusive to The Entertainer",
+          href: "/category",
+        },
+        {
+          name: "Contact Us",
+          href: "/category",
+        },
+        {
+          name: "Store Finder",
+          href: "/store-finder",
+        },
+        {
+          name: "Movie Page",
+          href: "/category",
+        },
+        {
+          name: "Delivery Options",
+          href: "/category",
+        },
+        {
+          name: "Present Finder",
+          href: "/present-finder",
         },
       ],
+    },
+    {
+      id: "clearance",
+      name: "Clearance",
+      hasSubmenu: false,
+      bgColor: 'bg-brandRed',
+      color: 'text-white',
+      href: "/category",
+      icon: <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width=" 22"
+                height=" 22"
+                viewBox="0 0 24 24"
+                fill="none"
+              >
+                <path
+                  d="M21.4143 3.29285C21.8048 3.68337 21.8048 4.31653 21.4143 4.70706L4.70718 21.4142C4.31666 21.8047 3.68349 21.8047 3.29297 21.4142L2.58586 20.7071C2.19534 20.3165 2.19534 19.6834 2.58586 19.2928L19.293 2.58574C19.6835 2.19522 20.3167 2.19522 20.7072 2.58574L21.4143 3.29285Z"
+                  fill="currentColor"
+                />
+                <path
+                  d="M7.50009 2.99997C5.5671 2.99997 4.00009 4.56697 4.00009 6.49997C4.00009 8.43297 5.5671 9.99997 7.50009 9.99997C9.43309 9.99997 11.0001 8.43297 11.0001 6.49997C11.0001 4.56697 9.43309 2.99997 7.50009 2.99997Z"
+                  fill="currentColor"
+                />
+                <path
+                  d="M16.5001 14C14.5671 14 13.0001 15.567 13.0001 17.5C13.0001 19.433 14.5671 21 16.5001 21C18.4331 21 20.0001 19.433 20.0001 17.5C20.0001 15.567 18.4331 14 16.5001 14Z"
+                  fill="currentColor"
+                />
+              </svg>,
     },
   ]
 
