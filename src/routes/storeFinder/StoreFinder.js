@@ -451,8 +451,8 @@ export default function StoreFinderPage() {
       </div>
 
       {/* Filters and View Controls */}
-      <div className="grid lg:grid-cols-3 gap-2 w-full mb-6">
-        <div className="bg-brandBlue text-white flex flex-wrap items-center justify-around gap-4 px-4 py-2 rounded-full lg:rounded-tr-none lg:rounded-br-none">
+      <div className="flex flex-wrap w-full items-stretch gap-2 w-full mb-6">
+        <div className="w-full md:w-auto bg-brandBlue grow text-white flex flex-wrap items-center justify-around gap-4 px-4 py-2 rounded-full lg:rounded-tr-none lg:rounded-br-none">
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
@@ -478,10 +478,10 @@ export default function StoreFinderPage() {
           </div>
         </div>
 
-        <div className="flex items-center justify-center text-white bg-brandBlue rounded-full lg:rounded-none">
+        <div className="flex w-full grow md:w-auto items-center px-6 justify-center text-white bg-brandBlue rounded-full lg:rounded-none">
           <button
             name="Show filters"
-            class="relative z-[2] inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm py-4 h-full w-full px-4 transition-all group bg-brandBlue text-white rounded-full lg:rounded-none"
+            class="grow relative z-[2] inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm py-4 h-full w-full px-4 transition-all group bg-brandBlue text-white rounded-full lg:rounded-none"
             onClick={() => setShowFilters(!showFilters)}
           >
             <span class="transition-all group-hover:scale-110">Filter</span>
@@ -497,7 +497,7 @@ export default function StoreFinderPage() {
           </button>
         </div>
 
-        <div className="flex py-2 items-center bg-brandBlue rounded-full lg:rounded-tl-none lg:rounded-bl-none text-white items-center justify-center gap-4">
+        <div className="flex grow py-2 items-center bg-brandBlue rounded-full lg:rounded-tl-none lg:rounded-bl-none text-white items-center justify-center gap-4">
           <span className="text-sm">View:</span>
           <div className="flex border border-gray-300 rounded-md overflow-hidden">
             <button

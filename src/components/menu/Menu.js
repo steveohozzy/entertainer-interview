@@ -227,16 +227,10 @@ const Menu = () => {
                                   </div>
                                 </button>
                               ) : (
-                                <a
-                                  href={item.href}
-                                  onClick={(e) => {
-                                    if (item.onClick) {
-                                      e.preventDefault();
-                                      closeMenu();
-                                      setTimeout(() => item.onClick(e), 300);
-                                    } else {
-                                      closeMenu();
-                                    }
+                                <button
+                                  onClick={() => {
+                                    navigate(item.href);
+                                    closeMenu();
                                   }}
                                   className={`flex-1 p-3 transition-all duration-300 group`}
                                 >
@@ -251,7 +245,7 @@ const Menu = () => {
                                     )}
                                     <ChevronRight className="h-4 w-4 transition-transform duration-300 text-brandBlue" />
                                   </div>
-                                </a>
+                                </button>
                               )}
                             </div>
 
@@ -270,9 +264,9 @@ const Menu = () => {
                                       <div className="w-4 flex"></div>
 
                                       {/* Third Level Content */}
-                                      <a
-                                        href={subItem.href}
-                                        onClick={(e) => {
+                                      <button
+                                        onClick={() => {
+                                          navigate(item.href);
                                           closeMenu();
                                         }}
                                         className="flex-1 p-2 bg-white/50 hover:bg-white/80 backdrop-blur-sm transition-all duration-300 hover:shadow-md group"
@@ -283,7 +277,7 @@ const Menu = () => {
                                             <ChevronRight className="w-4 h-4 ml-2" />
                                           </span>
                                         </div>
-                                      </a>
+                                      </button>
                                     </div>
                                   ))}
                                 </div>
@@ -295,36 +289,31 @@ const Menu = () => {
                   </>
                 ) : (
                   /* Simple Menu Item with Icon Bar */
-                  <div className="flex items-stretch rounded-xl overflow-hidden shadow-lg">
+                  <div className="flex items-stretch rounded-xl overflow-hidden">
                     {/* Icon Bar */}
                     <div
-                      className={`w-16 flex items-center justify-center bg-gradient-to-b ${category.color}`}
+                      className={`w-[40px] flex items-center justify-center`}
                     >
-                      <span className="text-2xl animate-bounce">
+                      <span className="text-2xl">
                         {category.icon}
                       </span>
                     </div>
 
                     {/* Category Content */}
-                    <a
-                      href={category.href}
-                      onClick={(e) => {
-                        if (category.onClick) {
-                          e.preventDefault();
-                          closeMenu();
-                          setTimeout(() => category.onClick(), 300);
-                        } else {
-                          closeMenu();
-                        }
+                    <button
+                      onClick={() => {
+                        navigate(category.href);
+                        closeMenu();
                       }}
                       className={`flex-1 p-4 transition-all duration-300 group `}
                     >
                       <div className="flex items-center justify-between">
-                        <span className={`font-bold text-lg text-gray-600`}>
+                        <span className={`font-bold text-lg text-brandBlue`}>
                           {category.name}
                         </span>
+                        <ChevronRight className="text-brandBlue" />
                       </div>
-                    </a>
+                    </button>
                   </div>
                 )}
               </div>

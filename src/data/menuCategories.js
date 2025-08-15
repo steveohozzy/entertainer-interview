@@ -11,38 +11,38 @@ const menuCategories = [
       items: [
         {
           name: "All Action Toys",
-          href: "#action-toys",
+          href: "/category",
         },
         {
           name: "Action Figures",
-          href: "#action-figures",
+          href: "/category",
           onClick: () => window.navigateTo("action-figures"),
           hasSubItems: true,
           subItems: [
-            { name: "6-inch Figures", href: "#6inch", },
-            { name: "12-inch Figures", href: "#12inch", },
-            { name: "Deluxe Figures", href: "#deluxe", },
-            { name: "Exclusive Variants", href: "#exclusive", },
+            { name: "6-inch Figures", href: "/category", },
+            { name: "12-inch Figures", href: "/category", },
+            { name: "Deluxe Figures", href: "/category", },
+            { name: "Exclusive Variants", href: "/category", },
           ],
         },
         {
           name: "Vehicles & Playsets",
-          href: "#vehicles",
+          href: "/category",
           hasSubItems: true,
           subItems: [
-            { name: "Vehicles", href: "#vehicles-only", },
-            { name: "Playsets", href: "#playsets", },
-            { name: "Accessories", href: "#accessories", },
+            { name: "Vehicles", href: "/category", },
+            { name: "Playsets", href: "/category", },
+            { name: "Accessories", href: "/category", },
           ],
         },
         {
           name: "Role Play",
-          href: "#roleplay",
+          href: "/category",
           hasSubItems: true,
           subItems: [
-            { name: "Costumes", href: "#costumes", },
-            { name: "Weapons", href: "#weapons", },
-            { name: "Masks & Helmets", href: "#masks", },
+            { name: "Costumes", href: "/category", },
+            { name: "Weapons", href: "/category", },
+            { name: "Masks & Helmets", href: "/category", },
           ],
         },
       ],
@@ -63,48 +63,48 @@ const menuCategories = [
       items: [
         {
           name: "Marvel",
-          href: "#marvel",
+          href: "/category",
           hasSubItems: true,
           subItems: [
-            { name: "Spider-Man", href: "#spiderman", },
-            { name: "Avengers", href: "#avengers", },
-            { name: "X-Men", href: "#xmen", },
-            { name: "Villains", href: "#marvel-villains", },
+            { name: "Spider-Man", href: "/category", },
+            { name: "Avengers", href: "/category", },
+            { name: "X-Men", href: "/category", },
+            { name: "Villains", href: "/category", },
           ],
         },
         {
           name: "Star Wars",
-          href: "#starwars",
+          href: "/category",
           hasSubItems: true,
           subItems: [
-            { name: "Jedi", href: "#jedi", },
-            { name: "Sith", href: "#sith", },
-            { name: "Droids", href: "#droids", },
-            { name: "Vehicles", href: "#sw-vehicles", },
+            { name: "Jedi", href: "/category", },
+            { name: "Sith", href: "/category", },
+            { name: "Droids", href: "/category", },
+            { name: "Vehicles", href: "/category", },
           ],
         },
         {
           name: "DC Comics",
-          href: "#dc",
+          href: "/category",
           hasSubItems: true,
           subItems: [
-            { name: "Batman", href: "#batman", },
-            { name: "Superman", href: "#superman", },
-            { name: "Wonder Woman", href: "#wonderwoman", },
-            { name: "Justice League", href: "#justice-league", },
+            { name: "Batman", href: "/category", },
+            { name: "Superman", href: "/category", },
+            { name: "Wonder Woman", href: "/category", },
+            { name: "Justice League", href: "/category", },
           ],
         },
         {
           name: "Transformers",
-          href: "#transformers",
+          href: "/category",
         },
         {
           name: "Pokemon",
-          href: "#pokemon",
+          href: "/category",
         },
         {
           name: "TMNT",
-          href: "#tmnt",
+          href: "/category",
         },
       ],
     },
@@ -196,7 +196,7 @@ const menuCategories = [
       items: [
         {
           name: "Ages 3-5",
-          href: "/action-figures?age=3-5",
+          href: "/category",
           onClick: (e) => {
             e.preventDefault()
             window.navigateTo("action-figures")
@@ -208,34 +208,55 @@ const menuCategories = [
           },
           hasSubItems: true,
           subItems: [
-            { name: "Soft Figures", href: "#soft-figures", },
-            { name: "Large Figures", href: "#large-figures", },
-            { name: "Interactive Toys", href: "#interactive", },
+            { name: "Soft Figures", href: "/category", },
+            { name: "Large Figures", href: "/category", },
+            { name: "Interactive Toys", href: "/category", },
           ],
         },
         {
           name: "Ages 6-8",
-          href: "#ages-6-8",
+          href: "/category",
           hasSubItems: true,
           subItems: [
-            { name: "Basic Figures", href: "#basic-figures", },
-            { name: "Playsets", href: "#age-playsets", },
-            { name: "Vehicles", href: "#age-vehicles", },
+            { name: "Basic Figures", href: "/category", },
+            { name: "Playsets", href: "/category", },
+            { name: "Vehicles", href: "/category", },
           ],
         },
         {
           name: "Ages 9-12",
-          href: "#ages-9-12",
+          href: "/category",
         },
         {
           name: "Ages 13+",
-          href: "#ages-13+",
+          href: "/category",
         },
         {
           name: "Adult Collectors",
-          href: "#adult-collectors",
+          href: "/category",
         },
       ],
+    },
+    {
+      id: "present-finder",
+      name: "Present Finder",
+      hasSubmenu: false,
+      href: "/present-finder",
+      icon: <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+              >
+                <path
+                  d="M12 7V20M12 7H8.46429C7.94332 7 7.4437 6.78929 7.07533 6.41421C6.70695 6.03914 6.5 5.53043 6.5 5C6.5 4.46957 6.70695 3.96086 7.07533 3.58579C7.4437 3.21071 7.94332 3 8.46429 3C11.2143 3 12 7 12 7ZM12 7H15.5357C16.0567 7 16.5563 6.78929 16.9247 6.41421C17.293 6.03914 17.5 5.53043 17.5 5C17.5 4.46957 17.293 3.96086 16.9247 3.58579C16.5563 3.21071 16.0567 3 15.5357 3C12.7857 3 12 7 12 7ZM5 12H19V17.8C19 18.9201 19 19.4802 18.782 19.908C18.5903 20.2843 18.2843 20.5903 17.908 20.782C17.4802 21 16.9201 21 15.8 21H8.2C7.07989 21 6.51984 21 6.09202 20.782C5.71569 20.5903 5.40973 20.2843 5.21799 19.908C5 19.4802 5 18.9201 5 17.8V12ZM4.6 12H19.4C19.9601 12 20.2401 12 20.454 11.891C20.6422 11.7951 20.7951 11.6422 20.891 11.454C21 11.2401 21 10.9601 21 10.4V8.6C21 8.03995 21 7.75992 20.891 7.54601C20.7951 7.35785 20.6422 7.20487 20.454 7.10899C20.2401 7 19.9601 7 19.4 7H4.6C4.03995 7 3.75992 7 3.54601 7.10899C3.35785 7.20487 3.20487 7.35785 3.10899 7.54601C3 7.75992 3 8.03995 3 8.6V10.4C3 10.9601 3 11.2401 3.10899 11.454C3.20487 11.6422 3.35785 11.7951 3.54601 11.891C3.75992 12 4.03995 12 4.6 12Z"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>,
     },
     {
       id: "services",
@@ -260,31 +281,30 @@ const menuCategories = [
       items: [
         {
           name: "Store Finder",
-          href: "#store-finder",
-          onClick: () => window.navigateTo("store-finder"),
+          href: "/store-finder",
         },
         {
           name: "Click & Collect",
-          href: "#click-collect",
+          href: "/category",
           hasSubItems: true,
           subItems: [
-            { name: "Same Day Collection", href: "#same-day",},
-            { name: "Next Day Collection", href: "#next-day", },
-            { name: "Weekend Collection", href: "#weekend", },
+            { name: "Same Day Collection", href: "/category",},
+            { name: "Next Day Collection", href: "/category", },
+            { name: "Weekend Collection", href: "/category", },
           ],
         },
         {
           name: "Gift Cards",
-          href: "#gift-cards",
+          href: "/category",
         },
         {
           name: "Birthday Parties",
-          href: "#parties",
+          href: "/category",
           hasSubItems: true,
           subItems: [
-            { name: "Party Packages", href: "#packages", },
-            { name: "Entertainment", href: "#entertainment", },
-            { name: "Party Supplies", href: "#supplies", },
+            { name: "Party Packages", href: "/category", },
+            { name: "Entertainment", href: "/category", },
+            { name: "Party Supplies", href: "/category", },
           ],
         },
       ],
