@@ -21,7 +21,7 @@ const menuCategories = [
       </svg>,
       items: [
         {
-          name: "All BRands",
+          name: "All Brands",
           href: "/category",
         },
         {
