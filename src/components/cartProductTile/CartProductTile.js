@@ -40,6 +40,9 @@ const CartProductTile = ({product, nocontrols, isMiniCart}) => {
             <div className="flex flex-wrap py-1">
                 <div className={`w-full ${nocontrols ? 'md:w-[70%]' : 'md:w-[50%]'} ${isMiniCart && 'md:w-full'} text-textBlue font-bold ${isMiniCart ? 'text-sm px-2 mb-1' : 'px-4 text-lg'}`}>
                     <button className={`flex flex-wrap text-left`} onClick={goToLinkHandler}>
+                        <div className="flex flex-wrap justify-center">
+                              <div className="inline-flex items-center text-xs text-gray-400">{product.brand}</div>
+                          </div>
                         <span className='line-clamp-2'>{name}</span>
                         <span className={`text-textBlue w-full ${isMiniCart ? 'text-[10px]' : 'text-xs mt-3'}`}>Product #{sku}</span>
                     </button>

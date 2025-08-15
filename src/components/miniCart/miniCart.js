@@ -162,6 +162,9 @@ const MiniCart = () => {
                         }}
                         className="cursor-pointer w-full flex flex-col justify-between items-center px-2 flex-grow"
                       >
+                        <div className="flex flex-wrap justify-center">
+                            <div className="inline-flex items-center text-[10px] text-gray-400">{product.brand}</div>
+                        </div>
                         <div className="line-clamp-2 text-xs text-brandBlue font-bold leading-[1.2] xl:leading-[1.1] mb-2 md:mb-0">
                           {product.name}
                         </div>

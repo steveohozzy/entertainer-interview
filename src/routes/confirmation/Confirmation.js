@@ -42,6 +42,9 @@ const Confirmation = () => {
                     <div className={`w-[70%] md:w-[80%]`}>
                         <div className="flex flex-wrap py-1">
                             <div className={`w-full md:w-[70%] text-textBlue font-bold px-4 text-lg`}>
+                                <div className="flex flex-wrap">
+                              <div className="inline-flex items-center text-xs text-gray-400">{item.brand}</div>
+                          </div>
                                     <div>{item.name}</div>
                                     <span className={`text-textBlue w-full text-xs mt-3`}>Product #{item.sku}</span>
                             </div>
@@ -138,7 +141,10 @@ const Confirmation = () => {
                       <div
                         className=" md:py-2 cursor-pointer w-full md:w-1/2 flex flex-col justify-between items-center px-2 grow"
                       >
-                        <div className="text-xs lg:text-sm xl:text-lg text-brandBlue font-bold leading-[1.2] xl:leading-[1.1] mb-2 md:mb-0">
+                        <div className="flex flex-wrap justify-center">
+                              <div className="inline-flex items-center text-xs text-gray-400">{product.brand}</div>
+                          </div>
+                        <div className="text-xs lg:text-sm xl:text-lg text-brandBlue font-bold leading-[1.2] xl:leading-[1.1] mb-2 md:mb-0 line-clamp-2">
                           {product.name}
                         </div>
                         <div>

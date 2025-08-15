@@ -45,7 +45,12 @@ const HomeTopPicks = () => {
                             />
                         </div>
                         <div className="w-1/2 flex flex-col justify-between items-center py-1 md:py-3 px-2">
-                            <div className="text-xs lg:text-sm xl:text-base text-brandBlue font-bold leading-[1.2] xl:leading-[1.1] line-clamp-2 mb-2 md:mb-0">{product.name}</div>
+                            <div>
+                                <div className="flex flex-wrap justify-center mb-1">
+                                    <div className="inline-flex items-center text-xs text-gray-400">{product.brand}</div>
+                                </div>
+                                <div className="text-xs lg:text-sm xl:text-base text-brandBlue font-bold leading-[1.2] xl:leading-[1.1] line-clamp-2 mb-2 md:mb-0">{product.name}</div>
+                            </div>
                             <div>
                                 <div className="price">
                                     <div className="flex items-end justify-center">
