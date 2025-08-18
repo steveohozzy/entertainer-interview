@@ -14,7 +14,8 @@ const HomeBrands = () => {
         spaceBetween={10}
         slidesPerView={2.5}
         pagination={{ clickable: true }}
-        autoplay={true}
+        autoplay={{delay: 5000}}
+        autoplayDelay={10000}
         breakpoints={{
           768: {
             slidesPerView: 3.5,

@@ -14,7 +14,7 @@ const HomeOffers = () => {
         spaceBetween={10}
         slidesPerView={3.5}
         pagination={{ clickable: true }}
-        autoplay={true}
+        autoplay={{delay: 4500}}
         breakpoints={{
           768: {
             slidesPerView: 4.5,
