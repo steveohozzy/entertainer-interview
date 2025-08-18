@@ -24,6 +24,9 @@ const TopSellersCarousel = ({setShowSearchBox, filteredProducts, startedSearch})
           768: {
             slidesPerView: 5,
           },
+          1024: {
+            slidesPerView: 6,
+          },
         }}
         >
           {filteredProducts.slice(0, 9).map((product) => (
