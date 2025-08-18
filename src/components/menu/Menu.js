@@ -102,9 +102,9 @@ const Menu = () => {
           showMenu ? "translate-x-0 top-5 left-4" : "-translate-x-full"
         }`}
       >
-        <div ref={menuRef} className="bg-white overflow-y-auto max-h-[calc(100vh-60px)] relative rounded-3xl shadow-xl">
+        <div ref={menuRef} className="bg-white overflow-y-auto max-h-[calc(100vh-80px)] relative rounded-3xl shadow-xl">
           {/* Animated Menu Categories */}
-          <nav className="relative space-y-2 pt-6 pb-4">
+          <nav className="relative space-y-2 pt-6 pb-4 w-[calc(100%-10px)]">
             <div className="h-full w-[40px] bg-brandBlue rounded-full absolute left-0 top-0"></div>
             <div className="w-full flex justify-between absolute -top-[5px] left-[5px]">
               <button
