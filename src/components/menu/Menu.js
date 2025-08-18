@@ -11,6 +11,7 @@ const Menu = () => {
   const [expandedCategories, setExpandedCategories] = useState({});
   const [expandedSubCategories, setExpandedSubCategories] = useState({});
   const [hoveredItem, setHoveredItem] = useState(null);
+  const [navOpen, setNavOpen]=useState(false)
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -78,6 +79,12 @@ const Menu = () => {
       navigate('/account');
       closeMenu();
     }
+
+    useEffect(()=>{
+      setTimeout(() => {
+        setNavOpen(true)
+      }, 500);      
+    },[])
   return (
     <>
       <button
@@ -102,7 +109,9 @@ const Menu = () => {
           showMenu ? "translate-x-0 top-5 left-4" : "-translate-x-full"
         }`}
       >
-        <div ref={menuRef} className="bg-white overflow-y-auto max-h-[calc(100vh-100px)] lg:max-h-[calc(100vh-50px)] relative rounded-3xl shadow-xl">
+        <div ref={menuRef} className={`bg-white max-h-[calc(100vh-100px)] lg:max-h-[calc(100vh-50px)] relative rounded-3xl shadow-xl overflow-hidden
+          ${navOpen ? 'overflow-y-auto' : 'overflow-hidden'}
+        `}>
           {/* Animated Menu Categories */}
           <nav className="relative space-y-2 pt-6 pb-4 w-[calc(100%-10px)]">
             <div className="h-full w-[40px] bg-brandBlue rounded-full absolute left-0 top-0"></div>
