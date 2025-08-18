@@ -156,14 +156,14 @@ const OrdersAccountSection = () => {
                   You may also like
               </HeadingRibbon>
                 <div className='bg-white p-5 rounded-tl-lg rounded-bl-lg'>
-                    <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-2 gap-2 justify-start'>
+                    <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-2 gap-3 justify-start'>
                     {products.slice(0, 6).map((product) => (
-                        <div key={product.id} onClick={() => { navigate(`/product-details/${product.id}`); window.scrollTo({top: 0,left: 0,behavior: "smooth",})}} className="cursor-pointer flex flex-col border-[2px] border-brandLightBlue rounded-xl">
+                        <div key={product.id} onClick={() => { navigate(`/product-details/${product.id}`); window.scrollTo({top: 0,left: 0,behavior: "smooth",})}} className="cursor-pointer flex flex-col border-[2px] border-brandLightBlue rounded-xl hover:shadow-lg hover:scale-105 transition-all">
                             <div className="w-full">
                                 <img
                                     src={product.image || "/placeholder.svg"}
                                     alt={product.name}
-                                    className="w-full object-cover group-hover:scale-105 transition-transform duration-300 rounded-xl"
+                                    className="w-full object-cover transition-transform duration-300 rounded-xl"
                                 />
                             </div>
                             <div className="w-full flex flex-col justify-between items-center p-2 flex-grow">

@@ -856,7 +856,7 @@ const ProductDetails = () => {
                       <img
                         src={product.image || "/placeholder.svg"}
                         alt={product.name}
-                        className="w-full object-cover group-hover:scale-105 transition-transform duration-300 rounded-xl"
+                        className="w-full object-cover transition-transform duration-300 rounded-xl"
                       />
                     </div>
                     <div className="w-full flex flex-col justify-between items-center p-2">
