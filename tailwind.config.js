@@ -7,6 +7,9 @@ module.exports = {
     fontFamily: {
       sans: ['"Fredoka", sans-serif'],
     },
+    fontWeight: {
+      'bold': '500'
+    },
     extend: {
       colors: {
         brandBlue: "#0D5D9C",
