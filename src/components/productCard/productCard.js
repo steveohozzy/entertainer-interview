@@ -565,7 +565,7 @@ const ProductCard = ({ product }) => {
             <div className="inline-flex items-center text-xs text-gray-400">{brand}</div>
           </div>
           <button className="flex flex-col h-full" onClick={goToLinkHandler}>
-            <h2 className="text-brandBlue flex-grow font-bold text-sm mb-2 leading-tight line-clamp-2 grow">
+            <h2 className="text-brandBlue flex-grow font-bold text-sm md:text-base mb-2 leading-tight line-clamp-2 grow">
               {name}
             </h2>
             <div className="flex items-center justify-center gap-2">
