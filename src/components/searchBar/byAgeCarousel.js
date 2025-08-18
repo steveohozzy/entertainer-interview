@@ -8,7 +8,7 @@ const ByAgeCarousel = ({setShowSearchBox}) => {
       <div className="text-lg text-textBlue font-bold mb-2">
         By Age
       </div>
-        <div id="age" className="grid grid-cols-6 lg:grid-cols-7 gap-2 mb-6">
+        <div id="age" className="grid grid-cols-6 lg:grid-cols-7 gap-2 mb-2">
       <button onClick={() => {
         navigate("/category?age=0-3");
         window.scrollTo({top: 0,left: 0,behavior: "smooth",});
