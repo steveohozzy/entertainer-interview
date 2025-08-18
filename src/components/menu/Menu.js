@@ -109,7 +109,7 @@ const Menu = () => {
           showMenu ? "translate-x-0 top-5 left-4" : "-translate-x-full"
         }`}
       >
-        <div ref={menuRef} className={`bg-white max-h-[calc(100vh-100px)] lg:max-h-[calc(100vh-50px)] relative rounded-3xl shadow-xl overflow-hidden
+        <div ref={menuRef} className={`bg-white max-h-[calc(100vh-130px)] lg:max-h-[calc(100vh-80px)] relative rounded-3xl shadow-xl overflow-hidden
           ${navOpen ? 'overflow-y-auto' : 'overflow-hidden'}
         `}>
           {/* Animated Menu Categories */}
