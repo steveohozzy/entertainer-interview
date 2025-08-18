@@ -18,7 +18,7 @@ const TopSellersCarousel = ({setShowSearchBox, filteredProducts, startedSearch})
           pagination={{ clickable: true }}
           autoplay={true}
           loop
-          slidesPerView={3}
+          slidesPerView={4}
           spaceBetween={10}
           breakpoints={{
           768: {
