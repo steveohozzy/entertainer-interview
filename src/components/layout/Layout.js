@@ -102,7 +102,7 @@ const Layout = () => {
         }`}
       >
         <div className="bg-brandBlue shadow-sm md:shadow-md rounded-b-2xl md:rounded-b-3xl">
-          <div className="max-w-6xl mx-auto sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div className="flex items-stretch md:items-center justify-between">
               <div className="flex items-center">
                 <Menu />
