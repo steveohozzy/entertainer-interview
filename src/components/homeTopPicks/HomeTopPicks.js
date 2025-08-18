@@ -13,7 +13,7 @@ const HomeTopPicks = () => {
   const navigate = useNavigate();
 
   return (
-    <div id="top-picks" className='w-full text-center mt-5 py-5'>
+    <div id="top-picks" className='w-full text-center mt-8 py-5'>
             <HeadingRibbon fullWidth={true}>
                 Top Picks
             </HeadingRibbon>
@@ -26,10 +26,10 @@ const HomeTopPicks = () => {
                     autoplay={true}
                     breakpoints={{
                       768: {
-                        slidesPerView: 2.5,
+                        slidesPerView: 2.2,
                       },
                       1024: {
-                        slidesPerView: 3.5,
+                        slidesPerView: 3.2,
                       },
                     }}
                     loop
@@ -44,12 +44,12 @@ const HomeTopPicks = () => {
                                 className="w-full object-cover group-hover:scale-105 transition-transform duration-300 rounded-lg"
                             />
                         </div>
-                        <div className="w-1/2 flex flex-col justify-between items-center py-1 md:py-3 px-2">
+                        <div className="w-1/2 flex flex-col justify-between items-center py-3 md:py-3 px-2">
                             <div>
                                 <div className="flex flex-wrap justify-center mb-1">
                                     <div className="inline-flex items-center text-xs text-gray-400">{product.brand}</div>
                                 </div>
-                                <div className="text-sm lg:text-sm xl:text-base text-brandBlue font-bold leading-[1.2] xl:leading-[1.1] line-clamp-3 mb-2 md:mb-0">{product.name}</div>
+                                <div className=" text-brandBlue font-bold leading-[1.2] xl:leading-[1.1] line-clamp-3 mb-2 md:mb-0">{product.name}</div>
                             </div>
                             <div>
                                 <div className="price">

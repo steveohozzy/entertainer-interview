@@ -10,7 +10,7 @@ const HomeHeroCard = () => {
   };
 
   return (
-    <div className="h-auto shadow-lg rounded-xl overflow-hidden my-8">
+    <div className="h-auto shadow-lg rounded-xl overflow-hidden mt-12 mb-8">
       <div className="rounded-xl bg-blue-800 flex flex-wrap flex-row-reverse md:flex-row h-full">
         <div className="w-full md:w-1/2 flex flex-col justify-center items-center p-6 lg:p-12">
           <div className="mb-4">

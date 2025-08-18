@@ -8,13 +8,13 @@ import { useNavigate } from "react-router-dom";
 const HomeBrands = () => {
   const navigate = useNavigate();
   return (
-    <div id="brands">
+    <div>
        <Swiper
         modules={[Autoplay]}
         spaceBetween={10}
         slidesPerView={2.5}
         pagination={{ clickable: true }}
-        autoplay={false}
+        autoplay={true}
         breakpoints={{
           768: {
             slidesPerView: 3.5,
