@@ -11,14 +11,14 @@ const HomeBlogs = () => {
   const navigate = useNavigate();
 
   return (
-    <div id="blogs" className='w-full text-center mt-14 mb-14'>
+    <div id="blogs" className='w-full text-center mt-14 mb-10'>
             <HeadingRibbon fullWidth={true}>
                 Latest Blogs
             </HeadingRibbon>
             <div className='pt-5 rounded-xl'>
-                <div className='flex gap-4 justify-center mx-auto max-w-7xl:!-bottom-[5px] [&_.swiper-pagination]:mt-2 [&_.swiper-pagination-bullet]:size-3'>
+                <div className='flex gap-4 justify-center mx-auto max-w-7xl:!-bottom-[0] [&_.swiper-pagination-bullet]:size-3'>
                 <Swiper
-                    className="!pb-8"
+                    className="!pb-10"
                     modules={[Autoplay, Pagination]}
                     spaceBetween={20}
                     slidesPerView={1.5}
@@ -32,7 +32,7 @@ const HomeBlogs = () => {
                     loop
                     >
                     <SwiperSlide>
-                        <div className="flex flex-col flex-wrap bg-white shadow-lg mb-5 rounded-xl h-full">
+                        <div className="cursor-pointer flex flex-col flex-wrap bg-white shadow-lg mb-5 rounded-xl h-full hover:scale-[0.98] hover:shadow-xl  transition-all" onClick={() => { navigate(`/`); window.scrollTo({top: 0,left: 0,behavior: "smooth",});}}>
                             <div className="rounded-xl w-full">
                                 <img
                                     src="https://www.thetoyshop.com/medias/BLOG-TEACHWORLD-STORY-560x318.jpg?context=bWFzdGVyfHJvb3R8NDQ2NDF8aW1hZ2UvanBlZ3xhRE5oTDJnNU15OHhNalUxT1RZNU1ERXdORGcyTWk5Q1RFOUhYMVJGUVVOSVYwOVNURVJmVTFSUFVsbGZOVFl3ZURNeE9DNXFjR2N8N2E4YTkyZjZmMGNlM2M1ZTlhMDgwYTdlMGU2YWU3M2NjODQ1OTU4YjMyYjMyOTcyYjVmNGQ3NjI5NTllMjU2Ng"
@@ -51,7 +51,7 @@ const HomeBlogs = () => {
                         </div>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div className="flex flex-col flex-wrap bg-white shadow-lg mb-5 rounded-xl h-full">
+                       <div className="cursor-pointer flex flex-col flex-wrap bg-white shadow-lg mb-5 rounded-xl h-full hover:scale-[0.98] hover:shadow-xl  transition-all" onClick={() => { navigate(`/`); window.scrollTo({top: 0,left: 0,behavior: "smooth",});}}>
                             <div className="rounded-xl w-full">
                                 <img
                                     src="https://www.thetoyshop.com/medias/BLOG-PEPPAPIG-STORY-560x318.jpg?context=bWFzdGVyfHJvb3R8Mzk3NjZ8aW1hZ2UvanBlZ3xhR1ppTDJnNU15OHhNalUxT1RZNU1ERTNNRE01T0M5Q1RFOUhYMUJGVUZCQlVFbEhYMU5VVDFKWlh6VTJNSGd6TVRndWFuQm58ODVmNjhlYzM5N2JmNjAzYmFhMGQ2MmVlOGM2ZDE2ZjA0NzcwZDk2YTUyYjM4YjkwZDVhNDgyOGQwYWM0NTlhZQ"
@@ -70,7 +70,7 @@ const HomeBlogs = () => {
                         </div>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div className="flex flex-col flex-wrap bg-white shadow-lg mb-5 rounded-xl h-full">
+                        <div className="cursor-pointer flex flex-col flex-wrap bg-white shadow-lg mb-5 rounded-xl h-full hover:scale-[0.98] hover:shadow-xl  transition-all" onClick={() => { navigate(`/`); window.scrollTo({top: 0,left: 0,behavior: "smooth",});}}>
                             <div className="rounded-xl w-full">
                                 <img
                                     src="https://www.thetoyshop.com/medias/BLOG-SCIENCE-STORY-560x318.jpg?context=bWFzdGVyfHJvb3R8MzE2NDh8aW1hZ2UvanBlZ3xhR1k1TDJnNU5pOHhNalUxT1RZNU1ESXpOVGt6TkM5Q1RFOUhYMU5EU1VWT1EwVmZVMVJQVWxsZk5UWXdlRE14T0M1cWNHY3xiZGVhZTEzYzdiNDQ5MjRlN2M4OTMzYWE3OTYzMTA3NDlhYTY1Y2Q3NjRkN2E0MzYzNzk0MTJlZDgyNTMxMTUy"
@@ -89,7 +89,7 @@ const HomeBlogs = () => {
                         </div>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div className="flex flex-col flex-wrap items-start bg-white shadow-lg mb-5 rounded-xl h-full">
+                        <div className="cursor-pointer flex flex-col flex-wrap bg-white shadow-lg mb-5 rounded-xl h-full hover:scale-[0.98] hover:shadow-xl  transition-all" onClick={() => { navigate(`/`); window.scrollTo({top: 0,left: 0,behavior: "smooth",});}}>
                             <div className="rounded-xl w-full">
                                 <img
                                     src="https://www.thetoyshop.com/medias/1-4.jpg?context=bWFzdGVyfHJvb3R8ODE0MDd8aW1hZ2UvanBlZ3xhRGczTDJnMVlpOHhNalUyTmpFNE56VTBNRFV4TUM4eElEUXVhbkJufDZjZjE0ZDU2OWQ4NjNkYTE4Njk4MjkxZmUyYzEwMmEwYTRkODUwZjA4MWVjYzk4ZjViNzk2NDAyMzFlOWJjNDE"
