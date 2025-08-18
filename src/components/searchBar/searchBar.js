@@ -147,7 +147,7 @@ const SearchBar = () => {
       <div ref={wrapperRef} className="search bg-brandLightBlue pt-5 z-2 relative">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <form id="search-form" className="relative" onSubmit={handleSearch}>
-                <input ref={searchInput} onFocus={handleFocus} onChange={handleChange} onKeyDown={handleKeyCode} name="search" type="search" placeholder="I'm looking for..." className="relative z-20 outline-0 h-[44px] px-3 rounded-3xl w-full border border-[3px] border-brandBlue font-bold text-textBlue placeholder:text-textBlue" />
+                <input ref={searchInput} onFocus={handleFocus} onChange={handleChange} onKeyDown={handleKeyCode} name="search" type="search" placeholder="I'm looking for..." className="relative z-20 outline-0 h-[44px] px-3 rounded-3xl w-full border border-[3px] border-brandBlue font-bold text-textBlue placeholder:text-textBlue bg-white" />
                 <button onClick={handleSearch} className="shadow-md z-20 group text-white font-bold bg-brandRed rounded-full h-[44px] w-[54px] absolute right-0 top-0 transition-all hover:bg-brandGreen hover:scale-105">
                     <span className="block transition-all group-hover:rotate-[20deg]">
                         <span className="inline-block rotate-[-10deg] text-lg">G</span>
