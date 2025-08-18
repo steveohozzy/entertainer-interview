@@ -9,7 +9,7 @@ const ByTypeCarousel = ({setShowSearchBox}) => {
   const navigate = useNavigate();
 
   return (
-    <div className="mt-1">
+    <div>
       <div className="text-lg text-textBlue font-bold mb-2">
         By Type
       </div>
