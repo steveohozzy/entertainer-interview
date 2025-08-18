@@ -140,13 +140,13 @@ const MiniCart = () => {
                         });
                         toggleIsCartOpen(false)
                       }}
-                      className={`cursor-pointer flex flex-col h-full bg-white rounded-xl ${recsDetailsOpen && 'pb-2'}`}
+                      className={`cursor-pointer flex flex-col h-full group bg-white rounded-xl ${recsDetailsOpen && 'pb-2'}`}
                     >
-                      <div className={`border-[3px] border-brandBlue rounded-lg w-full ${recsDetailsOpen && 'mb-3'}`}>
+                      <div className={`border-[3px] border-brandBlue rounded-lg overflow-hidden w-full ${recsDetailsOpen && 'mb-3'}`}>
                         <img
                           src={product.image || "/placeholder.svg"}
                           alt={product.name}
-                          className="w-full object-cover group-hover:scale-105 transition-transform duration-300 rounded-lg"
+                          className="w-full object-cover group-hover:scale-110 transition-transform duration-300 rounded-lg"
                         />
                       </div>
                       {recsDetailsOpen &&

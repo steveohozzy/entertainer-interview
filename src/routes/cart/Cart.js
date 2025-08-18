@@ -153,7 +153,7 @@ const Cart = () => {
               <div className="bg-brandLightBlue pt-12 pb-8 px-4 md:px-8 rounded-xl mt-[-27px] [&_.swiper-pagination]:relative [&_.swiper-pagination]:mt-2 [&_.swiper-pagination-bullet]:size-3">
                 <Swiper
                   modules={[Autoplay, Pagination]}
-                  spaceBetween={10}
+                  spaceBetween={20}
                   slidesPerView={2.25}
                   breakpoints={{
                     768: {
@@ -165,7 +165,8 @@ const Cart = () => {
                   loop
                 >
                   {products.slice(0, 6).map((product) => (
-                    <SwiperSlide className="h-auto">
+                    
+                    <SwiperSlide className="h-auto pt-2 pb-6">
                       <div
                         onClick={() => {
                           navigate(`/product-details/${product.id}`);
@@ -175,7 +176,7 @@ const Cart = () => {
                             behavior: "smooth",
                           });
                         }}
-                        className="cursor-pointer flex flex-wrap bg-white rounded-xl shadow-md h-full"
+                        className="cursor-pointer flex flex-wrap bg-white rounded-xl shadow-md h-full hover:shadow-lg hover:scale-105 transition-all"
                       >
                         <div className="border-[3px] border-brandBlue rounded-lg w-full md:w-1/2 mb-3 md:mb-0">
                           <img

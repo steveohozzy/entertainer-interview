@@ -744,10 +744,10 @@ const ProductDetails = () => {
 
         <div className="w-full text-center mt-12">
           <HeadingRibbon>Top Picks</HeadingRibbon>
-          <div className="bg-white pt-12 pb-8 px-8 rounded-xl mt-[-27px] shadow-sm">
-            <div className="flex gap-4 justify-center mx-auto [&_.swiper-pagination]:relative [&_.swiper-pagination]:top-[-20px!important] [&_.swiper-pagination]:mt-2 [&_.swiper-pagination-bullet]:size-3">
+          <div className="bg-white pt-12 pb-5 px-3 rounded-xl mt-[-27px] shadow-sm">
+            <div className="flex gap-4 justify-center mx-auto [&_.swiper-pagination]:relative [&_.swiper-pagination]:top-[-20px!important] [&_.swiper-pagination]:mt-3 [&_.swiper-pagination-bullet]:size-3">
               <Swiper
-              className="!pb-2"
+                className="!pb-5 !px-2.5"
                 modules={[Autoplay, Pagination]}
                 spaceBetween={10}
                 slidesPerView={3}
@@ -769,7 +769,7 @@ const ProductDetails = () => {
                           behavior: "smooth",
                         });
                       }}
-                      className="cursor-pointer flex flex-col md:flex-row h-[calc(100%-20px)]"
+                      className="cursor-pointer flex flex-col md:flex-row h-[calc(100%-20px)] transition-all hover:scale-105 pt-2"
                     >
                       <div className="border-[3px] border-brandLightBlue rounded-lg w-full md:w-1/2 mb-3 md:mb-0 shrink flex items-center">
                         <img
@@ -850,7 +850,7 @@ const ProductDetails = () => {
                       window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
                       setTabOpen(false);
                     }}
-                    className="cursor-pointer flex flex-col w-full border-[2px] border-brandLightBlue rounded-xl"
+                    className="cursor-pointer flex flex-col w-full border-[2px] border-brandLightBlue rounded-xl hover:shadow-lg hover:scale-105 transition-all"
                   >
                     <div className="w-full">
                       <img

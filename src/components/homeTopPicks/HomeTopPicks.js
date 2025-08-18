@@ -13,7 +13,7 @@ const HomeTopPicks = () => {
   const navigate = useNavigate();
 
   return (
-    <div id="top-picks" className='w-full text-center mt-8 md:mt-14 py-5'>
+    <div id="top-picks" className='w-full text-center mt-4 md:mt-9 pt-5'>
             <HeadingRibbon fullWidth={true}>
                 Top Picks
             </HeadingRibbon>
@@ -35,8 +35,8 @@ const HomeTopPicks = () => {
                     loop
                     >
                 {products.slice(0, 6).map((product) => (
-                    <SwiperSlide>
-                    <div  onClick={() => { navigate(`/product-details/${product.id}`); window.scrollTo({top: 0,left: 0,behavior: "smooth",});}} className="cursor-pointer flex flex-wrap bg-white shadow-lg mb-5 rounded-lg h-full">
+                    <SwiperSlide className="pt-2 pb-6">
+                    <div  onClick={() => { navigate(`/product-details/${product.id}`); window.scrollTo({top: 0,left: 0,behavior: "smooth",});}} className="cursor-pointer flex flex-wrap bg-white shadow-sm mb-5 rounded-lg h-full hover:shadow-lg hover:scale-105 transition-all">
                         <div className="border-[3px] border-brandBlue rounded-lg w-1/2 py-1">
                             <img
                                 src={product.image || "/placeholder.svg"}
