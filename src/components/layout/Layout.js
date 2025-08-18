@@ -21,6 +21,7 @@ import Footer from "../footer/Footer";
 import MiniCart from "../miniCart/miniCart";
 import SearchBar from "../searchBar/searchBar";
 import AccountPopUp from "../accountPopUp/AccountPopUp";
+import DeliveryStrip from "../deliveryStrip/DeliveryStrip";
 
 const Layout = () => {
   const [showHeader, setShowHeader] = useState(true);
@@ -93,6 +94,7 @@ const Layout = () => {
 
   return (
     <>
+      <DeliveryStrip />
       <header
         id="site-header"
         className={`text-white rounded-b-2xl md:rounded-b-3xl border-b sticky top-0 w-full z-50 transition-transform duration-300 ${
