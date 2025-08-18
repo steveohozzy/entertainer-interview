@@ -158,7 +158,7 @@ const SearchBar = () => {
             </form>
 
               <div className={`absolute z-10 top-4 left-0 w-full px-4 sm:px-6 lg:px-8 opacity-0 h-0 transition-all overflow-hidden ${showSearchBox && 'opacity-100 h-auto'}`}>
-                <div className="w-full bg-white rounded-lg p-4 pt-8 md:pt-11 pb-3 text-brandBlue border-b-[3px] border-red-500 max-h-[calc(100vh-150px)] overflow-y-auto no-scrollbar shadow-md mb-4">
+                <div className="w-full bg-white rounded-lg p-4 pt-8 md:pt-11 pb-3 text-brandBlue border-b-[3px] border-red-500 max-h-[calc(100vh-200px)] overflow-y-auto no-scrollbar shadow-md mb-4">
                   <div className="flex items-start justify-between w-full">
                     <div className="flex flex-col w-full md:w-2/3 max-w-[400px]">
                     {startedSearch & filteredSearch.length > 0 ? (

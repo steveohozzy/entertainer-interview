@@ -10,7 +10,7 @@ const TopSellersCarousel = ({setShowSearchBox, filteredProducts, startedSearch})
 
   return (
     <div className="mt-1">
-      <div className="text-lg text-textBlue font-bold mb-2">
+      <div className="text-lg text-textBlue font-bold md:mb-2">
         {startedSearch ? 'Matching Products' : 'Top Picks'}
       </div>
         <Swiper
