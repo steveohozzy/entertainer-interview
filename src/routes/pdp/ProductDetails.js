@@ -784,7 +784,7 @@ const ProductDetails = () => {
                           <div className="flex flex-wrap justify-center">
                               <div className="inline-flex items-center text-xs text-gray-400">{product.brand}</div>
                           </div>
-                          <div className="line-clamp-2 text-xs lg:text-sm xl:text-lg text-brandBlue font-bold leading-[1.2] xl:leading-[1.1] mb-2 md:mb-0">
+                          <div className="line-clamp-2 text-xs lg:text-sm xl:text-base text-brandBlue font-bold leading-[1.2] xl:leading-[1.1] mb-2 md:mb-0">
                             {product.name}
                           </div>
                         </div>
@@ -862,7 +862,7 @@ const ProductDetails = () => {
                       <div className="flex flex-wrap justify-center mb-1">
                           <div className="inline-flex items-center text-xs text-gray-400">{product.brand}</div>
                       </div>
-                      <div className="line-clamp-2 text-xs lg:text-sm xl:text-base text-brandBlue font-bold leading-[1.2] xl:leading-[1.1] mb-2 md:mb-0">
+                      <div className="line-clamp-2 text-xs lg:text-sm text-brandBlue font-bold leading-[1.2] mb-2 md:mb-0">
                         {product.name}
                       </div>
                       <div>
