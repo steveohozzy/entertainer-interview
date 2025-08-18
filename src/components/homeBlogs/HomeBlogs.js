@@ -16,7 +16,7 @@ const HomeBlogs = () => {
                 Latest Blogs
             </HeadingRibbon>
             <div className='pt-5 rounded-xl'>
-                <div className='flex gap-4 justify-center mx-auto [&_.swiper-pagination]:!-bottom-[5px] [&_.swiper-pagination]:mt-2 [&_.swiper-pagination-bullet]:size-3'>
+                <div className='flex gap-4 justify-center mx-auto max-w-7xl:!-bottom-[5px] [&_.swiper-pagination]:mt-2 [&_.swiper-pagination-bullet]:size-3'>
                 <Swiper
                     className="!pb-8"
                     modules={[Autoplay, Pagination]}

@@ -152,7 +152,7 @@ const ProductDetails = () => {
     <>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="rounded-xl flex flex-wrap bg-white items-start shadow-sm">
-          <div className="relative w-full md:w-2/5 p-4 border-[3px] border-brandNeonBlue rounded-xl [&_.swiper-pagination]:relative [&_.swiper-slide-zoomed]:cursor-move">
+          <div className="relative w-full md:w-2/5 p-4 border-[3px] border-brandNeonBlue rounded-xl [&_.swiper-pagination]:relative [&_.swiper-pagination]:mt-2 [&_.swiper-pagination-bullet]:size-3 [&_.swiper-slide-zoomed]:cursor-move">
             <Swiper
               ref={swiperRef}
               modules={[Autoplay, Pagination, Zoom]}
@@ -745,8 +745,9 @@ const ProductDetails = () => {
         <div className="w-full text-center mt-12">
           <HeadingRibbon>Top Picks</HeadingRibbon>
           <div className="bg-white pt-12 pb-8 px-8 rounded-xl mt-[-27px] shadow-sm">
-            <div className="flex gap-4 justify-center mx-auto [&_.swiper-pagination]:relative [&_.swiper-pagination]:top-[-20px!important]">
+            <div className="flex gap-4 justify-center mx-auto [&_.swiper-pagination]:relative [&_.swiper-pagination]:top-[-20px!important] [&_.swiper-pagination]:mt-2 [&_.swiper-pagination-bullet]:size-3">
               <Swiper
+              className="!pb-2"
                 modules={[Autoplay, Pagination]}
                 spaceBetween={10}
                 slidesPerView={3}

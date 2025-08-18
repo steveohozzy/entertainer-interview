@@ -71,18 +71,25 @@ const Wishlist = () => {
                   <div className="text-textBlue text-lg font-bold mb-4 text-center">Send Your Wishlist</div>
                   <form className="flex flex-wrap">
                     <div className="w-full">
-                      <input
-                        onChange={handleNameChange}
-                        type="text"
-                        placeholder="First Name*"
-                        className="h-[34px] w-full rounded-lg border-[3px] border-gray-300 px-3 text-textBlue transition-all placeholder:text-gray-400 focus:border-textBlue focus:outline-none"
-                      />
-                      <input
-                        onChange={handleEmailChange}
-                        type="email"
-                        placeholder="Email Address*"
-                        className="mt-4 h-[34px] w-full rounded-lg border-[3px] border-gray-300 px-3 text-textBlue transition-all placeholder:text-gray-400 focus:border-textBlue focus:outline-none"
-                      />
+                      <div className={`flex mt-5 h-[44px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative group`}>
+                        <input id="name" type="text" placeholder="Name" onChange={handleNameChange} onBlur={handleNameChange} className="peer text-base m-0 block h-[38px] w-full bg-transparent text-textBlue transition duration-200 ease-linear placeholder:text-transparent focus:outline-none" />
+                        <label for="name" className="px-3 pointer-events-none absolute left-0 top-[4px] origin-[0_0] border border-solid border-transparent text-base text-gray-400 transition-[opacity,_transform] duration-200 ease-linear peer-focus:-translate-y-7 peer-focus:translate-x-[0.15rem] peer-focus:scale-[0.85] peer-focus:text-brandBlue peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:translate-x-[0.15rem] peer-[:not(:placeholder-shown)]:scale-[0.85] peer-[:not(:placeholder-shown)]:text-brandBlue motion-reduce:transition-none">Name*</label>
+                        <span className="absolute h-full w-[20px] flex items-center justify-center top-0 right-2 text-gray-300 peer-[:not(:placeholder-shown)]:text-brandGreen">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="10" viewBox="0 0 14 10" fill="none" className="w-full h-auto">
+                            <path d="M4.49273 9.76762L0.180742 5.48145C0.0602474 5.36095 0 5.20603 0 5.01668C0 4.82733 0.0602474 4.67241 0.180742 4.55191L1.13609 3.62238C1.25659 3.48467 1.4029 3.41582 1.57504 3.41582C1.76439 3.41582 1.92792 3.48467 2.06563 3.62238L4.9575 6.51426L11.1544 0.317383C11.2921 0.179674 11.447 0.11082 11.6191 0.11082C11.8085 0.11082 11.9634 0.179674 12.0839 0.317383L13.0393 1.24691C13.1598 1.36741 13.22 1.52233 13.22 1.71168C13.22 1.90103 13.1598 2.05595 13.0393 2.17645L5.42227 9.76762C5.30177 9.90533 5.14685 9.97418 4.9575 9.97418C4.76815 9.97418 4.61323 9.90533 4.49273 9.76762Z" fill="currentColor" />
+                            </svg>
+                          </span>
+                      </div>
+
+                      <div className={`flex mt-5 h-[44px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative group`}>
+                        <input id="emailAddress" type="email" placeholder="Email Address*" onChange={handleEmailChange} onBlur={handleEmailChange} className="peer text-base m-0 block h-[38px] w-full bg-transparent text-textBlue transition duration-200 ease-linear placeholder:text-transparent focus:outline-none" />
+                        <label for="emailAddress" className="px-3 pointer-events-none absolute left-0 top-[4px] origin-[0_0] border border-solid border-transparent text-base text-gray-400 transition-[opacity,_transform] duration-200 ease-linear peer-focus:-translate-y-7 peer-focus:translate-x-[0.15rem] peer-focus:scale-[0.85] peer-focus:text-brandBlue peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:translate-x-[0.15rem] peer-[:not(:placeholder-shown)]:scale-[0.85] peer-[:not(:placeholder-shown)]:text-brandBlue motion-reduce:transition-none">Email Address*</label>
+                        <span className="absolute h-full w-[20px] flex items-center justify-center top-0 right-2 text-gray-300 peer-[:not(:placeholder-shown)]:text-brandGreen">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="10" viewBox="0 0 14 10" fill="none" className="w-full h-auto">
+                            <path d="M4.49273 9.76762L0.180742 5.48145C0.0602474 5.36095 0 5.20603 0 5.01668C0 4.82733 0.0602474 4.67241 0.180742 4.55191L1.13609 3.62238C1.25659 3.48467 1.4029 3.41582 1.57504 3.41582C1.76439 3.41582 1.92792 3.48467 2.06563 3.62238L4.9575 6.51426L11.1544 0.317383C11.2921 0.179674 11.447 0.11082 11.6191 0.11082C11.8085 0.11082 11.9634 0.179674 12.0839 0.317383L13.0393 1.24691C13.1598 1.36741 13.22 1.52233 13.22 1.71168C13.22 1.90103 13.1598 2.05595 13.0393 2.17645L5.42227 9.76762C5.30177 9.90533 5.14685 9.97418 4.9575 9.97418C4.76815 9.97418 4.61323 9.90533 4.49273 9.76762Z" fill="currentColor" />
+                            </svg>
+                          </span>
+                      </div>
 
                       <a href={`mailto:${email}?subject=Sharing my wish list&body=Hi ${name}! %0D%0AHere are my desired products: %0D%0A${window.location}`} target="blank" className="mt-4 shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-lg rounded-[30px] bg-brandRed text-white py-2 px-4 pl-2 transition-all hover:bg-brandLightRed hover:scale-105">
                           <span className="flex items-center justify-end w-[25px] mr-1">
@@ -111,7 +118,7 @@ const Wishlist = () => {
                   </form>
                 </div>
                 <div className="mt-6 text-textBlue font-bold text-lg text-center">
-                  Wish List Total: £{wishlistTotal.toFixed(2)}
+                  Wish List Total: <span className="text-brandRed">£{wishlistTotal.toFixed(2)}</span>
                 </div>
                 <Button
                   className="w-full mt-4 shadow-md hover:shadow-lg group inline-flex items-center justify-center font-bold text-sm lg:text-lg min-h-[44px] rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-2 transition-all hover:bg-brandLightGreen hover:scale-105 addToBasket"
@@ -134,7 +141,7 @@ const Wishlist = () => {
             ):''}
             <div className="w-full text-center mt-12">
               <HeadingRibbon>Top Picks</HeadingRibbon>
-              <div className="bg-brandLightBlue pt-12 pb-8 px-4 md:px-8 rounded-xl mt-[-27px] [&_.swiper-pagination]:relative">
+              <div className="bg-brandLightBlue pt-12 pb-8 px-4 md:px-8 rounded-xl mt-[-27px] [&_.swiper-pagination]:relative [&_.swiper-pagination]:mt-2 [&_.swiper-pagination-bullet]:size-3">
                 <Swiper
                   modules={[Autoplay, Pagination]}
                   spaceBetween={10}
@@ -179,9 +186,14 @@ const Wishlist = () => {
                           }}
                           className="cursor-pointer w-full md:w-1/2 flex flex-col justify-between items-center px-2 pb-2 md:py-2"
                         >
-                          <div className="text-xs lg:text-sm xl:text-lg text-brandBlue font-bold leading-[1.2] xl:leading-[1.1] mb-2 md:mb-0">
-                            {product.name}
-                          </div>
+                          <div>
+                            <div className="flex flex-wrap justify-center">
+                                <div className="inline-flex items-center text-xs text-gray-400">{product.brand}</div>
+                            </div>
+                            <div className="text-xs lg:text-sm xl:text-lg text-brandBlue font-bold leading-[1.2] xl:leading-[1.1] mb-2 md:mb-0 line-clamp-3">
+                              {product.name}
+                            </div>
+                           </div>
                           <div>
                             <div className="price">
                               <div className="flex items-end justify-center">

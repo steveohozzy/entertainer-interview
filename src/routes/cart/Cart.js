@@ -150,7 +150,7 @@ const Cart = () => {
             </div>
             <div className="w-full text-center mt-12">
               <HeadingRibbon>You may also like</HeadingRibbon>
-              <div className="bg-brandLightBlue pt-12 pb-8 px-4 md:px-8 rounded-xl mt-[-27px] [&_.swiper-pagination]:relative">
+              <div className="bg-brandLightBlue pt-12 pb-8 px-4 md:px-8 rounded-xl mt-[-27px] [&_.swiper-pagination]:relative [&_.swiper-pagination]:mt-2 [&_.swiper-pagination-bullet]:size-3">
                 <Swiper
                   modules={[Autoplay, Pagination]}
                   spaceBetween={10}
@@ -199,7 +199,7 @@ const Cart = () => {
                             <div className="flex flex-wrap justify-center">
                                 <div className="inline-flex items-center text-xs text-gray-400">{product.brand}</div>
                             </div>
-                            <div className="text-xs lg:text-sm text-brandBlue font-bold leading-[1.2] xl:leading-[1.1] mb-2 md:mb-0 line-clamp-2">
+                            <div className="text-sms lg:text-base text-brandBlue font-bold leading-[1.2] xl:leading-[1.1] mb-2 md:mb-0 line-clamp-2">
                               {product.name}
                             </div>
                           </div>

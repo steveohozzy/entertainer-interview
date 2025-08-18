@@ -109,8 +109,9 @@ const Confirmation = () => {
         <div className="w-full text-center mt-12">
           <HeadingRibbon>Your Next Purchase?</HeadingRibbon>
           <div className="bg-white pt-12 pb-8 px-8 rounded-xl mt-[-27px] shadow-sm">
-            <div className="flex gap-4 justify-center mx-auto [&_.swiper-pagination]:relative [&_.swiper-pagination]:top-[-20px!important]">
+            <div className="flex gap-4 justify-center mx-auto [&_.swiper-pagination]:relative [&_.swiper-pagination]:top-[-20px!important] [&_.swiper-pagination]:mt-2 [&_.swiper-pagination-bullet]:size-3">
               <Swiper
+              className="!pb-2"
                 modules={[Autoplay, Pagination]}
                 spaceBetween={10}
                 slidesPerView={3}
