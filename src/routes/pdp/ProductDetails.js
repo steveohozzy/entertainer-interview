@@ -150,7 +150,7 @@ const ProductDetails = () => {
 
   return (
     <>
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="rounded-xl flex flex-wrap bg-white items-start shadow-sm">
           <div className="relative w-full md:w-2/5 p-4 border-[3px] border-brandNeonBlue rounded-xl [&_.swiper-pagination]:relative [&_.swiper-slide-zoomed]:cursor-move">
             <Swiper

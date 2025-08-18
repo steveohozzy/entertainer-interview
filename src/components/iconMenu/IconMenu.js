@@ -19,7 +19,7 @@ const IconMenu = ({setShowMenu}) => {
   return (
     <div className="overflow-hidden">
       <div className="bg-brandLightBlue">
-        <nav className="max-w-5xl mx-auto text-brandBlue grid grid-cols-6 py-5 lg:grid-cols-12 gap-1 md:gap-2 justify-center px-1 md:px-6">
+        <nav className="max-w-6xl mx-auto text-brandBlue grid grid-cols-6 py-5 lg:grid-cols-12 gap-1 md:gap-2 justify-center px-1 md:px-6">
           <Link
             onClick={handleAccountPopUp}
             className="transition-all text-brandBlue flex flex-col items-center hover:scale-110 group text-[9px] md:text-sm"

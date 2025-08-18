@@ -40,7 +40,7 @@ const Cart = () => {
             <div className="w-[69%] ml-[1%] border-b-4 border-dashed border-gray-200"></div>
           </div>
         </div>
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap py-6">
             <div className="w-full md:w-[66.6666666%] px-1 md:px-3">
               <div className="flex items-end">

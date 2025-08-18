@@ -407,7 +407,7 @@ const Brands = () => {
 
   return (
     <>
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pt-10">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pt-10">
         <div className="text-center mb-8">
           <HeadingRibbon><h1 className="text-3xl capitalize">{id.replace('-', ' ')} Toys</h1></HeadingRibbon>
         </div>
