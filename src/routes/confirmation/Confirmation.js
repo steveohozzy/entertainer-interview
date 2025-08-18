@@ -144,7 +144,7 @@ const Confirmation = () => {
                         <div className="flex flex-wrap justify-center">
                               <div className="inline-flex items-center text-xs text-gray-400">{product.brand}</div>
                           </div>
-                        <div className="text-xs lg:text-sm xl:text-lg text-brandBlue font-bold leading-[1.2] xl:leading-[1.1] mb-2 md:mb-0 line-clamp-2">
+                        <div className="text-xs lg:text-sm text-brandBlue font-bold leading-[1.2] xl:leading-[1.1] mb-2 md:mb-0 line-clamp-2">
                           {product.name}
                         </div>
                         <div>
