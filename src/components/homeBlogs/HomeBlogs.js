@@ -11,7 +11,7 @@ const HomeBlogs = () => {
   const navigate = useNavigate();
 
   return (
-    <div id="blogs" className='w-full text-center mt-10 mb-10'>
+    <div id="blogs" className='w-full text-center mt-14 mb-14'>
             <HeadingRibbon fullWidth={true}>
                 Latest Blogs
             </HeadingRibbon>
