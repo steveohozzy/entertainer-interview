@@ -124,12 +124,12 @@ const Layout = () => {
                   <img
                     src="/jack-logo.svg"
                     alt="The Entertainer"
-                    className="w-[45px] md:w-[59px] transition-all translate-y-2 group-hover:translate-y-0 group-hover:scale-105"
+                    className="w-[45px] md:w-[69px] transition-all translate-y-2 group-hover:translate-y-0 group-hover:scale-105"
                   />
                   <img
                     src="/text-logo.svg"
                     alt="The Entertainer"
-                    className="w-[101px] md:w-[154px] "
+                    className="w-[101px] md:w-[164px] "
                   />
                 </button>
               </div>
