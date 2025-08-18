@@ -22,7 +22,7 @@ const HomeTopPicks = () => {
                 <Swiper
                     modules={[Autoplay]}
                     spaceBetween={20}
-                    slidesPerView={1.5}
+                    slidesPerView={1.2}
                     autoplay={true}
                     breakpoints={{
                       768: {
@@ -49,19 +49,19 @@ const HomeTopPicks = () => {
                                 <div className="flex flex-wrap justify-center mb-1">
                                     <div className="inline-flex items-center text-xs text-gray-400">{product.brand}</div>
                                 </div>
-                                <div className="text-xs lg:text-sm xl:text-base text-brandBlue font-bold leading-[1.2] xl:leading-[1.1] line-clamp-2 mb-2 md:mb-0">{product.name}</div>
+                                <div className="text-sm lg:text-sm xl:text-base text-brandBlue font-bold leading-[1.2] xl:leading-[1.1] line-clamp-3 mb-2 md:mb-0">{product.name}</div>
                             </div>
                             <div>
                                 <div className="price">
                                     <div className="flex items-end justify-center">
-                                        <span className="text-brandRed font-bold text-xs md:text-sm">£{product.price}</span>
+                                        <span className="text-brandRed font-bold text-sm">£{product.price}</span>
                                         {product.originalPrice &&
                                             <span className="line-through text-gray-400 text-[10px] md:text-xs ml-1">£{product.originalPrice}</span>
                                         }
                                     </div>
                                 </div>
                                 <Button 
-                                    className='shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-xs lg:text-sm rounded-[30px] bg-brandGreen text-white py-2 px-2 lg:px-4 lg:pl-0 pl-0 transition-all hover:bg-brandLightGreen hover:scale-105 mt-2 min-h-[44px]'
+                                    className='shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-sm rounded-[30px] bg-brandGreen text-white py-2 px-2 lg:px-4 lg:pl-0 pl-0 transition-all hover:bg-brandLightGreen hover:scale-105 mt-2 min-h-[44px]'
                                     onClick={() => { navigate(`/product-details/${product.id}`); window.scrollTo({top: 0,left: 0,behavior: "smooth",});}}>
                                         Details
                                 </Button>

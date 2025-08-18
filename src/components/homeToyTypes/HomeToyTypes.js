@@ -14,7 +14,7 @@ const HomeToyTypes = () => {
   };
 
   return (
-    <div id="toy-types" className="py-5">
+    <div className="pb-5">
       <Swiper
         modules={[Autoplay]}
         spaceBetween={10}
@@ -31,7 +31,7 @@ const HomeToyTypes = () => {
         }}
         loop
       >
-        <SwiperSlide className="h-auto pb-3 pt-5">
+        <SwiperSlide className="h-auto">
           <button onClick={() => {
             navigate("/category?type=action-figures");
             window.scrollTo({top: 0,left: 0,behavior: "smooth",});
@@ -44,7 +44,7 @@ const HomeToyTypes = () => {
             </div>
           </button>
         </SwiperSlide>
-        <SwiperSlide className="h-auto pb-3 pt-5">
+        <SwiperSlide className="h-auto">
           <button onClick={() => {
             navigate("/category?type=pre-school-toys");
             window.scrollTo({top: 0,left: 0,behavior: "smooth",});
@@ -57,7 +57,7 @@ const HomeToyTypes = () => {
             </div>
           </button>
         </SwiperSlide>
-        <SwiperSlide className="h-auto pb-3 pt-5">
+        <SwiperSlide className="h-auto">
           <button onClick={() => {
             navigate("/category?type=arts-and-crafts");
             window.scrollTo({top: 0,left: 0,behavior: "smooth",});
@@ -70,7 +70,7 @@ const HomeToyTypes = () => {
             </div>
           </button>
         </SwiperSlide>
-        <SwiperSlide className="h-auto pb-3 pt-5">
+        <SwiperSlide className="h-auto">
           <button onClick={() => {
             navigate("/category?type=games-and-puzzles");
             window.scrollTo({top: 0,left: 0,behavior: "smooth",});
@@ -83,7 +83,7 @@ const HomeToyTypes = () => {
             </div>
           </button>
         </SwiperSlide>
-        <SwiperSlide className="h-auto pb-3 pt-5">
+        <SwiperSlide className="h-auto">
           <button onClick={goToLinkHandler} className="transition-all rounded-xl bg-white px-2 py-2.5 md:py-4 flex flex-col items-center shadow-md justify-center hover:-translate-y-3 hover:shadow-lg">
             <div className="mb-2">
               <img className="px-3 md:px-6" src="https://www.thetoyshop.com/medias/300Wx300H-567729-Primary?context=bWFzdGVyfGltYWdlc3w2MjE2NnxpbWFnZS9qcGVnfGFEVm1MMmhpWVM4eE1qVXlNalF5Tnprd09ERXlOaTh6TURCWGVETXdNRWhmTlRZM056STVYMUJ5YVcxaGNua3xmOTk0MzNjOGJmNjk4ODk0NjZhZjA1N2EwZWY5OGI3ZDhkNjg2MTJlZmE2YjI0Yzg5Mjc0M2RjOTNiODJkNjg1" alt="Construction Toys" />
@@ -93,7 +93,7 @@ const HomeToyTypes = () => {
             </div>
           </button>
         </SwiperSlide>
-        <SwiperSlide className="h-auto pb-3 pt-5">
+        <SwiperSlide className="h-auto">
           <button onClick={goToLinkHandler} className="transition-all rounded-xl bg-white px-2 py-2.5 md:py-4 flex flex-col items-center shadow-md justify-center hover:-translate-y-3 hover:shadow-lg">
             <div className="mb-2">
               <img className="px-3 md:px-6" src="https://www.thetoyshop.com/medias/300Wx300H-577630-577630-6.jpg?context=bWFzdGVyfGltYWdlc3w0MjAyM3xpbWFnZS9qcGVnfGFETm1MMmc0WlM4eE1qVTBNek01TURZM09UQTNNQzh6TURCWGVETXdNRWhmTlRjM05qTXdYelUzTnpZek1DMDJMbXB3Wnd8NWEzODVhMzA3YTIxZGY0NDI4ZDM3MDg4MzNhNzhmYmRiNDcyYzIyZTJkMmU4YmNhZjIwM2EyYTI5MWQwMjM2NQ" alt="Electronic Toys" />
@@ -103,7 +103,7 @@ const HomeToyTypes = () => {
             </div>
           </button>
         </SwiperSlide>
-        <SwiperSlide className="h-auto pb-3 pt-5">
+        <SwiperSlide className="h-auto">
           <button onClick={goToLinkHandler} className="transition-all rounded-xl bg-white px-2 py-2.5 md:py-4 flex flex-col items-center shadow-md justify-center hover:-translate-y-3 hover:shadow-lg">
             <div className="mb-2">
               <img className="px-3 md:px-6" src="https://www.thetoyshop.com/medias/300Wx300H-564426-Primary?context=bWFzdGVyfGltYWdlc3wzNTAxOXxpbWFnZS9qcGVnfGFHSmtMMmhoTWk4eE1qQTROVGMwTlRZeE5EZzNPQzh6TURCWGVETXdNRWhmTlRZME5ESTJYMUJ5YVcxaGNua3xlNTliZmI5ZGE0MTMwNjI1YjNiNDg0NzU4OWM1NjBlY2U2Y2JhMWFmNjNkNDY5NjM3N2U5YmNlMTViZDhmNzlh" alt="Dolls" />
