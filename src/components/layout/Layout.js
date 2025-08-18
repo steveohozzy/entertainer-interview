@@ -120,7 +120,7 @@ const Layout = () => {
                     left: 0,
                     behavior: "smooth",
                   });
-                }} className="flex">
+                }} className="flex items-center">
                   <img
                     src="/jack-logo.svg"
                     alt="The Entertainer"
