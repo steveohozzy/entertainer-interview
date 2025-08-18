@@ -507,7 +507,7 @@ const Plp = () => {
         {/* Filter and Sort Header */}
         <div
           id="filters-bar"
-          className={`sticky z-40 bg-brandLightBlue py-2 mb-4 transition-all duration-300 ${showHeader && ''} ml-[calc(51%-50vw)] mr-[calc(51%-50vw)] pl-[calc(50%-49vw)] pr-[calc(50%-49vw)] shadow-sm`}
+          className={`sticky z-40 bg-brandLightBlue py-2 mb-4 transition-all duration-300 ml-[calc(51%-50vw)] mr-[calc(51%-50vw)] pl-[calc(50%-49vw)] pr-[calc(50%-49vw)] shadow-sm`}
         >
           <div className="flex items-center gap-3 justify-between flex-wrap bg-brandLightBlue max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-3 gap-2 w-full flex-wrap">
