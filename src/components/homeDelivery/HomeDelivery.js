@@ -6,7 +6,7 @@ const HomeDelivery = () => {
   const navigate = useNavigate();
 
   const goToLinkHandler = () => {
-      navigate("/category");
+      navigate("/store-finder");
       window.scrollTo({top: 0,left: 0,behavior: "smooth",});
   };
   return (
