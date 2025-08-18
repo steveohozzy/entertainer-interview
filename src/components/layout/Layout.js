@@ -112,7 +112,7 @@ const Layout = () => {
                     <span className="sr-only">View your favourites</span>
                 </button>
               </div>
-              <div className="flex items-center space-x-4 pt-2 ml-1 md:pt-3 md:ml-0 group">
+              <div className="flex items-center space-x-4 pt-2 ml-1  md:ml-0 group">
                 <button onClick={() => {
                   navigate('/');
                    window.scrollTo({
@@ -124,12 +124,12 @@ const Layout = () => {
                   <img
                     src="/jack-logo.svg"
                     alt="The Entertainer"
-                    className="w-[45px] md:w-[69px] transition-all translate-y-2.5 group-hover:translate-y-0 group-hover:scale-105"
+                    className="w-[45px] md:w-[69px] lg:w-[79px] transition-all translate-y-2.5 group-hover:translate-y-0 group-hover:scale-105"
                   />
                   <img
                     src="/text-logo.svg"
                     alt="The Entertainer"
-                    className="w-[101px] md:w-[164px] "
+                    className="w-[101px] md:w-[164px] lg:w-[174px]"
                   />
                 </button>
               </div>
