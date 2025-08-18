@@ -8,7 +8,7 @@ module.exports = {
       sans: ['"Fredoka", sans-serif'],
     },
     fontWeight: {
-      'bold': '500'
+      'bold': '600'
     },
     extend: {
       colors: {
