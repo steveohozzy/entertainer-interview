@@ -102,7 +102,7 @@ const Menu = () => {
           showMenu ? "translate-x-0 top-5 left-4" : "-translate-x-full"
         }`}
       >
-        <div ref={menuRef} className="bg-white overflow-hidden relative rounded-3xl shadow-xl">
+        <div ref={menuRef} className="bg-white overflow-hidden relative rounded-3xl shadow-xl max-h-[calc(100vh-60px)]">
           {/* Animated Menu Categories */}
           <nav className="relative space-y-2 pt-6 pb-4">
             <div className="h-full w-[40px] bg-brandBlue rounded-full absolute left-0 top-0"></div>

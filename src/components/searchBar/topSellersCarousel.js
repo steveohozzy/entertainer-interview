@@ -37,7 +37,7 @@ const TopSellersCarousel = ({setShowSearchBox, filteredProducts, startedSearch})
                 <div className={`grid overflow-hidden grow transition-all duration-300 ease-in-out text-slate-600 text-sm "grid-rows-[1fr] opacity-100"
                 }`}>
                   <div className="overflow-hidden flex flex-col">
-                    <h3 className="text-[10px] font-bold text-brandBlue my-2 grow leading-[1.2]">{product.name}</h3>
+                    <h3 className="text-[10px] font-bold text-brandBlue my-2 grow leading-[1.2] line-clamp-2">{product.name}</h3>
                     <div className="price">
                       <div className="flex items-end">
                         <span className="text-brandRed font-bold text-[12px]">

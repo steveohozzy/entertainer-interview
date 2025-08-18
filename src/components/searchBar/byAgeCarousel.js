@@ -17,7 +17,7 @@ const ByAgeCarousel = ({setShowSearchBox}) => {
           modules={[Autoplay]}
           pagination={{ clickable: true }}
           autoplay={true}
-          slidesPerView={3.5}
+          slidesPerView={4}
           spaceBetween={10}
           breakpoints={{
           768: {
@@ -26,61 +26,61 @@ const ByAgeCarousel = ({setShowSearchBox}) => {
         }}
         >
           <SwiperSlide>
-            <button className="transition-all flex flex-col rounded-full items-center scale-90 justify-center bg-yellow-600 w-[95px] h-[95px] shadow-sm hover:shadow-md hover:rotate-[20deg] hover:scale-100 text-white font-bold text-shadow-sm" onClick={() => {navigate('/category'); setShowSearchBox(false);}}>
-              <div className="text-3xl text-shadow-sm leading-[1]">
+            <button className="transition-all flex flex-col rounded-full items-center scale-90 justify-center bg-yellow-600 w-[75px] h-[75px] shadow-sm hover:shadow-md hover:rotate-[20deg] hover:scale-100 text-white font-bold text-shadow-sm" onClick={() => {navigate('/category'); setShowSearchBox(false);}}>
+              <div className="text-2xl text-shadow-sm leading-[1]">
                 0-3
               </div>
-              <div className="text-xl text-shadow-sm leading-[1]">
+              <div className="text-lg text-shadow-sm leading-[1]">
                 years
               </div>
             </button>
         </SwiperSlide>
         <SwiperSlide>
-            <button className="transition-all flex flex-col rounded-full items-center scale-90 justify-center bg-brandRed w-[95px] h-[95px] shadow-sm hover:shadow-md hover:rotate-[20deg] hover:scale-100 text-white font-bold text-shadow-sm" onClick={() => {navigate('/category'); setShowSearchBox(false);}}>
-              <div className="text-3xl text-shadow-sm leading-[1]">
+            <button className="transition-all flex flex-col rounded-full items-center scale-90 justify-center bg-brandRed w-[75px] h-[75px] shadow-sm hover:shadow-md hover:rotate-[20deg] hover:scale-100 text-white font-bold text-shadow-sm" onClick={() => {navigate('/category'); setShowSearchBox(false);}}>
+              <div className="text-2xl text-shadow-sm leading-[1]">
                 3-5
               </div>
-              <div className="text-xl text-shadow-sm leading-[1]">
+              <div className="text-lg text-shadow-sm leading-[1]">
                 years
               </div>
             </button>
         </SwiperSlide>
         <SwiperSlide>
-            <button className="transition-all flex flex-col rounded-full items-center scale-90 justify-center bg-purple-700 w-[95px] h-[95px] shadow-sm hover:shadow-md hover:rotate-[20deg] hover:scale-100 text-white font-bold text-shadow-sm" onClick={() => {navigate('/category'); setShowSearchBox(false);}}>
-              <div className="text-3xl text-shadow-sm leading-[1]">
+            <button className="transition-all flex flex-col rounded-full items-center scale-90 justify-center bg-purple-700 w-[75px] h-[75px] shadow-sm hover:shadow-md hover:rotate-[20deg] hover:scale-100 text-white font-bold text-shadow-sm" onClick={() => {navigate('/category'); setShowSearchBox(false);}}>
+              <div className="text-2xl text-shadow-sm leading-[1]">
                 5-8
               </div>
-              <div className="text-xl text-shadow-sm leading-[1]">
+              <div className="text-lg text-shadow-sm leading-[1]">
                 years
               </div>
             </button>
         </SwiperSlide>
         <SwiperSlide>
-            <button className="transition-all flex flex-col rounded-full items-center scale-90 justify-center bg-cyan-500 w-[95px] h-[95px] shadow-sm hover:shadow-md hover:rotate-[20deg] hover:scale-100 text-white font-bold text-shadow-sm" onClick={() => {navigate('/category'); setShowSearchBox(false);}}>
-              <div className="text-3xl text-shadow-sm leading-[1]">
+            <button className="transition-all flex flex-col rounded-full items-center scale-90 justify-center bg-cyan-500 w-[75px] h-[75px] shadow-sm hover:shadow-md hover:rotate-[20deg] hover:scale-100 text-white font-bold text-shadow-sm" onClick={() => {navigate('/category'); setShowSearchBox(false);}}>
+              <div className="text-2xl text-shadow-sm leading-[1]">
                 8-11
               </div>
-              <div className="text-xl text-shadow-sm leading-[1]">
+              <div className="text-lg text-shadow-sm leading-[1]">
                 years
               </div>
             </button>
         </SwiperSlide>
         <SwiperSlide>
-            <button className="transition-all flex flex-col rounded-full items-center scale-90 justify-center bg-green-500 w-[95px] h-[95px] shadow-sm hover:shadow-md hover:rotate-[20deg] hover:scale-100 text-white font-bold text-shadow-sm" onClick={() => {navigate('/category'); setShowSearchBox(false);}}>
-              <div className="text-3xl text-shadow-sm leading-[1]">
+            <button className="transition-all flex flex-col rounded-full items-center scale-90 justify-center bg-green-500 w-[75px] h-[75px] shadow-sm hover:shadow-md hover:rotate-[20deg] hover:scale-100 text-white font-bold text-shadow-sm" onClick={() => {navigate('/category'); setShowSearchBox(false);}}>
+              <div className="text-2xl text-shadow-sm leading-[1]">
                 11+
               </div>
-              <div className="text-xl text-shadow-sm leading-[1]">
+              <div className="text-lg text-shadow-sm leading-[1]">
                 years
               </div>
             </button>
         </SwiperSlide>
         <SwiperSlide>
-            <button className="transition-all flex flex-col rounded-full items-center scale-90 justify-center bg-green-900 w-[95px] h-[95px] shadow-sm hover:shadow-md hover:rotate-[20deg] hover:scale-100 text-white font-bold text-shadow-sm" onClick={() => {navigate('/category'); setShowSearchBox(false);}}>
-              <div className="text-3xl text-shadow-sm leading-[1]">
+            <button className="transition-all flex flex-col rounded-full items-center scale-90 justify-center bg-green-900 w-[75px] h-[75px] shadow-sm hover:shadow-md hover:rotate-[20deg] hover:scale-100 text-white font-bold text-shadow-sm" onClick={() => {navigate('/category'); setShowSearchBox(false);}}>
+              <div className="text-2xl text-shadow-sm leading-[1]">
                 Big
               </div>
-              <div className="text-xl text-shadow-sm leading-[1]">
+              <div className="text-lg text-shadow-sm leading-[1]">
                 Kids
               </div>
             </button>
