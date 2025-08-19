@@ -506,7 +506,7 @@ const ProductCard = ({ product }) => {
               className="absolute top-4 inset-0 w-full object-cover opacity-0 group-hover:opacity-100 transition-all duration-300"
             />
           </button>
-          <div className="absolute top-2 left-1/2 -translate-x-1/2 flex w-full gap-1 flex justify-center">
+          <div className="absolute top-2 left-1/2 -translate-x-1/2 flex w-full gap-1 flex justify-center drop-shadow-md">
             {isNew && (
               <div className="inline-flex items-center rounded-lg px-2 py-0.5 text-xs md:text-sm font-bold bg-brandGreen text-white">
                 <span className="shadow-text-green">NEW TOYS</span>
