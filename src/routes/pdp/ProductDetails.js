@@ -866,11 +866,11 @@ const ProductDetails = () => {
 
         <button
           onClick={() => setTabOpen(!tabOpen)}
-          className={`fixed z-20 top-1/2 -translate-y-1/2 transition-all -rotate-90 bg-brandRed py-2 px-6 text-lg rounded-tr-xl rounded-tl-xl font-bold text-white shadow-[-5px_-5px_10px_1px_#bbb] ${
+          className={`fixed z-20 top-1/2 -translate-y-1/2 transition-all -rotate-90 bg-brandRed py-2 px-6 text-lg rounded-tr-xl rounded-tl-xl font-bold text-white text shadow-[-5px_-5px_10px_1px_#bbb] ${
             tabOpen ? "right-[138px]" : "right-[-52px]"
           }`}
         >
-          you may like
+          <span className="shadow-text-red">you may like</span>
         </button>
         {tabOpen && (
           <div
@@ -1006,7 +1006,7 @@ const ProductDetails = () => {
               <div className="w-full md:w-auto">
                 <div className="flex md:flex-col justify-between h-full items-end mt-3 md:mt-0">
                   <Button
-                    className="shadow-md hover:shadow-lg group inline-flex items-center justify-center text-md rounded-[30px] bg-brandRed text-white py-2 px-6 transition-all hover:bg-brandLightRed hover:scale-105"
+                    className="shadow-md hover:shadow-lg group inline-flex items-center justify-center text-md rounded-[30px] bg-brandRed text-white py-2 px-6 transition-all hover:bg-brandLightRed hover:scale-105 font-semibold"
                     removeIcons={true}
                     iconpath={
                       <svg
