@@ -111,8 +111,8 @@ const Confirmation = () => {
               <span className='bg-gradient-to-r from-brandBlue via-textBlue to-brandBlue bg-clip-text md:!leading-[1.2] text-transparent textStroke'>Your Next Purchase?</span>
             </div>
           </div>
-          <div className="bg-white pt-12 pb-8 px-3 rounded-xl mt-[-27px] shadow-sm">
-            <div className="flex gap-4 justify-center mx-auto [&_.swiper-pagination]:relative [&_.swiper-pagination]:top-[-20px!important] [&_.swiper-pagination]:mt-2 [&_.swiper-pagination-bullet]:size-3">
+          <div className="bg-white pt-8 pb-6 px-3 rounded-xl mt-[-27px] shadow-sm">
+            <div className="flex gap-4 justify-center mx-auto [&_.swiper-pagination]:relative [&_.swiper-pagination]:top-[-10px!important] [&_.swiper-pagination]:mt-2 [&_.swiper-pagination-bullet]:size-3">
               <Swiper
                 className="!pb-5 !px-2.5"
                 modules={[Autoplay, Pagination]}
