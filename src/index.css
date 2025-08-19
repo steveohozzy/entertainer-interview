@@ -1,41 +1,55 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer utilities {
-   .ribbon {
-       clip-path: polygon(0 0,100% 0,calc(100% - 14px) 50%,100% 100%,0 100%, 14px 50%);
-       filter:url(#round);
-   }
-   :root {
-    --swiper-pagination-color: #407EC9;
-    --swiper-pagination-bullet-inactive-color: #407EC9;
+  .ribbon {
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      calc(100% - 14px) 50%,
+      100% 100%,
+      0 100%,
+      14px 50%
+    );
+    filter: url(#round);
+  }
+  :root {
+    --swiper-pagination-color: #407ec9;
+    --swiper-pagination-bullet-inactive-color: #407ec9;
     --swiper-pagination-bullet-inactive-opacity: 0.5;
     --swiper-pagination-bottom: 0;
-    }
-    .h-auto {
-        height: auto !important;
-    }
+  }
+  .h-auto {
+    height: auto !important;
+  }
 
-    .shadow-text-red {
-        text-shadow: -1px -1px 0 #000, 1px -1px 0 #A7170C, -1px 1px 0 #A7170C, 1px 1px 0 #A7170C;
-    }
+  .shadow-text-red {
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #a7170c, -1px 1px 0 #a7170c,
+      1px 1px 0 #a7170c;
+  }
 
-    .shadow-text-green {
-        text-shadow: -1px -1px 0 #000, 1px -1px 0 #067F3D, -1px 1px 0 #067F3D, 1px 1px 0 #067F3D;
-    }
-    .no-scrollbar::-webkit-scrollbar {
-        display: none;
-    }
+  .shadow-text-green {
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #067f3d, -1px 1px 0 #067f3d,
+      1px 1px 0 #067f3d;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
 
-    /* Hide scrollbar for IE, Edge and Firefox */
-    .no-scrollbar {
-        -ms-overflow-style: none;  /* IE and Edge */
-        scrollbar-width: none;  /* Firefox */
-    }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
 
-    .body-noscroll {
-        overflow: hidden;
-    }
+  .body-noscroll {
+    overflow: hidden;
+  }
+
+  .textStroke {
+    filter: drop-shadow(0 2px #fff) drop-shadow(0 -2px #fff)
+      drop-shadow(2px 0 #fff) drop-shadow(-2px 0 #fff);
+  }
 }
