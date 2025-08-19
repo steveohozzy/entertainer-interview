@@ -4,7 +4,6 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/autoplay";
 import { useNavigate } from "react-router-dom";
-import HeadingRibbon from "../headingRibbon/headingRibbon";
 import Button from "../button/Button";
 
 import { products } from "../../data/products";
