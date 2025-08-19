@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-import HeadingRibbon from "../../components/headingRibbon/headingRibbon";
 import Button from "../../components/button/Button";
 import { Star } from "lucide-react";
 
@@ -173,9 +172,9 @@ const Events = () => {
     <>
       <div className="bg-white pt-6 pb-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <HeadingRibbon fullWidth={true}>
-            <h1>Store Events</h1>
-          </HeadingRibbon>
+          <div className='flex justify-center'>
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold md:!leading-[1.2] text-transparent text-cente drop-shadow-md"><span className='bg-gradient-to-r from-brandBlue via-textBlue to-brandBlue bg-clip-text md:!leading-[1.2] text-transparent textStroke'>Store Events</span></h1>
+          </div>
           <p className="text-textBlue py-6">
             Can’t decide what to do today? Here at The Entertainer, we have lots
             of free events and kids' activities for children of all ages. Scroll

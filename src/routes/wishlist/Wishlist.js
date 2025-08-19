@@ -2,7 +2,6 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Button from "../../components/button/Button";
 import WishlistProductTile from "../../components/wishlistProductTile/WishlistProductTile";
-import HeadingRibbon from "../../components/headingRibbon/headingRibbon";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
@@ -140,11 +139,16 @@ const Wishlist = () => {
               </div>
             ):''}
             <div className="w-full text-center mt-12">
-              <HeadingRibbon>Top Picks</HeadingRibbon>
-              <div className="bg-brandLightBlue pt-12 pb-8 px-4 md:px-8 rounded-xl mt-[-27px] [&_.swiper-pagination]:relative [&_.swiper-pagination]:mt-2 [&_.swiper-pagination-bullet]:size-3">
+              <div className='flex justify-center'>
+                <div className="text-2xl md:text-3xl lg:text-4xl font-bold md:!leading-[1.2] text-transparent text-center mb-3 drop-shadow-md">
+                  <span className='bg-gradient-to-r from-brandBlue via-textBlue to-brandBlue bg-clip-text md:!leading-[1.2] text-transparent textStroke'>You May Also Like</span>
+                </div>
+              </div>
+              <div className="bg-brandLightBlue pt-10 pb-8 px-1 md:px-5 rounded-xl mt-[-27px] [&_.swiper-pagination]:relative [&_.swiper-pagination]:mt-2 [&_.swiper-pagination-bullet]:size-3">
                 <Swiper
+                className="!px-3"
                   modules={[Autoplay, Pagination]}
-                  spaceBetween={10}
+                  spaceBetween={20}
                   slidesPerView={2.25}
                   breakpoints={{
                     768: {
@@ -156,7 +160,8 @@ const Wishlist = () => {
                   loop
                 >
                   {products.slice(0, 6).map((product) => (
-                    <SwiperSlide className="h-auto">
+                    
+                    <SwiperSlide className="h-auto pt-2 pb-6">
                       <div
                         onClick={() => {
                           navigate(`/product-details/${product.id}`);
@@ -166,7 +171,7 @@ const Wishlist = () => {
                             behavior: "smooth",
                           });
                         }}
-                        className="cursor-pointer flex flex-wrap bg-white rounded-xl shadow-md h-full"
+                        className="cursor-pointer flex flex-wrap bg-white rounded-xl shadow-md h-full hover:shadow-lg hover:scale-105 transition-all"
                       >
                         <div className="border-[3px] border-brandBlue rounded-lg w-full md:w-1/2 mb-3 md:mb-0">
                           <img
@@ -190,10 +195,10 @@ const Wishlist = () => {
                             <div className="flex flex-wrap justify-center">
                                 <div className="inline-flex items-center text-xs text-gray-400">{product.brand}</div>
                             </div>
-                            <div className="text-xs lg:text-sm xl:text-lg text-brandBlue font-bold leading-[1.2] xl:leading-[1.1] mb-2 md:mb-0 line-clamp-3">
+                            <div className="text-sms lg:text-base text-brandBlue font-bold leading-[1.2] xl:leading-[1.1] mb-2 md:mb-0 line-clamp-2">
                               {product.name}
                             </div>
-                           </div>
+                          </div>
                           <div>
                             <div className="price">
                               <div className="flex items-end justify-center">
