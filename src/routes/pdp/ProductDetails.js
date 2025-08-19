@@ -640,41 +640,47 @@ const ProductDetails = () => {
                     separately) with either a tow hook or on the flatbed!
                   </p>
 
-                  <p className="mb-0">Product features:</p>
-                  <ul className="list-inside list-disc">
-                    <li className="mb-1">
+                  <p className="mb-2 font-semibold text-lg">Product features:</p>
+                  <ul className="list-none">
+                    <li className="flex items-start mb-3 before:aspect-square before:mt-1.5 before:mr-2 before:block before:h-2.5 before:w-2.5 before:rounded-full before:bg-brandBlue">
                       Includes: 1x Hot Wheels Monster Trucks Big Rigs Vehicle
                       (styles vary) Get the adventures movin' with a Hot Wheels
                       Monster Trucks Big Rig!
                     </li>
-                    <li className="mb-1">
+                    <li className="flex items-start mb-3 before:aspect-square before:mt-1.5 before:mr-2 before:block before:h-2.5 before:w-2.5 before:rounded-full before:bg-brandBlue">
                       These Big Rigs feature six wheels to go even bigger on the
                       Monster Truck action
                     </li>
-                    <li className="mb-1">
+                    <li className="flex items-start mb-3 before:aspect-square before:mt-1.5 before:mr-2 before:block before:h-2.5 before:w-2.5 before:rounded-full before:bg-brandBlue">
                       Each 1:64 scale die-cast vehicle captures the personality
                       of fan-favourite Monster Truck creatures and characters
                       with the eye-catching designs that fans love
                     </li>
-                    <li className="mb-1">
+                    <li className="flex items-start mb-3 before:aspect-square before:mt-1.5 before:mr-2 before:block before:h-2.5 before:w-2.5 before:rounded-full before:bg-brandBlue">
                       Kids can haul additional 1:64 scale vehicles on the
                       flatbed or with a tow hook on the Big Rig (sold
                       separately)
                     </li>
-                    <li className="mb-1">Suitable for ages 3 years +</li>
+                    <li className="flex items-start mb-3 before:aspect-square before:mt-1.5 before:mr-2 before:block before:h-2.5 before:w-2.5 before:rounded-full before:bg-brandBlue">
+                      Suitable for ages 3 years +
+                    </li>
                   </ul>
-                  <p className="text-lg font-bold mt-2">Specifications</p>
-                  <p>
+                  <p className="text-lg font-bold mt-4">Specifications</p>
+                  <p className="mb-1">
                     Manufacturer: <span className="font-bold">MATTEL TOYS</span>
-                    <br />
+                  </p>
+                  <p className="mb-1">
                     Manufacturer Number:
                     <span className="font-bold">HWN86</span>
-                    <br />
+                  </p>
+                  <p className="mb-1">
                     Our Product Number:
                     <span className="font-bold">566798</span>
-                    <br />
+                  </p>
+                  <p>
                     Safety Information:
-                    <br />
+                  </p>
+                  <p>
                     <span className="font-bold">
                       WARNING. Not suitable for children under 36 months. Small
                       Parts. Choking Hazard.
@@ -687,7 +693,7 @@ const ProductDetails = () => {
         </div>
 
         <div className="w-full text-center mt-16">
-          <HeadingRibbon>Frequently Bought Together</HeadingRibbon>
+          <div className="text-2xl md:text-3xl lg:text-4xl font-bold md:!leading-[1.2] text-transparent text-center mt-5 mb-3 md:mt-12 md:mb-3.5 drop-shadow-md"><span className='bg-gradient-to-r from-brandBlue via-textBlue to-brandBlue bg-clip-text md:!leading-[1.2] text-transparent textStroke'>Frequently Bought Together</span></div>
           <div className="bg-white pt-12 pb-8 px-6 md:px-8 rounded-xl mt-[-27px] shadow-sm">
             <div
               id="bundle"
@@ -769,7 +775,11 @@ const ProductDetails = () => {
         </div>
 
         <div className="w-full text-center mt-16">
-          <HeadingRibbon>Top Picks</HeadingRibbon>
+          <div className="text-2xl md:text-3xl lg:text-4xl font-bold md:!leading-[1.2] text-transparent text-center mt-5 mb-3 md:mt-12 md:mb-3.5 drop-shadow-md">
+            <span className='bg-gradient-to-r from-brandBlue via-textBlue to-brandBlue bg-clip-text md:!leading-[1.2] text-transparent textStroke'>
+              Top picks
+            </span>
+          </div>
           <div className="bg-white pt-12 pb-5 px-3 rounded-xl mt-[-27px] shadow-sm">
             <div className="flex gap-4 justify-center mx-auto [&_.swiper-pagination]:relative [&_.swiper-pagination]:top-[-20px!important] [&_.swiper-pagination]:mt-3 [&_.swiper-pagination-bullet]:size-3">
               <Swiper
@@ -924,7 +934,11 @@ const ProductDetails = () => {
         </div>
 
         <div id="reviews" className="w-full text-center mt-16">
-          <HeadingRibbon fullWidth={true}>Reviews</HeadingRibbon>
+          <div className="text-2xl md:text-3xl lg:text-4xl font-bold md:!leading-[1.2] text-transparent text-center mt-5 mb-3 md:mt-12 md:mb-3.5 drop-shadow-md">
+            <span className='bg-gradient-to-r from-brandBlue via-textBlue to-brandBlue bg-clip-text md:!leading-[1.2] text-transparent textStroke'>
+              Reviews
+            </span>
+          </div>
           <div className="bg-white pt-12 pb-8 px-8 rounded-xl mt-[-27px] shadow-sm">
             <div className="flex justify-between flex-wrap">
               <div className="w-[260px]">

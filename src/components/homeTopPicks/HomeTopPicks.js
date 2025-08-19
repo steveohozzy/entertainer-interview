@@ -13,11 +13,13 @@ const HomeTopPicks = () => {
   const navigate = useNavigate();
 
   return (
-    <div id="top-picks" className='w-full text-center mt-4 md:mt-9 pt-5'>
-            <HeadingRibbon fullWidth={true}>
-                Top Picks
-            </HeadingRibbon>
-            <div className='pt-5 rounded-xl'>
+    <div id="top-picks" className='w-full text-center pt-5'>
+            <h3 id="offers" className="text-3xl md:text-4xl lg:text-5xl font-bold md:!leading-[1.2] text-transparent text-center mt-5 mb-1 md:mt-12 drop-shadow-md">
+                <span className='bg-gradient-to-r from-brandBlue via-textBlue to-brandBlue bg-clip-text md:!leading-[1.2] text-transparent textStroke'>
+                    Top Picks
+                </span>
+            </h3>
+            <div className='pt-2 md:pt-5 rounded-xl'>
                 <div className='flex gap-4 justify-center mx-auto'>
                 <Swiper
                     modules={[Autoplay]}
