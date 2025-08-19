@@ -1045,7 +1045,7 @@ const ProductDetails = () => {
             </div>
             <div className="price">
               <div className="flex items-end">
-                <span className="text-brandRed font-bold text-sm md:text-base">
+                <span className="text-brandRed font-bold text-sm md:text-base md:!leading-[1.3]">
                   £{product.price}
                 </span>
                 {product.originalPrice && (
