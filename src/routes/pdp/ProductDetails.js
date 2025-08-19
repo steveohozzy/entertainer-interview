@@ -809,9 +809,9 @@ const ProductDetails = () => {
                       >
                         <div>
                           <div className="flex flex-wrap justify-center">
-                              <div className="inline-flex items-center text-[10px] md:text-xs text-gray-400">{product.brand}</div>
+                              <div className="inline-flex items-center text-[10px] md:text-xs mb-1 text-gray-400">{product.brand}</div>
                           </div>
-                          <div className="line-clamp-2 text-xs lg:text-sm xl:text-base text-brandBlue font-bold leading-[1.2] xl:leading-[1.1] mb-2 md:mb-0">
+                          <div className="line-clamp-3 text-xs lg:text-base text-brandBlue font-bold leading-[1.2] xl:leading-[1.1] mb-2 md:mb-0">
                             {product.name}
                           </div>
                         </div>
