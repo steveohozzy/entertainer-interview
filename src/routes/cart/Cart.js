@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import Button from "../../components/button/Button";
 import CartProductTile from "../../components/cartProductTile/CartProductTile";
 import Dropdown from "../../components/dropdown/Dropdown";
-import HeadingRibbon from "../../components/headingRibbon/headingRibbon";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
@@ -175,9 +174,14 @@ const Cart = () => {
               </div>
             </div>
             <div className="w-full text-center mt-12">
-              <HeadingRibbon>You may also like</HeadingRibbon>
-              <div className="bg-brandLightBlue pt-12 pb-8 px-4 md:px-8 rounded-xl mt-[-27px] [&_.swiper-pagination]:relative [&_.swiper-pagination]:mt-2 [&_.swiper-pagination-bullet]:size-3">
+              <div className='flex justify-center'>
+                <div className="text-2xl md:text-3xl lg:text-4xl font-bold md:!leading-[1.2] text-transparent text-center mb-3 drop-shadow-md">
+                  <span className='bg-gradient-to-r from-brandBlue via-textBlue to-brandBlue bg-clip-text md:!leading-[1.2] text-transparent textStroke'>You May Also Like</span>
+                </div>
+              </div>
+              <div className="bg-brandLightBlue pt-10 pb-8 px-1 md:px-5 rounded-xl mt-[-27px] [&_.swiper-pagination]:relative [&_.swiper-pagination]:mt-2 [&_.swiper-pagination-bullet]:size-3">
                 <Swiper
+                className="!px-3"
                   modules={[Autoplay, Pagination]}
                   spaceBetween={20}
                   slidesPerView={2.25}

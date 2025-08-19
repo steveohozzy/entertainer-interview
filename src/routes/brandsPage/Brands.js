@@ -14,7 +14,6 @@ import {
 import ProductCard from "../../components/productCard/productCard";
 import Dropdown from "../../components/dropdown/Dropdown";
 import { useLocation } from "react-router-dom";
-import HeadingRibbon from "../../components/headingRibbon/headingRibbon";
 
 const Brands = () => {
   const [selectedBrands, setSelectedBrands] = useState([]);

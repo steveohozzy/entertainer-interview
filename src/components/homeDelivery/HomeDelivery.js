@@ -37,8 +37,8 @@ const HomeDelivery = () => {
 
         <div className="my-5">
           <div className='flex justify-center'>
-                <h3 id="offers" className="text-xl md:text-2xl lg:text-3xl font-bold md:!leading-[1.2] text-transparent text-center drop-shadow-md"><span className='bg-gradient-to-r from-brandBlue via-textBlue to-brandBlue bg-clip-text md:!leading-[1.2] text-transparent textStroke'>We Love to Deliver</span></h3>
-            </div>
+            <h3 id="offers" className="text-xl md:text-2xl lg:text-3xl font-bold md:!leading-[1.2] text-transparent text-center drop-shadow-md"><span className='bg-gradient-to-r from-brandBlue via-textBlue to-brandBlue bg-clip-text md:!leading-[1.2] text-transparent textStroke'>We Love to Deliver</span></h3>
+          </div>
         </div>
         <div className="flex gap-2 bg-white rounded-xl shadow-lg p-6 mb-5 leading-[1.2]">
           <div className="w-1/3">

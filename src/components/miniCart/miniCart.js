@@ -7,7 +7,6 @@ import { setIsCartOpen } from "../../store/cart/cartReducer";
 import Button from "../../components/button/Button";
 import CartProductTile from "../../components/cartProductTile/CartProductTile";
 import Dropdown from "../../components/dropdown/Dropdown";
-import HeadingRibbon from "../../components/headingRibbon/headingRibbon";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
@@ -84,7 +83,7 @@ const MiniCart = () => {
             )}
           </div>
 
-          <div className="bg-gray-200 border-4 border-gray-400 py-3 px-4 rounded-md">
+          <div className="bg-gray-200 border-4 border-gray-400 py-3 px-4 rounded-md mt-2">
             <Dropdown
               title="Use a promo code"
               className="text-brandBlue font-bold flex items-center justify-center w-full"
@@ -105,20 +104,23 @@ const MiniCart = () => {
             />
           </div>
 
-          <div className="w-full text-center mt-4">
-            <HeadingRibbon smallerText={true}>
-              <button
-                className="flex items-center"
-                onClick={() => setRecsDetailsOpen(!recsDetailsOpen)}
-              >
-                You may also like...
-                <span
-                  className={`w-0 h-0 ml-2 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-t-[8px] border-white transition-all ${
-                    recsDetailsOpen && "rotate-180"
-                  }`}
-                ></span>
-              </button>
-            </HeadingRibbon>
+          <div className="w-full text-center mt-6">
+            <div className='flex justify-center'>
+                <div className="text-base md:text-lg lg:text-xl font-bold md:!leading-[1.2] text-transparent text-center mb-4 drop-shadow-md">
+                  <span className='bg-gradient-to-r from-brandBlue via-textBlue to-brandBlue bg-clip-text md:!leading-[1.2] text-transparent textStroke'>
+                    <button
+                      className="flex items-center bg-gradient-to-r from-brandBlue via-textBlue to-brandBlue bg-clip-text md:!leading-[1.2] text-transparent textStroke--thin"
+                      onClick={() => setRecsDetailsOpen(!recsDetailsOpen)}
+                    >
+                      You may also like...
+                      <span
+                        className={`w-0 h-0 ml-2 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-t-[8px] border-brandBlue transition-all ${
+                          recsDetailsOpen && "rotate-180"
+                        }`}
+                    ></span>
+              </button></span>
+                </div>
+              </div>
             <div className="bg-brandLightBlue pt-12 pb-4 px-2 rounded-xl mt-[-27px] [&_.swiper-pagination]:relative [&_.swiper-pagination]:mt-2 [&_.swiper-pagination-bullet]:size-3">
               <Swiper
                 modules={[Autoplay, Pagination]}

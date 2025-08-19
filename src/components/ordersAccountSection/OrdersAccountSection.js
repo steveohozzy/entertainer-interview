@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
 import Button from "../button/Button";
-import HeadingRibbon from "../../components/headingRibbon/headingRibbon";
 
 import { products } from "../../data/products";
 
@@ -152,9 +151,9 @@ const OrdersAccountSection = () => {
       </div>
       <div className="w-full lg:w-1/3">
             <div className='w-full text-center'>
-                <HeadingRibbon className="text-sm mt-6 lg:mt-0" fullWidth={true}>
-                  You may also like
-              </HeadingRibbon>
+                <div className='flex justify-center'>
+                  <h3 id="offers" className="text-xl md:text-2xl lg:text-3xl font-bold md:!leading-[1.2] text-transparent text-center drop-shadow-md"><span className='bg-gradient-to-r from-brandBlue via-textBlue to-brandBlue bg-clip-text md:!leading-[1.2] text-transparent textStroke'>You May Also Like</span></h3>
+                </div>
                 <div className='bg-white p-5 rounded-tl-lg rounded-bl-lg'>
                     <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-2 gap-3 justify-start'>
                     {products.slice(0, 6).map((product) => (

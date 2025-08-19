@@ -9,7 +9,6 @@ import { useNavigate } from "react-router-dom";
 
 import { products } from "../../data/products";
 import Button from "../../components/button/Button";
-import HeadingRibbon from "../../components/headingRibbon/headingRibbon";
 
 const Confirmation = () => {
   const navigate = useNavigate();
@@ -107,7 +106,11 @@ const Confirmation = () => {
         </div>
 
         <div className="w-full text-center mt-12">
-          <HeadingRibbon>Your Next Purchase?</HeadingRibbon>
+          <div className='flex justify-center'>
+            <div className="text-2xl md:text-3xl lg:text-4xl font-bold md:!leading-[1.2] text-transparent text-center mb-3 drop-shadow-md">
+              <span className='bg-gradient-to-r from-brandBlue via-textBlue to-brandBlue bg-clip-text md:!leading-[1.2] text-transparent textStroke'>Your Next Purchase?</span>
+            </div>
+          </div>
           <div className="bg-white pt-12 pb-8 px-3 rounded-xl mt-[-27px] shadow-sm">
             <div className="flex gap-4 justify-center mx-auto [&_.swiper-pagination]:relative [&_.swiper-pagination]:top-[-20px!important] [&_.swiper-pagination]:mt-2 [&_.swiper-pagination-bullet]:size-3">
               <Swiper
