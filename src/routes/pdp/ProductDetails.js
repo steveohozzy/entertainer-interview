@@ -686,7 +686,7 @@ const ProductDetails = () => {
           </div>
         </div>
 
-        <div className="w-full text-center mt-12">
+        <div className="w-full text-center mt-16">
           <HeadingRibbon>Frequently Bought Together</HeadingRibbon>
           <div className="bg-white pt-12 pb-8 px-6 md:px-8 rounded-xl mt-[-27px] shadow-sm">
             <div
@@ -768,7 +768,7 @@ const ProductDetails = () => {
           </div>
         </div>
 
-        <div className="w-full text-center mt-12">
+        <div className="w-full text-center mt-16">
           <HeadingRibbon>Top Picks</HeadingRibbon>
           <div className="bg-white pt-12 pb-5 px-3 rounded-xl mt-[-27px] shadow-sm">
             <div className="flex gap-4 justify-center mx-auto [&_.swiper-pagination]:relative [&_.swiper-pagination]:top-[-20px!important] [&_.swiper-pagination]:mt-3 [&_.swiper-pagination-bullet]:size-3">
@@ -923,7 +923,7 @@ const ProductDetails = () => {
           </div>
         </div>
 
-        <div id="reviews" className="w-full text-center mt-12">
+        <div id="reviews" className="w-full text-center mt-16">
           <HeadingRibbon fullWidth={true}>Reviews</HeadingRibbon>
           <div className="bg-white pt-12 pb-8 px-8 rounded-xl mt-[-27px] shadow-sm">
             <div className="flex justify-between flex-wrap">

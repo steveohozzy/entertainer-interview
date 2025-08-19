@@ -207,14 +207,14 @@ const Checkout = () => {
                                       answer={
                                         <>
                                         <div className='py-6 px-4'>
-                                          <div className='text-brandBlue mb-1 font-semibold'>
+                                          <div className='text-textBlue mb-1 font-semibold'>
                                               Your Details
                                           </div>
                                           <div className='text-gray-400'>
                                             Mr Test Test<br />
                                             01234 4567890
                                           </div>
-                                          <div className='text-brandBlue  mt-4 mb-1 font-semibold'>
+                                          <div className='text-textBlue  mt-4 mb-1 font-semibold'>
                                               Delivering to
                                           </div>
                                           <div className='text-gray-400'>
@@ -297,20 +297,20 @@ const Checkout = () => {
                                       expanded={true}
                                       title={<div className='flex items-end'>
                                           <span className='mr-8'>Delivery</span>
-                                          <span className='font-normal text-sm'>Standard</span>
+                                          <span className='font-[500] text-sm text-textBlue'>Standard</span>
                                         </div>}
                                       className="relative w-[calc(100%+6px)] ml-[-3px] mt-[-3px] p-4 border-[3px] border-gray-300 rounded-md text-brandBlue font-bold flex items-center justify-between"
                                       answer={
                                         <>
                                         <div className='py-6 px-4'>
-                                          <div className='text-brandBlue mb-1 font-semibold'>
+                                          <div className='text-textBlue mb-1 font-semibold'>
                                               Your Details
                                           </div>
                                           <div className='text-gray-400'>
                                             Mr Test Test<br />
                                             01234 4567890
                                           </div>
-                                          <div className='text-brandBlue  mt-4 mb-1 font-semibold'>
+                                          <div className='text-textBlue  mt-4 mb-1 font-semibold'>
                                               Delivering to
                                           </div>
                                           <div className='text-gray-400'>
@@ -399,7 +399,7 @@ const Checkout = () => {
                                             <span className='font-bold'>Payment details</span>
                                             <span className='text-xs block'>(* Mandatory)</span>
                                           </div>
-                                          <form id="checkout-form">
+                                          <form className='space-y-8' id="checkout-form">
                                             <div className={`flex mt-5 h-[44px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative group`}>
                                               <input id="nameOnCard" type="text" placeholder="Name on card*" className="peer text-base m-0 block h-[38px] w-full bg-transparent text-textBlue transition duration-200 ease-linear placeholder:text-transparent focus:outline-none" />
                                               <label for="nameOnCard" className="px-3 pointer-events-none absolute left-0 top-[4px] origin-[0_0] border border-solid border-transparent text-base text-gray-400 transition-[opacity,_transform] duration-200 ease-linear peer-focus:-translate-y-7 peer-focus:translate-x-[0.15rem] peer-focus:scale-[0.85] peer-focus:text-brandBlue peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:translate-x-[0.15rem] peer-[:not(:placeholder-shown)]:scale-[0.85] peer-[:not(:placeholder-shown)]:text-brandBlue motion-reduce:transition-none">Name on Card*</label>
@@ -429,7 +429,7 @@ const Checkout = () => {
                                             </div>
                                             {showPaymentOptions &&
                                               <Button 
-                                                className='mt-6 h-[44px] shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-boldtext-sm md:text-lg rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-2 transition-all hover:bg-brandLightGreen hover:scale-105'
+                                                className='mt-6 h-[44px] shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-boldtext-sm md:text-lg rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-2 transition-all hover:bg-brandLightGreen hover:scale-105 font-bold'
                                                 iconpath={
                                                   <svg width="18" height="19" viewBox="0 0 18 19" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M3.76153 9.47138C3.35391 9.55775 3.03767 9.77382 2.81279 10.1196C2.58791 10.4654 2.51866 10.8421 2.60503 11.2497L3.8487 17.1194C3.93507 17.527 4.15114 17.8433 4.49693 18.0682C4.84272 18.293 5.21942 18.3623 5.62704 18.2759L16.3881 15.9958C16.7958 15.9095 17.112 15.6934 17.3369 15.3476C17.5618 15.0018 17.631 14.6251 17.5446 14.2175L16.301 8.34781C16.2146 7.9402 15.9985 7.62395 15.6527 7.39907C15.3069 7.1742 14.9302 7.10494 14.5226 7.19131L13.7889 7.34677L13.3225 5.14563C13.0505 3.86164 12.3711 2.86627 11.2843 2.15951C10.1728 1.4367 8.97512 1.21132 7.69112 1.48337C6.40713 1.75543 5.41392 2.44503 4.71148 3.55217C3.98435 4.64325 3.75681 5.83079 4.02886 7.11479L4.49524 9.31592L3.76153 9.47138ZM6.94095 8.79772L6.47457 6.59659C6.34502 5.98516 6.4489 5.42011 6.78621 4.90143C7.12353 4.38274 7.5979 4.05863 8.20932 3.92908C8.82075 3.79953 9.3858 3.90341 9.90449 4.24072C10.4232 4.57804 10.7473 5.05241 10.8768 5.66383L11.3432 7.86497L6.94095 8.79772Z" />
@@ -456,7 +456,7 @@ const Checkout = () => {
                                   title="Delivery Address (*Mandatory)"
                                   className="bg-brandLightBlue p-4 px-2 sm:px-4 rounded-md text-brandBlue font-bold flex items-center justify-between w-full"
                                   answer={
-                                    <form id="address-form" className='py-6 px-4'>
+                                    <form id="address-form" className='py-6 space-y-8 px-4'>
                                         <div className={`flex h-[44px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative ${name && 'border-red-600'}`}>
                                           <span
                                             className="absolute left-[calc(20%-20px)] md:left-[calc(15%-10px)] z-[2] top-[14px] w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[6px] border-gray-400 transition-all"></span>
@@ -531,7 +531,7 @@ const Checkout = () => {
                                           }
                                         </>
                                         }
-                                        <div className={`overflow-hiddden transition-all ${showManualDelivery ? 'h-auto opacity-100' : 'h-0 opacity-0 overflow-hidden'}`}>
+                                        <div className={`overflow-hiddden transition-all space-y-8 ${showManualDelivery ? 'h-auto opacity-100' : 'h-0 opacity-0 overflow-hidden'}`}>
                                           <div className={`flex mt-5 h-[44px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative group ${address1 && 'border-red-600'}`}>
                                             <input id="address1" type="text" placeholder="Address 1" onChange={handleAddress1Change} onBlur={handleAddress1Change} className="peer text-base m-0 block h-[38px] w-full bg-transparent text-textBlue transition duration-200 ease-linear placeholder:text-transparent focus:outline-none" />
                                             <label for="address1" className="px-3 pointer-events-none absolute left-0 top-[4px] origin-[0_0] border border-solid border-transparent text-base text-gray-400 transition-[opacity,_transform] duration-200 ease-linear peer-focus:-translate-y-7 peer-focus:translate-x-[0.15rem] peer-focus:scale-[0.85] peer-focus:text-brandBlue peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:translate-x-[0.15rem] peer-[:not(:placeholder-shown)]:scale-[0.85] peer-[:not(:placeholder-shown)]:text-brandBlue motion-reduce:transition-none">Address 1</label>
@@ -648,7 +648,7 @@ const Checkout = () => {
                                           <button onClick={handleShowManualAddressCollect} className='text-xs text-gray-400 underline mt-2'>
                                             Enter address manually
                                           </button>
-                                          <div className={`overflow-hiddden transition-all ${showManualCollect ? 'h-auto opacity-100' : 'h-0 opacity-0 overflow-hidden'}`}>
+                                          <div className={`overflow-hiddden transition-all space-y-8 ${showManualCollect ? 'h-auto opacity-100' : 'h-0 opacity-0 overflow-hidden'}`}>
                                             <div className={`flex mt-5 h-[44px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative group ${address1 && 'border-red-600'}`}>
                                               <input type="text" placeholder="Address 1" onChange={handleAddress1Change} onBlur={handleAddress1Change} className="peer text-base m-0 block h-[38px] w-full bg-transparent text-textBlue transition duration-200 ease-linear placeholder:text-transparent focus:outline-none" />
                                               <label className="px-3 pointer-events-none absolute left-0 top-[4px] origin-[0_0] border border-solid border-transparent text-base text-gray-400 transition-[opacity,_transform] duration-200 ease-linear peer-focus:-translate-y-7 peer-focus:translate-x-[0.15rem] peer-focus:scale-[0.85] peer-focus:text-brandBlue peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:translate-x-[0.15rem] peer-[:not(:placeholder-shown)]:scale-[0.85] peer-[:not(:placeholder-shown)]:text-brandBlue motion-reduce:transition-none">Address 1</label>
@@ -780,14 +780,14 @@ const Checkout = () => {
                                       answer={
                                         <>
                                         <div className='py-6 px-4'>
-                                          <div className='text-brandBlue mb-1 font-semibold'>
+                                          <div className='text-textBlue mb-1 font-semibold'>
                                               Your Details
                                           </div>
                                           <div className='text-gray-400'>
                                             Mr Test Test<br />
                                             01234 4567890
                                           </div>
-                                          <div className='text-brandBlue  mt-4 mb-1 font-semibold'>
+                                          <div className='text-textBlue  mt-4 mb-1 font-semibold'>
                                               Delivering to
                                           </div>
                                           <div className='text-gray-400'>
@@ -869,20 +869,20 @@ const Checkout = () => {
                                       expanded={true}
                                       title={<div className='flex items-end'>
                                           <span className='mr-8'>Delivery</span>
-                                          <span className='font-normal text-sm'>Standard</span>
+                                          <span className='font-[500] text-sm text-textBlue'>Standard</span>
                                         </div>}
                                       className="relative w-[calc(100%+6px)] ml-[-3px] mt-[-3px] p-4 border-[3px] border-gray-300 rounded-md text-brandBlue font-bold flex items-center justify-between"
                                       answer={
                                         <>
                                         <div className='py-6 px-4'>
-                                          <div className='text-brandBlue mb-1 font-semibold'>
+                                          <div className='text-textBlue mb-1 font-semibold'>
                                               Your Details
                                           </div>
                                           <div className='text-gray-400'>
                                             Mr Test Test<br />
                                             01234 4567890
                                           </div>
-                                          <div className='text-brandBlue  mt-4 mb-1 font-semibold'>
+                                          <div className='text-textBlue  mt-4 mb-1 font-semibold'>
                                               Delivering to
                                           </div>
                                           <div className='text-gray-400'>
@@ -971,7 +971,7 @@ const Checkout = () => {
                                             <span className='font-bold'>Payment details</span>
                                             <span className='text-xs block'>(* Mandatory)</span>
                                           </div>
-                                          <form id="checkout-form">
+                                          <form className='space-y-8' id="checkout-form">
                                             <div className={`flex mt-5 h-[44px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative group`}>
                                               <input id="nameOnCard" type="text" placeholder="Name on card*" className="peer text-base m-0 block h-[38px] w-full bg-transparent text-textBlue transition duration-200 ease-linear placeholder:text-transparent focus:outline-none" />
                                               <label for="nameOnCard" className="px-3 pointer-events-none absolute left-0 top-[4px] origin-[0_0] border border-solid border-transparent text-base text-gray-400 transition-[opacity,_transform] duration-200 ease-linear peer-focus:-translate-y-7 peer-focus:translate-x-[0.15rem] peer-focus:scale-[0.85] peer-focus:text-brandBlue peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:translate-x-[0.15rem] peer-[:not(:placeholder-shown)]:scale-[0.85] peer-[:not(:placeholder-shown)]:text-brandBlue motion-reduce:transition-none">Name on Card</label>
