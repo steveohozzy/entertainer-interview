@@ -4,7 +4,6 @@ import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/autoplay";
 import { useNavigate } from "react-router-dom";
-import HeadingRibbon from "../headingRibbon/headingRibbon";
 import Button from "../button/Button";
 
 const HomeBlogs = () => {
@@ -12,9 +11,9 @@ const HomeBlogs = () => {
 
   return (
     <div id="blogs" className='w-full text-center mt-14 mb-10'>
-            <HeadingRibbon fullWidth={true}>
-                Latest Blogs
-            </HeadingRibbon>
+            <div className='flex justify-center'>
+                <h3 id="offers" className="text-3xl md:text-4xl lg:text-5xl font-bold md:!leading-[1.2] text-transparent text-center mt-5 mb-3 md:mt-12 md:mb-5 drop-shadow-md"><span className='bg-gradient-to-r from-brandBlue via-textBlue to-brandBlue bg-clip-text md:!leading-[1.2] text-transparent textStroke'>Latest Blogs</span></h3>
+            </div>
             <div className='pt-5 rounded-xl'>
                 <div className='flex gap-4 justify-center mx-auto max-w-7xl:!-bottom-[0] [&_.swiper-pagination-bullet]:size-3'>
                 <Swiper
