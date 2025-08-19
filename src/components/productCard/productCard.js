@@ -508,13 +508,13 @@ const ProductCard = ({ product }) => {
           </button>
           <div className="absolute top-2 left-1/2 -translate-x-1/2 flex w-full gap-1 flex justify-center">
             {isNew && (
-              <div className="shadow-text-green inline-flex items-center rounded-lg px-2 py-0.5 text-xs md:text-sm font-bold bg-brandGreen text-white">
-                NEW TOYS
+              <div className="inline-flex items-center rounded-lg px-2 py-0.5 text-xs md:text-sm font-bold bg-brandGreen text-white">
+                <span className="shadow-text-green">NEW TOYS</span>
               </div>
             )}
             {isBestseller && (
-              <div className="shadow-text-red inline-flex items-center rounded-lg px-2 py-0.5 text-xs md:text-sm font-bold bg-brandRed text-white">
-                33% OFF
+              <div className="inline-flex items-center rounded-lg px-2 py-0.5 text-xs md:text-sm font-bold bg-brandRed text-white">
+                <span className="shadow-text-red ">33% OFF</span>
               </div>
             )}
           </div>
