@@ -876,7 +876,7 @@ const ProductDetails = () => {
                       window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
                       setTabOpen(false);
                     }}
-                    className="cursor-pointer flex flex-col w-full border-[2px] border-brandLightBlue rounded-xl hover:shadow-lg hover:scale-105 transition-all"
+                    className="cursor-pointer flex flex-col w-full border-[2px] border-brandLightBlue rounded-xl hover:shadow-lg hover:scale-105 hover:border-brandBlue transition-all"
                   >
                     <div className="w-full">
                       <img
