@@ -175,7 +175,7 @@ const Layout = () => {
                         £{cartTotal.toFixed(2)}
                     </span>
                     {isCartOpen && (
-                        <span className="absolute bg-white left-[-5px] bottom-[-20px] h-[calc(100%+30px)] w-[60px] rounded-tl-lg rounded-tr-lg">
+                        <span className="absolute bg-white left-[-5px] bottom-[-30px] lg:bottom-[-40px] h-[calc(100%+40px)] lg:h-[calc(100%+60px)] w-[60px] rounded-tl-lg rounded-tr-lg">
                         &nbsp;
                         </span>
                     )}

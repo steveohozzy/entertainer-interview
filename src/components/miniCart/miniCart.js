@@ -44,16 +44,16 @@ const MiniCart = () => {
     <>
       {isCartOpen && (
         <div
-          className="fixed h-screen inset-0 bg-brandBlue bg-opacity-50 z-40 top-[44px] md:top-[72px] left-[-20px]"
+          className="fixed h-screen inset-0 bg-brandBlue bg-opacity-50 z-40 top-[60px] md:top-[87px] lg:top-[98px] left-[-20px]"
           onClick={() => toggleIsCartOpen(false)}
         />
       )}
       <div
         className={`absolute max-w-[90vw] overflow-hidden w-[320px] duration-300 ease-in-out right-[-60px] md:right-0  ${
-          isCartOpen ? "max-h-[calc(100vh-100px)]" : "max-h-0"
-        } top-[calc(100%+10px)] md:top-[calc(100%+20px)] z-[9999] bg-white rounded-xl text-black`}
+          isCartOpen ? "max-h-[calc(100vh-130px)] lg:max-h-[calc(100vh-80px)]" : "max-h-0"
+        } top-[calc(100%+18px)] md:top-[calc(100%+28px)] lg:top-[calc(100%+15px)] z-[9999] bg-white rounded-xl text-black`}
       >
-        <div className="max-h-[calc(100vh-100px)] overflow-y-auto w-full px-3">
+        <div className="max-h-[calc(100vh-170px)] lg:max-h-[calc(100vh-120px)] overflow-y-auto w-full px-3">
           <div className="text-xs text-gray-500 flex items-center justify-center pt-4">
             <span className="font-bold">Basket</span>
             <img src="/stars-icon.svg" alt="stars" className="mx-4" />
