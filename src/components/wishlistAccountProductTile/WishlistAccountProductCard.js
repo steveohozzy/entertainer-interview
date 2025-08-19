@@ -460,7 +460,7 @@ const WishlistAccountProductCard = ({ product }) => {
             </div>
           </div>
           <button
-            className='shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-xs lg:text-sm rounded-[30px] bg-brandGreen text-white py-2 px-4 transition-all hover:bg-brandLightGreen hover:scale-105 mt-2 add-to-basket'
+            className='shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-xs lg:text-base rounded-[30px] bg-brandGreen text-white py-2 px-4 transition-all hover:bg-brandLightGreen hover:scale-105 mt-2 add-to-basket tracking-[1px]'
             onClick={() => {addProductToCart(product)}}>
               Buy
           </button>
