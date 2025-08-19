@@ -705,7 +705,7 @@ const ProductDetails = () => {
 
         <div className="w-full text-center mt-16">
           <div className="text-2xl md:text-3xl lg:text-4xl font-bold md:!leading-[1.2] text-transparent text-center mt-5 mb-3 md:mt-12 md:mb-3.5 drop-shadow-md"><span className='bg-gradient-to-r from-brandBlue via-textBlue to-brandBlue bg-clip-text md:!leading-[1.2] text-transparent textStroke'>Frequently Bought Together</span></div>
-          <div className="bg-white pt-12 pb-8 px-6 md:px-8 rounded-xl mt-[-27px] shadow-sm">
+          <div className="bg-white pt-10 pb-8 px-6 md:px-8 rounded-xl mt-[-27px] shadow-sm">
             <div
               id="bundle"
               className="grid grid-cols-3 md:grid-cols-4 md:gap-4"
@@ -791,7 +791,7 @@ const ProductDetails = () => {
               Top picks
             </span>
           </div>
-          <div className="bg-white pt-12 pb-5 px-3 rounded-xl mt-[-27px] shadow-sm">
+          <div className="bg-white pt-8 pb-5 px-3 rounded-xl mt-[-27px] shadow-sm">
             <div className="flex gap-4 justify-center mx-auto [&_.swiper-pagination]:relative [&_.swiper-pagination]:top-[-20px!important] [&_.swiper-pagination]:mt-3 [&_.swiper-pagination-bullet]:size-3">
               <Swiper
                 className="!pb-5 !px-2.5"
@@ -950,7 +950,7 @@ const ProductDetails = () => {
               Reviews
             </span>
           </div>
-          <div className="bg-white pt-12 pb-8 px-8 rounded-xl mt-[-27px] shadow-sm">
+          <div className="bg-white pt-10 pb-8 px-8 rounded-xl mt-[-27px] shadow-sm">
             <div className="flex justify-between flex-wrap">
               <div className="w-[260px]">
                 <div className="rating mb-4">
