@@ -35,7 +35,7 @@ const HomeToyTypes = () => {
           <button onClick={() => {
             navigate("/category?type=action-figures");
             window.scrollTo({top: 0,left: 0,behavior: "smooth",});
-          }} className="transition-all rounded-xl bg-white px-2 py-2.5 md:pt-4 md:pb-6 flex flex-col items-center shadow-md justify-center hover:-translate-y-3 hover:shadow-lg">
+          }} className="transition-all rounded-xl bg-white px-2 py-2.5 md:py-4 flex flex-col items-center shadow-md justify-center hover:-translate-y-3 hover:shadow-lg">
             <div className="mb-2">
               <img className="px-3 md:px-6" src="https://www.thetoyshop.com/medias/300Wx300H-573193-Primary?context=bWFzdGVyfGltYWdlc3w0MTkxN3xpbWFnZS9qcGVnfGFERTFMMmd5TlM4eE1qVXlNVEUwTlRrNU1URTVPQzh6TURCWGVETXdNRWhmTlRjek1Ua3pYMUJ5YVcxaGNua3xiMjYwOTU4ZDk0OWQ0YmNmNjY2ODIzMDNmMDc2Yjk3ZWIzMzRjNTljOWY1MzJkMTYyNWQ2OTUyM2YwYTExYWI5" alt="Action Toys" />
             </div>
