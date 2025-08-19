@@ -657,12 +657,7 @@ const Plp = () => {
                               return (
                                 <div
                                   key={brand.name}
-                                  variant={
-                                    selectedBrands.includes(brand.name)
-                                      ? "default"
-                                      : "outline"
-                                  }
-                                  className={`inline-flex items-center rounded-full border px-2.5 py-0.5 cursor-pointer transition-all hover:scale-105 text-sm hover:bg-brandBlue hover:text-white ${
+                                  className={`inline-flex items-center rounded-full border-[2px] border-brandLightBlue px-2.5 py-0.5 cursor-pointer transition-all hover:scale-105 text-sm hover:bg-brandBlue hover:text-white ${
                                     selectedBrands.includes(brand.name)
                                       ? `bg-brandBlue text-white`
                                       : "hover:bg-brandBlue"

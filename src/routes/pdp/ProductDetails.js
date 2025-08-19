@@ -289,7 +289,7 @@ const ProductDetails = () => {
           <div className="w-full md:w-3/5 p-4 px-6">
             <div className="text-center text-gray-400">{product.brand}</div>
             <h1 className="text-xl md:text-3xl font-bold text-brandBlue text-center mb-4 md:mb-10">
-              {product.name}{" "}
+              {product.name}
               {swatchColor === "orange" && (
                 <span className="text-orange-600">ORANGE</span>
               )}
@@ -667,10 +667,10 @@ const ProductDetails = () => {
                   <p>
                     Manufacturer: <span className="font-bold">MATTEL TOYS</span>
                     <br />
-                    Manufacturer Number:{" "}
+                    Manufacturer Number:
                     <span className="font-bold">HWN86</span>
                     <br />
-                    Our Product Number:{" "}
+                    Our Product Number:
                     <span className="font-bold">566798</span>
                     <br />
                     Safety Information:
@@ -1012,22 +1012,27 @@ const ProductDetails = () => {
           </div>
         </div>
       </div>
-      <div className={`fixed bottom-0 left-0 bg-white w-full py-4 px-6 z-[99] rounded-tr-xl rounded-tl-xl shadow-[rgba(0,0,15,0.1)_0_-5px_4px_0px] transition-all ${AddVisible ? 'translate-y-full' : 'translate-y-0'}`}>
-        <div className="max-w-3xl m-auto flex items-center justify-center">
-          <div className="price mr-6">
-            <div className="flex items-end">
-              <span className="text-brandRed font-bold text-xl md:text-2xl">
-                £{product.price}
-              </span>
-              {product.originalPrice && (
-                <span className="line-through text-gray-400 text-md md:text-lg ml-1">
-                  £{product.originalPrice}
+      <div className={`fixed bottom-0 left-0 bg-white w-full py-3 px-4 z-[99] rounded-tr-xl rounded-tl-xl shadow-[rgba(0,0,15,0.1)_0_-5px_4px_0px] transition-all ${AddVisible ? 'translate-y-full' : 'translate-y-0'}`}>
+        <div className="max-w-3xl m-auto flex flex-col items-center justify-center">
+          <div className="flex items-center">
+            <div className="text-sm md:text-base font-bold text-brandBlue mr-2">
+              {product.name}
+            </div>
+            <div className="price">
+              <div className="flex items-end">
+                <span className="text-brandRed font-bold text-sm md:text-base">
+                  £{product.price}
                 </span>
-              )}
+                {product.originalPrice && (
+                  <span className="line-through text-gray-400 text-xs md:text-sm ml-1">
+                    £{product.originalPrice}
+                  </span>
+                )}
+              </div>
             </div>
           </div>
           <Button
-            className="shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-lg rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-2 transition-all hover:bg-brandLightGreen hover:scale-105"
+            className="mt-2 shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-lg rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-2 transition-all hover:bg-brandLightGreen hover:scale-105"
             iconpath={
               <svg
                 width="22"
