@@ -23,7 +23,6 @@ import { products } from "../../data/products";
 import { Star, Heart } from "lucide-react";
 import Button from "../../components/button/Button";
 import Dropdown from "../../components/dropdown/Dropdown";
-import HeadingRibbon from "../../components/headingRibbon/headingRibbon";
 import { setIsCartOpen } from "../../store/cart/cartReducer";
 import BundlesProductCard from "../../components/bundlesProductCard/BundlesProductCard";
 
