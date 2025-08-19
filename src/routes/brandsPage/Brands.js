@@ -409,7 +409,8 @@ const Brands = () => {
     <>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pt-10">
         <div className="text-center mb-8">
-          <HeadingRibbon><h1 className="text-3xl capitalize">{id.replace('-', ' ')} Toys</h1></HeadingRibbon>
+          <div className='flex justify-center'>
+        <h1 id="offers" className="text-3xl md:text-4xl lg:text-5xl font-bold md:!leading-[1.2] text-transparent text-center drop-shadow-md"><span className='bg-gradient-to-r from-brandBlue via-textBlue to-brandBlue bg-clip-text md:!leading-[1.2] text-transparent capitalize textStroke'>{id.replace('-', ' ')} Toys</span></h1></div>
         </div>
         {/* Filter and Sort Header */}
         <div
