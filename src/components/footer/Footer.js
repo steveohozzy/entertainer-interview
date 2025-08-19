@@ -366,7 +366,7 @@ const Footer = () => {
             <div className="w-full md:w-[65%]">
               <div className="text-xs text-white my-2 text-center md:text-left">
                 <p>&copy; The Entertainer {new Date().getFullYear()}</p>
-                <div className="flex flex-col text-center md:flex-row text-white font-bold gap-4 mt-2">
+                <div className="flex flex-col text-center md:flex-row text-white font-semibold gap-4 mt-2">
                   <a href="/" title="Home">Home</a>
                   <a href="/terms" title="Terms &amp; Conditions">Terms &amp; Conditions</a>
                   <a href="/privacy" title="Your Privacy">Your Privacy</a>
