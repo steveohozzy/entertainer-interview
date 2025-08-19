@@ -21,7 +21,7 @@ const HomeBrands = () => {
             slidesPerView: 3.5,
           },
           1024: {
-            slidesPerView: 4.5,
+            slidesPerView: 4.8,
           },
         }}
         loop
