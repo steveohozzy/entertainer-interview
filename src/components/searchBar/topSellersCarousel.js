@@ -31,7 +31,7 @@ const TopSellersCarousel = ({setShowSearchBox, filteredProducts, startedSearch})
         >
           {filteredProducts.slice(0, 9).map((product) => (
             <SwiperSlide>
-              <div onClick={() => { navigate(`/product-details/${product.id}`); window.scrollTo({top: 0,left: 0,behavior: "smooth",}); setShowSearchBox(false);}} className="cursor-pointer flex flex-col h-full" key={product.id}>
+              <div onClick={() => { navigate(`/product-details/${product.id}`); window.scrollTo({top: 0,left: 0,behavior: "smooth",}); setShowSearchBox(false);}} className="cursor-pointer flex flex-col h-full hover:scale-105 transition-all" key={product.id}>
                 <img
                   src={product.image || "/placeholder.svg"}
                   alt={product.name}

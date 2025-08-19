@@ -169,7 +169,7 @@ const SearchBar = () => {
                         <div className="flex flex-col space-y-1 mt-2">
                           {filteredSearch.slice(0, 3).map((term) => {
                             return (
-                              <button onClick={handleSelectSearch} id={term.name} key={term.name} className="text textBlue text-sm md:text-base flex items-center justify-between">
+                              <button onClick={handleSelectSearch} id={term.name} key={term.name} className="text-textBlue text-sm md:text-base flex items-center justify-between transition-all hover:text-brandBlue hover:font-semibold">
                                 <span className="flex items-center">
                                   <span className="w-4 md:w-5 h-4 md:h-5 mr-1 block">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
@@ -191,7 +191,7 @@ const SearchBar = () => {
                           Top Searches
                         </div>
                         <div className="flex flex-col space-y-1 mt-2">
-                          <button onClick={handleSelectSearch} className="text textBlue text-sm md:text-base flex items-center justify-between">
+                          <button onClick={handleSelectSearch} className="text-textBlue text-sm md:text-base flex items-center justify-between transition-all hover:text-brandBlue hover:font-semibold">
                             <span className="flex items-center">
                               <span className="w-4 md:w-5 h-4 md:h-5 mr-1 block">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
@@ -203,7 +203,7 @@ const SearchBar = () => {
                               <span>Pokemon</span>
                             </span>
                           </button>
-                          <button onClick={handleSelectSearch} className="text textBlue text-sm md:text-base flex items-center justify-between">
+                          <button onClick={handleSelectSearch} className="text-textBlue text-sm md:text-base flex items-center justify-between transition-all hover:text-brandBlue hover:font-semibold">
                             <span className="flex items-center">
                               <span className="w-4 md:w-5 h-4 md:h-5 mr-1 block">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
@@ -214,11 +214,11 @@ const SearchBar = () => {
                               </span>
                               <span>Star War</span>
                             </span>
-                            <span className="rounded-lg bg-brandRed px-2 text-white text-[10px] md:text-sm ml-2">
+                            <span className="rounded-lg bg-brandRed px-2 text-white text-[10px] md:text-sm ml-2 font-[400]">
                               <span className="font-bold">10% off</span> code - SQUISH10
                             </span>
                           </button>
-                          <button onClick={handleSelectSearch} className="text textBlue text-sm md:text-base flex items-center justify-between">
+                          <button onClick={handleSelectSearch} className="text-textBlue text-sm md:text-base flex items-center justify-between transition-all hover:text-brandBlue hover:font-semibold">
                             <span className="flex items-center">
                               <span className="w-4 md:w-5 h-4 md:h-5 mr-1 block">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
@@ -229,7 +229,7 @@ const SearchBar = () => {
                               </span>
                               <span>DC comics</span>
                             </span>
-                            <span className="rounded-lg bg-orange-400 px-2 text-white text-[10px] md:text-sm ml-2">
+                            <span className="rounded-lg bg-orange-400 px-2 text-white text-[10px] md:text-sm ml-2 font-[400]">
                               <span className="font-bold">HOT TOY</span> code - Trending
                             </span>
                           </button>
