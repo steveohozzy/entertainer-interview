@@ -186,7 +186,7 @@ const Layout = () => {
                   href="https://www.elc.co.uk/"
                   rel="noreferrer"
                   target="_blank"
-                  className="py-2 h-full md:h-auto flex items-center rounded-md rounded-tr-[0] md:rounded-br-2xl md:rounded-tr-md md:rounded-br-md px-2 md:px-3 bg-white hover:bg-grey-100 transition-all hover:scale-105 hover:shadow-md"
+                  className="py-2 h-full md:h-auto flex items-center rounded-md rounded-tr-[0] rounded-br-xl md:rounded-br-2xl md:rounded-tr-md md:rounded-br-md px-2 md:px-3 bg-white hover:bg-grey-100 transition-all hover:scale-105 hover:shadow-md"
                 >
                   <img
                     src="/elc-logo-full.svg"

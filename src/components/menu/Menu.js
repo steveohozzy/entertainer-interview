@@ -89,7 +89,7 @@ const Menu = () => {
     <>
       <button
         name="Activate Menu"
-        className="transition-all shadow-lg flex flex-col items-center justify-center text-brandBlue bg-white px-3 md:py-1 rounded-xl rounded-tl-none hover:scale-105 h-full md:rounded-tl-xl md:rounded-bl-xl"
+        className="transition-all md:shadow-lg flex flex-col items-center justify-center text-brandBlue bg-white px-3 md:py-1 rounded-xl rounded-tl-none hover:scale-105 h-full md:rounded-tl-xl md:rounded-bl-xl"
         onClick={toggleMenu}
       >
         <MenuIcon />
