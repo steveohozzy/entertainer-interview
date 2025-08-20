@@ -16,7 +16,7 @@ const AccountTabs = () => {
         <button
           onClick={() => setTabSelected("wishlist")}
           className={`transition duration-300 ease-in-out transition duration-300 ease-in-out px-1 py-2 w-full rounded-tr-xl rounded-tl-xl text-textBlue flex flex-col items-center group ${
-            tabSelected === "wishlist" && "bg-white font-bold"
+            tabSelected === "wishlist" ? "bg-white font-bold" : "font-semibold"
           }`}
         >
           <span className="text-brandRed transition-all group-hover:rotate-[25deg] group-hover:scale-110">
@@ -27,7 +27,7 @@ const AccountTabs = () => {
         <button
           onClick={() => setTabSelected("me")}
           className={`transition duration-300 ease-in-out px-1 py-2 w-full rounded-tr-xl rounded-tl-xl text-textBlue flex flex-col items-center group ${
-            tabSelected === "me" && "bg-white font-bold"
+            tabSelected === "me" ? "bg-white font-bold" : "font-semibold"
           }`}
         >
           <span className="transition-all group-hover:rotate-[25deg] group-hover:scale-110">
@@ -95,7 +95,7 @@ const AccountTabs = () => {
         <button
           onClick={() => setTabSelected("bank")}
           className={`transition duration-300 ease-in-out px-1 py-2 w-full rounded-tr-xl rounded-tl-xl text-textBlue flex flex-col items-center group ${
-            tabSelected === "bank" && "bg-white font-bold"
+            tabSelected === "bank" ? "bg-white font-bold" : "font-semibold"
           }`}
         >
           <span className="transition-all group-hover:rotate-[25deg] group-hover:scale-110">
@@ -148,7 +148,7 @@ const AccountTabs = () => {
         <button
           onClick={() => setTabSelected("orders")}
           className={`transition duration-300 ease-in-out px-1 py-2 w-full rounded-tr-xl rounded-tl-xl text-textBlue flex flex-col items-center group ${
-            tabSelected === "orders" && "bg-white font-bold"
+            tabSelected === "orders" ? "bg-white font-bold" : "font-semibold"
           }`}
         >
           <span className="transition-all group-hover:rotate-[25deg] group-hover:scale-110 text-brnadBlue">
@@ -166,7 +166,7 @@ const AccountTabs = () => {
         <button
           onClick={() => setTabSelected("peeks")}
           className={`transition duration-300 ease-in-out px-1 py-2 w-full rounded-tr-xl rounded-tl-xl text-textBlue flex flex-col items-center group ${
-            tabSelected === "peeks" && "bg-white font-bold"
+            tabSelected === "peeks" ? "bg-white font-bold" : "font-semibold"
           }`}
         >
           <span className="group-hover:scale-[1.2] group-hover:-scale-x-100 ">
