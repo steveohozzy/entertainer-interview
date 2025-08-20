@@ -547,7 +547,7 @@ export default function StoreFinderPage() {
                     <button
                       key={service}
                       className={`${selectedServices.includes(service)
-                          ? "bg-textBlue"
+                          ? "bg-brandNeonBlue"
                           : "bg-brandBlue"
                       } text-white px-4 py-2 rounded-full shadow-sm hover:scale-105 hover:bg-textBlue hover:shadow-lg  transition-all`}
                       onClick={() => toggleService(service)}
@@ -566,7 +566,7 @@ export default function StoreFinderPage() {
                     <button
                       key={type}
                       className={`${selectedStoreTypes.includes(type)
-                          ? "bg-brandBlue "
+                          ? "bg-brandNeonBlue "
                           : "bg-textBlue"
                       } text-white px-4 py-2 rounded-full shadow-sm hover:scale-105 hover:bg-brandBlue hover:shadow-lg  transition-all`}
                       onClick={() => toggleStoreType(type)}
@@ -675,7 +675,7 @@ export default function StoreFinderPage() {
                     <div className="flex justify-between items-start mb-4">
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-2">
-                          <h3 className="text-xl font-semibold text-brandBlue">
+                          <h3 className="text-xl font-bold text-brandBlue">
                             {store.name}
                           </h3>
                           {/* <div
@@ -718,20 +718,20 @@ export default function StoreFinderPage() {
                       {store.services.slice(0, 3).map((service) => (
                         <div
                           key={service}
-                          className="text-xs border-[1px] rounded-full border-gray-400 px-2"
+                          className="text-xs border-[1px] rounded-full border-brandLightBlue text-slate-600 px-2"
                         >
                           {service}
                         </div>
                       ))}
                       {store.services.length > 3 && (
-                        <div variant="secondary" className="text-xs">
+                        <div variant="secondary" className="text-xs text-slate-600">
                           +{store.services.length - 3} more
                         </div>
                       )}
                     </div>
 
                     {/* Quick Info */}
-                    <div className="flex items-center gap-4 text-sm text-gray-600">
+                    <div className="flex items-center gap-4 text-sm text-gray-600 font-semibold">
                       <div className="flex items-center gap-1">
                         <Phone className="h-4 w-4" />
                         <span>{store.phone}</span>
@@ -774,14 +774,14 @@ export default function StoreFinderPage() {
 
                         {/* All Services */}
                         <div>
-                          <h4 className="font-semibold text-textBlue mb-2">
+                          <h4 className="font-bold text-textBlue mb-2">
                             Services Available
                           </h4>
                           <div className="flex flex-wrap gap-2">
                             {store.services.map((service) => (
                               <div
                                 key={service}
-                                className="text-xs border-[1px] border-gray-400 px-2 rounded-full"
+                                className="text-xs border-[1px] border-brandLightBlue text-slate-600 px-2 rounded-full"
                               >
                                 {service}
                               </div>
