@@ -1037,7 +1037,7 @@ const ProductDetails = () => {
           </div>
         </div>
       </div>
-      <div className={`fixed bottom-0 left-0 bg-white w-full py-3 px-4 z-[99] rounded-tr-xl rounded-tl-xl shadow-[rgba(0,0,15,0.1)_0_-5px_4px_0px] transition-all ${AddVisible ? 'translate-y-full' : 'translate-y-0'}`}>
+      <div className={`fixed bottom-0 left-0 bg-white w-full py-3 px-4 z-40 rounded-tr-xl rounded-tl-xl shadow-[rgba(0,0,15,0.1)_0_-5px_4px_0px] transition-all ${AddVisible ? 'translate-y-full' : 'translate-y-0'}`}>
         <div className="max-w-3xl m-auto flex flex-col items-center justify-center">
           <div className="flex items-center">
             <div className="text-sm md:text-base font-bold text-brandBlue mr-2 md:mr-5">
