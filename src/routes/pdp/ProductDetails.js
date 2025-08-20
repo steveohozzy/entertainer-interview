@@ -714,21 +714,21 @@ const ProductDetails = () => {
                 <div className="flex items-center relative" key={i}>
                   <div className="w-[calc(100%-10px)] md:w-[calc(100%-20px)] relative">
                     <BundlesProductCard product={product} swiperRef={swiperRef} setSwatchColor={setSwatchColor} checkAllBundle={checkAllBundle} />
-                    <label className="flex items-center space-x-3 cursor-pointer mb-6 absolute z-20 top-1 right-1">
+                    <label className="flex items-center space-x-3 cursor-pointer mb-6 absolute z-20 top-2 right-2">
                       <input
                         type="checkbox"
-                        className="relative size-[24px] block md:size-[30px] appearance-none rounded-md border-[3px] border-textBlue bg-white outline-none transition-all checked:bg-textBlue"
+                        className="relative size-[20px] block md:size-[30px] appearance-none rounded-md border-[3px] border-textBlue bg-white outline-none transition-all checked:bg-textBlue"
                         defaultChecked
                         onChange={changeBundleHandler}
                       />
-                      <span className="absolute top-[2px] left-[-10px] md:top-0 md:left-[-12px]">
+                      <span className="absolute top-0 left-[-11px] md:left-[-12px]">
                         <svg
                           viewBox="0 0 24 24"
                           width="20px"
                           height="20px"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
-                          className="w-[20px] h-[20px] md:w-[30px] md:h-[30px]"
+                          className="w-[18px] h-[18px] md:w-[30px] md:h-[30px]"
                         >
                           <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                           <g
