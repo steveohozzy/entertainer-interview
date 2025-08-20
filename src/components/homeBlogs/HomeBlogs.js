@@ -10,12 +10,12 @@ const HomeBlogs = () => {
   const navigate = useNavigate();
 
   return (
-    <div id="blogs" className='w-full text-center mt-10 mb-10'>
+    <div id="blogs" className='w-full text-center mt-10 mb-14'>
             <div className='flex justify-center'>
                 <h3 id="offers" className="text-3xl md:text-4xl lg:text-5xl font-bold md:!leading-[1.2] text-transparent text-center mt-5 mb-3 md:mt-12 md:mb-5 drop-shadow-md"><span className='bg-gradient-to-r from-brandBlue via-textBlue to-brandBlue bg-clip-text md:!leading-[1.2] text-transparent textStroke'>Latest Blogs</span></h3>
             </div>
             <div className='pt-5 rounded-xl'>
-                <div className='flex gap-4 justify-center mx-auto max-w-7xl:!-bottom-[0] [&_.swiper-pagination-bullet]:size-3'>
+                <div className='flex gap-4 justify-center mx-auto max-w-7xl:!-bottom-[0] [&_.swiper-pagination-bullet]:size-3 [&_.swiper-pagination]:!bottom-1'>
                 <Swiper
                     className="!pb-10"
                     modules={[Autoplay, Pagination]}
@@ -31,7 +31,7 @@ const HomeBlogs = () => {
                     loop
                     >
                     <SwiperSlide>
-                        <div className="cursor-pointer flex flex-col flex-wrap bg-white shadow-lg mb-5 rounded-xl h-full hover:scale-[0.98] hover:shadow-xl  transition-all" onClick={() => { navigate(`/`); window.scrollTo({top: 0,left: 0,behavior: "smooth",});}}>
+                        <div className="cursor-pointer flex flex-col flex-wrap bg-white shadow-lg mb-4 rounded-xl h-full hover:scale-[0.98] hover:shadow-xl  transition-all" onClick={() => { navigate(`/`); window.scrollTo({top: 0,left: 0,behavior: "smooth",});}}>
                             <div className="rounded-xl w-full">
                                 <img
                                     src="https://www.thetoyshop.com/medias/BLOG-TEACHWORLD-STORY-560x318.jpg?context=bWFzdGVyfHJvb3R8NDQ2NDF8aW1hZ2UvanBlZ3xhRE5oTDJnNU15OHhNalUxT1RZNU1ERXdORGcyTWk5Q1RFOUhYMVJGUVVOSVYwOVNURVJmVTFSUFVsbGZOVFl3ZURNeE9DNXFjR2N8N2E4YTkyZjZmMGNlM2M1ZTlhMDgwYTdlMGU2YWU3M2NjODQ1OTU4YjMyYjMyOTcyYjVmNGQ3NjI5NTllMjU2Ng"

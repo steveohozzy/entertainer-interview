@@ -17,7 +17,7 @@ const HomeCarousel = () => {
 
   return (
     <Swiper
-      className="rounded-xl overflow-hidden [&_.swiper-pagination]:relative [&_.swiper-pagination]:mt-2 [&_.swiper-pagination-bullet]:size-3"
+      className="rounded-xl overflow-hidden [&_.swiper-pagination]:relative [&_.swiper-pagination]:mt-3 [&_.swiper-pagination-bullet]:size-3"
       modules={[Autoplay, Pagination]}
       spaceBetween={20}
       slidesPerView={1}
