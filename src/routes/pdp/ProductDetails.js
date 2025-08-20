@@ -508,7 +508,7 @@ const ProductDetails = () => {
               <div className="w-full md:w-auto mb-4 md:mb-0">
                 <div className="flex flex-wrap items-center notices justify-end">
                   <span className="flex items-center justify-between text-brandNeonBlue border-[2px] border-brandNeonBlue p-2 rounded-md mb-2 md:mb-0 w-full md:w-auto font-bold">
-                    <span className="text-smn">Other styles</span>
+                    <span className="font-semibold">Other styles</span>
                     <div className="flex items-center">
                       <button
                         onClick={() => setSwatchColor("blue")}
