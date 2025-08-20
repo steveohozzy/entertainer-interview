@@ -27,7 +27,7 @@ const WishlistContainer = () => {
 
   return (
     <>
-      {wishlistName === 'jack' &&
+      {wishlistName !== 'mum' &&
         <div className="border-[3px] border-brandRed p-3 md:p-5 rounded-xl">
           <div className="flex items-end justify-between">
             <div className="text-xl font-bold text-brandRed flex items-center">

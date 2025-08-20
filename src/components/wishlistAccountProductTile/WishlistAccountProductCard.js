@@ -314,7 +314,7 @@ const WishlistAccountProductCard = ({ product }) => {
                           title="More Details"
                           swapActiveTitle={true}
                           activeTitle={'Less Details'}
-                          className="text-brandBlue text-base flex items-center justify-center border-[3px] border-gray-400 rounded-full w-full py-2 [&_.border-r-transparent]:hidden"
+                          className="text-brandBlue font-semibold text-base flex items-center justify-center border-[3px] border-gray-400 rounded-full w-full py-2 [&_.border-r-transparent]:hidden"
                           answer={
                             <div className="py-3 text-textBlue">
                               <p className="mb-3">
