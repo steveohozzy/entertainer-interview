@@ -651,7 +651,7 @@ const Plp = () => {
                               className="flex h-10 w-full rounded-md border-2 border-brandBlue outline-0 bg-background px-3 py-2 placeholder:text-muted-black text-brandBlue pl-8 text-sm"
                             />
                           </div>
-                          <div className="flex flex-wrap gap-2 max-h-40 overflow-y-auto">
+                          <div className="flex flex-wrap gap-2">
                             {filteredBrands.map((brand) => {
                               const count = getBrandCount(brand.name)
                               return (
