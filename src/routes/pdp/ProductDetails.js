@@ -587,7 +587,7 @@ const ProductDetails = () => {
                     <div className="w-full md:w-1/2 overflow-hidden">
                       <div className="mt-4">
                         <form id="pickup-form" className="flex">
-                          <label className="text-sm text-textBlue mr-6">
+                          <label className="text-sm text-textBlue mr-6 font-semibold">
                             <input
                               type="radio"
                               name="option"
@@ -597,7 +597,7 @@ const ProductDetails = () => {
                             />
                             Entertainer stores
                           </label>
-                          <label className="text-sm text-textBlue">
+                          <label className="text-sm text-textBlue font-semibold">
                             <input
                               type="radio"
                               name="option"
@@ -609,20 +609,20 @@ const ProductDetails = () => {
                         </form>
                         <div className="flex justify-between py-3 border-b-[3px] border-gray-300">
                           <div>
-                            <button className="text-sm text-gray-400 mr-3">
+                            <button className="text-sm text-gray-400 mr-3 font-semibold">
                               List view
                             </button>
-                            <button className="text-sm text-gray-400">
+                            <button className="text-sm text-gray-400 font-semibold">
                               map view
                             </button>
                           </div>
                           <span className="text-sm text-gray-400">Results</span>
                         </div>
                         <div className="text-sm text-brandBlue py-4">
-                          The Entertainer Amersham
-                          <br />2 Sycamore Road, Amersham HP^ 5DR
-                          <div className="text-gray-400">
-                            Collect withi 30 minutes for FREE
+                          <span className="font-semibold">The Entertainer Amersham</span>
+                          <br />2 Sycamore Road, Amersham HP6 5DR
+                          <div className="text-gray-400 mt-2">
+                            Collect within 30 minutes for FREE
                           </div>
                         </div>
                       </div>
