@@ -818,7 +818,7 @@ const ProductDetails = () => {
                       }}
                       className="cursor-pointer flex flex-col md:flex-row h-[calc(100%-20px)] transition-all hover:scale-105 pt-2"
                     >
-                      <div className="border-[3px] border-brandLightBlue rounded-lg w-full md:w-1/2 mb-3 md:mb-0 shrink flex items-center">
+                      <div className="border-[3px] border-brandBlue rounded-lg w-full md:w-1/2 mb-3 md:mb-0 shrink flex items-center">
                         <img
                           src={product.image || "/placeholder.svg"}
                           alt={product.name}
