@@ -637,16 +637,16 @@ export default function StoreFinderPage() {
             {filteredStores.length === 0 && searchLocation ? (
               <div>
                 <div className="p-8 text-center">
-                  <MapPin className="h-16 w-16 text-gray-300 mx-auto mb-4" />
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                  <MapPin className="h-24 w-24 text-brandBlue mx-auto mb-6" />
+                  <h3 className="text-2xl font-bold text-brandBlue mb-4">
                     No stores found
                   </h3>
-                  <p className="text-gray-600 mb-4">
+                  <p className="text-brandBlue mb-4">
                     We couldn't find any stores matching your criteria. Try
                     expanding your search radius or removing some filters.
                   </p>
                   <Button
-                    variant="outline"
+                    className="shadow-md hover:shadow-lg group inline-flex items-center justify-center font-bold rounded-[30px] bg-textBlue text-white py-2 px-4 pl-2 transition-all hover:bg-brandBlue hover:scale-105"
                     onClick={() => {
                       setMaxDistance(50);
                       setSelectedServices([]);
