@@ -145,7 +145,7 @@ const SearchBar = () => {
         <div id="search-backing" className="fixed inset-0 bg-brandBlue/60 h-screen w-screen z-0"></div>
       }
       <div ref={wrapperRef} className="search bg-brandLightBlue pt-5 z-2 relative">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div className="max-w-3xl mx-auto px-6 sm:px-12 lg:px-8 relative">
             <form id="search-form" className="relative" onSubmit={handleSearch}>
                 <input ref={searchInput} onFocus={handleFocus} onChange={handleChange} onKeyDown={handleKeyCode} name="search" type="search" placeholder="I'm looking for..." className="relative z-20 outline-0 h-[44px] px-3 rounded-3xl w-full border border-[3px] border-brandBlue font-bold text-textBlue placeholder:text-textBlue bg-white" />
                 <button onClick={handleSearch} className="shadow-md z-20 group text-white font-bold bg-brandRed rounded-full h-[44px] w-[54px] absolute right-0 top-0 transition-all hover:bg-brandGreen hover:scale-105">
@@ -155,9 +155,32 @@ const SearchBar = () => {
                         <span className="inline-block translate-y-[-2px] rotate-[5deg] text-[10px] ml-[2px]">!</span>
                     </span>
                 </button>
-            </form>
-
-              <div className={`absolute z-10 top-4 left-0 w-full px-4 sm:px-6 lg:px-8 opacity-0 h-0 transition-all overflow-hidden ${showSearchBox && 'opacity-100 h-auto'}`}>
+              </form>
+              {showSearchBox &&
+                <button
+                  name="Close quick view"
+                  onClick={() => {setShowSearchBox(false);}}
+                  className="absolute md:hidden right-8 sm:right-16 top-12 sm:top-14 text-textBlue rounded-full border-[2px] border-textBlue z-50"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="lucide lucide-x h-5 w-5"
+                  >
+                    <path d="M18 6 6 18"></path>
+                    <path d="m6 6 12 12"></path>
+                  </svg>
+                  <span className="sr-only">Close</span>
+                </button>
+              }
+              <div className={`absolute z-10 top-4 left-0 w-full mx-6 sm:mx-12 lg:mx-8 w-[calc(100%-3rem)] sm:w-[calc(100%-6rem)] lg:w-[calc(100%-4rem)] opacity-0 h-0 transition-all overflow-hidden ${showSearchBox && 'opacity-100 h-auto'}`}>
                 <div className="w-full bg-white rounded-lg p-4 pt-8 md:pt-11 pb-3 text-brandBlue border-b-[3px] border-red-500 max-h-[calc(100vh-200px)] md:max-h-[calc(100vh-100px)] overflow-y-auto no-scrollbar shadow-md mb-4">
                   <div className="flex items-start justify-between w-full">
                     <div className="flex flex-col w-full md:w-2/3 max-w-[400px]">
