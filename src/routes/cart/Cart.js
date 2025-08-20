@@ -125,7 +125,7 @@ const Cart = () => {
                       <input
                         type="search"
                         placeholder="Add a promo code"
-                        className="bg-white outline-0 h-[44px] px-3 rounded-3xl w-full border border-[3px] border-brandBlue text-textBlue placeholder:text-gray-300 mr-2"
+                        className="bg-white outline-0 font-semibold h-[44px] px-3 rounded-3xl w-full border border-[3px] border-brandBlue text-textBlue placeholder:text-gray-400 mr-2"
                       />
                       <button className="group text-white font-bold bg-brandBlue rounded-[50px] px-5 h-[44px] transition-all hover:bg-blue-500 hover:scale-105">
                         <span className="block transition-all group-hover:rotate-[10deg]">
