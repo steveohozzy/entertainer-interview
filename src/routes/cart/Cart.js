@@ -179,7 +179,7 @@ const Cart = () => {
                   <span className='bg-gradient-to-r from-brandBlue via-textBlue to-brandBlue bg-clip-text md:!leading-[1.2] text-transparent textStroke'>You May Also Like</span>
                 </div>
               </div>
-              <div className="bg-brandLightBlue pt-10 pb-8 px-1 md:px-5 rounded-xl mt-[-27px] [&_.swiper-pagination]:relative [&_.swiper-pagination]:mt-2 [&_.swiper-pagination-bullet]:size-3">
+              <div className="bg-brandLightBlue pt-10 pb-8 px-1 md:px-5 rounded-xl mt-[-27px] [&_.swiper-pagination]:relative [&_.swiper-pagination]:mt-2 [&_.swiper-pagination-bullet]:size-3 [&_.swiper-pagination-bullet-active]:scale-[1.2] hover:[&_.swiper-pagination-bullet]:scale-[1.2]">
                 <Swiper
                 className="!px-3"
                   modules={[Autoplay, Pagination]}

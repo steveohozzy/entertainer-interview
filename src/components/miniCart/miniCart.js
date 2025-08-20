@@ -121,7 +121,7 @@ const MiniCart = () => {
               </button></span>
                 </div>
               </div>
-            <div className="bg-brandLightBlue pt-12 pb-4 px-2 rounded-xl mt-[-27px] [&_.swiper-pagination]:relative [&_.swiper-pagination]:mt-2 [&_.swiper-pagination-bullet]:size-3">
+            <div className="bg-brandLightBlue pt-12 pb-4 px-2 rounded-xl mt-[-27px] [&_.swiper-pagination]:relative [&_.swiper-pagination]:mt-2 [&_.swiper-pagination-bullet]:size-3 [&_.swiper-pagination-bullet-active]:scale-[1.2] hover:[&_.swiper-pagination-bullet]:scale-[1.2]">
               <Swiper
                 modules={[Autoplay, Pagination]}
                 spaceBetween={10}

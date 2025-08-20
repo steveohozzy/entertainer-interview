@@ -15,7 +15,7 @@ const HomeBlogs = () => {
                 <h3 id="offers" className="text-3xl md:text-4xl lg:text-5xl font-bold md:!leading-[1.2] text-transparent text-center mt-5 mb-3 md:mt-12 md:mb-5 drop-shadow-md"><span className='bg-gradient-to-r from-brandBlue via-textBlue to-brandBlue bg-clip-text md:!leading-[1.2] text-transparent textStroke'>Latest Blogs</span></h3>
             </div>
             <div className='pt-5 rounded-xl'>
-                <div className='flex gap-4 justify-center mx-auto max-w-7xl:!-bottom-[0] [&_.swiper-pagination-bullet]:size-3 [&_.swiper-pagination]:!bottom-1'>
+                <div className='flex gap-4 justify-center mx-auto max-w-7xl:!-bottom-[0] [&_.swiper-pagination-bullet]:size-3 [&_.swiper-pagination]:!bottom-1 [&_.swiper-pagination-bullet-active]:scale-[1.2] hover:[&_.swiper-pagination-bullet]:scale-[1.2]'>
                 <Swiper
                     className="!pb-10"
                     modules={[Autoplay, Pagination]}
