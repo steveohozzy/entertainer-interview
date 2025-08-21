@@ -1049,7 +1049,7 @@ const ProductDetails = () => {
                   £{product.price}
                 </span>
                 {product.originalPrice && (
-                  <span className="line-through text-gray-400 text-xs md:text-sm ml-1">
+                  <span className="line-through text-gray-400 text-[10px] md:text-xs ml-1">
                     £{product.originalPrice}
                   </span>
                 )}
