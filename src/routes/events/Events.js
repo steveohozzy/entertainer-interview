@@ -598,7 +598,7 @@ const Events = () => {
                     </div>
                   </div>
                   <div className="w-full md:w-1/2 mt-5">
-                    <label className="relative mb-4 flex items-start text-xs font-bold text-brandBlue">
+                    <label className="relative mb-4 flex items-start text-xs font-semibold text-brandBlue">
                       <input
                         type="checkbox"
                         className="relative mt-1 block size-[20px] appearance-none rounded-md border-[3px] border-textBlue bg-white outline-none transition-all checked:bg-textBlue"
