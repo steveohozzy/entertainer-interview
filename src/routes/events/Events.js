@@ -565,22 +565,30 @@ const Events = () => {
               </div>
               <div className="mt-4">
                 <form className="flex flex-wrap justify-between">
-                  <div className="w-full md:w-1/3 px-2">
-                    <input
-                      type="text"
-                      placeholder="First Name*"
-                      className="h-[34px] w-full rounded-lg border-[3px] border-brandBlue px-3 text-textBlue transition-all placeholder:text-gray-400 focus:border-textBlue focus:outline-none"
-                    />
+                  <div className="w-full md:w-1/3 pr-2">
+                    <div className={`flex h-[44px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative group bg-white`}>
+                      <input id="firstName" type="text" placeholder="First Name*" className="peer text-base m-0 block h-[38px] w-full bg-transparent text-textBlue transition duration-200 ease-linear placeholder:text-transparent focus:outline-none bg-white" />
+                      <label for="firstName" className="font-semibold px-3 pointer-events-none absolute left-0 top-[4px] origin-[0_0] border border-solid border-transparent text-base text-gray-400 transition-[opacity,_transform] duration-200 ease-linear peer-focus:-translate-y-7 peer-focus:translate-x-[0.15rem] peer-focus:scale-[0.85] peer-focus:text-brandBlue peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:translate-x-[0.15rem] peer-[:not(:placeholder-shown)]:scale-[0.85] peer-[:not(:placeholder-shown)]:text-brandBlue motion-reduce:transition-none">First Name*</label>
+                      <span className="absolute h-full w-[20px] flex items-center justify-center top-0 right-2 text-gray-300 peer-[:not(:placeholder-shown)]:text-brandGreen">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="10" viewBox="0 0 14 10" fill="none" className="w-full h-auto">
+                          <path d="M4.49273 9.76762L0.180742 5.48145C0.0602474 5.36095 0 5.20603 0 5.01668C0 4.82733 0.0602474 4.67241 0.180742 4.55191L1.13609 3.62238C1.25659 3.48467 1.4029 3.41582 1.57504 3.41582C1.76439 3.41582 1.92792 3.48467 2.06563 3.62238L4.9575 6.51426L11.1544 0.317383C11.2921 0.179674 11.447 0.11082 11.6191 0.11082C11.8085 0.11082 11.9634 0.179674 12.0839 0.317383L13.0393 1.24691C13.1598 1.36741 13.22 1.52233 13.22 1.71168C13.22 1.90103 13.1598 2.05595 13.0393 2.17645L5.42227 9.76762C5.30177 9.90533 5.14685 9.97418 4.9575 9.97418C4.76815 9.97418 4.61323 9.90533 4.49273 9.76762Z" fill="currentColor" />
+                          </svg>
+                        </span>
+                    </div>
                   </div>
                   <div className="w-full md:w-1/3 mt-4 md:mt-0 px-2">
-                    <input
-                      type="email"
-                      placeholder="Email Address*"
-                      className="h-[34px] w-full rounded-lg border-[3px] border-brandBlue px-3 text-textBlue transition-all placeholder:text-gray-400 focus:border-textBlue focus:outline-none"
-                    />
+                    <div className={`flex h-[44px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative group bg-white`}>
+                      <input id="emailAddress" type="email" placeholder="Email Address*" className="peer text-base m-0 block h-[38px] w-full bg-transparent text-textBlue transition duration-200 ease-linear placeholder:text-transparent focus:outline-none bg-white" />
+                      <label for="emailAddress" className="font-semibold px-3 pointer-events-none absolute left-0 top-[4px] origin-[0_0] border border-solid border-transparent text-base text-gray-400 transition-[opacity,_transform] duration-200 ease-linear peer-focus:-translate-y-7 peer-focus:translate-x-[0.15rem] peer-focus:scale-[0.85] peer-focus:text-brandBlue peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:translate-x-[0.15rem] peer-[:not(:placeholder-shown)]:scale-[0.85] peer-[:not(:placeholder-shown)]:text-brandBlue motion-reduce:transition-none">Email Address*</label>
+                      <span className="absolute h-full w-[20px] flex items-center justify-center top-0 right-2 text-gray-300 peer-[:not(:placeholder-shown)]:text-brandGreen">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="10" viewBox="0 0 14 10" fill="none" className="w-full h-auto">
+                          <path d="M4.49273 9.76762L0.180742 5.48145C0.0602474 5.36095 0 5.20603 0 5.01668C0 4.82733 0.0602474 4.67241 0.180742 4.55191L1.13609 3.62238C1.25659 3.48467 1.4029 3.41582 1.57504 3.41582C1.76439 3.41582 1.92792 3.48467 2.06563 3.62238L4.9575 6.51426L11.1544 0.317383C11.2921 0.179674 11.447 0.11082 11.6191 0.11082C11.8085 0.11082 11.9634 0.179674 12.0839 0.317383L13.0393 1.24691C13.1598 1.36741 13.22 1.52233 13.22 1.71168C13.22 1.90103 13.1598 2.05595 13.0393 2.17645L5.42227 9.76762C5.30177 9.90533 5.14685 9.97418 4.9575 9.97418C4.76815 9.97418 4.61323 9.90533 4.49273 9.76762Z" fill="currentColor" />
+                          </svg>
+                        </span>
+                    </div>
                   </div>
-                  <div className="w-full md:w-1/3 mt-4 md:mt-0 px-2">
-                    <div className="flex h-[34px] flex-grow px-3 rounded-lg border border-[3px] border-brandBlue bg-white relative">
+                  <div className="w-full md:w-1/3 mt-4 md:mt-0 pl-2">
+                    <div className="flex h-[44px] font-semibold flex-grow px-3 rounded-lg border border-[3px] border-brandBlue bg-white relative">
                       <span className="absolute right-[15px] z-[2] top-[14px] w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[6px] border-gray-400 transition-all"></span>
                       <select
                         className="relative w-full appearance-none border-gray-400 bg-white pr-4 mr-2 text-gray-400 outline-none"
