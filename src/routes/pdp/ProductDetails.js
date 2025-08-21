@@ -792,7 +792,7 @@ const ProductDetails = () => {
             </span>
           </div>
           <div className="bg-white pt-8 pb-5 px-3 rounded-xl mt-[-27px] shadow-sm">
-            <div className="flex gap-4 justify-center mx-auto [&_.swiper-pagination]:relative [&_.swiper-pagination]:top-[-20px!important] [&_.swiper-pagination]:mt-3 [&_.swiper-pagination-bullet]:size-3">
+            <div className="flex gap-4 justify-center mx-auto [&_.swiper-pagination]:relative [&_.swiper-pagination]:top-[-20px!important] [&_.swiper-pagination]:mt-3 [&_.swiper-pagination-bullet]:size-3 [&_.swiper-pagination-bullet-active]:scale-[1.2] hover:[&_.swiper-pagination-bullet]:scale-[1.2]">
               <Swiper
                 className="!pb-5 !px-2.5"
                 modules={[Autoplay, Pagination]}
