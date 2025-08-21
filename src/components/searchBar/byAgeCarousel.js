@@ -5,7 +5,7 @@ const ByAgeCarousel = ({setShowSearchBox}) => {
 
   return (
     <div className="mt-2">
-      <div className="text-lg text-textBlue font-bold mb-2 md:mb-4">
+      <div className="text-lg text-textBlue font-bold mb-2">
         By Age
       </div>
         <div id="age" className="grid grid-cols-6 lg:grid-cols-7 gap-2 mb-2">
