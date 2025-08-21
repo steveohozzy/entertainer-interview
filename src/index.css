@@ -50,8 +50,15 @@
   }
 
   .textStroke {
-    filter: drop-shadow(0 3px #fff) drop-shadow(0 -3px #fff)
-      drop-shadow(3px 0 #fff) drop-shadow(-3px 0 #fff);
+    filter: drop-shadow(0 2px #fff) drop-shadow(0 -2px #fff)
+      drop-shadow(2px 0 #fff) drop-shadow(-2px 0 #fff);
+  }
+
+  @media (min-width: 768px) {
+    .textStroke {
+      filter: drop-shadow(0 3px #fff) drop-shadow(0 -3px #fff)
+        drop-shadow(3px 0 #fff) drop-shadow(-3px 0 #fff);
+    }
   }
 
   .textStroke--thin {
