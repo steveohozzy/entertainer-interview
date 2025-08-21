@@ -95,7 +95,7 @@ const Cart = () => {
               <div className="bg-white w-full hidden md:block">
                 <Button
                   ref={continueCheckout}
-                  className="shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-xs sm:text-sm md:text-lg rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-2 transition-all hover:bg-brandLightGreen hover:scale-105"
+                  className="shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-xs sm:text-sm md:text-lg rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-0 transition-all hover:bg-brandLightGreen hover:scale-105"
                   iconpath={
                     <svg
                       width="22"
@@ -271,7 +271,7 @@ const Cart = () => {
             <div className={`bg-white p-4 px-0 md:px-4 w-full sticky bottom-0 left-0 transition-all md:fixed md:translate-y-full ${AddVisible ? '' : 'md:translate-y-0'} z-20`}>
               <div className="max-w-3xl m-auto flex flex-col items-center justify-center">
                 <Button
-                  className="h-[44px] shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-sm md:text-lg rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-2 transition-all hover:bg-brandLightGreen hover:scale-105"
+                  className="h-[44px] shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-sm md:text-lg rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-0 transition-all hover:bg-brandLightGreen hover:scale-105"
                   iconpath={
                     <svg
                       width="22"
@@ -289,7 +289,7 @@ const Cart = () => {
                 </Button>
                 <Button
                   removeIcons={true}
-                  className="shadow-md hover:shadow-lg w-full h-[44px] group inline-flex items-center justify-center font-bold text-sm md:text-lg rounded-[30px] bg-white text-brandBlue py-1 px-4 pl-2 transition-all border-[3px] mt-4 border-brandBlue hover:bg-brandBlue hover:text-white hover:scale-105"
+                  className="shadow-md hover:shadow-lg w-full h-[44px] group inline-flex items-center justify-center font-bold text-sm md:text-lg rounded-[30px] bg-white text-brandBlue py-1 px-4 pl-0 transition-all border-[3px] mt-4 border-brandBlue hover:bg-brandBlue hover:text-white hover:scale-105"
                   link="/"
                 >
                   Continue Shopping

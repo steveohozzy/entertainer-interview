@@ -194,7 +194,7 @@ const PresentFinder = () => {
             }
             <div className="flex justify-center ">
               <Button
-                className="shadow-md hover:shadow-lg group inline-flex items-center justify-center font-bold text-lg rounded-[30px] bg-brandGreen text-white py-2 px-6 pl-2 transition-all hover:bg-brandLightGreen hover:scale-105 mt-8"
+                className="shadow-md hover:shadow-lg group inline-flex items-center justify-center font-bold text-lg rounded-[30px] bg-brandGreen text-white py-2 px-6 pl-0 transition-all hover:bg-brandLightGreen hover:scale-105 mt-8"
                 onClick={clearFilters}
               >
                 Try our present finder again
@@ -447,7 +447,7 @@ const PresentFinder = () => {
                     <span className="text-sm text-gray-400 text-center w-full block mb-4">{filteredProducts.length} results so far</span>
                     <div className="flex justify-end">
                       <Button
-                        className="shadow-md hover:shadow-lg group inline-flex items-center justify-center font-bold text-lg rounded-[30px] bg-brandGreen text-white py-2 px-6 pl-2 transition-all hover:bg-brandLightGreen hover:scale-105"
+                        className="shadow-md hover:shadow-lg group inline-flex items-center justify-center font-bold text-lg rounded-[30px] bg-brandGreen text-white py-2 px-6 pl-0 transition-all hover:bg-brandLightGreen hover:scale-105"
                         onClick={() => {
                           setStep(2);
                         }}
@@ -514,7 +514,7 @@ const PresentFinder = () => {
                     <span className="text-sm text-gray-400 text-center w-full block mb-4">{filteredProducts.length} results so far</span>
                     <div className="flex justify-between">
                       <Button
-                        className="shadow-md hover:shadow-lg group inline-flex items-center justify-center font-bold text-lg rounded-[30px] bg-gray-500 text-white py-2 px-6 pl-2 transition-all hover:bg-gray-400 hover:scale-105"
+                        className="shadow-md hover:shadow-lg group inline-flex items-center justify-center font-bold text-lg rounded-[30px] bg-gray-500 text-white py-2 px-6 pl-0 transition-all hover:bg-gray-400 hover:scale-105"
                         onClick={() => {
                           setStep(1);
                         }}
@@ -522,7 +522,7 @@ const PresentFinder = () => {
                         Back
                       </Button>
                       <Button
-                        className="shadow-md hover:shadow-lg group inline-flex items-center justify-center font-bold text-lg rounded-[30px] bg-brandGreen text-white py-2 px-6 pl-2 transition-all hover:bg-brandLightGreen hover:scale-105"
+                        className="shadow-md hover:shadow-lg group inline-flex items-center justify-center font-bold text-lg rounded-[30px] bg-brandGreen text-white py-2 px-6 pl-0 transition-all hover:bg-brandLightGreen hover:scale-105"
                         onClick={() => {
                           setStep(3);
                         }}
@@ -579,7 +579,7 @@ const PresentFinder = () => {
                     <span className="text-sm text-gray-400 text-center w-full block mb-4">{filteredProducts.length} results</span>
                     <div className="flex justify-between">
                       <Button
-                        className="shadow-md hover:shadow-lg group inline-flex items-center justify-center font-bold text-lg rounded-[30px] bg-gray-500 text-white py-2 px-6 pl-2 transition-all hover:bg-gray-400 hover:scale-105"
+                        className="shadow-md hover:shadow-lg group inline-flex items-center justify-center font-bold text-lg rounded-[30px] bg-gray-500 text-white py-2 px-6 pl-0 transition-all hover:bg-gray-400 hover:scale-105"
                         onClick={() => {
                           setStep(2);
                         }}
@@ -587,7 +587,7 @@ const PresentFinder = () => {
                         Back
                       </Button>
                       <Button
-                        className="shadow-md hover:shadow-lg group inline-flex items-center justify-center font-bold text-lg rounded-[30px] bg-brandGreen text-white py-2 px-6 pl-2 transition-all hover:bg-brandLightGreen hover:scale-105"
+                        className="shadow-md hover:shadow-lg group inline-flex items-center justify-center font-bold text-lg rounded-[30px] bg-brandGreen text-white py-2 px-6 pl-0 transition-all hover:bg-brandLightGreen hover:scale-105"
                         onClick={() => {
                           setShowResults(true);
                           window.scrollTo({

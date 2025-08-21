@@ -55,7 +55,7 @@ const WishlistContainer = () => {
           <div className="flex gap-4 justify-center mt-4">
             <div className="w-2/3 md:w-1/2">
               <Button 
-                className='shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-sm md:text-lg rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-2 transition-all hover:bg-brandLightGreen hover:scale-105'
+                className='shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-sm md:text-lg rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-0 transition-all hover:bg-brandLightGreen hover:scale-105'
                 onClick={addAllToBasket}
                 iconpath={
                     <svg width="22" height="18" viewBox="0 0 22 18" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

@@ -26,7 +26,7 @@ const HomeHeroCard = () => {
             </button>
           </div>
           <Button
-            className="shadow-md hover:shadow-lg group inline-flex items-center justify-center font-bold text-lg rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-2 transition-all hover:bg-brandLightGreen hover:scale-105 border-[3px] border-white"
+            className="shadow-md hover:shadow-lg group inline-flex items-center justify-center font-bold text-lg rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-0 transition-all hover:bg-brandLightGreen hover:scale-105 border-[3px] border-white"
             iconpath={
               <svg
                 width="22"

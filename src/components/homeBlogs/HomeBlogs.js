@@ -99,7 +99,7 @@ const HomeBlogs = () => {
                             <div className="w-full flex flex-col grow justify-between items-center py-1 md:py-3 px-2 pb-4">
                                 <div className="grow text-lg xl:text-xl text-brandBlue font-bold leading-[1.2] xl:leading-[1.1] mb-5 mt-3">The Must-Have Toys for Road Trips</div>
                                 <Button
-                                    className='shadow-md hover:shadow-lg group inline-flex items-center justify-center font-bold rounded-[30px] bg-brandGreen text-white py-2 px-2 lg:px-4 lg:pl-0 pl-0 transition-all hover:bg-brandLightGreen hover:scale-105 mt-2'
+                                    className='shadow-md hover:shadow-lg group inline-flex items-center justify-center font-bold rounded-[30px] bg-brandGreen text-white py-2 pr-2 lg:pr-4 lg:pl-0 pl-0 transition-all hover:bg-brandLightGreen hover:scale-105 mt-2'
                                     onClick={() => { navigate(`/`); window.scrollTo({top: 0,left: 0,behavior: "smooth",});}}>
                                         Read the post
                                 </Button>

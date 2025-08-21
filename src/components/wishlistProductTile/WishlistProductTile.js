@@ -94,7 +94,7 @@ const WishlistProductTile = ({ product, nocontrols, isMiniCart }) => {
                 </div>
                 <div className="text-right mt-3 flex flex-col justify-center h-full w-full lg:w-auto lg:pl-3 lg:mt-0">
                   <Button
-                    className="shadow-md hover:shadow-lg group inline-flex items-center justify-center font-bold text-sm min-h-[44px] rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-2 transition-all hover:bg-brandLightGreen hover:scale-105 addToBasket"
+                    className="shadow-md hover:shadow-lg group inline-flex items-center justify-center font-bold text-sm min-h-[44px] rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-0 transition-all hover:bg-brandLightGreen hover:scale-105 addToBasket"
                     iconpath={
                       <svg
                         width="22"

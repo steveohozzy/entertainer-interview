@@ -307,7 +307,7 @@ const ProductDetails = () => {
             </h1>
             <Button
               ref={addToBag}
-              className="shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-lg rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-2 transition-all hover:bg-brandLightGreen hover:scale-105"
+              className="shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-lg rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-0 transition-all hover:bg-brandLightGreen hover:scale-105"
               iconpath={
                 <svg
                   width="22"
@@ -764,7 +764,7 @@ const ProductDetails = () => {
                   <div className="text-xl text-brandRed font-bold mb-2">{bundleTotalPrice}</div>
                 </div>
                 <Button
-                  className="shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-2 transition-all hover:bg-brandLightGreen hover:scale-105"
+                  className="shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-0 transition-all hover:bg-brandLightGreen hover:scale-105"
                   iconpath={
                     <svg
                       width="22"
@@ -1057,7 +1057,7 @@ const ProductDetails = () => {
             </div>
           </div>
           <Button
-            className="mt-2 shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-lg rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-2 transition-all hover:bg-brandLightGreen hover:scale-105"
+            className="mt-2 shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-lg rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-0 transition-all hover:bg-brandLightGreen hover:scale-105"
             iconpath={
               <svg
                 width="22"

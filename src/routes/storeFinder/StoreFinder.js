@@ -646,7 +646,7 @@ export default function StoreFinderPage() {
                     expanding your search radius or removing some filters.
                   </p>
                   <Button
-                    className="shadow-md hover:shadow-lg group inline-flex items-center justify-center font-bold rounded-[30px] bg-textBlue text-white py-2 px-4 pl-2 transition-all hover:bg-brandBlue hover:scale-105"
+                    className="shadow-md hover:shadow-lg group inline-flex items-center justify-center font-bold rounded-[30px] bg-textBlue text-white py-2 px-4 pl-0 transition-all hover:bg-brandBlue hover:scale-105"
                     onClick={() => {
                       setMaxDistance(50);
                       setSelectedServices([]);
@@ -792,7 +792,7 @@ export default function StoreFinderPage() {
                         {/* Action Buttons */}
                         <div className="flex gap-3 pt-2">
                           <Button
-                            className="shadow-md hover:shadow-lg group inline-flex items-center justify-center font-bold rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-2 transition-all hover:bg-brandLightGreen hover:scale-105"
+                            className="shadow-md hover:shadow-lg group inline-flex items-center justify-center font-bold rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-0 transition-all hover:bg-brandLightGreen hover:scale-105"
                             iconpath={<Navigation className="h-4 w-4 mr-2" />}
                             onClick={(e) => {
                               e.stopPropagation();
@@ -807,7 +807,7 @@ export default function StoreFinderPage() {
                             Get Directions
                           </Button>
                           <Button
-                            className="shadow-md hover:shadow-lg group inline-flex items-center justify-center font-bold rounded-[30px] bg-textBlue text-white py-2 px-4 pl-2 transition-all hover:bg-brandBlue hover:scale-105"
+                            className="shadow-md hover:shadow-lg group inline-flex items-center justify-center font-bold rounded-[30px] bg-textBlue text-white py-2 px-4 pl-0 transition-all hover:bg-brandBlue hover:scale-105"
                             iconpath={<Phone className="h-4 w-4 mr-2" />}
                             onClick={(e) => {
                               e.stopPropagation();
@@ -844,7 +844,7 @@ export default function StoreFinderPage() {
               (city) => (
                 <Button
                   key={city}
-                  className="shadow-md hover:shadow-lg group inline-flex items-center justify-center font-bold rounded-[30px] bg-textBlue text-white py-2 px-4 pl-2 transition-all hover:bg-brandBlue hover:scale-105"
+                  className="shadow-md hover:shadow-lg group inline-flex items-center justify-center font-bold rounded-[30px] bg-textBlue text-white py-2 px-4 pl-0 transition-all hover:bg-brandBlue hover:scale-105"
                   onClick={() => {
                     setSearchQuery(city);
                     setTimeout(() => {
