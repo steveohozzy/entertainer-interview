@@ -4,7 +4,7 @@ const ByAgeCarousel = ({setShowSearchBox}) => {
   const navigate = useNavigate();
 
   return (
-    <div className="mt-2 md:mt-4">
+    <div className="mt-2">
       <div className="text-lg text-textBlue font-bold mb-2 md:mb-4">
         By Age
       </div>
