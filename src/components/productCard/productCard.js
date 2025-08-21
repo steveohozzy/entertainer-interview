@@ -108,7 +108,7 @@ const ProductCard = ({ product }) => {
     <>
       {/* Quick View Modal */}
       {quickViewProduct && (
-        <div className="fixed inset-0 z-50 bg-brandBlue/60">
+        <div className="fixed inset-0 z-[700] bg-brandBlue/60">
           <div ref={wrapperRef} className="fixed left-[50%] top-[50%] z-50 grid w-full translate-x-[-50%] translate-y-[-50%] gap-4 border bg-white p-6 shadow-lg sm:rounded-lg max-w-4xl max-h-[90vh] overflow-y-auto">
             <div className="relative flex flex-col gap-4">
               {quickViewProduct && (
@@ -389,50 +389,50 @@ const ProductCard = ({ product }) => {
                                 flatbed!
                               </p>
 
-                              <p className="mb-0">Product features:</p>
-                              <ul className="list-inside list-disc">
-                                <li className="mb-1">
-                                  Includes: 1x Hot Wheels Monster Trucks Big Rigs
-                                  Vehicle (styles vary) Get the adventures movin'
-                                  with a Hot Wheels Monster Trucks Big Rig!
+                              <p className="mb-2 font-semibold text-lg">Product features:</p>
+                              <ul className="list-none">
+                                <li className="flex items-start mb-3 before:aspect-square before:mt-1.5 before:mr-2 before:block before:h-2.5 before:w-2.5 before:rounded-full before:bg-brandBlue">
+                                  Includes: 1x Hot Wheels Monster Trucks Big Rigs Vehicle
+                                  (styles vary) Get the adventures movin' with a Hot Wheels
+                                  Monster Trucks Big Rig!
                                 </li>
-                                <li className="mb-1">
-                                  These Big Rigs feature six wheels to go even
-                                  bigger on the Monster Truck action
+                                <li className="flex items-start mb-3 before:aspect-square before:mt-1.5 before:mr-2 before:block before:h-2.5 before:w-2.5 before:rounded-full before:bg-brandBlue">
+                                  These Big Rigs feature six wheels to go even bigger on the
+                                  Monster Truck action
                                 </li>
-                                <li className="mb-1">
-                                  Each 1:64 scale die-cast vehicle captures the
-                                  personality of fan-favourite Monster Truck
-                                  creatures and characters with the eye-catching
-                                  designs that fans love
+                                <li className="flex items-start mb-3 before:aspect-square before:mt-1.5 before:mr-2 before:block before:h-2.5 before:w-2.5 before:rounded-full before:bg-brandBlue">
+                                  Each 1:64 scale die-cast vehicle captures the personality
+                                  of fan-favourite Monster Truck creatures and characters
+                                  with the eye-catching designs that fans love
                                 </li>
-                                <li className="mb-1">
-                                  Kids can haul additional 1:64 scale vehicles on
-                                  the flatbed or with a tow hook on the Big Rig
-                                  (sold separately)
+                                <li className="flex items-start mb-3 before:aspect-square before:mt-1.5 before:mr-2 before:block before:h-2.5 before:w-2.5 before:rounded-full before:bg-brandBlue">
+                                  Kids can haul additional 1:64 scale vehicles on the
+                                  flatbed or with a tow hook on the Big Rig (sold
+                                  separately)
                                 </li>
-                                <li className="mb-1">
+                                <li className="flex items-start mb-3 before:aspect-square before:mt-1.5 before:mr-2 before:block before:h-2.5 before:w-2.5 before:rounded-full before:bg-brandBlue">
                                   Suitable for ages 3 years +
                                 </li>
                               </ul>
-                              <p className="text-lg font-bold mt-2">
-                                Specifications
+                              <p className="text-lg font-bold mt-4">Specifications</p>
+                              <p className="mb-1">
+                                Manufacturer: <span className="font-bold">MATTEL TOYS</span>
+                              </p>
+                              <p className="mb-1">
+                                Manufacturer Number:
+                                <span className="font-bold">HWN86</span>
+                              </p>
+                              <p className="mb-1">
+                                Our Product Number:
+                                <span className="font-bold">566798</span>
                               </p>
                               <p>
-                                Manufacturer:{" "}
-                                <span className="font-bold">MATTEL TOYS</span>
-                                <br />
-                                Manufacturer Number:{" "}
-                                <span className="font-bold">HWN86</span>
-                                <br />
-                                Our Product Number:{" "}
-                                <span className="font-bold">566798</span>
-                                <br />
                                 Safety Information:
-                                <br />
+                              </p>
+                              <p>
                                 <span className="font-bold">
-                                  WARNING. Not suitable for children under 36
-                                  months. Small Parts. Choking Hazard.
+                                  WARNING. Not suitable for children under 36 months. Small
+                                  Parts. Choking Hazard.
                                 </span>
                               </p>
                             </div>
