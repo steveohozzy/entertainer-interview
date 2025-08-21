@@ -158,8 +158,11 @@ const SearchBar = () => {
               </form>
               {showSearchBox &&
                 <button
-                  name="Close quick view"
-                  onClick={() => {setShowSearchBox(false);}}
+                  name="Close search results"
+                  onClick={() => {
+                    setShowSearchBox(false);
+                    document.body.classList.remove('body-noscroll');
+                  }}
                   className="absolute md:hidden right-8 sm:right-16 top-12 sm:top-14 text-textBlue rounded-full border-[2px] border-textBlue z-50"
                 >
                   <svg
