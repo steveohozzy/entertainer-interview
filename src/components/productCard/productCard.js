@@ -464,7 +464,7 @@ const ProductCard = ({ product }) => {
                           </div>
                         </div> */}
                         <Button
-                          className="shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-xs min-h-[44px] md:text-lg rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-0 transition-all hover:bg-brandLightGreen hover:scale-105"
+                          className="shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-base min-h-[44px] md:text-lg rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-0 transition-all hover:bg-brandLightGreen hover:scale-105"
                           iconpath={
                             <svg
                               width="22"
