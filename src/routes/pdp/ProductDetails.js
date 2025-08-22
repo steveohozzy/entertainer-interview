@@ -323,8 +323,8 @@ const ProductDetails = () => {
             >
               Add to Basket
             </Button>
-            <div className="flex flex-wrap items-end justify-between py-6 border-b-[3px] border-gray-300">
-              <div className="flex flex-wrap items-end w-1/2 md:w-auto justify-between">
+            <div className="flex flex-wrap items-end justify-between py-6 xl:py-8 border-b-[3px] border-gray-300">
+              <div className="flex flex-wrap items-end w-1/2 xl:w-auto justify-between">
                 <div className="price">
                   <div className="flex items-end">
                     <span className="text-brandRed font-bold text-xl md:text-2xl">
@@ -337,7 +337,7 @@ const ProductDetails = () => {
                     )}
                   </div>
                 </div>
-                <div className="rating mt-2 md:mt-0 md:mb-1 md:ml-2 xl:ml-8">
+                <div className="rating mt-2 w-full xl:w-auto xl:mt-0 md:mb-1 xl:ml-8">
                   <button
                     onClick={() =>
                       document
@@ -355,19 +355,19 @@ const ProductDetails = () => {
                   </button>
                 </div>
               </div>
-              <div className="w-1/2 md:w-auto">
+              <div className="w-1/2 xl:w-auto">
                 <div className="flex flex-wrap items-center notices justify-end font-semibold">
-                  <span className="text-center text-brandNeonBlue text-xs md:text-sm border border-brandNeonBlue px-2 py-1 rounded-md mb-2 md:mb-0 w-full md:w-auto">
+                  <span className="text-center text-brandNeonBlue text-xs md:text-sm border border-brandNeonBlue px-2 py-1 rounded-md mb-2 xl:mb-0 w-full xl:w-auto">
                     3 OTHER STYLES
                   </span>
-                  <span className="text-center text-white bg-brandNeonBlue text-xs md:text-sm border border-brandNeonBlue px-2 py-1 rounded-md md:ml-2 w-full md:w-auto">
+                  <span className="text-center text-white bg-brandNeonBlue text-xs lg:text-sm border border-brandNeonBlue px-2 py-1 rounded-md xl:ml-2 w-full xl:w-auto">
                     FREE UK DELIVERY
                   </span>
                 </div>
               </div>
             </div>
-            <div className="flex flex-wrap items-end justify-between py-6 border-b-[3px] border-gray-300 flex-col-reverse md:flex-row">
-              <div className="flex flex-wrap items-end w-full md:w-auto justify-between">
+            <div className="flex flex-wrap items-end lg:items-center justify-between py-6 lg:py-4 xl:py-6 border-b-[3px] border-gray-300 flex-col-reverse lg:flex-row">
+              <div className="flex flex-wrap items-end w-full lg:w-auto justify-between">
                 <div className="price">
                   <div className="flex items-center mb-4 md:mb-0">
                     <img src="/klarna-logo.svg" alt="Klarna" className="w-14" />
@@ -505,9 +505,9 @@ const ProductDetails = () => {
                   </div>
                 </div>
               </div>
-              <div className="w-full md:w-auto mb-4 md:mb-0">
-                <div className="flex flex-wrap items-center notices justify-end">
-                  <span className="flex items-center justify-between text-brandNeonBlue border-[2px] border-brandNeonBlue p-2 rounded-md mb-2 md:mb-0 w-full md:w-auto font-bold">
+              <div className="w-full lg:w-auto mb-4 lg:mb-0">
+                <div className="flex flex-wrap items-center notices xl:justify-end">
+                  <span className="flex items-center justify-between text-brandNeonBlue border-[2px] border-brandNeonBlue p-2 rounded-md mb-2 xl:mb-0 w-full md:w-auto font-bold">
                     <span className="font-semibold">Other styles</span>
                     <div className="flex items-center">
                       <button
@@ -554,7 +554,7 @@ const ProductDetails = () => {
                   </span>
                 </div>
               </div>
-              <div className="w-full py-4 pt-0 md:pt-8">
+              <div className="w-full py-4 pt-0 xl:pt-8">
                 <div className="flex items-center flex-wrap">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
