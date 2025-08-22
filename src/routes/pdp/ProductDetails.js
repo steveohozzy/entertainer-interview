@@ -372,7 +372,7 @@ const ProductDetails = () => {
                   <div className="flex items-center mb-4 md:mb-0">
                     <img src="/klarna-logo.svg" alt="Klarna" className="w-14" />
                     <p className="text-sm leading-[1.2] ml-2">
-                      Make 3 payments of <span className="text-brandBlue">£{(product.price / 3).toFixed(2)}</span>
+                      Make 3 payments of <span className="text-brandBlue font-semibold">£{(product.price / 3).toFixed(2)}</span>
                       <br />
                       <span className="text-xs">
                         <button
