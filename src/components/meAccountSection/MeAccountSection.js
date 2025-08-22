@@ -158,7 +158,7 @@ const MeAccountSection = () => {
       <div className="w-full md:w-1/3">
       <div className="flex items-end gap-3 md:flex-col">
         <div className="bg-brandNeonBlue bg-opacity-30 rounded-xl p-3">
-          <div className="text-brandBlue mb-3 text-sm md:text-base">
+          <div className="text-brandBlue mb-3 font-semibold text-sm md:text-base">
             Send offers, new toys &amp; vouchers
           </div>
           <div className="flex justify-between">
