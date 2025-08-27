@@ -86,7 +86,7 @@ const HomeToyTypes = () => {
         <SwiperSlide className="h-auto pt-3">
           <button onClick={goToLinkHandler} className="transition-all rounded-xl bg-white px-2 py-2.5 md:py-4 mb-2 flex flex-col items-center shadow-md justify-center hover:-translate-y-3 hover:shadow-lg">
             <div className="mb-2">
-              <img className="px-3 md:px-6" src="https://www.thetoyshop.com/medias/Cat-roundels-270x270-Construction-Toys-1.png?context=bWFzdGVyfHJvb3R8MTA3NTJ8aW1hZ2UvcG5nfGFEVmhMMmd6TkM4eE1qVTRNVEV3TlRNek5qTTFNQzlEWVhRZ2NtOTFibVJsYkhOZk1qY3dlREkzTUY5RGIyNXpkSEoxWTNScGIyNGdWRzk1Y3lBeExuQnVad3w0OTRjMGQ3NjM4MzcwY2QzNzZkMGNmYjNjNTNhZWQ1YmNkMjJhNzZmOGVhY2VjNjU2ZjA1ODFhZGMxYTRkYTVi" alt="Construction Toys" />
+              <img className="px-3 md:px-6" src="/construction-panel.jpg" alt="Construction Toys" />
             </div>
             <div className="font-bold text-brandBlue text-sm md:text-lg">
               Construction Toys
