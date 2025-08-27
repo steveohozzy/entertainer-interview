@@ -228,8 +228,6 @@ const Menu = () => {
                                       `${category.id}-${itemIndex}`
                                     )
                                   }
-                                  onMouseEnter={() => setHoveredItem(`${category.id}-${itemIndex}`)}
-                                  onMouseLeave={() => setHoveredItem(null)}
                                   className={`flex-1 p-3 text-left transition-all duration-300 group`}
                                 >
                                   <div className="flex items-center justify-between">
@@ -242,7 +240,9 @@ const Menu = () => {
                                         </span>
                                       </div>
                                     </div>
-                                    {hoveredItem === `${category.id}-${itemIndex}` && (
+                                    {expandedSubCategories[
+                                        `${category.id}-${itemIndex}`
+                                      ] && (
                                       <span className="text-textBlue">
                                                 <Sparkles className="h-4 w-4 animate-spin" />
                                       </span>
