@@ -232,7 +232,7 @@ const Menu = () => {
                                 >
                                   <div className="flex items-center justify-between">
                                     <div>
-                                      <div className="flex items-center gap-2 mb-1">
+                                      <div className="flex items-center gap-2 justify-between mb-1p">
                                         <span
                                           className={`font-bold text-textBlue text-left text-base`}
                                         >
@@ -240,6 +240,9 @@ const Menu = () => {
                                         </span>
                                       </div>
                                     </div>
+                                    <span className="hidden text-textBlue group-hover:block">
+                                      <Sparkles className="h-4 w-4 animate-spin" />
+                                    </span>
                                   </div>
                                 </button>
                               ) : (
