@@ -120,6 +120,7 @@ const Menu = () => {
                 onClick={() => closeMenu()}
               >
                 <X className="h-7 w-7 mt-2" />
+                <span className="sr-only">close menu</span>
               </button>
               <div className="flex items-center text-brandBlue pr-5">
                 <button
@@ -129,6 +130,7 @@ const Menu = () => {
                 }}
                 className="transition-all group flex"
               >
+                <span className="sr-only">account</span>
                 <span className="mr-1 transition-all transition-duration-500 group-hover:rotate-[20deg] group-hover:scale-110">
                   <svg
                     width="24"
