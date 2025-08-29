@@ -808,7 +808,7 @@ const ProductDetails = () => {
                     <div>
                       {bundleExpanded && (
                         <div className="text-lg font-semibold text-textBlue text-center mt-2 lg:mt-0 mb-1 leading-[1]">
-                          <div className="absolute top-2 right-2">
+                          <div className={`absolute top-2 right-2 ${bundleItemsCount === 0 && 'opacity-30'}`}>
                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="18" viewBox="0 0 30 18" fill="none">
                               <g clip-path="url(#clip0_2353_894)">
                               <g opacity="0.5">
@@ -825,7 +825,7 @@ const ProductDetails = () => {
                               </defs>
                             </svg>
                           </div>
-                          <div className="absolute top-2 left-2">
+                          <div className={`absolute top-2 left-2 ${bundleItemsCount === 0 && 'opacity-30'}`}>
                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="23" viewBox="0 0 32 23" fill="none">
                               <g clip-path="url(#clip0_2353_889)">
                               <g opacity="0.5">
@@ -853,7 +853,7 @@ const ProductDetails = () => {
                           }
                         </div>
                       )}
-                      <div className="text-lg text-brandRed font-bold text-center mb-2">{bundleTotalPrice}</div>
+                      <div className={`text-lg ${bundleItemsCount === 0 ? 'text-gray-400' : 'text-brandRed'} font-bold text-center mb-2`}>{bundleTotalPrice}</div>
                     </div>
                     <div className="flex items-center gap-2">
                       <button onClick={() => {setBundleExpanded(true)}} className={`shadow-md hover:shadow-lg group items-center justify-center font-bold rounded-full bg-textBlue text-white transition-all hover:bg-brandBlue hover:scale-105 w-7 h-7 flex justify-cener items-center p-1 ${bundleExpanded && 'hidden'}`}>
@@ -862,7 +862,7 @@ const ProductDetails = () => {
                           ></span>
                       </button>
                       <Button
-                        className={`shadow-md hover:shadow-lg group items-center justify-center text-sm font-bold rounded-full bg-brandGreen text-white p-0 transition-all hover:bg-brandLightGreen hover:scale-105 ${!bundleExpanded && 'w-7 h-7'} flex justify-cener items-center p-1.5 pl-0.5`}
+                        className={`shadow-md hover:shadow-lg group items-center justify-center text-sm font-bold rounded-full bg-brandGreen text-white p-0 transition-all hover:bg-brandLightGreen hover:scale-105 ${!bundleExpanded && 'w-7 h-7'} flex justify-cener items-center p-1.5 pl-0.5 ${bundleItemsCount === 0 && 'pointer-events-none bg-gray-400'}`}
                         iconpath={
                           <svg
                           className="w-full"
