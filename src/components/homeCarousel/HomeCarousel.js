@@ -116,7 +116,6 @@ const HomeCarousel = () => {
                 </Button>
           </div>
           <div className="w-full md:w-1/2 rounded-xl overflow-hidden">
-            {preload("https://www.thetoyshop.com/medias/lego-test-video.mp4?context=bWFzdGVyfHJvb3R8MTg0NTg0MXx2aWRlby9tcDR8YUdVd0wyZ3laUzh4TWpVeU1qWTVNVFE1TXpreE9DOXNaV2R2TFhSbGMzUXRkbWxrWlc4dWJYQTB8MzE5MWY1M2FiYmQ4ODA4NDc4NmYzMDUwOWU5MmZiMzIyNTQxNDYwZTBhMzI3NmUyODNmMDIzYjA1YWMzZTRiYQ", {as: "video"})}
             <video
               className="object-cover w-full h-[calc(100%+1px)] rounded-xl"
               autoPlay
