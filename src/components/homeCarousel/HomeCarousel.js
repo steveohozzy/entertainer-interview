@@ -4,6 +4,7 @@ import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/autoplay";
 import "swiper/css/pagination";
+import { preload } from 'react-dom';
 import { useNavigate } from "react-router-dom";
 import Button from "../button/Button";
 
@@ -115,6 +116,7 @@ const HomeCarousel = () => {
                 </Button>
           </div>
           <div className="w-full md:w-1/2 rounded-xl overflow-hidden">
+            {preload("https://www.thetoyshop.com/medias/lego-test-video.mp4?context=bWFzdGVyfHJvb3R8MTg0NTg0MXx2aWRlby9tcDR8YUdVd0wyZ3laUzh4TWpVeU1qWTVNVFE1TXpreE9DOXNaV2R2TFhSbGMzUXRkbWxrWlc4dWJYQTB8MzE5MWY1M2FiYmQ4ODA4NDc4NmYzMDUwOWU5MmZiMzIyNTQxNDYwZTBhMzI3NmUyODNmMDIzYjA1YWMzZTRiYQ", {as: "video"})}
             <video
               className="object-cover w-full h-[calc(100%+1px)] rounded-xl"
               autoPlay
@@ -131,6 +133,8 @@ const HomeCarousel = () => {
         </div>
       </SwiperSlide>
       <SwiperSlide className="shadow-lg rounded-xl overflow-hidden">
+        {preload("https://www.thetoyshop.com/medias/ELC-BOGOHP-2025-Addo-ELC-Digital-Assets-v2-ELC-BOGOHP-selected-toys-2025-HP-hero-DT-1800x560.jpg?context=bWFzdGVyfHJvb3R8MTA4MDU3OXxpbWFnZS9qcGVnfGFEZGxMMmd5WlM4eE1qVTRNakV5TnpVMk5qZzNPQzlGVEVOZlFrOUhUMGhRWHpJd01qVmZRV1JrYnlCRlRFTmZSR2xuYVhSaGJDQkJjM05sZEhNZ2RqSmZSVXhEWDBKUFIwOUlVQ0J6Wld4bFkzUmxaQ0IwYjNselh6SXdNalZmU0ZBZ2FHVnlieUJFVkNBeE9EQXdlRFUyTUM1cWNHY3xjNzAzNzU5MmY2NjVmZTRjOTBiNjE0YWRjMjVlMzhhYWY2YjIxYTdkMTgzZjM1YjNlMDhlZDRlNzJkMTY3Mzk0", {as: "image"})}
+        {preload("https://www.thetoyshop.com/medias/TE-BOGOHP-2025-Addo-ELC-Digital-Assets-v2-TE-BOGOHP-selected-toys-2025-HP-450x480px.jpg?context=bWFzdGVyfHJvb3R8MjczNTU2fGltYWdlL2pwZWd8YUdNd0wyZzBPUzh4TWpVM01UTTJNREF6TkRnME5pOVVSVjlDVDBkUFNGQmZNakF5TlY5QlpHUnZJRVZNUTE5RWFXZHBkR0ZzSUVGemMyVjBjeUIyTWw5VVJWOUNUMGRQU0ZBZ2MyVnNaV04wWldRZ2RHOTVjMTh5TURJMVgwaFFJRFExTUhnME9EQndlQzVxY0djfDZlYmQ0OTBjNGNlMTI0MDZjMTk4YzVhN2FiYjBkMGVjMTA4ZjBjYjE4OTU2NjgzMWRjMjk1NDRkZDNkZTVhZTI", {as: "image"})}
         <img className="hidden md:block" src="https://www.thetoyshop.com/medias/ELC-BOGOHP-2025-Addo-ELC-Digital-Assets-v2-ELC-BOGOHP-selected-toys-2025-HP-hero-DT-1800x560.jpg?context=bWFzdGVyfHJvb3R8MTA4MDU3OXxpbWFnZS9qcGVnfGFEZGxMMmd5WlM4eE1qVTRNakV5TnpVMk5qZzNPQzlGVEVOZlFrOUhUMGhRWHpJd01qVmZRV1JrYnlCRlRFTmZSR2xuYVhSaGJDQkJjM05sZEhNZ2RqSmZSVXhEWDBKUFIwOUlVQ0J6Wld4bFkzUmxaQ0IwYjNselh6SXdNalZmU0ZBZ2FHVnlieUJFVkNBeE9EQXdlRFUyTUM1cWNHY3xjNzAzNzU5MmY2NjVmZTRjOTBiNjE0YWRjMjVlMzhhYWY2YjIxYTdkMTgzZjM1YjNlMDhlZDRlNzJkMTY3Mzk0" alt="promo" />
         <img className="md:hidden" src="https://www.thetoyshop.com/medias/TE-BOGOHP-2025-Addo-ELC-Digital-Assets-v2-TE-BOGOHP-selected-toys-2025-HP-450x480px.jpg?context=bWFzdGVyfHJvb3R8MjczNTU2fGltYWdlL2pwZWd8YUdNd0wyZzBPUzh4TWpVM01UTTJNREF6TkRnME5pOVVSVjlDVDBkUFNGQmZNakF5TlY5QlpHUnZJRVZNUTE5RWFXZHBkR0ZzSUVGemMyVjBjeUIyTWw5VVJWOUNUMGRQU0ZBZ2MyVnNaV04wWldRZ2RHOTVjMTh5TURJMVgwaFFJRFExTUhnME9EQndlQzVxY0djfDZlYmQ0OTBjNGNlMTI0MDZjMTk4YzVhN2FiYjBkMGVjMTA4ZjBjYjE4OTU2NjgzMWRjMjk1NDRkZDNkZTVhZTI" alt="promo" />
       </SwiperSlide>
