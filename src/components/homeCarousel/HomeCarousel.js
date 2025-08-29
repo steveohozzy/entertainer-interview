@@ -131,7 +131,7 @@ const HomeCarousel = () => {
         </div>
       </SwiperSlide>
       <SwiperSlide className="shadow-lg rounded-xl overflow-hidden">
-        <img className="hidden md:block" src="https://www.thetoyshop.com/medias/TE-BOGOHP-2025-Addo-ELC-Digital-Assets-v2-TE-BOGOHP-selected-toys-2025-HP-hero-DT-1800x560.jpg?context=bWFzdGVyfHJvb3R8NjQyNjYyfGltYWdlL2pwZWd8YURsaUwyZ3paaTh4TWpVM01UTTJNRE15T1RjMU9DOVVSVjlDVDBkUFNGQmZNakF5TlY5QlpHUnZJRVZNUTE5RWFXZHBkR0ZzSUVGemMyVjBjeUIyTWw5VVJWOUNUMGRQU0ZBZ2MyVnNaV04wWldRZ2RHOTVjMTh5TURJMVgwaFFJR2hsY204Z1JGUWdNVGd3TUhnMU5qQXVhbkJufGFiMmVkNjJiNzQ4ODQ5N2YzNGJlYzY3MmE4NmQ1NDFmYTY0YTFmYjRlODBiYTI2OWVkYjlmNDJjMDMxOTdhYzc" alt="promo" />
+        <img className="hidden md:block" src="https://www.thetoyshop.com/medias/ELC-BOGOHP-2025-Addo-ELC-Digital-Assets-v2-ELC-BOGOHP-selected-toys-2025-HP-hero-DT-1800x560.jpg?context=bWFzdGVyfHJvb3R8MTA4MDU3OXxpbWFnZS9qcGVnfGFEZGxMMmd5WlM4eE1qVTRNakV5TnpVMk5qZzNPQzlGVEVOZlFrOUhUMGhRWHpJd01qVmZRV1JrYnlCRlRFTmZSR2xuYVhSaGJDQkJjM05sZEhNZ2RqSmZSVXhEWDBKUFIwOUlVQ0J6Wld4bFkzUmxaQ0IwYjNselh6SXdNalZmU0ZBZ2FHVnlieUJFVkNBeE9EQXdlRFUyTUM1cWNHY3xjNzAzNzU5MmY2NjVmZTRjOTBiNjE0YWRjMjVlMzhhYWY2YjIxYTdkMTgzZjM1YjNlMDhlZDRlNzJkMTY3Mzk0" alt="promo" />
         <img className="md:hidden" src="https://www.thetoyshop.com/medias/TE-BOGOHP-2025-Addo-ELC-Digital-Assets-v2-TE-BOGOHP-selected-toys-2025-HP-450x480px.jpg?context=bWFzdGVyfHJvb3R8MjczNTU2fGltYWdlL2pwZWd8YUdNd0wyZzBPUzh4TWpVM01UTTJNREF6TkRnME5pOVVSVjlDVDBkUFNGQmZNakF5TlY5QlpHUnZJRVZNUTE5RWFXZHBkR0ZzSUVGemMyVjBjeUIyTWw5VVJWOUNUMGRQU0ZBZ2MyVnNaV04wWldRZ2RHOTVjMTh5TURJMVgwaFFJRFExTUhnME9EQndlQzVxY0djfDZlYmQ0OTBjNGNlMTI0MDZjMTk4YzVhN2FiYjBkMGVjMTA4ZjBjYjE4OTU2NjgzMWRjMjk1NDRkZDNkZTVhZTI" alt="promo" />
       </SwiperSlide>
     </Swiper>
