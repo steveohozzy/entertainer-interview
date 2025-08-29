@@ -236,6 +236,7 @@ const ProductDetails = () => {
             >
               {product.video && (
                 <SwiperSlide className="h-auto">
+                  {preload(product.video, {as: "video"})}
                   <video
                     className="object-cover w-full h-full"
                     autoplay=""
