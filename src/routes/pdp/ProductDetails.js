@@ -253,6 +253,7 @@ const ProductDetails = () => {
                       className="object-cover w-full h-full"
                       src={image}
                       alt={product.name}
+                      fetchPriority="high"
                     />
                   </div>
                   {swatchColor === "orange" && (
