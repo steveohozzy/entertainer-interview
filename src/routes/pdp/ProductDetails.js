@@ -1,4 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
+import { preload } from 'react-dom';
 import { useState, useEffect, useRef } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -249,6 +250,7 @@ const ProductDetails = () => {
               {product.images.map((image) => (
                 <SwiperSlide>
                   <div className="swiper-zoom-container">
+                    {preload(image, {as: "image"})}
                     <img
                       className="object-cover w-full h-full"
                       src={image}
