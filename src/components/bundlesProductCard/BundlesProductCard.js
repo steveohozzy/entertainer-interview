@@ -24,7 +24,7 @@ const BundlesProductCard = ({ product, setSwatchColor, swiperRef, checkAllBundle
   return (
     <>
       <div key={product.id} className="cursor-pointer flex flex-col">
-        <div className="flex flex-col rounded-xl border-[3px] border-gray-200 bg-white shadow-sm hover:border-brandBlue transition-all duration-300 overflow-hidden">
+        <div className="flex flex-col rounded-lg border-[3px] border-gray-200 bg-white shadow-sm hover:border-brandBlue transition-all duration-300 overflow-hidden">
         <div className="relative group" onClick={() => {goToLinkHandler(product); checkAllBundle(); window.scrollTo({
       top: 0,
       left: 0,
@@ -37,17 +37,14 @@ const BundlesProductCard = ({ product, setSwatchColor, swiperRef, checkAllBundle
           />
           </div>
         </div>
-        <div className="flex flex-col justify-between items-center py-2 md:py-3">
+        <div className="flex flex-col justify-between items-center">
           <div className="price" onClick={() => {goToLinkHandler(product); checkAllBundle(); window.scrollTo({
       top: 0,
       left: 0,
       behavior: "smooth",
     });}}>
-            <div className="cursor-pointer flex items-end justify-center">
-                <span className="text-brandRed font-bold text-[10px] md:text-sm">£<span className="pricevalue">{product.price}</span></span>
-                {product.originalPrice &&
-                    <span className="line-through text-gray-400 text-[8px] md:text-xs ml-1">£{product.originalPrice}</span>
-                }
+            <div className="cursor-pointer flex items-end justify-center absolute top-1 right-2">
+                <span className="text-brandRed font-bold text-sm textStroke--thin">£<span className="pricevalue">{product.price}</span></span>
             </div>
           </div>
           <button
