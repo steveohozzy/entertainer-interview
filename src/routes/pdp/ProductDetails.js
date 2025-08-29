@@ -111,6 +111,27 @@ const ProductDetails = () => {
     bundleItem.classList.toggle('opacity-50');
   }
 
+  const changeBundleHandlerClick = (e) => {
+    e.target.closest(".bundleContainer").querySelector("input").checked = ! e.target.closest(".bundleContainer").querySelector("input").checked;
+    const bundlePrices = [];
+    const bundleItem = e.target.closest(".bundleContainer");
+    const bundleItems = e.target.closest("#bundle").querySelectorAll("input:checked");
+    bundleItems.forEach((item) => {
+      bundlePrices.push(item.closest(".flex.items-center.relative").querySelector(".pricevalue").textContent);
+    })
+
+    setBundleItemsCount(bundleItems.length);
+
+    const result  = bundlePrices.map((x) => +x);
+
+    const bundleTotalPriceInit = result.reduce((a, b) => a + b,  0);
+
+    setBundleTotalPrice('£'+bundleTotalPriceInit.toFixed(2));
+
+    bundleItem.classList.toggle('grayscale');
+    bundleItem.classList.toggle('opacity-50');
+  }
+
   const addProductToCart = () => {
     dispatch(addItemToCart(product));
     dispatch(setIsCartOpen(true));
@@ -740,22 +761,22 @@ const ProductDetails = () => {
                   {searchResults.slice(0, 3).map((product, i) => (
                     <div className="flex items-center relative" key={i}>
                       <div className="relative w-full bundleContainer">
-                        <BundlesProductCard product={product} swiperRef={swiperRef} setSwatchColor={setSwatchColor} checkAllBundle={checkAllBundle} />
+                        <BundlesProductCard product={product} changeBundleHandlerClick={changeBundleHandlerClick} />
                         <label className={`${bundleExpanded ? '' : 'hidden'} flex items-center space-x-3 cursor-pointer mb-6 absolute z-20 top-2 left-2`}>
                           <input
                             type="checkbox"
-                            className="relative size-[20px] block md:size-[30px] appearance-none rounded-md border-[3px] border-brandLightGreen bg-white outline-none transition-all"
+                            className="relative size-[24px] block appearance-none rounded-md border-[3px] border-brandLightGreen bg-white outline-none transition-all"
                             defaultChecked
                             onChange={changeBundleHandler}
                           />
-                          <span className="absolute top-0 left-[-11px] md:left-[-12px] text-brandGreen">
+                          <span className="absolute top-0 left-[-11px] text-brandGreen">
                             <svg
                               viewBox="0 0 24 24"
                               width="20px"
                               height="20px"
                               fill="none"
                               xmlns="http://www.w3.org/2000/svg"
-                              className="w-[18px] h-[18px] md:w-[30px] md:h-[30px]"
+                              className="w-[22px] h-[22px]"
                             >
                               <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                               <g
