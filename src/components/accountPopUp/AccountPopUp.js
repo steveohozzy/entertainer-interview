@@ -77,8 +77,8 @@ const AccountPopUp = () => {
         <button
           onClick={handleAccountPopUp}
           className="transition-all hover:text-brandLightBlue md:flex items-center ml-3 text-sm group md:w-[122px] flex"
-          name="Register/Sign in"
         >
+          
           <span className="mr-1 transition-all transition-duration-500 group-hover:rotate-[20deg]">
             <svg
               width="17"
@@ -97,6 +97,7 @@ const AccountPopUp = () => {
           className="transition-all hover:text-brandLightBlue md:flex items-center ml-2 text-sm group md:w-[122px] group flex"
           onClick={handleGoToAccount}
         >
+          <span className="sr-only">Hi Jack!</span>
           <span className="hidden md:block">Hi Jack!</span>
           <span className="transition-all text-white md:text-brandLightBlue rotate-[20deg] group-hover:animate-wave">
             <svg

@@ -857,6 +857,7 @@ const ProductDetails = () => {
                     </div>
                     <div className="flex items-center gap-2">
                       <button onClick={() => {setBundleExpanded(true)}} className={`shadow-md hover:shadow-lg group items-center justify-center font-bold rounded-full bg-textBlue text-white transition-all hover:bg-brandBlue hover:scale-105 w-7 h-7 flex justify-cener items-center p-1 ${bundleExpanded && 'hidden'}`}>
+                        <span className="sr-only">expand bundle</span>
                         <span
                           className={`w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[6px] border-white transition-all`}
                           ></span>
@@ -878,6 +879,7 @@ const ProductDetails = () => {
                         removeIcons={bundleExpanded ? false : true}
                         onClick={addBundleToCart}
                       >
+                        <span className="sr-only">add to basket</span>
                         {bundleExpanded && 'Add'}
                       </Button>
                     </div>
