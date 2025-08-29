@@ -80,6 +80,7 @@ const AccountPopUp = () => {
         >
           
           <span className="mr-1 transition-all transition-duration-500 group-hover:rotate-[20deg]">
+            <span className="sr-only">Register/Sign in</span>
             <svg
               width="17"
               height="17"
