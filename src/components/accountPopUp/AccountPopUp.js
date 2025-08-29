@@ -77,6 +77,7 @@ const AccountPopUp = () => {
         <button
           onClick={handleAccountPopUp}
           className="transition-all hover:text-brandLightBlue md:flex items-center ml-3 text-sm group md:w-[122px] flex"
+          name="Register/Sign in"
         >
           <span className="mr-1 transition-all transition-duration-500 group-hover:rotate-[20deg]">
             <svg
