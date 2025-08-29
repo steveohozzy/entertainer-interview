@@ -77,7 +77,7 @@ const HomeBrands = () => {
               window.scrollTo({top: 0,left: 0,behavior: "smooth",});
             }}
           >
-            <img src="https://www.thetoyshop.com/medias/TE-Homepage-pod-350x350px-HW.jpg?context=bWFzdGVyfHJvb3R8MTAwOTc5fGltYWdlL2pwZWd8YURWaUwyZ3lZUzh4TWpNNE5URTFOamMxT1RVNE1pOVVSUzFJYjIxbGNHRm5aUzF3YjJSZk16VXdlRE0xTUhCNFgwaFhMbXB3Wnd8OTVhMTZmYWVmNTk1N2E1MmRkMTM0NGE5YWE2ZDU4MDc4ZDIzMTE1NjE0YWM5Mzg3ODhiZTE1NWFhNzI3ODU2YQ" alt="Hot Wheels" />
+            <img src="https://www.thetoyshop.com/medias/2025-p9-hot-wheels-pod-350x350.jpg?context=bWFzdGVyfHJvb3R8OTA2MzF8aW1hZ2UvanBlZ3xhR0UzTDJobU9DOHhNalUyT1RZME16azBNVGt4T0M4eU1ESTFMWEE1TFdodmRDMTNhR1ZsYkhNdGNHOWtMVE0xTUhnek5UQXVhbkJufDY5NDg4YzQ3M2NmY2M3NjFiYTYxMWJkNTA1ZTg1MDIxMTQ2ODMwOWE2ZWJhM2ViMDdhZmQ4NzFiYzY2MjdlMjY" alt="Hot Wheels" />
           </button>
         </SwiperSlide>
         <SwiperSlide className="h-auto">
