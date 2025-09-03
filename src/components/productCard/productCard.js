@@ -50,7 +50,7 @@ const ProductCard = ({ product }) => {
       left: 0,
       behavior: "smooth",
     });
-    }, 100)
+    }, 250)
   };
 
   const addProductToCart = () => {
