@@ -19,7 +19,7 @@ const HomeTopPicks = () => {
                 </span>
             </h3>
             <div className='pt-2 md:pt-5 rounded-xl'>
-                <div className='flex gap-4 justify-center mx-auto'>
+                <div className='flex gap-4 justify-center mx-auto fade-out-right'>
                 <Swiper
                     modules={[Autoplay]}
                     spaceBetween={20}

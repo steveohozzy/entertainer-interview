@@ -14,7 +14,7 @@ const HomeToyTypes = () => {
   };
 
   return (
-    <div className="pb-5">
+    <div className="pb-5 fade-out-right">
       <Swiper
         modules={[Autoplay]}
         spaceBetween={10}

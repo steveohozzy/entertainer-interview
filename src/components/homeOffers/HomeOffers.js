@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 const HomeOffers = () => {
   return (
-    <div>
+    <div className="fade-out-right">
        <Swiper
         modules={[Autoplay]}
         spaceBetween={10}

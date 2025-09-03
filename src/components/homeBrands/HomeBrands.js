@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 const HomeBrands = () => {
   const navigate = useNavigate();
   return (
-    <div>
+    <div className="fade-out-right">
        <Swiper
         modules={[Autoplay]}
         spaceBetween={10}

@@ -508,9 +508,7 @@ const Plp = () => {
             <div className="text-lg font-bold text-brandBlue textStroke mb-1">
               Top Products
             </div>
-            <div className="mt-1">
-              <div className="text-lg text-textBlue font-bold md:mb-2">
-              </div>
+            <div className="mt-1 fade-out-right">
                 <Swiper
                   modules={[Autoplay]}
                   pagination={{ clickable: true }}
