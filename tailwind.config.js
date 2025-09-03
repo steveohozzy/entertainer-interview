@@ -25,6 +25,7 @@ module.exports = {
         brandMediumGreen: "#AFCB17",
         brandBeige: "#C4D600",
         brandPink: "#FF7BAC",
+        brandPinkDark: "#EF426F",
         eee: "#eeeeee",
       },
       animation: {

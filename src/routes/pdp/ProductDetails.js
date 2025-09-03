@@ -202,6 +202,9 @@ const ProductDetails = () => {
   //show stores
   const [storesOpen, setStoresOpen] = useState(false);
 
+  //show offer
+  const [offerOpen, setOfferOpen] = useState(false);
+
   return (
     <>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pt-6">
@@ -267,7 +270,7 @@ const ProductDetails = () => {
                 </SwiperSlide>
               ))}
             </Swiper>
-            <div className="absolute top-2 left-2 flex w-full gap-1 flex items-center drop-shadow-md z-20">
+            <div className="absolute top-2 left-2 flex gap-1 flex items-center z-20">
               {product.isNew && (
                 <div className="inline-flex items-center rounded-lg px-2 py-0.5 text-xs md:text-sm w-12 h-12 md:w-14 md:h-14 text-center !leading-[1.1] font-bold bg-brandGreen text-white aspect-square">
                   <span className="shadow-text-green">NEW TOYS</span>
@@ -278,6 +281,42 @@ const ProductDetails = () => {
                   <span className="shadow-text-red -mt-1.5"><span className="text-base md:text-lg">33</span>% OFF</span>
                 </div>
               )}
+            </div>
+
+            <div className={`absolute top-2 left-1/2 -translate-x-1/2 z-[1000] ${offerOpen && 'w-full p-4'}`}>
+              <button onClick={() => {setOfferOpen(true)}} className={`shadow-md hover:shadow-lg group inline-flex items-center justify-center font-semibold text-lg rounded-[30px] bg-brandPinkDark text-white px-6 pr-0 border-[3px] border-white transition-all hover:bg-brandPink hover:scale-105 overflow-hidden ${offerOpen ? 'hidden' : 'inline-flex'}`}>
+                <span className="flex items-center gap-2">
+                  offer
+                  <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
+                    <path d="M0.597641 8.51416L0.59764 2.13916C0.59764 1.72249 0.743473 1.36833 1.03514 1.07666C1.32681 0.784994 1.68097 0.63916 2.09764 0.63916L8.47264 0.63916C8.88931 0.63916 9.24347 0.784993 9.53514 1.07666L16.1601 7.70166C16.4518 7.99333 16.5976 8.34749 16.5976 8.76416C16.5976 9.18083 16.4518 9.53499 16.1601 9.82666L9.78514 16.2017C9.49347 16.4933 9.13931 16.6392 8.72264 16.6392C8.30597 16.6392 7.95181 16.4933 7.66014 16.2017L1.03514 9.57666C0.743474 9.28499 0.597641 8.93083 0.597641 8.51416ZM5.16014 3.07666C4.86847 2.78499 4.51431 2.63916 4.09764 2.63916C3.68097 2.63916 3.32681 2.78499 3.03514 3.07666C2.74347 3.36833 2.59764 3.72249 2.59764 4.13916C2.59764 4.55583 2.74347 4.90999 3.03514 5.20166C3.32681 5.49333 3.68097 5.63916 4.09764 5.63916C4.51431 5.63916 4.86847 5.49333 5.16014 5.20166C5.45181 4.90999 5.59764 4.55583 5.59764 4.13916C5.59764 3.72249 5.45181 3.36833 5.16014 3.07666Z" fill="white"/>
+                  </svg>
+                </span>
+                <img src="/peeking-face.svg" alt="Ray Offer" className="ml-2" />
+              </button>
+               <div className={`shadow-md overflow-hidden transition-transform transition-opacity relative ${offerOpen ? 'scale-1 w-full opacity-1' : 'scale-0 w-0 opacity-0'}`}>
+                <button
+                    onClick={() => {setOfferOpen(!offerOpen)}}
+                    className="absolute right-2 top-2 text-white rounded-full border-[3px] border-white bg-brandPinkDark p-2 z-[2] transition-all shadow-sm hover:scale-105 hover:shadow-md"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="lucide lucide-x h-5 w-5 pointer-events-none"
+                    >
+                      <path d="M18 6 6 18"></path>
+                      <path d="m6 6 12 12"></path>
+                    </svg>
+                    <span className="sr-only">Close</span>
+                  </button>
+                  <img src="/offer-graphic.png" alt="buy 1 get 1 free" className="w-full h-auto" />
+               </div>
             </div>
             <div className="absolute top-3 right-3 z-[1]">
               <button
@@ -1133,10 +1172,10 @@ const ProductDetails = () => {
         >
           <span className="shadow-text-red">you may like</span>
         </button>
-        {tabOpen && (
+        {(tabOpen || offerOpen) && (
           <div
             onClick={() => setTabOpen(false)}
-            className="fixed inset-0 z-10 top-0 left-0 bg-brandBlue/60 w-screen h-screen"
+            className="fixed inset-0 z-[999] top-0 left-0 bg-brandBlue/60 w-screen h-screen"
           ></div>
         )}
         <div
