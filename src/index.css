@@ -35,6 +35,12 @@
       drop-shadow(2px 0 #067f3d) drop-shadow(-2px 0 #067f3d);
       
   }
+
+  .shadow-text-yellow {
+      filter: drop-shadow(0 2px #FFFF00) drop-shadow(0 -2px #FFFF00)
+      drop-shadow(2px 0 #FFFF00) drop-shadow(-2px 0 #FFFF00);
+  }
+
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }

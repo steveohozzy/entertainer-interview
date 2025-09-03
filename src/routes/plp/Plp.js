@@ -21,6 +21,7 @@ import {
 import ProductCard from "../../components/productCard/productCard";
 import Dropdown from "../../components/dropdown/Dropdown";
 import { useLocation, useNavigate } from "react-router-dom";
+import PresentFinderWidget from "../../components/presentFinderWidget/PresentFinderWidget";
 
 const Plp = () => {
   const [selectedBrands, setSelectedBrands] = useState([]);
@@ -499,10 +500,56 @@ const Plp = () => {
     }
   }, [directFilterApplied])
 
+  useEffect(() => {
+    // Check for URL parameters to apply filters directly
+    const urlParams = new URLSearchParams(window.location.search)
+    const priceFilter = urlParams.get("price")
+
+    if (priceFilter === "0-15" && !directFilterApplied) {
+      setPriceRange([
+        priceRange[0],
+        0,
+      ])
+      setPriceRange([
+        priceRange[1],
+        15,
+      ])
+      setDirectFilterApplied(true)
+    } else if (priceFilter === "15-30" && !directFilterApplied) {
+      setPriceRange([
+        15,
+        30,
+      ])
+      setDirectFilterApplied(true)
+    } else if (priceFilter === "30-45" && !directFilterApplied) {
+      setPriceRange([
+        30,
+        45,
+      ]) 
+      setDirectFilterApplied(true)
+    } else if (priceFilter === "45-60" && !directFilterApplied) {
+      setPriceRange([
+        45,
+        60,
+      ])
+      setDirectFilterApplied(true)
+    } else if (priceFilter === "60-75" && !directFilterApplied) {
+      setPriceRange([
+        60,
+        75,
+      ])
+      setDirectFilterApplied(true)
+    } else if (priceFilter === "75" && !directFilterApplied) {
+      setPriceRange([
+        75,
+        9999999999,
+      ])
+      setDirectFilterApplied(true)
+    }
+  }, [directFilterApplied, priceRange])
   return (
     <>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
-
         {location.pathname === "/category/action-figures" && (
           <div className="mb-1">
             <div className="text-lg font-bold text-brandBlue textStroke mb-1">
@@ -1220,6 +1267,7 @@ const Plp = () => {
                   <div className="rounded-full h-full bg-brandLightGreen transition-all" style={{width: `${(visibleFilteredProducts.length / filteredProducts.length * 100).toFixed()}%`}}></div>
                 </div>
               </div>
+              <PresentFinderWidget />
             {/* Load More */}
             {visibleFilteredProducts.length < filteredProducts.length && (
               <div className="text-center mt-4">

@@ -346,8 +346,10 @@ const PresentFinder = () => {
           </>
         ) : (
           <>
-            <h1 className="text-2xl text-center text-brandBlue font-bold">
-              Present Finder
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold md:!leading-[1.2] text-transparent text-center drop-shadow-md">
+              <span className="bg-gradient-to-r from-brandBlue via-textBlue to-brandBlue bg-clip-text md:!leading-[1.2] text-transparent capitalize textStroke">
+                Present Finder
+              </span>
             </h1>
             <p className="my-4 text-textBlue mb-5">
               Searching for the perfect kids’ gift for Christmas, a birthday, or
