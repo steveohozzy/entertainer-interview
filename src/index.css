@@ -68,9 +68,9 @@
 
   .fade-out-right {
     --mask: linear-gradient(to right, 
-      rgba(0,0,0, 1) 0,   rgba(0,0,0, 1) 95%, 
+      rgba(0,0,0, 1) 0,   rgba(0,0,0, 1) 92%, 
       rgba(0,0,0, 0) 100%, rgba(0,0,0, 0) 0
-    ) 100% 95% / 100% 100% repeat-x;
+    ) 100% 98% / 100% 100% repeat-x;
     -webkit-mask: var(--mask); 
     mask: var(--mask);
   }
