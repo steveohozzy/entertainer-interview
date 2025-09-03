@@ -283,7 +283,7 @@ const ProductDetails = () => {
               )}
             </div>
 
-            <div className={`absolute top-2 left-1/2 -translate-x-1/2 z-[10] ${offerOpen && 'w-full p-4 !z-[501]'}`}>
+            <div className={`absolute top-2 left-1/2 -translate-x-1/2 z-[10] ${offerOpen && 'w-full p-4 !z-[602]'}`}>
               <button onClick={() => {setOfferOpen(true)}} className={`shadow-md hover:shadow-lg group inline-flex items-center justify-center font-semibold text-lg rounded-[30px] bg-brandPinkDark text-white px-6 pr-0 border-[3px] border-white transition-all hover:bg-brandPink hover:scale-105 overflow-hidden ${offerOpen ? 'hidden' : 'inline-flex'}`}>
                 <span className="flex items-center gap-2">
                   offer
@@ -1085,6 +1085,13 @@ const ProductDetails = () => {
           </div>
         </div> */}
 
+        {(offerOpen) && (
+          <div
+            onClick={() => {setOfferOpen(false)}}
+            className="fixed inset-0 z-[601] top-0 left-0 bg-brandBlue/60 w-screen h-screen"
+          ></div>
+        )}
+
         <div className="w-full text-center mt-16">
           <div className="text-2xl md:text-3xl lg:text-4xl font-bold md:!leading-[1.2] text-transparent text-center mt-5 mb-3 md:mt-12 md:mb-3.5 drop-shadow-md">
             <span className='bg-gradient-to-r from-brandBlue via-textBlue to-brandBlue bg-clip-text md:!leading-[1.2] text-transparent textStroke'>
@@ -1172,9 +1179,9 @@ const ProductDetails = () => {
         >
           <span className="shadow-text-red">you may like</span>
         </button>
-        {(tabOpen || offerOpen) && (
+        {(tabOpen) && (
           <div
-            onClick={() => setTabOpen(false)}
+            onClick={() => {setTabOpen(false)}}
             className="fixed inset-0 z-[500] top-0 left-0 bg-brandBlue/60 w-screen h-screen"
           ></div>
         )}
