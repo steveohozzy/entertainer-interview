@@ -43,12 +43,14 @@ const ProductCard = ({ product }) => {
   const wrapperRef = useRef(null);
 
   const goToLinkHandler = () => {
-    window.scrollTo({
+    navigate("/product-details/" + product.id);
+    setTimeout(() => {
+      window.scrollTo({
       top: 0,
       left: 0,
       behavior: "smooth",
     });
-    navigate("/product-details/" + product.id);
+    }, 100)
   };
 
   const addProductToCart = () => {
