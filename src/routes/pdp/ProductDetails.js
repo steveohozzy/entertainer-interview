@@ -283,7 +283,7 @@ const ProductDetails = () => {
               )}
             </div>
 
-            <div className={`absolute top-2 left-1/2 -translate-x-1/2 z-[1000] ${offerOpen && 'w-full p-4'}`}>
+            <div className={`absolute top-2 left-1/2 -translate-x-1/2 z-[10] ${offerOpen && 'w-full p-4 !z-[1000]'}`}>
               <button onClick={() => {setOfferOpen(true)}} className={`shadow-md hover:shadow-lg group inline-flex items-center justify-center font-semibold text-lg rounded-[30px] bg-brandPinkDark text-white px-6 pr-0 border-[3px] border-white transition-all hover:bg-brandPink hover:scale-105 overflow-hidden ${offerOpen ? 'hidden' : 'inline-flex'}`}>
                 <span className="flex items-center gap-2">
                   offer
