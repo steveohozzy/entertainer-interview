@@ -2,6 +2,13 @@
 
 import { useState, useEffect, useRef } from "react";
 import { X, Search } from "lucide-react";
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay } from 'swiper/modules';
+
+import 'swiper/css';
+import 'swiper/css/autoplay';
+
 import {
   products,
   brands,
@@ -13,7 +20,7 @@ import {
 
 import ProductCard from "../../components/productCard/productCard";
 import Dropdown from "../../components/dropdown/Dropdown";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Plp = () => {
   const [selectedBrands, setSelectedBrands] = useState([]);
@@ -34,6 +41,8 @@ const Plp = () => {
   const PRODUCTS_PER_PAGE = 10
 
   const wrapperRef = useRef(null);
+
+  const navigate = useNavigate();
 
   // Handle scroll for header visibility
   useEffect(() => {
@@ -492,22 +501,167 @@ const Plp = () => {
 
   return (
     <>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pt-4">
-        {/* Hero Section 
-        <div className="text-center mb-8">
-          <h1 className="text-2xl md:text-4xl !leading-[1.2] font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mb-4">
-            Action Figures Collection
-          </h1>
-          <p className="text-sm md:text-base text-brandBlue max-w-3xl mx-auto">
-            Discover the best action figures for kids, featuring popular characters from Marvel, Star Wars,
-            Transformers, DC Comics, and more! Bring your favorite heroes and villains to life.
-          </p>
-        </div>*/}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
+
+        {location.pathname === "/category/action-figures" && (
+          <div className="mb-1">
+            <div className="text-lg font-bold text-brandBlue textStroke mb-1">
+              Top Products
+            </div>
+            <div className="mt-1">
+              <div className="text-lg text-textBlue font-bold md:mb-2">
+              </div>
+                <Swiper
+                  modules={[Autoplay]}
+                  pagination={{ clickable: true }}
+                  autoplay={true}
+                  loop
+                  slidesPerView={2.25}
+                  spaceBetween={0}
+                  breakpoints={{
+                  768: {
+                    slidesPerView: 3.5,
+                  },
+                  1024: {
+                    slidesPerView: 5.5,
+                  },
+                }}
+                >
+                  <SwiperSlide>
+                    <div onClick={() => { navigate(`/product-details/5}`); window.scrollTo({top: 0,left: 0,behavior: "smooth",});}} className="cursor-pointer rounded-2xl p-1">
+                      <div className="flex items-stretch shadow-md hover:shadow-lg bg-brandPinkDark rounded-2xl overflow-hidden hover:scale-105 transition-all">
+                        <div className="w-1/3 rounded-2xl">
+                          <img
+                            src={"https://www.thetoyshop.com/medias/300Wx300H-572796-F9213-Primary?context=bWFzdGVyfGltYWdlc3w1NzE1MnxpbWFnZS9qcGVnfGFESTFMMmc1TlM4eE1qVXdORFE1TkRNM05EazBNaTh6TURCWGVETXdNRWhmTlRjeU56azJYMFk1TWpFelgxQnlhVzFoY25rfGJkZTVhOWU4MjllZmZjNWUyODE3NDIyNGMxM2FiMTY2ODE0OWM3MmI3ZDIzMjY3NjNlNGY2MjVhYmMyYTA1Y2I"}
+                            alt="top product"
+                            className="rounded-2xl object-cover group-hover:scale-105 transition-all"
+                          />
+                        </div>
+                        <div className="w-2/3 text-xs md:text-sm xl:text-base text-white rounded-tr-xl rounded-br-xl leading-[1.2] font-semibold">
+                          <div className="flex items-center h-full px-2 md:px-4">
+                            Marvel Spider Man Figure
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <div onClick={() => { navigate(`/product-details/5}`); window.scrollTo({top: 0,left: 0,behavior: "smooth",});}} className="cursor-pointer rounded-2xl p-1">
+                      <div className="flex items-stretch shadow-md hover:shadow-lg bg-yellow-300 rounded-2xl overflow-hidden hover:scale-105 transition-all">
+                        <div className="w-1/3 rounded-2xl">
+                          <img
+                            src={"https://www.thetoyshop.com/medias/515Wx515H-577122-577122-2.jpg?context=bWFzdGVyfGltYWdlc3w1NDczM3xpbWFnZS9qcGVnfGFEWTJMMmhtTmk4eE1qVXhOamszTnpnMk9EZ3pNQzgxTVRWWGVEVXhOVWhmTlRjM01USXlYelUzTnpFeU1pMHlMbXB3Wnd8OTNkNTYwOTBhYzk4OGEwYWI4MTAwMmViOGFjNzBhYjg3MGM5YWY0ZDU3ZTM2YmZmNWQ4MDA0NzFjZjBiNmVjNg"}
+                            alt="top product"
+                            className="rounded-2xl object-cover group-hover:scale-105 transition-all "
+                          />
+                        </div>
+                        <div className="w-2/3 text-xs md:text-sm xl:text-base text-brandBlue rounded-tr-xl rounded-br-xl leading-[1.2] font-semibold">
+                          <div className="flex items-center h-full px-2 md:px-4">
+                            Pikachu 20" Pop Vinyl
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <div onClick={() => { navigate(`/product-details/5}`); window.scrollTo({top: 0,left: 0,behavior: "smooth",});}} className="cursor-pointer rounded-2xl p-1">
+                      <div className="flex items-stretch shadow-md hover:shadow-lg bg-green-600 rounded-2xl overflow-hidden hover:scale-105 transition-all">
+                        <div className="w-1/3 rounded-2xl">
+                          <img
+                            src={"https://www.thetoyshop.com/medias/515Wx515H-577194-577194-2.jpg?context=bWFzdGVyfGltYWdlc3wxMDAxNzJ8aW1hZ2UvanBlZ3xhR1ppTDJobU5TOHhNalV5TXpJek1qY3lNamszTkM4MU1UVlhlRFV4TlVoZk5UYzNNVGswWHpVM056RTVOQzB5TG1wd1p3fDM2ODk2NTUwNWY3NTg1MjBmMTY5NzhjOWE4MWMyNzM0ODBjZjkwOTExNjEyYmNlZDdhOTExNGQ0Nzg4ZjEzMzU"}
+                            alt="top product"
+                            className="rounded-2xl object-cover group-hover:scale-105 transition-all "
+                          />
+                        </div>
+                        <div className="w-2/3 text-xs md:text-sm xl:text-base text-white rounded-tr-xl rounded-br-xl leading-[1.2] font-semibold">
+                          <div className="flex items-center h-full px-2 md:px-4">
+                            Marvel Iron Man Lego
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <div onClick={() => { navigate(`/product-details/5}`); window.scrollTo({top: 0,left: 0,behavior: "smooth",});}} className="cursor-pointer rounded-2xl p-1">
+                      <div className="flex items-stretch shadow-md hover:shadow-lg bg-purple-600 rounded-2xl overflow-hidden hover:scale-105 transition-all">
+                        <div className="w-1/3 rounded-2xl">
+                          <img
+                            src={"https://www.thetoyshop.com/medias/515Wx515H-572956-BAT-572956-BAT-2.jpg?context=bWFzdGVyfGltYWdlc3wyNTQ5NzR8aW1hZ2UvanBlZ3xhR0prTDJoaE9DOHhNalEyT1RNd01UTTBOak16TkM4MU1UVlhlRFV4TlVoZk5UY3lPVFUyWDBKQlZGODFOekk1TlRaZlFrRlVMVEl1YW5CbnwyNGFmNTJkNmQ1ZTY1ZDg4ZjVjMTQwZjE1M2JmNjlkNTA5NzhiOWMwOGY2OGZhM2IxNDNlNTk2ZjJlYzc5Zjgy"}
+                            alt="top product"
+                            className="rounded-2xl object-cover group-hover:scale-105 transition-all "
+                          />
+                        </div>
+                        <div className="w-2/3 text-xs md:text-sm xl:text-base text-white rounded-tr-xl rounded-br-xl leading-[1.2] font-semibold">
+                          <div className="flex items-center h-full px-2 md:px-4">
+                            Batman Mech Armour Force
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <div onClick={() => { navigate(`/product-details/5}`); window.scrollTo({top: 0,left: 0,behavior: "smooth",});}} className="cursor-pointer rounded-2xl p-1">
+                      <div className="flex items-stretch shadow-md hover:shadow-lg bg-blue-600 rounded-2xl overflow-hidden hover:scale-105 transition-all">
+                        <div className="w-1/3 rounded-2xl">
+                          <img
+                            src={"https://www.thetoyshop.com/medias/515Wx515H-570887-570887-2-.jpg?context=bWFzdGVyfGltYWdlc3w1NTcxNnxpbWFnZS9qcGVnfGFERTFMMmcyTWk4eE1qTTFPVGt6T0RJM056UXdOaTgxTVRWWGVEVXhOVWhmTlRjd09EZzNYelUzTURnNE55MG9NaWt1YW5CbnxmMDNkOWRhYjk5NDEwNzExZGJjNzRlODNkYzU5Nzc2Mzg5ZjRkNmQ3NDljMGNhMTAzNzgzNWRmZjQ2MmJjOGEx"}
+                            alt="top product"
+                            className="rounded-2xl object-cover group-hover:scale-105 transition-all "
+                          />
+                        </div>
+                        <div className="w-2/3 text-xs md:text-sm xl:text-base text-white rounded-tr-xl rounded-br-xl leading-[1.2] font-semibold">
+                          <div className="flex items-center h-full px-2 md:px-4">
+                            Godzilla Deluxe Figure
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <div onClick={() => { navigate(`/product-details/5}`); window.scrollTo({top: 0,left: 0,behavior: "smooth",});}} className="cursor-pointer rounded-2xl p-1">
+                      <div className="flex items-stretch shadow-md hover:shadow-lg bg-orange-600 rounded-2xl overflow-hidden hover:scale-105 transition-all">
+                        <div className="w-1/3 rounded-2xl">
+                          <img
+                            src={"https://www.thetoyshop.com/medias/564995-Primary-300Wx300H?context=bWFzdGVyfGltYWdlc3wyMTg1OTR8aW1hZ2UvanBlZ3xhVzFoWjJWekwyaGhZeTlvTURBdk1USXdOak14T1RJd05UVTRNemd1YW5CbnxkNTYwYjBlMDNjYTIyNWI0ZTNjMjg4MDI3ZDFkNDI1MjI1YTlkMGRiMWIxYTFlNGI4ZDIyNTU4OGQ5ZDkyMmEw"}
+                            alt="top product"
+                            className="rounded-2xl object-cover group-hover:scale-105 transition-all "
+                          />
+                        </div>
+                        <div className="w-2/3 text-xs md:text-sm xl:text-base text-white rounded-tr-xl rounded-br-xl leading-[1.2] font-semibold">
+                          <div className="flex items-center h-full px-2 md:px-4">
+                            Leonardo Battle Pack
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <div onClick={() => { navigate(`/product-details/5}`); window.scrollTo({top: 0,left: 0,behavior: "smooth",});}} className="cursor-pointer rounded-2xl p-1">
+                      <div className="flex items-stretch shadow-md hover:shadow-lg bg-cyan-600 rounded-2xl overflow-hidden hover:scale-105 transition-all">
+                        <div className="w-1/3 rounded-2xl">
+                          <img
+                            src={"https://www.thetoyshop.com/medias/300Wx300H-562150-OPTIMS-Primary?context=bWFzdGVyfGltYWdlc3w3MjIwMXxpbWFnZS9qcGVnfGFHUTJMMmcxWVM4eE1qTTVNVE14T1RVd01qZzNPQzh6TURCWGVETXdNRWhmTlRZeU1UVXdYMDlRVkVsTlUxOVFjbWx0WVhKNXwxODllZDQ2ZWVkNGIwMDIwOTdmZWUzODdlZmMxMmZkNzI3ZmFmYmY3MGYwN2QyZTRkMGE0NjUzZGM5YTlmYzZk"}
+                            alt="top product"
+                            className="rounded-2xl object-cover group-hover:scale-105 transition-all "
+                          />
+                        </div>
+                        <div className="w-2/3 text-xs md:text-sm xl:text-base text-white rounded-tr-xl rounded-br-xl leading-[1.2] font-semibold">
+                          <div className="flex items-center h-full px-2 md:px-4">
+                            EarthSpark Warrior Class
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </SwiperSlide>
+              </Swiper>
+            </div>
+          </div>
+        )}
 
         {/* Filter and Sort Header */}
         <div
           id="filters-bar"
-          className={`sticky z-40 bg-gradient-to-r from-brandLightBlue via-brandVLightBlue to-brandLightBlue py-2 mb-4 transition-all duration-300 ${showHeader && ''} ml-[calc(51%-50vw)] mr-[calc(51%-50vw)] pl-[calc(50%-49vw)] pr-[calc(50%-49vw)] shadow-sm`}
+          className={`sticky z-40 bg-gradient-to-r from-brandLightBlue via-brandVLightBlue to-brandLightBlue py-2 mb-4 transition-all  ${showHeader && ''} ml-[calc(51%-50vw)] mr-[calc(51%-50vw)] pl-[calc(50%-49vw)] pr-[calc(50%-49vw)] shadow-sm`}
         >
           <div className="flex items-center gap-3 justify-between flex-wrap max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-3 gap-2 w-full flex-wrap">

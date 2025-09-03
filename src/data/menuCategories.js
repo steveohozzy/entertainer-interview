@@ -125,7 +125,7 @@ const menuCategories = [
           hasSubItems: true,
           subItems: [
             { name: "See All", href: "/category", },
-            { name: "Action Figures", href: "/category", },
+            { name: "Action Figures", href: "/category/action-figures", },
             { name: "Action Toy Playsets", href: "/category", },
             { name: "Battle Toys", href: "/category", },
             { name: "Pre-School Figures and Playsets", href: "/category", },

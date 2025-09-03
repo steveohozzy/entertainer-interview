@@ -292,7 +292,7 @@ const Menu = () => {
                                       {/* Third Level Content */}
                                       <button
                                         onClick={() => {
-                                          navigate(item.href);
+                                          navigate(subItem.href);
                                           closeMenu();
                                         }}
                                         className="flex-1 p-2 bg-white/50 hover:bg-white/80 backdrop-blur-sm transition-all duration-300 hover:shadow-md group"
