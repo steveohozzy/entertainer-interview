@@ -1,4 +1,4 @@
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Button from "../button/Button";
 
 const HomeDelivery = () => {
@@ -9,7 +9,7 @@ const HomeDelivery = () => {
       window.scrollTo({top: 0,left: 0,behavior: "smooth",});
   };
   return (
-    <div id="delivery" className="mt-5">
+    <div id="delivery" className="mt-20">
         <div className="bg-white rounded-xl mb-2 shadow-lg">
             <div className="flex items-center justify-center gap-3 w-full py-2">
                 <img className="hidden md:block" src="https://www.thetoyshop.com/medias/hp-redesign-map.png?context=bWFzdGVyfHJvb3R8OTg4OXxpbWFnZS9wbmd8YURFM0wyZzNOUzh4TWpVMU5qSTJORGt6TVRNMU9DOW9jQzF5WldSbGMybG5iaTF0WVhBdWNHNW58YWEyNjA2ZDA0MzA2Mzk0NjQ1ZTdmMTg0YWZkMmQzN2M1MTQ1Nzc3YmI4NTkwY2Q4NDAyMmZlODI4ZjdhZWU3NA" alt="Find your local The Entertainer store or locker" title="Find your local The Entertainer store or locker" />
@@ -35,7 +35,7 @@ const HomeDelivery = () => {
             </div>
         </div>
 
-        <div className="my-5">
+        {/* <div className="my-5">
           <div className='flex justify-center'>
             <h3 id="offers" className="text-xl md:text-2xl lg:text-3xl font-bold md:!leading-[1.2] text-transparent text-center drop-shadow-md"><span className='bg-gradient-to-r from-brandBlue via-textBlue to-brandBlue bg-clip-text md:!leading-[1.2] text-transparent textStroke'>We Love to Deliver</span></h3>
           </div>
@@ -81,7 +81,7 @@ const HomeDelivery = () => {
                 </div>
             </Link>
           </div>
-        </div>
+        </div> */}
     </div>
   )
 }

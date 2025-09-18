@@ -7,6 +7,7 @@ import Checkout from "./routes/checkout/Checkout";
 import Cart from "./routes/cart/Cart";
 import ProductDetails from "./routes/pdp/ProductDetails";
 import Home from "./routes/home/Home";
+import HomeTiled from "./routes/home/HomeTiled";
 import Account from "./routes/account/Account";
 import HomeTabs from "./routes/home/HomeTabs";
 import Wishlist from "./routes/wishlist/Wishlist";
@@ -24,6 +25,7 @@ const App = () => {
       <Route path="/" element={<Layout />}>
         <Route path="/" element={<Home />} />
         <Route path="/tabs" element={<HomeTabs />} />
+        <Route path="/tiled" element={<HomeTiled />} />
         <Route path="/category/*" element={<Plp />} />
         <Route path="/search/:id" element={<SearchResults />} />
         <Route path="/cart" element={<Cart />} />
