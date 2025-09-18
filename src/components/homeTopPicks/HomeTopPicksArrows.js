@@ -27,7 +27,7 @@ const HomeTopPicksArrows = () => {
                     modules={[Autoplay]}
                     spaceBetween={0}
                     slidesPerView={1.2}
-                    autoplay={true}
+                    autoplay={false}
                     breakpoints={{
                       768: {
                         slidesPerView: 2,

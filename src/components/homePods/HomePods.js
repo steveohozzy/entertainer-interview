@@ -21,7 +21,7 @@ const HomePods= () => {
         spaceBetween={20}
         slidesPerView={1.5}
         pagination={{ clickable: true }}
-        autoplay={false}
+        autoplay={true}
         breakpoints={{
           768: {
             slidesPerView: 2.5,
