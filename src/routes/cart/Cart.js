@@ -23,6 +23,21 @@ const Cart = () => {
   const cartItems = useSelector(selectCartItems);
   const cartTotal = useSelector(selectCartTotal);
 
+  const [showLogin, setShowLogin] = useState(false);
+  const [showGuest, setShowGuest] = useState(false);
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState(false);
+  const [password, setPassword] = useState(false);
+
+  const handleEmailChange = (e) => {
+    setEmail(!e.target.value);
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(!e.target.value);
+  };
+
   function useIsVisible(ref) {
     const [isIntersecting, setIntersecting] = useState(false);
 
@@ -83,6 +98,205 @@ const Cart = () => {
                   </>
                 )}
               </div>
+
+                {cartItems.length && (
+                  <>
+                    <div className="grid grid-cols-2 gap-4">
+                      <Button
+                        className={`shadow-md hover:shadow-lg group inline-flex items-center justify-center font-bold text-lg rounded-[30px] py-2 px-4 pl-0 transition-all hover:bg-brandLightGreen hover:scale-105 hover:text-white hover:border-brandLightGreen border-[3px] border-brandGreen mb-4 mt-8 ${showLogin ? 'bg-brandGreen text-white' : 'bg-white text-brandGreen' }`}
+                        iconpath={
+                          <svg viewBox="0 0 48 48" width="24"
+                      height="24" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M0 0h48v48H0z" fill="none"></path> <g id="Shopicon"> <path d="M33.843,26.914L24,36l-9.843-9.086C8.674,30.421,5,36.749,5,44h38C43,36.749,39.326,30.421,33.843,26.914z"></path> <path d="M24,28c3.55,0,6.729-1.55,8.926-4C34.831,21.876,36,19.078,36,16c0-6.627-5.373-12-12-12S12,9.373,12,16 c0,3.078,1.169,5.876,3.074,8C17.271,26.45,20.45,28,24,28z"></path> </g> </g></svg>
+                        }
+                        onClick={() => {setShowLogin(true); setShowGuest(false)}}
+                      >
+                        Login
+                      </Button>
+
+                      <Button
+                        className={`shadow-md hover:shadow-lg group inline-flex items-center justify-center font-bold text-lg rounded-[30px] py-2 px-4 pl-0 transition-all hover:bg-brandLightGreen hover:scale-105 hover:text-white hover:border-brandLightGreen border-[3px] border-brandGreen mb-4 mt-8 ${showGuest ? 'bg-brandGreen text-white' : 'bg-white text-brandGreen' }`}
+                        iconpath={
+                          <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="rotate-[20deg]"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                    >
+                      <path
+                        d="M12 5H9C7.11438 5 6.17157 5 5.58579 5.58579C5 6.17157 5 7.11438 5 9V15C5 16.8856 5 17.8284 5.58579 18.4142C6.17157 19 7.11438 19 9 19H15C16.8856 19 17.8284 19 18.4142 18.4142C19 17.8284 19 16.8856 19 15V12M9.31899 12.6911L15.2486 6.82803C15.7216 6.36041 16.4744 6.33462 16.9782 6.76876C17.5331 7.24688 17.5723 8.09299 17.064 8.62034L11.2329 14.6702L9 15L9.31899 12.6911Z"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                        }
+                        onClick={() => {setShowLogin(false); setShowGuest(true)}}
+                      >
+                        Guest
+                      </Button>
+                      {showLogin &&
+                      
+                        <form id="sign-in-form" className="col-span-2">
+                          <div
+                            className={`flex h-[44px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative group ${
+                              email && "border-red-600"
+                            }`}
+                          >
+                            <input
+                              type="email"
+                              placeholder="Email"
+                              onChange={handleEmailChange}
+                              onBlur={handleEmailChange}
+                              className="peer text-base m-0 block h-[38px] w-full bg-transparent text-textBlue transition duration-200 ease-linear placeholder:text-transparent focus:outline-none"
+                            />
+                            <label className="font-semibold px-3 pointer-events-none absolute left-0 top-[4px] origin-[0_0] border border-solid border-transparent text-base text-gray-400 transition-[opacity,_transform] duration-200 ease-linear peer-focus:-translate-y-7 peer-focus:translate-x-[0.15rem] peer-focus:scale-[0.85] peer-focus:text-brandBlue peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:translate-x-[0.15rem] peer-[:not(:placeholder-shown)]:scale-[0.85] peer-[:not(:placeholder-shown)]:text-brandBlue motion-reduce:transition-none">
+                              Email
+                            </label>
+                            <span className="absolute h-full w-[20px] flex items-center justify-center top-0 right-2 text-gray-300 peer-[:not(:placeholder-shown)]:text-brandGreen">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="14"
+                                height="10"
+                                viewBox="0 0 14 10"
+                                fill="none"
+                                className="w-full h-auto"
+                              >
+                                <path
+                                  d="M4.49273 9.76762L0.180742 5.48145C0.0602474 5.36095 0 5.20603 0 5.01668C0 4.82733 0.0602474 4.67241 0.180742 4.55191L1.13609 3.62238C1.25659 3.48467 1.4029 3.41582 1.57504 3.41582C1.76439 3.41582 1.92792 3.48467 2.06563 3.62238L4.9575 6.51426L11.1544 0.317383C11.2921 0.179674 11.447 0.11082 11.6191 0.11082C11.8085 0.11082 11.9634 0.179674 12.0839 0.317383L13.0393 1.24691C13.1598 1.36741 13.22 1.52233 13.22 1.71168C13.22 1.90103 13.1598 2.05595 13.0393 2.17645L5.42227 9.76762C5.30177 9.90533 5.14685 9.97418 4.9575 9.97418C4.76815 9.97418 4.61323 9.90533 4.49273 9.76762Z"
+                                  fill="currentColor"
+                                />
+                              </svg>
+                            </span>
+                          </div>
+                          <div
+                            className={`flex mt-5 h-[44px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative group ${
+                              password && "border-red-600"
+                            }`}
+                          >
+                            <input
+                              type={`${showPassword ? "text" : "password"}`}
+                              placeholder="Password"
+                              onChange={handlePasswordChange}
+                              onBlur={handlePasswordChange}
+                              className="peer text-base m-0 block h-[38px] w-full bg-transparent text-textBlue transition duration-200 ease-linear placeholder:text-transparent focus:outline-none pr-[70px]"
+                            />
+                            <label className="font-semibold px-3 pointer-events-none absolute left-0 top-[4px] origin-[0_0] border border-solid border-transparent text-base text-gray-400 transition-[opacity,_transform] duration-200 ease-linear peer-focus:-translate-y-7 peer-focus:translate-x-[0.15rem] peer-focus:scale-[0.85] peer-focus:text-brandBlue peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:translate-x-[0.15rem] peer-[:not(:placeholder-shown)]:scale-[0.85] peer-[:not(:placeholder-shown)]:text-brandBlue motion-reduce:transition-none">
+                              Password
+                            </label>
+                            <span className="absolute h-full w-[20px] flex items-center justify-center top-0 right-2 text-gray-300 peer-[:not(:placeholder-shown)]:text-brandGreen">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="14"
+                                height="10"
+                                viewBox="0 0 14 10"
+                                fill="none"
+                                className="w-full h-auto"
+                              >
+                                <path
+                                  d="M4.49273 9.76762L0.180742 5.48145C0.0602474 5.36095 0 5.20603 0 5.01668C0 4.82733 0.0602474 4.67241 0.180742 4.55191L1.13609 3.62238C1.25659 3.48467 1.4029 3.41582 1.57504 3.41582C1.76439 3.41582 1.92792 3.48467 2.06563 3.62238L4.9575 6.51426L11.1544 0.317383C11.2921 0.179674 11.447 0.11082 11.6191 0.11082C11.8085 0.11082 11.9634 0.179674 12.0839 0.317383L13.0393 1.24691C13.1598 1.36741 13.22 1.52233 13.22 1.71168C13.22 1.90103 13.1598 2.05595 13.0393 2.17645L5.42227 9.76762C5.30177 9.90533 5.14685 9.97418 4.9575 9.97418C4.76815 9.97418 4.61323 9.90533 4.49273 9.76762Z"
+                                  fill="currentColor"
+                                />
+                              </svg>
+                            </span>
+                            <button
+                              className="text-gray-400 white absolute right-10 top-2.5 text-xs border-l-[3px] pl-1"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                setShowPassword(!showPassword);
+                              }}
+                            >
+                              {showPassword ? "Hide" : "Show"}
+                            </button>
+                          </div>
+                          <button
+                            className="text-textBlue text-sm mt-2"
+                            onClick={(e) => e.preventDefault()}
+                          >
+                            Forgot password?
+                          </button>
+
+                          <Button
+                            className={`w-full shadow-md hover:shadow-lg group inline-flex items-center justify-center font-bold text-lg rounded-[30px] py-2 px-4 pl-0 transition-all hover:bg-brandLightGreen hover:scale-105 hover:text-white hover:border-brandLightGreen border-[3px] border-brandGreen mb-12 mt-9 ${showLogin ? 'bg-brandGreen text-white' : 'bg-white text-brandGreen' }`}
+                            iconpath={
+                              <svg viewBox="0 0 48 48" width="24"
+                          height="24" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M0 0h48v48H0z" fill="none"></path> <g id="Shopicon"> <path d="M33.843,26.914L24,36l-9.843-9.086C8.674,30.421,5,36.749,5,44h38C43,36.749,39.326,30.421,33.843,26.914z"></path> <path d="M24,28c3.55,0,6.729-1.55,8.926-4C34.831,21.876,36,19.078,36,16c0-6.627-5.373-12-12-12S12,9.373,12,16 c0,3.078,1.169,5.876,3.074,8C17.271,26.45,20.45,28,24,28z"></path> </g> </g></svg>
+                            }
+                            link='/checkout/'
+                          >
+                            Login as existing user
+                          </Button>
+                        </form>
+                      
+                      }
+
+                      {showGuest &&
+                      
+                        <form id="sign-in-form" className="col-span-2">
+                          <div
+                            className={`flex h-[44px] px-3 rounded-lg w-full border border-[3px] border-brandBlue relative group ${
+                              email && "border-red-600"
+                            }`}
+                          >
+                            <input
+                              type="email"
+                              placeholder="Email"
+                              onChange={handleEmailChange}
+                              onBlur={handleEmailChange}
+                              className="peer text-base m-0 block h-[38px] w-full bg-transparent text-textBlue transition duration-200 ease-linear placeholder:text-transparent focus:outline-none"
+                            />
+                            <label className="font-semibold px-3 pointer-events-none absolute left-0 top-[4px] origin-[0_0] border border-solid border-transparent text-base text-gray-400 transition-[opacity,_transform] duration-200 ease-linear peer-focus:-translate-y-7 peer-focus:translate-x-[0.15rem] peer-focus:scale-[0.85] peer-focus:text-brandBlue peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:translate-x-[0.15rem] peer-[:not(:placeholder-shown)]:scale-[0.85] peer-[:not(:placeholder-shown)]:text-brandBlue motion-reduce:transition-none">
+                              Email
+                            </label>
+                            <span className="absolute h-full w-[20px] flex items-center justify-center top-0 right-2 text-gray-300 peer-[:not(:placeholder-shown)]:text-brandGreen">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="14"
+                                height="10"
+                                viewBox="0 0 14 10"
+                                fill="none"
+                                className="w-full h-auto"
+                              >
+                                <path
+                                  d="M4.49273 9.76762L0.180742 5.48145C0.0602474 5.36095 0 5.20603 0 5.01668C0 4.82733 0.0602474 4.67241 0.180742 4.55191L1.13609 3.62238C1.25659 3.48467 1.4029 3.41582 1.57504 3.41582C1.76439 3.41582 1.92792 3.48467 2.06563 3.62238L4.9575 6.51426L11.1544 0.317383C11.2921 0.179674 11.447 0.11082 11.6191 0.11082C11.8085 0.11082 11.9634 0.179674 12.0839 0.317383L13.0393 1.24691C13.1598 1.36741 13.22 1.52233 13.22 1.71168C13.22 1.90103 13.1598 2.05595 13.0393 2.17645L5.42227 9.76762C5.30177 9.90533 5.14685 9.97418 4.9575 9.97418C4.76815 9.97418 4.61323 9.90533 4.49273 9.76762Z"
+                                  fill="currentColor"
+                                />
+                              </svg>
+                            </span>
+                          </div>
+
+                          <Button
+                            className={`w-full shadow-md hover:shadow-lg group inline-flex items-center justify-center font-bold text-lg rounded-[30px] py-2 px-4 pl-0 transition-all hover:bg-brandLightGreen hover:scale-105 hover:text-white hover:border-brandLightGreen border-[3px] border-brandGreen mb-12 mt-9 ${showLogin ? 'bg-brandGreen text-white' : 'bg-white text-brandGreen' }`}
+                            iconpath={
+                              <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="rotate-[20deg]"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                    >
+                      <path
+                        d="M12 5H9C7.11438 5 6.17157 5 5.58579 5.58579C5 6.17157 5 7.11438 5 9V15C5 16.8856 5 17.8284 5.58579 18.4142C6.17157 19 7.11438 19 9 19H15C16.8856 19 17.8284 19 18.4142 18.4142C19 17.8284 19 16.8856 19 15V12M9.31899 12.6911L15.2486 6.82803C15.7216 6.36041 16.4744 6.33462 16.9782 6.76876C17.5331 7.24688 17.5723 8.09299 17.064 8.62034L11.2329 14.6702L9 15L9.31899 12.6911Z"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                            }
+                            link='/checkout/'
+                          >
+                            Checkout as guest
+                          </Button>
+                        </form>
+                      
+                      }
+                    </div>
+                  </>
+                )}
               {cartItems.length ? (
                 cartItems.map((item) => (
                   <CartProductTile key={item.id} product={item} />
@@ -95,7 +309,8 @@ const Cart = () => {
               <div className="bg-white w-full hidden md:block">
                 <Button
                   ref={continueCheckout}
-                  className="shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-xs sm:text-sm md:text-lg rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-0 transition-all hover:bg-brandLightGreen hover:scale-105"
+                  className="shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-xs sm:text-sm md:text-lg rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-0 transition-all hover:bg-brandLightGreen hover:scale-105 disabled:pointer-events-none disabled:bg-gray-400"
+                  disabled="disabled"
                   iconpath={
                     <svg
                       width="22"
@@ -271,7 +486,8 @@ const Cart = () => {
             <div className={`bg-white p-4 px-0 md:px-4 w-full sticky bottom-0 left-0 transition-all md:fixed md:translate-y-full ${AddVisible ? '' : 'md:translate-y-0'} z-20`}>
               <div className="max-w-3xl m-auto flex flex-col items-center justify-center">
                 <Button
-                  className="h-[44px] shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-sm md:text-lg rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-0 transition-all hover:bg-brandLightGreen hover:scale-105"
+                  className="h-[44px] shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-sm md:text-lg rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-0 transition-all hover:bg-brandLightGreen hover:scale-105 disabled:pointer-events-none disabled:bg-gray-400"
+                  disabled="disabled"
                   iconpath={
                     <svg
                       width="22"

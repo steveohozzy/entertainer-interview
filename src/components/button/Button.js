@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom";
-const Button = ({children, iconpath, iconalt, link, removeIcons, ...otherProps}) => {
+const Button = ({children, iconpath, iconalt, link, removeIcons, disabled, ...otherProps}) => {
   const navigate = useNavigate();
 
   const goToLinkHandler = () => {
       navigate(link);
   };
   return (
-    <button onClick={goToLinkHandler} {...otherProps}>
+    <button onClick={goToLinkHandler} {...otherProps} disabled={disabled}>
         {!removeIcons &&
           <span className="flex items-center justify-end w-[22px] mr-1">
               <svg width="11" height="11" viewBox="0 0 11 11" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

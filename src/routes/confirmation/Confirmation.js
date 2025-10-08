@@ -16,16 +16,25 @@ const Confirmation = () => {
     <>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="rounded-xl bg-white shadow-sm p-8">
-          <h1 className="text-2xl text-textBlue font-bold">Thanks for your order!</h1>
+          <h1 className="text-5xl text-brandLightGreen font-bold text-center">
+            <span className="inline-block rotate-[-10deg]">W</span>
+            <span className="inline-block translate-y-[-6px] rotate-[-10deg] ml-[1.2px]">h</span>
+            <span className="inline-block translate-y-[-12px] rotate-[5deg] ml-[2px]">o</span>
+            <span className="inline-block translate-y-[-10px] rotate-[5deg] ml-[2px]">o</span>
+            <span className="inline-block translate-y-[-12px] ml-4 rotate-[15deg]">h</span>
+            <span className="inline-block translate-y-[-2px] rotate-[15deg] ml-[2px]">o</span>
+            <span className="inline-block translate-y-[-2px] rotate-[15deg] ml-[2px]">o</span>
+            <span className="inline-block translate-y-[-2px] rotate-[15deg] ml-[2px]">!</span>
+          </h1>
           <div className="text-lg text-textBlue mt-6">
-            Your Order Number is <span className="font-bold text-brandBlue">00587456</span>
+            Order Confirmation <span className="font-bold text-brandBlue">00587456</span>
           </div>
-          <div className="text-lg text-textBlue mt-6">
-            A copy of your order details has been sent to <span className="font-bold text-brandBlue">steve.hoskins@theentertainer.com</span>
+          <div className="flex text-xl items-center font-bold gap-3 mt-4">
+            <span className="text-textBlue">Total |</span>
+            <span className="text-brandRed font-bold">£56.78</span>
+            <span className="text-textBlue text-sm">- 3 items</span>
           </div>
-        </div>
 
-        <div className="rounded-xl bg-white shadow-sm p-8 mt-6">
           <h2 className="text-2xl text-textBlue font-bold mb-8">Order Summary</h2>
             <div className="flex items-end flex-wrap">
               <div className="w-full">
@@ -74,9 +83,7 @@ const Confirmation = () => {
               </div>
             </div>
           </div>
-        </div>
 
-        <div className="rounded-xl bg-white shadow-sm p-8 mt-6">
           <div className="grid md:grid-cols-2">
             <div>
               <h2 className="text-xl text-textBlue font-bold">Shipping Information</h2>
@@ -102,6 +109,16 @@ const Confirmation = () => {
                 HP2 6PA
               </div>
             </div>
+            <div className="text-lg text-textBlue mt-12 col-span-2">
+              A copy of your order details has been sent to <span className="font-bold text-brandBlue">steve.hoskins@theentertainer.com</span>
+            </div>
+            <Button
+              removeIcons={true}
+              className="col-span-2 shadow-md hover:shadow-lg w-full h-[44px] group inline-flex items-center justify-center font-bold text-sm md:text-lg rounded-[30px] hover:bg-white hover:text-brandBlue py-1 px-4 pl-0 transition-all border-[3px] mt-4 border-brandBlue bg-brandBlue text-white hover:scale-105 mt-[50px] mx-auto max-w-[250px]"
+              link="/"
+            >
+              Continue Shopping
+            </Button>
           </div>
         </div>
 
