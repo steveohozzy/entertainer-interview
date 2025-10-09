@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Button from "../../components/button/Button";
@@ -21,7 +21,7 @@ import { products } from "../../data/products";
 const Cart = () => {
   const navigate = useNavigate();
   const cartItems = useSelector(selectCartItems);
-  const cartTotal = useSelector(selectCartTotal);
+  //const cartTotal = useSelector(selectCartTotal);
 
   const [showLogin, setShowLogin] = useState(false);
   const [showGuest, setShowGuest] = useState(false);
@@ -38,29 +38,29 @@ const Cart = () => {
     setPassword(!e.target.value);
   };
 
-  function useIsVisible(ref) {
-    const [isIntersecting, setIntersecting] = useState(false);
+  // function useIsVisible(ref) {
+  //   const [isIntersecting, setIntersecting] = useState(false);
 
-    useEffect(() => {
-      // Create an IntersectionObserver to observe the ref's visibility
-      const observer = new IntersectionObserver(([entry]) => 
-        setIntersecting(entry.isIntersecting)
-      );
+  //   useEffect(() => {
+  //     // Create an IntersectionObserver to observe the ref's visibility
+  //     const observer = new IntersectionObserver(([entry]) => 
+  //       setIntersecting(entry.isIntersecting)
+  //     );
 
-      // Start observing the element
-      observer.observe(ref.current);
+  //     // Start observing the element
+  //     observer.observe(ref.current);
 
-      // Cleanup the observer when the component unmounts or ref changes
-      return () => {
-        observer.disconnect();
-      };
-    }, [ref]);
+  //     // Cleanup the observer when the component unmounts or ref changes
+  //     return () => {
+  //       observer.disconnect();
+  //     };
+  //   }, [ref]);
 
-    return isIntersecting;
-  }
+  //   return isIntersecting;
+  // }
 
-  const continueCheckout = useRef();
-  const AddVisible = useIsVisible(continueCheckout);
+  // const continueCheckout = useRef();
+  // const AddVisible = useIsVisible(continueCheckout);
 
   return (
     <>
@@ -268,7 +268,7 @@ const Cart = () => {
                           </div>
 
                           <Button
-                            className={`w-full shadow-md hover:shadow-lg group inline-flex items-center justify-center font-bold text-lg rounded-[30px] py-2 px-4 pl-0 transition-all hover:bg-brandLightGreen hover:scale-105 hover:text-white hover:border-brandLightGreen border-[3px] border-brandGreen mb-12 mt-9 ${showLogin ? 'bg-brandGreen text-white' : 'bg-white text-brandGreen' }`}
+                            className={`w-full shadow-md hover:shadow-lg group inline-flex items-center justify-center font-bold text-lg rounded-[30px] py-2 px-4 pl-0 transition-all hover:bg-brandLightGreen hover:scale-105 hover:text-white hover:border-brandLightGreen border-[3px] border-brandGreen mb-12 mt-9 ${showGuest ? 'bg-brandGreen text-white' : 'bg-white text-brandGreen' }`}
                             iconpath={
                               <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -306,7 +306,7 @@ const Cart = () => {
               )}
             </div>
             <div className="w-full md:w-[33.3333333%] md:px-3">
-              <div className="bg-white w-full hidden md:block">
+              {/* <div className="bg-white w-full hidden md:block">
                 <Button
                   ref={continueCheckout}
                   className="shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-xs sm:text-sm md:text-lg rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-0 transition-all hover:bg-brandLightGreen hover:scale-105 disabled:pointer-events-none disabled:bg-gray-400"
@@ -326,7 +326,7 @@ const Cart = () => {
                 >
                   Checkout Securely £{cartTotal.toFixed(2)}
                 </Button>
-              </div>
+              </div> */}
 
               <div className="mt-6 bg-gray-200 border-4 border-gray-400 p-6 px-4 rounded-md">
                 <Dropdown
@@ -483,7 +483,7 @@ const Cart = () => {
                 </Swiper>
               </div>
             </div>
-            <div className={`bg-white p-4 px-0 md:px-4 w-full sticky bottom-0 left-0 transition-all md:fixed md:translate-y-full ${AddVisible ? '' : 'md:translate-y-0'} z-20`}>
+            {/* <div className={`bg-white p-4 px-0 md:px-4 w-full sticky bottom-0 left-0 transition-all md:fixed md:translate-y-full ${AddVisible ? '' : 'md:translate-y-0'} z-20`}>
               <div className="max-w-3xl m-auto flex flex-col items-center justify-center">
                 <Button
                   className="h-[44px] shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-sm md:text-lg rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-0 transition-all hover:bg-brandLightGreen hover:scale-105 disabled:pointer-events-none disabled:bg-gray-400"
@@ -511,7 +511,7 @@ const Cart = () => {
                   Continue Shopping
                 </Button>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
