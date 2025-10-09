@@ -150,12 +150,7 @@ const Checkout = () => {
                               </span>
                               Checkout
                             </span>
-                            <span className='text-sm text-textBlue mb-[3px]'>
-                              Total
-                              <span className='text-brandRed ml-1'>
-                                £{cartTotal.toFixed(2)}
-                              </span>
-                            </span>
+                            
                             <span className='gray-300'>
                               <button
                                   onClick={() => setAccordionOpen(!accordionOpen)}
@@ -172,13 +167,45 @@ const Checkout = () => {
                           </div>
                           <div className={`grid overflow-hidden transition-all duration-300 ease-in-out text-slate-600 text-sm ${
                             accordionOpen
-                              ? "grid-rows-[1fr] opacity-100 px-2 sm:px-4"
+                              ? "grid-rows-1fr] opacity-100 px-2 sm:px-4"
                               : "grid-rows-[0fr] opacity-0 px-2 sm:px-4"
                           }`}>
                             <div className="overflow-hidden">
-                              {(
-                                cartItems.map((item) => <CartProductTile key={item.id} product={item} nocontrols={true} />)
-                              )}
+                              <div className='flex gap-4'>
+                                <div className='w-1/2 grid grid-cols-[repeat(3,1fr)] gap-2 mb-4'>
+                                  {(
+                                    cartItems.map((item, i) => (
+                                      
+                                      <div className={`${i === 0 && 'row-span-2 col-span-2'} border-[3px] border-gray-400 rounded-md overflow-hidden`}>
+                                        <img
+                                            src={item.image || "/placeholder.svg"}
+                                            alt={item.name}
+                                            className={`${i === 0 && 'h-full'} w-full block`}
+                                        />
+                                      </div>
+                                    )
+                                    )
+                                  )}
+                                </div>
+                                <div className='w-1/2 text-center'>
+                                  <Button
+                                      className={`w-full shadow-md hover:shadow-lg group inline-flex items-center justify-center font-bold text-sm rounded-[30px] py-2 px-4 pl-0 transition-all hover:bg-brandLightGreen hover:scale-105 hover:text-white hover:border-brandLightGreen border-[3px] border-brandGreen mb-4 bg-brandGreen text-white`}
+                                      iconpath={
+                                        <svg viewBox="0 0 48 48" width="24"
+                                    height="24" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M0 0h48v48H0z" fill="none"></path> <g id="Shopicon"> <path d="M33.843,26.914L24,36l-9.843-9.086C8.674,30.421,5,36.749,5,44h38C43,36.749,39.326,30.421,33.843,26.914z"></path> <path d="M24,28c3.55,0,6.729-1.55,8.926-4C34.831,21.876,36,19.078,36,16c0-6.627-5.373-12-12-12S12,9.373,12,16 c0,3.078,1.169,5.876,3.074,8C17.271,26.45,20.45,28,24,28z"></path> </g> </g></svg>
+                                      }
+                                      link='/checkout/'
+                                    >
+                                      Logged in
+                                    </Button>
+                                  <span className='text-lg font-semibold text-textBlue mb-[3px]'>
+                                    Total
+                                    <span className='text-brandRed ml-1'>
+                                      £{cartTotal.toFixed(2)}
+                                    </span>
+                                  </span>
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </div>
