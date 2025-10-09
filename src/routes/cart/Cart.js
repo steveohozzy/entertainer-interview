@@ -14,7 +14,7 @@ import "swiper/css/pagination";
 
 import { selectCartItems } from "../../store/cart/cartSelector";
 
-import { selectCartTotal } from "../../store/cart/cartSelector";
+//import { selectCartTotal } from "../../store/cart/cartSelector";
 
 import { products } from "../../data/products";
 
