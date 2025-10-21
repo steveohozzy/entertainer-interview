@@ -12,21 +12,25 @@ export const Multiclickhero = ({
   pod3image,
   pod4image,
   pod5image,
+  pod6image,
   pod1alt,
   pod2alt,
   pod3alt,
   pod4alt,
   pod5alt,
+  pod6alt,
   pod1link,
   pod2link,
   pod3link,
   pod4link,
   pod5link,
+  pod6link,
   pod1text,
   pod2text,
   pod3text,
   pod4text,
   pod5text,
+  pod6text,
   pod1datelementtype,
   pod1datapromotionindex,
   pod1datapromotionname,
@@ -42,6 +46,9 @@ export const Multiclickhero = ({
   pod5datelementtype,
   pod5datapromotionindex,
   pod5datapromotionname,
+  pod6datelementtype,
+  pod6datapromotionindex,
+  pod6datapromotionname,
   pod1datagtmvisfirstonscreen8511273_2666,
   pod1datagtmvistotalvisibletime8511273_2666,
   pod1datagtmvishasfired8511273_2666,
@@ -57,6 +64,9 @@ export const Multiclickhero = ({
   pod5datagtmvisfirstonscreen8511273_2666,
   pod5datagtmvistotalvisibletime8511273_2666,
   pod5datagtmvishasfired8511273_2666,
+  pod6datagtmvisfirstonscreen8511273_2666,
+  pod6datagtmvistotalvisibletime8511273_2666,
+  pod6datagtmvishasfired8511273_2666,
 }) => {
   return (
     <><style>{`
@@ -537,6 +547,28 @@ export const Multiclickhero = ({
               </a>
             </li>
             }
+
+            {pod6link &&
+            <li>
+              <a
+                href={pod6link}
+                title={pod6alt}
+                data-element-type={pod6datelementtype}
+                data-promotion-index={pod6datapromotionindex}
+                data-promotion-name={pod6datapromotionname}
+                data-gtm-vis-first-on-screen8511273_2666={pod6datagtmvisfirstonscreen8511273_2666}
+                data-gtm-vis-total-visible-time8511273_2666={pod6datagtmvistotalvisibletime8511273_2666}
+                data-gtm-vis-has-fired8511273_2666={pod6datagtmvishasfired8511273_2666}
+              >
+                <img
+                  src={pod6image}
+                  alt={pod6alt}
+                  title={pod6alt} />
+
+                <span>{pod6text}</span>
+              </a>
+            </li>
+            }
           </ul>
         </div>
       </div>
@@ -566,11 +598,15 @@ Multiclickhero.propTypes = {
   pod5image: PropTypes.string,
   pod5link: PropTypes.string,
   pod5alt: PropTypes.string,
+  pod6image: PropTypes.string,
+  pod6link: PropTypes.string,
+  pod6alt: PropTypes.string,
   pod1text: PropTypes.string,
   pod2text: PropTypes.string,
   pod3text: PropTypes.string,
   pod4text: PropTypes.string,
   pod5text: PropTypes.string,
+  pod6text: PropTypes.string,
   pod1datelementtype: PropTypes.string,
   pod2datelementtype: PropTypes.string,
   pod3datelementtype: PropTypes.string,
@@ -586,6 +622,7 @@ Multiclickhero.propTypes = {
   pod3datapromotionname: PropTypes.string,
   pod4datapromotionname: PropTypes.string,
   pod5datapromotionname: PropTypes.string,
+  pod6datapromotionname: PropTypes.string,
   pod1datagtmvisfirstonscreen8511273_2666: PropTypes.string,
   pod2datagtmvisfirstonscreen8511273_2666: PropTypes.string,
   pod3datagtmvisfirstonscreen8511273_2666: PropTypes.string,
@@ -596,9 +633,11 @@ Multiclickhero.propTypes = {
   pod3datagtmvistotalvisibletime8511273_2666: PropTypes.string,
   pod4datagtmvistotalvisibletime8511273_2666: PropTypes.string,
   pod5datagtmvistotalvisibletime8511273_2666: PropTypes.string,
+  pod6datagtmvistotalvisibletime8511273_2666: PropTypes.string,
   pod1datagtmvishasfired8511273_2666: PropTypes.string,
   pod2datagtmvishasfired8511273_2666: PropTypes.string,
   pod3datagtmvishasfired8511273_2666: PropTypes.string,
   pod4datagtmvishasfired8511273_2666: PropTypes.string,
   pod5datagtmvishasfired8511273_2666: PropTypes.string,
+  pod6datagtmvishasfired8511273_2666: PropTypes.string,
 };

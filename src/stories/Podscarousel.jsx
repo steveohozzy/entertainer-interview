@@ -10,6 +10,8 @@ export const PodsCarousel = ({
 	podscarouselsixthslide,
 	podscarouselsevthslide,
 	podscarouseleighthslide,
+  podscarouselninethslide,
+  podscarouseltenthslide,
 }) => {
   return (
     <>
@@ -244,6 +246,12 @@ export const PodsCarousel = ({
 		{podscarouseleighthslide &&
 			<div class="carousel-cell" dangerouslySetInnerHTML={{__html:podscarouseleighthslide}} />
 		}
+    {podscarouselninethslide &&
+			<div class="carousel-cell" dangerouslySetInnerHTML={{__html:podscarouselninethslide}} />
+		}
+    {podscarouseltenthslide &&
+			<div class="carousel-cell" dangerouslySetInnerHTML={{__html:podscarouseltenthslide}} />
+		}
   </div>
 </div>
     </>
@@ -260,4 +268,6 @@ PodsCarousel.propTypes = {
 	podscarouselsixthslide: PropTypes.string,
 	podscarouselsevthslide: PropTypes.string,
 	podscarouseleighthslide: PropTypes.string,
+  podscarouselninethslide: PropTypes.string,
+  podscarouseltnthslide: PropTypes.string,
 };

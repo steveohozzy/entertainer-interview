@@ -23,5 +23,7 @@ export const HomeCarouselPods = {
     podscarouselsixthslide: '',
     podscarouselsevthslide: '',
     podscarouseleighthslide: '',
+    podscarouselninethslide: '',
+    podscarouseltenthslide: '',
   },
 };
