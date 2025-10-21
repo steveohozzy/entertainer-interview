@@ -11,7 +11,8 @@ export const VideoModule = ({
   video,
   title,
   blurb,
-  buttontext
+  buttontext,
+  link
 }) => {
   return (
     <>
@@ -225,7 +226,7 @@ export const VideoModule = ({
               {blurb}
             </div>
             <a
-              href="https://www.thetoyshop.com/c/transport-toys/remote-control/rc-cars#sort-by"
+              href={link}
               class="hero-button"
             >
               <span class="swoosh-container">
@@ -291,4 +292,5 @@ VideoModule.propTypes = {
   title: PropTypes.string,
   blurb: PropTypes.string,
   buttontext: PropTypes.string,
+  link: PropTypes.string,
 };

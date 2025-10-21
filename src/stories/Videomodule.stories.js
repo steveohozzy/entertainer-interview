@@ -25,5 +25,6 @@ export const VideoModuleHero = {
     title: 'Remote Control Cars',
     blurb: 'Experience the thrill of speed and control with our exciting range of remote control cars. Perfect for kids and adults alike!',
     buttontext: 'Shop Now',
+    link: 'https://www.thetoyshop.com/c/transport-toys/remote-control/rc-cars#sort-by',
   },
 };
