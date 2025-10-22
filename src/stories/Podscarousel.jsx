@@ -269,5 +269,5 @@ PodsCarousel.propTypes = {
 	podscarouselsevthslide: PropTypes.string,
 	podscarouseleighthslide: PropTypes.string,
   podscarouselninethslide: PropTypes.string,
-  podscarouseltnthslide: PropTypes.string,
+  podscarouseltenthslide: PropTypes.string,
 };

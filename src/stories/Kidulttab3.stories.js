@@ -43,5 +43,9 @@ export const KidultTab3Content = {
     roundal7alt: 'Topps',
     roundal7link: 'https://www.thetoyshop.com/brands/topps-premier-league',
     roundal7background: '#000',
+    roundal8image: 'https://www.thetoyshop.com/medias/Untitled.png?context=bWFzdGVyfHJvb3R8MTE0MzI0fGltYWdlL3BuZ3xhREF6TDJnME9TOHhNall5TkRRNU1USTBPVFk1TkM5VmJuUnBkR3hsWkM1d2JtY3xmMzBlOWNiZDU2ZDRjZGM5ZTYyYjkyZGY4NTZmMzJkNzlhNmRmNmE1MWQ1MzU4M2VmMTY5YWIxY2ZiNjNkMGFk',
+    roundal8alt: 'Little People Collector',
+    roundal8link: 'https://www.thetoyshop.com/brands/little-people-collector',
+    roundal8background: '#fff',
   }
 };

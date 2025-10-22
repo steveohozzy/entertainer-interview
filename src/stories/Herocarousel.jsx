@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 export const HeroCarousel = ({
   carouselfirstslide,
   carouselsecondslide,
-  carouselthirdslide
+  carouselthirdslide,
+	carouselforthslide
 }) => {
   return (
     <>
@@ -560,6 +561,14 @@ export const HeroCarousel = ({
         
         />
         }
+
+				{carouselforthslide &&
+          <div class="carousel-cell"
+        
+          dangerouslySetInnerHTML={{__html: carouselforthslide}}
+        
+        />
+        }
       </div>
     </div>
     </>
@@ -571,4 +580,5 @@ HeroCarousel.propTypes = {
   carouselfirstslide: PropTypes.string.isRequired,
   carouselsecondslide: PropTypes.string,
   carouselthirdslide: PropTypes.string,
+	carouselfirthslide: PropTypes.string,
 };

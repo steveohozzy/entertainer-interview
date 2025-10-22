@@ -47,5 +47,9 @@ export const KidultTab2Content = {
     roundal8alt: 'Sonic the Hedgehog',
     roundal8link: 'https://www.thetoyshop.com/brands/sonic-the-hedgehog/sonic-the-hedgehog-merchandise',
     roundal8background: '#007AFF',
+    roundal9image: 'https://www.thetoyshop.com/medias/Zelda-2017-white.svg?context=bWFzdGVyfHJvb3R8NDE3M3xpbWFnZS9zdmcreG1sfGFEa3pMMmhoTlM4eE1qWXlORFE1T0RVeU5ERTVNQzlhWld4a1lWOHlNREUzWDNkb2FYUmxMbk4yWnd8NzIzZTM1NjhhY2Q4ZGM5NTY1NzkxZmY3ZWE3ZmIwY2UxYjZkZjg5NzdhMzQ0ODI0M2E4MTgzMjI5MTA2MzdjMQ',
+    roundal9alt: 'Legend of Zelda',
+    roundal9link: 'https://www.thetoyshop.com/brands/the-legend-of-zelda',
+    roundal9background: '#B59C66',
   }
 };
