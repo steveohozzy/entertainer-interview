@@ -15,7 +15,7 @@ const Confirmation = () => {
   return (
     <>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="rounded-xl bg-white shadow-sm p-8">
+        <div className="rounded-xl bg-white px-0 py-8 lg:p-8">
           <h1 className="text-5xl text-brandLightGreen font-semibold text-center">
             {/* <span className="inline-block rotate-[-10deg]">W</span>
             <span className="inline-block translate-y-[-6px] rotate-[-10deg] ml-[1.2px]">h</span>
