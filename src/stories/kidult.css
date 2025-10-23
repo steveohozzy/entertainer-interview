@@ -12,7 +12,7 @@
     margin: 0 auto;
   }
 
-  .kidult h1 {
+  .kidult h2 {
     font-size: 50px;
     font-family: 'Billy Bold', Arial, Helvetica, sans-serif;
     font-weight: 700;
@@ -29,7 +29,7 @@
     text-align: center;
   }
 
-  .kidult h2 {
+  .kidult h3 {
     filter: drop-shadow(0 2px rgb(147 51 234)) drop-shadow(0 -2px rgb(147 51 234)) drop-shadow(2px 0 rgb(147 51 234)) drop-shadow(-2px 0 rgb(147 51 234));
     letter-spacing: 2px;
     color: #000;

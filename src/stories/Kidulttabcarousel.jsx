@@ -89,7 +89,7 @@ export const KidultCarousel = ({
     <>
       <div class="kidult">
         <div class="kidult-content">
-          <h2>{carouseltitle}</h2>
+          <h3>{carouseltitle}</h3>
 
           <div
             class="carousel js-flickity flickity-enabled is-draggable"

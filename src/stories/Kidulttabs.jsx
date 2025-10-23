@@ -568,7 +568,7 @@ export const KidultTabs = ({
       </style>
       <div class="kidult">
         <div class="kidult-content">
-          <h2>{tabareatitle}</h2>
+          <h3>{tabareatitle}</h3>
           <div class="tab-content-container">
             <div class="tab-content-inner">
               <div class="tabs-container">

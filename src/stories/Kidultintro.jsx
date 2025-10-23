@@ -10,7 +10,7 @@ export const KidultIntro = ({
     <>
       <div class="kidult">
         <div class="kidult-content">
-          <h1>{title}</h1>
+          <h2>{title}</h2>
           <div dangerouslySetInnerHTML={{ __html: blurb }} />
         </div>
       </div>

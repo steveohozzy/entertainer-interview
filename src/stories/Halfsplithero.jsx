@@ -4,12 +4,18 @@ import PropTypes from "prop-types";
 export const HalfSplitHero = ({
   image,
   imagealt,
-  video,
+  videosrc,
   background,
   headline,
   tagline,
   link,
-  linktext
+  linktext,
+  dataElementType,
+  datapromotionindex,
+  datapromotionname,
+  datagtmvisfirstonscreen8511273_2666,
+  datagtmvistotalvisibletime8511273_2666,
+  datagtmvishasfired8511273_2666,
 }) => {
   return (
     <>
@@ -49,7 +55,7 @@ export const HalfSplitHero = ({
         align-items: center;
         justify-content: center;
         text-align: center;
-        background: ${background || '#003087'};
+        background: ${background};
         border-radius: 8px;
         position: relative;
         margin-top: -20px;
@@ -207,17 +213,19 @@ export const HalfSplitHero = ({
                 alt={imagealt || 'Hero image'}
               />
             }
-            {video &&
-              <video autoplay="true" loop="true" muted="true" playsinline="true">
+            {videosrc &&
+              <video autoplay loop muted playsinline>
                 <source
-                  src={video}
+                  src={videosrc}
                   type="video/mp4"
                 />
               </video>
           }
           </div>
-          <div class="hero-tile-info">
-            <a href={link}>
+          <div class="hero-tile-info" style={{background: background}}>
+            <a href={link}
+             data-element-type={dataElementType} data-promotion-index={datapromotionindex} data-promotion-name={datapromotionname} data-gtm-vis-first-on-screen8511273_2666={datagtmvisfirstonscreen8511273_2666} data-gtm-vis-total-visible-time8511273_2666={datagtmvistotalvisibletime8511273_2666} data-gtm-vis-has-fired8511273_2666={datagtmvishasfired8511273_2666}
+            >
               <h2>{headline}</h2>
               <div class="hero-blurb">
                 {tagline}
@@ -226,6 +234,7 @@ export const HalfSplitHero = ({
             <a
               href={link}
               class="hero-button"
+              data-element-type={dataElementType} data-promotion-index={datapromotionindex} data-promotion-name={datapromotionname} data-gtm-vis-first-on-screen8511273_2666={datagtmvisfirstonscreen8511273_2666} data-gtm-vis-total-visible-time8511273_2666={datagtmvistotalvisibletime8511273_2666} data-gtm-vis-has-fired8511273_2666={datagtmvishasfired8511273_2666}
             >
               <span class="swoosh-container">
                 <span class="star-start">
@@ -282,10 +291,16 @@ HalfSplitHero.propTypes = {
   /** contents */
   image: PropTypes.string,
   imagealt: PropTypes.string,
-  video: PropTypes.string,
+  videosrc: PropTypes.string,
   background: PropTypes.string,
   headline: PropTypes.string,
   tagline: PropTypes.string,
   link: PropTypes.string,
   linktext: PropTypes.string,
+  dataElementType: PropTypes.string,
+  datapromotionindex: PropTypes.string,
+  datapromotionname: PropTypes.string,
+  datagtmvisfirstonscreen8511273_2666: PropTypes.string,
+  datagtmvistotalvisibletime8511273_2666: PropTypes.string,
+  datagtmvishasfired8511273_2666: PropTypes.string, 
 };
