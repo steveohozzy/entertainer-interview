@@ -719,7 +719,10 @@ const CheckoutAlt = () => {
                                 <button
                                   onClick={() => {
                                     setShowDeliveryOptions(
-                                      !showDeliveryOptions
+                                      false
+                                    );
+                                    setShowDelivery(
+                                      true
                                     );
                                     setShowPaymentOptions(false);
                                     setanimateTrainPayment(false);
@@ -864,7 +867,10 @@ const CheckoutAlt = () => {
                                 <button
                                   onClick={() => {
                                     setShowDeliveryOptions(
-                                      !showDeliveryOptions
+                                      false
+                                    );
+                                    setShowDelivery(
+                                      true
                                     );
                                     setShowPaymentOptions(false);
                                     setanimateTrainPayment(false);
@@ -2188,6 +2194,7 @@ const CheckoutAlt = () => {
                                     );
                                     setShowPaymentOptions(false);
                                     setanimateTrainPayment(false);
+                                    setanimateTrainDelivery(true);
                                   }}
                                   className="absolute z-[2] top-[17px] right-[50px] text-sm underline text-brandRed"
                                 >
@@ -2334,6 +2341,7 @@ const CheckoutAlt = () => {
                                     );
                                     setShowPaymentOptions(false);
                                     setanimateTrainPayment(false);
+                                    setanimateTrainDelivery(true);
                                   }}
                                   className="absolute z-[2] top-[17px] right-[50px] text-sm underline text-brandRed"
                                 >
