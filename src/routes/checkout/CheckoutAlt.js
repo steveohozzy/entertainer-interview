@@ -132,6 +132,15 @@ const CheckoutAlt = () => {
     setPassword(!e.target.value);
   };
 
+  const scrollToPayment = () => {
+    setTimeout(() => {
+      const paymentSection = document.getElementById("payment");
+      if (paymentSection) {
+        paymentSection.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 300);
+  };
+
   useEffect(() => {
     setanimateTrainBasket(true);
     setShowLogin(true);
@@ -209,9 +218,13 @@ const CheckoutAlt = () => {
                           showPaymentOptions ||
                           showDeliveryOptions) && (
               <div className="lg:hidden">
-                <button
+                <a
+                  href={'/'}
                   className="w-full"
-                  onClick={() => setAccordionOpen(!accordionOpen)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setAccordionOpen(!accordionOpen)
+                  }}
                 >
                   <div className="flex items-end justify-between p-4 px-2 sm:px-4 text-sm w-full">
                     <span>
@@ -320,7 +333,7 @@ const CheckoutAlt = () => {
                       </span>
                     </div>
                   </div>
-                </button>
+                </a>
                 <div
                   className={`grid overflow-hidden transition-all duration-300 ease-in-out text-slate-600 text-sm ${
                     accordionOpen
@@ -919,7 +932,7 @@ const CheckoutAlt = () => {
                             </div>
 
                             <div className="mt-6 rounded-lg">
-                              <div className="relative">
+                              <div id="payment" className="relative">
                                 <Dropdown
                                   expanded={true}
                                   title="Payment Method"
@@ -1789,6 +1802,7 @@ const CheckoutAlt = () => {
                                 setShowPaymentOptions(!showPaymentOptions);
                                 setanimateTrainDelivery(false);
                                 setanimateTrainPayment(true);
+                                scrollToPayment();
                               }}
                             >
                               Go To Payment
@@ -2686,6 +2700,7 @@ const CheckoutAlt = () => {
                               setShowPaymentOptions(!showPaymentOptions);
                               setanimateTrainDelivery(false);
                               setanimateTrainPayment(true);
+                              scrollToPayment();
                             }}
                           >
                             Go To Payment
