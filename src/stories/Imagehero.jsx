@@ -9,12 +9,9 @@ export const ImageHero = ({
   dataElementType,
   datapromotionindex,
   datapromotionname,
-  datagtmvisfirstonscreen8511273_2666,
-  datagtmvistotalvisibletime8511273_2666,
-  datagtmvishasfired8511273_2666,
 }) => {
   return (
-     <a href={link} title={alt} data-element-type={dataElementType} data-promotion-index={datapromotionindex} data-promotion-name={datapromotionname} data-gtm-vis-first-on-screen8511273_2666={datagtmvisfirstonscreen8511273_2666} data-gtm-vis-total-visible-time8511273_2666={datagtmvistotalvisibletime8511273_2666} data-gtm-vis-has-fired8511273_2666={datagtmvishasfired8511273_2666}>
+     <a href={link} title={alt} data-element-type={dataElementType} data-promotion-index={datapromotionindex} data-promotion-name={datapromotionname} >
       <picture>
         <source media="(min-width:768px)" srcset={desktopimage} />
         <img src={mobileimage} alt={alt} />
@@ -32,7 +29,4 @@ ImageHero.propTypes = {
   dataElementType: PropTypes.string,
   datapromotionindex: PropTypes.string,
   datapromotionname: PropTypes.string,
-  datagtmvisfirstonscreen8511273_2666: PropTypes.string,
-  datagtmvistotalvisibletime8511273_2666: PropTypes.string,
-  datagtmvishasfired8511273_2666: PropTypes.string, 
 };

@@ -8,10 +8,6 @@ export const CompBanner = ({
   dataElementType,
   datapromotionindex,
   datapromotionname,
-  datagtmvisrecentonscreen8511273_2666,
-  datagtmvisfirstonscreen8511273_2666,
-  datagtmvistotalvisibletime8511273_2666,
-  datagtmvishasfired8511273_2666,
 }) => {
   return (
     <>
@@ -50,7 +46,7 @@ export const CompBanner = ({
  </style>
      <div class="banner-container">
       <div class="banner-content">
-        <a href={link} data-element-type={dataElementType} data-promotion-name={datapromotionname} data-promotion-index={datapromotionindex} data-gtm-vis-recent-on-screen8511273_2666={datagtmvisrecentonscreen8511273_2666} data-gtm-vis-first-on-screen8511273_2666={datagtmvisfirstonscreen8511273_2666} data-gtm-vis-total-visible-time8511273_2666={datagtmvistotalvisibletime8511273_2666} data-gtm-vis-has-fired8511273_2666={datagtmvishasfired8511273_2666}>
+        <a href={link} data-element-type={dataElementType} data-promotion-name={datapromotionname} data-promotion-index={datapromotionindex}>
           <img src={image} alt={alt} />
           </a>
       </div>
@@ -67,8 +63,4 @@ CompBanner.propTypes = {
   dataElementType: PropTypes.string,
   datapromotionindex: PropTypes.string,
   datapromotionname: PropTypes.string,
-  datagtmvisrecentonscreen8511273_2666: PropTypes.string,
-  datagtmvisfirstonscreen8511273_2666: PropTypes.string,
-  datagtmvistotalvisibletime8511273_2666: PropTypes.string,
-  datagtmvishasfired8511273_2666: PropTypes.string, 
 };

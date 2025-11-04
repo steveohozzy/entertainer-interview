@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { useEffect, useRef } from "react";
 
 /** Primary UI component for user interaction */
 export const VideoModule = ({
@@ -12,8 +13,17 @@ export const VideoModule = ({
   title,
   blurb,
   buttontext,
-  link
+  link,
+  src,
+  isMuted
 }) => {
+   const refVideo = useRef(null);
+    useEffect(() => {
+          refVideo.current.defaultMuted = true;
+          refVideo.current.muted = true;
+  
+          refVideo.current.srcObject = src;
+      }, [isMuted, src]);
   return (
     <>
       <style>
@@ -179,7 +189,7 @@ export const VideoModule = ({
 
         .rc-cars .media {
             width: 50%;
-            aspect-ratio: 450/280;
+            aspect-ratio: 16/9;
         }
 
         .rc-cars .hero-tile-info {
@@ -211,7 +221,7 @@ export const VideoModule = ({
       <div class="rc-cars-container">
         <div class="rc-cars">
           <div class="media">
-            <video autoplay="true" loop="true" muted="true" playsinline="true">
+            <video ref={refVideo} autoPlay loop playsInline>
               <source
                 src={video}
                 type="video/mp4"

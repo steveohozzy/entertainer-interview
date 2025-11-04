@@ -29,9 +29,6 @@ export const HomePodsContianer = {
     pod1dataelementtype: 'elc-story-modules',
     pod1datapromotionindex: '1',
     pod1datapromotionname: 'ELC-Story-1',
-    pod1datagtmvisfirstonscreen8511273_2666: '5000',
-    pod1datagtmvishasfired8511273_2666: '1',
-    pod1datagtmvistotalvisibletime8511273_2666: '100',
     pod2isblog: true,
     pod2image: 'https://www.elc.co.uk/medias/elc-blog-exploring-the-world-through-touch-sight-and-sound-story-560x318.jpg?context=bWFzdGVyfHJvb3R8NjU2MDF8aW1hZ2UvanBlZ3xhR013TDJnMk1TOHhNalU1TVRrNU56VXhOemcxTkM5bGJHTXRZbXh2WnkxbGVIQnNiM0pwYm1jdGRHaGxMWGR2Y214a0xYUm9jbTkxWjJndGRHOTFZMmd0YzJsbmFIUXRZVzVrTFhOdmRXNWtMWE4wYjNKNUxUVTJNSGd6TVRndWFuQm58OGRjOGI2NzFmOGIxZGFkMzQ3MTcyNWFjNDUxY2MxNDQ5NGZhMTk4NjlmYjdmMDIwZjU2OGJmODMzM2Y3YTljZg',
     pod2alt: 'Read Our Blog: Exploring The World Through Touch, Sight and Sound',
@@ -42,8 +39,5 @@ export const HomePodsContianer = {
     pod2dataelementtype: 'elc-story-modules',
     pod2datapromotionindex: '2',
     pod2atapromotionname: 'ELC-Story-2',
-    pod2datagtmvisfirstonscreen8511273_2666: '5000',
-    pod2datagtmvishasfired8511273_2666: '1',
-    pod2datagtmvistotalvisibletime8511273_2666: '100',
   },
 };

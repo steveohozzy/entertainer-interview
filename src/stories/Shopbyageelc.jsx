@@ -9,29 +9,18 @@ export const ShopByAgeElc = ({
   item1datapromotionindex,
   item1datapromotionname,
   item1datagtmvispollingid8511273_2666,
-  item1datagtmvisfirstonscreen8511273_2666,
-  item1datagtmvistotalvisibletime8511273_2666,
-  item1datagtmvishasfired8511273_2666,
   item2age,
   item2textunderage,
   item2link,
   item2dataelementtype,
   item2datapromotionindex,
   item2datapromotionname,
-  item2datagtmvispollingid8511273_2666,
-  item2datagtmvisfirstonscreen8511273_2666,
-  item2datagtmvistotalvisibletime8511273_2666,
-  item2datagtmvishasfired8511273_2666,
   item3age,
   item3textunderage,
   item3link,
   item3dataelementtype,
   item3datapromotionindex,
   item3datapromotionname,
-  item3datagtmvispollingid8511273_2666,
-  item3datagtmvisfirstonscreen8511273_2666,
-  item3datagtmvistotalvisibletime8511273_2666,
-  item3datagtmvishasfired8511273_2666,
   item4age,
   item4textunderage,
   item4link,
@@ -39,29 +28,18 @@ export const ShopByAgeElc = ({
   item4datapromotionindex,
   item4datapromotionname,
   item4datagtmvispollingid8511273_2666,
-  item4datagtmvisfirstonscreen8511273_2666,
-  item4datagtmvistotalvisibletime8511273_2666,
-  item4datagtmvishasfired8511273_2666,
   item5age,
   item5textunderage,
   item5link,
   item5dataelementtype,
   item5datapromotionindex,
   item5datapromotionname,
-  item5datagtmvispollingid8511273_2666,
-  item5datagtmvisfirstonscreen8511273_2666,
-  item5datagtmvistotalvisibletime8511273_2666,
-  item5datagtmvishasfired8511273_2666,
   item6age,
   item6textunderage,
   item6link,
   item6dataelementtype,
   item6datapromotionindex,
   item6datapromotionname,
-  item6datagtmvispollingid8511273_2666,
-  item6datagtmvisfirstonscreen8511273_2666,
-  item6datagtmvistotalvisibletime8511273_2666,
-  item6datagtmvishasfired8511273_2666,
 }) => {
   return (
     <>
@@ -230,32 +208,32 @@ export const ShopByAgeElc = ({
       <div class="hp-shop-age">
   <ul>
     <li class="zero-three-months">
-      <a data-element-type={item1dataelementtype} data-promotion-index={item1datapromotionindex} data-promotion-name={item1datapromotionname} href={item1link} data-gtm-vis-polling-id8511273_2666={item1datagtmvispollingid8511273_2666}>
+      <a data-element-type={item1dataelementtype} data-promotion-index={item1datapromotionindex} data-promotion-name={item1datapromotionname} href={item1link} >
       </a>
       <h3>
-        <a data-element-type={item1dataelementtype} data-promotion-index={item1datapromotionindex} data-promotion-name={item1datapromotionname} href={item1link} data-gtm-vis-first-on-screen8511273_2666={item1datagtmvisfirstonscreen8511273_2666} data-gtm-vis-total-visible-time8511273_2666={item1datagtmvistotalvisibletime8511273_2666} data-gtm-vis-has-fired8511273_2666={item1datagtmvishasfired8511273_2666}>{item1age} <span>{item1textunderage}</span></a>
+        <a data-element-type={item1dataelementtype} data-promotion-index={item1datapromotionindex} data-promotion-name={item1datapromotionname} href={item1link}>{item1age} <span>{item1textunderage}</span></a>
       </h3>
       <a data-element-type={item1dataelementtype}  data-promotion-index={item1datapromotionindex} data-promotion-name={item1datapromotionname} href={item1link} data-gtm-vis-polling-id8511273_2666={item1datagtmvispollingid8511273_2666}>
       </a>
     </li>
 
     <li class="three-six-months">
-      <a data-element-type={item2dataelementtype} data-promotion-index={item2datapromotionindex} data-promotion-name={item2datapromotionname} href={item2link} data-gtm-vis-polling-id8511273_2666={item2datagtmvispollingid8511273_2666}>
+      <a data-element-type={item2dataelementtype} data-promotion-index={item2datapromotionindex} data-promotion-name={item2datapromotionname} href={item2link} >
       </a>
       <h3>
-        <a data-element-type={item2dataelementtype} data-promotion-index={item2datapromotionindex} data-promotion-name={item2datapromotionname} href={item2link} data-gtm-vis-first-on-screen8511273_2666={item2datagtmvisfirstonscreen8511273_2666} data-gtm-vis-total-visible-time8511273_2666={item2datagtmvistotalvisibletime8511273_2666} data-gtm-vis-has-fired8511273_2666={item2datagtmvishasfired8511273_2666}>{item2age} <span>{item2textunderage}</span></a>
+        <a data-element-type={item2dataelementtype} data-promotion-index={item2datapromotionindex} data-promotion-name={item2datapromotionname} href={item2link} >{item2age} <span>{item2textunderage}</span></a>
       </h3>
-      <a data-element-type={item2dataelementtype}  data-promotion-index={item2datapromotionindex} data-promotion-name={item2datapromotionname} href={item2link} data-gtm-vis-polling-id8511273_2666={item2datagtmvispollingid8511273_2666}>
+      <a data-element-type={item2dataelementtype}  data-promotion-index={item2datapromotionindex} data-promotion-name={item2datapromotionname} href={item2link} >
       </a>
     </li>
 
     <li class="six-twelve-months">
-      <a data-element-type={item1dataelementtype} data-promotion-index={item3datapromotionindex} data-promotion-name={item3datapromotionname} href={item3link} data-gtm-vis-polling-id8511273_2666={item3datagtmvispollingid8511273_2666}>
+      <a data-element-type={item1dataelementtype} data-promotion-index={item3datapromotionindex} data-promotion-name={item3datapromotionname} href={item3link} >
       </a>
       <h3>
-        <a data-element-type={item3dataelementtype} data-promotion-index={item3datapromotionindex} data-promotion-name={item3datapromotionname} href={item3link} data-gtm-vis-first-on-screen8511273_2666={item3datagtmvisfirstonscreen8511273_2666} data-gtm-vis-total-visible-time8511273_2666={item3datagtmvistotalvisibletime8511273_2666} data-gtm-vis-has-fired8511273_2666={item3datagtmvishasfired8511273_2666}>{item3age} <span>{item3textunderage}</span></a>
+        <a data-element-type={item3dataelementtype} data-promotion-index={item3datapromotionindex} data-promotion-name={item3datapromotionname} href={item3link} >{item3age} <span>{item3textunderage}</span></a>
       </h3>
-      <a data-element-type={item3dataelementtype}  data-promotion-index={item3datapromotionindex} data-promotion-name={item3datapromotionname} href={item3link} data-gtm-vis-polling-id8511273_2666={item3datagtmvispollingid8511273_2666}>
+      <a data-element-type={item3dataelementtype}  data-promotion-index={item3datapromotionindex} data-promotion-name={item3datapromotionname} href={item3link} >
       </a>
     </li>
 
@@ -263,29 +241,29 @@ export const ShopByAgeElc = ({
       <a data-element-type={item4dataelementtype} data-promotion-index={item4datapromotionindex} data-promotion-name={item4datapromotionname} href={item4link} data-gtm-vis-polling-id8511273_2666={item4datagtmvispollingid8511273_2666}>
       </a>
       <h3>
-        <a data-element-type={item4dataelementtype} data-promotion-index={item4datapromotionindex} data-promotion-name={item4datapromotionname} href={item4link} data-gtm-vis-first-on-screen8511273_2666={item4datagtmvisfirstonscreen8511273_2666} data-gtm-vis-total-visible-time8511273_2666={item4datagtmvistotalvisibletime8511273_2666} data-gtm-vis-has-fired8511273_2666={item4datagtmvishasfired8511273_2666}>{item4age} <span>{item4textunderage}</span></a>
+        <a data-element-type={item4dataelementtype} data-promotion-index={item4datapromotionindex} data-promotion-name={item4datapromotionname} href={item4link} >{item4age} <span>{item4textunderage}</span></a>
       </h3>
-      <a data-element-type={item4dataelementtype}  data-promotion-index={item4datapromotionindex} data-promotion-name={item4datapromotionname} href={item4link} data-gtm-vis-polling-id8511273_2666={item4datagtmvispollingid8511273_2666}>
+      <a data-element-type={item4dataelementtype}  data-promotion-index={item4datapromotionindex} data-promotion-name={item4datapromotionname} href={item4link} >
       </a>
     </li>
 
     <li class="two-three-years">
-      <a data-element-type={item5dataelementtype} data-promotion-index={item5datapromotionindex} data-promotion-name={item5datapromotionname} href={item5link} data-gtm-vis-polling-id8511273_2666={item5datagtmvispollingid8511273_2666}>
+      <a data-element-type={item5dataelementtype} data-promotion-index={item5datapromotionindex} data-promotion-name={item5datapromotionname} href={item5link} >
       </a>
       <h3>
-        <a data-element-type={item5dataelementtype} data-promotion-index={item5datapromotionindex} data-promotion-name={item5datapromotionname} href={item5link} data-gtm-vis-first-on-screen8511273_2666={item5datagtmvisfirstonscreen8511273_2666} data-gtm-vis-total-visible-time8511273_2666={item5datagtmvistotalvisibletime8511273_2666} data-gtm-vis-has-fired8511273_2666={item5datagtmvishasfired8511273_2666}>{item5age} <span>{item5textunderage}</span></a>
+        <a data-element-type={item5dataelementtype} data-promotion-index={item5datapromotionindex} data-promotion-name={item5datapromotionname} href={item5link} >{item5age} <span>{item5textunderage}</span></a>
       </h3>
-      <a data-element-type={item5dataelementtype}  data-promotion-index={item5datapromotionindex} data-promotion-name={item5datapromotionname} href={item5link} data-gtm-vis-polling-id8511273_2666={item5datagtmvispollingid8511273_2666}>
+      <a data-element-type={item5dataelementtype}  data-promotion-index={item5datapromotionindex} data-promotion-name={item5datapromotionname} href={item5link} >
       </a>
     </li>
 
     <li class="three-four-years">
-      <a data-element-type={item6dataelementtype} data-promotion-index={item6datapromotionindex} data-promotion-name={item6datapromotionname} href={item6link} data-gtm-vis-polling-id8511273_2666={item6datagtmvispollingid8511273_2666}>
+      <a data-element-type={item6dataelementtype} data-promotion-index={item6datapromotionindex} data-promotion-name={item6datapromotionname} href={item6link} >
       </a>
       <h3>
-        <a data-element-type={item6dataelementtype} data-promotion-index={item6datapromotionindex} data-promotion-name={item6datapromotionname} href={item6link} data-gtm-vis-first-on-screen8511273_2666={item6datagtmvisfirstonscreen8511273_2666} data-gtm-vis-total-visible-time8511273_2666={item6datagtmvistotalvisibletime8511273_2666} data-gtm-vis-has-fired8511273_2666={item6datagtmvishasfired8511273_2666}>{item6age} <span>{item6textunderage}</span></a>
+        <a data-element-type={item6dataelementtype} data-promotion-index={item6datapromotionindex} data-promotion-name={item6datapromotionname} href={item6link} >{item6age} <span>{item6textunderage}</span></a>
       </h3>
-      <a data-element-type={item6dataelementtype}  data-promotion-index={item6datapromotionindex} data-promotion-name={item6datapromotionname} href={item6link} data-gtm-vis-polling-id8511273_2666={item6datagtmvispollingid8511273_2666}>
+      <a data-element-type={item6dataelementtype}  data-promotion-index={item6datapromotionindex} data-promotion-name={item6datapromotionname} href={item6link} >
       </a>
     </li>
   </ul>
@@ -302,58 +280,34 @@ ShopByAgeElc.propTypes = {
   item1dataelementtype: PropTypes.string,
   item1datapromotionindex: PropTypes.string,
   item1datapromotionname: PropTypes.string,
-  item1datagtmvispollingid8511273_2666: PropTypes.string,
-  item1datagtmvisfirstonscreen8511273_2666: PropTypes.string,
-  item1datagtmvistotalvisibletime8511273_2666: PropTypes.string,
-  item1datagtmvishasfired8511273_2666: PropTypes.string,
   item2age: PropTypes.string,
   item2textunderage: PropTypes.string,
   item2link: PropTypes.string,
   item2dataelementtype: PropTypes.string,
   item2datapromotionindex: PropTypes.string,
   item2datapromotionname: PropTypes.string,
-  item2datagtmvispollingid8511273_2666: PropTypes.string,
-  item2datagtmvisfirstonscreen8511273_2666: PropTypes.string,
-  item2datagtmvistotalvisibletime8511273_2666: PropTypes.string,
-  item2datagtmvishasfired8511273_2666: PropTypes.string,
   item3age: PropTypes.string,
   item3textunderage: PropTypes.string,
   item3link: PropTypes.string,
   item3dataelementtype: PropTypes.string,
   item3datapromotionindex: PropTypes.string,
   item3datapromotionname: PropTypes.string,
-  item3datagtmvispollingid8511273_2666: PropTypes.string,
-  item3datagtmvisfirstonscreen8511273_2666: PropTypes.string,
-  item3datagtmvistotalvisibletime8511273_2666: PropTypes.string,
-  item3datagtmvishasfired8511273_2666: PropTypes.string,
   item4age: PropTypes.string,
   item4textunderage: PropTypes.string,
   item4link: PropTypes.string,
   item4dataelementtype: PropTypes.string,
   item4datapromotionindex: PropTypes.string,
   item4datapromotionname: PropTypes.string,
-  item4datagtmvispollingid8511273_2666: PropTypes.string,
-  item4datagtmvisfirstonscreen8511273_2666: PropTypes.string,
-  item4datagtmvistotalvisibletime8511273_2666: PropTypes.string,
-  item4datagtmvishasfired8511273_2666: PropTypes.string,
   item5age: PropTypes.string,
   item5textunderage: PropTypes.string,
   item5link: PropTypes.string,
   item5dataelementtype: PropTypes.string,
   item5datapromotionindex: PropTypes.string,
   item5datapromotionname: PropTypes.string,
-  item5datagtmvispollingid8511273_2666: PropTypes.string,
-  item5datagtmvisfirstonscreen8511273_2666: PropTypes.string,
-  item5datagtmvistotalvisibletime8511273_2666: PropTypes.string,
-  item5datagtmvishasfired8511273_2666: PropTypes.string,
   item6age: PropTypes.string,
   item6textunderage: PropTypes.string,
   item6link: PropTypes.string,
   item6dataelementtype: PropTypes.string,
   item6datapromotionindex: PropTypes.string,
   item6datapromotionname: PropTypes.string,
-  item6datagtmvispollingid8511273_2666: PropTypes.string,
-  item6datagtmvisfirstonscreen8511273_2666: PropTypes.string,
-  item6datagtmvistotalvisibletime8511273_2666: PropTypes.string,
-  item6datagtmvishasfired8511273_2666: PropTypes.string,
 };

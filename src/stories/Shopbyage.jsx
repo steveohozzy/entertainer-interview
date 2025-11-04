@@ -164,9 +164,6 @@ export const ShopByAge = ({
             data-element-type={rounbdal1dataelementtype}
             data-promotion-index={rounbdal1datapromotionindex}
             data-promotion-name={roundal1datapromotionname}
-            data-gtm-vis-first-on-screen8511273_2666={roundal1datagtmvisfirstonscreen8511273_2666}
-            data-gtm-vis-total-visible-time8511273_2666={roundal1datagtmvistotalvisibletime8511273_2666}
-            data-gtm-vis-has-fired8511273_2666={roundal1datagtmvishasfired8511273_2666}
             style={{background: images ? 'transparent' : roundal1background, color: roundal1color}}
           >
             {images && <img
@@ -187,9 +184,6 @@ export const ShopByAge = ({
             data-element-type={roundal2dataelementtype}
             data-promotion-index={roundal2datapromotionindex}
             data-promotion-name={roundal2datapromotionname}
-            data-gtm-vis-first-on-screen8511273_2666={roundal2datagtmvisfirstonscreen8511273_2666}
-            data-gtm-vis-total-visible-time8511273_2666={roundal2datagtmtotalvisibletime8511273_2666}
-            data-gtm-vis-has-fired8511273_2666={roundal2datagtmvishasfired8511273_2666}
             style={{background: images ? 'transparent' : roundal2background, color: roundal2color}}
           >
              {images && <img
@@ -210,9 +204,6 @@ export const ShopByAge = ({
             data-element-type={roundal3dataelementtype}
             data-promotion-index={roundal3datapromotionindex}
             data-promotion-name={roundal3datapromotionname}
-            data-gtm-vis-first-on-screen8511273_2666={roundal3datagtmvisfirstonscreen8511273_2666}
-            data-gtm-vis-total-visible-time8511273_2666={roundal3datagtmvistotalvisibletime8511273_2666}
-            data-gtm-vis-has-fired8511273_2666={roundal3datagtmvishasfired8511273_2666}
             style={{background: images ? 'transparent' : roundal3background, color: roundal3color}}
           >
             {images && <img
@@ -234,9 +225,6 @@ export const ShopByAge = ({
             data-element-type={roundal4dataelementtype}
             data-promotion-index={roundal4datapromotionindex}
             data-promotion-name={roundal4datapromotionname}
-            data-gtm-vis-first-on-screen8511273_2666={roundal4datagtmvisfirstonscreen8511273_2666}
-            data-gtm-vis-total-visible-time8511273_2666={toundal4datagtmvistotalvisibletime8511273_2666}
-            data-gtm-vis-has-fired8511273_2666={roundal4datagtmvishasfired8511273_2666}
             style={{background: images ? 'transparent' : roundal4background, color: roundal4color}}
           >
             {images && <img
@@ -257,9 +245,6 @@ export const ShopByAge = ({
             data-element-type={roundal5dataelementtype}
             data-promotion-index={roundal5datapromotionindex}
             data-promotion-name={roundal5datapromotionname}
-            data-gtm-vis-first-on-screen8511273_2666={roundal5datagtmvisfirstonscreen8511273_2666}
-            data-gtm-vis-total-visible-time8511273_2666={toundal5datagtmvistotalvisibletime8511273_2666}
-            data-gtm-vis-has-fired8511273_2666={roundal5datagtmvishasfired8511273_2666}
             style={{background: images ? 'transparent' : roundal5background, color: roundal5color}}
           >
             {images && 
@@ -283,9 +268,6 @@ export const ShopByAge = ({
             data-element-type={roundal6dataelementtype}
             data-promotion-index={roundal6datapromotionindex}
             data-promotion-name={roundal6datapromotionname}
-            data-gtm-vis-first-on-screen8511273_2666={roundal6datagtmvisfirstonscreen8511273_2666}
-            data-gtm-vis-total-visible-time8511273_2666={toundal6datagtmvistotalvisibletime8511273_2666}
-            data-gtm-vis-has-fired8511273_2666={roundal6datagtmvishasfired8511273_2666}
             style={{background: images ? 'transparent' : roundal6background, color: roundal6color}}
           >
             {images && 
@@ -356,37 +338,19 @@ ShopByAge.propTypes = {
   rounbdal1dataelementtype: PropTypes.string,
   rounbdal1datapromotionindex: PropTypes.string,
   roundal1datapromotionname: PropTypes.string,
-  roundal1datagtmvisfirstonscreen8511273_2666: PropTypes.string,
-  roundal1datagtmvistotalvisibletime8511273_2666: PropTypes.string,
-  roundal1datagtmvishasfired8511273_2666: PropTypes.string,
   roundal2dataelementtype: PropTypes.string,
   roundal2datapromotionindex: PropTypes.string,
   roundal2datapromotionname: PropTypes.string,
-  roundal2datagtmvisfirstonscreen8511273_2666: PropTypes.string,
-  roundal2datagtmtotalvisibletime8511273_2666: PropTypes.string,
-  roundal2datagtmvishasfired8511273_2666: PropTypes.string,
   roundal3dataelementtype: PropTypes.string,
   roundal3datapromotionindex: PropTypes.string,
   roundal3datapromotionname: PropTypes.string,
-  roundal3datagtmvisfirstonscreen8511273_2666: PropTypes.string,
-  roundal3datagtmvistotalvisibletime8511273_2666: PropTypes.string,
-  roundal3datagtmvishasfired8511273_2666: PropTypes.string,
   roundal4dataelementtype: PropTypes.string,
   roundal4datapromotionindex: PropTypes.string,
   roundal4datapromotionname: PropTypes.string,
-  roundal4datagtmvisfirstonscreen8511273_2666: PropTypes.string,
-  toundal4datagtmvistotalvisibletime8511273_2666: PropTypes.string,
-  roundal4datagtmvishasfired8511273_2666: PropTypes.string,
   roundal5dataelementtype: PropTypes.string,
   roundal5datapromotionindex: PropTypes.string,
   roundal5datapromotionname: PropTypes.string,
-  roundal5datagtmvisfirstonscreen8511273_2666: PropTypes.string,
-  toundal5datagtmvistotalvisibletime8511273_2666: PropTypes.string,
-  roundal5datagtmvishasfired8511273_2666: PropTypes.string,
   roundal6dataelementtype: PropTypes.string,
   roundal6datapromotionindex: PropTypes.string,
   roundal6datapromotionname: PropTypes.string,
-  roundal6datagtmvisfirstonscreen8511273_2666: PropTypes.string,
-  toundal6datagtmvistotalvisibletime8511273_2666: PropTypes.string,
-  roundal6datagtmvishasfired8511273_2666: PropTypes.string,
 };

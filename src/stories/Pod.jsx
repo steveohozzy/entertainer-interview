@@ -18,13 +18,10 @@ export const Pod = ({
   dataElementType,
   dataPromotionName,
   dataPromotionIndex,
-  dataGtmVisFirstOnScreen8511273_2666,
-  dataGtmVisTotalVisibleTime8511273_2666,
-  dataGtmVisHasFired8511273_2666,
 }) => {
   return (
     <>
-     <a class={`pod ${tagline && 'has-tagline'}`} style={{background: backgroundcolor, color: textcolor}} href={link} data-element-type={dataElementType} data-promotion-name={dataPromotionName} data-promotion-index={dataPromotionIndex} data-gtm-vis-first-on-screen8511273_2666={dataGtmVisFirstOnScreen8511273_2666} data-gtm-vis-total-visible-time8511273_2666={dataGtmVisTotalVisibleTime8511273_2666} data-gtm-vis-has-fired8511273_2666={dataGtmVisHasFired8511273_2666}>
+     <a class={`pod ${tagline && 'has-tagline'}`} style={{background: backgroundcolor, color: textcolor}} href={link} data-element-type={dataElementType} data-promotion-name={dataPromotionName} data-promotion-index={dataPromotionIndex}>
         <div className='pod-image-container'>
           <img class="item" src={image} alt={imagealt} title={imagealt} />
           {logoimage &&
@@ -34,7 +31,7 @@ export const Pod = ({
           }
         </div>
         {tagline && <span>{tagline}</span> }
-        <button class="hero-button" href="https://www.thetoyshop.com/brands/hot-wheels">
+        <button class="hero-button" href={link}  data-element-type={dataElementType} data-promotion-name={dataPromotionName} data-promotion-index={dataPromotionIndex} >
           <span class="swoosh-container">
             <span class="star-start">
               <svg fill="currentColor" height="11" viewBox="0 0 11 11" width="11" xmlns="http://www.w3.org/2000/svg">
@@ -75,7 +72,4 @@ Pod.propTypes = {
   dataElementType: PropTypes.string,
   dataPromotionName: PropTypes.string,
   dataPromotionIndex: PropTypes.string,
-  dataGtmVisFirstOnScreen8511273_2666: PropTypes.string,
-  dataGtmVisTotalVisibleTime8511273_2666: PropTypes.string,
-  dataGtmVisHasFired8511273_2666: PropTypes.string,
 };

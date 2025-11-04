@@ -26,8 +26,5 @@ export const HalfAndHalfHero = {
     dataElementType: 'hp-hero-area',
     datapromotionindex: '3',
     datapromotionname: 'Hero-3-Huffy',
-    datagtmvisfirstonscreen8511273_2666: '21559',
-    datagtmvistotalvisibletime8511273_2666: '100',
-    datagtmvishasfired8511273_2666: '1',
   },
 };

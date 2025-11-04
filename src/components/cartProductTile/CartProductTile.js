@@ -58,7 +58,7 @@ const CartProductTile = ({product, nocontrols, isMiniCart}) => {
                         {!nocontrols &&
                             <div className={`flex justify-between items-center w-full md:w-[70%] text-gray-500 font-bold ${isMiniCart && 'text-sm'}`}>
                                 <div className="flex items-center">
-                                    <div className={`flex items-center border border-gray-400 ${isMiniCart ? 'rounded-full mt2' : 'rounded-lg'}`}>
+                                    <div className={`flex items-center border border-gray-400 ${isMiniCart ? 'rounded-full mt2' : 'rounded-full'}`}>
                                         <button onClick={removeItemHandler} className={`${isMiniCart ? 'px-4' : 'px-2'}`}>-</button>
                                         <span className="px-2 b-l-1 border-gray-400 border-x mt-1 mb-1">{quantity}</span>
                                         <button onClick={addItemHandler} className={`${isMiniCart ? 'px-4' : 'px-2'}`}>+</button>

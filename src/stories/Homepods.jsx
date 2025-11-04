@@ -261,7 +261,7 @@ export const HomePods = ({
 		
 		<li>
 			
-			<a href={pod1link} title={pod1alt} data-element-type={pod1dataelementtype} data-promotion-name={pod1datapromotionname} data-promotion-index={pod1datapromotionindex} data-gtm-vis-first-on-screen8511273_2666={pod1datagtmvisfirstonscreen8511273_2666} data-gtm-vis-total-visible-time8511273_2666={pod1datagtmvistotalvisibletime8511273_2666} data-gtm-vis-has-fired8511273_2666={pod1datagtmvishasfired8511273_2666}>
+			<a href={pod1link} title={pod1alt} data-element-type={pod1dataelementtype} data-promotion-name={pod1datapromotionname} data-promotion-index={pod1datapromotionindex} >
 				
 				<div class="story-module-image">
 
@@ -289,7 +289,7 @@ export const HomePods = ({
 		
 		<li>
 			
-			<a href={pod2link} title={pod2alt} data-element-type={pod2dataelementtype} data-promotion-name={pod2datapromotionname} data-promotion-index={pod2datapromotionindex} data-gtm-vis-first-on-screen8511273_2666={pod2datagtmvisfirstonscreen8511273_2666} data-gtm-vis-total-visible-time8511273_2666={pod2datagtmvistotalvisibletime8511273_2666} data-gtm-vis-has-fired8511273_2666={pod2datagtmvishasfired8511273_2666}>
+			<a href={pod2link} title={pod2alt} data-element-type={pod2dataelementtype} data-promotion-name={pod2datapromotionname} data-promotion-index={pod2datapromotionindex} >
 				
 		<div class="story-module-image">
 
@@ -339,9 +339,6 @@ HomePods.propTypes = {
   pod1dataelementtype: PropTypes.string,
   pod1datapromotionindex: PropTypes.string,
   pod1datapromotionname: PropTypes.string,
-  pod1datagtmvisfirstonscreen8511273_2666: PropTypes.string,
-  pod1datagtmvishasfired8511273_2666: PropTypes.string,
-  pod1datagtmvistotalvisibletime8511273_2666: PropTypes.string,
 	pod2isblog: PropTypes.bool,
   pod2image: PropTypes.string,
   pod2alt: PropTypes.string,
@@ -352,7 +349,4 @@ HomePods.propTypes = {
   pod2dataelementtype: PropTypes.string,
   pod2datapromotionindex: PropTypes.string,
   pod2datapromotionname: PropTypes.string,
-  pod2datagtmvisfirstonscreen8511273_2666: PropTypes.string,
-  pod2datagtmvishasfired8511273_2666: PropTypes.string,
-  pod2datagtmvistotalvisibletime8511273_2666: PropTypes.string,
 };

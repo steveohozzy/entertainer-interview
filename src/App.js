@@ -17,6 +17,7 @@ import Brands from "./routes/brandsPage/Brands";
 import PresentFinder from "./routes/presentFinder/PresentFinder";
 import Confirmation from "./routes/confirmation/Confirmation";
 import StoreFinderPage from "./routes/storeFinder/StoreFinder";
+import CheckoutAlt from "./routes/checkout/CheckoutAlt";
 
 const App = () => {
 
@@ -40,6 +41,7 @@ const App = () => {
       </Route>
       <Route path="/" element={<CheckoutLayout />}>
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/checkoutalt" element={<CheckoutAlt />} />
       </Route>
     </Routes>
   );

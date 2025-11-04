@@ -2,44 +2,148 @@ import PropTypes from 'prop-types';
 
 /** Primary UI component for user interaction */
 export const Button = ({
+  link,
   label,
   iconpath,
   removeIcons,
-  primary,
-  red,
-  secondary,
-  ...props
+  color,
+  colorhover,
+  background,
+  backgroundhover,
 }) => {
   return (
-     <button className={`${primary ? 'shadow-md hover:shadow-lg group inline-flex items-center justify-center font-bold text-lg rounded-[30px] bg-brandGreen text-white py-2 px-4 pl-0 transition-all hover:bg-textBlue hover:scale-10' : ''} ${red && 'shadow-md hover:shadow-lg group inline-flex items-center justify-center font-bold text-lg rounded-[30px] bg-brandRed text-white py-2 px-4 pl-0 transition-all hover:bg-brandLightGreen hover:scale-105'} ${secondary ? 'shadow-md hover:shadow-lg w-full group inline-flex items-center justify-center font-bold text-xs sm:text-sm rounded-[30px] bg-white text-textBlue py-2 mb-2 px-4 pl-2 transition-all border-[2px] border-textBlue hover:bg-textBlue hover:text-white hover:scale-105 min-h-[44px]' : ''} ${removeIcons ? 'pl-4' : ''}`}>
-        {!removeIcons &&
-          <span className="flex items-center justify-end w-[22px] mr-1">
-              <svg width="11" height="11" viewBox="0 0 11 11" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4.23539 2.16758C4.31585 1.75612 4.83196 1.6292 5.09362 1.92958L6.64272 3.65653L8.92869 3.36308C9.33686 3.31475 9.62105 3.7548 9.41431 4.12022L8.26344 6.1095L9.24532 8.18833C9.41411 8.56311 9.07604 8.98116 8.67962 8.89652L6.43413 8.40043L4.74982 9.98635C4.45362 10.2631 3.94852 10.0788 3.90018 9.67067L3.67114 7.38306L1.6601 6.27065C1.29468 6.06391 1.31163 5.54034 1.6864 5.37155L3.81205 4.44154L4.23539 2.16758Z" fillOpacity="0.5"/>
-              </svg>
-              <span className="transition-all w-0 mt-[3px] ml-[-2px] group-hover:w-[7px] h-[3px] rotate-[15deg] bg-white bg-opacity-70"></span>
-          </span>
-        }
-        {label}
-        {iconpath &&
-          <span className="transition-all group-hover:rotate-[20deg] ml-1">
-            <span dangerouslySetInnerHTML={{__html:iconpath}}></span>
-          </span>
-        }
-        {!removeIcons &&
-          <span className="scale-75 mt-2 group-hover:scale-100">
-            <svg width="11" height="11" viewBox="0 0 11 11" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path d="M4.23539 2.16758C4.31585 1.75612 4.83196 1.6292 5.09362 1.92958L6.64272 3.65653L8.92869 3.36308C9.33686 3.31475 9.62105 3.7548 9.41431 4.12022L8.26344 6.1095L9.24532 8.18833C9.41411 8.56311 9.07604 8.98116 8.67962 8.89652L6.43413 8.40043L4.74982 9.98635C4.45362 10.2631 3.94852 10.0788 3.90018 9.67067L3.67114 7.38306L1.6601 6.27065C1.29468 6.06391 1.31163 5.54034 1.6864 5.37155L3.81205 4.44154L4.23539 2.16758Z" fillOpacity="0.5"/>
+    <>
+      <style>
+        {`
+        .hero-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50px;
+        background-color: ${background};
+        color: ${color};
+        font-size: 16px;
+        font-weight: bold;
+        text-decoration: none;
+        ${removeIcons ? 'padding: 10px 30px;' : 'padding: 10px 30px 10px 10px;'}
+        height: 40px;
+        box-shadow: 0 0 5px rgba(3,33,33,.3);
+        border: 3px solid #DBE3FF;
+        transition: all 0.3s;
+    }
+
+    .hero-button:hover {
+        background-color: ${backgroundhover};
+        scale: 1.05;
+        box-shadow: 0 0 18px rgba(3,33,33,.3);
+        color: ${colorhover};
+    }
+
+    .hero-button .basket-icon {
+        transition: all 0.3s;
+        transform: rotate(15deg);
+        margin-left: 5px;
+    }
+
+    .hero-button:hover .basket-icon {
+        transform: rotate(-10deg)
+    }
+
+    .hero-button .star-start {
+        position: relative;
+        top: -3px;
+    }
+
+    .hero-button .swoosh-container {
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        margin-right: 5px;
+        width: 25px;
+    }
+
+    .hero-button .swoosh {
+        display: block;
+        width: 0;
+        height: 3px;
+        margin-top: -3px;
+        margin-left: -2px;
+        transform: rotate(15deg);
+        background-color: rgba(255, 255, 255, 0.7);
+        transition: all 0.3s;
+    }
+
+    .hero-button:hover .swoosh {
+        width: 7px;
+    }
+
+    .hero-button .star-end {
+        position: relative;
+        bottom: -5px;
+        transition: all 0.3s;
+    }
+
+    .hero-button:hover .star-end {
+        scale: 1.1;
+        transform: rotate(30deg);
+    }
+      `}
+      </style>
+      <a
+        href={link}
+        class="hero-button"
+      >
+        {!removeIcons && (
+        <span class="swoosh-container">
+          <span class="star-start">
+            <svg
+              width="11"
+              height="11"
+              viewBox="0 0 11 11"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M4.23539 2.16758C4.31585 1.75612 4.83196 1.6292 5.09362 1.92958L6.64272 3.65653L8.92869 3.36308C9.33686 3.31475 9.62105 3.7548 9.41431 4.12022L8.26344 6.1095L9.24532 8.18833C9.41411 8.56311 9.07604 8.98116 8.67962 8.89652L6.43413 8.40043L4.74982 9.98635C4.45362 10.2631 3.94852 10.0788 3.90018 9.67067L3.67114 7.38306L1.6601 6.27065C1.29468 6.06391 1.31163 5.54034 1.6864 5.37155L3.81205 4.44154L4.23539 2.16758Z"
+                fill-opacity="0.5"
+              ></path>
             </svg>
           </span>
-        }
-      </button>
+          <span class="swoosh">&nbsp;</span>
+        </span>
+        )}
+        {label}
+        <span class="basket-icon" dangerouslySetInnerHTML={{ __html: iconpath }}>
+        </span>
+        {!removeIcons && (
+        <span class="star-end">
+          <svg
+            width="11"
+            height="11"
+            viewBox="0 0 11 11"
+            fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M4.23539 2.16758C4.31585 1.75612 4.83196 1.6292 5.09362 1.92958L6.64272 3.65653L8.92869 3.36308C9.33686 3.31475 9.62105 3.7548 9.41431 4.12022L8.26344 6.1095L9.24532 8.18833C9.41411 8.56311 9.07604 8.98116 8.67962 8.89652L6.43413 8.40043L4.74982 9.98635C4.45362 10.2631 3.94852 10.0788 3.90018 9.67067L3.67114 7.38306L1.6601 6.27065C1.29468 6.06391 1.31163 5.54034 1.6864 5.37155L3.81205 4.44154L4.23539 2.16758Z"
+              fill-opacity="0.5"
+            ></path>
+          </svg>
+        </span>
+        )}
+      </a>
+    </>
   );
 };
 
 Button.propTypes = {
   /** Button contents */
+  link: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   iconpath: PropTypes.string,
   removeIcons: PropTypes.bool,
+  color: PropTypes.string,
+  colorhover: PropTypes.string,
+  background: PropTypes.string,
+  backgroundhover: PropTypes.string,
 };

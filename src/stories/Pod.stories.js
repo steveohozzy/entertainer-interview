@@ -36,8 +36,5 @@ export const PodItem = {
     dataElementType: 'homepage-expanded-carousel',
     dataPromotionName: 'Pod-Hot Wheels',
     dataPromotionIndex: '1',
-    dataGtmVisFirstOnScreen8511273_2666: '2415687',
-    dataGtmVisTotalVisibleTime8511273_2666: '100',
-    dataGtmVisHasFired8511273_2666: '1',
   },
 };

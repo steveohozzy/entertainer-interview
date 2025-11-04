@@ -18,9 +18,6 @@ export const HeroPods = ({
   pod1dataelementtype,
   pod1datapromotionindex,
   pod1datapromotionname,
-  pod1datagtmvisfirstonscreen8511273_2666,
-  pod1datagtmvishasfired8511273_2666,
-  pod1datagtmvistotalvisibletime8511273_2666,
   pod2image,
   pod2alt,
   pod2title,
@@ -30,9 +27,6 @@ export const HeroPods = ({
   pod2dataelementtype,
   pod2datapromotionindex,
   pod2datapromotionname,
-  pod2datagtmvisfirstonscreen8511273_2666,
-  pod2datagtmvishasfired8511273_2666,
-  pod2datagtmvistotalvisibletime8511273_2666,
 }) => {
   return (
     <>
@@ -167,7 +161,7 @@ export const HeroPods = ({
 		
 		<li>
 			
-			<a href={pod1link} title={pod1alt} data-element-type={pod1dataelementtype} data-promotion-index={pod1datapromotionindex} data-promotion-name={pod1datapromotionname} data-gtm-vis-first-on-screen8511273_2666={pod1datagtmvisfirstonscreen8511273_2666} data-gtm-vis-total-visible-time8511273_2666={pod1datagtmvistotalvisibletime8511273_2666} data-gtm-vis-has-fired8511273_2666={pod1datagtmvishasfired8511273_2666}>
+			<a href={pod1link} title={pod1alt} data-element-type={pod1dataelementtype} data-promotion-index={pod1datapromotionindex} data-promotion-name={pod1datapromotionname}>
 				
 				<div class="half-hero-module-image">
 					
@@ -192,7 +186,7 @@ export const HeroPods = ({
 
     <li>
 			
-			<a href={pod2link} title={pod2alt} data-element-type={pod2dataelementtype} data-promotion-index={pod2datapromotionindex} data-promotion-name={pod2datapromotionname} data-gtm-vis-first-on-screen8511273_2666={pod2datagtmvisfirstonscreen8511273_2666} data-gtm-vis-total-visible-time8511273_2666={pod2datagtmvistotalvisibletime8511273_2666} data-gtm-vis-has-fired8511273_2666={pod2datagtmvishasfired8511273_2666}>
+			<a href={pod2link} title={pod2alt} data-element-type={pod2dataelementtype} data-promotion-index={pod2datapromotionindex} data-promotion-name={pod2datapromotionname}>
 				
 				<div class="half-hero-module-image">
 					
@@ -240,9 +234,6 @@ HeroPods.propTypes = {
   pod1dataelementtype: PropTypes.string,
   pod1datapromotionindex: PropTypes.string,
   pod1datapromotionname: PropTypes.string,
-  pod1datagtmvisfirstonscreen8511273_2666: PropTypes.string,
-  pod1datagtmvishasfired8511273_2666: PropTypes.string,
-  pod1datagtmvistotalvisibletime8511273_2666: PropTypes.string,
   pod2image: PropTypes.string,
   pod2alt: PropTypes.string,
   pod2title: PropTypes.string,
@@ -252,7 +243,4 @@ HeroPods.propTypes = {
   pod2dataelementtype: PropTypes.string,
   pod2datapromotionindex: PropTypes.string,
   pod2datapromotionname: PropTypes.string,
-  pod2datagtmvisfirstonscreen8511273_2666: PropTypes.string,
-  pod2datagtmvishasfired8511273_2666: PropTypes.string,
-  pod2datagtmvistotalvisibletime8511273_2666: PropTypes.string,
 };

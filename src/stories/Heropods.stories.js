@@ -31,9 +31,6 @@ export const HeroPodsContianer = {
     pod1dataelementtype: 'hp-half-hero-modules',
     pod1datapromotionindex: '1',
     pod1datapromotionname: 'ELC-Hero-1',
-    pod1datagtmvisfirstonscreen8511273_2666: '1239',
-    pod1datagtmvishasfired8511273_2666: '1',
-    pod1datagtmvistotalvisibletime8511273_2666: '100',
     pod2image: 'https://www.elc.co.uk/medias/Happyland-Christmas-2024-digital-assets-ELC-2024-Happyland-Story-Module-560x318px.jpg?context=bWFzdGVyfHJvb3R8MTc5NDEwfGltYWdlL2pwZWd8YURobUwyaGtOQzh4TWpNNE1UUTFNRFUyTnpjeE1DOUlZWEJ3ZVd4aGJtUWdRMmh5YVhOMGJXRnpJREl3TWpSZlpHbG5hWFJoYkNCaGMzTmxkSE5mUlV4RFh6SXdNalJmU0dGd2NIbHNZVzVrWDFOMGIzSjVJRTF2WkhWc1pWODFOakI0TXpFNGNIZ3VhbkJufDkxNTc5Yjg0MTQ1ZTQxZjhkNmU3ZmJlYTg3ZDhmNzdhMmVkNDVlNzZhNzIwMDBhOGU4MDIwOTljNzMwY2E1M2I',
     pod2alt: 'Happyland Toys & Playsets',
     pod2title: 'Inspiring Moments With Happyland',
@@ -43,8 +40,5 @@ export const HeroPodsContianer = {
     pod2dataelementtype: 'hp-half-hero-modules',
     pod2datapromotionindex: '2',
     pod2datapromotionname: 'ELC Hero 2',
-    pod2datagtmvisfirstonscreen8511273_2666: '1245',
-    pod2datagtmvishasfired8511273_2666: '1',
-    pod2datagtmvistotalvisibletime8511273_2666: '100',
   },
 };

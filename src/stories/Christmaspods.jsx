@@ -23,39 +23,21 @@ export const ChristmasPods = ({
   pod1dataelementtype,
   pod1datapromotionname,
   pod1datapromotionindex,
-  pod1datagtmvisfirstonscreen8511273_2666,
-  pod1datagtmvistotalvisibletime8511273_2666,
-  pod1datagtmvishasfired8511273_2666,
   pod2dataelementtype,
   pod2datapromotionname,
   pod2datapromotionindex,
-  pod2datagtmvisfirstonscreen8511273_2666,
-  pod2datagtmvistotalvisibletime8511273_2666,
-  pod2datagtmvishasfired8511273_2666,
   pod3dataelementtype,
   pod3datapromotionname,
   pod3datapromotionindex,
-  pod3datagtmvisfirstonscreen8511273_2666,
-  pod3datagtmvistotalvisibletime8511273_2666,
-  pod3datagtmvishasfired8511273_2666,
   pod4dataelementtype,
   pod4datapromotionname,
   pod4datapromotionindex,
-  pod4datagtmvisfirstonscreen8511273_2666,
-  pod4datagtmvistotalvisibletime8511273_2666,
-  pod4datagtmvishasfired8511273_2666,
   pod5dataelementtype,
   pod5datapromotionname,
   pod5datapromotionindex,
-  pod5datagtmvisfirstonscreen8511273_2666,
-  pod5datagtmvistotalvisibletime8511273_2666,
-  pod5datagtmvishasfired8511273_2666,
   pod6dataelementtype,
   pod6datapromotionname,
   pod6datapromotionindex,
-  pod6datagtmvisfirstonscreen8511273_2666,
-  pod6datagtmvistotalvisibletime8511273_2666,
-  pod6datagtmvishasfired8511273_2666,
 }) => {
   return (
      <>
@@ -113,37 +95,37 @@ export const ChristmasPods = ({
   <div class="category-pods">
   
     <div class="pod">
-      <a href={pod1link} title={pod1alt} data-element-type={pod1dataelementtype} data-promotion-name={pod1datapromotionname} data-promotion-index={pod1datapromotionindex} data-gtm-vis-first-on-screen8511273_2666={pod1datagtmvisfirstonscreen8511273_2666} data-gtm-vis-total-visible-time8511273_2666={pod1datagtmvistotalvisibletime8511273_2666} data-gtm-vis-has-fired8511273_2666={pod1datagtmvishasfired8511273_2666}>
+      <a href={pod1link} title={pod1alt} data-element-type={pod1dataelementtype} data-promotion-name={pod1datapromotionname} data-promotion-index={pod1datapromotionindex} >
         <img alt={pod1alt} src={pod1image} title={pod1alt} />
       </a>
     </div>
 
     <div class="pod">
-      <a href={pod2link} title={pod2alt} data-element-type={pod2dataelementtype} data-promotion-name={pod2datapromotionname} data-promotion-index={pod2datapromotionindex} data-gtm-vis-first-on-screen8511273_2666={pod2datagtmvisfirstonscreen8511273_2666} data-gtm-vis-total-visible-time8511273_2666={pod2datagtmvistotalvisibletime8511273_2666} data-gtm-vis-has-fired8511273_2666={pod2datagtmvishasfired8511273_2666}>
+      <a href={pod2link} title={pod2alt} data-element-type={pod2dataelementtype} data-promotion-name={pod2datapromotionname} data-promotion-index={pod2datapromotionindex} >
 				<img alt={pod2alt} src={pod2image} title={pod2alt} />
 			</a>
     </div>
 
     <div class="pod">
-      <a href={pod3link} title={pod3alt} data-element-type={pod3dataelementtype} data-promotion-name={pod3datapromotionname} data-promotion-index={pod3datapromotionindex} data-gtm-vis-first-on-screen8511273_2666={pod3datagtmvisfirstonscreen8511273_2666} data-gtm-vis-total-visible-time8511273_2666={pod3datagtmvistotalvisibletime8511273_2666} data-gtm-vis-has-fired8511273_2666={pod3datagtmvishasfired8511273_2666}>
+      <a href={pod3link} title={pod3alt} data-element-type={pod3dataelementtype} data-promotion-name={pod3datapromotionname} data-promotion-index={pod3datapromotionindex} >
 				<img alt={pod3alt} src={pod3image} title={pod3alt} />
 			</a>
     </div>
 
     <div class="pod">
-      <a href={pod4link} title={pod4alt} data-element-type={pod4dataelementtype} data-promotion-name={pod4datapromotionname} data-promotion-index={pod4datapromotionindex} data-gtm-vis-first-on-screen8511273_2666={pod4datagtmvisfirstonscreen8511273_2666} data-gtm-vis-total-visible-time8511273_2666={pod4datagtmvistotalvisibletime8511273_2666} data-gtm-vis-has-fired8511273_2666={pod4datagtmvishasfired8511273_2666}>
+      <a href={pod4link} title={pod4alt} data-element-type={pod4dataelementtype} data-promotion-name={pod4datapromotionname} data-promotion-index={pod4datapromotionindex} >
 					<img alt={pod4alt} src={pod4image} title={pod4alt} />
 				</a>
     </div>
 
     <div class="pod">
-      <a href={pod5link} title={pod5alt} data-element-type={pod5dataelementtype} data-promotion-name={pod5datapromotionname} data-promotion-index={pod5datapromotionindex} data-gtm-vis-first-on-screen8511273_2666={pod5datagtmvisfirstonscreen8511273_2666} data-gtm-vis-total-visible-time8511273_2666={pod5datagtmvistotalvisibletime8511273_2666} data-gtm-vis-has-fired8511273_2666={pod5datagtmvishasfired8511273_2666}>
+      <a href={pod5link} title={pod5alt} data-element-type={pod5dataelementtype} data-promotion-name={pod5datapromotionname} data-promotion-index={pod5datapromotionindex} >
 					<img alt={pod5alt} src={pod5image} title={pod5alt} />
 				</a>
     </div>
 
     <div class="pod">
-      <a href={pod6link} title={pod6alt} data-element-type={pod6dataelementtype} data-promotion-name={pod6datapromotionname} data-promotion-index={pod6datapromotionindex} data-gtm-vis-first-on-screen8511273_2666={pod6datagtmvisfirstonscreen8511273_2666} data-gtm-vis-total-visible-time8511273_2666={pod6datagtmvistotalvisibletime8511273_2666} data-gtm-vis-has-fired8511273_2666={pod6datagtmvishasfired8511273_2666}>
+      <a href={pod6link} title={pod6alt} data-element-type={pod6dataelementtype} data-promotion-name={pod6datapromotionname} data-promotion-index={pod6datapromotionindex} >
 					<img alt={pod6alt} src={pod6image} title={pod6alt} />
 				</a>
     </div>
@@ -178,37 +160,19 @@ ChristmasPods.propTypes = {
   pod1dataelementtype: PropTypes.string,
   pod1datapromotionname: PropTypes.string,
   pod1datapromotionindex: PropTypes.string,
-  pod1datagtmvisfirstonscreen8511273_2666: PropTypes.string,
-  pod1datagtmvistotalvisibletime8511273_2666: PropTypes.string,
-  pod1datagtmvishasfired8511273_2666: PropTypes.string,
   pod2dataelementtype: PropTypes.string,
   pod2datapromotionname: PropTypes.string,
   pod2datapromotionindex: PropTypes.string,
-  pod2datagtmvisfirstonscreen8511273_2666: PropTypes.string,
-  pod2datagtmvistotalvisibletime8511273_2666: PropTypes.string,
-  pod2datagtmvishasfired8511273_2666: PropTypes.string,
   pod3dataelementtype: PropTypes.string,
   pod3datapromotionname: PropTypes.string,
   pod3datapromotionindex: PropTypes.string,
-  pod3datagtmvisfirstonscreen8511273_2666: PropTypes.string,
-  pod3datagtmvistotalvisibletime8511273_2666: PropTypes.string,
-  pod3datagtmvishasfired8511273_2666: PropTypes.string,
   pod4dataelementtype: PropTypes.string,
   pod4datapromotionname: PropTypes.string,
   pod4datapromotionindex: PropTypes.string,
-  pod4datagtmvisfirstonscreen8511273_2666: PropTypes.string,
-  pod4datagtmvistotalvisibletime8511273_2666: PropTypes.string,
-  pod4datagtmvishasfired8511273_2666: PropTypes.string,
   pod5dataelementtype: PropTypes.string,
   pod5datapromotionname: PropTypes.string,
   pod5datapromotionindex: PropTypes.string,
-  pod5datagtmvisfirstonscreen8511273_2666: PropTypes.string,
-  pod5datagtmvistotalvisibletime8511273_2666: PropTypes.string,
-  pod5datagtmvishasfired8511273_2666: PropTypes.string,
   pod6dataelementtype: PropTypes.string,
   pod6datapromotionname: PropTypes.string,
   pod6datapromotionindex: PropTypes.string,
-  pod6datagtmvisfirstonscreen8511273_2666: PropTypes.string,
-  pod6datagtmvistotalvisibletime8511273_2666: PropTypes.string,
-  pod6datagtmvishasfired8511273_2666: PropTypes.string,
 };

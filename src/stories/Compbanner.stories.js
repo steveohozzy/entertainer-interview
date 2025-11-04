@@ -21,9 +21,5 @@ export const ImageCompBanner = {
     dataElementType: 'hp-skinny-single-width-banner',
     datapromotionindex: '1',
     datapromotionname: 'Skinny-Single-Width-Tonies Comp',
-    datagtmvisrecentonscreen8511273_2666: '1613',
-    datagtmvisfirstonscreen8511273_2666: '1613',
-    datagtmvistotalvisibletime8511273_2666: '100',
-    datagtmvishasfired8511273_2666: '1',
   },
 };

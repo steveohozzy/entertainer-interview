@@ -22,8 +22,5 @@ export const ImageBannerHero = {
     dataElementType: 'hp-hero-area',
     datapromotionindex: '2',
     datapromotionname: 'Hero-2-LEGO',
-    datagtmvisfirstonscreen8511273_2666: '21559',
-    datagtmvistotalvisibletime8511273_2666: '100',
-    datagtmvishasfired8511273_2666: '1',
   },
 };

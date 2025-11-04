@@ -37,7 +37,7 @@ export const PodsCarousel = ({
   .offer-pods .carousel-cell {
     width: 78%;
     padding-top: 10px;
-		aspect-ratio: 241/361;
+		aspect-ratio: 241/381;
   }
 
   .offer-pods img {
@@ -50,7 +50,6 @@ export const PodsCarousel = ({
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    flex-grow: 1;
     text-align: center;
     border-radius: 8px;
     padding: 0 0 20px;
@@ -66,6 +65,7 @@ export const PodsCarousel = ({
     letter-spacing: 0.5px;
     transition: all 0.3s;
     overflow: hidden;
+    height: 100%;
   }
 
   .offer-pods a:hover {
@@ -93,7 +93,7 @@ export const PodsCarousel = ({
     }
     .offer-pods .carousel-cell {
       width: 37%;
-			aspect-ratio: 429/549;
+			aspect-ratio: 429/600;
     }
 
     .offer-pods a {
@@ -217,6 +217,10 @@ export const PodsCarousel = ({
 		.pod.has-tagline img {
 			margin: 0 0 20px !important;
 		}
+
+    .pod.has-tagline span {
+      margin: 0;
+    }
 `}
 </style>
 <div class="offer-pods">
@@ -254,6 +258,30 @@ export const PodsCarousel = ({
 		}
   </div>
 </div>
+<script>
+  {`
+  document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(function(){
+
+      const FLICKITIES = document.querySelectorAll(".offer-pods-carousel");
+
+      FLICKITIES.forEach((slider) => {
+        new Flickity(slider);
+      });
+
+      var flkty4 = new Flickity(".offer-pods-carousel");
+
+      flkty4.resize();
+
+      const offerPods = document.querySelectorAll('.offer-pods-carousel .carousel-cell');
+
+      offerPods.forEach((slide) => {
+        slide.style.height = "100%";
+      })
+    }, 1000);
+  }, false);
+  `}
+</script>
     </>
   );
 };

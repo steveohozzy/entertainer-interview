@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { useEffect, useRef } from "react";
 
 /** Primary UI component for user interaction */
 export const HalfSplitHero = ({
@@ -13,16 +14,23 @@ export const HalfSplitHero = ({
   dataElementType,
   datapromotionindex,
   datapromotionname,
-  datagtmvisfirstonscreen8511273_2666,
-  datagtmvistotalvisibletime8511273_2666,
-  datagtmvishasfired8511273_2666,
+  src,
+  isMuted
 }) => {
+  const refVideo = useRef(null);
+  useEffect(() => {
+        refVideo.current.defaultMuted = true;
+        refVideo.current.muted = true;
+
+        refVideo.current.srcObject = src;
+    }, [isMuted, src]);
   return (
     <>
       <style>{`
     .hero-card-container {
         padding: 0 20px 30px 20px;
         background-color: #dbe3ff;
+        height: 100%;
     }
 
     .hero-card {
@@ -31,6 +39,7 @@ export const HalfSplitHero = ({
         display: flex;
         flex-flow: column;
         flex-direction: column;
+        height: 100%;
     }
 
     .hero-card .media {
@@ -60,6 +69,7 @@ export const HalfSplitHero = ({
         position: relative;
         margin-top: -20px;
         padding: 40px 25px 20px 25px;
+        flex-grow: 1;
     }
 
     .hero-card .hero-tile-info .brand-logo {
@@ -176,7 +186,7 @@ export const HalfSplitHero = ({
 
         .hero-card .media {
             width: 50%;
-            aspect-ratio: 450/285;
+            aspect-ratio: 16/9;
         }
 
         .hero-card .hero-tile-info {
@@ -205,7 +215,9 @@ export const HalfSplitHero = ({
     }
  `}</style>
       <div class="hero-card-container">
-        <div class="hero-card">
+        <a href={link}
+             data-element-type={dataElementType} data-promotion-index={datapromotionindex} data-promotion-name={datapromotionname}
+             class="hero-card">
           <div class="media">
             {image && 
               <img
@@ -214,7 +226,7 @@ export const HalfSplitHero = ({
               />
             }
             {videosrc &&
-              <video autoplay loop muted playsinline>
+              <video ref={refVideo} autoPlay loop playsInline>
                 <source
                   src={videosrc}
                   type="video/mp4"
@@ -223,18 +235,15 @@ export const HalfSplitHero = ({
           }
           </div>
           <div class="hero-tile-info" style={{background: background}}>
-            <a href={link}
-             data-element-type={dataElementType} data-promotion-index={datapromotionindex} data-promotion-name={datapromotionname} data-gtm-vis-first-on-screen8511273_2666={datagtmvisfirstonscreen8511273_2666} data-gtm-vis-total-visible-time8511273_2666={datagtmvistotalvisibletime8511273_2666} data-gtm-vis-has-fired8511273_2666={datagtmvishasfired8511273_2666}
-            >
+            
               <h2>{headline}</h2>
               <div class="hero-blurb">
                 {tagline}
               </div>
-            </a>
-            <a
+            <button
               href={link}
               class="hero-button"
-              data-element-type={dataElementType} data-promotion-index={datapromotionindex} data-promotion-name={datapromotionname} data-gtm-vis-first-on-screen8511273_2666={datagtmvisfirstonscreen8511273_2666} data-gtm-vis-total-visible-time8511273_2666={datagtmvistotalvisibletime8511273_2666} data-gtm-vis-has-fired8511273_2666={datagtmvishasfired8511273_2666}
+              data-element-type={dataElementType} data-promotion-index={datapromotionindex} data-promotion-name={datapromotionname}
             >
               <span class="swoosh-container">
                 <span class="star-start">
@@ -279,9 +288,9 @@ export const HalfSplitHero = ({
                   ></path>
                 </svg>
               </span>
-            </a>
+            </button>
           </div>
-        </div>
+        </a>
       </div>
     </>
   );
@@ -300,7 +309,4 @@ HalfSplitHero.propTypes = {
   dataElementType: PropTypes.string,
   datapromotionindex: PropTypes.string,
   datapromotionname: PropTypes.string,
-  datagtmvisfirstonscreen8511273_2666: PropTypes.string,
-  datagtmvistotalvisibletime8511273_2666: PropTypes.string,
-  datagtmvishasfired8511273_2666: PropTypes.string, 
 };
