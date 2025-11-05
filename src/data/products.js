@@ -53,7 +53,7 @@ export const products = [
   {
     sku: 557860,
     id: 557860,
-    name: "MixMashers Spider-Man Figure",
+    name: "MixMashers Spider-Man ActionFigure",
     brand: "Marvel",
     price: 24.99,
     originalPrice: 29.99,
