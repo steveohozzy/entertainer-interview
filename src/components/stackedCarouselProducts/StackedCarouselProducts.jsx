@@ -98,7 +98,7 @@ export default function StackedCarouselProducts() {
                 zIndex: products.length - offset,
               }}
             >
-              <div className="w-full h-auto flex flex-col items-center justify-center p-4 bg-white rounded-lg shadow-md text-textBlue"
+              <div className="w-full h-auto flex flex-col items-center justify-center p-4 bg-white rounded-lg shadow-xl text-textBlue"
               onClick={() => {
                 setCurrentIndex(index)
                 setDragOffset(0)
