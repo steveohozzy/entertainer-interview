@@ -7,6 +7,7 @@ export const HalfSplitHero = ({
   imagealt,
   videosrc,
   background,
+  textColor,
   headline,
   tagline,
   link,
@@ -89,13 +90,13 @@ export const HalfSplitHero = ({
         font-size: 20px;
         font-family: "Nunito Bold","Tahoma Bold",sans-serif;
         font-weight: bold;
-        color: #fff;
+        color: ${textColor || '#fff'};
         margin: 0 0 20px;
         line-height: 24px;
     }
 
     .hero-card .hero-tile-info .hero-blurb {
-        color: #fff;
+        color: ${textColor || '#fff'};
         font-size: 14px;
         font-weight: 200;
         margin-bottom: 20px;
@@ -234,10 +235,10 @@ export const HalfSplitHero = ({
               </video>
           }
           </div>
-          <div class="hero-tile-info" style={{background: background}}>
+          <div class="hero-tile-info" style={{background: background, color: textColor}}>
             
-              <h2>{headline}</h2>
-              <div class="hero-blurb">
+              <h2 style={{color: textColor}}>{headline}</h2>
+              <div class="hero-blurb" style={{color: textColor}}>
                 {tagline}
               </div>
             <button
@@ -302,6 +303,7 @@ HalfSplitHero.propTypes = {
   imagealt: PropTypes.string,
   videosrc: PropTypes.string,
   background: PropTypes.string,
+  textColor: PropTypes.string,
   headline: PropTypes.string,
   tagline: PropTypes.string,
   link: PropTypes.string,

@@ -19,6 +19,7 @@ export const HalfAndHalfHero = {
     imagealt:'',
     videosrc: 'https://www.thetoyshop.com/medias/2025-p9-tonies-2-announcement-video.mp4?context=bWFzdGVyfHJvb3R8Njk5NzgyNXx2aWRlby9xdWlja3RpbWV8YURrd0wyZzBOQzh4TWpVNE1qY3dORFUwTlRneU1pOHlNREkxTFhBNUxYUnZibWxsY3kweUxXRnVibTkxYm1ObGJXVnVkQzEyYVdSbGJ5NXRjRFF8ZGE2NDY2YjMwM2M4YmU4ZTdkMjlmOGJmNzcwODljYzFlZjEwY2FiZTAxOWI2MWZhNmZlMGMyYzFhM2Q5YzA1Yw',
     background: 'linear-gradient(213deg,rgba(0, 86, 173, 1) 0%, rgba(0, 153, 215, 1) 35%, rgba(0, 204, 239, 1) 100%)',
+    textColor: '#FFFFFF',
     headline: 'New Toniebox 2 with Tonieplay',
     tagline: 'Get ready for screen-free stories, songs and more!',
     link: 'https://www.thetoyshop.com/brands/tonies',

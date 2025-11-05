@@ -49,24 +49,6 @@ export const Multiclickhero = ({
   pod6datelementtype,
   pod6datapromotionindex,
   pod6datapromotionname,
-  pod1datagtmvisfirstonscreen8511273_2666,
-  pod1datagtmvistotalvisibletime8511273_2666,
-  pod1datagtmvishasfired8511273_2666,
-  pod2datagtmvisfirstonscreen8511273_2666,
-  pod2datagtmvistotalvisibletime8511273_2666,
-  pod2datagtmvishasfired8511273_2666,
-  pod3datagtmvisfirstonscreen8511273_2666,
-  pod3datagtmvistotalvisibletime8511273_2666,
-  pod3datagtmvishasfired8511273_2666,
-  pod4datagtmvisfirstonscreen8511273_2666,
-  pod4datagtmvistotalvisibletime8511273_2666,
-  pod4datagtmvishasfired8511273_2666,
-  pod5datagtmvisfirstonscreen8511273_2666,
-  pod5datagtmvistotalvisibletime8511273_2666,
-  pod5datagtmvishasfired8511273_2666,
-  pod6datagtmvisfirstonscreen8511273_2666,
-  pod6datagtmvistotalvisibletime8511273_2666,
-  pod6datagtmvishasfired8511273_2666,
 }) => {
   return (
     <><style>{`
@@ -451,9 +433,6 @@ export const Multiclickhero = ({
                 data-element-type={pod1datelementtype}
                 data-promotion-index={pod1datapromotionindex}
                 data-promotion-name={pod1datapromotionname}
-                data-gtm-vis-first-on-screen8511273_2666={pod1datagtmvisfirstonscreen8511273_2666}
-                data-gtm-vis-total-visible-time8511273_2666={pod1datagtmvistotalvisibletime8511273_2666}
-                data-gtm-vis-has-fired8511273_2666={pod1datagtmvishasfired8511273_2666}
               >
                 <img
                   alt={pod1alt}
@@ -471,9 +450,6 @@ export const Multiclickhero = ({
                 data-element-type={pod2datelementtype}
                 data-promotion-index={pod2datapromotionindex}
                 data-promotion-name={pod2datapromotionname}
-                data-gtm-vis-first-on-screen8511273_2666={pod2datagtmvisfirstonscreen8511273_2666}
-                data-gtm-vis-total-visible-time8511273_2666={pod2datagtmvistotalvisibletime8511273_2666}
-                data-gtm-vis-has-fired8511273_2666={pod2datagtmvishasfired8511273_2666}
               >
                 <img
                   src={pod2image}
@@ -491,9 +467,6 @@ export const Multiclickhero = ({
                 data-element-type={pod3datelementtype}
                 data-promotion-index={pod3datapromotionindex}
                 data-promotion-name={pod3datapromotionname}
-                data-gtm-vis-first-on-screen8511273_2666={pod3datagtmvisfirstonscreen8511273_2666}
-                data-gtm-vis-total-visible-time8511273_2666={pod3datagtmvistotalvisibletime8511273_2666}
-                data-gtm-vis-has-fired8511273_2666={pod3datagtmvishasfired8511273_2666}
               >
                 <img
                   src={pod3image}
@@ -512,9 +485,6 @@ export const Multiclickhero = ({
                 data-element-type={pod4datelementtype}
                 data-promotion-index={pod4datapromotionindex}
                 data-promotion-name={pod4datapromotionname}
-                data-gtm-vis-first-on-screen8511273_2666={pod4datagtmvisfirstonscreen8511273_2666}
-                data-gtm-vis-total-visible-time8511273_2666={pod4datagtmvistotalvisibletime8511273_2666}
-                data-gtm-vis-has-fired8511273_2666={pod4datagtmvishasfired8511273_2666}
               >
                 <img
                   src={pod4image}
@@ -534,9 +504,6 @@ export const Multiclickhero = ({
                 data-element-type={pod5datelementtype}
                 data-promotion-index={pod5datapromotionindex}
                 data-promotion-name={pod5datapromotionname}
-                data-gtm-vis-first-on-screen8511273_2666={pod5datagtmvisfirstonscreen8511273_2666}
-                data-gtm-vis-total-visible-time8511273_2666={pod5datagtmvistotalvisibletime8511273_2666}
-                data-gtm-vis-has-fired8511273_2666={pod5datagtmvishasfired8511273_2666}
               >
                 <img
                   src={pod5image}
@@ -556,9 +523,6 @@ export const Multiclickhero = ({
                 data-element-type={pod6datelementtype}
                 data-promotion-index={pod6datapromotionindex}
                 data-promotion-name={pod6datapromotionname}
-                data-gtm-vis-first-on-screen8511273_2666={pod6datagtmvisfirstonscreen8511273_2666}
-                data-gtm-vis-total-visible-time8511273_2666={pod6datagtmvistotalvisibletime8511273_2666}
-                data-gtm-vis-has-fired8511273_2666={pod6datagtmvishasfired8511273_2666}
               >
                 <img
                   src={pod6image}
@@ -623,21 +587,4 @@ Multiclickhero.propTypes = {
   pod4datapromotionname: PropTypes.string,
   pod5datapromotionname: PropTypes.string,
   pod6datapromotionname: PropTypes.string,
-  pod1datagtmvisfirstonscreen8511273_2666: PropTypes.string,
-  pod2datagtmvisfirstonscreen8511273_2666: PropTypes.string,
-  pod3datagtmvisfirstonscreen8511273_2666: PropTypes.string,
-  pod4datagtmvisfirstonscreen8511273_2666: PropTypes.string,
-  pod5datagtmvisfirstonscreen8511273_2666: PropTypes.string,
-  pod1datagtmvistotalvisibletime8511273_2666: PropTypes.string,
-  pod2datagtmvistotalvisibletime8511273_2666: PropTypes.string,
-  pod3datagtmvistotalvisibletime8511273_2666: PropTypes.string,
-  pod4datagtmvistotalvisibletime8511273_2666: PropTypes.string,
-  pod5datagtmvistotalvisibletime8511273_2666: PropTypes.string,
-  pod6datagtmvistotalvisibletime8511273_2666: PropTypes.string,
-  pod1datagtmvishasfired8511273_2666: PropTypes.string,
-  pod2datagtmvishasfired8511273_2666: PropTypes.string,
-  pod3datagtmvishasfired8511273_2666: PropTypes.string,
-  pod4datagtmvishasfired8511273_2666: PropTypes.string,
-  pod5datagtmvishasfired8511273_2666: PropTypes.string,
-  pod6datagtmvishasfired8511273_2666: PropTypes.string,
 };
