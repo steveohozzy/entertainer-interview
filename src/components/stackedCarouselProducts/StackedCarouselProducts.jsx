@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import { products } from "../../data/products";
 import ProductCardStackedCarousel from "../productCardStackedCarousel/productCardStackedCarousel";
 
@@ -71,6 +71,26 @@ export default function StackedCarouselProducts() {
     }
   }
 
+  const [windowSize, setWindowSize] = useState(window.innerWidth);
+  const [multiplier, setMultiplier] = useState(10);
+
+    useEffect(() => {
+      const handleResize = () => {
+        setWindowSize(window.innerWidth);
+      };
+
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
+    useEffect(() => {
+      if (windowSize < 768) {
+        setMultiplier(5);
+      } else {
+        setMultiplier(10);
+      }
+    }, [windowSize]);
+
   return (
     <div className="carousel-container">
       <div
@@ -86,7 +106,7 @@ export default function StackedCarouselProducts() {
         {products.slice(0, 5).map((card, index) => {
           const offset = (index - currentIndex + products.slice(0, 5).length) % products.slice(0, 5).length
           const isTop = offset === 0
-          const xOffset = offset * 10 + (isTop ? dragOffset : 0)
+          const xOffset = offset * multiplier + (isTop ? dragOffset : 0)
 
           return (
             <div
