@@ -1,6 +1,6 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
-import { Star, Heart, Eye} from "lucide-react";
+import { Star, Heart} from "lucide-react";
 import { useSelector } from "react-redux";
 
 import { useDispatch } from 'react-redux';
@@ -29,8 +29,6 @@ const ProductCardStackedCarousel = ({ product }) => {
   //show stores
   const [storesOpen, setStoresOpen] = useState(false);
 
-  const wrapperRef = useRef(null);
-
   const goToLinkHandler = () => {
     navigate("/product-details/" + product.id);
     setTimeout(() => {
@@ -44,7 +42,6 @@ const ProductCardStackedCarousel = ({ product }) => {
 
   const addProductToCart = () => {
     dispatch(addItemToCart(product));
-    closeQuickView();
     dispatch(setIsCartOpen(true));
     document.body.classList.add('body-noscroll');
     window.scrollBy(0 , -2)
@@ -58,48 +55,19 @@ const ProductCardStackedCarousel = ({ product }) => {
     dispatch(removeItemFromWishlist(product));
   }
 
-  // Quick view modal state
-  const [quickViewProduct, setQuickViewProduct] = useState(null);
-
-  // Reset modal state when opening
-  const openQuickView = (product) => {
-    setQuickViewProduct(product);
-  };
-
-  const closeQuickView = () => {
-    setQuickViewProduct(null);
-  };
-
   // Add to favourites
   const wishlistItems = useSelector(selectWishlistItems);
 
   useEffect(() => {
     localStorage.setItem("wishlistItems", JSON.stringify(wishlistItems));
-  }, [wishlistItems])
+  }, [wishlistItems]);
 
-  function useOutsideAlerter(ref) {
-    useEffect(() => {
-      function handleClickOutside(event) {
-        if (ref.current && !ref.current.contains(event.target)) {
-         closeQuickView();
-        }
-      }
-      // Bind the event listener
-      document.addEventListener("mousedown", handleClickOutside);
-      return () => {
-        // Unbind the event listener on clean up
-        document.removeEventListener("mousedown", handleClickOutside);
-      };
-    }, [ref]);
-  }
-
-  useOutsideAlerter(wrapperRef);
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+      <div className="flex flex-wrap md:flex-nowrap gap-6 w-full">
                     {/* Product Images */}
-                    <div className="w-full">
+                    <div className="w-full md:w-2/5">
                       <div className="relative w-full">
                         <Swiper
                           modules={[Autoplay, Pagination]}
