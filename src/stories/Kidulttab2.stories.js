@@ -51,5 +51,9 @@ export const KidultTab2Content = {
     roundal9alt: 'Legend of Zelda',
     roundal9link: 'https://www.thetoyshop.com/brands/the-legend-of-zelda',
     roundal9background: '#B59C66',
+    roundal10image: 'https://www.thetoyshop.com/medias/playstaion-logo.svg?context=bWFzdGVyfHJvb3R8OTI2fGltYWdlL3N2Zyt4bWx8YURNMUwyZ3pOaTh4TWpZek5ESTVOREUxTnpNME1pOXdiR0Y1YzNSaGFXOXVMV3h2WjI4dWMzWm58NTQ2ZjY3YTczMzY1MmVjMDkzYzAzMDBhN2JhNjljMTE1ZTE0NzI4ODZlNTJkNWU5ZmVkNTgwNDg0MTczODMwMg',
+    roundal10alt: 'Playstation',
+    roundal10link: 'https://www.thetoyshop.com/brands/sony-playstation',
+    roundal10background: '#0070d1',
   }
 };

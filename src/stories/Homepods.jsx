@@ -16,9 +16,6 @@ export const HomePods = ({
   pod1dataelementtype,
 	pod1datapromotionname,
   pod1datapromotionindex,
-  pod1datagtmvisfirstonscreen8511273_2666,
-  pod1datagtmvishasfired8511273_2666,
-  pod1datagtmvistotalvisibletime8511273_2666,
 	pod2isblog,
   pod2image,
   pod2alt,
@@ -29,9 +26,6 @@ export const HomePods = ({
   pod2dataelementtype,
   pod2datapromotionindex,
   pod2datapromotionname,
-  pod2datagtmvisfirstonscreen8511273_2666,
-  pod2datagtmvishasfired8511273_2666,
-  pod2datagtmvistotalvisibletime8511273_2666,
 }) => {
   return (
     <>

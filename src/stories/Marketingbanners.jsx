@@ -8,20 +8,12 @@ export const MarketingBanners = ({
   banner1dataElementType,
   banner1datapromotionindex,
   banner1datapromotionname,
-  banner1datagtmvisrecentonscreen8511273_2666,
-  banner1datagtmvisfirstonscreen8511273_2666,
-  banner1datagtmvistotalvisibletime8511273_2666,
-  banner1datagtmvishasfired8511273_2666,
   banner2image,
   banner2alt,
   banner2link,
   banner2dataElementType,
   banner2datapromotionindex,
   banner2datapromotionname,
-  banner2datagtmvisrecentonscreen8511273_2666,
-  banner2datagtmvisfirstonscreen8511273_2666,
-  banner2datagtmvistotalvisibletime8511273_2666,
-  banner2datagtmvishasfired8511273_2666,
 }) => {
   return (
     <>
@@ -97,18 +89,6 @@ export const MarketingBanners = ({
               data-promotion-name={banner1datapromotionname}
               href={banner1link}
               title={banner1alt}
-              data-gtm-vis-recent-on-screen8511273_2666={
-                banner1datagtmvisrecentonscreen8511273_2666
-              }
-              data-gtm-vis-first-on-screen8511273_2666={
-                banner1datagtmvisfirstonscreen8511273_2666
-              }
-              data-gtm-vis-total-visible-time8511273_2666={
-                banner1datagtmvistotalvisibletime8511273_2666
-              }
-              data-gtm-vis-has-fired8511273_2666={
-                banner1datagtmvishasfired8511273_2666
-              }
             >
               <img alt={banner1alt} src={banner1image} title={banner1alt} />
             </a>
@@ -121,18 +101,6 @@ export const MarketingBanners = ({
               data-promotion-name={banner2datapromotionname}
               href={banner2link}
               title={banner2alt}
-              data-gtm-vis-recent-on-screen8511273_2666={
-                banner2datagtmvisrecentonscreen8511273_2666
-              }
-              data-gtm-vis-first-on-screen8511273_2666={
-                banner2datagtmvisfirstonscreen8511273_2666
-              }
-              data-gtm-vis-total-visible-time8511273_2666={
-                banner2datagtmvistotalvisibletime8511273_2666
-              }
-              data-gtm-vis-has-fired8511273_2666={
-                banner2datagtmvishasfired8511273_2666
-              }
             >
               <img alt={banner2alt} src={banner2image} title={banner2alt} />
             </a>
@@ -154,15 +122,7 @@ MarketingBanners.propTypes = {
   banner1dataElementType: PropTypes.string,
   banner1datapromotionindex: PropTypes.string,
   banner1datapromotionname: PropTypes.string,
-  banner1datagtmvisrecentonscreen8511273_2666: PropTypes.string,
-  banner1datagtmvisfirstonscreen8511273_2666: PropTypes.string,
-  banner1datagtmvistotalvisibletime8511273_2666: PropTypes.string,
-  banner1datagtmvishasfired8511273_2666: PropTypes.string,
   banner2dataElementType: PropTypes.string,
   banner2datapromotionindex: PropTypes.string,
   banner2datapromotionname: PropTypes.string,
-  banner2datagtmvisrecentonscreen8511273_2666: PropTypes.string,
-  banner2datagtmvisfirstonscreen8511273_2666: PropTypes.string,
-  banner2datagtmvistotalvisibletime8511273_2666: PropTypes.string,
-  banner2datagtmvishasfired8511273_2666: PropTypes.string,
 };
