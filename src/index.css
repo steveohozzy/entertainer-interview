@@ -178,13 +178,13 @@
   align-items: center;
   justify-content: center;
   gap: 2rem;
-  margin-top: 2rem;
+  margin-top: 32px;
   width: 30px;
   flex-wrap: wrap;
   position: absolute;
   top: 0;
   left: 0;
-  height: calc(100% - 40px);
+  height: calc(100% - 64px);
 }
 
 .control-btn {
@@ -220,7 +220,7 @@
   justify-content: center;
   order: 2;
   padding: 0 1rem;
-  height: calc(100% - 40px);
+  height: 100%;
 }
 
 .indicator {
