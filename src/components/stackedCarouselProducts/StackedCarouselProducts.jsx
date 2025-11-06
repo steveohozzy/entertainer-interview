@@ -12,7 +12,8 @@ export default function StackedCarouselProducts() {
   const containerRef = useRef(null)
 
   const handleNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % products.slice(0, 5).length)
+    console.log('handleNext called')
+    setCurrentIndex((prev) => (prev + 1 - products.slice(0, 5).length) % products.slice(0, 5).length)
     setDragOffset(0)
   }
 
@@ -28,18 +29,30 @@ export default function StackedCarouselProducts() {
 
   const handleMouseMove = (e) => {
     if (!isDragging) return
-    const deltaX = e.clientX - dragStart.x
+    let deltaX = e.clientX - dragStart.x
+    if (deltaX < -20) {
+      deltaX = -20
+    } else if (deltaX > 20) {
+      deltaX = 20
+    }
     setDragOffset(deltaX)
   }
 
   const handleMouseUp = (e) => {
     setIsDragging(false)
-    const deltaX = e.clientX - dragStart.x
-    const threshold = 50
+    let deltaX = e.clientX - dragStart.x
+    
+    if (deltaX < -22) {
+      deltaX = -22
+    } else if (deltaX > 22) {
+      deltaX = 22
+    }
+    const threshold = 20
 
     if (deltaX > threshold) {
       handlePrev()
     } else if (deltaX < -threshold) {
+      console.log('deltaX', deltaX)
       handleNext()
     } else {
       setDragOffset(0)
@@ -120,8 +133,10 @@ export default function StackedCarouselProducts() {
             >
               <div className="w-full h-auto flex flex-col items-center justify-center p-4 bg-white rounded-lg shadow-xl text-textBlue"
               onClick={() => {
-                setCurrentIndex(index)
-                setDragOffset(0)
+                if (index !== (currentIndex - 1) + products.slice(0, 5).length) {
+                  setCurrentIndex(index)
+                  setDragOffset(0)
+                }
               }}
               >
                 <ProductCardStackedCarousel product={card} />
