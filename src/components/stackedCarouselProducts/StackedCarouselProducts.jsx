@@ -146,7 +146,7 @@ export default function StackedCarouselProducts() {
         })}
       </div>
 
-      <div className="carousel-controls">
+      <div className="carousel-controls hidden lg:flex">
         <div className="carousel-indicators">
           {products.slice(0, 5).map((_, index) => (
             <button
