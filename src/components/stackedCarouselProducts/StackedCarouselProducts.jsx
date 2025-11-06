@@ -143,7 +143,7 @@ export default function StackedCarouselProducts() {
               }}
               aria-label={`Go to card ${index + 1}`}
             >
-              {index + 1}
+              <span>{index + 1}</span>
             </button>
           ))}
         </div>

@@ -89,7 +89,8 @@
   gap: 2rem;
   width: 100%;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 2rem 1rem 2rem 80px;
+  position: relative;
 }
 
 .carousel-stack {
@@ -173,12 +174,17 @@
 /* Updated controls layout to be more visible and prominent */
 .carousel-controls {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 2rem;
   margin-top: 2rem;
-  width: 100%;
+  width: 30px;
   flex-wrap: wrap;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: calc(100% - 40px);
 }
 
 .control-btn {
@@ -213,52 +219,38 @@
   flex-wrap: wrap;
   justify-content: center;
   order: 2;
-  flex-basis: 100%;
   padding: 0 1rem;
+  height: calc(100% - 40px);
 }
 
 .indicator {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: rgba(102, 126, 234, 0.2);
-  border: 2px solid rgba(102, 126, 234, 0.5);
+  width: 30px;
+  height: auto;
+  border-radius: 20px;
+  background: #407EC9;
+  border: 2px solid #407EC9;
   cursor: pointer;
   transition: all 0.3s ease;
   font-weight: 600;
-  color: #667eea;
+  color: #fff;
   font-size: 0.9rem;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.indicator.active {
-  background: #667eea;
+.indicator span {
+  filter: drop-shadow(0 1px #0D5D9C) drop-shadow(0 -1px #0D5D9C)
+      drop-shadow(1px 0 #0D5D9C) drop-shadow(-1px 0 #0D5D9C);
+}
+
+.indicator.active,
+.indicator:hover {
+  background: #00BBDC;
   transform: scale(1.15);
   box-shadow: 0 0 15px rgba(102, 126, 234, 0.5);
   color: white;
   border-color: #667eea;
-}
-
-.indicator:hover {
-  background: rgba(102, 126, 234, 0.4);
-}
-
-.carousel-info {
-  text-align: center;
-  color: #667eea;
-  font-weight: 600;
-  margin-top: 1rem;
-}
-
-.current-card {
-  font-size: 1.3em;
-  color: #764ba2;
-}
-
-.total-cards {
-  opacity: 0.7;
 }
 
 @media (max-width: 768px) {
