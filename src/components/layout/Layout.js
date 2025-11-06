@@ -208,7 +208,7 @@ const Layout = () => {
         </div>
         <SearchBar />
       </header>
-      <div className="selection:bg-purple-300 selection:text-purple-900">
+      <div className={`${window.location.href.indexOf("confirmation") !== -1 && 'bg-white'} selection:bg-purple-300 selection:text-purple-900`}>
         <Outlet />
         <Footer />
       </div>

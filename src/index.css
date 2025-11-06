@@ -81,3 +81,270 @@
     mask: var(--mask);
   }
 }
+
+.carousel-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem 1rem 2rem 60px;
+  position: relative;
+}
+
+.carousel-stack {
+  position: relative;
+  width: 100%;
+  height: 370px;
+  cursor: grab;
+  touch-action: none;
+  overflow: visible;
+  border-radius: 24px;
+  /* increase padding-right to show more cards */
+  padding-right: 500px;
+}
+
+.carousel-stack:active {
+  cursor: grabbing;
+}
+
+/* updated card positioning for horizontal stacking */
+.carousel-card {
+  position: absolute;
+  /* make cards full width */
+  width: 75%;
+  height: auto;
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), z-index 0s;
+  will-change: transform;
+  left: 0;
+  user-select: none;
+}
+
+.carousel-card.top {
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.card-content {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.card-content::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200px;
+  height: 200px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  filter: blur(40px);
+}
+
+.card-emoji {
+  font-size: 4rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.card-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.5px;
+}
+
+.card-description {
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.6;
+  opacity: 0.9;
+  max-width: 80%;
+}
+
+/* Updated controls layout to be more visible and prominent */
+.carousel-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 32px;
+  width: 30px;
+  flex-wrap: wrap;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: calc(100% - 70px);
+}
+
+.control-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.control-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 12px 35px rgba(102, 126, 234, 0.6);
+}
+
+.control-btn:active {
+  transform: scale(0.95);
+}
+
+/* Made carousel indicators more visible with better styling */
+.carousel-indicators {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  order: 2;
+  padding: 0 1rem;
+  height: 100%;
+}
+
+.indicator {
+  width: 30px;
+  height: auto;
+  border-radius: 20px;
+  background: #407EC9;
+  border: 2px solid #407EC9;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  color: #fff;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.indicator span {
+  filter: drop-shadow(0 1px #0D5D9C) drop-shadow(0 -1px #0D5D9C)
+      drop-shadow(1px 0 #0D5D9C) drop-shadow(-1px 0 #0D5D9C);
+}
+
+.indicator.active,
+.indicator:hover {
+  background: #00BBDC;
+  transform: scale(1.15);
+  box-shadow: 0 0 15px rgba(102, 126, 234, 0.5);
+  color: white;
+  border-color: #667eea;
+}
+
+@media (max-width: 768px) {
+  .carousel-container {
+    max-width: 100%;
+    padding: 1rem;
+  }
+
+  .carousel-stack {
+    /* adjust padding for mobile */
+    padding-right: 350px;
+    height: 600px;
+  }
+
+  .carousel-card {
+    height: 280px;
+    width: 88%;
+  }
+
+  .card-content {
+    padding: 1.5rem;
+  }
+
+  .card-emoji {
+    font-size: 3rem;
+  }
+
+  .card-title {
+    font-size: 1.5rem;
+  }
+
+  .card-description {
+    font-size: 0.9rem;
+  }
+
+  .control-btn {
+    width: 45px;
+    height: 45px;
+    font-size: 1.2rem;
+  }
+
+  .carousel-controls {
+    gap: 1rem;
+  }
+
+  .indicator {
+    width: 36px;
+    height: 36px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-stack {
+    /* adjust padding for small mobile */
+    padding-right: 250px;
+  }
+
+  .carousel-card {
+    height: 240px;
+  }
+
+  .card-content {
+    padding: 1rem;
+    border-radius: 15px;
+  }
+
+  .card-emoji {
+    font-size: 2rem;
+  }
+
+  .card-title {
+    font-size: 1.25rem;
+  }
+
+  .card-description {
+    font-size: 0.8rem;
+    max-width: 100%;
+  }
+
+  .control-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+
+  .carousel-controls {
+    gap: 0.75rem;
+  }
+
+  .indicator {
+    width: 32px;
+    height: 32px;
+    font-size: 0.75rem;
+  }
+}
+

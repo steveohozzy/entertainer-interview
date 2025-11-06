@@ -4,6 +4,7 @@ import HomeDelivery from '../../components/homeDelivery/HomeDelivery'
 import HomeHeroCard from '../../components/homeHeroCard/HomeHeroCard'
 import HomePods from '../../components/homePods/HomePods'
 import HomeTopPicksArrows from '../../components/homeTopPicks/HomeTopPicksArrows'
+import StackedCarouselProducts from '../../components/stackedCarouselProducts/StackedCarouselProducts'
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
       <HomePods />
       <HomeHeroCard />
       <HomeDelivery />
+       <StackedCarouselProducts />
     </div>
   )
 }

@@ -1,0 +1,164 @@
+.pod .item {
+    padding: 0;
+  }
+
+  .pod img {
+    width: 100%;
+    margin: 0 !important;
+  }
+
+  .pod.has-tagline img {
+    margin: 0 0 20px !important;
+  }
+
+  .pod {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    flex-grow: 1;
+    text-align: center;
+    border-radius: 8px;
+    padding: 0 0 20px;
+    background-color: #fff;
+    color: #00548b;
+    text-decoration: none;
+    font-size: 18px;
+    font-family: "Nunito Bold", "Tahoma Bold", sans-serif;
+    font-weight: bold;
+    color: #00548b;
+    margin: 0 20px 0 0;
+    box-shadow: 0 0 5px rgba(3, 33, 33, 0.05);
+    letter-spacing: 0.5px;
+    transition: all 0.3s;
+    overflow: hidden;
+  }
+
+  .pod:hover {
+    box-shadow: 0 0 18px rgba(33, 33, 33, 0.15);
+    transform: translateY(-5px);
+  }
+
+  .pod button span {
+    margin: 20px 0;
+  }
+
+  @media (min-width: 768px) {
+    .pod a {
+      font-size: 20px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .pod {
+      font-size: 22px;
+    }
+  }
+
+  .pod .hero-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50px;
+        margin-top: 40px;
+        margin-bottom: 30px;
+        background-color: #009E44;
+        color: #fff;
+        font-size: 16px;
+        font-weight: bold;
+        text-decoration: none;
+        padding: 10px 10px 10px 0px;
+        height: 40px;
+        box-shadow: 0 0 5px rgba(3,33,33,.6);
+        border: 3px solid #ffffff;
+        transition: all 0.3s;
+    }
+
+    .pod.has-tagline .hero-button {
+        margin-top: 20px;
+    }
+
+    .pod .hero-button:hover {
+        background-color: #AFCB17;
+        scale: 1.05;
+        box-shadow: 0 0 18px rgba(3,33,33,.3);
+        color: #fff;
+    }
+
+    .pod .hero-button .basket-icon {
+        transition: all 0.3s;
+        transform: rotate(15deg);
+        margin-left: 5px;
+    }
+
+    .pod .hero-button:hover .basket-icon {
+        transform: rotate(-10deg)
+    }
+
+    .pod .hero-button .star-start {
+        position: relative;
+        top: -3px;
+    }
+
+    .pod .hero-button .swoosh-container {
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        margin-right: 5px;
+        width: 25px;
+    }
+
+    .pod .hero-button .swoosh {
+        display: block;
+        width: 0;
+        height: 3px;
+        margin-top: 15px;
+        margin-left: -2px;
+        transform: rotate(15deg);
+        background-color: rgba(255, 255, 255, 0.7);
+        transition: all 0.3s;
+    }
+
+    .pod .hero-button:hover .swoosh {
+        width: 7px;
+    }
+
+    .pod .hero-button .star-end {
+        position: relative;
+        bottom: -5px;
+        transition: all 0.3s;
+    }
+
+    .pod .hero-button:hover .star-end {
+        scale: 1.1;
+        transform: rotate(30deg);
+    }
+
+    .pod-image-container {
+        position: relative;
+        width: 100%;
+    }
+
+    .pod .logo {
+        position: absolute;
+        top: 10px;
+        left: 0;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .pod .logo.left {
+      justify-content: flex-start;
+      padding-left: 10px;
+    }
+
+    .pod .logo.right {
+      justify-content: flex-end;
+      padding-right: 10px;
+    }
+
+    .pod .logo img {
+      width: auto;
+    }

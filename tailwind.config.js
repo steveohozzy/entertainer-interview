@@ -33,7 +33,9 @@ module.exports = {
         'miniheartleft': 'miniheartleft 0.8s ease-in-out',
         'miniheartright': 'miniheartright 0.8s ease-in-out',
         'wave': 'wave 0.8s 5 ease-in-out',
-        'fadeIn' : 'fadeIn 0.3s ease-out'
+        'fadeIn' : 'fadeIn 0.3s ease-out',
+        'whoo' : 'whoo 1.5s ease-out infinite',
+        'hoo' : 'hoo 1.5s ease-out infinite'
       },
       keyframes: {
         bigheart: {
@@ -88,6 +90,22 @@ module.exports = {
             transform: 'translateY(0)'
           }
         },
+        whoo: {
+          '0%, 45%': {
+            transform: 'rotate(-15deg) translateY(0)',
+          },
+          '15%': {
+            transform: 'rotate(-20deg) translateY(-20px) scale(1.1)',
+          }
+        },
+        hoo: {
+          '0%, 45%': {
+            transform: 'rotate(15deg) translateY(0)',
+          },
+          '15%': {
+            transform: 'rotate(20deg) translateY(-20px) scale(1.1)',
+          }
+        },
       },
     },
   },
@@ -100,6 +118,16 @@ module.exports = {
           return `${yourSelector}:checked ~ .${eClassName}`; // ~ - CSS selector for siblings
         });
       });
+    }),
+    plugin(function ({ matchUtilities, theme }) {
+      matchUtilities(
+        {
+          'animate-delay': (value) => ({
+            animationDelay: value,
+          }),
+        },
+        { values: theme('transitionDelay') }
+      )
     }),
   ],
 };
