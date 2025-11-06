@@ -96,7 +96,7 @@ export default function StackedCarouselProducts() {
     }, []);
 
     useEffect(() => {
-      if (windowSize < 768) {
+      if (windowSize < 1024) {
         setMultiplier(5);
       } else {
         setMultiplier(10);
@@ -107,7 +107,7 @@ export default function StackedCarouselProducts() {
     <div className="carousel-container">
       <div
         ref={containerRef}
-        className="carousel-stack"
+        className="carousel-stack h-[600px] md:h-[370px]"
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}

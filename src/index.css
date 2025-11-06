@@ -96,7 +96,6 @@
 .carousel-stack {
   position: relative;
   width: 100%;
-  height: 370px;
   cursor: grab;
   touch-action: none;
   overflow: visible;
@@ -262,7 +261,6 @@
   .carousel-stack {
     /* adjust padding for mobile */
     padding-right: 350px;
-    height: 600px;
   }
 
   .carousel-card {
@@ -293,6 +291,7 @@
   }
 
   .carousel-controls {
+    display: none;
     gap: 1rem;
   }
 
