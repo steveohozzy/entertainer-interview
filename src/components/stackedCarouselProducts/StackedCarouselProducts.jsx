@@ -5,6 +5,7 @@ import { products } from "../../data/products";
 import ProductCardStackedCarousel from "../productCardStackedCarousel/productCardStackedCarousel";
 
 export default function StackedCarouselProducts() {
+  let active = 0;
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isDragging, setIsDragging] = useState(false)
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 })
@@ -12,7 +13,6 @@ export default function StackedCarouselProducts() {
   const containerRef = useRef(null)
 
   const handleNext = () => {
-    console.log('handleNext called')
     setCurrentIndex((prev) => (prev + 1 - products.slice(0, 5).length) % products.slice(0, 5).length)
     setDragOffset(0)
   }
@@ -52,7 +52,6 @@ export default function StackedCarouselProducts() {
     if (deltaX > threshold) {
       handlePrev()
     } else if (deltaX < -threshold) {
-      console.log('deltaX', deltaX)
       handleNext()
     } else {
       setDragOffset(0)
@@ -120,6 +119,9 @@ export default function StackedCarouselProducts() {
           const offset = (index - currentIndex + products.slice(0, 5).length) % products.slice(0, 5).length
           const isTop = offset === 0
           const xOffset = offset * multiplier + (isTop ? dragOffset : 0)
+          if (isTop) {
+            active = card.id
+          }
 
           return (
             <div
@@ -148,10 +150,10 @@ export default function StackedCarouselProducts() {
 
       <div className="carousel-controls hidden lg:flex">
         <div className="carousel-indicators">
-          {products.slice(0, 5).map((_, index) => (
+          {products.slice(0, 5).map((card, index) => (
             <button
               key={index}
-              className={`indicator number-btn ${index === currentIndex ? "active" : ""}`}
+              className={`indicator number-btn ${index + 1 === active ? "active" : ""}`}
               onClick={() => {
                 setCurrentIndex(index)
                 setDragOffset(0)
