@@ -164,7 +164,7 @@ const ProductCardStackedCarousel = ({ product }) => {
                     </div>
 
                     {/* Product Details */}
-                    <div className="space-y-3 md:space-y-6">
+                    <div className="space-y-3 md:space-y-3 flex flex-col">
                       <div>
                         <h2 className="text-xl md:text-3xl font-bold text-brandBlue text-left line-clamp-2">
                           {product.name} {swatchColor === 'orange' && <span className="text-orange-600">ORANGE</span>}
@@ -175,7 +175,7 @@ const ProductCardStackedCarousel = ({ product }) => {
                           behavior: "smooth",
                         });}}>View full product</button>
                       </div>
-                      <div className="flex flex-wrap items-start justify-between mt-0">
+                      <div className="flex flex-wrap items-start justify-between mt-0 order-2">
                         <div className="flex flex-col items-start w-auto md:w-auto justify-between">
                           <div className="rating mb-2">
                             <div className="flex items-end">
@@ -206,20 +206,7 @@ const ProductCardStackedCarousel = ({ product }) => {
                           FREE UK DELIVERY
                         </span>
                       </div>
-                      <div className="flex flex-wrap items-end justify-between md:flex-row">
-                        <div className="w-full md:w-auto mb-0">
-                          <div className="flex flex-wrap items-center notices justify-end">
-                            <span className="flex items-center justify-between text-brandNeonBlue border-[2px] border-brandNeonBlue p-2 rounded-md mb-2 md:mb-0 w-full md:w-auto font-bold">
-                              <span className="font-semibold">Other styles</span>
-                              <div className="flex items-center">
-                                <button onClick={() => setSwatchColor('blue')} className={`transition-all rounded-full bg-brandNeonBlue w-[20px] md:w-[25px] h-[20px] md:h-[25px] border-[3px] ml-3 hover:border-brandBlue ${swatchColor === 'blue' ? 'border-brandBlue' : 'border-brandNeonBlue'}`}><span className="sr-only">Blue</span></button>
-                                <button onClick={() => setSwatchColor('orange')} className={`rounded-full bg-orange-300 w-[20px] md:w-[25px] h-[20px] md:h-[25px] border-[3px]  ml-3 transition-all hover:border-orange-500 ${swatchColor === 'orange' ? 'border-orange-500' : 'border-orange-300'}`}><span className="sr-only">Orange</span></button>
-                                <button onClick={() => setSwatchColor('black')}  className={`rounded-full bg-black w-[20px] md:w-[25px] h-[20px] md:h-[25px] border-[3px] ml-3 transition-all hover:border-gray-500 ${swatchColor === 'black' ? 'border-gray-500' : 'border-black'}`}><span className="sr-only">Black</span></button>
-                                <button onClick={() => setSwatchColor('red')}  className={`rounded-full bg-red-500 w-[20px] md:w-[25px] h-[20px] md:h-[25px] border-[3px] ml-3 transition-all hover:border-red-700 ${swatchColor === 'red' ? 'border-red-700' : 'border-red-500'}`}><span className="sr-only">red</span></button>
-                              </div>
-                            </span>
-                          </div>
-                        </div>
+                      <div className="flex flex-wrap items-end justify-between md:flex-row order-3 border-t border-gray-300">
                         <div className="w-full py-4 pt-0 md:pt-4">
                           <div className="flex items-center flex-wrap">
                             <svg
@@ -295,8 +282,21 @@ const ProductCardStackedCarousel = ({ product }) => {
                             </div>
                           </div>
                         </div>
+                        <div className="w-full md:w-auto mb-0">
+                          <div className="flex flex-wrap items-center notices justify-end">
+                            <span className="flex items-center justify-between text-brandNeonBlue border-[2px] border-brandNeonBlue p-2 rounded-md mb-2 md:mb-0 w-full md:w-auto font-bold">
+                              <span className="font-semibold">Other styles</span>
+                              <div className="flex items-center">
+                                <button onClick={() => setSwatchColor('blue')} className={`transition-all rounded-full bg-brandNeonBlue w-[20px] md:w-[25px] h-[20px] md:h-[25px] border-[3px] ml-3 hover:border-brandBlue ${swatchColor === 'blue' ? 'border-brandBlue' : 'border-brandNeonBlue'}`}><span className="sr-only">Blue</span></button>
+                                <button onClick={() => setSwatchColor('orange')} className={`rounded-full bg-orange-300 w-[20px] md:w-[25px] h-[20px] md:h-[25px] border-[3px]  ml-3 transition-all hover:border-orange-500 ${swatchColor === 'orange' ? 'border-orange-500' : 'border-orange-300'}`}><span className="sr-only">Orange</span></button>
+                                <button onClick={() => setSwatchColor('black')}  className={`rounded-full bg-black w-[20px] md:w-[25px] h-[20px] md:h-[25px] border-[3px] ml-3 transition-all hover:border-gray-500 ${swatchColor === 'black' ? 'border-gray-500' : 'border-black'}`}><span className="sr-only">Black</span></button>
+                                <button onClick={() => setSwatchColor('red')}  className={`rounded-full bg-red-500 w-[20px] md:w-[25px] h-[20px] md:h-[25px] border-[3px] ml-3 transition-all hover:border-red-700 ${swatchColor === 'red' ? 'border-red-700' : 'border-red-500'}`}><span className="sr-only">red</span></button>
+                              </div>
+                            </span>
+                          </div>
+                        </div>
                       </div>
-                      <div className="flex items-center gap-4">
+                      <div className="flex items-center gap-4 order-1">
                         {/* <div className="flex items-center gap-4">
                           <div className="flex items-center border-[3px] border-gray-300 rounded-full">
                             <button
