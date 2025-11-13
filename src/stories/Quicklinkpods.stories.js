@@ -1,46 +1,109 @@
+import { db } from '../config/firebase';
+import { doc, getDoc, updateDoc } from 'firebase/firestore';
+import { useEffect, useCallback, useRef } from 'react';
 import { QuickLinksPods } from './Quicklinkpods';
+import { useArgs } from 'storybook/preview-api';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 export default {
-  title: 'Components/QuickLinksPods',
+  title: 'Components/Quick Links Pods',
   component: QuickLinksPods,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
     layout: 'centered',
   },
-  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
-  tags: ['autodocs'],
 };
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const QuickLinksPodsContainer = {
   args: {
-    bordercolor: '#D2000F',
-    buttontextcolor: '#000',
-    buttonbackgroundcolor: '#fff',
-    pod1image: 'https://www.thetoyshop.com/medias/ts-tonie-starter-sets-pod-350x350.png?context=bWFzdGVyfHJvb3R8MTI4ODAwfGltYWdlL3BuZ3xhRGd6TDJnellpOHhNalU0TkRjNE9EVTVNRFl5TWk5MGN5MTBiMjVwWlMxemRHRnlkR1Z5TFhObGRITXRjRzlrTFRNMU1IZ3pOVEF1Y0c1bnw4OTA1MDJjZjZiNjg4ZTA2NGNmNmM0ODYyMDI3MDFkYjM5NTA2NjgxZTc4OGQ2NGJlMGU0ZGVjNjRiNWNiNDg1',
-    pod1alt: 'Toniebox 2',
-    pod1link: 'https://www.thetoyshop.com/brands/tonies/tonies-toniebox',
-    pod1text: 'Toniebox 2',
-    pod2image: 'https://www.thetoyshop.com/medias/ts-tonie-character-pod-350x350.png?context=bWFzdGVyfHJvb3R8ODM3MTR8aW1hZ2UvcG5nfGFHTmlMMmhoT1M4eE1qVTRORGM0TmpBek5EY3hPQzkwY3kxMGIyNXBaUzFqYUdGeVlXTjBaWEl0Y0c5a0xUTTFNSGd6TlRBdWNHNW58N2M4ZmJiZjUzZjI1MzRkNjhkNjFhNmFhMTk1Yjk1ODVjYjA0Yzc4OWY1YzMyMzNiZjEzMzBkNDJhZDk1ODZiNg',
-    pod2alt: 'Audio Tonies',
-    pod2link: 'https://www.thetoyshop.com/brands/tonies/tonies-characters',
-    pod2text: 'Audio Tonies',
-    pod3image: 'https://www.thetoyshop.com/medias/ts-tonie-tonieplay-pod-350x350.png?context=bWFzdGVyfHJvb3R8ODQyOTF8aW1hZ2UvcG5nfGFEaGhMMmhqTVM4eE1qVTVOREEzTkRBNU1UVTFNQzkwY3kxMGIyNXBaUzEwYjI1cFpYQnNZWGt0Y0c5a0xUTTFNSGd6TlRBdWNHNW58NDE2ZWFhZTI4YjE2YzNkNGYwZDE1NGRkYmQ3MDJiODBiZjY5Y2IyNDdjNmVmYTZjMTEyODQyZWVhYzQwN2JlNA',
-    pod3alt: 'Tonieplay',
-    pod3link: 'https://www.thetoyshop.com/search/?text=Tonieplay',
-    pod3text: 'Tonieplay',
-    pod4image: 'https://www.thetoyshop.com/medias/ts-tonie-bundles-pod-350x350.png?context=bWFzdGVyfHJvb3R8MTE3NjcyfGltYWdlL3BuZ3xhR1UyTDJnME5DOHhNalU0TkRjNE9EZ3hPVGs1T0M5MGN5MTBiMjVwWlMxaWRXNWtiR1Z6TFhCdlpDMHpOVEI0TXpVd0xuQnVad3w3NjAzMjk0ZjQyN2EwNmY1MTRkOWYxYWMwNjQzZDAyNjNlMjcwMjBmM2ZiOTQ1M2RjZjhjOWI0ODVkYzYxODli',
-    pod4alt: 'Bundles',
-    pod4link: 'https://www.thetoyshop.com/brands/tonies?priceRange=%C2%A375%2B#sort-by',
-    pod4text: 'Bundles',
-    pod5image: 'https://www.thetoyshop.com/medias/ts-tonie-accessories-pod-350x350.png?context=bWFzdGVyfHJvb3R8ODA3MjF8aW1hZ2UvcG5nfGFHWTRMMmcyWlM4eE1qVTVOREEzTXpjek1URXdNaTkwY3kxMGIyNXBaUzFoWTJObGMzTnZjbWxsY3kxd2IyUXRNelV3ZURNMU1DNXdibWN8MjgzYmFiOTQ3NTc1NGQ3Y2E1NTdmMTJkNDZkNDM4MDI2ODk2YzA2OWUwOTk2YTkxMTU0ZTA4NmM2NmVjOWZlNA',
-    pod5alt: 'Accessories',
-    pod5link: 'https://www.thetoyshop.com/brands/tonies/tonies-accessories',
-    pod5text: 'Accessories',
-    pod6image: 'https://www.thetoyshop.com/medias/ts-tonie-blog-pod-350x350.png?context=bWFzdGVyfHJvb3R8MTY5NzY1fGltYWdlL3BuZ3xhRFUzTDJnNU1TOHhNalU0TkRjNE5qYzRPRE00TWk5MGN5MTBiMjVwWlMxaWJHOW5MWEJ2WkMwek5UQjRNelV3TG5CdVp3fDE2NTEyYmFiOWRlOTNmOWVlMWM2MzY1MmE0NGM4YjNjYWI4ZWIwYTRhYjc2NmFiMTA1MzQ3MWU4MDQ0ZGI4NzE',
-    pod6alt: 'Read Our Blog',
-    pod6link: 'https://www.thetoyshop.com/childhood-adventures/using-creative-tonie',
-    pod6text: 'Read Our Blog',
+    bordercolor: '',
+    buttontextcolor: '',
+    buttonbackgroundcolor: '',
+    pod1image: '',
+    pod1alt: '',
+    pod1link: '',
+    pod1text: '',
+    pod2image: '',
+    pod2alt: '',
+    pod2link: '',
+    pod2text: '',
+    pod3image: '',
+    pod3alt: '',
+    pod3link: '',
+    pod3text: '',
+    pod4image: '',
+    pod4alt: '',
+    pod4link: '',
+    pod4text: '',
+    pod5image: '',
+    pod5alt: '',
+    pod5link: '',
+    pod5text: '',
+    pod6image: '',
+    pod6alt: '',
+    pod6link: '',
+    pod6text: '',
   },
+  render: function Render(args) {
+        const [currentArgs, updateArgs] = useArgs();
+        const hasLoadedFromFirestore = useRef(false);
+    
+        // --- Load all fields from Firestore once ---
+        useEffect(() => {
+          const loadFromFirebase = async () => {
+            try {
+              const docRef = doc(db, 'stories', 'quicklinkpods');
+              const snapshot = await getDoc(docRef);
+    
+              if (snapshot.exists()) {
+                const data = snapshot.data();
+    
+                // Merge data from Firestore into Storybook args
+                updateArgs({
+                  ...args,
+                  ...data,
+                });
+              } else {
+                console.warn('No such document: quicklinkpods');
+              }
+            } catch (err) {
+              console.error('Error fetching from Firestore:', err);
+            } finally {
+              hasLoadedFromFirestore.current = true;
+            }
+          };
+    
+          loadFromFirebase();
+        }, []);
+    
+        // --- Generic Firestore sync for all fields ---
+        const syncAllArgsToFirebase = useCallback(async (newArgs) => {
+          if (!hasLoadedFromFirestore.current) return; // skip before load
+    
+          try {
+            const docRef = doc(db, 'stories', 'quicklinkpods');
+    
+            // Clean values before saving
+            const cleanedArgs = {};
+            for (const [key, value] of Object.entries(newArgs)) {
+              // Normalize empty values to empty strings
+              cleanedArgs[key] = typeof value === 'string' && value.trim() === '' ? '' : value;
+            }
+    
+            await updateDoc(docRef, cleanedArgs);
+            console.log('✅ Firestore updated:', cleanedArgs);
+          } catch (err) {
+            console.error('Error updating Firestore:', err);
+          }
+        }, []);
+    
+        // --- Watch for *any* arg change and sync ---
+        useEffect(() => {
+          if (!hasLoadedFromFirestore.current) return;
+          syncAllArgsToFirebase(currentArgs);
+        }, [currentArgs, syncAllArgsToFirebase]);
+    
+        return <QuickLinksPods {...args} />;
+      },
 };

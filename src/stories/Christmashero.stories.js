@@ -1,31 +1,94 @@
+import { db } from '../config/firebase';
+import { doc, getDoc, updateDoc } from 'firebase/firestore';
+import { useEffect, useCallback, useRef } from 'react';
 import { ChristmasHero } from './Christmashero';
+import { useArgs } from 'storybook/preview-api';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 export default {
-  title: 'Christmas/ChristmasHero',
+  title: 'Christmas/Christmas Hero',
   component: ChristmasHero,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
     layout: 'centered',
   },
-  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
-  tags: ['autodocs'],
 };
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const ChristmasHeroPods = {
   args: {
-    hero1image: 'https://www.thetoyshop.com/medias/2025-spotlight-deal-576083-story-560x318.jpg?context=bWFzdGVyfHJvb3R8MTE5MjI5fGltYWdlL2pwZWd8YUdFMkwyaGhNeTh4TWpZeE16VXlOREkxT0RnME5pOHlNREkxTFhOd2IzUnNhV2RvZEMxa1pXRnNMVFUzTmpBNE15MXpkRzl5ZVMwMU5qQjRNekU0TG1wd1p3fGRlMWYzNDY5NGIzMTg3NTFjMzQ3OThjOGEwMjFiNGQ5MTUyOTg1NzE3NDlmZTVkNTUzOWM5MDFhYTI3MGE1MDM',
-    hero1alt: 'Jurassic World Mosasaurus Rescue Action Boat',
-    hero1link: 'https://www.thetoyshop.com/transport-toys/trains/Early-Learning-Centre-Wooden-Little-Town-Train-Table/p/574494',
-    hero1title: 'Save 50% off the Matchbox Jurassic World Mosasaurus Rescue Action Boat',
-    hero1subtitle: 'Embark on an epic land and sea adventure inspired by Jurassic World Rebirth',
-    hero1buttontext: 'SHOP NOW',
-    hero2image: 'https://www.thetoyshop.com/medias/2025-spotlight-deal-574494-story-560x318.jpg?context=bWFzdGVyfHJvb3R8MTE2MjEyfGltYWdlL2pwZWd8YUdaa0wyaGpZaTh4TWpZeE5EZ3lPVEUwTmpFME1pOHlNREkxTFhOd2IzUnNhV2RvZEMxa1pXRnNMVFUzTkRRNU5DMXpkRzl5ZVMwMU5qQjRNekU0TG1wd1p3fGI3YTgzY2Y3MjNlMTlkMzdmNjY5NTBjOTZhNWNjYjRlYTk0NmQ4OTk1MDQwYWJiOTc1OTc5ZDQ3NDg0ZjFjMWY',
-    hero2alt: 'Early Learning Centre Wooden Little Town Train Table',
-    hero2link: 'https://www.thetoyshop.com/transport-toys/trains/Early-Learning-Centre-Wooden-Little-Town-Train-Table/p/574494',
-    hero2title: 'Save 50% off the Early Learning Centre Wooden Little Town Train Table',
-    hero2subtitle: 'All aboard! Get ready for railroad adventures with this 46-piece wooden playset',
-    hero2buttontext: 'SHOP NOW',
+    hero1image: '',
+    hero1alt: '',
+    hero1link: '',
+    hero1title: '',
+    hero1subtitle: '',
+    hero1buttontext: '',
+    hero2image: '',
+    hero2alt: '',
+    hero2link: '',
+    hero2title: '',
+    hero2subtitle: '',
+    hero2buttontext: '',
   },
+  render: function Render(args) {
+        const [currentArgs, updateArgs] = useArgs();
+        const hasLoadedFromFirestore = useRef(false);
+    
+        // --- Load all fields from Firestore once ---
+        useEffect(() => {
+          const loadFromFirebase = async () => {
+            try {
+              const docRef = doc(db, 'stories', 'christmashero');
+              const snapshot = await getDoc(docRef);
+    
+              if (snapshot.exists()) {
+                const data = snapshot.data();
+    
+                // Merge data from Firestore into Storybook args
+                updateArgs({
+                  ...args,
+                  ...data,
+                });
+              } else {
+                console.warn('No such document: christmashero');
+              }
+            } catch (err) {
+              console.error('Error fetching from Firestore:', err);
+            } finally {
+              hasLoadedFromFirestore.current = true;
+            }
+          };
+    
+          loadFromFirebase();
+        }, []);
+    
+        // --- Generic Firestore sync for all fields ---
+        const syncAllArgsToFirebase = useCallback(async (newArgs) => {
+          if (!hasLoadedFromFirestore.current) return; // skip before load
+    
+          try {
+            const docRef = doc(db, 'stories', 'christmashero');
+    
+            // Clean values before saving
+            const cleanedArgs = {};
+            for (const [key, value] of Object.entries(newArgs)) {
+              // Normalize empty values to empty strings
+              cleanedArgs[key] = typeof value === 'string' && value.trim() === '' ? '' : value;
+            }
+    
+            await updateDoc(docRef, cleanedArgs);
+            console.log('✅ Firestore updated:', cleanedArgs);
+          } catch (err) {
+            console.error('Error updating Firestore:', err);
+          }
+        }, []);
+    
+        // --- Watch for *any* arg change and sync ---
+        useEffect(() => {
+          if (!hasLoadedFromFirestore.current) return;
+          syncAllArgsToFirebase(currentArgs);
+        }, [currentArgs, syncAllArgsToFirebase]);
+    
+        return <ChristmasHero {...args} />;
+      },
 };

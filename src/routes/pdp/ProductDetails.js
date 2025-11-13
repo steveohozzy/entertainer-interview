@@ -1329,7 +1329,7 @@ const ProductDetails = () => {
                         />
                       </svg>
                     }
-                    onClick={addProductToCart}
+                    onClick={'#'}
                   >
                     Write a review
                   </Button>

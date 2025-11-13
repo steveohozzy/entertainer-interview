@@ -14,4 +14,5 @@ const config = {
   ],
   framework: '@storybook/react-webpack5',
 };
+
 export default config;

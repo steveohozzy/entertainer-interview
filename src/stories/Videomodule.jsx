@@ -9,7 +9,7 @@ export const VideoModule = ({
   buttonbackground,
   buttontextcolor,
   buttonbackgroundhover,
-  video,
+  videosrc,
   title,
   blurb,
   buttontext,
@@ -18,12 +18,15 @@ export const VideoModule = ({
   isMuted
 }) => {
    const refVideo = useRef(null);
-    useEffect(() => {
-          refVideo.current.defaultMuted = true;
-          refVideo.current.muted = true;
-  
-          refVideo.current.srcObject = src;
-      }, [isMuted, src]);
+   useEffect(() => {
+    if (videosrc && videosrc !== ' ') {
+        refVideo.current.defaultMuted = true;
+        refVideo.current.muted = true;
+
+        refVideo.current.srcObject = src;
+        refVideo.current?.load();
+    }
+    }, [isMuted, src, videosrc]);
   return (
     <>
       <style>
@@ -223,7 +226,7 @@ export const VideoModule = ({
           <div class="media">
             <video ref={refVideo} autoPlay loop playsInline>
               <source
-                src={video}
+                src={videosrc}
                 type="video/mp4"
               />
             </video>
@@ -292,7 +295,7 @@ export const VideoModule = ({
 
 VideoModule.propTypes = {
   /** Video module contents */
-  video: PropTypes.string,
+  videosrc: PropTypes.string,
   background: PropTypes.string,
   titlecolor: PropTypes.string,
   textcolor: PropTypes.string,

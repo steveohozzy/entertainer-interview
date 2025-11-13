@@ -1,30 +1,93 @@
+import { db } from '../config/firebase';
+import { doc, getDoc, updateDoc } from 'firebase/firestore';
+import { useEffect, useCallback, useRef } from 'react';
 import { VideoModule } from './Videomodule';
+import { useArgs } from 'storybook/preview-api';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 export default {
-  title: 'Components/VideoModule',
+  title: 'Components/Video Module',
   component: VideoModule,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
     layout: 'centered',
   },
-  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
-  tags: ['autodocs'],
 };
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const VideoModuleHero = {
   args: {
-    video: 'https://www.thetoyshop.com/medias/2025-rc-car-mp4.mp4?context=bWFzdGVyfHJvb3R8MjU1NDYzOHx2aWRlby9tcDR8YURaaEwyZzFNQzh4TWpVME9USTVNamN5TURFMU9DOHlNREkxTFhKakxXTmhjaTF0Y0RRdWJYQTB8MDJkMzQ3MDM1NzEwOWNjNWU3NjFhMDZmNzZkNDAwOTc0M2NjMDdhZDIzNThlZTJhZmY5Y2QwYTQwNmE3MTE2Yg',
-    background: '#a7a7a7',
-    titlecolor: '#ffffff',
-    textcolor: '#ffffff',
-    buttonbackground: '#0057B8',
-    buttontextcolor: '#ffffff',
-    buttonbackgroundhover: '#e82416',
-    title: 'Remote Control Cars',
-    blurb: 'Experience the thrill of speed and control with our exciting range of remote control cars. Perfect for kids and adults alike!',
-    buttontext: 'Shop Now',
-    link: 'https://www.thetoyshop.com/c/transport-toys/remote-control/rc-cars#sort-by',
+    videosrc: '',
+    background: '',
+    titlecolor: '',
+    textcolor: '',
+    buttonbackground: '',
+    buttontextcolor: '',
+    buttonbackgroundhover: '',
+    title: '',
+    blurb: '',
+    buttontext: '',
+    link: '',
   },
+  render: function Render(args) {
+        const [currentArgs, updateArgs] = useArgs();
+        const hasLoadedFromFirestore = useRef(false);
+    
+        // --- Load all fields from Firestore once ---
+        useEffect(() => {
+          const loadFromFirebase = async () => {
+            try {
+              const docRef = doc(db, 'stories', 'videomodule');
+              const snapshot = await getDoc(docRef);
+    
+              if (snapshot.exists()) {
+                const data = snapshot.data();
+    
+                // Merge data from Firestore into Storybook args
+                updateArgs({
+                  ...args,
+                  ...data,
+                });
+              } else {
+                console.warn('No such document: videomodule');
+              }
+            } catch (err) {
+              console.error('Error fetching from Firestore:', err);
+            } finally {
+              hasLoadedFromFirestore.current = true;
+            }
+          };
+    
+          loadFromFirebase();
+        }, []);
+    
+        // --- Generic Firestore sync for all fields ---
+        const syncAllArgsToFirebase = useCallback(async (newArgs) => {
+          if (!hasLoadedFromFirestore.current) return; // skip before load
+    
+          try {
+            const docRef = doc(db, 'stories', 'videomodule');
+    
+            // Clean values before saving
+            const cleanedArgs = {};
+            for (const [key, value] of Object.entries(newArgs)) {
+              // Normalize empty values to empty strings
+              cleanedArgs[key] = typeof value === 'string' && value.trim() === '' ? '' : value;
+            }
+    
+            await updateDoc(docRef, cleanedArgs);
+            console.log('✅ Firestore updated:', cleanedArgs);
+          } catch (err) {
+            console.error('Error updating Firestore:', err);
+          }
+        }, []);
+    
+        // --- Watch for *any* arg change and sync ---
+        useEffect(() => {
+          if (!hasLoadedFromFirestore.current) return;
+          syncAllArgsToFirebase(currentArgs);
+        }, [currentArgs, syncAllArgsToFirebase]);
+    
+        return <VideoModule {...args} />;
+      },
 };

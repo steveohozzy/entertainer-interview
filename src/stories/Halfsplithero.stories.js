@@ -1,24 +1,28 @@
+import { db } from '../config/firebase';
+import { doc, getDoc, updateDoc } from 'firebase/firestore';
+import { useEffect, useCallback, useRef } from 'react';
 import { HalfSplitHero } from './Halfsplithero';
+import { useArgs } from 'storybook/preview-api';
 
-// More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 export default {
-  title: 'Home/Half Split Hero',
+  title: 'Home/Hero/Half Split Hero',
   component: HalfSplitHero,
   parameters: {
-    // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
     layout: 'centered',
   },
-  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
-  tags: ['autodocs'],
+  argTypes: {
+    background: {
+      control: 'color',
+    },
+  },
 };
 
-// More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const HalfAndHalfHero = {
   args: {
     image: '',
-    imagealt:'',
-    videosrc: 'https://www.thetoyshop.com/medias/2025-p9-tonies-2-announcement-video.mp4?context=bWFzdGVyfHJvb3R8Njk5NzgyNXx2aWRlby9xdWlja3RpbWV8YURrd0wyZzBOQzh4TWpVNE1qY3dORFUwTlRneU1pOHlNREkxTFhBNUxYUnZibWxsY3kweUxXRnVibTkxYm1ObGJXVnVkQzEyYVdSbGJ5NXRjRFF8ZGE2NDY2YjMwM2M4YmU4ZTdkMjlmOGJmNzcwODljYzFlZjEwY2FiZTAxOWI2MWZhNmZlMGMyYzFhM2Q5YzA1Yw',
-    background: 'linear-gradient(213deg,rgba(0, 86, 173, 1) 0%, rgba(0, 153, 215, 1) 35%, rgba(0, 204, 239, 1) 100%)',
+    imagealt: '',
+    videosrc: '',
+    background: '',
     textColor: '#FFFFFF',
     headline: 'New Toniebox 2 with Tonieplay',
     tagline: 'Get ready for screen-free stories, songs and more!',
@@ -27,5 +31,67 @@ export const HalfAndHalfHero = {
     dataElementType: 'hp-hero-area',
     datapromotionindex: '3',
     datapromotionname: 'Hero-3-Huffy',
+  },
+
+  render: function Render(args) {
+    const [currentArgs, updateArgs] = useArgs();
+    const hasLoadedFromFirestore = useRef(false);
+
+    // --- Load all fields from Firestore once ---
+    useEffect(() => {
+      const loadFromFirebase = async () => {
+        try {
+          const docRef = doc(db, 'stories', 'halfsplithero');
+          const snapshot = await getDoc(docRef);
+
+          if (snapshot.exists()) {
+            const data = snapshot.data();
+
+            // Merge data from Firestore into Storybook args
+            updateArgs({
+              ...args,
+              ...data,
+            });
+          } else {
+            console.warn('No such document: halfsplithero');
+          }
+        } catch (err) {
+          console.error('Error fetching from Firestore:', err);
+        } finally {
+          hasLoadedFromFirestore.current = true;
+        }
+      };
+
+      loadFromFirebase();
+    }, []);
+
+    // --- Generic Firestore sync for all fields ---
+    const syncAllArgsToFirebase = useCallback(async (newArgs) => {
+      if (!hasLoadedFromFirestore.current) return; // skip before load
+
+      try {
+        const docRef = doc(db, 'stories', 'halfsplithero');
+
+        // Clean values before saving
+        const cleanedArgs = {};
+        for (const [key, value] of Object.entries(newArgs)) {
+          // Normalize empty values to empty strings
+          cleanedArgs[key] = typeof value === 'string' && value.trim() === '' ? '' : value;
+        }
+
+        await updateDoc(docRef, cleanedArgs);
+        console.log('✅ Firestore updated:', cleanedArgs);
+      } catch (err) {
+        console.error('Error updating Firestore:', err);
+      }
+    }, []);
+
+    // --- Watch for *any* arg change and sync ---
+    useEffect(() => {
+      if (!hasLoadedFromFirestore.current) return;
+      syncAllArgsToFirebase(currentArgs);
+    }, [currentArgs, syncAllArgsToFirebase]);
+
+    return <HalfSplitHero {...args} />;
   },
 };

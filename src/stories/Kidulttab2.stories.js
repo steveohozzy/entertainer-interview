@@ -1,4 +1,8 @@
+import { db } from '../config/firebase';
+import { doc, getDoc, updateDoc } from 'firebase/firestore';
+import { useEffect, useCallback, useRef } from 'react';
 import { KidultTab2 } from './Kidulttab2';
+import { useArgs } from 'storybook/preview-api';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 export default {
@@ -8,52 +12,115 @@ export default {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
     layout: 'centered',
   },
-  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
-  tags: ['autodocs'],
 };
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const KidultTab2Content = {
   args: {
-    roundal1image: 'https://www.thetoyshop.com/medias/nintendo.svg?context=bWFzdGVyfHJvb3R8NDUzNHxpbWFnZS9zdmcreG1sfGFERmtMMmd3TXk4eE1qWXlNVFk0TnpNMU56UTNNQzl1YVc1MFpXNWtieTV6ZG1jfDdmNDY4MDNkZGViMzNlYzA5ODIxMWJiOGViODk2ZGIwODYwNGVjMjA1NzgyMGI1MGY2NWY0MjA5OGU5OGE0ODk',
-    roundal1alt: 'Nintendo',
-    roundal1link: 'https://www.thetoyshop.com/brands/nintendo',
-    roundal1background: '#E60012',
-    roundal2image: 'https://www.thetoyshop.com/medias/fnaf.svg?context=bWFzdGVyfHJvb3R8NjA3MjQyfGltYWdlL3N2Zyt4bWx8YURCakwyZ3dNQzh4TWpZeU1UWTROelF5TXpBd05pOW1ibUZtTG5OMlp3fDM2MmJkNzNkYjRjODg1NjM4NmRjYmQ4NTE0Yjk4NWJmMTk2YjIwMzgyMmRmZDBmZDdjMDFiNWNjMmM4OGE5ZWE',
-    roundal2alt: 'Five Nights at Freddys',
-    roundal2link: 'https://www.thetoyshop.com/brands/fnaf',
-    roundal2background: '#000',
-    roundal3image: 'https://www.thetoyshop.com/medias/Mario-Series-Logo.svg?context=bWFzdGVyfHJvb3R8NzI1N3xpbWFnZS9zdmcreG1sfGFHRXhMMmd3TUM4eE1qWXlNVFk0TnpRNE9EVTBNaTlOWVhKcGIxOVRaWEpwWlhOZlRHOW5ieTV6ZG1jfDBhOWZkYmY0NjUyMjUyNjhjYjQ1ZjE0ODM1M2RiZjJhZjI1MGM0M2RjOWMwMDBhYmZiMzc0YjI5YjU2MDU1YmU',
-    roundal3alt: 'Super Mario',
-    roundal3link: 'https://www.thetoyshop.com/brands/super-mario/super-mario-merchandise',
-    roundal3background: '#000',
-    roundal4image: 'https://www.thetoyshop.com/medias/rainbow-friends.svg?context=bWFzdGVyfHJvb3R8NzczODl8aW1hZ2Uvc3ZnK3htbHxhR0l5TDJnd015OHhNall5TVRZNE56VTFOREEzT0M5eVlXbHVZbTkzTFdaeWFXVnVaSE11YzNabnw3ODMzMGJjMWM0ZmFjY2IyZWM4NDQ5ZDM5ZTAxYTk2NWMwNzgzNzU4OWQ2NjQ4MmE0M2IxMjI5YjI4Yjc5ZTAz',
-    roundal4alt: 'Rainbow Friends',
-    roundal4link: 'https://www.thetoyshop.com/brands/rainbow-friends',
-    roundal4background: '#93C650',
-    roundal5image: 'https://www.thetoyshop.com/medias/garten.svg?context=bWFzdGVyfHJvb3R8NTE1NDI3fGltYWdlL3N2Zyt4bWx8YUdJd0wyZ3dOaTh4TWpZeU1UWTROell4T1RZeE5DOW5ZWEowWlc0dWMzWm58N2U4Njc0MzkzNGMyMDAzNDQxMmY5ZWQ4MDA1NWQ5M2U5N2NlMjg3MGJlNWY5MjBhMjBmMmMyMjgyMWNiMGFlZQ',
-    roundal5alt: 'Garten of Banban',
-    roundal5link: 'https://www.thetoyshop.com/brands/garten-of-banban',
-    roundal5background: '#FB9851',
-    roundal6image: 'https://www.thetoyshop.com/medias/minecraft.svg?context=bWFzdGVyfHJvb3R8Mzg4OXxpbWFnZS9zdmcreG1sfGFEY3hMMmd3Tnk4eE1qWXlNVFk0TnpZNE5URTFNQzl0YVc1bFkzSmhablF1YzNabnwzNmQzYzAxNGI1NTE4ZWFmOWIxY2RjMDNmYmY1ODJkYjRiNGNjY2U5YjczYWM3NDMyZjg1YmE2YWZjZDMyN2Ji',
-    roundal6alt: 'Minecraft',
-    roundal6link: 'https://www.thetoyshop.com/brands/minecraft/minecraft-merchandise',
-    roundal6background: '#3C8527',
-    roundal7image: 'https://www.thetoyshop.com/medias/pokemon.svg?context=bWFzdGVyfHJvb3R8NTI2MDV8aW1hZ2Uvc3ZnK3htbHxhRGd5TDJnd1lTOHhNall5TVRZNE56YzFNRFk0Tmk5d2IydGxiVzl1TG5OMlp3fGVmZDhlOTZmNDBkMzUxMWVhMjUwZTg2NDNmYmU2MGFhMDI4OGZiYmM5MTFlMzkwYjM4NmJjMjQxZTliZjBiYzU',
-    roundal7alt: 'Pokemon',
-    roundal7link: 'https://www.thetoyshop.com/brands/pokemon',
-    roundal7background: '#0096D1',
-    roundal8image: 'https://www.thetoyshop.com/medias/sonic.svg?context=bWFzdGVyfHJvb3R8Mjc0NjV8aW1hZ2Uvc3ZnK3htbHxhRGd3TDJnd1pDOHhNall5TVRZNE56Z3hOakl5TWk5emIyNXBZeTV6ZG1jfDdjNmRmOGE0NjkzZDU5ZGJmZGYzZWY4ZDJmNGZlMTdhYjgxNDdlM2RlMzEwNmU5NWFjNTI1NDE3ZDYyNTE0N2I',
-    roundal8alt: 'Sonic the Hedgehog',
-    roundal8link: 'https://www.thetoyshop.com/brands/sonic-the-hedgehog/sonic-the-hedgehog-merchandise',
-    roundal8background: '#007AFF',
-    roundal9image: 'https://www.thetoyshop.com/medias/Zelda-2017-white.svg?context=bWFzdGVyfHJvb3R8NDE3M3xpbWFnZS9zdmcreG1sfGFEa3pMMmhoTlM4eE1qWXlORFE1T0RVeU5ERTVNQzlhWld4a1lWOHlNREUzWDNkb2FYUmxMbk4yWnd8NzIzZTM1NjhhY2Q4ZGM5NTY1NzkxZmY3ZWE3ZmIwY2UxYjZkZjg5NzdhMzQ0ODI0M2E4MTgzMjI5MTA2MzdjMQ',
-    roundal9alt: 'Legend of Zelda',
-    roundal9link: 'https://www.thetoyshop.com/brands/the-legend-of-zelda',
-    roundal9background: '#B59C66',
-    roundal10image: 'https://www.thetoyshop.com/medias/playstaion-logo.svg?context=bWFzdGVyfHJvb3R8OTI2fGltYWdlL3N2Zyt4bWx8YURNMUwyZ3pOaTh4TWpZek5ESTVOREUxTnpNME1pOXdiR0Y1YzNSaGFXOXVMV3h2WjI4dWMzWm58NTQ2ZjY3YTczMzY1MmVjMDkzYzAzMDBhN2JhNjljMTE1ZTE0NzI4ODZlNTJkNWU5ZmVkNTgwNDg0MTczODMwMg',
-    roundal10alt: 'Playstation',
-    roundal10link: 'https://www.thetoyshop.com/brands/sony-playstation',
-    roundal10background: '#0070d1',
-  }
+    roundal1image: '',
+    roundal1alt: '',
+    roundal1link: '',
+    roundal1background: '',
+    roundal2image: '',
+    roundal2alt: '',
+    roundal2link: '',
+    roundal2background: '',
+    roundal3image: '',
+    roundal3alt: '',
+    roundal3link: '',
+    roundal3background: '',
+    roundal4image: '',
+    roundal4alt: '',
+    roundal4link: '',
+    roundal4background: '',
+    roundal5image: '',
+    roundal5alt: '',
+    roundal5link: '',
+    roundal5background: '',
+    roundal6image: '',
+    roundal6alt: '',
+    roundal6link: '',
+    roundal6background: '',
+    roundal7image: '',
+    roundal7alt: '',
+    roundal7link: '',
+    roundal7background: '',
+    roundal8image: '',
+    roundal8alt: '',
+    roundal8link: '',
+    roundal8background: '',
+    roundal9image: '',
+    roundal9alt: '',
+    roundal9link: '',
+    roundal9background: '',
+    roundal10image: '',
+    roundal10alt: '',
+    roundal10link: '',
+    roundal10background: '',
+    roundal11image: "",
+    roundal11alt: "",
+    roundal11link: "",
+    roundal11background: ""
+  },
+  render: function Render(args) {
+              const [currentArgs, updateArgs] = useArgs();
+              const hasLoadedFromFirestore = useRef(false);
+          
+              // --- Load all fields from Firestore once ---
+              useEffect(() => {
+                const loadFromFirebase = async () => {
+                  try {
+                    const docRef = doc(db, 'stories', 'kidulttab2');
+                    const snapshot = await getDoc(docRef);
+          
+                    if (snapshot.exists()) {
+                      const data = snapshot.data();
+          
+                      // Merge data from Firestore into Storybook args
+                      updateArgs({
+                        ...args,
+                        ...data,
+                      });
+                    } else {
+                      console.warn('No such document: kidulttab2');
+                    }
+                  } catch (err) {
+                    console.error('Error fetching from Firestore:', err);
+                  } finally {
+                    hasLoadedFromFirestore.current = true;
+                  }
+                };
+          
+                loadFromFirebase();
+              }, []);
+          
+              // --- Generic Firestore sync for all fields ---
+              const syncAllArgsToFirebase = useCallback(async (newArgs) => {
+                if (!hasLoadedFromFirestore.current) return; // skip before load
+          
+                try {
+                  const docRef = doc(db, 'stories', 'kidulttab2');
+          
+                  // Clean values before saving
+                  const cleanedArgs = {};
+                  for (const [key, value] of Object.entries(newArgs)) {
+                    // Normalize empty values to empty strings
+                    cleanedArgs[key] = typeof value === 'string' && value.trim() === '' ? '' : value;
+                  }
+          
+                  await updateDoc(docRef, cleanedArgs);
+                  console.log('✅ Firestore updated:', cleanedArgs);
+                } catch (err) {
+                  console.error('Error updating Firestore:', err);
+                }
+              }, []);
+          
+              // --- Watch for *any* arg change and sync ---
+              useEffect(() => {
+                if (!hasLoadedFromFirestore.current) return;
+                syncAllArgsToFirebase(currentArgs);
+              }, [currentArgs, syncAllArgsToFirebase]);
+          
+              return <KidultTab2 {...args} />;
+            },
 };

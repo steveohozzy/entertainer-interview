@@ -19,12 +19,17 @@ export const HalfSplitHero = ({
   isMuted
 }) => {
   const refVideo = useRef(null);
+
   useEffect(() => {
+    if (videosrc && videosrc !== ' ') {
         refVideo.current.defaultMuted = true;
         refVideo.current.muted = true;
 
         refVideo.current.srcObject = src;
-    }, [isMuted, src]);
+        refVideo.current?.load();
+    }
+    }, [isMuted, src, videosrc]);
+
   return (
     <>
       <style>{`
@@ -220,13 +225,13 @@ export const HalfSplitHero = ({
              data-element-type={dataElementType} data-promotion-index={datapromotionindex} data-promotion-name={datapromotionname}
              class="hero-card">
           <div class="media">
-            {image && 
+            {image && image !== ' ' &&
               <img
                 src={image}
                 alt={imagealt || 'Hero image'}
               />
             }
-            {videosrc &&
+            {videosrc && videosrc !== ' ' &&
               <video ref={refVideo} autoPlay loop playsInline>
                 <source
                   src={videosrc}
@@ -235,8 +240,7 @@ export const HalfSplitHero = ({
               </video>
           }
           </div>
-          <div class="hero-tile-info" style={{background: background, color: textColor}}>
-            
+          <div class="hero-tile-info" style={{background : background, color: textColor}}>
               <h2 style={{color: textColor}}>{headline}</h2>
               <div class="hero-blurb" style={{color: textColor}}>
                 {tagline}

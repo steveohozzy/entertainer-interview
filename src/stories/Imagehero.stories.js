@@ -1,26 +1,94 @@
+import { db } from '../config/firebase';
+import { doc, getDoc, updateDoc } from 'firebase/firestore';
+import { useEffect, useCallback, useRef } from 'react';
 import { ImageHero } from './Imagehero';
+import { useArgs } from 'storybook/preview-api';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 export default {
-  title: 'Home/ImageHero',
+  title: 'Home/Hero/Image Hero',
   component: ImageHero,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
     layout: 'centered',
   },
-  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
-  tags: ['autodocs'],
+  argTypes: {
+    background: {
+      control: 'color',
+    },
+  },
 };
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const ImageBannerHero = {
   args: {
-    desktopimage: 'https://www.thetoyshop.com/medias/2025-lego-gaming-hero-desktop-1800x560.jpg?context=bWFzdGVyfHJvb3R8MzE2MjMxfGltYWdlL2pwZWd8YURoaUwyZ3pOaTh4TWpVNU9EZzRPRGMxT1RNeU5pOHlNREkxTFd4bFoyOHRaMkZ0YVc1bkxXaGxjbTh0WkdWemEzUnZjQzB4T0RBd2VEVTJNQzVxY0djfDFhYmUwN2JjNWMxODAyMzNjNDY0NDU1ZDFiZjA5M2MxMzIzYWE1YWZmNDNjYjdmZjUxOGQ3MGIyNzRhN2IyMzQ',
-    mobileimage: 'https://www.thetoyshop.com/medias/2025-lego-gaming-hero-mobile-450x480.jpg?context=bWFzdGVyfHJvb3R8MTIyNTA2fGltYWdlL2pwZWd8YURFNEwyZzRPQzh4TWpVNU9EZzRPVEF5TVRRM01DOHlNREkxTFd4bFoyOHRaMkZ0YVc1bkxXaGxjbTh0Ylc5aWFXeGxMVFExTUhnME9EQXVhbkJufGNhMTA3OGRlMWQyMWFiZTRhMmIyNTFjNWZjY2U0MDNmN2ZiZTFlYTIzZmYzYmU0ODYxN2U1N2FkODhkOTEyMTY',
-    link: 'https://www.thetoyshop.com/brands/lego',
-    alt: 'Half Price Toy Sale',
-    dataElementType: 'hp-hero-area',
-    datapromotionindex: '2',
-    datapromotionname: 'Hero-2-LEGO',
+    desktopimage: '',
+    mobileimage: '',
+    link: '',
+    alt: '',
+    dataElementType: '',
+    datapromotionindex: '',
+    datapromotionname: '',
+  },
+  render: function Render(args) {
+    const [currentArgs, updateArgs] = useArgs();
+    const hasLoadedFromFirestore = useRef(false);
+
+    // --- Load all fields from Firestore once ---
+    useEffect(() => {
+      const loadFromFirebase = async () => {
+        try {
+          const docRef = doc(db, 'stories', 'imagehero');
+          const snapshot = await getDoc(docRef);
+
+          if (snapshot.exists()) {
+            const data = snapshot.data();
+
+            // Merge data from Firestore into Storybook args
+            updateArgs({
+              ...args,
+              ...data,
+            });
+          } else {
+            console.warn('No such document: imagehero');
+          }
+        } catch (err) {
+          console.error('Error fetching from Firestore:', err);
+        } finally {
+          hasLoadedFromFirestore.current = true;
+        }
+      };
+
+      loadFromFirebase();
+    }, []);
+
+    // --- Generic Firestore sync for all fields ---
+    const syncAllArgsToFirebase = useCallback(async (newArgs) => {
+      if (!hasLoadedFromFirestore.current) return; // skip before load
+
+      try {
+        const docRef = doc(db, 'stories', 'imagehero');
+
+        // Clean values before saving
+        const cleanedArgs = {};
+        for (const [key, value] of Object.entries(newArgs)) {
+          // Normalize empty values to empty strings
+          cleanedArgs[key] = typeof value === 'string' && value.trim() === '' ? '' : value;
+        }
+
+        await updateDoc(docRef, cleanedArgs);
+        console.log('✅ Firestore updated:', cleanedArgs);
+      } catch (err) {
+        console.error('Error updating Firestore:', err);
+      }
+    }, []);
+
+    // --- Watch for *any* arg change and sync ---
+    useEffect(() => {
+      if (!hasLoadedFromFirestore.current) return;
+      syncAllArgsToFirebase(currentArgs);
+    }, [currentArgs, syncAllArgsToFirebase]);
+
+    return <ImageHero {...args} />;
   },
 };

@@ -1,43 +1,107 @@
+import { db } from '../config/firebase';
+import { doc, getDoc, updateDoc } from 'firebase/firestore';
+import { useEffect, useCallback, useRef } from 'react';
 import { HomePods} from './Homepods';
+import { useArgs } from 'storybook/preview-api';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 export default {
-  title: 'ELC/HomePods',
+  title: 'ELC/Home Pods',
   component: HomePods,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
     layout: 'centered',
   },
-  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
-  tags: ['autodocs'],
 };
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const HomePodsContianer = {
   args: {
-    textcolor: '#4f4f4f',
-    backgroundcolor: '#fff',
-    bordercolor: '#0d943f',
-    linkhovercolor: '#0d943f',
+    textcolor: '',
+    backgroundcolor: '',
+    bordercolor: '',
+    linkhovercolor: '',
     pod1isblog: false,
-    pod1image: 'https://www.elc.co.uk/medias/elc-smoby-beauty-centre-577899-story-560x318.jpg?context=bWFzdGVyfHJvb3R8NDg4MTR8aW1hZ2UvanBlZ3xhRFEwTDJnMU15OHhNalU1TkRBNE1UQXpPRE0yTmk5bGJHTXRjMjF2WW5rdFltVmhkWFI1TFdObGJuUnlaUzAxTnpjNE9Ua3RjM1J2Y25rdE5UWXdlRE14T0M1cWNHY3wyM2JiZTk5MTk0ZmZmZTRiYWNkNTg3NDdmYmViY2RmYTRjN2MwOTQxZDIwYWUxZGIzM2ZjNWYxMTY3ZGE5NzRj',
-    pod1alt: 'Exploring The World Through Touch, Sight and Sound',
-    pod1title: 'Exploring The World Through Touch, Sight and Sound',
-    pod1text: 'Indulge their creativity as a hairstylist with this roleplay set',
-    pod1buttontext: 'Shop Now',
-    pod1link: 'https://www.elc.co.uk/online-only/Smoby-My-Beauty-Salon-Roleplay-Playset/p/577899',
-    pod1dataelementtype: 'elc-story-modules',
-    pod1datapromotionindex: '1',
-    pod1datapromotionname: 'ELC-Story-1',
+    pod1image: '',
+    pod1alt: '',
+    pod1title: '',
+    pod1text: '',
+    pod1buttontext: '',
+    pod1link: '',
+    pod1dataelementtype: '',
+    pod1datapromotionindex: '',
+    pod1datapromotionname: '',
     pod2isblog: true,
-    pod2image: 'https://www.elc.co.uk/medias/elc-blog-exploring-the-world-through-touch-sight-and-sound-story-560x318.jpg?context=bWFzdGVyfHJvb3R8NjU2MDF8aW1hZ2UvanBlZ3xhR013TDJnMk1TOHhNalU1TVRrNU56VXhOemcxTkM5bGJHTXRZbXh2WnkxbGVIQnNiM0pwYm1jdGRHaGxMWGR2Y214a0xYUm9jbTkxWjJndGRHOTFZMmd0YzJsbmFIUXRZVzVrTFhOdmRXNWtMWE4wYjNKNUxUVTJNSGd6TVRndWFuQm58OGRjOGI2NzFmOGIxZGFkMzQ3MTcyNWFjNDUxY2MxNDQ5NGZhMTk4NjlmYjdmMDIwZjU2OGJmODMzM2Y3YTljZg',
-    pod2alt: 'Read Our Blog: Exploring The World Through Touch, Sight and Sound',
-    pod2title: 'Exploring The World Through Touch, Sight and Sound',
-    pod2text: 'Read how sensory play supports the development of key learning skills',
-    pod2buttontext: 'Read More',
-    pod2link: 'https://www.elc.co.uk/raising-little-explorers/exploring-the-world-through-touch-sight-and-sound',
-    pod2dataelementtype: 'elc-story-modules',
-    pod2datapromotionindex: '2',
-    pod2atapromotionname: 'ELC-Story-2',
+    pod2image: '',
+    pod2alt: '',
+    pod2title: '',
+    pod2text: '',
+    pod2buttontext: '',
+    pod2link: '',
+    pod2dataelementtype: '',
+    pod2datapromotionindex: '',
+    pod2datapromotionname: '',
   },
+
+  render: function Render(args) {
+        const [currentArgs, updateArgs] = useArgs();
+        const hasLoadedFromFirestore = useRef(false);
+    
+        // --- Load all fields from Firestore once ---
+        useEffect(() => {
+          const loadFromFirebase = async () => {
+            try {
+              const docRef = doc(db, 'stories', 'homepods');
+              const snapshot = await getDoc(docRef);
+    
+              if (snapshot.exists()) {
+                const data = snapshot.data();
+    
+                // Merge data from Firestore into Storybook args
+                updateArgs({
+                  ...args,
+                  ...data,
+                });
+              } else {
+                console.warn('No such document: homepods');
+              }
+            } catch (err) {
+              console.error('Error fetching from Firestore:', err);
+            } finally {
+              hasLoadedFromFirestore.current = true;
+            }
+          };
+    
+          loadFromFirebase();
+        }, []);
+    
+        // --- Generic Firestore sync for all fields ---
+        const syncAllArgsToFirebase = useCallback(async (newArgs) => {
+          if (!hasLoadedFromFirestore.current) return; // skip before load
+    
+          try {
+            const docRef = doc(db, 'stories', 'homepods');
+    
+            // Clean values before saving
+            const cleanedArgs = {};
+            for (const [key, value] of Object.entries(newArgs)) {
+              // Normalize empty values to empty strings
+              cleanedArgs[key] = typeof value === 'string' && value.trim() === '' ? '' : value;
+            }
+    
+            await updateDoc(docRef, cleanedArgs);
+            console.log('✅ Firestore updated:', cleanedArgs);
+          } catch (err) {
+            console.error('Error updating Firestore:', err);
+          }
+        }, []);
+    
+        // --- Watch for *any* arg change and sync ---
+        useEffect(() => {
+          if (!hasLoadedFromFirestore.current) return;
+          syncAllArgsToFirebase(currentArgs);
+        }, [currentArgs, syncAllArgsToFirebase]);
+    
+        return <HomePods {...args} />;
+      },
 };

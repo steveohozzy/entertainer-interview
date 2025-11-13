@@ -1,67 +1,134 @@
+import { db } from '../config/firebase';
+import { doc, getDoc, updateDoc } from 'firebase/firestore';
+import { useEffect, useCallback, useRef } from 'react';
 import { Multiclickhero } from './Multiclickherowithlogos';
+import { useArgs } from 'storybook/preview-api';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 export default {
-  title: 'Home/Multiclickhero',
+  title: 'Home/Hero/Multi Click Hero',
   component: Multiclickhero,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
     layout: 'centered',
   },
-  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
-  tags: ['autodocs'],
+  argTypes: {
+    background: {
+      control: 'color',
+    },
+  },
 };
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const MulticlickheroBanner = {
   args: {
-    background: 'linear-gradient(213deg,rgba(0, 86, 173, 1) 0%, rgba(0, 153, 215, 1) 35%, rgba(0, 204, 239, 1) 100%);',
-    mobilelogosimage: 'https://www.thetoyshop.com/medias/Homepage-Multi-click-Hero-Banner-Mobile-395x160px.png?context=bWFzdGVyfHJvb3R8MzMwOTl8aW1hZ2UvcG5nfGFEbGxMMmd6WVM4eE1qVTVNVEV4TURnME9EVTBNaTlJYjIxbGNHRm5aVjlOZFd4MGFTMWpiR2xqYTE5SVpYSnZYMEpoYm01bGNsOU5iMkpwYkdWZk16azFlREUyTUhCNExuQnVad3xjZWM4MjYwMDkyZGUyYmExMGYyMGUyNWJmMTljZTMzMjExOGMxNjkzN2VmN2ZiYTE0MzQ0NzI0ZjIxNjRlZjYy',
-    desktoplogosimage: 'https://www.thetoyshop.com/medias/Homepage-Multiclick-Hero-Banner-Logo-800x288px.png?context=bWFzdGVyfHJvb3R8NjI4NTl8aW1hZ2UvcG5nfGFHSXdMMmd6WWk4eE1qVTRPVFUzTmpFNU1qQXpNQzlJYjIxbGNHRm5aVjlOZFd4MGFXTnNhV05yWDBobGNtOWZRbUZ1Ym1WeVgweHZaMjlmT0RBd2VESTRPSEI0TG5CdVp3fGNmMmY3YzljODE0MDQ0ODhkOWE4NzNiOGJhMzM2M2JhZTRlMTdiOGFkMjU4MWYyMjAyNGRmMGQxZjNmYmQzMTM',
-    logosalt: 'Disney Gift Guide Logos',
+    background: '',
+    mobilelogosimage: '',
+    desktoplogosimage: '',
+    logosalt: '',
     heading: '',
-    pod1image: 'https://www.thetoyshop.com/medias/Entertainer-Homepage-PodMOANA-Homepage-Pod-350x350px-copy.jpg?context=bWFzdGVyfHJvb3R8NjU4MjZ8aW1hZ2UvanBlZ3xhR1V5TDJnek1TOHhNalU0T1RVM05qUTFOREUzTkM5RmJuUmxjblJoYVc1bGNsOUliMjFsY0dGblpWOVFiMlJOVDBGT1FTQkliMjFsY0dGblpTQlFiMlFnTXpVd2VETTFNSEI0SUdOdmNIa3VhbkJufGE0NWJmY2FiNjhmOGNjOGM4N2NjN2QzM2U5YThlZTExMGRhNDNlNTdkMWVlNjk3MDM4MzJmMGIzZTQzMTZjNjc',
-    pod2image: 'https://www.thetoyshop.com/medias/Entertainer-Homepage-PodPIXAR-Homepage-Pod-350x350px-copy-2.jpg?context=bWFzdGVyfHJvb3R8NjYwMzB8aW1hZ2UvanBlZ3xhR1UwTDJneVpTOHhNalU0T1RVM05qVXhPVGN4TUM5RmJuUmxjblJoYVc1bGNsOUliMjFsY0dGblpWOVFiMlJRU1ZoQlVpQkliMjFsY0dGblpTQlFiMlFnTXpVd2VETTFNSEI0SUdOdmNIa2dNaTVxY0djfGZiODk0YzEyODc1NTc4NWE5NjhhMTFjMDQ2NjQ3MDgyMzUwMjkxMGEzMGM0NmExZTQ2ZDZiYjMyYjE1YmMwZjA',
-    pod3image: 'https://www.thetoyshop.com/medias/Entertainer-Homepage-PodSTAR-WARS-Homepage-Pod-350x350px-copy-3.jpg?context=bWFzdGVyfHJvb3R8NjI0NDR8aW1hZ2UvanBlZ3xhRFEwTDJneU1TOHhNalU0T1RVM05qa3hNamt5Tmk5RmJuUmxjblJoYVc1bGNsOUliMjFsY0dGblpWOVFiMlJUVkVGU0lGZEJVbE1nSUVodmJXVndZV2RsSUZCdlpDQXpOVEI0TXpVd2NIZ2dZMjl3ZVNBekxtcHdad3wyN2ZkOWE3YzI5MDUxZjM2M2U5OGJmZDE4NzM5NzZhZGYwM2VlY2JhODA4MzcyYjA4NmEwOTFkYWE3ZjNjMjE5',
-    pod4image: 'https://www.thetoyshop.com/medias/Entertainer-Homepage-PodSTITCH-Homepage-Pod-350x350px.jpg?context=bWFzdGVyfHJvb3R8NjQ3OTF8aW1hZ2UvanBlZ3xhREkwTDJneVpDOHhNalU0T1RVM056RXdPVFV6TkM5RmJuUmxjblJoYVc1bGNsOUliMjFsY0dGblpWOVFiMlJUVkVsVVEwZ2dTRzl0WlhCaFoyVWdVRzlrSURNMU1IZ3pOVEJ3ZUM1cWNHY3xkMjI1MjM3YjUyNjI2Y2Y5ODhhMzk1YWUwMDQ3MTdhNDcyYzEyYjFjNGNjNmFjNmZmNzM5ZjEyM2E2YzZjMjli',
-    pod5image: 'https://www.thetoyshop.com/medias/Entertainer-Homepage-PodMARVEL-Homepage-Pod-350x350px-copy-4.jpg?context=bWFzdGVyfHJvb3R8NzM4NDl8aW1hZ2UvanBlZ3xhR016TDJnME5DOHhNalU1TVRFeE1EVTFNell6TUM5RmJuUmxjblJoYVc1bGNsOUliMjFsY0dGblpWOVFiMlJOUVZKV1JVd2dJRWh2YldWd1lXZGxJRkJ2WkNBek5UQjRNelV3Y0hnZ1kyOXdlU0EwTG1wd1p3fDY3OTUwZWIwOGE0MDkzZjEyNDgyMTk5ZGMwNmFlZmVhMjczMTQ1NTYwNzMxZjlhNzI3MmE5MWY1YWQwNGY5ZDM',
-    pod6image: 'https://www.thetoyshop.com/medias/Entertainer-Homepage-PodMARVEL-Homepage-Pod-350x350px-copy-4.jpg?context=bWFzdGVyfHJvb3R8NzM4NDl8aW1hZ2UvanBlZ3xhR016TDJnME5DOHhNalU1TVRFeE1EVTFNell6TUM5RmJuUmxjblJoYVc1bGNsOUliMjFsY0dGblpWOVFiMlJOUVZKV1JVd2dJRWh2YldWd1lXZGxJRkJ2WkNBek5UQjRNelV3Y0hnZ1kyOXdlU0EwTG1wd1p3fDY3OTUwZWIwOGE0MDkzZjEyNDgyMTk5ZGMwNmFlZmVhMjczMTQ1NTYwNzMxZjlhNzI3MmE5MWY1YWQwNGY5ZDM',
-    pod1alt: 'Moana',
-    pod1link: 'https://www.thetoyshop.com/brands/disney/disney-princess/moana',
-    pod2alt: 'Toy Story',
-    pod2link: 'https://www.thetoyshop.com/brands/disney/toy-story',
-    pod3alt: 'Star Wars',
-    pod3link: 'https://www.thetoyshop.com/brands/star-wars',
-    pod4alt: 'Stitch',
-    pod4link: 'https://www.thetoyshop.com/brands/disney/lilo-and-stitch',
-    pod5alt: 'Disney',
-    pod5link: 'https://www.thetoyshop.com/brands/disney',
-    pod6link: 'https://www.thetoyshop.com/brands/disney',
-    pod6alt: 'Disney',
-    podlink: 'https://www.thetoyshop.com/brands/disney',
-    pod1text: 'MOANA',
-    pod2text: 'TOY STORY',
-    pod3text: 'STAR WARS',
-    pod4text: 'LILO & STITCH',
-    pod5text: 'DISNEY',
-    pod6text: 'DISNEY',
-    pod1datelementtype: 'pod-1',
-    pod1datapromotionindex: '1',
-    pod1datapromotionname: 'Pod-1-Moana',
-    pod2datelementtype: 'pod-2',
-    pod2datapromotionindex: '2',
-    pod2datapromotionname: 'Pod-2-ToyStory',
-    pod3datelementtype: 'pod-3',
-    pod3datapromotionindex: '3',
-    pod3datapromotionname: 'Pod-3-StarWars',
-    pod4datelementtype: 'pod-4',
-    pod4datapromotionindex: '4',
-    pod4datapromotionname: 'Pod-4-Stitch',
-    pod5datelementtype: 'pod-5',
-    pod5datapromotionindex: '5',
-    pod5datapromotionname: 'Pod-5-Marvel',
-    pod6datelementtype: 'pod-5',
-    pod6datapromotionindex: '5',
-    pod6datapromotionname: 'Pod-5-Marvel',
+    pod1image: '',
+    pod2image: '',
+    pod3image: '',
+    pod4image: '',
+    pod5image: '',
+    pod6image: '',
+    pod1alt: '',
+    pod1link: '',
+    pod2alt: '',
+    pod2link: '',
+    pod3alt: '',
+    pod3link: '',
+    pod4alt: '',
+    pod4link: '',
+    pod5alt: '',
+    pod5link: '',
+    pod6alt: '',
+    pod6link: '',
+    pod1text: '',
+    pod2text: '',
+    pod3text: '',
+    pod4text: '',
+    pod5text: '',
+    pod6text: '',
+    pod1datelementtype: '',
+    pod1datapromotionindex: '',
+    pod1datapromotionname: '',
+    pod2datelementtype: '',
+    pod2datapromotionindex: '',
+    pod2datapromotionname: '',
+    pod3datelementtype: '',
+    pod3datapromotionindex: '',
+    pod3datapromotionname: '',
+    pod4datelementtype: '',
+    pod4datapromotionindex: '',
+    pod4datapromotionname: '',
+    pod5datelementtype: '',
+    pod5datapromotionindex: '',
+    pod5datapromotionname: '',
+    pod6datelementtype: '',
+    pod6datapromotionindex: '',
+    pod6datapromotionname: '',
   },
+  render: function Render(args) {
+      const [currentArgs, updateArgs] = useArgs();
+      const hasLoadedFromFirestore = useRef(false);
+  
+      // --- Load all fields from Firestore once ---
+      useEffect(() => {
+        const loadFromFirebase = async () => {
+          try {
+            const docRef = doc(db, 'stories', 'multiclickhero');
+            const snapshot = await getDoc(docRef);
+  
+            if (snapshot.exists()) {
+              const data = snapshot.data();
+  
+              // Merge data from Firestore into Storybook args
+              updateArgs({
+                ...args,
+                ...data,
+              });
+            } else {
+              console.warn('No such document: multiclickhero');
+            }
+          } catch (err) {
+            console.error('Error fetching from Firestore:', err);
+          } finally {
+            hasLoadedFromFirestore.current = true;
+          }
+        };
+  
+        loadFromFirebase();
+      }, []);
+  
+      // --- Generic Firestore sync for all fields ---
+      const syncAllArgsToFirebase = useCallback(async (newArgs) => {
+        if (!hasLoadedFromFirestore.current) return; // skip before load
+  
+        try {
+          const docRef = doc(db, 'stories', 'multiclickhero');
+  
+          // Clean values before saving
+          const cleanedArgs = {};
+          for (const [key, value] of Object.entries(newArgs)) {
+            // Normalize empty values to empty strings
+            cleanedArgs[key] = typeof value === 'string' && value.trim() === '' ? '' : value;
+          }
+  
+          await updateDoc(docRef, cleanedArgs);
+          console.log('✅ Firestore updated:', cleanedArgs);
+        } catch (err) {
+          console.error('Error updating Firestore:', err);
+        }
+      }, []);
+  
+      // --- Watch for *any* arg change and sync ---
+      useEffect(() => {
+        if (!hasLoadedFromFirestore.current) return;
+        syncAllArgsToFirebase(currentArgs);
+      }, [currentArgs, syncAllArgsToFirebase]);
+  
+      return <Multiclickhero {...args} />;
+    },
 };

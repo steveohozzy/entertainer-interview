@@ -9,8 +9,13 @@ const preview = {
        date: /Date$/i,
       },
     },
+    options: {
+      storySort: {
+        order: ['Home', ['Hero', ['Final Hero Carousel'], 'Pods', ['Final Pods Carousel']], 'Components', 'ELC', 'UI', '*'],
+      },
+    },
     docs: {
-      codePanel: true,
+      codePanel: false,
     },
   },
 };

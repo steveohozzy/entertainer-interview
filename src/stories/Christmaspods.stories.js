@@ -1,4 +1,8 @@
+import { db } from '../config/firebase';
+import { doc, getDoc, updateDoc } from 'firebase/firestore';
+import { useEffect, useCallback, useRef } from 'react';
 import { ChristmasPods } from './Christmaspods';
+import { useArgs } from 'storybook/preview-api';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 export default {
@@ -8,48 +12,108 @@ export default {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
     layout: 'centered',
   },
-  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
-  tags: ['autodocs'],
 };
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const ChristmasPodsSection = {
   args: {
-    pod1image: 'https://www.thetoyshop.com/medias/TE-2024-Phase-1-Christmas-Shop-HP-POD-350px-Advent.jpg?context=bWFzdGVyfHJvb3R8Nzg2MTd8aW1hZ2UvanBlZ3xhREkwTDJobE5TOHhNak0xTmpVM056VXlOVGM1TUM5VVJWOHlNREkwWDFCb1lYTmxYekZmUTJoeWFYTjBiV0Z6WDFOb2IzQmZTRkJmVUU5RVh6TTFNSEI0WDBGa2RtVnVkQzVxY0djfDEyN2FiYmYyMzQxYjI0ODFiMzJhOGY0MzYyNzA2NTU1MDRjODhlMTQ2MjU3OWI3NjA3Mjg1ZGM5YzE2OWYzMTU',
-    pod1alt: 'Gifts for Kids',
-    pod1link: 'https://www.thetoyshop.com/c/christmas-toys/christmas-gifts-for-kids',
-    pod2image: 'https://www.thetoyshop.com/medias/2025-christmas-big-gifts-pod-350x350.jpg?context=bWFzdGVyfHJvb3R8ODE4Nzh8aW1hZ2UvanBlZ3xhRGRoTDJnd015OHhNall4TkRneE9UTTRNVEkzT0M4eU1ESTFMV05vY21semRHMWhjeTFpYVdjdFoybG1kSE10Y0c5a0xUTTFNSGd6TlRBdWFuQm58ZTg2OGQwZTEyZWQ1MTAyODZmMjM3MmQyYmE3ZjllNzVmMWVkNmU1NmU5OTdmZWQ3YzY2NDE5YjRmNjFkYjZjMg',
-    pod2alt: 'Big Gifts',
-    pod2link: 'https://www.thetoyshop.com/c/christmas-toys/christmas-big-gifts',
-    pod3image: 'https://www.thetoyshop.com/medias/TE-2024-Phase-1-Christmas-Shop-HP-POD-350x350px-Must-Have.jpg?context=bWFzdGVyfHJvb3R8Nzc3NjN8aW1hZ2UvanBlZ3xhR0ZrTDJoa1lpOHhNak0xTmpVM056STVOalF4TkM5VVJWOHlNREkwWDFCb1lYTmxYekZmUTJoeWFYTjBiV0Z6WDFOb2IzQmZTRkJmVUU5RVh6TTFNSGd6TlRCd2VGOU5kWE4wWDBoaGRtVXVhbkJufGUxYmMwMmY0MDEzZTEyZjljNzQwZjRiNTVmNzNmMWEwZWE5MzYyNjA1ZWVlOTJhNzJjYzM2MWI5NjgyMWRmYzg',
-    pod3alt: 'Must Have Toys',
-    pod3link: 'https://www.thetoyshop.com/c/christmas-toys/christmas-must-have-toys',
-    pod4image: 'https://www.thetoyshop.com/medias/TE-2024-Phase-1-Christmas-Shop-HP-POD-350x350px-Stocking.jpg?context=bWFzdGVyfHJvb3R8NzYxODZ8aW1hZ2UvanBlZ3xhR1ptTDJoa1lTOHhNak0xTmpVM056SXpNRGczT0M5VVJWOHlNREkwWDFCb1lYTmxYekZmUTJoeWFYTjBiV0Z6WDFOb2IzQmZTRkJmVUU5RVh6TTFNSGd6TlRCd2VGOVRkRzlqYTJsdVp5NXFjR2N8YzRmYTE5NjdmNzUyNThlMzI4YWY1ZGI5NDJlZGJhOTY2NjNiZjQ5YmZkODUwZGE3NzU4NThmNDFlODU3MTQ1Zg',
-    pod4alt: 'Stocking Fillers',
-    pod4link: 'https://www.thetoyshop.com/c/christmas-toys/stocking-fillers',
-    pod5image: 'https://www.thetoyshop.com/medias/TE-2024-Phase-1-Christmas-Shop-HP-POD-350x350px-Xmas-Theme-Toys.jpg?context=bWFzdGVyfHJvb3R8ODMzNTV8aW1hZ2UvanBlZ3xhR0pqTDJobE1TOHhNak0xTmpVM056UXlOelE0Tmk5VVJWOHlNREkwWDFCb1lYTmxYekZmUTJoeWFYTjBiV0Z6WDFOb2IzQmZTRkJmVUU5RVh6TTFNSGd6TlRCd2VGOVliV0Z6WDFSb1pXMWxYMVJ2ZVhNdWFuQm58M2JmZGMzOTMyYjExZjVkZGE0NDc4NjUwYTdmYmIyYjdhMWMzMzJkNDI5ZmE3MGY0NzA0NTlkN2NkYjdlMGY2MA',
-    pod5alt: 'Christmas Themed Toys',
-    pod5link: 'https://www.thetoyshop.com/c/christmas-toys/christmas-themed-toys',
-    pod6image: 'https://www.thetoyshop.com/medias/2025-christmas-eve-box-toys-pod-350x350.jpg?context=bWFzdGVyfHJvb3R8MTA5Mzc0fGltYWdlL2pwZWd8YUdVeEwyZ3dPQzh4TWpZeE1UWTFNVGM1TnpBeU1pOHlNREkxTFdOb2NtbHpkRzFoY3kxbGRtVXRZbTk0TFhSdmVYTXRjRzlrTFRNMU1IZ3pOVEF1YW5CbnxjOTliNzFjNjgxMDVmNzUwNDM4YjIwMTk4MGRjNjk0MjBhZDA0MmE3Y2FlNmI2NjhlODkyYmI4MGMxMjUyNzdh',
-    pod6alt: 'Christmas Eve Box Toys',
-    pod6link: 'https://www.thetoyshop.com/c/christmas-toys/christmas-eve-box-toys',
-    pod1dataelementtype: 'christmas-category-pod',
-    pod1datapromotionname: 'Christmas Pod-Advent Calendars',
-    pod1datapromotionindex: '1',
-    pod2dataelementtype: 'christmas-category-pod',
-    pod2datapromotionname: 'Christmas Pod-Big Gifts',
-    pod2datapromotionindex: '2',
-    pod3dataelementtype: 'christmas-category-pod',
-    pod3datapromotionname: 'Christmas Pod-Must Have Toys',
-    pod3datapromotionindex: '3',
-    pod4dataelementtype: 'christmas-category-pod',
-    pod4datapromotionname: 'Christmas Pod-Stocking Fillers',
-    pod4datapromotionindex: '4',
-    pod5dataelementtype: 'christmas-category-pod',
-    pod5datapromotionname: 'Christmas Pod-Christmas Themed Toys',
-    pod5datapromotionindex: '5',
-    pod6dataelementtype: 'christmas-category-pod',
-    pod6datapromotionname: 'Christmas Pod-Christmas Eve Box Toys',
-    pod6datapromotionindex: '6',
+    pod1image: '',
+    pod1alt: '',
+    pod1link: '',
+    pod2image: '',
+    pod2alt: '',
+    pod2link: '',
+    pod3image: '',
+    pod3alt: '',
+    pod3link: '',
+    pod4image: '',
+    pod4alt: '',
+    pod4link: '',
+    pod5image: '',
+    pod5alt: '',
+    pod5link: '',
+    pod6image: '',
+    pod6alt: '',
+    pod6link: '',
+    pod1dataelementtype: '',
+    pod1datapromotionname: '',
+    pod1datapromotionindex: '',
+    pod2dataelementtype: '',
+    pod2datapromotionname: '',
+    pod2datapromotionindex: '',
+    pod3dataelementtype: '',
+    pod3datapromotionname: '',
+    pod3datapromotionindex: '',
+    pod4dataelementtype: '',
+    pod4datapromotionname: '',
+    pod4datapromotionindex: '',
+    pod5dataelementtype: '',
+    pod5datapromotionname: '',
+    pod5datapromotionindex: '',
+    pod6dataelementtype: '',
+    pod6datapromotionname: '',
+    pod6datapromotionindex: '',
   },
+
+  render: function Render(args) {
+        const [currentArgs, updateArgs] = useArgs();
+        const hasLoadedFromFirestore = useRef(false);
+    
+        // --- Load all fields from Firestore once ---
+        useEffect(() => {
+          const loadFromFirebase = async () => {
+            try {
+              const docRef = doc(db, 'stories', 'christmaspods');
+              const snapshot = await getDoc(docRef);
+    
+              if (snapshot.exists()) {
+                const data = snapshot.data();
+    
+                // Merge data from Firestore into Storybook args
+                updateArgs({
+                  ...args,
+                  ...data,
+                });
+              } else {
+                console.warn('No such document: christmaspods');
+              }
+            } catch (err) {
+              console.error('Error fetching from Firestore:', err);
+            } finally {
+              hasLoadedFromFirestore.current = true;
+            }
+          };
+    
+          loadFromFirebase();
+        }, []);
+    
+        // --- Generic Firestore sync for all fields ---
+        const syncAllArgsToFirebase = useCallback(async (newArgs) => {
+          if (!hasLoadedFromFirestore.current) return; // skip before load
+    
+          try {
+            const docRef = doc(db, 'stories', 'christmaspods');
+    
+            // Clean values before saving
+            const cleanedArgs = {};
+            for (const [key, value] of Object.entries(newArgs)) {
+              // Normalize empty values to empty strings
+              cleanedArgs[key] = typeof value === 'string' && value.trim() === '' ? '' : value;
+            }
+    
+            await updateDoc(docRef, cleanedArgs);
+            console.log('✅ Firestore updated:', cleanedArgs);
+          } catch (err) {
+            console.error('Error updating Firestore:', err);
+          }
+        }, []);
+    
+        // --- Watch for *any* arg change and sync ---
+        useEffect(() => {
+          if (!hasLoadedFromFirestore.current) return;
+          syncAllArgsToFirebase(currentArgs);
+        }, [currentArgs, syncAllArgsToFirebase]);
+    
+        return <ChristmasPods {...args} />;
+      },
 };

@@ -1,23 +1,91 @@
+import { db } from '../config/firebase';
+import { doc, getDoc, updateDoc } from 'firebase/firestore';
+import { useEffect, useCallback, useRef } from 'react';
 import { HeroCarousel } from './Herocarousel';
+import { useArgs } from 'storybook/preview-api';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 export default {
-  title: 'Home/HeroCarousel',
+  title: 'Home/Hero/Final Hero Carousel',
   component: HeroCarousel,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
-    layout: 'centered',
+    layout: 'fullscreen',
   },
-  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
-  tags: ['autodocs'],
+   argTypes: {
+    background: {
+      control: 'color',
+    },
+  },
 };
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const HomeCarouselHero = {
   args: {
-    carouselfirstslide: '<a href="https://www.thetoyshop.com/brands/lego" title="Half Price Toy Sale" data-element-type="hp-hero-area" data-promotion-index="2" data-promotion-name="Hero-2-LEGO" data-gtm-vis-first-on-screen8511273_2666="21559" data-gtm-vis-total-visible-time8511273_2666="100" data-gtm-vis-has-fired8511273_2666="1"><picture><source media="(min-width:768px)" srcset="https://www.thetoyshop.com/medias/2025-lego-gaming-hero-desktop-1800x560.jpg?context=bWFzdGVyfHJvb3R8MzE2MjMxfGltYWdlL2pwZWd8YURoaUwyZ3pOaTh4TWpVNU9EZzRPRGMxT1RNeU5pOHlNREkxTFd4bFoyOHRaMkZ0YVc1bkxXaGxjbTh0WkdWemEzUnZjQzB4T0RBd2VEVTJNQzVxY0djfDFhYmUwN2JjNWMxODAyMzNjNDY0NDU1ZDFiZjA5M2MxMzIzYWE1YWZmNDNjYjdmZjUxOGQ3MGIyNzRhN2IyMzQ"><img alt="Half Price Toy Sale" src="https://www.thetoyshop.com/medias/2025-lego-gaming-hero-mobile-450x480.jpg?context=bWFzdGVyfHJvb3R8MTIyNTA2fGltYWdlL2pwZWd8YURFNEwyZzRPQzh4TWpVNU9EZzRPVEF5TVRRM01DOHlNREkxTFd4bFoyOHRaMkZ0YVc1bkxXaGxjbTh0Ylc5aWFXeGxMVFExTUhnME9EQXVhbkJufGNhMTA3OGRlMWQyMWFiZTRhMmIyNTFjNWZjY2U0MDNmN2ZiZTFlYTIzZmYzYmU0ODYxN2U1N2FkODhkOTEyMTY"></picture></a>',
+    carouselfirstslide: '',
     carouselsecondslide: '',
     carouselthirdslide: '',
     carouselforthslide: '',
   },
+  render: function Render(args) {
+      const [currentArgs, updateArgs] = useArgs();
+      const hasLoadedFromFirestore = useRef(false);
+  
+      // --- Load all fields from Firestore once ---
+      useEffect(() => {
+        const loadFromFirebase = async () => {
+          try {
+            const docRef = doc(db, 'stories', 'herocarousel');
+            const snapshot = await getDoc(docRef);
+  
+            if (snapshot.exists()) {
+              const data = snapshot.data();
+  
+              // Merge data from Firestore into Storybook args
+              updateArgs({
+                ...args,
+                ...data,
+              });
+            } else {
+              console.warn('No such document: herocarousel');
+            }
+          } catch (err) {
+            console.error('Error fetching from Firestore:', err);
+          } finally {
+            hasLoadedFromFirestore.current = true;
+          }
+        };
+  
+        loadFromFirebase();
+      }, []);
+  
+      // --- Generic Firestore sync for all fields ---
+      const syncAllArgsToFirebase = useCallback(async (newArgs) => {
+        if (!hasLoadedFromFirestore.current) return; // skip before load
+  
+        try {
+          const docRef = doc(db, 'stories', 'herocarousel');
+  
+          // Clean values before saving
+          const cleanedArgs = {};
+          for (const [key, value] of Object.entries(newArgs)) {
+            // Normalize empty values to empty strings
+            cleanedArgs[key] = typeof value === 'string' && value.trim() === '' ? '' : value;
+          }
+  
+          await updateDoc(docRef, cleanedArgs);
+          console.log('✅ Firestore updated:', cleanedArgs);
+        } catch (err) {
+          console.error('Error updating Firestore:', err);
+        }
+      }, []);
+  
+      // --- Watch for *any* arg change and sync ---
+      useEffect(() => {
+        if (!hasLoadedFromFirestore.current) return;
+        syncAllArgsToFirebase(currentArgs);
+      }, [currentArgs, syncAllArgsToFirebase]);
+  
+      return <HeroCarousel {...args} />;
+    },
 };
