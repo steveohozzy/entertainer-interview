@@ -2,6 +2,9 @@ import PropTypes from "prop-types";
 
 /** Primary UI component for user interaction */
 export const ChristmasHero = ({
+  bannerImage,
+  bannerImageAlt,
+  bannerBackgroundPattern,
   hero1image,
   hero1alt,
   hero1link,
@@ -23,6 +26,20 @@ export const ChristmasHero = ({
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px 20px;
+  }
+
+  .background-pattern h1 {
+    position: relative;
+    margin: 0 auto;
+    padding: 30px 0;
+    text-align: center;
+    max-width: 300px;
+  }
+
+  .background-pattern h1 img {
+    width: 100%;
+    height: auto;
+    display: block;
   }
 
   .christmas-hub .hero {
@@ -98,12 +115,25 @@ export const ChristmasHero = ({
   }
 
   @media (min-width: 768px) {
+  .christmas-hub h1 {
+      max-width: 500px;
+    }
     .christmas-hub .hero .hero-panel {
       width: 50%;
     }
   }
 `}
       </style>
+      <div class="background-pattern" style={{backgroundImage: `url(${bannerBackgroundPattern})`}}>
+        <h1>
+          <img
+            alt={bannerImageAlt}
+            class="christmas-title-desktop"
+            src={bannerImage}
+            title="Welcome to Santa's Toy Shop"
+          /><span class="sr-only">Welcome to Santa&#39;s Toy Shop</span>
+        </h1>
+      </div>
       <div class="christmas-hub">
         <div class="hero">
           <div class="hero-panel">
@@ -148,7 +178,10 @@ export const ChristmasHero = ({
 };
 
 ChristmasHero.propTypes = {
-  /** Button contents */
+  /** Hub Hero contents */
+  bannerImage: PropTypes.string,
+  bannerImageAlt: PropTypes.string,
+  bannerBackgroundPattern: PropTypes.string,
   hero1image: PropTypes.string.isRequired,
   hero1alt: PropTypes.string,
   hero1link: PropTypes.string.isRequired,

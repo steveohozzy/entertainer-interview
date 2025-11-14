@@ -17,6 +17,9 @@ export default {
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const ChristmasHeroPods = {
   args: {
+    bannerImage: '',
+    bannerImageAlt: '',
+    bannerBackgroundPattern: '',
     hero1image: '',
     hero1alt: '',
     hero1link: '',
