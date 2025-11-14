@@ -1303,7 +1303,7 @@ const Plp = () => {
                                         This is your girl's world. She Built It.
                                       </button>
                                     </h2>
-                                  <div className="text-brandBlue mb-2 text-center text-sm">
+                                  <div className="text-brandBlue mb-3 text-center text-sm">
                                     <button onClick={'#'}>
                                       Unleash her creative potential
                                       with LEGO sets
@@ -1395,7 +1395,7 @@ const Plp = () => {
                                         This is your girl's world. She Built It.
                                       </button>
                                     </h2>
-                                  <div className="text-brandBlue mb-2 text-center text-sm">
+                                  <div className="text-brandBlue mb-3 text-center text-sm">
                                     <button onClick={'#'}>
                                       Unleash her creative potential
                                       with LEGO sets
