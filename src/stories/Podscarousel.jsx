@@ -73,8 +73,8 @@ export const PodsCarousel = ({
     transform: translateY(-5px);
   }
 
-  .offer-pods a span {
-    margin: 20px 0;
+  .offer-pods a .pod-image-container + span {
+    margin: 20px;
   }
 
   .offer-pods .flickity-button,
@@ -218,8 +218,8 @@ export const PodsCarousel = ({
 			margin: 0 0 20px !important;
 		}
 
-    .pod.has-tagline span {
-      margin: 0;
+    .pod.has-tagline .pod-image-container + span {
+      margin: 0 20px;
     }
 `}
 </style>
