@@ -16,12 +16,17 @@ export default {
     background: {
       control: 'color',
     },
+    user: {
+      options: ['stories', 'hasina', 'shermin', 'sam'],
+      control: { type: 'select' },
+    },
   },
 };
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const ImageBannerHero = {
   args: {
+    user: 'stories',
     desktopimage: '',
     mobileimage: '',
     link: '',
@@ -31,63 +36,81 @@ export const ImageBannerHero = {
     datapromotionname: '',
   },
   render: function Render(args) {
-    const [currentArgs, updateArgs] = useArgs();
-    const hasLoadedFromFirestore = useRef(false);
+  const [currentArgs, updateArgs] = useArgs();
 
-    // --- Load all fields from Firestore once ---
-    useEffect(() => {
-      const loadFromFirebase = async () => {
-        try {
-          const docRef = doc(db, 'stories', 'imagehero');
-          const snapshot = await getDoc(docRef);
+  const isLoadingRef = useRef(false);       // prevents writing during load
+  const lastUserRef = useRef(args.user);    // track selected user
+  const lastSyncedData = useRef({});        // prevent write loops
 
-          if (snapshot.exists()) {
-            const data = snapshot.data();
-
-            // Merge data from Firestore into Storybook args
-            updateArgs({
-              ...args,
-              ...data,
-            });
-          } else {
-            console.warn('No such document: imagehero');
-          }
-        } catch (err) {
-          console.error('Error fetching from Firestore:', err);
-        } finally {
-          hasLoadedFromFirestore.current = true;
-        }
-      };
-
-      loadFromFirebase();
-    }, []);
-
-    // --- Generic Firestore sync for all fields ---
-    const syncAllArgsToFirebase = useCallback(async (newArgs) => {
-      if (!hasLoadedFromFirestore.current) return; // skip before load
+  // -------------------------------------------------------
+  // 1. LOAD DATA FROM SELECTED USER
+  // -------------------------------------------------------
+  useEffect(() => {
+    const load = async () => {
+      isLoadingRef.current = true;  // BLOCK updates
+      lastUserRef.current = args.user;
 
       try {
-        const docRef = doc(db, 'stories', 'imagehero');
+        const docRef = doc(db, args.user, "imagehero");
+        const snap = await getDoc(docRef);
 
-        // Clean values before saving
-        const cleanedArgs = {};
-        for (const [key, value] of Object.entries(newArgs)) {
-          // Normalize empty values to empty strings
-          cleanedArgs[key] = typeof value === 'string' && value.trim() === '' ? '' : value;
+        if (snap.exists()) {
+          const firestoreData = snap.data();
+          lastSyncedData.current = firestoreData;
+
+          // Replace storybook args with loaded data
+          updateArgs({
+            ...currentArgs,
+            ...firestoreData,
+            user: args.user,
+          });
         }
-
-        await updateDoc(docRef, cleanedArgs);
-        console.log('✅ Firestore updated:', cleanedArgs);
-      } catch (err) {
-        console.error('Error updating Firestore:', err);
+      } catch (e) {
+        console.error("Firestore load error:", e);
       }
-    }, []);
 
-    // --- Watch for *any* arg change and sync ---
-    useEffect(() => {
-      if (!hasLoadedFromFirestore.current) return;
-      syncAllArgsToFirebase(currentArgs);
-    }, [currentArgs, syncAllArgsToFirebase]);
+      isLoadingRef.current = false; // allow updates again
+    };
+
+    load();
+  }, [args.user]);
+
+
+  // -------------------------------------------------------
+  // 2. SYNC ONLY FIELD CHANGES (NOT USER CHANGE)
+  // -------------------------------------------------------
+  useEffect(() => {
+    if (isLoadingRef.current) return; // Don't sync during load
+
+    const selectedUser = lastUserRef.current;
+
+    // Don't sync if this change is caused by selecting a new user
+    if (currentArgs.user !== selectedUser) return;
+
+    // Remove user field before writing
+    const { user, ...fields } = currentArgs;
+
+    // Prevent re-writing unchanged data
+    const prevFields = lastSyncedData.current;
+    const changed = Object.entries(fields).some(
+      ([k, v]) => prevFields[k] !== v
+    );
+    if (!changed) return;
+
+    lastSyncedData.current = fields;
+
+    const send = async () => {
+      try {
+        const docRef = doc(db, selectedUser, "imagehero");
+        await updateDoc(docRef, fields);
+        console.log("UPDATED:", selectedUser, fields);
+      } catch (e) {
+        console.error("Firestore update error:", e);
+      }
+    };
+
+    send();
+  }, [currentArgs]);
 
     return <ImageHero {...args} />;
   },

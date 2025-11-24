@@ -217,7 +217,7 @@ export const KidultTab2 = ({
       
         <div class="roundal">
         <a href={roundal12link} class="outer-link">
-          <div class="roundal-image" style={{'--kidultroundal1bg': roundal2background}}>
+          <div class="roundal-image" style={{'--kidultroundal1bg': roundal12background}}>
             <img src={roundal12image} alt={roundal12alt} />
           </div>
         </a>
@@ -278,7 +278,7 @@ export const KidultTab2 = ({
         <div class="roundal">
         <a href={roundal17link} class="outer-link">
           <div class="roundal-image" style={{'--kidultroundal1bg': roundal17background}}>
-            <img src={roundal17image} alt={roundal15alt} />
+            <img src={roundal17image} alt={roundal17alt} />
           </div>
         </a>
       </div>
