@@ -11,6 +11,8 @@ export const Pod = ({
   tagline,
   link,
   linktext,
+  buttonbackgroundcolor,
+  buttontextcolor,
   logoimage,
   logoimagealt,
   logoheight,
@@ -31,7 +33,7 @@ export const Pod = ({
           }
         </div>
         {tagline && <span>{tagline}</span> }
-        <button class="hero-button" href={link}  data-element-type={dataElementType} data-promotion-name={dataPromotionName} data-promotion-index={dataPromotionIndex} >
+        <button class="hero-button" href={link}  style={{background: buttonbackgroundcolor, color: buttontextcolor}} data-element-type={dataElementType} data-promotion-name={dataPromotionName} data-promotion-index={dataPromotionIndex} >
           <span class="swoosh-container">
             <span class="star-start">
               <svg fill="currentColor" height="11" viewBox="0 0 11 11" width="11" xmlns="http://www.w3.org/2000/svg">
@@ -66,6 +68,8 @@ Pod.propTypes = {
   tagline: PropTypes.string,
   link: PropTypes.string.isRequired,
   linktext: PropTypes.string.isRequired,
+  buttonbackgroundcolor: PropTypes.string,
+  buttontextcolor: PropTypes.string,
   logoimage: PropTypes.string,
   logoimagealt: PropTypes.string,
   logoheight: PropTypes.string,

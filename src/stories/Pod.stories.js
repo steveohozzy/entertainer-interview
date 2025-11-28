@@ -36,6 +36,8 @@ export const PodItem = {
     textcolor: '',
     link: '',
     linktext: '',
+    buttonbackgroundcolor: '',
+    buttontextcolor: '',
     logoimage: '',
     logoimagealt: '',
     logoheight: '',
