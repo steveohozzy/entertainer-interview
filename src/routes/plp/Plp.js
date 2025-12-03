@@ -54,7 +54,7 @@ const Plp = () => {
     )
   })
 
-  const [bundleTotalPrice, setBundleTotalPrice] = useState('£53')
+   const [bundleTotalPrice, setBundleTotalPrice] = useState('£'+searchResults.slice(0,3).reduce((sum, item) => sum + item.price, 0).toFixed(2))
 
   const changeBundleHandler = (e) => {
     const bundlePrices = [];
