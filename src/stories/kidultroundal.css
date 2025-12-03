@@ -28,6 +28,7 @@
     min-width: unset;
     height: auto;
     overflow: hidden;
+    margin: 25px;
   }
 
   .roundal-image::before {

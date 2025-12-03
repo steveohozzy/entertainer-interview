@@ -49,7 +49,7 @@ export const KidultTabs = ({
   .category-title {
     display: none !important;
   }
-  {
+    .kidult {
     padding: 40px 20px 20px;
     background-color: #000;
     box-sizing: border-box;
@@ -77,19 +77,6 @@ export const KidultTabs = ({
     text-align: center;
   }
 
-  h2 {
-    filter: drop-shadow(0 2px rgb(147 51 234)) drop-shadow(0 -2px rgb(147 51 234)) drop-shadow(2px 0 rgb(147 51 234)) drop-shadow(-2px 0 rgb(147 51 234));
-    letter-spacing: 2px;
-    color: #000;
-    text-align: center;
-    margin: 40px 0 20px;
-    font-family: "Nunito Bold", "Tahoma Bold", sans-serif;
-    font-weight: normal;
-    font-size: 34px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-  }
-
   .carousel-cell {
     width: 33.333333%;
     padding: 20px 10px;
@@ -109,6 +96,7 @@ export const KidultTabs = ({
     height: auto;
     border-radius: 100%;
     overflow: hidden;
+    margin: 0;
   }
 
   .roundal-image {
@@ -135,6 +123,7 @@ export const KidultTabs = ({
     min-width: unset;
     height: auto;
     overflow: hidden;
+    margin: 25px;
   }
 
   .pageType-CategoryPage .map img {

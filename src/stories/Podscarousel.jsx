@@ -159,7 +159,7 @@ export const PodsCarousel = ({
         display: block;
         width: 0;
         height: 3px;
-        margin-top: 15px;
+        margin-top: 0;
         margin-left: -2px;
         transform: rotate(15deg);
         background-color: rgba(255, 255, 255, 0.7);
