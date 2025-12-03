@@ -71,13 +71,15 @@ const CartProductTile = ({product, nocontrols, isMiniCart}) => {
                         }
                     </div>
                 </div>
-                <div className='flex items-center justify-between -ml-[41%] md:ml-4 my-4 pl-2 w-[141%] w-full md:w-[60%] border-[3px] border-brandRed rounded-tl-lg rounded-bl-lg rounded-tr-3xl rounded-br-3xl text-xs md:text-sm'>
-                    <span className='text-brandRed font-semibold'>Don't miss out</span>
-                    <span className='text-white bg-brandRed font-semibold px-3 py-1 rounded-full text-xs'><span className='shadow-text-red'>BUY 2 GET 1 FREE</span></span>
-                    <button  className='rounded-full bg-brandGreen text-white font-semibold py-2 px-4' onClick={goToLinkHandler}>
-                        Shop Now
-                    </button>
-                </div>
+                {!isMiniCart && 
+                    <div className='flex items-center justify-between -ml-[41%] md:ml-4 my-4 pl-2 w-[141%] w-full md:w-[60%] border-[3px] border-brandRed rounded-tl-lg rounded-bl-lg rounded-tr-3xl rounded-br-3xl text-xs md:text-sm'>
+                        <span className='text-brandRed font-semibold'>Don't miss out</span>
+                        <span className='text-white bg-brandRed font-semibold px-3 py-1 rounded-full text-xs'><span className='shadow-text-red'>BUY 2 GET 1 FREE</span></span>
+                        <button  className='rounded-full bg-brandGreen text-white font-semibold py-2 px-4' onClick={goToLinkHandler}>
+                            Shop Now
+                        </button>
+                    </div>
+                }
             </div>
         </div>
     </div>

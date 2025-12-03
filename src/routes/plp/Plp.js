@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { useDispatch } from "react-redux";
 import { X, Search } from 'lucide-react';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -23,6 +24,8 @@ import Dropdown from "../../components/dropdown/Dropdown";
 import { useLocation, useNavigate } from "react-router-dom";
 import PresentFinderWidget from "../../components/presentFinderWidget/PresentFinderWidget";
 import Button from "../../components/button/Button";
+import BundlesProductCard from "../../components/bundlesProductCard/BundlesProductCard";
+import { setIsCartOpen } from "../../store/cart/cartReducer";
 
 const Plp = () => {
   const [selectedBrands, setSelectedBrands] = useState([]);
@@ -40,8 +43,77 @@ const Plp = () => {
   const [sortOption, setSortOption] = useState("sortby")
   const [currentPage, setCurrentPage] = useState(1);
   const [directFilterApplied, setDirectFilterApplied] = useState(false)
-  const PRODUCTS_PER_PAGE = 10
+  const PRODUCTS_PER_PAGE = 10;
+  const [bundleItemsCount, setBundleItemsCount] = useState(3);
+  const [tabOpen, setTabOpen] = useState(false);
+  const dispatch = useDispatch();
 
+    const searchResults = products.filter((product) => {
+    return (
+      product.brand.includes('Marvel')
+    )
+  })
+
+  const [bundleTotalPrice, setBundleTotalPrice] = useState('£53')
+
+  const changeBundleHandler = (e) => {
+    const bundlePrices = [];
+    const bundleItem = e.target.closest(".bundleContainer");
+    const bundleItems = e.target.closest("#bundle").querySelectorAll("input:checked");
+    bundleItems.forEach((item) => {
+      bundlePrices.push(item.closest(".flex.items-center.relative").querySelector(".pricevalue").textContent);
+    })
+
+    setBundleItemsCount(bundleItems.length);
+
+    const result  = bundlePrices.map((x) => +x);
+
+    const bundleTotalPriceInit = result.reduce((a, b) => a + b,  0);
+
+    setBundleTotalPrice('£'+bundleTotalPriceInit.toFixed(2));
+
+    bundleItem.classList.toggle('grayscale');
+    bundleItem.classList.toggle('opacity-50');
+  }
+
+  const changeBundleHandlerClick = (e) => {
+    e.target.closest(".bundleContainer").querySelector("input").checked = ! e.target.closest(".bundleContainer").querySelector("input").checked;
+    const bundlePrices = [];
+    const bundleItem = e.target.closest(".bundleContainer");
+    const bundleItems = e.target.closest("#bundle").querySelectorAll("input:checked");
+    bundleItems.forEach((item) => {
+      bundlePrices.push(item.closest(".flex.items-center.relative").querySelector(".pricevalue").textContent);
+    })
+
+    setBundleItemsCount(bundleItems.length);
+
+    const result  = bundlePrices.map((x) => +x);
+
+    const bundleTotalPriceInit = result.reduce((a, b) => a + b,  0);
+
+    setBundleTotalPrice('£'+bundleTotalPriceInit.toFixed(2));
+
+    bundleItem.classList.toggle('grayscale');
+    bundleItem.classList.toggle('opacity-50');
+  }
+
+  const addBundleToCart = (e) => {
+      const bundleItems = e.target.closest("#bundle").querySelectorAll("input");
+      bundleItems.forEach((item) => {
+        if (item.checked) {
+          item
+            .closest(".flex.items-center.relative")
+            .querySelector(".add-to-basket")
+            .click();
+        }
+      });
+      setTimeout(() => {
+        dispatch(setIsCartOpen(true));
+        setTabOpen(false);
+        document.body.classList.add("body-noscroll");
+        window.scrollBy(0, -2);
+      }, 100);
+      };
   const wrapperRef = useRef(null);
 
   const navigate = useNavigate();
@@ -1417,6 +1489,152 @@ const Plp = () => {
               })}
             </div>
           }
+
+          <button
+          onClick={() => setTabOpen(!tabOpen)}
+          className={`fixed z-[600] top-1/2 -translate-y-1/2 transition-all -rotate-90 bg-brandRed py-1 md:py-2 px-6 text-sm md:text-base rounded-tr-xl rounded-tl-xl font-bold text-white text shadow-[-5px_-5px_10px_1px_#bbb] ${
+            tabOpen ? "right-[132px]" : "right-[-60px]"
+          }`}
+        >
+          <span className="shadow-text-red">popular bundle</span>
+        </button>
+        {(tabOpen) && (
+          <div
+            onClick={() => {setTabOpen(false)}}
+            className="fixed inset-0 z-[500] top-0 left-0 bg-brandBlue/60 w-screen h-screen"
+          ></div>
+        )}
+        <div
+          className={`fixed top-0 z-[9999] max-w-[190px] transition-all h-full ${
+            tabOpen ? "right-0" : "right-[-100vw]"
+          }`}
+        >
+          <div className="w-full text-center h-full">
+            <div className="bg-white p-4 rounded-tl-lg rounded-bl-lg max-h-screen overflow-auto no-scrollbar h-full flex flex-col justify-center">
+
+          <div
+                            id="bundle"
+                            className={`grid grid-cols-1 gap-4 border-brandNeonBlue rounded-xl relative transition-all`}
+                          >
+                            
+
+                            {searchResults.slice(0, 3).map((product, i) => (
+                              <div className="flex items-center relative" key={i}>
+                                <div className="relative w-full bundleContainer">
+                                  <BundlesProductCard product={product} changeBundleHandlerClick={changeBundleHandlerClick} />
+                                  <label className={` flex items-center space-x-3 cursor-pointer mb-6 absolute z-20 top-2 left-2`}>
+                                    <input
+                                      type="checkbox"
+                                      className="relative size-[24px] block appearance-none rounded-md border-[3px] border-brandLightGreen bg-white outline-none transition-all"
+                                      defaultChecked
+                                      onChange={changeBundleHandler}
+                                    />
+                                    <span className="absolute top-0 left-[-11px] text-brandGreen">
+                                      <svg
+                                        viewBox="0 0 24 24"
+                                        width="20px"
+                                        height="20px"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        className="w-[22px] h-[22px]"
+                                      >
+                                        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                                        <g
+                                          id="SVGRepo_tracerCarrier"
+                                          strokeLinecap="round"
+                                          strokeLinejoin="round"
+                                        ></g>
+                                        <g id="SVGRepo_iconCarrier">
+                                          <path
+                                            d="M4.89163 13.2687L9.16582 17.5427L18.7085 8"
+                                            stroke="currentColor"
+                                            strokeWidth="2.5"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                          ></path>
+                                        </g>
+                                      </svg>
+                                    </span>
+                                  </label>
+                                </div>
+                              </div>
+                            ))}
+                            <div className="flex flex-col items-center py-4 justify-center rounded-lg border-[3px] border-gray-200 bg-white shadow-sm relative">
+                              <div>
+                                  <div className="text-lg font-semibold text-textBlue text-center mt-2 lg:mt-0 mb-1 leading-[1]">
+                                    <div className={`absolute top-2 right-2 ${bundleItemsCount === 0 && 'opacity-30'}`}>
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="18" viewBox="0 0 30 18" fill="none">
+                                        <g clip-path="url(#clip0_2353_894)">
+                                        <g opacity="0.5">
+                                        <path d="M28.3784 1.92622L29.8114 2.70233C29.9434 2.76778 30.0094 2.87064 30 3.02025C29.9906 3.16986 29.9246 3.27272 29.7926 3.32882L28.3029 3.99272L28.0107 5.59168C27.9824 5.73194 27.8975 5.81609 27.7561 5.86285C27.6147 5.9096 27.5016 5.86285 27.4073 5.75999L26.3042 4.57246L24.6826 4.77817C24.5412 4.79687 24.428 4.75012 24.3526 4.62856C24.2677 4.507 24.2677 4.38544 24.3337 4.26389L25.1445 2.85194L24.4374 1.39324C24.3715 1.26233 24.3903 1.14077 24.4752 1.01921C24.56 0.907003 24.6826 0.86025 24.824 0.897652L26.4268 1.21557L27.5958 0.102847C27.6995 -9.89516e-06 27.8221 -0.0280618 27.9635 0.028042C28.105 0.0747953 28.1804 0.177652 28.1992 0.317912L28.3784 1.91687V1.92622Z" fill="#407EC9"/>
+                                        </g>
+                                        <g opacity="0.5">
+                                        <path d="M20.6474 8.46231C21.9296 8.92984 22.8535 9.78075 23.4286 11.0337C23.9943 12.2867 24.032 13.5491 23.5418 14.8114C23.0515 16.0737 22.1841 16.9901 20.9491 17.5511C19.714 18.1122 18.4601 18.1496 17.1873 17.6633C15.9334 17.1865 15.0188 16.3262 14.4437 15.1013C13.8686 13.8763 13.8026 12.6327 14.2646 11.3797C14.7548 10.0332 15.6694 9.0888 16.9987 8.52776L16.7724 7.46179L11.8133 11.3423C11.5493 11.548 11.257 11.5854 10.9365 11.4732L9.05089 10.7906C8.40978 11.707 7.56126 12.3335 6.48646 12.6795C5.41167 13.0254 4.3463 13.0067 3.28093 12.6233C1.99872 12.1558 1.06534 11.3143 0.490234 10.0893C-0.0848764 8.86439 -0.141445 7.5927 0.339385 6.30231C0.801359 5.04932 1.64988 4.14231 2.90381 3.57192C4.15774 3.00153 5.41167 2.94543 6.6656 3.40361C7.22185 3.59997 7.71211 3.88984 8.11751 4.25452L9.84284 2.91737L8.06094 2.27218C7.81581 2.18802 7.64611 2.02906 7.53297 1.7953C7.42927 1.57088 7.41984 1.32776 7.50469 1.094C7.58954 0.850881 7.74982 0.68257 7.98552 0.570362C8.21179 0.467505 8.46635 0.458154 8.73033 0.55166L11.8887 1.69244C12.0584 1.75789 12.181 1.86075 12.247 2.00101C12.313 2.15062 12.3224 2.30958 12.2564 2.47789L12.049 3.05763L16.1879 4.55374L15.9616 3.48776L14.1043 2.81452C13.9346 2.74906 13.812 2.64621 13.746 2.50595C13.6801 2.35634 13.6706 2.19737 13.7366 2.02906L13.944 1.44932C14.01 1.28101 14.1137 1.15945 14.2552 1.094C14.406 1.02854 14.5663 1.01919 14.736 1.08465L17.0647 1.92621C17.3758 2.03841 17.5738 2.26283 17.6493 2.58075L18.8278 8.10699C19.4312 8.10699 20.0345 8.21919 20.6379 8.43426L20.6474 8.46231ZM3.90318 10.9122C4.48772 11.1179 5.07226 11.1553 5.67565 11.0244C6.27905 10.8841 6.77873 10.5943 7.19356 10.1454L4.25202 9.07945C3.91261 8.95789 3.71462 8.71478 3.65805 8.3501C3.60148 7.98543 3.71462 7.69556 4.01632 7.48049L6.61845 5.44205C6.43932 5.32049 6.24133 5.22698 6.02449 5.14283C5.22311 4.85296 4.44058 4.89036 3.65805 5.24569C2.88495 5.60101 2.34756 6.18075 2.05529 6.97556C1.76302 7.77036 1.80073 8.54647 2.159 9.32257C2.51726 10.0893 3.1018 10.6223 3.90318 10.9122ZM7.81581 6.854L6.43932 7.91062L8.00438 8.47166C8.09866 7.91062 8.04209 7.36828 7.81581 6.854ZM11.0968 9.58439L15.3771 6.2275L10.7291 4.54439L9.3243 5.67582C9.91827 6.76049 10.0691 7.90127 9.7957 9.1075L11.1062 9.58439H11.0968ZM17.7153 15.8867C18.5166 16.2327 19.3369 16.2233 20.1477 15.868C20.9679 15.5127 21.5242 14.9236 21.8259 14.1101C22.1181 13.3153 22.0804 12.5392 21.7222 11.7631C21.3639 10.9963 20.7794 10.4633 19.978 10.1735C19.7328 10.0893 19.4877 10.0239 19.2237 9.98647L19.9026 13.175C19.9214 13.3433 19.8837 13.5023 19.7894 13.6426C19.6951 13.7828 19.5631 13.867 19.3934 13.8857L18.7995 14.0353C18.6298 14.054 18.4695 14.0166 18.3281 13.9231C18.1867 13.8296 18.1018 13.6987 18.0829 13.5304L17.3853 10.3792C16.6876 10.7813 16.2162 11.361 15.9711 12.1091C15.7259 12.8665 15.7636 13.5958 16.1031 14.3252C16.4425 15.0452 16.9799 15.5688 17.7153 15.8867Z" fill="#407EC9"/>
+                                        </g>
+                                        </g>
+                                        <defs>
+                                        <clipPath id="clip0_2353_894">
+                                        <rect width="30" height="18" fill="white"/>
+                                        </clipPath>
+                                        </defs>
+                                      </svg>
+                                    </div>
+                                    <div className={`absolute top-2 left-2 ${bundleItemsCount === 0 && 'opacity-30'}`}>
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="23" viewBox="0 0 32 23" fill="none">
+                                        <g clip-path="url(#clip0_2353_889)">
+                                        <g opacity="0.5">
+                                        <path d="M4.74978 1.66112L6.87122 1.22193C7.05896 1.17419 7.21854 1.22193 7.33118 1.38424C7.44382 1.54655 7.47199 1.70885 7.3875 1.89026L6.43942 3.87614L7.51892 5.7952C7.61279 5.96705 7.6034 6.12936 7.49076 6.29167C7.37812 6.45398 7.23731 6.52081 7.04957 6.49217L4.89997 6.20574L3.43561 7.82882C3.31358 7.97203 3.154 8.01022 2.96627 7.96249C2.77853 7.9052 2.66588 7.79063 2.63772 7.59968L2.25286 5.42284L0.272221 4.51583C0.0938692 4.4299 0.00938692 4.29623 0 4.09574C0 3.89524 0.0750953 3.75203 0.253447 3.6661L2.15899 2.61587L2.39366 0.429485C2.41244 0.228987 2.51569 0.0953214 2.70343 0.0284887C2.89117 -0.038344 3.05075 -0.000153879 3.19155 0.133512L4.74978 1.65157V1.66112Z" fill="#407EC9"/>
+                                        </g>
+                                        <g opacity="0.5">
+                                        <path d="M7.75356 13.3188L8.9457 12.9942L10.8606 20.2599L9.66849 20.5845C9.34934 20.6704 9.03957 20.6322 8.73919 20.4508C8.43881 20.279 8.25107 20.0212 8.1572 19.6966L6.88058 14.856C6.7961 14.5314 6.83365 14.2163 7.012 13.9108C7.18096 13.6052 7.43441 13.4143 7.75356 13.3188ZM26.3115 6.31093L29.0243 16.6032C29.1933 17.2619 29.1088 17.8921 28.7615 18.4936C28.4142 19.1046 27.926 19.4961 27.2784 19.6679L15.3757 22.9141C14.728 23.0859 14.1085 23 13.5171 22.6467C12.9164 22.2935 12.5315 21.797 12.3625 21.1382L9.64972 10.846C9.43382 10.0154 9.53708 9.22292 9.95949 8.46867C10.3819 7.71441 11.0108 7.22749 11.8275 7.0079L15.9953 5.87174L15.357 3.44667C15.2725 3.12205 15.31 2.80698 15.4884 2.50146C15.6573 2.19594 15.9108 2.00499 16.23 1.90952C16.5491 1.82359 16.8589 1.86178 17.1593 2.04318C17.4596 2.21504 17.6474 2.47282 17.7412 2.79744L18.3796 5.22251L22.5473 4.08635C23.364 3.86676 24.1431 3.97178 24.8847 4.40142C25.6263 4.83106 26.105 5.47074 26.3209 6.30138L26.3115 6.31093ZM16.5491 13.3666C16.7556 13.0037 16.8026 12.6027 16.6899 12.1731C16.5773 11.7435 16.3426 11.4284 15.9765 11.2088C15.6104 10.9988 15.2255 10.951 14.8031 11.0656C14.3807 11.1802 14.0616 11.4189 13.8551 11.7912C13.6485 12.1636 13.6016 12.555 13.7143 12.9847C13.8269 13.4143 14.0616 13.7389 14.4277 13.949C14.7844 14.159 15.1786 14.2067 15.601 14.0922C16.0234 13.9776 16.3332 13.7389 16.5491 13.3666ZM17.6661 17.0901L15.2819 17.7393L15.601 18.9519L17.9853 18.3026L17.6661 17.0901ZM21.2332 16.1162L18.8489 16.7655L19.1681 17.978L21.5523 17.3288L21.2332 16.1162ZM23.6832 11.4189C23.8897 11.056 23.9366 10.6551 23.824 10.2254C23.7113 9.79578 23.4767 9.48071 23.1106 9.26111C22.7445 9.05107 22.3596 9.00333 21.9372 9.1179C21.5148 9.23247 21.1956 9.47116 20.9891 9.84351C20.7826 10.2159 20.7357 10.6073 20.8483 11.037C20.961 11.4666 21.1956 11.7912 21.5617 12.0013C21.9184 12.2113 22.3127 12.259 22.7351 12.1445C23.1575 12.0299 23.4673 11.7912 23.6832 11.4189ZM24.8002 15.1424L22.4159 15.7916L22.7351 17.0042L25.1194 16.3549L24.8002 15.1424ZM30.667 8.3541L31.9436 13.1947C32.0281 13.5193 31.9906 13.8344 31.8122 14.1399C31.6433 14.4454 31.3898 14.6364 31.0707 14.7318L29.8785 15.0565L27.9636 7.79079L29.1557 7.46618C29.4749 7.38025 29.7847 7.41844 30.085 7.59984C30.3854 7.7717 30.5732 8.02948 30.6576 8.3541H30.667Z" fill="#407EC9"/>
+                                        </g>
+                                        </g>
+                                        <defs>
+                                        <clipPath id="clip0_2353_889">
+                                        <rect width="32" height="23" fill="white"/>
+                                        </clipPath>
+                                        </defs>
+                                      </svg>
+                                    </div>
+                                    {bundleItemsCount > 1 &&
+                                      <span><span className="text-xl font-bold block leading-[1]">Buy</span>this bundle</span>
+                                    }
+                                    {bundleItemsCount === 1 &&
+                                      <span><span className="text-xl font-bold block leading-[1]">Buy</span>this item</span>
+                                    }
+                                    {bundleItemsCount === 0 &&
+                                      <span><span className="text-xl font-bold block leading-[1]">Pick</span>Items</span>
+                                    }
+                                  </div>
+                                <div className={`text-lg ${bundleItemsCount === 0 ? 'text-gray-400' : 'text-brandRed'} font-bold text-center mb-2`}>{bundleTotalPrice}</div>
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <Button
+                                  className={`shadow-md hover:shadow-lg group items-center justify-center text-sm font-bold rounded-full bg-brandGreen text-white p-0 transition-all hover:bg-brandLightGreen hover:scale-105 flex justify-cener items-center p-1.5 pl-0.5 ${bundleItemsCount === 0 && 'pointer-events-none bg-gray-400'}`}
+                                  iconpath={
+                                    <svg
+                                    className="w-full"
+                                      width="22"
+                                      height="18"
+                                      viewBox="0 0 22 18"
+                                      fill="currentColor"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <path d="M21.2401 7.57V8.14C21.2401 8.38 21.1601 8.58 20.9901 8.75C20.8201 8.92 20.6201 9 20.3801 9H20.0901L19.1601 15.57C19.0901 16 18.8901 16.35 18.5701 16.63C18.2501 16.9 17.8701 17.04 17.4401 17.04H4.36006C3.93006 17.04 3.55006 16.9 3.23006 16.63C2.91006 16.35 2.71006 16 2.64006 15.57L1.71006 9H1.42006C1.18006 9 0.980059 8.92 0.810059 8.75C0.640059 8.58 0.560059 8.38 0.560059 8.14V7.57C0.560059 7.33 0.640059 7.13 0.810059 6.96C0.980059 6.79 1.18006 6.71 1.42006 6.71H3.83006L7.67006 1.43C7.86006 1.17 8.11006 1.01 8.42006 0.960001C8.73006 0.910001 9.02006 0.980002 9.28006 1.18C9.54006 1.37 9.70006 1.62 9.75006 1.93C9.80006 2.24 9.73006 2.53 9.53006 2.79L6.66006 6.71H15.1401L12.2701 2.79C12.0801 2.53 12.0101 2.24 12.0501 1.93C12.1001 1.62 12.2501 1.37 12.5201 1.18C12.7801 0.990002 13.0701 0.920001 13.3801 0.960001C13.6901 1.01 13.9401 1.16 14.1301 1.43L17.9701 6.71H20.3801C20.6201 6.71 20.8201 6.79 20.9901 6.96C21.1601 7.13 21.2401 7.33 21.2401 7.57ZM7.73006 13.89V9.87C7.73006 9.63 7.65006 9.43 7.48006 9.26C7.31006 9.09 7.11006 9.01 6.87006 9.01C6.63006 9.01 6.43006 9.09 6.26006 9.26C6.09006 9.43 6.01006 9.63 6.01006 9.87V13.89C6.01006 14.13 6.09006 14.33 6.26006 14.5C6.43006 14.67 6.63006 14.75 6.87006 14.75C7.11006 14.75 7.31006 14.67 7.48006 14.5C7.65006 14.33 7.73006 14.13 7.73006 13.89ZM11.7501 13.89V9.87C11.7501 9.63 11.6701 9.43 11.5001 9.26C11.3301 9.09 11.1301 9.01 10.8901 9.01C10.6501 9.01 10.4501 9.09 10.2801 9.26C10.1101 9.43 10.0301 9.63 10.0301 9.87V13.89C10.0301 14.13 10.1101 14.33 10.2801 14.5C10.4501 14.67 10.6501 14.75 10.8901 14.75C11.1301 14.75 11.3301 14.67 11.5001 14.5C11.6701 14.33 11.7501 14.13 11.7501 13.89ZM15.7701 13.89V9.87C15.7701 9.63 15.6901 9.43 15.5201 9.26C15.3501 9.09 15.1501 9.01 14.9101 9.01C14.6701 9.01 14.4701 9.09 14.3001 9.26C14.1301 9.43 14.0501 9.63 14.0501 9.87V13.89C14.0501 14.13 14.1301 14.33 14.3001 14.5C14.4701 14.67 14.6701 14.75 14.9101 14.75C15.1501 14.75 15.3501 14.67 15.5201 14.5C15.6901 14.33 15.7701 14.13 15.7701 13.89Z" />
+                                    </svg>
+                                  }
+                                  removeIcons={false}
+                                  onClick={addBundleToCart}
+                                >
+                                  <span className="sr-only">add to basket</span>
+                                  {'Add'}
+                                </Button>
+                              </div>
+                            </div>
+                          </div>
+                          </div>
+                        </div>
+                      </div>
 
         {location.pathname !== "/category/pagination" ? 
           <>
