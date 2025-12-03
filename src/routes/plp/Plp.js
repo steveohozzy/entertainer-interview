@@ -1493,7 +1493,7 @@ const Plp = () => {
           <button
           onClick={() => setTabOpen(!tabOpen)}
           className={`fixed z-[600] top-1/2 -translate-y-1/2 transition-all -rotate-90 bg-brandRed py-1 md:py-2 px-6 text-sm md:text-base rounded-tr-xl rounded-tl-xl font-bold text-white text shadow-[-5px_-5px_10px_1px_#bbb] ${
-            tabOpen ? "right-[132px]" : "right-[-60px]"
+            tabOpen ? "right-[72px] md:right-[132px]" : "right-[-60px]"
           }`}
         >
           <span className="shadow-text-red">popular bundle</span>
@@ -1505,7 +1505,7 @@ const Plp = () => {
           ></div>
         )}
         <div
-          className={`fixed top-0 z-[9999] max-w-[190px] transition-all h-full ${
+          className={`fixed top-0 z-[9999] max-w-[130px] md:max-w-[190px] transition-all h-full ${
             tabOpen ? "right-0" : "right-[-100vw]"
           }`}
         >
@@ -1514,7 +1514,7 @@ const Plp = () => {
 
           <div
                             id="bundle"
-                            className={`grid grid-cols-1 gap-4 border-brandNeonBlue rounded-xl relative transition-all`}
+                            className={`grid grid-cols-1 gap-2 md:gap-4 border-brandNeonBlue rounded-xl relative transition-all`}
                           >
                             
 
