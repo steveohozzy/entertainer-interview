@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const CheckoutLayout = () => {
 
     return (
-        <>
+        <div className="flex flex-col h-screen">
         <header
             id="site-header"
             className={`text-white border-b w-full z-50 transition-transform duration-300`}
@@ -39,7 +39,7 @@ const CheckoutLayout = () => {
         </header>
         <Outlet />
         <ReducedFooter />
-        </>
+        </div>
     )
 }
 

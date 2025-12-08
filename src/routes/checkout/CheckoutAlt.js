@@ -152,7 +152,7 @@ const CheckoutAlt = () => {
 
   return (
     <>
-      <div className="bg-white">
+      <div className="bg-white flex-grow">
         <div className="text-sm text-gray-500 flex items-center justify-center pt-6">
           <span
             className={`text-gray-300 ${
