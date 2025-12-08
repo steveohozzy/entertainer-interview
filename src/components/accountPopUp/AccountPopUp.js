@@ -76,7 +76,7 @@ const AccountPopUp = () => {
       {!isSignedIn ? (
         <button
           onClick={handleAccountPopUp}
-          className="transition-all hover:text-brandLightBlue md:flex items-center ml-3 text-sm group md:w-[122px] flex"
+          className="transition-all hover:text-brandLightBlue md:flex items-center ml-3 text-sm group md:w-[140px] flex"
         >
           
           <span className="mr-1 transition-all transition-duration-500 group-hover:rotate-[20deg]">

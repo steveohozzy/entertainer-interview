@@ -1075,7 +1075,7 @@ const Checkout = () => {
                     <div className='w-full lg:w-[33.3333333%] px-3'>
                         <div className='border-[3px] border-gray-300 rounded-xl md:px-3 hidden lg:block'>
                               {(
-                                cartItems.map((item) => <CartProductTile key={item.id} product={item} nocontrols={true} />)
+                                cartItems.map((item) => <CartProductTile key={item.id} product={item} nocontrols={true} isMiniCart={true} />)
                               )}
                         </div>
 
