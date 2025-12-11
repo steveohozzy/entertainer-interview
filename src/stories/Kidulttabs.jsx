@@ -60,7 +60,7 @@ export const KidultTabs = ({
     margin: 0 auto;
   }
 
-  h1 {
+  .kidult h1 {
     font-size: 50px;
     font-family: 'Billy Bold', Arial, Helvetica, sans-serif;
     font-weight: 700;
@@ -72,23 +72,23 @@ export const KidultTabs = ({
     text-transform: uppercase;
   }
 
-  p {
+  .kidult p {
     color: rgb(243 244 246);
     text-align: center;
   }
 
-  .carousel-cell {
+  .kidult .carousel-cell {
     width: 33.333333%;
     padding: 20px 10px;
   }
 
   @media (min-width: 1024px) {
-    .carousel-cell {
+    .kidult .carousel-cell {
       width: 20%;
     }
   }
 
-  .carousel-cell .roundal-image img {
+  .kidult .carousel-cell .roundal-image img {
     position: relative;
     z-index: 2;
     aspect-ratio: 1 / 1;
@@ -123,7 +123,13 @@ export const KidultTabs = ({
     min-width: unset;
     height: auto;
     overflow: hidden;
-    margin: 25px;
+    margin: 10px;
+  }
+
+  @media (min-width: 1024px) {
+    .roundal-image img {
+      margin: 25px;
+    }
   }
 
   .pageType-CategoryPage .map img {

@@ -16,9 +16,9 @@ export const PodsCarousel = ({
   return (
     <>
     <style>{`
-		#storybook-root .offer-pods .carousel-cell {
-		width:100%
-	}
+  #storybook-root .offer-pods .carousel-cell {
+    width: 100%;
+  }
   .offer-pods {
     padding: 0 10px 20px;
     background-color: #dbe3ff;
@@ -37,7 +37,7 @@ export const PodsCarousel = ({
   .offer-pods .carousel-cell {
     width: 78%;
     padding-top: 10px;
-		aspect-ratio: 241/381;
+    aspect-ratio: 241/421;
   }
 
   .offer-pods img {
@@ -68,6 +68,16 @@ export const PodsCarousel = ({
     height: 100%;
   }
 
+  .offer-pods a span {
+    padding: 0 10px;
+    line-height: 1.2;
+  }
+
+  .offer-pods button span {
+    padding: 0;
+    line-height: 0;
+  }
+
   .offer-pods a:hover {
     box-shadow: 0 0 18px rgba(33, 33, 33, 0.15);
     transform: translateY(-5px);
@@ -83,7 +93,14 @@ export const PodsCarousel = ({
   }
 
   .offer-pods .flickity-viewport {
-    --mask: linear-gradient(to right, rgba(0, 0, 0, 1) 0, rgba(0, 0, 0, 1) 92%, rgba(0, 0, 0, 0) 100%, rgba(0, 0, 0, 0) 0) 100% 98% / 100% 100% repeat-x;
+    --mask: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 1) 0,
+        rgba(0, 0, 0, 1) 92%,
+        rgba(0, 0, 0, 0) 100%,
+        rgba(0, 0, 0, 0) 0
+      )
+      100% 98% / 100% 100% repeat-x;
     mask: var(--mask);
   }
 
@@ -93,7 +110,7 @@ export const PodsCarousel = ({
     }
     .offer-pods .carousel-cell {
       width: 37%;
-			aspect-ratio: 429/600;
+      aspect-ratio: 429/650;
     }
 
     .offer-pods a {
@@ -108,119 +125,268 @@ export const PodsCarousel = ({
   }
 
   .offer-pods .hero-button {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50px;
-        margin-bottom: 30px;
-        background-color: #009E44;
-        color: #fff;
-        font-size: 16px;
-        font-weight: bold;
-        text-decoration: none;
-        padding: 10px 10px 10px 0px;
-        height: 40px;
-        box-shadow: 0 0 5px rgba(3,33,33,.6);
-        border: 3px solid #ffffff;
-        transition: all 0.3s;
-    }
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    margin-bottom: 30px;
+    background-color: #009e44;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 10px 10px 10px 0px;
+    height: 40px;
+    box-shadow: 0 0 5px rgba(3, 33, 33, 0.6);
+    border: 3px solid #ffffff;
+    transition: all 0.3s;
+  }
 
-    .offer-pods .hero-button:hover {
-        background-color: #AFCB17;
-        scale: 1.05;
-        box-shadow: 0 0 18px rgba(3,33,33,.3);
-        color: #fff;
-    }
+  .offer-pods .hero-button:hover {
+    background-color: #afcb17;
+    scale: 1.05;
+    box-shadow: 0 0 18px rgba(3, 33, 33, 0.3);
+    color: #fff;
+  }
 
-    .offer-pods .hero-button .basket-icon {
-        transition: all 0.3s;
-        transform: rotate(15deg);
-        margin-left: 5px;
-    }
+  .offer-pods .hero-button .basket-icon {
+    transition: all 0.3s;
+    transform: rotate(15deg);
+    margin-left: 5px;
+  }
 
-    .offer-pods .hero-button:hover .basket-icon {
-        transform: rotate(-10deg)
-    }
+  .offer-pods .hero-button:hover .basket-icon {
+    transform: rotate(-10deg);
+  }
 
-    .offer-pods .hero-button .star-start {
-        position: relative;
-        top: -3px;
-    }
+  .offer-pods .hero-button .star-start {
+    position: relative;
+    top: -3px;
+  }
 
-    .offer-pods .hero-button .swoosh-container {
-        display: flex;
-        align-items: center;
-        justify-content: end;
-        margin-right: 5px;
-        width: 25px;
-    }
+  .offer-pods .hero-button .swoosh-container {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    margin-right: 5px;
+    width: 25px;
+  }
 
-    .offer-pods .hero-button .swoosh {
-        display: block;
-        width: 0;
-        height: 3px;
-        margin-top: 0;
-        margin-left: -2px;
-        transform: rotate(15deg);
-        background-color: rgba(255, 255, 255, 0.7);
-        transition: all 0.3s;
-    }
+  .offer-pods .hero-button .swoosh {
+    display: block;
+    width: 0;
+    height: 3px;
+    margin-top: 0;
+    margin-left: -2px;
+    transform: rotate(15deg);
+    background-color: rgba(255, 255, 255, 0.7);
+    transition: all 0.3s;
+  }
 
-    .offer-pods .hero-button:hover .swoosh {
-        width: 7px;
-    }
+  .offer-pods .hero-button:hover .swoosh {
+    width: 7px;
+  }
 
-    .offer-pods .hero-button .star-end {
-        position: relative;
-        bottom: -5px;
-        transition: all 0.3s;
-    }
+  .offer-pods .hero-button .star-end {
+    position: relative;
+    bottom: -5px;
+    transition: all 0.3s;
+  }
 
-    .offer-pods .hero-button:hover .star-end {
-        scale: 1.1;
-        transform: rotate(30deg);
-    }
+  .offer-pods .hero-button:hover .star-end {
+    scale: 1.1;
+    transform: rotate(30deg);
+  }
 
-		.pod-image-container {
-        position: relative;
-				width: 100%;
-    }
+  .pod-image-container {
+    position: relative;
+    width: 100%;
+  }
 
-    .pod .logo {
-        position: absolute;
-        top: 10px;
-        left: 0;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+  .pod .logo {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-    .pod .logo.left {
-      justify-content: flex-start;
-      padding-left: 10px;
-    }
+  .pod .logo.left {
+    justify-content: flex-start;
+    padding-left: 10px;
+  }
 
-    .pod .logo.right {
-      justify-content: flex-end;
-      padding-right: 10px;
-    }
+  .pod .logo.right {
+    justify-content: flex-end;
+    padding-right: 10px;
+  }
 
-    .pod .logo img {
-      width: auto;
-    }
+  .pod .logo img {
+    width: auto;
+  }
 
-		.pod.has-tagline .hero-button {
-        margin-top: 20px;
-    }
+  .pod.has-tagline .hero-button {
+    margin-top: 20px;
+  }
 
-		.pod.has-tagline img {
-			margin: 0 0 20px !important;
-		}
+  .pod.has-tagline img {
+    margin: 0 0 20px !important;
+  }
 
-    .pod.has-tagline .pod-image-container + span {
-      margin: 0 20px;
+  .pod.has-tagline .pod-image-container + span {
+    margin: 0 20px;
+  }
+
+  .lightrope {
+    text-align: center;
+    white-space: nowrap;
+    margin: -30px 0 0 0;
+    padding: 0;
+    pointer-events: none;
+    width: 100%;
+  }
+  .lightrope li {
+    position: relative;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: block;
+    width: 12px;
+    height: 28px;
+    border-radius: 50%;
+    margin: 20px;
+    display: inline-block;
+    background: #AAFF00;
+    box-shadow: 0px 4.6666666667px 24px 3px #AAFF00;
+    -webkit-animation-name: flash-1;
+    animation-name: flash-1;
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+  }
+  .lightrope li:nth-child(2n + 1) {
+    background: #00FFFF;
+    box-shadow: 0px 4.6666666667px 24px 3px rgba(0, 255, 255, 0.5);
+    -webkit-animation-name: flash-2;
+    animation-name: flash-2;
+    -webkit-animation-duration: 0.4s;
+    animation-duration: 0.4s;
+  }
+  .lightrope li:nth-child(4n + 2) {
+    background: #ff1414;
+    box-shadow: 0px 4.6666666667px 24px 3px #ff1414;
+    -webkit-animation-name: flash-3;
+    animation-name: flash-3;
+    -webkit-animation-duration: 1.1s;
+    animation-duration: 1.1s;
+  }
+  .lightrope li:nth-child(odd) {
+    -webkit-animation-duration: 1.8s;
+    animation-duration: 1.8s;
+  }
+  .lightrope li:nth-child(3n + 1) {
+    -webkit-animation-duration: 1.4s;
+    animation-duration: 1.4s;
+  }
+  .lightrope li:before {
+    content: "";
+    position: absolute;
+    background: #222;
+    width: 10px;
+    height: 9.3333333333px;
+    border-radius: 3px;
+    top: -4.6666666667px;
+    left: 1px;
+  }
+  .lightrope li:after {
+    content: "";
+    top: -14px;
+    left: 9px;
+    position: absolute;
+    width: 52px;
+    height: 18.6666666667px;
+    border-bottom: solid #222 2px;
+    border-radius: 50%;
+  }
+  .lightrope li:last-child:after {
+    content: none;
+  }
+  .lightrope li:first-child {
+    margin-left: -40px;
+  }
+
+  @-webkit-keyframes flash-1 {
+    0%,
+    100% {
+      background: #AAFF00;
+      box-shadow: 0px 4.6666666667px 24px 3px #AAFF00;
     }
+    50% {
+      background: rgba(175, 225, 175, 0.4);
+      box-shadow: 0px 4.6666666667px 24px 3px rgba(175, 225, 175, 0.2);
+    }
+  }
+
+  @keyframes flash-1 {
+    0%,
+    100% {
+      background: #AAFF00;
+      box-shadow: 0px 4.6666666667px 24px 3px #AAFF00;
+    }
+    50% {
+      background: rgba(175, 225, 175, 0.4);
+      box-shadow: 0px 4.6666666667px 24px 3px rgba(175, 225, 175, 0.2);
+    }
+  }
+  @-webkit-keyframes flash-2 {
+    0%,
+    100% {
+      background: #00FFFF;
+      box-shadow: 0px 4.6666666667px 24px 3px #00FFFF;
+    }
+    50% {
+      background: rgba(0, 255, 255, 0.4);
+      box-shadow: 0px 4.6666666667px 24px 3px rgba(21, 148, 148, 0.5);
+    }
+  }
+  @keyframes flash-2 {
+    0%,
+    100% {
+      background: #00FFFF;
+      box-shadow: 0px 4.6666666667px 24px 3px #00FFFF;
+    }
+    50% {
+      background: rgba(0, 255, 255, 0.6);
+      box-shadow: 0px 4.6666666667px 24px 3px rgba(21, 148, 148, 0.6);
+    }
+  }
+  @-webkit-keyframes flash-3 {
+    0%,
+    100% {
+      background: #ff1414;
+      box-shadow: 0px 4.6666666667px 24px 3px #ff1414;
+    }
+    50% {
+      background: rgba(255,20,20, 0.4);
+      box-shadow: 0px 4.6666666667px 24px 3px rgba(255,20,20, 0.5);
+    }
+  }
+  @keyframes flash-3 {
+    0%,
+    100% {
+      background: #ff1414;
+      box-shadow: 0px 4.6666666667px 24px 3px #ff1414;
+    }
+    50% {
+      background: rgba(255,20,20, 0.4);
+      box-shadow: 0px 4.6666666667px 24px 3px rgba(255,20,20, 0.25);
+    }
+  }
 `}
 </style>
 <div class="offer-pods">
@@ -258,7 +424,26 @@ export const PodsCarousel = ({
 		}
   </div>
 </div>
-<script>
+    </>
+  );
+};
+
+PodsCarousel.propTypes = {
+  /** Button contents */
+  podscarouselfirstslide: PropTypes.string.isRequired,
+  podscarouselsecondslide: PropTypes.string,
+  podscarouselthirdslide: PropTypes.string,
+	podscarouselfourthslide: PropTypes.string,
+	podscarouselfifthslide: PropTypes.string,
+	podscarouselsixthslide: PropTypes.string,
+	podscarouselsevthslide: PropTypes.string,
+	podscarouseleighthslide: PropTypes.string,
+  podscarouselninethslide: PropTypes.string,
+  podscarouseltenthslide: PropTypes.string,
+};
+
+// eslint-disable-next-line no-lone-blocks
+{/* <script>
   {`
   document.addEventListener('DOMContentLoaded', function() {
     setTimeout(function(){
@@ -281,21 +466,4 @@ export const PodsCarousel = ({
     }, 1000);
   }, false);
   `}
-</script>
-    </>
-  );
-};
-
-PodsCarousel.propTypes = {
-  /** Button contents */
-  podscarouselfirstslide: PropTypes.string.isRequired,
-  podscarouselsecondslide: PropTypes.string,
-  podscarouselthirdslide: PropTypes.string,
-	podscarouselfourthslide: PropTypes.string,
-	podscarouselfifthslide: PropTypes.string,
-	podscarouselsixthslide: PropTypes.string,
-	podscarouselsevthslide: PropTypes.string,
-	podscarouseleighthslide: PropTypes.string,
-  podscarouselninethslide: PropTypes.string,
-  podscarouseltenthslide: PropTypes.string,
-};
+</script> */}

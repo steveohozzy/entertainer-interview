@@ -26,6 +26,7 @@ import PresentFinderWidget from "../../components/presentFinderWidget/PresentFin
 import Button from "../../components/button/Button";
 import BundlesProductCard from "../../components/bundlesProductCard/BundlesProductCard";
 import { setIsCartOpen } from "../../store/cart/cartReducer";
+import SortFlyout from "../../components/sortFlyout/SortFlyout";
 
 const Plp = () => {
   const [selectedBrands, setSelectedBrands] = useState([]);
@@ -783,28 +784,7 @@ const Plp = () => {
         >
           <div className="flex items-center gap-3 justify-between flex-wrap max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-3 gap-2 w-full flex-wrap">
-              <form id="sort-by-form" className="bg-brandBlue text-white text-sm rounded-tl-full rounded-bl-full block h-full w-full px-3">
-                <label htmlFor="sort" className="sr-only">
-                  Select an option
-                </label>
-                <select
-                  id="sort"
-                  className="bg-brandBlue text-white text-sm rounded-tl-full rounded-bl-full block h-full w-full px-3 outline-0 cursor-pointer"
-                  value={sortOption}
-                  onChange={(e) => setSortOption(e.target.value)}
-                >
-                  <option value="Sort">Sort</option>
-                  <option value="relevance">Relevance</option>
-                  <option value="price-low">
-                    Price (lowest first)
-                  </option>
-                  <option value="price-high">
-                    Price (highest first)
-                  </option>
-                  <option value="rating">Rating</option>
-                  <option value="newest">Newest</option>
-                </select>
-              </form>
+              <SortFlyout sortOption={sortOption} setSortOption={setSortOption} />
               <div ref={wrapperRef} className={`relative z-[2] bg-white border-[3px] border-brandBlue border-b-brandBlue ${showFilters && 'border-b-white'}`}>
                 <button
                   name="Show filters"
