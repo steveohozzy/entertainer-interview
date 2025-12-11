@@ -28,7 +28,7 @@ export default function SortFlyout({ sortOption, setSortOption }) {
     <div className="relative inline-block text-left" ref={flyoutRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`bg-brandBlue text-white text-sm rounded-tl-full rounded-bl-full h-full px-4 py-2 flex items-center justify-between w-full cursor-pointer focus:outline-none  ${isOpen ? "bg-white !text-brandBlue border-brandBlue border-[3px] border-b-white relative z-[2] rounded-bl-none rounded-tl-[20px]" : ""}`}
+        className={`bg-brandBlue text-white text-sm rounded-tl-full rounded-bl-full h-full px-4 py-2 flex items-center justify-between w-full cursor-pointer focus:outline-none  ${isOpen ? "bg-white !text-brandBlue border-brandBlue border-[3px] border-b-white relative z-[2] rounded-bl-none !rounded-tl-[20px]" : ""}`}
       >
         <span>{options.find((opt) => opt.value === sortOption)?.label || "Sort"}</span>
         <svg
