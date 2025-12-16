@@ -1,4 +1,358 @@
 import PropTypes from "prop-types";
+import { useLayoutEffect, useRef } from "react";
+
+class Carousel {
+    constructor(wrapper) {
+      this.wrapper = wrapper;
+      this.carousel = wrapper.querySelector(".carousel-right-panel");
+      this.leftPanel = wrapper.querySelector(".carousel-left-panel");
+      this.slides = wrapper.querySelectorAll(".slide");
+      this.leftNav = wrapper.querySelector(".left-nav");
+      this.rightNav = wrapper.querySelector(".right-nav");
+
+      this.index = 0;
+      this.animating = false;
+      this.isDragging = false;
+      this.startX = 0;
+      this.currentTranslate = 0;
+      this.animationID = null;
+      this.moved = false;
+      this.autoSlideInterval = null;
+      this.autoDirection = "next";
+
+      if (this.slides.length === 1) {
+        this.slides[0].classList.add("active");
+        this.slideIn(this.slides[0], this.autoDirection);
+        setTimeout(() => this.adjustHeight(), 50);
+        if (this.leftNav) this.leftNav.style.display = "none";
+        if (this.rightNav) this.rightNav.style.display = "none";
+        this.carousel.style.cursor = "default";
+      } else {
+        this.initEvents();
+        this.slides[0].classList.add("active");
+        this.slideIn(this.slides[0], this.autoDirection);
+        setTimeout(() => this.adjustHeight(), 50);
+      }
+    }
+
+    slideIn(slide, direction) {
+      direction = direction || "next";
+      const items = slide.querySelectorAll(".masonryItem");
+      items.forEach((box, i) => {
+        box.style.transition = "none";
+        box.style.transform =
+          direction === "next"
+            ? "translateX(150vw) scale(0.9)"
+            : "translateX(-150vw) scale(0.9)";
+        box.style.opacity = 0;
+        void box.offsetHeight;
+        setTimeout(() => {
+          box.style.transition =
+            "transform 1s cubic-bezier(0.25,1.1,0.35,1), opacity 1s ease";
+          box.style.transform = "translateX(0) scale(1)";
+          box.style.opacity = 1;
+        }, i * 100);
+      });
+    }
+
+    slideOut(slide, direction) {
+      direction = direction || "next";
+      const items = slide.querySelectorAll(".masonryItem");
+      const total = items.length;
+      items.forEach((box, i) => {
+        const delay =
+          direction === "next" ? i * 70 : (total - 1 - i) * 70;
+        setTimeout(() => {
+          box.style.transition = "transform 0.8s ease, opacity 0.8s ease";
+          box.style.transform =
+            direction === "next"
+              ? "translateX(-150vw) scale(0.9)"
+              : "translateX(150vw) scale(0.9)";
+          box.style.opacity = 0;
+        }, delay);
+      });
+    }
+
+    adjustHeight() {
+      let maxH = 0;
+      this.slides.forEach((slide) => {
+        slide.style.opacity = 1;
+        slide.style.position = "relative";
+        const h = slide.scrollHeight;
+        if (h > maxH) maxH = h;
+        slide.style.opacity = "";
+        slide.style.position = "";
+      });
+
+      this.carousel.style.minHeight = maxH + 100 + "px";
+      this.leftPanel.style.height = maxH + 100 + "px";
+
+      if (document.documentElement.clientWidth > 900) {
+        this.carousel.style.minHeight = maxH + 40 + "px";
+        this.leftPanel.style.height = maxH + 40 + "px";
+      }
+    }
+
+    goTo(next, direction, userInitiated) {
+      if (this.animating || next === this.index) return;
+      this.animating = true;
+
+      if (!direction) {
+        direction = next > this.index ? "next" : "prev";
+      }
+      if (userInitiated) this.autoDirection = direction;
+
+      const oldSlide = this.slides[this.index];
+      const newSlide = this.slides[next];
+
+      newSlide.classList.add("active");
+      this.slideIn(newSlide, direction);
+      this.slideOut(oldSlide, direction);
+
+      setTimeout(() => {
+        oldSlide.classList.remove("active");
+        this.index = next;
+        this.adjustHeight();
+        this.animating = false;
+      }, 1200);
+
+      this.resetAutoSlide();
+    }
+
+    nextSlide() {
+      this.goTo((this.index + 1) % this.slides.length, "next");
+    }
+
+    prevSlide() {
+      this.goTo(
+        (this.index - 1 + this.slides.length) % this.slides.length,
+        "prev"
+      );
+    }
+
+    startAutoSlide() {
+      clearInterval(this.autoSlideInterval);
+      this.autoSlideInterval = setInterval(() => {
+        if (this.autoDirection === "next") {
+          this.nextSlide();
+        } else {
+          this.prevSlide();
+        }
+      }, 4000);
+    }
+
+    resetAutoSlide() {
+      this.startAutoSlide();
+    }
+
+    touchStart(e) {
+      if (this.animating) return;
+      this.isDragging = true;
+      this.startX = e.type.indexOf("mouse") !== -1 ? e.pageX : e.touches[0].clientX;
+      this.moved = false;
+      this.animationID = requestAnimationFrame(() => this.animation());
+      this.carousel.classList.add("dragging");
+    }
+
+    touchMove(e) {
+      if (!this.isDragging || this.animating) return;
+      const x = e.type.indexOf("mouse") !== -1 ? e.pageX : e.touches[0].clientX;
+      const delta = x - this.startX;
+      this.currentTranslate = delta;
+      if (Math.abs(delta) > 5) this.moved = true;
+
+      const inner = this.slides[this.index].querySelector(".slide-inner");
+      if (inner) {
+        inner.style.transform = "translateX(" + this.currentTranslate + "px)";
+      }
+    }
+
+    touchEnd() {
+      cancelAnimationFrame(this.animationID);
+      this.isDragging = false;
+      const movedX = this.currentTranslate;
+      this.carousel.classList.remove("dragging");
+
+      const inner = this.slides[this.index].querySelector(".slide-inner");
+      if (inner) inner.style.transition = "transform 0.3s ease";
+
+      if (movedX < -50) {
+        this.goTo((this.index + 1) % this.slides.length, "next", true);
+      } else if (movedX > 50) {
+        this.goTo(
+          (this.index - 1 + this.slides.length) % this.slides.length,
+          "prev",
+          true
+        );
+      } else if (inner) {
+        inner.style.transform = "translateX(0)";
+        setTimeout(() => {
+          inner.style.transition = "";
+          inner.style.transform = "";
+        }, 300);
+      }
+
+      this.currentTranslate = 0;
+    }
+
+    animation() {
+      this.setSliderPosition();
+      if (this.isDragging) {
+        requestAnimationFrame(() => this.animation());
+      }
+    }
+
+    setSliderPosition() {
+      const inner = this.slides[this.index].querySelector(".slide-inner");
+      if (inner) {
+        inner.style.transform = "translateX(" + this.currentTranslate + "px)";
+      }
+    }
+
+    initEvents() {
+      this.carousel.addEventListener("mousedown", (e) => this.touchStart(e));
+      this.carousel.addEventListener("mousemove", (e) => this.touchMove(e));
+      this.carousel.addEventListener("mouseup", () => this.touchEnd());
+      this.carousel.addEventListener("mouseleave", () => {
+        if (this.isDragging) this.touchEnd();
+      });
+
+      this.carousel.addEventListener("touchstart", (e) => this.touchStart(e));
+      this.carousel.addEventListener(
+        "touchmove",
+        (e) => this.touchMove(e),
+        { passive: false }
+      );
+      this.carousel.addEventListener("touchend", () => this.touchEnd());
+
+      this.carousel.addEventListener(
+        "click",
+        (e) => {
+          if (this.moved) {
+            e.preventDefault();
+            e.stopPropagation();
+          }
+        },
+        true
+      );
+
+      if (this.leftNav) {
+        this.leftNav.addEventListener("click", () => {
+          this.goTo(
+            (this.index - 1 + this.slides.length) % this.slides.length,
+            "next",
+            true
+          );
+        });
+      }
+
+      if (this.rightNav) {
+        this.rightNav.addEventListener("click", () => {
+          this.goTo(
+            (this.index + 1) % this.slides.length,
+            "prev",
+            true
+          );
+        });
+      }
+
+      window.addEventListener("resize", () => {
+        setTimeout(() => this.adjustHeight(), 100);
+      });
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    document
+      .querySelectorAll(".carousel-wrapper-component")
+      .forEach((wrapper) => {
+        wrapper.carouselInstance = new Carousel(wrapper);
+      });
+
+    document
+      .querySelectorAll(".masonryItem")
+      .forEach((i) => i.classList.add("loading"));
+
+    loadFromIframe();
+  });
+
+  function loadFromIframe() {
+    const iframe = document.createElement("iframe");
+    iframe.src = "${categoryurl}";
+    iframe.style.display = "none";
+    document.body.appendChild(iframe);
+
+    const fastScan = setInterval(() => {
+      const doc = iframe.contentDocument;
+      if (!doc) return;
+
+      const items = doc.querySelectorAll(
+        ".product__listing.product__grid .product-item"
+      );
+      if (items.length < 12) return;
+
+      clearInterval(fastScan);
+
+      const isMobile = window.innerWidth <= 767;
+      const perSlide = isMobile ? 4 : 6;
+      const totalNeeded = perSlide * 2;
+
+      const selected = Array.prototype.slice.call(items, 0, totalNeeded);
+      const slide1Items = selected.slice(0, perSlide);
+      const slide2Items = selected.slice(perSlide, perSlide * 2);
+
+      const slide1 = document.querySelector(".slide:nth-of-type(1) .masonry");
+      const slide2 = document.querySelector(".slide:nth-of-type(2) .masonry");
+
+      slide1.innerHTML = "";
+      slide2.innerHTML = "";
+
+      function wrapProduct(node) {
+        const wrapper = document.createElement("div");
+        wrapper.className = "masonryItem tall product";
+        wrapper.appendChild(node.cloneNode(true));
+        const features = wrapper.querySelector(".product__grid__features");
+        if (features) features.remove();
+        return wrapper;
+      }
+
+      slide1Items.forEach((n) => slide1.appendChild(wrapProduct(n)));
+      slide2Items.forEach((n) => slide2.appendChild(wrapProduct(n)));
+
+      document
+        .querySelectorAll(".masonryItem .product-item")
+        .forEach((item) => {
+          const imageLink = item.querySelector("a[href]");
+          const price = item.querySelector(".grid-pricing");
+          if (!imageLink || !price) return;
+          if (item.querySelector(".details-link")) return;
+
+          const detailsLink = document.createElement("a");
+          detailsLink.href = imageLink.href;
+          detailsLink.textContent = "Details";
+          detailsLink.className = "details-link";
+          price.after(detailsLink);
+        });
+
+      document
+        .querySelectorAll(".masonryItem")
+        .forEach((m) => m.classList.remove("loading"));
+
+      document
+        .querySelectorAll(".carousel-wrapper-component")
+        .forEach((wrapper) => {
+          const inst = wrapper.carouselInstance;
+          if (inst) {
+            const active = inst.slides[inst.index];
+            inst.slideIn(active, inst.autoDirection);
+            inst.adjustHeight();
+            inst.startAutoSlide();
+          }
+        });
+
+      iframe.remove();
+    }, 50);
+  }
 
 /** Primary UI component for user interaction */
 export const MulticlickCarouselProductFeed = ({
@@ -13,6 +367,15 @@ export const MulticlickCarouselProductFeed = ({
   buttontext,
   link,
 }) => {
+  const wrapperRef = useRef(null);
+  
+    useLayoutEffect(() => {
+      if (!wrapperRef.current) return;
+  
+      const carousel = new Carousel(wrapperRef.current);
+  
+      return () => carousel.destroy();
+    }, []);
   return (
     <>
       <style>
@@ -352,7 +715,7 @@ export const MulticlickCarouselProductFeed = ({
     }
         `}
       </style>
-      <div class="carousel-wrapper-component" style={{background : background}}>
+      <div class="carousel-wrapper-component" ref={wrapperRef} style={{background : background}}>
 
   <div class="carousel-left-panel">
     <div class="left-content">
