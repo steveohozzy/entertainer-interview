@@ -43,7 +43,7 @@ export const KidultTabs = ({
     <>
       <style>
         {`
-  :root {
+ :root {
   --kidultroundal1bg: #000;
 }
   .category-title {
@@ -163,7 +163,7 @@ export const KidultTabs = ({
     top: 4px;
     left: 4px;
     aspect-ratio: 1/1;
-    background: var(--kidultroundal1bg);
+    background: #000;
     border-radius: 100%;
   }
 
@@ -209,120 +209,56 @@ export const KidultTabs = ({
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 7px;
   }
 
   .tabs .tab {
-    color: #000;
+    color: #fff;
     position: relative;
     cursor: pointer;
-    padding: 10px 5px 0;
-    margin-bottom: 20px;
+    padding: 5px 3px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    border: 2px solid transparent;
     transition: all 0.3s ease-in-out;
+    border-radius: 30px;
+  }
+
+  .tabs .tab1 {
+    background-color: #b96e17;
+  }
+
+  .tabs .tab2 {
+    background-color: #ff00ff;
+  }
+
+  .tabs .tab3 {
+    background-color: #0a703a;
+  }
+
+  .tabs .tab4 {
+    background-color: #008bc7
+  }
+
+  .tabs .active {
+    border: 2px solid #fff;
   }
 
   .tabs .tab span {
     width: 100%;
     text-align: center;
-    position: absolute;
-    left: 0;
-    bottom: 10px;
     font-family: "Nunito Bold", "Tahoma Bold", sans-serif;
     font-weight: normal;
     font-size: 10px;
     letter-spacing: 0;
-    padding: 0 5px;
     line-height: 1;
+    position: relative;
+    bottom: 0;
+    color: #fff !important;
   }
 
-  .tabs .tab svg {
-    width: 70px;
-    height: auto;
-  }
-
-  @media (min-width: 1024px) {
-    .tabs .tab span {
-      font-size: 12px;
-      padding: 0 10px;
-      bottom: 15px;
-    }
-
-    .tabs .tab:hover,
-    .tabs .tab.active {
-      transform: scale(1.2);
-    }
-
-    .tabs .tab svg {
-      width: 90px;
-      height: auto;
-      font-size: 12px;
-    }
-  }
-
-  .tabs .tab.tab3 svg {
-    filter: drop-shadow(0 2px #0a703a) drop-shadow(0 -2px #0a703a)
-    drop-shadow(2px 0 #0a703a) drop-shadow(-2px 0 #0a703a);
-  }
-
-  .tabs .tab.tab3:hover,
-  .tabs .tab.tab3.active {
-    color: #0a703a;
-  }
-
-  .tabs .tab.tab3 span {
-    color: #0a703a;
-  }
-
-  .tabs .tab.tab4 svg {
-    filter: drop-shadow(0 2px #008bc7) drop-shadow(0 -2px #008bc7)
-    drop-shadow(2px 0 #008bc7) drop-shadow(-2px 0 #008bc7);
-  }
-
-  .tabs .tab.tab4 span{
-    color: #008bc7;
-  }
-
-  .tabs .tab.tab4:hover,
-  .tabs .tab.tab4.active {
-    color: #008bc7;
-  }
-
-  .tabs .tab.tab1 svg {
-    filter: drop-shadow(0 2px #b96e17) drop-shadow(0 -2px #b96e17)
-    drop-shadow(2px 0 #b96e17) drop-shadow(-2px 0 #b96e17);
-  }
-
-  .tabs .tab.tab1 span {
-    color: #b96e17;
-  }
-
-  .tabs .tab.tab1:hover,
-  .tabs .tab.tab1.active {
-    color: #b96e17;
-  }
-
-  .tabs .tab.tab2 svg {
-    filter: drop-shadow(0 2px #ff00ff) drop-shadow(0 -2px #ff00ff)
-    drop-shadow(2px 0 #ff00ff) drop-shadow(-2px 0 #ff00ff);
-  }
-
-  .tabs .tab.tab2 span {
-    color: #ff00ff
-  }
-
-  .tabs .tab.tab2:hover,
-  .tabs .tab.tab2.active {
-    color: #ff00ff;
-  }
-
-  .tabs .tab:hover span,
-  .tabs .tab.active span {
-    color: #fff;
-  }
-
-  .tabs .tab:hover svg,
-  .tabs .tab.active svg {
-    filter: drop-shadow(0 2px #fff) drop-shadow(0 -2px #fff)
-    drop-shadow(2px 0 #fff) drop-shadow(-2px 0 #fff);
+  .tabs svg {
+    display: none;
   }
 
   .tab-content {
@@ -334,7 +270,7 @@ export const KidultTabs = ({
 
   .tab-content .roundal {
     width: calc(100% / 3);
-    padding: 10px;
+    padding: 5px;
   }
 
   .tab-content .roundal .roundal-image {
@@ -356,16 +292,19 @@ export const KidultTabs = ({
     }
     .tab-content .roundal {
       width: calc(100% / 6);
+      padding: 10px;
+    }
+
+    .tabs {
+      gap: 20px;
     }
 
     .tabs .tab {
-      padding: 10px 20px 0;
+      padding: 5px 10px;
     }
 
     .tabs .tab span {
-      font-size: 13px;
-      padding: 0 30px;
-      bottom: 18px;
+      font-size: 16px;
     }
 
     .tabs .tab svg {
@@ -558,6 +497,28 @@ export const KidultTabs = ({
 
   .tab-content .fnaf .roundal-image img {
     width: 80%;
+  }
+  @media (max-width: 374px) {
+    .kidult h3 {
+      font-size: 26px;
+    }
+
+    .tabs {
+      gap: 3px;
+    }
+
+    .tabs .tab span {
+      font-size: 8px;
+      padding: 5px 2px;
+    }
+
+    .tab-content .roundal {
+      padding: 5px;
+    }
+
+    .kidult h2 {
+      font-size: 40px;
+    }
   }
 `}
       </style>
