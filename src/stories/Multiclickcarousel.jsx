@@ -212,7 +212,10 @@ export const MulticlickCarousel = ({
   buttontext,
   link,
   logo,
-  logoalt
+  logoalt,
+  dataElementType,
+  datapromotionindex,
+  datapromotionname,
 }) => {
   const wrapperRef = useRef(null);
 
@@ -587,6 +590,9 @@ export const MulticlickCarousel = ({
         <a
               href={link}
               className="hero-button"
+              data-element-type={dataElementType}
+              data-promotion-index={datapromotionindex}
+              data-promotion-name={datapromotionname}
             >
               <span className="swoosh-container">
                 <span className="star-start">
@@ -915,4 +921,7 @@ MulticlickCarousel.propTypes = {
   link: PropTypes.string,
   logo: PropTypes.string,
   logoalt: PropTypes.string,
+  dataElementType: PropTypes.string,
+  datapromotionindex: PropTypes.string,
+  datapromotionname: PropTypes.string,
 };

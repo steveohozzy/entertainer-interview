@@ -71,6 +71,9 @@ export const MulticlickCarouselImages = {
     link: '',
     logo: '',
     logoalt: '',
+    dataElementType: '',
+    datapromotionindex: '',
+    datapromotionname: '',
   },
   render: function Render(args) {
   const [currentArgs, updateArgs] = useArgs();
