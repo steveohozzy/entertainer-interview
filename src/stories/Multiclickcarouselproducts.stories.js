@@ -34,6 +34,7 @@ export const MulticlickCarouselProducts = {
     blurb: '',
     buttontext: '',
     link: '',
+    logo: '',
   },
   render: function Render(args) {
   const [currentArgs, updateArgs] = useArgs();

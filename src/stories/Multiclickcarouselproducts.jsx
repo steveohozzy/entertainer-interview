@@ -366,6 +366,8 @@ export const MulticlickCarouselProductFeed = ({
   blurb,
   buttontext,
   link,
+  logo,
+  logoalt
 }) => {
   const wrapperRef = useRef(null);
   
@@ -424,6 +426,19 @@ export const MulticlickCarouselProductFeed = ({
       height: auto !important;
       padding: 15px 15px 0;
     }
+  }
+
+  .carousel-left-panel .left-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .carousel-left-panel .left-content .panel-logo {
+    max-height: 100px;
+    width: auto;
   }
 
   .left-background {
@@ -713,15 +728,21 @@ export const MulticlickCarouselProductFeed = ({
         scale: 1.1;
         transform: rotate(30deg);
     }
+
+    .carousel-left panel-logo {
+      margin-bottom: 20px;
+    }
         `}
       </style>
       <div class="carousel-wrapper-component" ref={wrapperRef} style={{background : background}}>
 
   <div class="carousel-left-panel">
     <div class="left-content">
-      <h1 style={{color: titlecolor}}>{title}</h1>
-      <p style={{color: textcolor}}>{blurb}</p>
-      <div class="button-container">
+      {logo && <img src={logo} alt={logoalt} class="panel-logo" />}
+      {title && <h1 style={{color: titlecolor}}>{title}</h1>}
+      {blurb && <p style={{color: textcolor}}>{blurb}</p>}
+      {buttontext && (
+        <div class="button-container">
         <a
               href={link}
               class="hero-button"
@@ -770,7 +791,7 @@ export const MulticlickCarouselProductFeed = ({
                 </svg>
               </span>
             </a>
-      </div>
+      </div>)}
     </div>
   </div>
 
@@ -1177,4 +1198,5 @@ MulticlickCarouselProductFeed.propTypes = {
   blurb: PropTypes.string,
   buttontext: PropTypes.string,
   link: PropTypes.string,
+  logo: PropTypes.string,
 };

@@ -211,6 +211,8 @@ export const MulticlickCarousel = ({
   blurb,
   buttontext,
   link,
+  logo,
+  logoalt
 }) => {
   const wrapperRef = useRef(null);
 
@@ -262,6 +264,19 @@ export const MulticlickCarousel = ({
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .carousel-left-panel .left-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .carousel-left-panel .left-content .panel-logo {
+    max-height: 100px;
+    width: auto;
   }
 
   @media (max-width: 1024px) {
@@ -564,8 +579,10 @@ export const MulticlickCarousel = ({
 
   <div className="carousel-left-panel">
     <div className="left-content">
-      <h1 style={{color: titlecolor}}>{title}</h1>
-      <p style={{color: textcolor}}>{blurb}</p>
+      {logo && <img src={logo} alt={logoalt} className="panel-logo" />}
+      {title && <h1 style={{color: titlecolor}}>{title}</h1>}
+      {blurb && <p style={{color: textcolor}}>{blurb}</p>}
+      {buttontext && (
       <div className="button-container">
         <a
               href={link}
@@ -615,7 +632,7 @@ export const MulticlickCarousel = ({
                 </svg>
               </span>
             </a>
-      </div>
+      </div>)}
     </div>
   </div>
 
@@ -896,4 +913,6 @@ MulticlickCarousel.propTypes = {
   blurb: PropTypes.string,
   buttontext: PropTypes.string,
   link: PropTypes.string,
+  logo: PropTypes.string,
+  logoalt: PropTypes.string,
 };

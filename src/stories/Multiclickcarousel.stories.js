@@ -69,6 +69,8 @@ export const MulticlickCarouselImages = {
     blurb: '',
     buttontext: '',
     link: '',
+    logo: '',
+    logoalt: '',
   },
   render: function Render(args) {
   const [currentArgs, updateArgs] = useArgs();
