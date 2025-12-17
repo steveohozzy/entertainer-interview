@@ -1,27 +1,56 @@
 import PropTypes from "prop-types";
 import { useLayoutEffect, useRef } from "react";
 
+/** internal helpers */
+const MAX_ITEMS = 12;
+
+const buildItems = (props) => {
+  const items = [];
+
+  for (let i = 1; i <= MAX_ITEMS; i++) {
+    const src = props[`image${i}`];
+    if (!src) continue;
+
+    items.push({
+      src,
+      alt: props[`image${i}alt`] || "",
+      link: props[`image${i}link`] || "",
+    });
+  }
+
+  return items;
+};
+
+const chunkItems = (items, perSlide) => {
+  const slides = [];
+  for (let i = 0; i < items.length; i += perSlide) {
+    slides.push(items.slice(i, i + perSlide));
+  }
+  return slides;
+};
+
 class Carousel {
   constructor(wrapper) {
-    this.wrapper = wrapper;
-    this.carousel = wrapper.querySelector('.carousel-right-panel');
-    this.leftPanel = wrapper.querySelector('.carousel-left-panel');
-    this.slides = wrapper.querySelectorAll('.slide');
-    this.leftNav = wrapper.querySelector('.left-nav');
-    this.rightNav = wrapper.querySelector('.right-nav');
+  this.wrapper = wrapper;
+  this.carousel = wrapper.querySelector('.carousel-right-panel');
+  this.leftPanel = wrapper.querySelector('.carousel-left-panel');
+  this.slides = wrapper.querySelectorAll('.slide');
+  this.leftNav = wrapper.querySelector('.left-nav');
+  this.rightNav = wrapper.querySelector('.right-nav');
 
-    this.index = 0;
-    this.animating = false;
-    this.isDragging = false;
-    this.startX = 0;
-    this.currentTranslate = 0;
-    this.animationID = null;
-    this.moved = false;
-    this.autoSlideInterval = null;
-    this.autoDirection = 'prev';
+  this.index = 0;
+  this.animating = false;
+  this.isDragging = false;
+  this.startX = 0;
+  this.currentTranslate = 0;
+  this.animationID = null;
+  this.moved = false;
+  this.autoSlideInterval = null;
+  this.autoDirection = 'prev';
 
-    this.init();
-  }
+  this.init();
+}
+
 
   init() {
     this.slides[0].classList.add('active');
@@ -119,6 +148,83 @@ class Carousel {
     this.resetAutoSlide();
   }
 
+  touchStart(e) {
+  if (this.animating) return;
+
+  this.isDragging = true;
+  this.startX = e.type.includes('mouse')
+    ? e.pageX
+    : e.touches[0].clientX;
+
+  this.currentTranslate = 0;
+  this.moved = false;
+
+  this.carousel.classList.add('dragging');
+  this.animationID = requestAnimationFrame(() => this.animation());
+}
+
+touchMove(e) {
+  if (!this.isDragging || this.animating) return;
+
+  const x = e.type.includes('mouse')
+    ? e.pageX
+    : e.touches[0].clientX;
+
+  const delta = x - this.startX;
+  this.currentTranslate = delta;
+
+  if (Math.abs(delta) > 5) this.moved = true;
+
+  const inner = this.slides[this.index].querySelector('.slide-inner');
+  if (inner) {
+    inner.style.transform = `translateX(${delta}px)`;
+  }
+}
+
+touchEnd() {
+  cancelAnimationFrame(this.animationID);
+  this.isDragging = false;
+  this.carousel.classList.remove('dragging');
+
+  const movedX = this.currentTranslate;
+  const inner = this.slides[this.index].querySelector('.slide-inner');
+
+  if (inner) inner.style.transition = 'transform 0.3s ease';
+
+  if (movedX < -50) {
+    this.goTo((this.index + 1) % this.slides.length, 'next', true);
+  } else if (movedX > 50) {
+    this.goTo(
+      (this.index - 1 + this.slides.length) % this.slides.length,
+      'prev',
+      true
+    );
+  } else if (inner) {
+    inner.style.transform = 'translateX(0)';
+    setTimeout(() => {
+      inner.style.transition = '';
+      inner.style.transform = '';
+    }, 300);
+  }
+
+  this.currentTranslate = 0;
+}
+
+animation() {
+  this.setSliderPosition();
+  if (this.isDragging) {
+    requestAnimationFrame(() => this.animation());
+  }
+}
+
+setSliderPosition() {
+  const inner = this.slides[this.index].querySelector('.slide-inner');
+  if (inner) {
+    inner.style.transform = `translateX(${this.currentTranslate}px)`;
+  }
+}
+
+
   nextSlide() {
     this.goTo((this.index + 1) % this.slides.length, 'next');
   }
@@ -141,91 +247,96 @@ class Carousel {
   }
 
   initEvents() {
-    window.addEventListener('resize', () =>
-      setTimeout(() => this.adjustHeight(), 150)
-    );
+  window.addEventListener('resize', () =>
+    setTimeout(() => this.adjustHeight(), 150)
+  );
 
-    if (this.leftNav)
-      this.leftNav.addEventListener('click', () =>
-        this.prevSlide(true)
-      );
+  // Drag events
+  this.carousel.addEventListener('mousedown', e => this.touchStart(e));
+  this.carousel.addEventListener('mousemove', e => this.touchMove(e));
+  this.carousel.addEventListener('mouseup', () => this.touchEnd());
+  this.carousel.addEventListener('mouseleave', () => {
+    if (this.isDragging) this.touchEnd();
+  });
 
-    if (this.rightNav)
-      this.rightNav.addEventListener('click', () =>
-        this.nextSlide(true)
-      );
-  }
+  this.carousel.addEventListener('touchstart', e => this.touchStart(e), {
+    passive: true
+  });
+  this.carousel.addEventListener('touchmove', e => this.touchMove(e), {
+    passive: false
+  });
+  this.carousel.addEventListener('touchend', () => this.touchEnd());
+
+  // Prevent clicks when dragging
+  this.carousel.addEventListener(
+    'click',
+    e => {
+      if (this.moved) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    },
+    true
+  );
+
+  if (this.leftNav) {
+  this.leftNav.addEventListener('click', () =>
+    this.goTo(
+      (this.index - 1 + this.slides.length) % this.slides.length,
+      'next',
+      true
+    )
+  );
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  document
-    .querySelectorAll('.carousel-wrapper-component')
-    .forEach(wrapper => new Carousel(wrapper));
-});
+if (this.rightNav) {
+  this.rightNav.addEventListener('click', () =>
+    this.goTo(
+      (this.index + 1) % this.slides.length,
+      'prev',
+      true
+    )
+  );
+}
+
+}
+
+destroy() {
+  cancelAnimationFrame(this.animationID);
+  clearInterval(this.autoSlideInterval);
+}
+
+}
 
 
 /** Primary UI component for user interaction */
-export const MulticlickCarousel = ({
-  image1,
-  image1alt,
-  image1link,
-  image2,
-  image2alt,
-  image2link,
-  image3,
-  image3alt,
-  image3link,
-  image4,
-  image4alt,
-  image4link,
-  image5,
-  image5alt,
-  image5link,
-  image6,
-  image6alt,
-  image6link,
-  image7,
-  image7alt,
-  image7link,
-  image8,
-  image8alt,
-  image8link,
-  image9,
-  image9alt,
-  image9link,
-  image10,
-  image10alt,
-  image10link,
-  image11,
-  image11alt,
-  image11link,
-  image12,
-  image12alt,
-  image12link,
-  background,
-  titlecolor,
-  textcolor,
-  buttonbackground,
-  buttontextcolor,
-  title,
-  blurb,
-  buttontext,
-  link,
-  logo,
-  logoalt,
-  dataElementType,
-  datapromotionindex,
-  datapromotionname,
-}) => {
+export const MulticlickCarousel = (props) => {
+  const {
+    itemsPerSlide = 6,
+    background,
+    title,
+    blurb,
+    titlecolor,
+    textcolor,
+    buttontext,
+    link,
+    buttonbackground,
+    buttontextcolor,
+    logo,
+    logoalt,
+  } = props;
+
   const wrapperRef = useRef(null);
 
   useLayoutEffect(() => {
     if (!wrapperRef.current) return;
-
     const carousel = new Carousel(wrapperRef.current);
-
-    return () => carousel.destroy();
+    return () => carousel?.destroy?.();
   }, []);
+
+  const items = buildItems(props);
+  const slides = chunkItems(items, itemsPerSlide);
+
   return (
     <>
       <style>
@@ -336,11 +447,13 @@ export const MulticlickCarousel = ({
   }
 
   .masonry {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    flex-wrap: wrap;
     gap: 14px;
     width: 100%;
     padding: 10px;
+    align-items: center;
+    justify-content: center;
   }
 
   .masonryItem {
@@ -349,6 +462,13 @@ export const MulticlickCarousel = ({
     transform: translateX(150vw) scale(0.9);
     transition: transform 1.25s cubic-bezier(0.25, 1.1, 0.35, 1);
     background-color: #fff;
+    width: calc(100% / 2 - 10px);
+  }
+
+  @media (min-width: 1024px) {
+    .masonryItem {
+      width: calc(100% / 3 - 10px);
+    }
   }
 
   .masonryItem.tall {
@@ -402,9 +522,6 @@ export const MulticlickCarousel = ({
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
-    }
-    .masonryItem.tall {
-      aspect-ratio: 318/620;
     }
   }
 
@@ -578,101 +695,74 @@ export const MulticlickCarousel = ({
     }
         `}
       </style>
-      <div className="carousel-wrapper-component" ref={wrapperRef} style={{background : background}}>
+    <div
+      ref={wrapperRef}
+      className="carousel-wrapper-component"
+      style={{ background }}
+    >
+      {/* LEFT PANEL */}
+      <div className="carousel-left-panel">
+        <div className="left-content">
+          {logo && <img src={logo} alt={logoalt} className="panel-logo" />}
+          {title && <h1 style={{ color: titlecolor }}>{title}</h1>}
+          {blurb && <p style={{ color: textcolor }}>{blurb}</p>}
 
-  <div className="carousel-left-panel">
-    <div className="left-content">
-      {logo && <img src={logo} alt={logoalt} className="panel-logo" />}
-      {title && <h1 style={{color: titlecolor}}>{title}</h1>}
-      {blurb && <p style={{color: textcolor}}>{blurb}</p>}
-      {buttontext && (
-      <div className="button-container">
-        <a
+          {buttontext && (
+            <a
               href={link}
               className="hero-button"
-              data-element-type={dataElementType}
-              data-promotion-index={datapromotionindex}
-              data-promotion-name={datapromotionname}
+              style={{
+                background: buttonbackground,
+                color: buttontextcolor,
+              }}
             >
-              <span className="swoosh-container">
-                <span className="star-start">
-                  <svg
-                    width="11"
-                    height="11"
-                    viewBox="0 0 11 11"
-                    fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M4.23539 2.16758C4.31585 1.75612 4.83196 1.6292 5.09362 1.92958L6.64272 3.65653L8.92869 3.36308C9.33686 3.31475 9.62105 3.7548 9.41431 4.12022L8.26344 6.1095L9.24532 8.18833C9.41411 8.56311 9.07604 8.98116 8.67962 8.89652L6.43413 8.40043L4.74982 9.98635C4.45362 10.2631 3.94852 10.0788 3.90018 9.67067L3.67114 7.38306L1.6601 6.27065C1.29468 6.06391 1.31163 5.54034 1.6864 5.37155L3.81205 4.44154L4.23539 2.16758Z"
-                      fill-opacity="0.5"
-                    ></path>
-                  </svg>
-                </span>
-                <span className="swoosh">&nbsp;</span>
-              </span>
               {buttontext}
-              <span className="basket-icon">
-                <svg
-                  width="22"
-                  height="18"
-                  viewBox="0 0 22 18"
-                  fill="currentColor"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M21.2401 7.57V8.14C21.2401 8.38 21.1601 8.58 20.9901 8.75C20.8201 8.92 20.6201 9 20.3801 9H20.0901L19.1601 15.57C19.0901 16 18.8901 16.35 18.5701 16.63C18.2501 16.9 17.8701 17.04 17.4401 17.04H4.36006C3.93006 17.04 3.55006 16.9 3.23006 16.63C2.91006 16.35 2.71006 16 2.64006 15.57L1.71006 9H1.42006C1.18006 9 0.980059 8.92 0.810059 8.75C0.640059 8.58 0.560059 8.38 0.560059 8.14V7.57C0.560059 7.33 0.640059 7.13 0.810059 6.96C0.980059 6.79 1.18006 6.71 1.42006 6.71H3.83006L7.67006 1.43C7.86006 1.17 8.11006 1.01 8.42006 0.960001C8.73006 0.910001 9.02006 0.980002 9.28006 1.18C9.54006 1.37 9.70006 1.62 9.75006 1.93C9.80006 2.24 9.73006 2.53 9.53006 2.79L6.66006 6.71H15.1401L12.2701 2.79C12.0801 2.53 12.0101 2.24 12.0501 1.93C12.1001 1.62 12.2501 1.37 12.5201 1.18C12.7801 0.990002 13.0701 0.920001 13.3801 0.960001C13.6901 1.01 13.9401 1.16 14.1301 1.43L17.9701 6.71H20.3801C20.6201 6.71 20.8201 6.79 20.9901 6.96C21.1601 7.13 21.2401 7.33 21.2401 7.57ZM7.73006 13.89V9.87C7.73006 9.63 7.65006 9.43 7.48006 9.26C7.31006 9.09 7.11006 9.01 6.87006 9.01C6.63006 9.01 6.43006 9.09 6.26006 9.26C6.09006 9.43 6.01006 9.63 6.01006 9.87V13.89C6.01006 14.13 6.09006 14.33 6.26006 14.5C6.43006 14.67 6.63006 14.75 6.87006 14.75C7.11006 14.75 7.31006 14.67 7.48006 14.5C7.65006 14.33 7.73006 14.13 7.73006 13.89ZM11.7501 13.89V9.87C11.7501 9.63 11.6701 9.43 11.5001 9.26C11.3301 9.09 11.1301 9.01 10.8901 9.01C10.6501 9.01 10.4501 9.09 10.2801 9.26C10.1101 9.43 10.0301 9.63 10.0301 9.87V13.89C10.0301 14.13 10.1101 14.33 10.2801 14.5C10.4501 14.67 10.6501 14.75 10.8901 14.75C11.1301 14.75 11.3301 14.67 11.5001 14.5C11.6701 14.33 11.7501 14.13 11.7501 13.89ZM15.7701 13.89V9.87C15.7701 9.63 15.6901 9.43 15.5201 9.26C15.3501 9.09 15.1501 9.01 14.9101 9.01C14.6701 9.01 14.4701 9.09 14.3001 9.26C14.1301 9.43 14.0501 9.63 14.0501 9.87V13.89C14.0501 14.13 14.1301 14.33 14.3001 14.5C14.4701 14.67 14.6701 14.75 14.9101 14.75C15.1501 14.75 15.3501 14.67 15.5201 14.5C15.6901 14.33 15.7701 14.13 15.7701 13.89Z"></path>
-                </svg>
-              </span>
-              <span className="star-end">
-                <svg
-                  width="11"
-                  height="11"
-                  viewBox="0 0 11 11"
-                  fill="currentColor"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M4.23539 2.16758C4.31585 1.75612 4.83196 1.6292 5.09362 1.92958L6.64272 3.65653L8.92869 3.36308C9.33686 3.31475 9.62105 3.7548 9.41431 4.12022L8.26344 6.1095L9.24532 8.18833C9.41411 8.56311 9.07604 8.98116 8.67962 8.89652L6.43413 8.40043L4.74982 9.98635C4.45362 10.2631 3.94852 10.0788 3.90018 9.67067L3.67114 7.38306L1.6601 6.27065C1.29468 6.06391 1.31163 5.54034 1.6864 5.37155L3.81205 4.44154L4.23539 2.16758Z"
-                    fill-opacity="0.5"
-                  ></path>
-                </svg>
-              </span>
             </a>
-      </div>)}
-    </div>
-  </div>
-
-  <div className="carousel-right-panel">
-
-    <div className="slide active">
-      <div className="slide-inner">
-        <div className="masonry">
-          <div className="masonryItem tall"><a href={image1link}><img src={image1} alt={image1alt} /></a></div>
-          <div className="masonryItem tall"><a href={image2link}><img src={image2} alt={image2alt} /></a></div>
-          <div className="masonryItem tall"><a href={image3link}><img src={image3} alt={image3alt} /></a></div>
-          <div className="masonryItem tall"><a href={image4link}><img src={image4} alt={image4alt} /></a></div>
-          <div className="masonryItem tall"><a href={image5link}><img src={image5} alt={image5alt} /></a></div>
-          <div className="masonryItem tall"><a href={image6link}><img src={image6} alt={image6alt} /></a></div>
+          )}
         </div>
       </div>
-    </div>
-    <div className="slide">
-      <div className="slide-inner">
-        <div className="masonry">
-          <div className="masonryItem tall"><a href={image7link}><img src={image7} alt={image7alt} /></a></div>
-          <div className="masonryItem tall"><a href={image8link}><img src={image8} alt={image8alt} /></a></div>
-          <div className="masonryItem tall"><a href={image9link}><img src={image9} alt={image9alt} /></a></div>
-          <div className="masonryItem tall"><a href={image10link}><img src={image10} alt={image10alt} /></a></div>
-          <div className="masonryItem tall"><a href={image11link}><img src={image11} alt={image11alt} /></a></div>
-          <div className="masonryItem tall"><a href={image12link}><img src={image12} alt={image12alt} /></a></div>
-        </div>
+
+      {/* RIGHT PANEL */}
+      <div className="carousel-right-panel">
+        {slides.map((slideItems, slideIndex) => {
+
+          return (
+            <div
+              key={slideIndex}
+              className={`slide ${slideIndex === 0 ? "active" : ""}`}
+            >
+              <div className="slide-inner">
+                <div className="masonry">
+                  {slideItems.map((item, i) => (
+                    <div key={i} className="masonryItem tall">
+                      {item.link ? (
+                        <a
+                          href={item.link}
+                          data-element-type={item.dataElementType}
+                          data-promotion-index={item.datapromotionindex}
+                          data-promotion-name={item.datapromotionname}
+                        >
+                          <img src={item.src} alt={item.alt} />
+                        </a>
+                      ) : (
+                        <img src={item.src} alt={item.alt} />
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          );
+        })}
+
+        {slides.length > 1 && (
+          <>
+            <div className="carousel-nav left-nav">&#10094;</div>
+            <div className="carousel-nav right-nav">&#10095;</div>
+          </>
+        )}
       </div>
     </div>
-
-    <div className="carousel-nav left-nav">&#10094;</div>
-    <div className="carousel-nav right-nav">&#10095;</div>
-  </div>
-</div>
 <script>
   {`
   class Carousel {
@@ -874,42 +964,83 @@ document.addEventListener('DOMContentLoaded', () => {
 };
 
 MulticlickCarousel.propTypes = {
+  itemsPerSlide: PropTypes.number,
+
+  /** Images */
   image1: PropTypes.string,
   image1alt: PropTypes.string,
   image1link: PropTypes.string,
+  image1dataElementType: PropTypes.string,
+  image1datapromotionindex: PropTypes.string,
+  image1datapromotionname: PropTypes.string,
   image2: PropTypes.string,
   image2alt: PropTypes.string,
   image2link: PropTypes.string,
+  image2dataElementType: PropTypes.string,
+  image2datapromotionindex: PropTypes.string,
+  image2datapromotionname: PropTypes.string,
   image3: PropTypes.string,
   image3alt: PropTypes.string,
   image3link: PropTypes.string,
+  image3dataElementType: PropTypes.string,
+  image3datapromotionindex: PropTypes.string,
+  image3datapromotionname: PropTypes.string,
   image4: PropTypes.string,
   image4alt: PropTypes.string,
   image4link: PropTypes.string,
+  image4dataElementType: PropTypes.string,
+  image4datapromotionindex: PropTypes.string,
+  image4datapromotionname: PropTypes.string,
   image5: PropTypes.string,
   image5alt: PropTypes.string,
   image5link: PropTypes.string,
+  image5dataElementType: PropTypes.string,
+  image5datapromotionindex: PropTypes.string,
+  image5datapromotionname: PropTypes.string,
   image6: PropTypes.string,
   image6alt: PropTypes.string,
   image6link: PropTypes.string,
+  image6dataElementType: PropTypes.string,
+  image6datapromotionindex: PropTypes.string,
+  image6datapromotionname: PropTypes.string,
   image7: PropTypes.string,
   image7alt: PropTypes.string,
   image7link: PropTypes.string,
+  image7dataElementType: PropTypes.string,
+  image7datapromotionindex: PropTypes.string,
+  image7datapromotionname: PropTypes.string,
   image8: PropTypes.string,
   image8alt: PropTypes.string,
   image8link: PropTypes.string,
+  image8dataElementType: PropTypes.string,
+  image8datapromotionindex: PropTypes.string,
+  image8datapromotionname: PropTypes.string,
   image9: PropTypes.string,
   image9alt: PropTypes.string,
   image9link: PropTypes.string,
+  image9dataElementType: PropTypes.string,
+  image9datapromotionindex: PropTypes.string,
+  image9datapromotionname: PropTypes.string,
   image10: PropTypes.string,
   image10alt: PropTypes.string,
   image10link: PropTypes.string,
+  image10dataElementType: PropTypes.string,
+  image10datapromotionindex: PropTypes.string,
+  image10datapromotionname: PropTypes.string,
   image11: PropTypes.string,
   image11alt: PropTypes.string,
   image11link: PropTypes.string,
+  image11dataElementType: PropTypes.string,
+  image11datapromotionindex: PropTypes.string,
+  image11datapromotionname: PropTypes.string,
   image12: PropTypes.string,
   image12alt: PropTypes.string,
   image12link: PropTypes.string,
+  image12dataElementType: PropTypes.string,
+  image12datapromotionindex: PropTypes.string,
+  image12datapromotionname: PropTypes.string,
+
+  /** Left panel */
   background: PropTypes.string,
   titlecolor: PropTypes.string,
   textcolor: PropTypes.string,
@@ -921,7 +1052,4 @@ MulticlickCarousel.propTypes = {
   link: PropTypes.string,
   logo: PropTypes.string,
   logoalt: PropTypes.string,
-  dataElementType: PropTypes.string,
-  datapromotionindex: PropTypes.string,
-  datapromotionname: PropTypes.string,
 };
