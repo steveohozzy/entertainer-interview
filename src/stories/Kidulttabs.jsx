@@ -108,7 +108,7 @@ export const KidultTabs = ({
     min-width: unset;
     height: auto;
     overflow: hidden;
-    margin: 10px;
+    margin: 11px;
   }
 
   @media (min-width: 1024px) {
@@ -181,7 +181,7 @@ export const KidultTabs = ({
     color: #fff;
     position: relative;
     cursor: pointer;
-    padding: 5px 3px;
+    padding: 5px 7px;
     margin-bottom: 10px;
     margin-top: 5px;
     transition: all 0.3s ease-in-out;
@@ -214,7 +214,7 @@ export const KidultTabs = ({
     text-align: center;
     font-family: "Nunito Bold", "Tahoma Bold", sans-serif;
     font-weight: normal;
-    font-size: 10px;
+    font-size: 12px;
     letter-spacing: 0;
     line-height: 1;
     position: relative;
@@ -326,8 +326,12 @@ export const KidultTabs = ({
 
   @media (max-width: 374px) {
     .kidult h3 {
-      font-size: 26px;
+      font-size: 22px;
     }
+    
+    .tabs .tab {
+    padding: 5px 3px;
+  }
 
     .tabs {
       gap: 3px;
