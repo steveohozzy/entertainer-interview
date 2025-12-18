@@ -324,6 +324,8 @@ export const MulticlickCarousel = (props) => {
     buttontextcolor,
     logo,
     logoalt,
+    arrowsBackground,
+    arrowsColor,
   } = props;
 
   const wrapperRef = useRef(null);
@@ -801,8 +803,18 @@ export const MulticlickCarousel = (props) => {
 
         {slides.length > 1 && (
           <>
-            <div className="carousel-nav left-nav">&#10094;</div>
-            <div className="carousel-nav right-nav">&#10095;</div>
+            <div className="carousel-nav left-nav"
+            style={{
+                background: arrowsBackground,
+                color: arrowsColor,
+              }}
+            >&#10094;</div>
+            <div className="carousel-nav right-nav"
+            style={{
+                background: arrowsBackground,
+                color: arrowsColor,
+              }}
+            >&#10095;</div>
           </>
         )}
       </div>
@@ -1083,6 +1095,8 @@ MulticlickCarousel.propTypes = {
   image12dataElementType: PropTypes.string,
   image12datapromotionindex: PropTypes.string,
   image12datapromotionname: PropTypes.string,
+  arrowsBackground: PropTypes.string,
+  arrowsColor: PropTypes.string,
 
   /** Left panel */
   background: PropTypes.string,

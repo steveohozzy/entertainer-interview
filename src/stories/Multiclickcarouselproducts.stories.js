@@ -39,6 +39,8 @@ export const MulticlickCarouselProducts = {
     dataElementType: '',
     datapromotionindex: '',
     datapromotionname: '',
+    arrowsBackground: '',
+    arrowsColor: '',
   },
   render: function Render(args) {
   const [currentArgs, updateArgs] = useArgs();

@@ -43,33 +43,16 @@ export const KidultTabs = ({
     <>
       <style>
         {`
- :root {
+  :root {
   --kidultroundal1bg: #000;
 }
   .category-title {
     display: none !important;
   }
-    .kidult {
-    padding: 40px 20px 20px;
-    background-color: #000;
-    box-sizing: border-box;
-  }
 
   .kidult-content {
     max-width: 1200px;
     margin: 0 auto;
-  }
-
-  .kidult h1 {
-    font-size: 50px;
-    font-family: 'Billy Bold', Arial, Helvetica, sans-serif;
-    font-weight: 700;
-    line-height: 40px;
-    color:  rgb(147 51 234);
-    text-align: center;
-    margin: 15px 0;
-    padding: 0;
-    text-transform: uppercase;
   }
 
   .kidult p {
@@ -94,7 +77,7 @@ export const KidultTabs = ({
     aspect-ratio: 1 / 1;
     width: 100%;
     height: auto;
-    border-radius: 100%;
+    border-radius: 10px;
     overflow: hidden;
     margin: 0;
   }
@@ -102,7 +85,7 @@ export const KidultTabs = ({
   .roundal-image {
     border-radius: 100%;
     position: relative;
-    padding: 4px;
+    padding: 2px;
     overflow: hidden;
     aspect-ratio: 1/1;
     display: flex;
@@ -110,10 +93,12 @@ export const KidultTabs = ({
     justify-content: center;
   }
 
-  @media (min-width: 1024px) {
-    .roundal-image {
-      padding: 8px;
-    }
+  .kidult .carousel-cell .roundal-image {
+    border-radius: 10px;
+  }
+
+  .kidult .carousel-cell .outer-link:hover .roundal-image::before {
+    transform: rotate(0deg);
   }
 
   .roundal-image img {
@@ -145,23 +130,18 @@ export const KidultTabs = ({
     top: 0;
     left: 0;
     aspect-ratio: 1/1;
-    background: linear-gradient(
-      to bottom right,
-      #222,
-      #888 35%,
-      #888 65%,
-      #222 100%
-    );
+    opacity: 0;
+    background: linear-gradient(90deg,rgba(43, 200, 209, 1) 0%, rgba(2, 220, 178, 1) 100%);
   }
 
   .tab-content .roundal-image::after {
     content: '';
     display: block;
-    width: calc(100% - 8px);
-    height: calc(100% - 8px);
+    width: calc(100% - 4px);
+    height: calc(100% - 4px);
     position: absolute;
-    top: 4px;
-    left: 4px;
+    top: 2px;
+    left: 2px;
     aspect-ratio: 1/1;
     background: #000;
     border-radius: 100%;
@@ -176,33 +156,18 @@ export const KidultTabs = ({
 
   .outer-link:hover .roundal-image::before {
     transition: all 0.6s;
+    opacity: 1;
     transform: rotate(1turn);
-  }
-  
-  .outer-link:hover {
-    filter: drop-shadow(0 2px rgba(147 51 234)) drop-shadow(0 -2px rgb(147 51 234)) drop-shadow(2px 0 rgb(147 51 234)) drop-shadow(-2px 0 rgb(147 51 234))
   }
 
 
   .outer-link button {
-    background: linear-gradient(
-      to bottom right,
-      #7e22ce,
-      #a855f7 25%,
-      #a855f7 75%,
-      #7e22ce 100%
-    );
-    border: 2px solid rgb(209 213 219);
-    min-height: 50px;
     display: block;
     line-height: 1.2;
     color: #fff;
-    border-radius: 30px;
     font-size: 13px;
-  }
-
-  .outer-link:hover button {
-    transform: scale(1.02);
+    background: transparent;
+    border: none;
   }
 
   .tabs {
@@ -219,29 +184,29 @@ export const KidultTabs = ({
     padding: 5px 3px;
     margin-bottom: 10px;
     margin-top: 5px;
-    border: 2px solid transparent;
     transition: all 0.3s ease-in-out;
     border-radius: 30px;
+    background-color: #666;
+    position: relative;
+    overflow: hidden;
   }
 
-  .tabs .tab1 {
-    background-color: #b96e17;
+  .tabs .tab::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 1;
+    transition: all 0.3s ease-in-out;
   }
-
-  .tabs .tab2 {
-    background-color: #ff00ff;
-  }
-
-  .tabs .tab3 {
-    background-color: #0a703a;
-  }
-
-  .tabs .tab4 {
-    background-color: #008bc7
-  }
-
-  .tabs .active {
-    border: 2px solid #fff;
+  .tabs .active::after,
+  .tabs .tab:hover::after {
+    opacity: 1;
+    background: linear-gradient(90deg,rgba(43, 200, 209, 1) 0%, rgba(2, 220, 178, 1) 100%);
   }
 
   .tabs .tab span {
@@ -254,6 +219,7 @@ export const KidultTabs = ({
     line-height: 1;
     position: relative;
     bottom: 0;
+    z-index: 2;
     color: #fff !important;
   }
 
@@ -278,12 +244,8 @@ export const KidultTabs = ({
   }
 
   .tab-content .roundal .outer-link button {
-    border-color: #a855f7;
     font-size: 12px;
     background: transparent;
-  }
-  .tab-content .outer-link:hover {
-    filter: drop-shadow(0 2px rgba(147, 51, 234, 0.5)) drop-shadow(0 -2px rgba(147, 51, 234, 0.5)) drop-shadow(2px 0 rgba(147, 51, 234, 0.5)) drop-shadow(-2px 0 rgba(147, 51, 234, 0.5))
   }
 
   @media (min-width: 1024px) {
@@ -313,15 +275,7 @@ export const KidultTabs = ({
   }
 
   .tab-content-container {
-    background: linear-gradient(
-      to bottom right,
-      #222,
-      #888 35%,
-      #888 65%,
-      #222 100%
-    );
-    border-radius: 20px;
-    padding: 5px;;
+    background: transparent;
     position: relative;
   }
 
@@ -333,16 +287,9 @@ export const KidultTabs = ({
   }
 
   .tab-content-inner {
-    padding: 10px;
+    padding: 0;
     width: 100%;
-    background: linear-gradient(
-      to bottom right,
-      #000,
-      #111 25%,
-      #111 55%,
-      #000 100%
-    );
-    border-radius: 20px;
+    background: #383839;
   }
 
   .tab-content.active {
@@ -354,12 +301,13 @@ export const KidultTabs = ({
   .flickity-button,
   .carousel-component .js-owl-carousel-reference .owl-buttons .owl-prev, .carousel-component .js-owl-carousel-reference .owl-buttons .owl-next {
     top: 42%;
-    background-color: #000;
-    border: 2px solid #fff;
     transition: all 0.3s;
     box-shadow: none;
-    opacity: 0.7;
-    filter: drop-shadow(0 1px 1px rgb(147 51 234)) drop-shadow(0 -1px 1px rgb(147 51 234)) drop-shadow(1px 0 1px rgb(147 51 234)) drop-shadow(-1px 0 1px rgb(147 51 234));
+    opacity: 1;
+    background: #939598;
+    border: none;
+    width: 40px;
+    height: 40px;
   }
 
   .flickity-button.flickity-prev-next-button.next {
@@ -372,132 +320,10 @@ export const KidultTabs = ({
 
   .flickity-button:hover,
   .carousel-component .js-owl-carousel-reference .owl-buttons .owl-prev:hover, .carousel-component .js-owl-carousel-reference .owl-buttons .owl-next:hover {
-    border-color: #a855f7;
-    color:#a855f7;
-    opacity: 1;
-    filter: drop-shadow(0 2px 2px rgb(147 51 234)) drop-shadow(0 -2px 2px rgb(147 51 234)) drop-shadow(2px 0 2px rgb(147 51 234)) drop-shadow(-2px 0 2px rgb(147 51 234));
+    background: #939598;
   }
 
-  .tab-content .spongebob .roundal-image::after {
-    background-color: #FFF56C;
-  }
 
-  .tab-content .simpsons .roundal-image::after {
-    background-color: #41C7F3;
-  }
-
-  .tab-content .marvel .roundal-image::after {
-    background-color: #EC1D24;
-  }
-
-  .tab-content .dc .roundal-image::after {
-    background-color: #fff;
-  }
-
-  .tab-content .harry-potter .roundal-image::after {
-    background-color: #2A0A44;
-  }
-
-  .tab-content .turtles .roundal-image::after {
-    background-color: #9B9B9B;
-  }
-
-  .tab-content .kpop .roundal-image::after {
-    background-color: #653E85;
-  }
-
-  .tab-content .sonic .roundal-image::after {
-    background-color: #007AFF;
-  }
-
-  .tab-content .nintendo .roundal-image::after {
-    background-color: #E60012;
-  }
-
-  .tab-content .rainbow-friends .roundal-image::after {
-    background-color: #93C650;
-  }
-
-  .tab-content .garten .roundal-image::after {
-    background-color: #FB9851;
-  }
-
-  .tab-content .minecraft .roundal-image::after {
-    background-color: #3C8527;
-  }
-
-  .tab-content .pokemon .roundal-image::after {
-    background-color: #0096D1;
-  }
-
-  .tab-content .hot-wheels .roundal-image::after {
-    background-color: #0057B8;
-  }
-
-  .tab-content .barbie .roundal-image::after {
-    background-color: #EB008B;
-  }
-
-  .tab-content .barbie .roundal-image img {
-    width: 85%;
-  }
-
-  .tab-content .wwe .roundal-image::after {
-    background-color: #222222;
-  }
-
-  .tab-content .wwe .roundal-image img {
-    width: 80%;
-  }
-
-  .tab-content .funko .roundal-image::after {
-    background-color: #0074CA;
-  }
-
-  .tab-content .funko .roundal-image img {
-    width: 90%;
-  }
-
-  .tab-content .topps .roundal-image img {
-    width: 90%;
-  }
-
-  .tab-content .fuggler .roundal-image::after {
-    background-color: #C9A385;
-  }
-
-  .tab-content .f1 .roundal-image::after {
-    background-color: #1C1C25;
-  }
-
-  .tab-content .miniverse .roundal-image::after {
-    background-color: #fff;
-  }
-
-  .tab-content .lego .roundal-image::after {
-    background-color: #000;
-  }
-
-  .tab-content .lego .roundal-image img {
-    width: 100%;
-    border-radius: 100%;
-  }
-
-  .tab-content .pokemon-mega .roundal-image::after {
-    background-color: #0096D1;
-  }
-
-  .tab-content .pokemon-mega .roundal-image img {
-    width: 60%;
-  }
-
-  .tab-content .brick-shop .roundal-image img {
-    width: 80%;
-  }
-
-  .tab-content .fnaf .roundal-image img {
-    width: 80%;
-  }
   @media (max-width: 374px) {
     .kidult h3 {
       font-size: 26px;
@@ -508,8 +334,8 @@ export const KidultTabs = ({
     }
 
     .tabs .tab span {
-      font-size: 8px;
-      padding: 5px 2px;
+      font-size: 10px;
+      padding: 5px;
     }
 
     .tab-content .roundal {

@@ -362,6 +362,8 @@ export const MulticlickCarouselProductFeed = ({
   textcolor,
   buttonbackground,
   buttontextcolor,
+  arrowsBackground,
+  arrowsColor,
   title,
   blurb,
   buttontext,
@@ -829,8 +831,18 @@ export const MulticlickCarouselProductFeed = ({
       </div>
     </div>
 
-    <div class="carousel-nav left-nav">&#10094;</div>
-    <div class="carousel-nav right-nav">&#10095;</div>
+    <div className="carousel-nav left-nav"
+    style={{
+        background: arrowsBackground,
+        color: arrowsColor,
+      }}
+    >&#10094;</div>
+    <div className="carousel-nav right-nav"
+    style={{
+        background: arrowsBackground,
+        color: arrowsColor,
+      }}
+    >&#10095;</div>
   </div>
 </div>
 <script>
@@ -1200,6 +1212,8 @@ MulticlickCarouselProductFeed.propTypes = {
   textcolor: PropTypes.string,
   buttonbackground: PropTypes.string,
   buttontextcolor: PropTypes.string,
+  arrowsBackground: PropTypes.string,
+  arrowsColor: PropTypes.string,
   title: PropTypes.string,
   blurb: PropTypes.string,
   buttontext: PropTypes.string,

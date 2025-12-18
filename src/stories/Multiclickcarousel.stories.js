@@ -37,6 +37,8 @@ export const MulticlickCarouselImages = {
     textcolor: "#ffffff",
     buttonbackground: "#009e44",
     buttontextcolor: "#ffffff",
+    arrowsBackground: "#009e44",
+    arrowsColor: "#ffffff",
 
     itemsPerSlide: 6,
 
