@@ -29,6 +29,7 @@ export default {
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const MulticlickCarouselImages = {
   args: {
+    user: 'stories',
     title: "Featured Products",
     blurb: "Shop our latest deals",
     buttontext: "Shop Now",
@@ -41,6 +42,8 @@ export const MulticlickCarouselImages = {
     arrowsColor: "#ffffff",
 
     itemsPerSlide: 6,
+    itemsPerRow: 3,
+    itemsPerRowMobile: 2,
 
     image1: "https://picsum.photos/400/300?1",
     image1link: "#",

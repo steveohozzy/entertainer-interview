@@ -313,6 +313,8 @@ destroy() {
 export const MulticlickCarousel = (props) => {
   const {
     itemsPerSlide = 6,
+    itemsPerRow = 3,
+    itemsPerRowMobile = 2,
     background,
     title,
     blurb,
@@ -453,7 +455,7 @@ export const MulticlickCarousel = (props) => {
   .masonry {
     display: flex;
     flex-wrap: wrap;
-    gap: 14px;
+    gap: 10px;
     width: 100%;
     padding: 10px;
     align-items: center;
@@ -466,12 +468,12 @@ export const MulticlickCarousel = (props) => {
     transform: translateX(150vw) scale(0.9);
     transition: transform 1.25s cubic-bezier(0.25, 1.1, 0.35, 1);
     background-color: #fff;
-    width: calc(100% / 2 - 10px);
+    width: calc(100% / ${itemsPerRowMobile} - 15px);
   }
 
   @media (min-width: 1024px) {
     .masonryItem {
-      width: calc(100% / 3 - 10px);
+      width: calc(100% / ${itemsPerRow} - 15px);
     }
   }
 
@@ -1021,6 +1023,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 MulticlickCarousel.propTypes = {
   itemsPerSlide: PropTypes.number,
+  itemsPerRow: PropTypes.number,
+  itemsPerRowMobile: PropTypes.number,
 
   /** Images */
   image1: PropTypes.string,
