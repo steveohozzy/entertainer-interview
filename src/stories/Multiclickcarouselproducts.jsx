@@ -1,3 +1,4 @@
+import { doc } from "firebase/firestore";
 import PropTypes from "prop-types";
 import { useLayoutEffect, useRef } from "react";
 
@@ -33,6 +34,7 @@ class Carousel {
         this.slideIn(this.slides[0], this.autoDirection);
         setTimeout(() => this.adjustHeight(), 50);
       }
+      this.updateNavVisibility();
     }
 
     slideIn(slide, direction) {
@@ -260,7 +262,49 @@ class Carousel {
         setTimeout(() => this.adjustHeight(), 100);
       });
     }
+
+    updateNavVisibility() {
+  if (!this.leftNav || !this.rightNav) return;
+
+  if (this.slides.length > 1) {
+    this.leftNav.style.display = "";
+    this.rightNav.style.display = "";
+    this.carousel.style.cursor = "grab";
+  } else {
+    this.leftNav.style.display = "none";
+    this.rightNav.style.display = "none";
+    this.carousel.style.cursor = "default";
   }
+}
+
+  }
+
+  (function normalizeInitialShimmers() {
+  const wrapper = document.querySelector(".carousel-wrapper-component");
+  if (!wrapper) return;
+
+  const carousel = wrapper.querySelector(".carousel-right-panel");
+  const slides = Array.from(carousel.querySelectorAll(".slide"));
+
+  const isMobile = window.innerWidth <= 767;
+  const itemsPerSlide = document.querySelector(".carousel-wrapper-component").getAttribute("data-items-per-slide"); // MUST match loadFromIframe
+
+  slides.forEach((slide, index) => {
+    // keep only ONE slide initially
+    if (index > 0) {
+      slide.remove();
+      return;
+    }
+
+    const masonry = slide.querySelector(".masonry");
+    const items = masonry.querySelectorAll(".masonryItem");
+
+    items.forEach((item, i) => {
+      if (i >= itemsPerSlide) item.remove();
+    });
+  });
+})();
+
 
   document.addEventListener("DOMContentLoaded", () => {
     document
@@ -273,90 +317,93 @@ class Carousel {
       .querySelectorAll(".masonryItem")
       .forEach((i) => i.classList.add("loading"));
 
-    loadFromIframe();
+    normalizeShimmers(true);
+      loadFromIframe();
   });
 
+  function normalizeShimmers(always = true) {
+  const wrapper = document.querySelector(".carousel-wrapper-component");
+  if (!wrapper) return;
+
+  const carousel = wrapper.querySelector(".carousel-right-panel");
+  if (!carousel) return;
+
+  const isMobile = window.innerWidth <= 767;
+  const itemsPerSlide = document.querySelector(".carousel-wrapper-component").getAttribute("data-items-per-slide");
+
+  let slides = Array.from(carousel.querySelectorAll(".slide"));
+
+  // Always keep at least ONE slide
+  if (slides.length === 0) return;
+
+  slides.forEach((slide, index) => {
+    // Only remove extra slides if explicitly allowed
+    if (always && index > 0) {
+      slide.remove();
+      return;
+    }
+
+    const masonry = slide.querySelector(".masonry");
+    if (!masonry) return;
+
+    const items = Array.from(masonry.querySelectorAll(".masonryItem"));
+    items.forEach((item, i) => {
+      if (i >= itemsPerSlide) item.remove();
+    });
+  });
+}
+
+
   function loadFromIframe() {
-    const iframe = document.createElement("iframe");
-    iframe.src = "${categoryurl}";
-    iframe.style.display = "none";
-    document.body.appendChild(iframe);
+  const iframe = document.createElement("iframe");
+  iframe.src = "${categoryurl}";
+  iframe.style.display = "none";
+  document.body.appendChild(iframe);
 
-    const fastScan = setInterval(() => {
-      const doc = iframe.contentDocument;
-      if (!doc) return;
+  let attempts = 0;
+  const MAX_ATTEMPTS = 80; // 4 seconds @ 50ms
 
-      const items = doc.querySelectorAll(
-        ".product__listing.product__grid .product-item"
-      );
-      if (items.length < 12) return;
+  const fastScan = setInterval(() => {
+    attempts++;
 
-      clearInterval(fastScan);
-
-      const isMobile = window.innerWidth <= 767;
-      const perSlide = isMobile ? 4 : 6;
-      const totalNeeded = perSlide * 2;
-
-      const selected = Array.prototype.slice.call(items, 0, totalNeeded);
-      const slide1Items = selected.slice(0, perSlide);
-      const slide2Items = selected.slice(perSlide, perSlide * 2);
-
-      const slide1 = document.querySelector(".slide:nth-of-type(1) .masonry");
-      const slide2 = document.querySelector(".slide:nth-of-type(2) .masonry");
-
-      slide1.innerHTML = "";
-      slide2.innerHTML = "";
-
-      function wrapProduct(node) {
-        const wrapper = document.createElement("div");
-        wrapper.className = "masonryItem tall product";
-        wrapper.appendChild(node.cloneNode(true));
-        const features = wrapper.querySelector(".product__grid__features");
-        if (features) features.remove();
-        return wrapper;
+    const doc = iframe.contentDocument;
+    if (!doc) {
+      if (attempts >= MAX_ATTEMPTS) {
+        clearInterval(fastScan);
+        iframe.remove();
+        // shimmer stays, already normalized
       }
+      return;
+    }
 
-      slide1Items.forEach((n) => slide1.appendChild(wrapProduct(n)));
-      slide2Items.forEach((n) => slide2.appendChild(wrapProduct(n)));
+    const items = doc.querySelectorAll(
+      ".product__listing.product__grid .product-item"
+    );
 
-      document
-        .querySelectorAll(".masonryItem .product-item")
-        .forEach((item) => {
-          const imageLink = item.querySelector("a[href]");
-          const price = item.querySelector(".grid-pricing");
-          if (!imageLink || !price) return;
-          if (item.querySelector(".details-link")) return;
+    const isMobile = window.innerWidth <= 767;
+    const itemsPerSlide = document.querySelector(".carousel-wrapper-component").getAttribute("data-items-per-slide");
+    const maxItems = 12;
 
-          const detailsLink = document.createElement("a");
-          detailsLink.href = imageLink.href;
-          detailsLink.textContent = "Details";
-          detailsLink.className = "details-link";
-          price.after(detailsLink);
-        });
+    if (items.length < maxItems) return;
 
-      document
-        .querySelectorAll(".masonryItem")
-        .forEach((m) => m.classList.remove("loading"));
+    clearInterval(fastScan);
+    iframe.remove();
 
-      document
-        .querySelectorAll(".carousel-wrapper-component")
-        .forEach((wrapper) => {
-          const inst = wrapper.carouselInstance;
-          if (inst) {
-            const active = inst.slides[inst.index];
-            inst.slideIn(active, inst.autoDirection);
-            inst.adjustHeight();
-            inst.startAutoSlide();
-          }
-        });
 
-      iframe.remove();
-    }, 50);
-  }
+    normalizeShimmers(false);
+
+  }, 50);
+}
+
+
+
 
 /** Primary UI component for user interaction */
 export const MulticlickCarouselProductFeed = ({
   categoryurl,
+  itemsPerSlide = 6,
+  itemsPerRow = 3,
+  itemsPerRowMobile = 2,
   background,
   titlecolor,
   textcolor,
@@ -377,12 +424,40 @@ export const MulticlickCarouselProductFeed = ({
   const wrapperRef = useRef(null);
   
     useLayoutEffect(() => {
-      if (!wrapperRef.current) return;
-  
-      const carousel = new Carousel(wrapperRef.current);
-  
-      return () => carousel.destroy();
-    }, []);
+  if (!wrapperRef.current) return;
+
+  // 🔥 NORMALIZE SHIMMERS FIRST
+  const carousel = wrapperRef.current.querySelector(".carousel-right-panel");
+  const slides = carousel.querySelectorAll(".slide");
+
+  const itemsPerSlide = document.querySelector(".carousel-wrapper-component").getAttribute("data-items-per-slide");
+
+  slides.forEach((slide, index) => {
+    if (index > 0) {
+      slide.remove(); // keep only one shimmer slide
+      return;
+    }
+
+    const masonry = slide.querySelector(".masonry");
+    const items = masonry.querySelectorAll(".masonryItem");
+
+    items.forEach((item, i) => {
+      if (i >= itemsPerSlide) item.remove();
+    });
+  });
+
+  // 🔥 NOW INIT CAROUSEL (DOM IS CORRECT)
+  const instance = new Carousel(wrapperRef.current);
+  wrapperRef.current.carouselInstance = instance;
+
+  // 🔥 LOAD PRODUCTS (optional)
+  loadFromIframe();
+
+  return () => {
+    clearInterval(instance.autoSlideInterval);
+  };
+}, []);
+
   return (
     <>
       <style>
@@ -493,11 +568,13 @@ export const MulticlickCarouselProductFeed = ({
   }
 
   .masonry {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
     width: 100%;
     padding: 10px;
+    align-items: center;
+    justify-content: center;
   }
 
   .masonryItem {
@@ -506,6 +583,13 @@ export const MulticlickCarouselProductFeed = ({
     transform: translateX(150vw) scale(0.9);
     transition: transform 1.25s cubic-bezier(0.25, 1.1, 0.35, 1);
     background-color: #fff;
+    width: calc(100% / ${itemsPerRowMobile} - 15px);
+  }
+
+  @media (min-width: 1024px) {
+    .masonryItem {
+      width: calc(100% / ${itemsPerRow} - 15px);
+    }
   }
 
   .masonryItem.tall {
@@ -739,7 +823,7 @@ export const MulticlickCarouselProductFeed = ({
     }
         `}
       </style>
-      <div class="carousel-wrapper-component" ref={wrapperRef} style={{background : background}}>
+      <div class="carousel-wrapper-component" ref={wrapperRef} data-items-per-slide={itemsPerSlide} style={{background : background}}>
 
   <div class="carousel-left-panel">
     <div class="left-content">
@@ -879,6 +963,8 @@ export const MulticlickCarouselProductFeed = ({
         this.slideIn(this.slides[0], this.autoDirection);
         setTimeout(() => this.adjustHeight(), 50);
       }
+
+      this.updateNavVisibility();
     }
 
     slideIn(slide, direction) {
@@ -1106,7 +1192,48 @@ export const MulticlickCarouselProductFeed = ({
         setTimeout(() => this.adjustHeight(), 100);
       });
     }
+
+    updateNavVisibility() {
+  if (!this.leftNav || !this.rightNav) return;
+
+  if (this.slides.length > 1) {
+    this.leftNav.style.display = "";
+    this.rightNav.style.display = "";
+    this.carousel.style.cursor = "grab";
+  } else {
+    this.leftNav.style.display = "none";
+    this.rightNav.style.display = "none";
+    this.carousel.style.cursor = "default";
   }
+}
+  }
+
+  (function normalizeInitialShimmers() {
+  const wrapper = document.querySelector(".carousel-wrapper-component");
+  if (!wrapper) return;
+
+  const carousel = wrapper.querySelector(".carousel-right-panel");
+  const slides = Array.from(carousel.querySelectorAll(".slide"));
+
+  const isMobile = window.innerWidth <= 767;
+  const itemsPerSlide = ${itemsPerSlide};
+
+  slides.forEach((slide, index) => {
+    // keep only ONE slide initially
+    if (index > 0) {
+      slide.remove();
+      return;
+    }
+
+    const masonry = slide.querySelector(".masonry");
+    const items = masonry.querySelectorAll(".masonryItem");
+
+    items.forEach((item, i) => {
+      if (i >= itemsPerSlide) item.remove();
+    });
+  });
+})();
+
 
   document.addEventListener("DOMContentLoaded", () => {
     document
@@ -1123,82 +1250,124 @@ export const MulticlickCarouselProductFeed = ({
   });
 
   function loadFromIframe() {
-    const iframe = document.createElement("iframe");
-    iframe.src = "${categoryurl}";
-    iframe.style.display = "none";
-    document.body.appendChild(iframe);
+  const iframe = document.createElement("iframe");
+  iframe.src = "${categoryurl}";
+  iframe.style.display = "none";
+  document.body.appendChild(iframe);
 
-    const fastScan = setInterval(() => {
-      const doc = iframe.contentDocument;
-      if (!doc) return;
+  const fastScan = setInterval(() => {
+    const doc = iframe.contentDocument;
+    if (!doc) return;
 
-      const items = doc.querySelectorAll(
-        ".product__listing.product__grid .product-item"
+    const items = doc.querySelectorAll(
+      ".product__listing.product__grid .product-item"
+    );
+
+    // CONFIG -------------------------
+    const isMobile = window.innerWidth <= 767;
+    const itemsPerSlide = ${itemsPerSlide};
+    const maxItems = 12;
+    // --------------------------------
+
+    if (items.length < maxItems) return;
+    clearInterval(fastScan);
+
+    const selectedItems = Array.from(items).slice(0, maxItems);
+    const neededSlides = Math.ceil(selectedItems.length / itemsPerSlide);
+
+    const carousel = document.querySelector(".carousel-right-panel");
+    let slides = Array.from(carousel.querySelectorAll(".slide"));
+
+    const slideTemplate = slides[0];
+
+    // ADD slides if needed
+    while (slides.length < neededSlides) {
+      const clone = slideTemplate.cloneNode(true);
+      clone.classList.remove("active");
+      clone.querySelector(".masonry").innerHTML = "";
+      carousel.insertBefore(
+        clone,
+        carousel.querySelector(".carousel-nav.left-nav")
       );
-      if (items.length < 12) return;
+      slides.push(clone);
+    }
 
-      clearInterval(fastScan);
+    // REMOVE extra slides
+    while (slides.length > neededSlides) {
+      slides.pop().remove();
+    }
 
-      const isMobile = window.innerWidth <= 767;
-      const perSlide = isMobile ? 4 : 6;
-      const totalNeeded = perSlide * 2;
+    slides = Array.from(carousel.querySelectorAll(".slide"));
 
-      const selected = Array.prototype.slice.call(items, 0, totalNeeded);
-      const slide1Items = selected.slice(0, perSlide);
-      const slide2Items = selected.slice(perSlide, perSlide * 2);
+    function wrapProduct(node) {
+      const wrapper = document.createElement("div");
+      wrapper.className = "masonryItem tall product";
+      wrapper.appendChild(node.cloneNode(true));
 
-      const slide1 = document.querySelector(".slide:nth-of-type(1) .masonry");
-      const slide2 = document.querySelector(".slide:nth-of-type(2) .masonry");
+      const features = wrapper.querySelector(".product__grid__features");
+      if (features) features.remove();
 
-      slide1.innerHTML = "";
-      slide2.innerHTML = "";
+      return wrapper;
+    }
 
-      function wrapProduct(node) {
-        const wrapper = document.createElement("div");
-        wrapper.className = "masonryItem tall product";
-        wrapper.appendChild(node.cloneNode(true));
-        const features = wrapper.querySelector(".product__grid__features");
-        if (features) features.remove();
-        return wrapper;
-      }
+    slides.forEach((slide, index) => {
+      const masonry = slide.querySelector(".masonry");
+      masonry.innerHTML = "";
 
-      slide1Items.forEach((n) => slide1.appendChild(wrapProduct(n)));
-      slide2Items.forEach((n) => slide2.appendChild(wrapProduct(n)));
+      const start = index * itemsPerSlide;
+      const end = start + itemsPerSlide;
+      const slideItems = selectedItems.slice(start, end);
 
-      document
-        .querySelectorAll(".masonryItem .product-item")
-        .forEach((item) => {
-          const imageLink = item.querySelector("a[href]");
-          const price = item.querySelector(".grid-pricing");
-          if (!imageLink || !price) return;
-          if (item.querySelector(".details-link")) return;
+      slideItems.forEach(item =>
+        masonry.appendChild(wrapProduct(item))
+      );
+    });
 
-          const detailsLink = document.createElement("a");
-          detailsLink.href = imageLink.href;
-          detailsLink.textContent = "Details";
-          detailsLink.className = "details-link";
-          price.after(detailsLink);
-        });
+    // Details link logic (unchanged)
+    document
+      .querySelectorAll(".masonryItem .product-item")
+      .forEach((item) => {
+        const imageLink = item.querySelector("a[href]");
+        const price = item.querySelector(".grid-pricing");
+        if (!imageLink || !price) return;
+        if (item.querySelector(".details-link")) return;
 
-      document
-        .querySelectorAll(".masonryItem")
-        .forEach((m) => m.classList.remove("loading"));
+        const detailsLink = document.createElement("a");
+        detailsLink.href = imageLink.href;
+        detailsLink.textContent = "Details";
+        detailsLink.className = "details-link";
+        price.after(detailsLink);
+      });
 
-      document
-        .querySelectorAll(".carousel-wrapper-component")
-        .forEach((wrapper) => {
-          const inst = wrapper.carouselInstance;
-          if (inst) {
-            const active = inst.slides[inst.index];
-            inst.slideIn(active, inst.autoDirection);
-            inst.adjustHeight();
-            inst.startAutoSlide();
-          }
-        });
+    document
+      .querySelectorAll(".masonryItem")
+      .forEach(m => m.classList.remove("loading"));
 
-      iframe.remove();
-    }, 50);
-  }
+    // Re-sync carousel
+    // HARD RESET carousel so it knows about new slides
+const wrapper = carousel.closest(".carousel-wrapper-component");
+const oldInst = wrapper.carouselInstance;
+
+if (oldInst) {
+  // stop timers + detach logic
+  clearInterval(oldInst.autoSlideInterval);
+  wrapper.carouselInstance = null;
+}
+
+// Force clean active state
+carousel.querySelectorAll(".slide").forEach((s, i) => {
+  s.classList.toggle("active", i === 0);
+});
+
+// Recreate carousel instance (CRITICAL)
+wrapper.carouselInstance = new Carousel(wrapper);
+wrapper.carouselInstance.startAutoSlide();
+
+
+    iframe.remove();
+  }, 50);
+}
+
   `}
 </script>
     </>
@@ -1207,6 +1376,9 @@ export const MulticlickCarouselProductFeed = ({
 
 MulticlickCarouselProductFeed.propTypes = {
   categoryurl: PropTypes.string,
+  itemsPerSlide: PropTypes.number,
+  itemsPerRow: PropTypes.number,
+  itemsPerRowMobile: PropTypes.number,
   background: PropTypes.string,
   titlecolor: PropTypes.string,
   textcolor: PropTypes.string,

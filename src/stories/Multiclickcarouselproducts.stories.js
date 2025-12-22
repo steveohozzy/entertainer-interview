@@ -25,6 +25,9 @@ export const MulticlickCarouselProducts = {
   args: {
     user: 'stories',
     categoryurl: '',
+    itemsPerSlide: 6,
+    itemsPerRow: 3,
+    itemsPerRowMobile: 2,
     background: '',
     titlecolor: '',
     textcolor: '',
