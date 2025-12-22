@@ -286,7 +286,6 @@ class Carousel {
   const carousel = wrapper.querySelector(".carousel-right-panel");
   const slides = Array.from(carousel.querySelectorAll(".slide"));
 
-  const isMobile = window.innerWidth <= 767;
   const itemsPerSlide = document.querySelector(".carousel-wrapper-component").getAttribute("data-items-per-slide"); // MUST match loadFromIframe
 
   slides.forEach((slide, index) => {
@@ -380,9 +379,8 @@ class Carousel {
       ".product__listing.product__grid .product-item"
     );
 
-    const isMobile = window.innerWidth <= 767;
     const itemsPerSlide = document.querySelector(".carousel-wrapper-component").getAttribute("data-items-per-slide");
-    const maxItems = 12;
+    const maxItems = document.querySelector(".carousel-wrapper-component").getAttribute("data-max-items");
 
     if (items.length < maxItems) return;
 
@@ -401,6 +399,7 @@ class Carousel {
 /** Primary UI component for user interaction */
 export const MulticlickCarouselProductFeed = ({
   categoryurl,
+  maxItems,
   itemsPerSlide = 6,
   itemsPerRow = 3,
   itemsPerRowMobile = 2,
@@ -823,7 +822,7 @@ export const MulticlickCarouselProductFeed = ({
     }
         `}
       </style>
-      <div class="carousel-wrapper-component" ref={wrapperRef} data-items-per-slide={itemsPerSlide} style={{background : background}}>
+      <div class="carousel-wrapper-component" ref={wrapperRef} data-items-per-slide={itemsPerSlide} data-max-items={maxItems} style={{background : background}}>
 
   <div class="carousel-left-panel">
     <div class="left-content">
@@ -1266,7 +1265,7 @@ export const MulticlickCarouselProductFeed = ({
     // CONFIG -------------------------
     const isMobile = window.innerWidth <= 767;
     const itemsPerSlide = ${itemsPerSlide};
-    const maxItems = 12;
+    const maxItems = ${maxItems};
     // --------------------------------
 
     if (items.length < maxItems) return;
@@ -1376,6 +1375,7 @@ wrapper.carouselInstance.startAutoSlide();
 
 MulticlickCarouselProductFeed.propTypes = {
   categoryurl: PropTypes.string,
+  maxItems: PropTypes.number,
   itemsPerSlide: PropTypes.number,
   itemsPerRow: PropTypes.number,
   itemsPerRowMobile: PropTypes.number,
