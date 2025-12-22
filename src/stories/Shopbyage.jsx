@@ -68,6 +68,9 @@ export const ShopByAge = ({
     <>
       <style>
         {`
+        body {
+        background-color: #dbe3ff;
+        }
     .shop-by-age-container {
         background-color: #dbe3ff;
     }

@@ -760,6 +760,7 @@ export const MulticlickCarouselProductFeed = ({
         height: 45px;
         box-shadow: 0 0 5px rgba(3,33,33,.3);
         border: 3px solid #DBE3FF;
+        border-color: ${buttontextcolor};
         transition: all 0.3s;
     }
 
