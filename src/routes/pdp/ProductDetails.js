@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { preload } from 'react-dom';
 import { useState, useEffect, useRef } from "react";
 
@@ -38,6 +38,46 @@ const ProductDetails = () => {
   const [bundleItemsCount, setBundleItemsCount] = useState(3);
 
   const wrapperRef = useRef(null);
+
+  const containerRef = useRef(null);
+  const isDown = useRef(false);
+  const startX = useRef(0);
+  const scrollLeft = useRef(0);
+  const moved = useRef(false);
+
+  const DRAG_THRESHOLD = 5; // px before we consider it a drag
+
+  const onMouseDown = (e) => {
+    isDown.current = true;
+    moved.current = false;
+    startX.current = e.pageX;
+    scrollLeft.current = containerRef.current.scrollLeft;
+  };
+
+  const onMouseMove = (e) => {
+    if (!isDown.current) return;
+    const walk = e.pageX - startX.current;
+
+    if (Math.abs(walk) > DRAG_THRESHOLD) {
+      moved.current = true;
+      containerRef.current.scrollLeft = scrollLeft.current - walk;
+    }
+  };
+
+  const onMouseUp = () => {
+    isDown.current = false;
+  };
+
+  const onMouseLeave = () => {
+    isDown.current = false;
+  };
+
+  const preventClickIfDragged = (e) => {
+    if (moved.current) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  };
 
   function useOutsideAlerter(ref) {
     useEffect(() => {
@@ -1250,6 +1290,35 @@ const ProductDetails = () => {
             </div>
           </div>
         </div>
+
+        <div className="w-full text-center mt-16">
+          <div className="text-2xl md:text-3xl lg:text-4xl font-bold md:!leading-[1.2] text-transparent text-center mt-5 mb-3 md:mt-12 md:mb-3.5 drop-shadow-md">
+            <span className='bg-gradient-to-r from-brandBlue via-textBlue to-brandBlue bg-clip-text md:!leading-[1.2] text-transparent textStroke'>
+              Related Categories
+            </span>
+          </div>
+        </div>
+
+        <div
+      ref={containerRef}
+      onMouseDown={onMouseDown}
+      onMouseMove={onMouseMove}
+      onMouseUp={onMouseUp}
+      onMouseLeave={onMouseLeave}
+      className="flex gap-3 w-full overflow-x-auto no-scrollbar cursor-grab active:cursor-grabbing select-none"
+    >
+      {Array.from({ length: 10 }).map((_, i) => (
+        <Link
+          key={i}
+          to="/cart"
+          draggable={false}
+          onClick={preventClickIfDragged}
+          className="bg-brandBlue text-white px-8 py-2 font-semibold text-lg rounded-3xl whitespace-nowrap"
+        >
+          Category here
+        </Link>
+      ))}
+    </div>
 
         <div id="reviews" className="w-full text-center mt-16">
           <div className="text-2xl md:text-3xl lg:text-4xl font-bold md:!leading-[1.2] text-transparent text-center mt-5 mb-3 md:mt-12 md:mb-3.5 drop-shadow-md">
