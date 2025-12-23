@@ -15,6 +15,7 @@ export const brands = [
   { name: "Naruto", count: 43, color: "bg-blue-500" },
   { name: "One Piece", count: 38, color: "bg-red-600" },
   { name: "Lego", count: 58, color: "bg-purple-300" },
+  { name: "Godzilla x Kon", count: 58, color: "bg-blue-300" },
 ]
 
 export const ageGroups = [
