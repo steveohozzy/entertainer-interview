@@ -34,6 +34,7 @@ export const MulticlickCarouselProducts = {
     textcolor: '',
     buttonbackground: '',
     buttontextcolor: '',
+    buttonicon: true,
     arrowsBackground: '',
     arrowsColor: '',
     title: '',
