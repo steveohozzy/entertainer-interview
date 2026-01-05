@@ -45,6 +45,7 @@ export const HalfSplitHero = ({
         display: flex;
         flex-flow: column;
         flex-direction: column;
+        heiight: 100%;
     }
 
     .hero-card .media {
@@ -187,6 +188,7 @@ export const HalfSplitHero = ({
         .hero-card {
             flex-flow: row-reverse;
             align-items: stretch;
+            height: auto;
         }
 
         .hero-card .media {
