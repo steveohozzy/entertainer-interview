@@ -34,7 +34,7 @@ export const HalfSplitHero = ({
     <>
       <style>{`
     .hero-card-container {
-        padding: 0 20px 30px 20px;
+        padding: 0 20px 0px 20px;
         background-color: #dbe3ff;
         height: 100%;
     }
@@ -45,7 +45,6 @@ export const HalfSplitHero = ({
         display: flex;
         flex-flow: column;
         flex-direction: column;
-        height: 100%;
     }
 
     .hero-card .media {
@@ -74,7 +73,7 @@ export const HalfSplitHero = ({
         border-radius: 8px;
         position: relative;
         margin-top: -20px;
-        padding: 40px 25px 20px 25px;
+        padding: 40px 20px 20px 20px;
         flex-grow: 1;
     }
 
