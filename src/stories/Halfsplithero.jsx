@@ -45,7 +45,7 @@ export const HalfSplitHero = ({
         display: flex;
         flex-flow: column;
         flex-direction: column;
-        heiight: 100%;
+        height: 100%;
     }
 
     .hero-card .media {
