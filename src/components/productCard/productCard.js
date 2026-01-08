@@ -586,10 +586,10 @@ const ProductCard = ({ product }) => {
               </span>
               {originalPrice && (
                 <>
-                <span className="text-sm text-gray-400 line-through relative">
-                   <div className="absolute left-[calc(100%+5px)] -top-4 inline-flex items-center rounded-full p-1 text-[10px] aspect-square font-semibold bg-brandRed text-white">
-                <span className="">-33%</span>
+                <div className="absolute left-[calc(100%-35px)] -top-7 inline-flex items-center rounded-tl-full rounded-bl-full py-3 px-3 text-sm font-semibold bg-brandRed text-white">
+                <span className="shadow-text-red">-33%</span>
               </div>
+                <span className="text-sm text-gray-400 line-through relative">
                   £{originalPrice}
                 </span>
                 </>
