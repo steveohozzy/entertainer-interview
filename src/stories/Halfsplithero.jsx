@@ -8,6 +8,8 @@ export const HalfSplitHero = ({
   videosrc,
   background,
   textColor,
+  logo,
+  logoalt,
   headline,
   tagline,
   link,
@@ -184,6 +186,11 @@ export const HalfSplitHero = ({
         transform: rotate(30deg);
     }
 
+    .hero-card .hero-logo {
+        width: auto;
+        max-height: 80px;
+    }
+
     @media (min-width: 768px) {
         .hero-card {
             flex-flow: row-reverse;
@@ -242,10 +249,21 @@ export const HalfSplitHero = ({
           }
           </div>
           <div class="hero-tile-info" style={{background : background, color: textColor}}>
+            {logo && logo !== ' ' &&
+              <img
+                src={logo}
+                alt={logoalt}
+                class="hero-logo"
+              />
+            }
+            {headline && headline !== ' ' &&
               <h2 style={{color: textColor}}>{headline}</h2>
+            }
+            {tagline && tagline !== ' ' &&
               <div class="hero-blurb" style={{color: textColor}}>
                 {tagline}
               </div>
+            }
             <button
               href={link}
               class="hero-button"
@@ -309,6 +327,8 @@ HalfSplitHero.propTypes = {
   videosrc: PropTypes.string,
   background: PropTypes.string,
   textColor: PropTypes.string,
+  logo: PropTypes.string,
+  logoalt: PropTypes.string,
   headline: PropTypes.string,
   tagline: PropTypes.string,
   link: PropTypes.string,

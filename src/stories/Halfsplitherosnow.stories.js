@@ -3,6 +3,7 @@ import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { useEffect, useRef } from 'react';
 import { HalfSplitHeroSnow } from './Halfsplitherosnow';
 import { useArgs } from 'storybook/preview-api';
+import { LogOut } from 'lucide-react';
 
 export default {
   title: 'Home/Hero/Half Split Hero Snow',
@@ -29,6 +30,8 @@ export const HalfAndHalfHeroSnow = {
     videosrc: '',
     background: '',
     textColor: '#FFFFFF',
+    Logo: '',
+    logoalt: '',
     headline: 'New Toniebox 2 with Tonieplay',
     tagline: 'Get ready for screen-free stories, songs and more!',
     link: 'https://www.thetoyshop.com/brands/tonies',

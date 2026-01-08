@@ -29,6 +29,8 @@ export const HalfAndHalfHero = {
     videosrc: '',
     background: '',
     textColor: '#FFFFFF',
+    logo: '',
+    logoalt: '',
     headline: 'New Toniebox 2 with Tonieplay',
     tagline: 'Get ready for screen-free stories, songs and more!',
     link: 'https://www.thetoyshop.com/brands/tonies',

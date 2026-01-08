@@ -508,15 +508,15 @@ const ProductCard = ({ product }) => {
               className="absolute top-4 inset-0 w-full object-cover opacity-0 group-hover:opacity-100 transition-all duration-300"
             />
           </button>
-          <div className="absolute top-2 left-1/2 -translate-x-1/2 flex w-full gap-1 flex justify-center drop-shadow-md">
+          <div className="absolute top-0 left-0 flex w-full gap-1 flex justify-start drop-shadow-md">
             {isNew && (
               <div className="inline-flex items-center rounded-lg px-2 py-0.5 text-xs md:text-sm font-bold bg-brandGreen text-white">
-                <span className="shadow-text-green">NEW TOYS</span>
+                <span className="shadow-text-green">NEW ARRIVAL</span>
               </div>
             )}
             {isBestseller && (
-              <div className="inline-flex items-center rounded-lg px-2 py-0.5 text-xs md:text-sm font-bold bg-brandRed text-white">
-                <span className="shadow-text-red ">33% OFF</span>
+              <div className="inline-flex items-center rounded-lg px-2 py-0.5 text-xs md:text-sm font-bold bg-purple-500 text-white">
+                <span className="shadow-text-purple">TOP TOYS</span>
               </div>
             )}
           </div>
@@ -580,14 +580,19 @@ const ProductCard = ({ product }) => {
                 <span className="text-xs text-textBlue ml-1">(3)</span>
               </div>
             </div>
-            <div className="flex items-center justify-center gap-1 my-2">
+            <div className="flex items-center justify-center gap-1 my-2 relative">
               <span className="text-base font-bold text-brandRed">
                 £{price}
               </span>
               {originalPrice && (
-                <span className="text-sm text-gray-400 line-through">
+                <>
+                <span className="text-sm text-gray-400 line-through relative">
+                   <div className="absolute left-[calc(100%+5px)] -top-4 inline-flex items-center rounded-full p-1 text-[10px] aspect-square font-semibold bg-brandRed text-white">
+                <span className="">-33%</span>
+              </div>
                   £{originalPrice}
                 </span>
+                </>
               )}
             </div>
           </button>
