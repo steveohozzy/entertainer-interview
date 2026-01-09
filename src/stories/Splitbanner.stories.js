@@ -3,6 +3,7 @@ import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { useEffect, useRef } from 'react';
 import { SplitBanner } from './Splitbanner';
 import { useArgs } from 'storybook/preview-api';
+import { background } from 'storybook/internal/theming';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 export default {
@@ -24,6 +25,7 @@ export default {
 export const SplitBannerContainer = {
   args: {
     user: 'stories',
+    backgroundcolor: '',
     banner1image: '',
     banner1alt: '',
     banner1link: '',

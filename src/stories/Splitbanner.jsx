@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 
 /** Primary UI component for user interaction */
 export const SplitBanner = ({
+	backgroundcolor = '#dbe3ff',
 	banner1image,
 	banner1alt,
 	banner1link,
@@ -55,7 +56,7 @@ export const SplitBanner = ({
       `}
 	
 </style>
-<div class="split-banner-container">
+<div class="split-banner-container" style={{backgroundColor: backgroundcolor}}>
 	<div class="split-banner">
 		<a href={banner1link} title={banner1alt} data-element-type={banner1dataElementType} data-promotion-index={banner1datapromotionindex} data-promotion-name={banner1datapromotionname}>
 			<img src={banner1image} alt={banner1alt} title={banner1alt} />
@@ -71,6 +72,7 @@ export const SplitBanner = ({
 
 SplitBanner.propTypes = {
   /** Split Banner contents */
+	backgroundcolor: PropTypes.string,
 	banner1image: PropTypes.string,
 	banner1alt: PropTypes.string,
 	banner1link: PropTypes.string,
