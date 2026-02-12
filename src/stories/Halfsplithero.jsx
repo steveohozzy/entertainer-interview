@@ -3,6 +3,7 @@ import { useEffect, useRef } from "react";
 
 /** Primary UI component for user interaction */
 export const HalfSplitHero = ({
+  flipped,
   image,
   imagealt,
   videosrc,
@@ -198,6 +199,10 @@ export const HalfSplitHero = ({
             height: auto;
         }
 
+        .hero-card.is-flipped {
+            flex-flow: row;
+        }
+
         .hero-card .media {
             width: 50%;
             aspect-ratio: 16/9;
@@ -207,6 +212,12 @@ export const HalfSplitHero = ({
             padding: 20px 30px 20px 20px;
             margin-top: 0;
             margin-right: -20px;
+            width: calc(50% + 20px);
+        }
+
+        .hero-card.is-flipped .hero-tile-info {
+            margin-right: 0px;
+            margin-left: -20px;
             width: calc(50% + 20px);
         }
 
@@ -231,7 +242,7 @@ export const HalfSplitHero = ({
       <div class="hero-card-container">
         <a href={link}
              data-element-type={dataElementType} data-promotion-index={datapromotionindex} data-promotion-name={datapromotionname}
-             class="hero-card">
+             class={`hero-card ${flipped ? 'is-flipped' : ''}`}>
           <div class="media">
             {image && image !== ' ' &&
               <img
@@ -265,9 +276,7 @@ export const HalfSplitHero = ({
               </div>
             }
             <button
-              href={link}
               class="hero-button"
-              data-element-type={dataElementType} data-promotion-index={datapromotionindex} data-promotion-name={datapromotionname}
             >
               <span class="swoosh-container">
                 <span class="star-start">
@@ -322,6 +331,7 @@ export const HalfSplitHero = ({
 
 HalfSplitHero.propTypes = {
   /** contents */
+  flipped: PropTypes.bool,
   image: PropTypes.string,
   imagealt: PropTypes.string,
   videosrc: PropTypes.string,

@@ -24,6 +24,7 @@ export default {
 export const HalfAndHalfHero = {
   args: {
     user: "stories",
+    flipped: false,
     image: '',
     imagealt: '',
     videosrc: '',

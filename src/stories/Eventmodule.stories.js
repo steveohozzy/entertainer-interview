@@ -17,6 +17,16 @@ export default {
       options: ['stories', 'hasina', 'shermin', 'sam'],
       control: { type: 'select' },
     },
+    row1date: { control: 'text' },
+    row2date: { control: 'text' },
+    row3date: { control: 'text' },
+    row4date: { control: 'text' },
+    row5date: { control: 'text' },
+    row6date: { control: 'text' },
+    row7date: { control: 'text' },
+    row8date: { control: 'text' },
+    row9date: { control: 'text' },
+    row10date: { control: 'text' },
   },
 };
 
