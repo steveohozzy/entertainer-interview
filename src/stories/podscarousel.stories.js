@@ -17,7 +17,7 @@ export default {
       options: ['stories', 'hasina', 'shermin', 'sam'],
       control: { type: 'select' },
     },
-    positionNumber1: { control: { type: 'number', min: 1, max: 10 } },
+    positionNumber1: { control: { type: 'number', min: 1, max: 10 }, name: 'Pod 1 Position Number',},
     positionNumber2: { control: { type: 'number', min: 1, max: 10 } },
     positionNumber3: { control: { type: 'number', min: 1, max: 10 } },
     positionNumber4: { control: { type: 'number', min: 1, max: 10 } },
@@ -27,6 +27,7 @@ export default {
     positionNumber8: { control: { type: 'number', min: 1, max: 10 } },
     positionNumber9: { control: { type: 'number', min: 1, max: 10 } },
     positionNumber10: { control: { type: 'number', min: 1, max: 10 } },
+     image1: {name: 'Pod 1 Image'}
   },
 };
 

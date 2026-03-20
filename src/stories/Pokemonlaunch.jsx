@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { stores } from "./Storeslist";
 import { useEffect } from "react";
 
-export const PokemonLaunch = ({ pageBackgroundColor, pageTitleColor, pageTitleStroke, introBlurbColor, panel1Stores = [], panel2Stores = [], panel3Stores = [], panel4Stores = [], panel5Stores = [], panel6Stores = [], pageTitle, introBlurb, secondaryTitle, secondaryTitleColor, panelsBackgroundColor, panelsBorderColor, panelsTextColor, panelsInputColor, panelsInputDetailsHoverColor, panelsInputActiveBorderColor, promoPanelsStoresListHoverBackgroundColor, panelsStoreslistColor, panelsStoresListBorderColor, panelsInputBorderColor, panel1Title, panel2Title, panel3Title, panel4Title, panel5Title, panel6Title, panel1ReleaseDate, panel2ReleaseDate, panel3ReleaseDate, panel4ReleaseDate, panel5ReleaseDate, panel6ReleaseDate, panel1Items, panel2Items, panel3Items, panel4Items, panel5Items, panel6Items, panel1Image, panel2Image, panel3Image, panel4Image, panel5Image, panel6Image, promoPanelsBorderColor, promoPanelsButtonBackgroundColor, promoPanelsButtonTextColor, promoPanelsButtonBorderColor, promoPanelsButtonHoverBackgroundColor, promoPanelsButtonHoverTextColor, promoPanelsButtonHoverBorderColor, promoPanel1Image, promoPanel2Image, promoPanel3Image, promoPanel1Link, promoPanel2Link, promoPanel3Link, promoPanel1LinkText, promoPanel2LinkText, promoPanel3LinkText, promoPanel1LinkHasIcons, promoPanel2LinkHasIcons, promoPanel3LinkHasIcons }) => {
+export const PokemonLaunch = ({ pageBackgroundColor, pageTitleColor, pageTitleStroke, introBlurbColor, panel1Stores = [], panel2Stores = [], panel3Stores = [], panel4Stores = [], panel5Stores = [], panel6Stores = [], pageTitle, introBlurb, secondaryTitle, secondaryTitleColor, panelsBackgroundColor, panelsBorderColor, panelsTextColor, panelsInputColor, panelsInputDetailsHoverColor, panelsInputActiveBorderColor, promoPanelsStoresListHoverBackgroundColor, panelsStoreslistColor, panelsStoresListBorderColor, panelsInputBorderColor, panel1Title, panel2Title, panel3Title, panel4Title, panel5Title, panel6Title, panel1Order, panel2Order, panel3Order, panel4Order, panel5Order, panel6Order, panel1ReleaseDate, panel2ReleaseDate, panel3ReleaseDate, panel4ReleaseDate, panel5ReleaseDate, panel6ReleaseDate, panel1Items, panel2Items, panel3Items, panel4Items, panel5Items, panel6Items, panel1Image, panel2Image, panel3Image, panel4Image, panel5Image, panel6Image, promoPanelsBorderColor, promoPanelsButtonBackgroundColor, promoPanelsButtonTextColor, promoPanelsButtonBorderColor, promoPanelsButtonHoverBackgroundColor, promoPanelsButtonHoverTextColor, promoPanelsButtonHoverBorderColor, promoPanel1Image, promoPanel2Image, promoPanel3Image, promoPanel1Link, promoPanel2Link, promoPanel3Link, promoPanel1LinkText, promoPanel2LinkText, promoPanel3LinkText, promoPanel1LinkHasIcons, promoPanel2LinkHasIcons, promoPanel3LinkHasIcons }) => {
   // Helper function to filter and sort stores alphabetically by short name
 const filterAndSortStores = (storeList) => 
   stores
@@ -274,7 +274,7 @@ useEffect(() => {
   .store-dropdown {
     display: none;
     position: absolute;
-    top: calc(100% - 6px);
+    top: calc(100% - 22px);
     width: 100%;
     background: #fff;
     border: 2px solid ${panelsStoresListBorderColor};
@@ -586,6 +586,7 @@ useEffect(() => {
           <h1>{pageTitle}</h1>
           <div dangerouslySetInnerHTML={{__html:introBlurb}} />
         </div>
+        {secondaryTitle &&
         <div class="pokeball-header">
           <div id="moving-container" class="flipped">
             <div id="pokeball-container">
@@ -624,7 +625,7 @@ useEffect(() => {
               </svg>
             </div>
           </div>
-
+          
           <div class="pokeball-header-text">
             <h2>{secondaryTitle}</h2>
           </div>
@@ -667,10 +668,11 @@ useEffect(() => {
             </div>
           </div>
         </div>
+}
 
         <div class="poke-panels">
           {panel1Title &&
-          <div class="poke-panel">
+          <div class="poke-panel" style={{ order: panel1Order }}>
             <div class="poke-panel-content">
               <div class="poke-panel-image">
                 <img
@@ -735,12 +737,13 @@ useEffect(() => {
                   </ul>
                 </div>
               </div>
+              <div style={{fontSize: '12px'}}>Only stores listed may have stock</div>
             </div>
           </div>
           }
 
           {panel2Title &&
-          <div class="poke-panel">
+          <div class="poke-panel" style={{ order: panel2Order }}>
             <div class="poke-panel-content">
               <div class="poke-panel-image">
                 <img
@@ -805,12 +808,13 @@ useEffect(() => {
                   </ul>
                 </div>
               </div>
+              <div style={{fontSize: '12px'}}>Only stores listed may have stock</div>
             </div>
           </div>
           }
 
           {panel3Title &&
-          <div class="poke-panel">
+          <div class="poke-panel" style={{ order: panel3Order }}>
             <div class="poke-panel-content">
               <div class="poke-panel-image">
                 <img
@@ -875,12 +879,13 @@ useEffect(() => {
                   </ul>
                 </div>
               </div>
+              <div style={{fontSize: '12px'}}>Only stores listed may have stock</div>
             </div>
           </div>
           }
 
           {panel4Title &&
-          <div class="poke-panel">
+          <div class="poke-panel" style={{ order: panel4Order }}>
             <div class="poke-panel-content">
               <div class="poke-panel-image">
                 <img
@@ -943,12 +948,13 @@ useEffect(() => {
                   </ul>
                 </div>
               </div>
+              <div style={{fontSize: '12px'}}>Only stores listed may have stock</div>
             </div>
           </div>
           }
 
           {panel5Title &&
-          <div class="poke-panel">
+          <div class="poke-panel" style={{ order: panel5Order }}>
             <div class="poke-panel-content">
               <div class="poke-panel-image">
                 <img
@@ -1011,12 +1017,13 @@ useEffect(() => {
                   </ul>
                 </div>
               </div>
+              <div style={{fontSize: '12px'}}>Only stores listed may have stock</div>
             </div>
           </div>
           }
 
           {panel6Title &&
-          <div class="poke-panel">
+          <div class="poke-panel" style={{ order: panel6Order }}>
             <div class="poke-panel-content">
               <div class="poke-panel-image">
                 <img
@@ -1079,11 +1086,12 @@ useEffect(() => {
                   </ul>
                 </div>
               </div>
+              <div style={{fontSize: '12px'}}>Only stores listed may have stock</div>
             </div>
           </div>
           }
 
-          <div class="poke-promo-section">
+          <div class="poke-promo-section" style={{order: 20}}>
             {promoPanel1Image &&
             <div class="poke-promo-tile">
               <a href={promoPanel1Link}>
@@ -1376,30 +1384,36 @@ PokemonLaunch.propTypes = {
   panelsInputBorderColor: PropTypes.string,
   panelInputActiveBorderColor: PropTypes.string,
   panel1Title: PropTypes.string,
+  panel1Order: PropTypes.number,
   panel1Stores: PropTypes.arrayOf(PropTypes.string),
   panel1Image: PropTypes.string,
   panel1ReleaseDate: PropTypes.string,
   panel1Items: PropTypes.string,
+  panel2Order: PropTypes.number,
   panel2Title: PropTypes.string,
   panel2Stores: PropTypes.arrayOf(PropTypes.string),
   panel2Image: PropTypes.string,
   panel2ReleaseDate: PropTypes.string,
   panel2Items: PropTypes.string,
+  panel3Order: PropTypes.number,
   panel3Title: PropTypes.string,
   panel3Stores: PropTypes.arrayOf(PropTypes.string),
   panel3Image: PropTypes.string,
   panel3ReleaseDate: PropTypes.string,
   panel3Items: PropTypes.string,
+  panel4Order: PropTypes.number,
   panel4Title: PropTypes.string,
   panel4Stores: PropTypes.arrayOf(PropTypes.string),
   panel4Image: PropTypes.string,
   panel4ReleaseDate: PropTypes.string,
   panel4Items: PropTypes.string,
+  panel5Order: PropTypes.number,
   panel5Title: PropTypes.string,
   panel5Stores: PropTypes.arrayOf(PropTypes.string),
   panel5Image: PropTypes.string,
   panel5ReleaseDate: PropTypes.string,
   panel5Items: PropTypes.string,
+  panel6Order: PropTypes.number,
   panel6Title: PropTypes.string,
   panel6Stores: PropTypes.arrayOf(PropTypes.string),
   panel6Image: PropTypes.string,

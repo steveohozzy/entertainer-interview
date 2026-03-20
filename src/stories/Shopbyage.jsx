@@ -71,24 +71,33 @@ export const ShopByAge = ({
         body {
         background-color: #dbe3ff;
         }
+    .shop-by-age-container {
+        background-color: #dbe3ff;
+    }
     .shop-by-age {
       max-width: 1200px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       gap: 10px;
-      padding: 20px;
+      padding: 0px 20px 0px;
       justify-content: center; /* centers items if row isn't full */
       align-content: center;
     }
+      .shop-by-age .flickity-prev-next-button {
+          width: 24px;
+          height: 24px;
+          box-shadow: none;
+      }
 
     .shop-by-age .carousel-cell {
         width: calc(100% / 4);
-        padding: 0px 5px 10px;
+        padding: 20px 5px 10px;
     }
 
     .shop-by-age a {
         display: flex;
+        width: 100%;
         flex-direction: column;
         align-items: center;
         justify-content: center;
@@ -101,16 +110,38 @@ export const ShopByAge = ({
         font: 15px/100% "Billy Bold", "Tahoma Bold", sans-serif;
         transition: all 0.3s;
         line-height: 1.1;
-        width: 100%;
+        box-shadow: 0 0 3px rgba(3,33,33,.4);
+        text-shadow: 0px 0px 4px rgba(0,0,0,0.25);
+    }
+
+    .shop-by-age a.red {
+        background-color: #F23043;
+    }
+
+    .shop-by-age a.purple {
+        background-color: #9116C4;
+    }
+
+    .shop-by-age a.blue {
+        background-color: #2AB2D1;
+    }
+
+    .shop-by-age a.light-green {
+        background-color: #23C166;
+    }
+
+    .shop-by-age a.green {
+        background-color: #067F3D;
+    }
+
+    .shop-by-age a.black {
+    background-color: #000000;
     }
 
     .shop-by-age a:hover {
+        box-shadow: 0 0 15px rgba(3,33,33,.4);
         transform: translateY(-5px) rotate(5deg);
         scale: 1.05;
-    }
-
-    .shop-by-age.not-images a:hover {
-        box-shadow: 0 0 15px rgba(3,33,33,.4);
     }
 
     .shop-by-age span {
@@ -121,7 +152,7 @@ export const ShopByAge = ({
     @media (min-width: 768px) {
       .shop-by-age .carousel-cell {
         width: calc(100% / 7);
-        padding: 10px 10px 0;
+        padding: 40px 10px 20px;
     }
         .shop-by-age a {
             font-size: 28px;
@@ -159,54 +190,16 @@ export const ShopByAge = ({
   }
 }
 
-    .shop-by-age a img {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
-
-    .shop-by-age.not-images a {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        border-radius: 100%;
-        background-color: #E5BB07;
-        color: #fff;
-        aspect-ratio: 1/1;
-        text-decoration: none;
-        font: 15px/100% "Billy Bold", "Tahoma Bold", sans-serif;
-        transition: all 0.3s;
-        line-height: 1.1;
-        box-shadow: 0 0 3px rgba(3,33,33,.4);
-        text-shadow: 0px 0px 4px rgba(0,0,0,0.25);
-    }
-
-    @media (min-width: 769px) {
-        .shop-by-age.not-images a {
-            font-size: 28px;
-        }
-
-        .shop-by-age.not-images span {
-            font-size: 20px;
-        }
-    }
-
-    @media (min-width: 1024px) {
-        .shop-by-age.not-images a {
-            font-size: 34px;
-        }
-
-        .shop-by-age.not-images span {
-            font-size: 30px;
-        }
-    }
+.shop-by-age.images a {
+box-shadow: none;
+}
         `}
       </style>
       <div class="shop-by-age-container">
-        <div class={`shop-by-age ${!images && 'not-images'}`}>
+        <div class={`shop-by-age js-flickity flickity-enabled is-draggable ${images && 'images'}`} 
+    data-flickity='{ "autoPlay": true, "wrapAround": true, "cellAlign": "left", "watchCSS": true }'>
           {roundal1link &&
+          <div class="carousel-cell">
           <a
             href={roundal1link}
             title={roundal1alt}
@@ -226,9 +219,11 @@ export const ShopByAge = ({
             </>
             }
           </a>
+          </div>
           }
 
           {roundal2link &&
+          <div class="carousel-cell">
           <a
             href={roundal2link}
             title={roundal2alt}
@@ -248,8 +243,10 @@ export const ShopByAge = ({
             </>
             }
           </a>
+          </div>
           }
           {roundal3link &&
+          <div class="carousel-cell">
           <a
             href={roundal3link}
             title={roundal3alt}
@@ -270,8 +267,10 @@ export const ShopByAge = ({
             </>
             }
           </a>
+          </div>
           }
           {roundal4link &&
+          <div class="carousel-cell">
             <a
               href={roundal4link}
               title={roundal4alt}
@@ -291,8 +290,10 @@ export const ShopByAge = ({
               </>
               }
             </a>
+            </div>
           }
           {roundal5link &&
+          <div class="carousel-cell">
             <a
               href={roundal5link}
               title={roundal5alt}
@@ -315,8 +316,10 @@ export const ShopByAge = ({
               </>
               }
             </a>
+            </div>
           }
           {roundal6link &&
+          <div class="carousel-cell">
             <a
               href={roundal6link}
               title={roundal6alt}
@@ -339,6 +342,7 @@ export const ShopByAge = ({
               </>
               }
             </a>
+            </div>
           }
         </div>
       </div>

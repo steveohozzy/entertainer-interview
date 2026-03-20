@@ -48,6 +48,12 @@ export default {
     panel4ReleaseDate: { control: 'text' },
     panel5ReleaseDate: { control: 'text' },
     panel6ReleaseDate: { control: 'text' },
+    panel1Order: { control: 'number' },
+    panel2Order: { control: 'number' },
+    panel3Order: { control: 'number' },
+    panel4Order: { control: 'number' },
+    panel5Order: { control: 'number' },
+    panel6Order: { control: 'number' },
   },
 };
 
@@ -74,6 +80,7 @@ export const PokemonLaunchContent = {
     promoPanelsStoresListHoverBackgroundColor: '#dbe3ff',
     panelsInputBorderColor: '#EC7AAC',
     panelsInputActiveBorderColor: '#34B597',
+    panel1Order: 1,
     panel1Title: 'Pokémon TCG: Mega Evolution - Ascended Heroes 2 Pack Blister',
     panel1Stores: [
       "Amersham",
@@ -90,6 +97,7 @@ export const PokemonLaunchContent = {
                   <span>1 Damage-counter dice</span>
                   <span>1 Coin-flip die1 Plastic coin</span>
                   <span>Player’s guide</span>`,
+    panel2Order: 2,
     panel2Title: 'Pokémon TCG: Mega Evolution - Ascended Heroes Mini Tin',
     panel2Stores: [
       "Amersham",
@@ -106,6 +114,7 @@ export const PokemonLaunchContent = {
                   <span>1 Damage-counter dice</span>
                   <span>1 Coin-flip die1 Plastic coin</span>
                   <span>Player’s guide</span>`,
+    panel3Order: 3,
     panel3Title: 'Pokémon TCG: Mega Evolution - Ascended Heroes Mini Tin',
     panel3Stores: [
       "Amersham",
@@ -122,6 +131,7 @@ export const PokemonLaunchContent = {
                   <span>1 Damage-counter dice</span>
                   <span>1 Coin-flip die1 Plastic coin</span>
                   <span>Player’s guide</span>`,
+    panel4Order: 4,
     panel4Title: 'Pokémon TCG: Mega Evolution - Ascended Heroes 2 Pack Blister',
     panel4Stores: [
       "Amersham",
@@ -138,6 +148,7 @@ export const PokemonLaunchContent = {
                   <span>1 Damage-counter dice</span>
                   <span>1 Coin-flip die1 Plastic coin</span>
                   <span>Player’s guide</span>`,
+    panel5Order: 5,
     panel5Title: 'Pokémon TCG: Mega Evolution - Ascended Heroes 2 Pack Blister',
     panel5Stores: [
       "Amersham",
@@ -154,6 +165,7 @@ export const PokemonLaunchContent = {
                   <span>1 Damage-counter dice</span>
                   <span>1 Coin-flip die1 Plastic coin</span>
                   <span>Player’s guide</span>`,
+    panel6Order: 6,
     panel6Title: 'Pokémon TCG: Mega Evolution - Ascended Heroes 2 Pack Blister',
     panel6Stores: [
       "Amersham",
