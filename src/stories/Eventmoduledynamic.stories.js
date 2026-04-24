@@ -25,20 +25,14 @@ export const EventModuleComponent = (args) => {
   const [currentArgs, updateArgs] = useArgs();
   const [allDocs, setAllDocs] = useState([]);
   const [localTitle, setLocalTitle] = useState(currentArgs.title || '');
-
   const isLoadingRef = useRef(false);
   const lastSyncedData = useRef({});
   const saveTimeout = useRef(null);
-
-  // Stable Firestore doc ID, separate from the typing title
   const currentDocId = useRef(currentArgs.title || 'untitled');
 
-  // keep local title in sync if args.title changes externally
-  useEffect(() => {
-    setLocalTitle(currentArgs.title || '');
-  }, [currentArgs.title]);
+  useEffect(() => setLocalTitle(currentArgs.title || ''), [currentArgs.title]);
 
-  // Load all documents for dropdown
+  // Fetch all docs for dropdown
   useEffect(() => {
     const fetchDocs = async () => {
       const colRef = collection(db, 'eventModuleDynamic');
@@ -48,7 +42,7 @@ export const EventModuleComponent = (args) => {
     fetchDocs();
   }, []);
 
-  // Load Firestore doc when currentDocId changes (stable ID)
+  // Load Firestore doc for currentDocId
   useEffect(() => {
     const loadDoc = async () => {
       const title = currentDocId.current || 'untitled';
@@ -63,9 +57,9 @@ export const EventModuleComponent = (args) => {
         if (snap.exists()) {
           const data = snap.data();
           lastSyncedData.current = data;
-          updateArgs({ ...data, title }); // load data into args
+          updateArgs({ ...data, title });
         } else {
-          await setDoc(docRef, { title, rows: [] }); // init new doc
+          await setDoc(docRef, { title, rows: [] });
         }
       } catch (e) {
         console.error(e);
@@ -73,11 +67,10 @@ export const EventModuleComponent = (args) => {
 
       isLoadingRef.current = false;
     };
-
     loadDoc();
   }, [currentDocId.current]);
 
-  // Auto-save all changes to Firestore (debounced)
+  // Auto-save to Firestore
   useEffect(() => {
     if (isLoadingRef.current) return;
 
@@ -87,34 +80,54 @@ export const EventModuleComponent = (args) => {
     const changed = Object.entries(currentArgs).some(
       ([k, v]) => lastSyncedData.current[k] !== v
     );
-
     if (!changed) return;
 
     clearTimeout(saveTimeout.current);
-
     saveTimeout.current = setTimeout(async () => {
       try {
         const docRef = doc(db, 'eventModuleDynamic', title);
-
         await setDoc(docRef, currentArgs, { merge: true });
-
         lastSyncedData.current = { ...currentArgs };
-
         console.log('Saved to Firestore:', currentArgs);
       } catch (e) {
         console.error('Firestore save error:', e);
       }
-    }, 1500); // wait 1.5s after changes stop
+    }, 1500);
 
     return () => clearTimeout(saveTimeout.current);
-
   }, [currentArgs]);
 
+  // Add new row
   const addRow = () => {
     updateArgs({
       ...currentArgs,
-      rows: [...(currentArgs.rows || []), { date: '', store: '', storeLink: '', price: '' }],
+      rows: [
+        ...(currentArgs.rows || []),
+        {
+          type: 'single', // default type
+          date: '',
+          times: [],
+          startDate: '',
+          endDate: '',
+          store: '',
+          storeLink: '',
+          price: ''
+        }
+      ],
     });
+  };
+
+  // Update a single row
+  const updateRow = (index, newRow) => {
+    const updatedRows = [...currentArgs.rows];
+    updatedRows[index] = { ...updatedRows[index], ...newRow };
+    updateArgs({ ...currentArgs, rows: updatedRows });
+  };
+
+  // Remove a row
+  const removeRow = (index) => {
+    const updatedRows = currentArgs.rows.filter((_, i) => i !== index);
+    updateArgs({ ...currentArgs, rows: updatedRows });
   };
 
   return (
@@ -126,7 +139,7 @@ export const EventModuleComponent = (args) => {
             <select
               value={currentArgs.title || ''}
               onChange={e => {
-                currentDocId.current = e.target.value; // stable doc ID
+                currentDocId.current = e.target.value;
                 updateArgs({ ...currentArgs, title: e.target.value });
               }}
               style={{ marginLeft: 8 }}
@@ -144,7 +157,6 @@ export const EventModuleComponent = (args) => {
                 value={localTitle}
                 onChange={e => setLocalTitle(e.target.value)}
                 onBlur={() => {
-                  // Only update the stable Firestore doc ID on blur
                   currentDocId.current = localTitle || 'untitled';
                   updateArgs({ ...currentArgs, title: localTitle });
                 }}
@@ -162,9 +174,45 @@ export const EventModuleComponent = (args) => {
       />
 
       {!args.forPreview && (
-        <button onClick={addRow} style={{ marginTop: 12, padding: '6px 12px' }}>
-          Add Row
-        </button>
+        <>
+          {currentArgs.rows && currentArgs.rows.length > 0 && (
+            <div style={{ marginTop: 12 }}>
+              {currentArgs.rows.map((row, index) => (
+                <div
+                  key={index}
+                  style={{
+                    marginBottom: 8,
+                    display: 'flex',
+                    gap: 8,
+                    alignItems: 'center',
+                  }}
+                >
+                  <span>Row {index + 1}:</span>
+
+                  <select
+                    value={row.type || 'single'}
+                    onChange={(e) =>
+                      updateRow(index, { type: e.target.value })
+                    }
+                  >
+                    <option value="single">Single Date</option>
+                    <option value="times">Date with Times</option>
+                    <option value="range">Date Range</option>
+                  </select>
+
+                  <button onClick={() => removeRow(index)}>Delete</button>
+                </div>
+              ))}
+            </div>
+          )}
+
+          <button
+            onClick={addRow}
+            style={{ marginTop: 12, padding: '6px 12px' }}
+          >
+            Add Row
+          </button>
+        </>
       )}
     </>
   );

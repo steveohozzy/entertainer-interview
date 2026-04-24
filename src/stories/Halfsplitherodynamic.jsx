@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { useEffect, useRef } from "react";
 
 /** Primary UI component for user interaction */
-export const HalfSplitHero = ({
+export const HalfSplitHeroDynamic = ({
   flipped,
   image,
   imagealt,
@@ -21,7 +21,7 @@ export const HalfSplitHero = ({
   datapromotionindex,
   datapromotionname,
   src,
-  isMuted,
+  isMuted
 }) => {
   const refVideo = useRef(null);
 
@@ -35,7 +35,7 @@ export const HalfSplitHero = ({
     }
     }, [isMuted, src, videosrc]);
 
-  useEffect(() => {
+     useEffect(() => {
   if (!termslink) return;
 
   const handler = (e) => {
@@ -119,7 +119,7 @@ export const HalfSplitHero = ({
         font-family: "Nunito Bold","Tahoma Bold",sans-serif;
         font-weight: bold;
         color: ${textColor || '#fff'};
-        margin: 0x;
+        margin: 0 0 20px;
         line-height: 24px;
     }
 
@@ -209,7 +209,6 @@ export const HalfSplitHero = ({
     .hero-card .hero-logo {
         width: auto;
         max-height: 80px;
-        max-width: 100%;
     }
 
     @media (min-width: 768px) {
@@ -354,19 +353,11 @@ export const HalfSplitHero = ({
           </div>
         </a>
       </div>
-<script>{`
- document.querySelectorAll('.terms-link').forEach(el => {
-   el.addEventListener('click', e => {
-     e.preventDefault();
-     window.open('${termslink}', '_blank');
-   });
- });
- `}</script>
     </>
   );
 };
 
-HalfSplitHero.propTypes = {
+HalfSplitHeroDynamic.propTypes = {
   /** contents */
   flipped: PropTypes.bool,
   image: PropTypes.string,

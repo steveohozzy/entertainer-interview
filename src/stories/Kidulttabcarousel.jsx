@@ -87,6 +87,7 @@ export const KidultCarousel = ({
 }) => {
   return (
     <>
+    <div class="kidult-carousel-container">
       <div class="kidult">
         <div class="kidult-content">
           <h3>{carouseltitle}</h3>
@@ -395,6 +396,7 @@ export const KidultCarousel = ({
           </div>
         </div>
       </div>
+    </div>
     </>
   );
 };

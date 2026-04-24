@@ -97,6 +97,7 @@ export const PokemonLaunchContent = {
                   <span>1 Damage-counter dice</span>
                   <span>1 Coin-flip die1 Plastic coin</span>
                   <span>Player’s guide</span>`,
+    panel1SmallPrint: `Only stores listed may have stock`,
     panel2Order: 2,
     panel2Title: 'Pokémon TCG: Mega Evolution - Ascended Heroes Mini Tin',
     panel2Stores: [
@@ -114,6 +115,7 @@ export const PokemonLaunchContent = {
                   <span>1 Damage-counter dice</span>
                   <span>1 Coin-flip die1 Plastic coin</span>
                   <span>Player’s guide</span>`,
+    panel2SmallPrint: `Only stores listed may have stock`,
     panel3Order: 3,
     panel3Title: 'Pokémon TCG: Mega Evolution - Ascended Heroes Mini Tin',
     panel3Stores: [
@@ -131,6 +133,7 @@ export const PokemonLaunchContent = {
                   <span>1 Damage-counter dice</span>
                   <span>1 Coin-flip die1 Plastic coin</span>
                   <span>Player’s guide</span>`,
+    panel3SmallPrint: `Only stores listed may have stock`,
     panel4Order: 4,
     panel4Title: 'Pokémon TCG: Mega Evolution - Ascended Heroes 2 Pack Blister',
     panel4Stores: [
@@ -148,6 +151,7 @@ export const PokemonLaunchContent = {
                   <span>1 Damage-counter dice</span>
                   <span>1 Coin-flip die1 Plastic coin</span>
                   <span>Player’s guide</span>`,
+    panel4SmallPrint: `Only stores listed may have stock`,
     panel5Order: 5,
     panel5Title: 'Pokémon TCG: Mega Evolution - Ascended Heroes 2 Pack Blister',
     panel5Stores: [
@@ -165,6 +169,7 @@ export const PokemonLaunchContent = {
                   <span>1 Damage-counter dice</span>
                   <span>1 Coin-flip die1 Plastic coin</span>
                   <span>Player’s guide</span>`,
+    panel5SmallPrint: `Only stores listed may have stock`,
     panel6Order: 6,
     panel6Title: 'Pokémon TCG: Mega Evolution - Ascended Heroes 2 Pack Blister',
     panel6Stores: [
@@ -182,6 +187,7 @@ export const PokemonLaunchContent = {
                   <span>1 Damage-counter dice</span>
                   <span>1 Coin-flip die1 Plastic coin</span>
                   <span>Player’s guide</span>`,
+    panel6SmallPrint: `Only stores listed may have stock`,
   },
   promoPanelsBorderColor: '#34B597',
   promoPanelsButtonBackgroundColor: '#EC7AAC',

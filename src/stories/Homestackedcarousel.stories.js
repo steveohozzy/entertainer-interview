@@ -1,19 +1,18 @@
 import { db } from '../config/firebase';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
-import { useEffect, useRef } from 'react';
-import { HalfSplitHero } from './Halfsplithero';
+import { useEffect, useCallback, useRef } from 'react';
+import { HomeStackedCarousel} from './Homestackedcarousel';
 import { useArgs } from 'storybook/preview-api';
 
+// More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 export default {
-  title: 'Home/Hero/Half Split Hero',
-  component: HalfSplitHero,
+  title: 'ELC/Home Stacked Carousel',
+  component: HomeStackedCarousel,
   parameters: {
-    layout: 'centered',
+    // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
+    layout: 'fullscreen',
   },
   argTypes: {
-    background: {
-      control: 'color',
-    },
     user: {
       options: ['stories', 'hasina', 'shermin', 'sam'],
       control: { type: 'select' },
@@ -21,30 +20,22 @@ export default {
   },
 };
 
-export const HalfAndHalfHero = {
+// More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
+export const HomeStackedCarouselContainer = {
   args: {
-    user: "stories",
-    flipped: false,
-    image: '',
-    imagealt: '',
-    videosrc: '',
-    background: '',
-    textColor: '#FFFFFF',
-    logo: '',
-    logoalt: '',
-    headline: 'New Toniebox 2 with Tonieplay',
-    tagline: 'Get ready for screen-free stories, songs and more!',
-    link: 'https://www.thetoyshop.com/brands/tonies',
-    linktext: 'Pre-order',
-    termslink: 'https://www.thetoyshop.com/brands/tonies',
-    termslinktext: 'terms and conditions',
-    dataElementType: 'hp-hero-area',
-    datapromotionindex: '3',
-    datapromotionname: 'Hero-3-Huffy',
+    user: 'stories',
+    card1title: '',
+    card1image: '',
+    card1link: '',
+    card2title: '',
+    card2image: '',
+    card2link: '',
+    card3title: '',
+    card3image: '',
+    card3link: '',
   },
 
-  
-render: function Render(args) {
+  render: function Render(args) {
   const [currentArgs, updateArgs] = useArgs();
 
   const isLoadingRef = useRef(false);       // prevents writing during load
@@ -60,7 +51,7 @@ render: function Render(args) {
       lastUserRef.current = args.user;
 
       try {
-        const docRef = doc(db, args.user, "halfsplithero");
+        const docRef = doc(db, args.user, "HomeStackedCarousel");
         const snap = await getDoc(docRef);
 
         if (snap.exists()) {
@@ -110,7 +101,7 @@ render: function Render(args) {
 
     const send = async () => {
       try {
-        const docRef = doc(db, selectedUser, "halfsplithero");
+        const docRef = doc(db, selectedUser, "HomeStackedCarousel");
         await updateDoc(docRef, fields);
         console.log("UPDATED:", selectedUser, fields);
       } catch (e) {
@@ -120,10 +111,7 @@ render: function Render(args) {
 
     send();
   }, [currentArgs]);
-
-
-  return <HalfSplitHero {...currentArgs} />;
-}
-
-
+    
+        return <HomeStackedCarousel {...args} />;
+      },
 };

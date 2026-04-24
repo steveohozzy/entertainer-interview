@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { stores } from "./Storeslist";
 import { useEffect } from "react";
 
-export const PokemonLaunch = ({ pageBackgroundColor, pageTitleColor, pageTitleStroke, introBlurbColor, panel1Stores = [], panel2Stores = [], panel3Stores = [], panel4Stores = [], panel5Stores = [], panel6Stores = [], pageTitle, introBlurb, secondaryTitle, secondaryTitleColor, panelsBackgroundColor, panelsBorderColor, panelsTextColor, panelsInputColor, panelsInputDetailsHoverColor, panelsInputActiveBorderColor, promoPanelsStoresListHoverBackgroundColor, panelsStoreslistColor, panelsStoresListBorderColor, panelsInputBorderColor, panel1Title, panel2Title, panel3Title, panel4Title, panel5Title, panel6Title, panel1Order, panel2Order, panel3Order, panel4Order, panel5Order, panel6Order, panel1ReleaseDate, panel2ReleaseDate, panel3ReleaseDate, panel4ReleaseDate, panel5ReleaseDate, panel6ReleaseDate, panel1Items, panel2Items, panel3Items, panel4Items, panel5Items, panel6Items, panel1Image, panel2Image, panel3Image, panel4Image, panel5Image, panel6Image, promoPanelsBorderColor, promoPanelsButtonBackgroundColor, promoPanelsButtonTextColor, promoPanelsButtonBorderColor, promoPanelsButtonHoverBackgroundColor, promoPanelsButtonHoverTextColor, promoPanelsButtonHoverBorderColor, promoPanel1Image, promoPanel2Image, promoPanel3Image, promoPanel1Link, promoPanel2Link, promoPanel3Link, promoPanel1LinkText, promoPanel2LinkText, promoPanel3LinkText, promoPanel1LinkHasIcons, promoPanel2LinkHasIcons, promoPanel3LinkHasIcons }) => {
+export const PokemonLaunch = ({ pageBackgroundColor, pageTitleColor, pageTitleStroke, introBlurbColor, panel1Stores = [], panel2Stores = [], panel3Stores = [], panel4Stores = [], panel5Stores = [], panel6Stores = [], pageTitle, introBlurb, secondaryTitle, secondaryTitleColor, panelsBackgroundColor, panelsBorderColor, panelsTextColor, panelsInputColor, panelsInputDetailsHoverColor, panelsInputActiveBorderColor, promoPanelsStoresListHoverBackgroundColor, panelsStoreslistColor, panelsStoresListBorderColor, panelsInputBorderColor, panel1Title, panel2Title, panel3Title, panel4Title, panel5Title, panel6Title, panel1Order, panel2Order, panel3Order, panel4Order, panel5Order, panel6Order, panel1ReleaseDate, panel2ReleaseDate, panel3ReleaseDate, panel4ReleaseDate, panel5ReleaseDate, panel6ReleaseDate, panel1Items, panel2Items, panel3Items, panel4Items, panel5Items, panel6Items, panel1Image, panel2Image, panel3Image, panel4Image, panel5Image, panel6Image, promoPanelsBorderColor, promoPanelsButtonBackgroundColor, promoPanelsButtonTextColor, promoPanelsButtonBorderColor, promoPanelsButtonHoverBackgroundColor, promoPanelsButtonHoverTextColor, promoPanelsButtonHoverBorderColor, promoPanel1Image, promoPanel2Image, promoPanel3Image, promoPanel1Link, promoPanel2Link, promoPanel3Link, promoPanel1LinkText, promoPanel2LinkText, promoPanel3LinkText, promoPanel1LinkHasIcons, promoPanel2LinkHasIcons, promoPanel3LinkHasIcons, panel1SmallPrint, panel2SmallPrint, panel3SmallPrint, panel4SmallPrint, panel5SmallPrint, panel6SmallPrint }) => {
   // Helper function to filter and sort stores alphabetically by short name
 const filterAndSortStores = (storeList) => 
   stores
@@ -737,7 +737,7 @@ useEffect(() => {
                   </ul>
                 </div>
               </div>
-              <div style={{fontSize: '12px'}}>Only stores listed may have stock</div>
+              <div style={{fontSize: '12px'}} dangerouslySetInnerHTML={{__html:panel1SmallPrint}}></div>
             </div>
           </div>
           }
@@ -808,7 +808,7 @@ useEffect(() => {
                   </ul>
                 </div>
               </div>
-              <div style={{fontSize: '12px'}}>Only stores listed may have stock</div>
+              <div style={{fontSize: '12px'}} dangerouslySetInnerHTML={{__html:panel2SmallPrint}}></div>
             </div>
           </div>
           }
@@ -879,7 +879,7 @@ useEffect(() => {
                   </ul>
                 </div>
               </div>
-              <div style={{fontSize: '12px'}}>Only stores listed may have stock</div>
+              <div style={{fontSize: '12px'}} dangerouslySetInnerHTML={{__html:panel3SmallPrint}}></div>
             </div>
           </div>
           }
@@ -948,7 +948,7 @@ useEffect(() => {
                   </ul>
                 </div>
               </div>
-              <div style={{fontSize: '12px'}}>Only stores listed may have stock</div>
+              <div style={{fontSize: '12px'}} dangerouslySetInnerHTML={{__html:panel4SmallPrint}}></div>
             </div>
           </div>
           }
@@ -1017,7 +1017,7 @@ useEffect(() => {
                   </ul>
                 </div>
               </div>
-              <div style={{fontSize: '12px'}}>Only stores listed may have stock</div>
+              <div style={{fontSize: '12px'}} dangerouslySetInnerHTML={{__html:panel5SmallPrint}}></div>
             </div>
           </div>
           }
@@ -1086,7 +1086,7 @@ useEffect(() => {
                   </ul>
                 </div>
               </div>
-              <div style={{fontSize: '12px'}}>Only stores listed may have stock</div>
+              <div style={{fontSize: '12px'}} dangerouslySetInnerHTML={{__html:panel6SmallPrint}}></div>
             </div>
           </div>
           }
@@ -1389,36 +1389,42 @@ PokemonLaunch.propTypes = {
   panel1Image: PropTypes.string,
   panel1ReleaseDate: PropTypes.string,
   panel1Items: PropTypes.string,
+  panel1SmallPrint: PropTypes.string,
   panel2Order: PropTypes.number,
   panel2Title: PropTypes.string,
   panel2Stores: PropTypes.arrayOf(PropTypes.string),
   panel2Image: PropTypes.string,
   panel2ReleaseDate: PropTypes.string,
   panel2Items: PropTypes.string,
+  panel2SmallPrint: PropTypes.string,
   panel3Order: PropTypes.number,
   panel3Title: PropTypes.string,
   panel3Stores: PropTypes.arrayOf(PropTypes.string),
   panel3Image: PropTypes.string,
   panel3ReleaseDate: PropTypes.string,
   panel3Items: PropTypes.string,
+  panel3SmallPrint: PropTypes.string,
   panel4Order: PropTypes.number,
   panel4Title: PropTypes.string,
   panel4Stores: PropTypes.arrayOf(PropTypes.string),
   panel4Image: PropTypes.string,
   panel4ReleaseDate: PropTypes.string,
   panel4Items: PropTypes.string,
+  panel4SmallPrint: PropTypes.string,
   panel5Order: PropTypes.number,
   panel5Title: PropTypes.string,
   panel5Stores: PropTypes.arrayOf(PropTypes.string),
   panel5Image: PropTypes.string,
   panel5ReleaseDate: PropTypes.string,
   panel5Items: PropTypes.string,
+  panel5SmallPrint: PropTypes.string,
   panel6Order: PropTypes.number,
   panel6Title: PropTypes.string,
   panel6Stores: PropTypes.arrayOf(PropTypes.string),
   panel6Image: PropTypes.string,
   panel6ReleaseDate: PropTypes.string,
   panel6Items: PropTypes.string,
+  panel6SmallPrint: PropTypes.string,
   promoPanel1Image: PropTypes.string,
   promoPanel1Link: PropTypes.string,
   promoPanel1LinkText: PropTypes.string,

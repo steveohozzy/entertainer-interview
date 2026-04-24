@@ -1,19 +1,18 @@
 import { db } from '../config/firebase';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
-import { useEffect, useRef } from 'react';
-import { HalfSplitHero } from './Halfsplithero';
+import { useEffect, useCallback, useRef } from 'react';
+import { ElcVideoModule } from './Elcvideomodule';
 import { useArgs } from 'storybook/preview-api';
 
+// More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 export default {
-  title: 'Home/Hero/Half Split Hero',
-  component: HalfSplitHero,
+  title: 'ELC/Video Module',
+  component: ElcVideoModule,
   parameters: {
+    // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
     layout: 'centered',
   },
   argTypes: {
-    background: {
-      control: 'color',
-    },
     user: {
       options: ['stories', 'hasina', 'shermin', 'sam'],
       control: { type: 'select' },
@@ -21,30 +20,24 @@ export default {
   },
 };
 
-export const HalfAndHalfHero = {
+// More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
+export const ElcVideoModuleHero = {
   args: {
-    user: "stories",
-    flipped: false,
-    image: '',
-    imagealt: '',
+    user: 'stories',
     videosrc: '',
     background: '',
-    textColor: '#FFFFFF',
-    logo: '',
-    logoalt: '',
-    headline: 'New Toniebox 2 with Tonieplay',
-    tagline: 'Get ready for screen-free stories, songs and more!',
-    link: 'https://www.thetoyshop.com/brands/tonies',
-    linktext: 'Pre-order',
-    termslink: 'https://www.thetoyshop.com/brands/tonies',
-    termslinktext: 'terms and conditions',
-    dataElementType: 'hp-hero-area',
-    datapromotionindex: '3',
-    datapromotionname: 'Hero-3-Huffy',
+    titlecolor: '',
+    textcolor: '',
+    buttonbackground: '',
+    buttonbackgroundhover: '',
+    buttontextcolor: '',
+    buttontextcolorhover: '',
+    title: '',
+    blurb: '',
+    buttontext: '',
+    link: '',
   },
-
-  
-render: function Render(args) {
+  render: function Render(args) {
   const [currentArgs, updateArgs] = useArgs();
 
   const isLoadingRef = useRef(false);       // prevents writing during load
@@ -60,7 +53,7 @@ render: function Render(args) {
       lastUserRef.current = args.user;
 
       try {
-        const docRef = doc(db, args.user, "halfsplithero");
+        const docRef = doc(db, args.user, "elcvideomodule");
         const snap = await getDoc(docRef);
 
         if (snap.exists()) {
@@ -110,7 +103,7 @@ render: function Render(args) {
 
     const send = async () => {
       try {
-        const docRef = doc(db, selectedUser, "halfsplithero");
+        const docRef = doc(db, selectedUser, "videomodule");
         await updateDoc(docRef, fields);
         console.log("UPDATED:", selectedUser, fields);
       } catch (e) {
@@ -120,10 +113,7 @@ render: function Render(args) {
 
     send();
   }, [currentArgs]);
-
-
-  return <HalfSplitHero {...currentArgs} />;
-}
-
-
+    
+        return <ElcVideoModule {...args} />;
+      },
 };

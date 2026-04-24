@@ -13,148 +13,153 @@ export const EventModule = ({
   forPreview = false,
 }) => {
 const stores = [
-{ name: 'Aberdeen Union Square', link: 'https://www.thetoyshop.com/store/aberdeen' },
-{ name: 'Altrincham', link: 'https://www.thetoyshop.com/store/altrincham' },
-{ name: 'Amersham', link: 'https://www.thetoyshop.com/store/amersham' },
-{ name: 'Antrim', link: 'https://www.thetoyshop.com/store/antrim' },
-{ name: 'Ashford', link: 'https://www.thetoyshop.com/store/ashford' },
-{ name: 'Aylesbury', link: 'https://www.thetoyshop.com/store/aylesbury' },
-{ name: 'Banbury', link: 'https://www.thetoyshop.com/store/banbury' },
-{ name: 'Barnsley', link: 'https://www.thetoyshop.com/store/barnsley' },
-{ name: 'Barnstaple', link: 'https://www.thetoyshop.com/store/barnstaple' },
-{ name: 'Basildon', link: 'https://www.thetoyshop.com/store/basildon' },
-{ name: 'Basingstoke', link: 'https://www.thetoyshop.com/store/basingstoke' },
-{ name: 'Bath', link: 'https://www.thetoyshop.com/store/bath' },
-{ name: 'Belfast', link: 'https://www.thetoyshop.com/store/belfast' },
-{ name: 'Beverley', link: 'https://www.thetoyshop.com/store/beverley' },
-{ name: 'Bexleyheath', link: 'https://www.thetoyshop.com/store/bexleyheath' },
-{ name: "Bishop's Stortford", link: 'https://www.thetoyshop.com/store/bishop-stortford' },
-{ name: 'Birkenhead', link: 'https://www.thetoyshop.com/store/birkenhead' },
-{ name: 'Blackburn', link: 'https://www.thetoyshop.com/store/blackburn' },
-{ name: 'Bluewater - Greenhithe', link: 'https://www.thetoyshop.com/store/bluewater' },
-{ name: 'Bolton', link: 'https://www.thetoyshop.com/store/bolton' },
-{ name: 'Bournemouth', link: 'https://www.thetoyshop.com/store/bournemouth' },
-{ name: 'Bradford', link: 'https://www.thetoyshop.com/store/bradford' },
-{ name: 'Bracknell', link: 'https://www.thetoyshop.com/store/bracknell' },
-{ name: 'Braehead', link: 'https://www.thetoyshop.com/store/braehead' },
-{ name: 'Brighton', link: 'https://www.thetoyshop.com/store/brighton' },
-{ name: 'Bristol Cabot Circus', link: 'https://www.thetoyshop.com/store/bristol-cabot-circus' },
-{ name: 'Bristol Cribbs Causeway', link: 'https://www.thetoyshop.com/store/cribbs-causeway-bristol' },
-{ name: 'Bromley Lower Mall', link: 'https://www.thetoyshop.com/store/bromley%20lower%20mall' },
-{ name: 'Bromley Upper Mall', link: 'https://www.thetoyshop.com/store/bromley' },
-{ name: 'Burnley', link: 'https://www.thetoyshop.com/store/burnley' },
-{ name: 'Burton Upon Trent', link: 'https://www.thetoyshop.com/store/burton-upon-trent' },
-{ name: 'Bury', link: 'https://www.thetoyshop.com/store/bury' },
-{ name: 'Camberley', link: 'https://www.thetoyshop.com/store/camberley' },
-{ name: 'Cambridge', link: 'https://www.thetoyshop.com/store/cambridge' },
-{ name: 'Cardiff', link: 'https://www.thetoyshop.com/store/cardiff' },
-{ name: 'Carlisle', link: 'https://www.thetoyshop.com/store/carlisle' },
-{ name: 'Carmarthen', link: 'https://www.thetoyshop.com/store/carmarthen' },
-{ name: 'Chatham', link: 'https://www.thetoyshop.com/store/chatham' },
-{ name: 'Chelmsford', link: 'https://www.thetoyshop.com/store/chelmsford' },
-{ name: 'Cheshire Coliseum', link: 'https://www.thetoyshop.com/store/coliseum' },
-{ name: 'Chester', link: 'https://www.thetoyshop.com/store/chester' },
-{ name: 'Chester Broughton Shopping Park', link: 'https://www.thetoyshop.com/store/chester-broughton' },
-{ name: 'Chesterfield', link: 'https://www.thetoyshop.com/store/chesterfield' },
-{ name: 'Chichester', link: 'https://www.thetoyshop.com/store/chichester-184' },
-{ name: 'Colchester', link: 'https://www.thetoyshop.com/store/colchester' },
-{ name: 'Corby', link: 'https://www.thetoyshop.com/store/corby' },
-{ name: 'Coventry', link: 'https://www.thetoyshop.com/store/coventry' },
-{ name: 'Crawley', link: 'https://www.thetoyshop.com/store/crawley' },
-{ name: 'Cumbernauld', link: 'https://www.thetoyshop.com/store/cumbernauld' },
-{ name: 'Cwmbran', link: 'https://www.thetoyshop.com/store/cwmbran' },
-{ name: 'Dalton Park', link: 'https://www.thetoyshop.com/store/dalton-park' },
-{ name: 'Derby', link: 'https://www.thetoyshop.com/store/derby' },
-{ name: 'Didcot', link: 'https://www.thetoyshop.com/store/didcot' },
-{ name: 'Doncaster', link: 'https://www.thetoyshop.com/store/doncaster' },
-{ name: 'Douglas', link: 'https://www.thetoyshop.com/store/douglas' },
-{ name: 'Dover', link: 'https://www.thetoyshop.com/store/dover' },
-{ name: 'Dunfermline', link: 'https://www.thetoyshop.com/store/dunfermline' },
-{ name: 'East Kilbride', link: 'https://www.thetoyshop.com/store/east-kilbride' },
-{ name: 'Eastleigh', link: 'https://www.thetoyshop.com/store/eastleigh' },
-{ name: 'Edinburgh', link: 'https://www.thetoyshop.com/store/edinburgh' },
-{ name: 'Exeter', link: 'https://www.thetoyshop.com/store/exeter' },
-{ name: 'Glasgow Silverburn', link: 'https://www.thetoyshop.com/store/glasgow-silverburn' },
-{ name: 'Glasgow St Enoch', link: 'https://www.thetoyshop.com/store/st-enoch' },
-{ name: 'Gloucester', link: 'https://www.thetoyshop.com/store/gloucester' },
-{ name: 'Grimsby', link: 'https://www.thetoyshop.com/store/grimsby' },
-{ name: 'Guildford', link: 'https://www.thetoyshop.com/store/guildford' },
-{ name: 'Gunwharf Quays', link: 'https://www.thetoyshop.com/store/gunwharf-quays' },
-{ name: 'Hanley', link: 'https://www.thetoyshop.com/store/hanley' },
-{ name: 'Harlow', link: 'https://www.thetoyshop.com/store/harlow' },
-{ name: 'Hemel Hempstead', link: 'https://www.thetoyshop.com/store/hemel-hempstead' },
-{ name: 'Hereford', link: 'https://www.thetoyshop.com/store/hereford' },
-{ name: 'Huddersfield', link: 'https://www.thetoyshop.com/store/huddersfield' },
-{ name: 'Hull', link: 'https://www.thetoyshop.com/store/hull' },
-{ name: 'Ilford', link: 'https://www.thetoyshop.com/store/ilford' },
-{ name: 'Inverness', link: 'https://www.thetoyshop.com/store/inverness' },
-{ name: 'Ipswich', link: 'https://www.thetoyshop.com/store/ipswich' },
-{ name: 'Jersey', link: 'https://www.thetoyshop.com/store/jersey' },
-{ name: "King's Lynn Vancouver Quarter", link: 'https://www.thetoyshop.com/store/kings-lynn-vancouver' },
-{ name: 'Kingston Bentalls', link: 'https://www.thetoyshop.com/store/kingston-bentalls' },
-{ name: 'Lancaster', link: 'https://www.thetoyshop.com/store/lancaster' },
-{ name: 'Leamington Spa', link: 'https://www.thetoyshop.com/store/leamington-spa' },
-{ name: 'Leeds Springs', link: 'https://www.thetoyshop.com/store/leeds-springs' },
-{ name: 'Leeds Trinity', link: 'https://www.thetoyshop.com/store/leeds-trinity' },
-{ name: 'Leeds White Rose', link: 'https://www.thetoyshop.com/store/leeds' },
-{ name: 'Leicester', link: 'https://www.thetoyshop.com/store/leicester' },
-{ name: 'Lichfield', link: 'https://www.thetoyshop.com/store/lichfield' },
-{ name: 'Lincoln', link: 'https://www.thetoyshop.com/store/lincoln' },
-{ name: 'Liverpool One', link: 'https://www.thetoyshop.com/store/liverpool' },
-{ name: 'Liverpool St Johns', link: 'https://www.thetoyshop.com/store/liverpool-st-johns' },
-{ name: 'Livingston', link: 'https://www.thetoyshop.com/store/livingston' },
-{ name: 'Llandudno', link: 'https://www.thetoyshop.com/store/llandudno' },
-{ name: 'Macclesfield', link: 'https://www.thetoyshop.com/store/macclesfield' },
-{ name: 'Manchester Arndale', link: 'https://www.thetoyshop.com/store/arndale' },
-{ name: 'Metro Centre - Gateshead', link: 'https://www.thetoyshop.com/store/metro-centre' },
-{ name: 'Middlesbrough', link: 'https://www.thetoyshop.com/store/middlesbrough' },
-{ name: 'Milton Keynes', link: 'https://www.thetoyshop.com/store/milton-keynes' },
-{ name: 'Midsomer Norton', link: 'https://www.thetoyshop.com/store/midsomer-norton' },
-{ name: 'Newbury', link: 'https://www.thetoyshop.com/store/newbury' },
-{ name: 'Newport - Isle of Wight', link: 'https://www.thetoyshop.com/store/newport-iow' },
-{ name: 'Newport - Wales', link: 'https://www.thetoyshop.com/store/newport' },
-{ name: 'Northampton', link: 'https://www.thetoyshop.com/store/northampton' },
-{ name: 'Northwich', link: 'https://www.thetoyshop.com/store/northwich' },
-{ name: 'Norwich', link: 'https://www.thetoyshop.com/store/norwich' },
-{ name: 'Nottingham', link: 'https://www.thetoyshop.com/store/nottingham' },
-{ name: 'Oldham', link: 'https://www.thetoyshop.com/store/oldham' },
-{ name: 'Peterborough', link: 'https://www.thetoyshop.com/store/peterborough' },
-{ name: 'Plymouth', link: 'https://www.thetoyshop.com/store/plymouth' },
-{ name: 'Port Talbot', link: 'https://www.thetoyshop.com/store/port-talbot' },
-{ name: 'Reading', link: 'https://www.thetoyshop.com/store/reading' },
-{ name: 'Redditch', link: 'https://www.thetoyshop.com/store/redditch' },
-{ name: 'Romford Brewery', link: 'https://www.thetoyshop.com/store/romford' },
-{ name: 'Rushden Lakes', link: 'https://www.thetoyshop.com/store/rushden-lakes' },
-{ name: 'Shrewsbury', link: 'https://www.thetoyshop.com/store/shrewsbury' },
-{ name: 'Southport', link: 'https://www.thetoyshop.com/store/southport' },
-{ name: 'Stevenage', link: 'https://www.thetoyshop.com/store/stevenage' },
-{ name: 'Stirling', link: 'https://www.thetoyshop.com/store/stirling' },
-{ name: 'Stockport', link: 'https://www.thetoyshop.com/store/stockport' },
-{ name: 'Stratford - Westfield', link: 'https://www.thetoyshop.com/store/stratford' },
-{ name: 'Sunderland', link: 'https://www.thetoyshop.com/store/sunderland' },
-{ name: 'Sutton Coldfield', link: 'https://www.thetoyshop.com/store/sutton-coldfield' },
-{ name: 'Swindon', link: 'https://www.thetoyshop.com/store/swindon' },
-{ name: 'Taunton', link: 'https://www.thetoyshop.com/store/taunton' },
-{ name: 'Telford', link: 'https://www.thetoyshop.com/store/telford' },
-{ name: 'The O2 London', link: 'https://www.thetoyshop.com/store/o2-arena' },
-{ name: 'Torquay', link: 'https://www.thetoyshop.com/store/torquay' },
-{ name: 'Truro', link: 'https://www.thetoyshop.com/store/truro' },
-{ name: 'Uxbridge', link: 'https://www.thetoyshop.com/store/uxbridge' },
-{ name: 'Walsall', link: 'https://www.thetoyshop.com/store/walsall' },
-{ name: 'Warrington', link: 'https://www.thetoyshop.com/store/warrington' },
-{ name: 'Watford', link: 'https://www.thetoyshop.com/store/watford' },
-{ name: 'Welwyn Garden City', link: 'https://www.thetoyshop.com/store/welwyn-garden-city' },
-{ name: 'West Bromwich', link: 'https://www.thetoyshop.com/store/west-bromwich' },
-{ name: 'Whiteley', link: 'https://www.thetoyshop.com/store/whiteley' },
-{ name: 'Winchester', link: 'https://www.thetoyshop.com/store/winchester' },
-{ name: 'Witney', link: 'https://www.thetoyshop.com/store/witney' },
-{ name: 'Woking', link: 'https://www.thetoyshop.com/store/woking' },
-{ name: 'Workington', link: 'https://www.thetoyshop.com/store/workington' },
-{ name: 'Wolverhampton', link: 'https://www.thetoyshop.com/store/wolverhampton' },
-{ name: 'Worcester', link: 'https://www.thetoyshop.com/store/worcester' },
-{ name: 'Yate', link: 'https://www.thetoyshop.com/store/yate' },
-{ name: 'Yeovil', link: 'https://www.thetoyshop.com/store/yeovil' },
-{ name: 'York', link: 'https://www.thetoyshop.com/store/york' }
+  { name: "Aberdeen Union Square", link: "https://www.thetoyshop.com/store/aberdeen" },
+  { name: "Altrincham", link: "https://www.thetoyshop.com/store/altrincham" },
+  { name: "Amersham", link: "https://www.thetoyshop.com/store/amersham" },
+  { name: "Antrim", link: "https://www.thetoyshop.com/store/antrim" },
+  { name: "Ashford", link: "https://www.thetoyshop.com/store/ashford" },
+  { name: "Aylesbury", link: "https://www.thetoyshop.com/store/aylesbury" },
+  { name: "Banbury", link: "https://www.thetoyshop.com/store/banbury" },
+  { name: "Barnsley", link: "https://www.thetoyshop.com/store/barnsley" },
+  { name: "Barnstaple", link: "https://www.thetoyshop.com/store/barnstaple" },
+  { name: "Basildon", link: "https://www.thetoyshop.com/store/basildon" },
+  { name: "Basingstoke", link: "https://www.thetoyshop.com/store/basingstoke" },
+  { name: "Bath", link: "https://www.thetoyshop.com/store/bath" },
+  { name: "Belfast", link: "https://www.thetoyshop.com/store/belfast" },
+  { name: "Beverley", link: "https://www.thetoyshop.com/store/beverley" },
+  { name: "Bexleyheath", link: "https://www.thetoyshop.com/store/bexleyheath" },
+  { name: "Birmingham Bullring", link: "https://www.thetoyshop.com/store/birmingham" },
+  { name: "Bishop's Stortford", link: "https://www.thetoyshop.com/store/bishop-stortford" },
+  { name: "Birkenhead", link: "https://www.thetoyshop.com/store/birkenhead" },
+  { name: "Blackburn", link: "https://www.thetoyshop.com/store/blackburn" },
+  { name: "Bluewater - Greenhithe", link: "https://www.thetoyshop.com/store/bluewater" },
+  { name: "Bolton", link: "https://www.thetoyshop.com/store/bolton" },
+  { name: "Bournemouth", link: "https://www.thetoyshop.com/store/bournemouth" },
+  { name: "Bradford", link: "https://www.thetoyshop.com/store/bradford" },
+  { name: "Bracknell", link: "https://www.thetoyshop.com/store/bracknell" },
+  { name: "Braehead", link: "https://www.thetoyshop.com/store/braehead" },
+  { name: "Brighton", link: "https://www.thetoyshop.com/store/brighton" },
+  { name: "Bristol Cabot Circus", link: "https://www.thetoyshop.com/store/bristol-cabot-circus" },
+  { name: "Bristol Cribbs Causeway", link: "https://www.thetoyshop.com/store/cribbs-causeway-bristol" },
+  { name: "Bromley Lower Mall", link: "https://www.thetoyshop.com/store/bromley%20lower%20mall" },
+  { name: "Bromley Upper Mall", link: "https://www.thetoyshop.com/store/bromley" },
+  { name: "Burnley", link: "https://www.thetoyshop.com/store/burnley" },
+  { name: "Burton Upon Trent", link: "https://www.thetoyshop.com/store/burton-upon-trent" },
+  { name: "Bury", link: "https://www.thetoyshop.com/store/bury" },
+  { name: "Camberley", link: "https://www.thetoyshop.com/store/camberley" },
+  { name: "Cambridge", link: "https://www.thetoyshop.com/store/cambridge" },
+  { name: "Cardiff", link: "https://www.thetoyshop.com/store/cardiff" },
+  { name: "Carlisle", link: "https://www.thetoyshop.com/store/carlisle" },
+  { name: "Carmarthen", link: "https://www.thetoyshop.com/store/carmarthen" },
+  { name: "Chatham", link: "https://www.thetoyshop.com/store/chatham" },
+  { name: "Chelmsford", link: "https://www.thetoyshop.com/store/chelmsford" },
+  { name: "Cheshire Coliseum", link: "https://www.thetoyshop.com/store/coliseum" },
+  { name: "Chester", link: "https://www.thetoyshop.com/store/chester" },
+  { name: "Chester Broughton Shopping Park", link: "https://www.thetoyshop.com/store/chester-broughton" },
+  { name: "Chesterfield", link: "https://www.thetoyshop.com/store/chesterfield" },
+  { name: "Chichester", link: "https://www.thetoyshop.com/store/chichester-184" },
+  { name: "Colchester", link: "https://www.thetoyshop.com/store/colchester" },
+  { name: "Corby", link: "https://www.thetoyshop.com/store/corby" },
+  { name: "Coventry", link: "https://www.thetoyshop.com/store/coventry" },
+  { name: "Crawley", link: "https://www.thetoyshop.com/store/crawley" },
+  { name: "Cumbernauld", link: "https://www.thetoyshop.com/store/cumbernauld" },
+  { name: "Cwmbran", link: "https://www.thetoyshop.com/store/cwmbran" },
+  { name: "Dalton Park", link: "https://www.thetoyshop.com/store/dalton-park" },
+  { name: "Derby", link: "https://www.thetoyshop.com/store/derby" },
+  { name: "Didcot", link: "https://www.thetoyshop.com/store/didcot" },
+  { name: "Doncaster", link: "https://www.thetoyshop.com/store/doncaster" },
+  { name: "Douglas", link: "https://www.thetoyshop.com/store/douglas" },
+  { name: "Dover", link: "https://www.thetoyshop.com/store/dover" },
+  { name: "Dunfermline", link: "https://www.thetoyshop.com/store/dunfermline" },
+  { name: "East Kilbride", link: "https://www.thetoyshop.com/store/east-kilbride" },
+  { name: "Eastleigh", link: "https://www.thetoyshop.com/store/eastleigh" },
+  { name: "Edinburgh", link: "https://www.thetoyshop.com/store/edinburgh" },
+  { name: "Exeter", link: "https://www.thetoyshop.com/store/exeter" },
+  { name: "Glasgow Silverburn", link: "https://www.thetoyshop.com/store/glasgow-silverburn" },
+  { name: "Glasgow St Enoch", link: "https://www.thetoyshop.com/store/st-enoch" },
+  { name: "Gloucester", link: "https://www.thetoyshop.com/store/gloucester" },
+  { name: "Grimsby", link: "https://www.thetoyshop.com/store/grimsby" },
+  { name: "Guildford", link: "https://www.thetoyshop.com/store/guildford" },
+  { name: "Gunwharf Quays", link: "https://www.thetoyshop.com/store/gunwharf-quays" },
+  { name: "Hanley", link: "https://www.thetoyshop.com/store/hanley" },
+  { name: "Harlow", link: "https://www.thetoyshop.com/store/harlow" },
+  { name: "Hemel Hempstead", link: "https://www.thetoyshop.com/store/hemel-hempstead" },
+  { name: "Hereford", link: "https://www.thetoyshop.com/store/hereford" },
+  { name: "Huddersfield", link: "https://www.thetoyshop.com/store/huddersfield" },
+  { name: "Hull", link: "https://www.thetoyshop.com/store/hull" },
+  { name: "Ilford", link: "https://www.thetoyshop.com/store/ilford" },
+  { name: "Inverness", link: "https://www.thetoyshop.com/store/inverness" },
+  { name: "Ipswich", link: "https://www.thetoyshop.com/store/ipswich" },
+  { name: "Jersey", link: "https://www.thetoyshop.com/store/jersey" },
+  { name: "King's Lynn Vancouver Quarter", link: "https://www.thetoyshop.com/store/kings-lynn-vancouver" },
+  { name: "Kingston Bentalls", link: "https://www.thetoyshop.com/store/kingston-bentalls" },
+  { name: "Lakeside", link: "https://www.thetoyshop.com/store/lakeside" },
+  { name: "Lancaster", link: "https://www.thetoyshop.com/store/lancaster" },
+  { name: "Leamington Spa", link: "https://www.thetoyshop.com/store/leamington-spa" },
+  { name: "Leeds Springs", link: "https://www.thetoyshop.com/store/leeds-springs" },
+  { name: "Leeds Trinity", link: "https://www.thetoyshop.com/store/leeds-trinity" },
+  { name: "Leeds White Rose", link: "https://www.thetoyshop.com/store/leeds" },
+  { name: "Leicester", link: "https://www.thetoyshop.com/store/leicester" },
+  { name: "Lichfield", link: "https://www.thetoyshop.com/store/lichfield" },
+  { name: "Lincoln", link: "https://www.thetoyshop.com/store/lincoln" },
+  { name: "Liverpool One", link: "https://www.thetoyshop.com/store/liverpool" },
+  { name: "Liverpool St Johns", link: "https://www.thetoyshop.com/store/liverpool-st-johns" },
+  { name: "Livingston", link: "https://www.thetoyshop.com/store/livingston" },
+  { name: "Llandudno", link: "https://www.thetoyshop.com/store/llandudno" },
+  { name: "Macclesfield", link: "https://www.thetoyshop.com/store/macclesfield" },
+  { name: "Manchester Arndale", link: "https://www.thetoyshop.com/store/arndale" },
+  { name: "Merryhill", link: "https://www.thetoyshop.com/store/merryhill" },
+  { name: "Metro Centre - Gateshead", link: "https://www.thetoyshop.com/store/metro-centre" },
+  { name: "Middlesbrough", link: "https://www.thetoyshop.com/store/middlesbrough" },
+  { name: "Milton Keynes", link: "https://www.thetoyshop.com/store/milton-keynes" },
+  { name: "Midsomer Norton", link: "https://www.thetoyshop.com/store/midsomer-norton" },
+  { name: "Newbury", link: "https://www.thetoyshop.com/store/newbury" },
+  { name: "Newport - Isle of Wight", link: "https://www.thetoyshop.com/store/newport-iow" },
+  { name: "Newport - Wales", link: "https://www.thetoyshop.com/store/newport" },
+  { name: "Northampton", link: "https://www.thetoyshop.com/store/northampton" },
+  { name: "Northwich", link: "https://www.thetoyshop.com/store/northwich" },
+  { name: "Norwich", link: "https://www.thetoyshop.com/store/norwich" },
+  { name: "Nottingham", link: "https://www.thetoyshop.com/store/nottingham" },
+  { name: "Oldham", link: "https://www.thetoyshop.com/store/oldham" },
+  { name: "Peterborough", link: "https://www.thetoyshop.com/store/peterborough" },
+  { name: "Plymouth", link: "https://www.thetoyshop.com/store/plymouth" },
+  { name: "Port Talbot", link: "https://www.thetoyshop.com/store/port-talbot" },
+  { name: "Reading", link: "https://www.thetoyshop.com/store/reading" },
+  { name: "Redditch", link: "https://www.thetoyshop.com/store/redditch" },
+  { name: "Romford Brewery", link: "https://www.thetoyshop.com/store/romford" },
+  { name: "Rushden Lakes", link: "https://www.thetoyshop.com/store/rushden-lakes" },
+  { name: "Sheffield Meadowhall", link: "https://www.thetoyshop.com/store/sheffield-meadowhall" },
+  { name: "Shrewsbury", link: "https://www.thetoyshop.com/store/shrewsbury" },
+  { name: "Southport", link: "https://www.thetoyshop.com/store/southport" },
+  { name: "Stevenage", link: "https://www.thetoyshop.com/store/stevenage" },
+  { name: "Stirling", link: "https://www.thetoyshop.com/store/stirling" },
+  { name: "Stockport", link: "https://www.thetoyshop.com/store/stockport" },
+  { name: "Stratford - Westfield", link: "https://www.thetoyshop.com/store/stratford" },
+  { name: "Sunderland", link: "https://www.thetoyshop.com/store/sunderland" },
+  { name: "Sutton Coldfield", link: "https://www.thetoyshop.com/store/sutton-coldfield" },
+  { name: "Swindon", link: "https://www.thetoyshop.com/store/swindon" },
+  { name: "Taunton", link: "https://www.thetoyshop.com/store/taunton" },
+  { name: "Telford", link: "https://www.thetoyshop.com/store/telford" },
+  { name: "The O2 London", link: "https://www.thetoyshop.com/store/o2-arena" },
+  { name: "Torquay", link: "https://www.thetoyshop.com/store/torquay" },
+  { name: "Truro", link: "https://www.thetoyshop.com/store/truro" },
+  { name: "Uxbridge", link: "https://www.thetoyshop.com/store/uxbridge" },
+  { name: "Walsall", link: "https://www.thetoyshop.com/store/walsall" },
+  { name: "Warrington", link: "https://www.thetoyshop.com/store/warrington" },
+  { name: "Watford", link: "https://www.thetoyshop.com/store/watford" },
+  { name: "Welwyn Garden City", link: "https://www.thetoyshop.com/store/welwyn-garden-city" },
+  { name: "West Bromwich", link: "https://www.thetoyshop.com/store/west-bromwich" },
+  { name: "White City", link: "https://www.thetoyshop.com/store/white-city" },
+  { name: "Whiteley", link: "https://www.thetoyshop.com/store/whiteley" },
+  { name: "Winchester", link: "https://www.thetoyshop.com/store/winchester" },
+  { name: "Witney", link: "https://www.thetoyshop.com/store/witney" },
+  { name: "Woking", link: "https://www.thetoyshop.com/store/woking" },
+  { name: "Workington", link: "https://www.thetoyshop.com/store/workington" },
+  { name: "Wolverhampton", link: "https://www.thetoyshop.com/store/wolverhampton" },
+  { name: "Worcester", link: "https://www.thetoyshop.com/store/worcester" },
+  { name: "Yate", link: "https://www.thetoyshop.com/store/yate" },
+  { name: "Yeovil", link: "https://www.thetoyshop.com/store/yeovil" },
+  { name: "York", link: "https://www.thetoyshop.com/store/york" },
 ];
 
   const handleRowChange = (index, field, value) => {
@@ -182,6 +187,14 @@ const stores = [
 
   if (forPreview) {
     // HTML Preview mode: show spans instead of inputs/select
+    const sortedRows = [...rows].sort((a, b) => {
+  const getDate = (row) => {
+    if (row.type === 'range') return row.startDate || row.endDate;
+    return row.date;
+  };
+
+  return new Date(getDate(a)) - new Date(getDate(b));
+});
     return (
       <div className="event-container" id={id}>
         <div className="image-container">
@@ -211,17 +224,33 @@ const stores = [
         <div className="event-details">
           <div className="character-intro" dangerouslySetInnerHTML={{ __html: blurb }} />
           <ul className="event-dates">
-            {rows.map((row, idx) => (
-              <li key={idx}>
-                <span><strong>{formatUKDate(row.date)}</strong></span>
-                <span>
-                  <a href={row.storeLink} target="_blank" title={`The Entertainer in
-                    ${row.store}`} rel="noreferrer">{row.store}</a>
-                </span>
-                <span class="price"> {row.price} </span>
-              </li>
-            ))}
-          </ul>
+  {sortedRows.map((row, idx) => {
+    let dateDisplay = '';
+
+    if (row.type === 'single') {
+      dateDisplay = formatUKDate(row.date);
+    } else if (row.type === 'times') {
+      const formattedDate = formatUKDate(row.date);
+      dateDisplay = row.time ? `${formattedDate} ${row.time}` : formattedDate;
+    } else if (row.type === 'range') {
+      const start = formatUKDate(row.startDate);
+      const end = formatUKDate(row.endDate);
+      dateDisplay = start && end ? `${start} - ${end}` : start || end || '';
+    }
+
+    return (
+      <li key={idx}>
+        <span><strong>{dateDisplay}</strong></span>
+        <span>
+          <a href={row.storeLink} target="_blank" title={`The Entertainer in ${row.store}`} rel="noreferrer">
+            {row.store}
+          </a>
+        </span>
+        <span className="price">{row.price}</span>
+      </li>
+    );
+  })}
+</ul>
         </div>
       </div>
     );
@@ -256,39 +285,92 @@ const stores = [
         <div className="character-intro" dangerouslySetInnerHTML={{ __html: blurb }} />
 
         <ul className="event-dates">
-          {rows.map((row, index) => (
-            <li key={index}>
-              <select
-                value={row.store}
-                onChange={(e) => handleRowChange(index, 'store', e.target.value)}
-              >
-                <option value="">Select Store</option>
-                {stores.map((s) => (
-                  <option key={s.name} value={s.name}>{s.name}</option>
-                ))}
-              </select>
+  {rows.map((row, index) => (
+    <li key={index}>
+      {/* Store selector */}
+      <select
+        value={row.store}
+        onChange={(e) => handleRowChange(index, 'store', e.target.value)}
+      >
+        <option value="">Select Store</option>
+        {stores.map((s) => (
+          <option key={s.name} value={s.name}>{s.name}</option>
+        ))}
+      </select>
 
-              <input
-                type="date"
-                value={row.date}
-                onChange={(e) => handleRowChange(index, 'date', e.target.value)}
-              />
+      {/* Row type selector */}
+      <select
+        value={row.type || 'single'}
+        onChange={(e) => handleRowChange(index, 'type', e.target.value)}
+        style={{ marginLeft: 8 }}
+      >
+        <option value="single">Single Date</option>
+        <option value="times">Date & Time</option>
+        <option value="range">Date Range</option>
+      </select>
 
-              <input
-                type="text"
-                placeholder="Price"
-                value={row.price}
-                onChange={(e) => handleRowChange(index, 'price', e.target.value)}
-              />
+      {/* Conditional input rendering */}
+      {row.type === 'single' && (
+        <input
+          type="date"
+          value={row.date || ''}
+          onChange={(e) => handleRowChange(index, 'date', e.target.value)}
+          style={{ marginLeft: 8 }}
+        />
+      )}
 
-              {row.storeLink && (
-                <a href={row.storeLink} target="_blank" rel="noopener noreferrer" style={{ marginLeft: 8 }}>
-                  Link
-                </a>
-              )}
-            </li>
-          ))}
-        </ul>
+      {row.type === 'times' && (
+        <>
+          <input
+            type="date"
+            value={row.date || ''}
+            onChange={(e) => handleRowChange(index, 'date', e.target.value)}
+            style={{ marginLeft: 8 }}
+          />
+          <input
+            type="text"
+            value={row.time || ''}
+            onChange={(e) => handleRowChange(index, 'time', e.target.value)}
+            style={{ marginLeft: 8 }}
+          />
+        </>
+      )}
+
+      {row.type === 'range' && (
+        <>
+          <input
+            type="date"
+            value={row.startDate || ''}
+            onChange={(e) => handleRowChange(index, 'startDate', e.target.value)}
+            style={{ marginLeft: 8 }}
+          />
+          <input
+            type="date"
+            value={row.endDate || ''}
+            onChange={(e) => handleRowChange(index, 'endDate', e.target.value)}
+            style={{ marginLeft: 8 }}
+          />
+        </>
+      )}
+
+      {/* Price input */}
+      <input
+        type="text"
+        placeholder="Price"
+        value={row.price || ''}
+        onChange={(e) => handleRowChange(index, 'price', e.target.value)}
+        style={{ marginLeft: 8 }}
+      />
+
+      {/* Link preview */}
+      {row.storeLink && (
+        <a href={row.storeLink} target="_blank" rel="noopener noreferrer" style={{ marginLeft: 8 }}>
+          Link
+        </a>
+      )}
+    </li>
+  ))}
+</ul>
       </div>
     </div>
   );
