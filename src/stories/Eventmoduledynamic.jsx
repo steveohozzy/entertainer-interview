@@ -83,6 +83,7 @@ const stores = [
   { name: "Gunwharf Quays", link: "https://www.thetoyshop.com/store/gunwharf-quays" },
   { name: "Hanley", link: "https://www.thetoyshop.com/store/hanley" },
   { name: "Harlow", link: "https://www.thetoyshop.com/store/harlow" },
+  { name: "Hatfield", link: "https://www.thetoyshop.com/store/hatfield" },
   { name: "Hemel Hempstead", link: "https://www.thetoyshop.com/store/hemel-hempstead" },
   { name: "Hereford", link: "https://www.thetoyshop.com/store/hereford" },
   { name: "Huddersfield", link: "https://www.thetoyshop.com/store/huddersfield" },

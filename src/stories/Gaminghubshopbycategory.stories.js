@@ -1,12 +1,12 @@
 import { db } from '../config/firebase';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { useEffect, useRef } from 'react';
-import { CategoryPanels } from './Elccategorypanels';
+import { GaminghubCategoryPanels } from './Gaminghubshopbycategory';
 import { useArgs } from 'storybook/preview-api';
 
 export default {
-  title: 'ELC/Category Panels',
-  component: CategoryPanels,
+  title: 'Gaming Hub/Category Panels',
+  component: GaminghubCategoryPanels,
   parameters: {
     layout: 'fullscreen',
   },
@@ -61,6 +61,14 @@ export const CategoryPanelsHero = {
     panel10imagealt: '',
     pane10title: '',
     panel10link: '',
+    panel11image: '',
+    panel11imagealt: '',
+    pane11title: '',
+    panel11link: '',
+    panel12image: '',
+    panel12imagealt: '',
+    pane12title: '',
+    panel12link: '',
   },
 
   render: function Render(args) {
@@ -71,7 +79,7 @@ export const CategoryPanelsHero = {
     const lastSyncedData = useRef({});
 
     // -------------------------------------------------------
-    // LOAD FROM FIREBASE (USER COLLECTION → CategoryPanels DOC)
+    // LOAD FROM FIREBASE (USER COLLECTION → GaminghubCategoryPanels DOC)
     // -------------------------------------------------------
     useEffect(() => {
       const load = async () => {
@@ -79,7 +87,7 @@ export const CategoryPanelsHero = {
         lastUserRef.current = args.user;
 
         try {
-          const docRef = doc(db, args.user, "CategoryPanels");
+          const docRef = doc(db, args.user, "GaminghubCategoryPanels");
           const snap = await getDoc(docRef);
 
           if (snap.exists()) {
@@ -125,7 +133,7 @@ export const CategoryPanelsHero = {
 
       const send = async () => {
         try {
-          const docRef = doc(db, selectedUser, "CategoryPanels");
+          const docRef = doc(db, selectedUser, "GaminghubCategoryPanels");
 
           // ✅ THIS CREATES OR OVERWRITES ENTIRE DOCUMENT
           await setDoc(docRef, fields, { merge: false });
@@ -139,6 +147,6 @@ export const CategoryPanelsHero = {
       send();
     }, [currentArgs]);
 
-    return <CategoryPanels {...args} />;
+    return <GaminghubCategoryPanels {...args} />;
   },
 };

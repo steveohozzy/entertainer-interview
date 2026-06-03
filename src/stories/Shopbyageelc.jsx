@@ -64,7 +64,8 @@ export const ShopByAgeElc = ({
     text-decoration: none;
     color: #fff;
     font-family: "Nunito Bold", "Tahoma Bold", sans-serif;
-    font-size: 12px;
+    font-size: 11px;
+    line-height: 16px;
     padding: 5px;
     border-radius: 8px;
     background-color: #a3c46b;
@@ -77,6 +78,7 @@ export const ShopByAgeElc = ({
   @media (min-width: 768px) {
     .shop-by-age-container a {
       font-size: 18px;
+      line-height: 22px;
       padding: 10px;
     }
   }

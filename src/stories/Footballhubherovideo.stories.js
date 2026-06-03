@@ -1,12 +1,12 @@
 import { db } from '../config/firebase';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { useEffect, useRef } from 'react';
-import { CategoryPanels } from './Elccategorypanels';
+import { FootballHubVideoHero } from './Footballhubherovideo';
 import { useArgs } from 'storybook/preview-api';
 
 export default {
-  title: 'ELC/Category Panels',
-  component: CategoryPanels,
+  title: 'Football Hub/Video Hero',
+  component: FootballHubVideoHero,
   parameters: {
     layout: 'fullscreen',
   },
@@ -18,49 +18,13 @@ export default {
   },
 };
 
-export const CategoryPanelsHero = {
+export const FootballHubVideoHeroSection = {
   args: {
     user: 'stories',
-    panel1image: '',
-    panel1imagealt: '',
-    panel1title: '',
-    panel1link: '',
-    panel2image: '',
-    panel2imagealt: '',
-    pane21title: '',
-    panel2link: '',
-    panel3image: '',
-    panel3imagealt: '',
-    pane31title: '',
-    panel3link: '',
-    panel4image: '',
-    panel4imagealt: '',
-    pane41title: '',
-    panel4link: '',
-    panel5image: '',
-    panel5imagealt: '',
-    pane51title: '',
-    panel5link: '',
-    panel6image: '',
-    panel6imagealt: '',
-    pane61title: '',
-    panel6link: '',
-    panel7image: '',
-    panel7imagealt: '',
-    pane71title: '',
-    panel7link: '',
-    panel8image: '',
-    panel8imagealt: '',
-    pane81title: '',
-    panel8link: '',
-    panel9image: '',
-    panel9imagealt: '',
-    pane91title: '',
-    panel9link: '',
-    panel10image: '',
-    panel10imagealt: '',
-    pane10title: '',
-    panel10link: '',
+    video: 'https://www.thetoyshop.com/medias/LEGO-World-Cup-2026-Edit.mp4?context=bWFzdGVyfHJvb3R8Mjk5MDA3NXx2aWRlby9tcDR8YURsaEwyZzBOQzh4TWpjek9UWTROVGswTVRJM09DOU1SVWRQWDFkdmNteGtYME4xY0Y4eU1ESTJYMFZrYVhRdWJYQTB8MjNlMjA4NGJiNjZiOGZmNTlmNWFkNjBiMWMzZDEwYTgxNGEyNDQ4NzA0MjcxZmFiYjFiMjdiNTc3MTNjZjI5NA',
+    title: 'New LEGO Editions Sets launched',
+    link: 'https://www.thetoyshop.com/c/world-cup?brands=LEGO%20Sets%20%26%20Bricks',
+    buttonText: 'Shop Now',
   },
 
   render: function Render(args) {
@@ -71,7 +35,7 @@ export const CategoryPanelsHero = {
     const lastSyncedData = useRef({});
 
     // -------------------------------------------------------
-    // LOAD FROM FIREBASE (USER COLLECTION → CategoryPanels DOC)
+    // LOAD FROM FIREBASE (USER COLLECTION → FootballHubVideoHero DOC)
     // -------------------------------------------------------
     useEffect(() => {
       const load = async () => {
@@ -79,7 +43,7 @@ export const CategoryPanelsHero = {
         lastUserRef.current = args.user;
 
         try {
-          const docRef = doc(db, args.user, "CategoryPanels");
+          const docRef = doc(db, args.user, "FootballHubVideoHero");
           const snap = await getDoc(docRef);
 
           if (snap.exists()) {
@@ -125,7 +89,7 @@ export const CategoryPanelsHero = {
 
       const send = async () => {
         try {
-          const docRef = doc(db, selectedUser, "CategoryPanels");
+          const docRef = doc(db, selectedUser, "FootballHubVideoHero");
 
           // ✅ THIS CREATES OR OVERWRITES ENTIRE DOCUMENT
           await setDoc(docRef, fields, { merge: false });
@@ -139,6 +103,6 @@ export const CategoryPanelsHero = {
       send();
     }, [currentArgs]);
 
-    return <CategoryPanels {...args} />;
+    return <FootballHubVideoHero {...args} />;
   },
 };

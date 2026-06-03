@@ -15,6 +15,12 @@ export const HalfSplitHero = ({
   tagline,
   link,
   linktext,
+  linkTextColor,
+  linkTextColorHover,
+  linkBackground,
+  linkBackgroundHover,
+  linkBorderColor,
+  linkBorderColorHover,
   termslink,
   termslinktext,
   dataElementType,
@@ -24,6 +30,12 @@ export const HalfSplitHero = ({
   isMuted,
 }) => {
   const refVideo = useRef(null);
+  const safeId =
+  (headline || "hero")
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, "-")
+    .replace(/[^a-z0-9-_]/g, "");
 
   useEffect(() => {
     if (videosrc && videosrc !== ' ') {
@@ -55,13 +67,13 @@ export const HalfSplitHero = ({
   return (
     <>
       <style>{`
-    .hero-card-container {
+    #${safeId}.hero-card-container {
         padding: 0 20px 0px 20px;
         background-color: #dbe3ff;
         height: 100%;
     }
 
-    .hero-card {
+    #${safeId} .hero-card {
         max-width: 1400px;
         margin: 0 auto;
         display: flex;
@@ -70,15 +82,15 @@ export const HalfSplitHero = ({
         height: 100%;
     }
 
-    .hero-card .media {
-        aspect-ratio: 335/188;
+    #${safeId} .hero-card .media {
+        aspect-ratio: 16/9;
         border-radius: 8px;
         overflow: hidden;
     }
 
-    .hero-card .media img,
-    .hero-card .media iframe,
-    .hero-card .media video {
+    #${safeId} .hero-card .media img,
+    #${safeId} .hero-card .media iframe,
+    #${safeId} .hero-card .media video {
         object-fit: cover;
         width: 100%;
         height: 100%;
@@ -86,7 +98,7 @@ export const HalfSplitHero = ({
         z-index: 2;
     }
 
-    .hero-card .hero-tile-info {
+    #${safeId} .hero-card .hero-tile-info {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -101,20 +113,20 @@ export const HalfSplitHero = ({
         flex-grow: 1;
     }
 
-    .hero-card .hero-tile-info .brand-logo {
+    #${safeId} .hero-card .hero-tile-info .brand-logo {
         position: absolute;
         top: -32px;
         height: 40px;
         z-index: 2;
     }
 
-    .hero-card .hero-tile-info .brand-logo img,
-    .hero-card .hero-tile-info .brand-logo svg {
+    #${safeId} .hero-card .hero-tile-info .brand-logo img,
+    #${safeId} .hero-card .hero-tile-info .brand-logo svg {
         height: 100%;
         width: auto;
     }
 
-    .hero-card .hero-tile-info h2 {
+    #${safeId} .hero-card .hero-tile-info h2 {
         font-size: 20px;
         font-family: "Nunito Bold","Tahoma Bold",sans-serif;
         font-weight: bold;
@@ -123,56 +135,57 @@ export const HalfSplitHero = ({
         line-height: 24px;
     }
 
-    .hero-card .hero-tile-info .hero-blurb {
+    #${safeId} .hero-card .hero-tile-info .hero-blurb {
         color: ${textColor || '#fff'};
         font-size: 14px;
         font-weight: 200;
     }
 
-    .hero-card .flickity-viewport {
+    #${safeId} .hero-card .flickity-viewport {
         aspect-ratio: 335/307;
     }
 
-    .hero-card .hero-button {
+    #${safeId} .hero-card .hero-button {
         display: inline-flex;
         align-items: center;
         justify-content: center;
         border-radius: 50px;
-        background-color: #009E44;
-        color: #fff;
+        background-color: ${linkBackground};
+        color: ${linkTextColor};
         font-size: 16px;
         font-weight: bold;
         text-decoration: none;
         padding: 10px 30px 10px 10px;
         height: 40px;
         box-shadow: 0 0 5px rgba(3,33,33,.3);
-        border: 3px solid #DBE3FF;
+        border: 3px solid ${linkBorderColor};
         transition: all 0.3s;
     }
 
-    .hero-card .hero-button:hover {
-        background-color: #AFCB17;
+    #${safeId} .hero-card .hero-button:hover {
+        background-color: ${linkBackgroundHover};
         scale: 1.05;
         box-shadow: 0 0 18px rgba(3,33,33,.3);
-        color: #fff;
+        color: ${linkTextColorHover};
+        border: 3px solid ${linkBorderColorHover};
     }
 
-    .hero-card .hero-button .basket-icon {
+    #${safeId} .hero-card .hero-button .basket-icon {
         transition: all 0.3s;
         transform: rotate(15deg);
         margin-left: 5px;
     }
 
-    .hero-card .hero-button:hover .basket-icon {
+    #${safeId} .hero-card .hero-button:hover .basket-icon {
         transform: rotate(-10deg)
     }
 
-    .hero-card .hero-button .star-start {
+    #${safeId} .hero-card .hero-button .star-start {
         position: relative;
         top: -3px;
     }
 
-    .hero-card .hero-button .swoosh-container {
+    #${safeId} .hero-card .hero-button .swoosh-container {
         display: flex;
         align-items: center;
         justify-content: end;
@@ -180,7 +193,7 @@ export const HalfSplitHero = ({
         width: 25px;
     }
 
-    .hero-card .hero-button .swoosh {
+    #${safeId} .hero-card .hero-button .swoosh {
         display: block;
         width: 0;
         height: 3px;
@@ -191,75 +204,75 @@ export const HalfSplitHero = ({
         transition: all 0.3s;
     }
 
-    .hero-card .hero-button:hover .swoosh {
+    #${safeId} .hero-card .hero-button:hover .swoosh {
         width: 7px;
     }
 
-    .hero-card .hero-button .star-end {
+    #${safeId} .hero-card .hero-button .star-end {
         position: relative;
         bottom: -5px;
         transition: all 0.3s;
     }
 
-    .hero-card .hero-button:hover .star-end {
+    #${safeId} .hero-card .hero-button:hover .star-end {
         scale: 1.1;
         transform: rotate(30deg);
     }
 
-    .hero-card .hero-logo {
+    #${safeId} .hero-card .hero-logo {
         width: auto;
         max-height: 80px;
         max-width: 100%;
     }
 
     @media (min-width: 768px) {
-        .hero-card {
+        #${safeId} .hero-card {
             flex-flow: row-reverse;
             align-items: stretch;
             height: auto;
         }
 
-        .hero-card.is-flipped {
+        #${safeId} .hero-card.is-flipped {
             flex-flow: row;
         }
 
-        .hero-card .media {
+        #${safeId} .hero-card .media {
             width: 50%;
             aspect-ratio: 16/9;
         }
 
-        .hero-card .hero-tile-info {
+        #${safeId} .hero-card .hero-tile-info {
             padding: 20px 30px 20px 20px;
             margin-top: 0;
             margin-right: -20px;
             width: calc(50% + 20px);
         }
 
-        .hero-card.is-flipped .hero-tile-info {
+        #${safeId} .hero-card.is-flipped .hero-tile-info {
             margin-right: 0px;
             margin-left: -20px;
             width: calc(50% + 20px);
         }
 
-        .hero-card .hero-tile-info .brand-logo {
+        #${safeId} .hero-card .hero-tile-info .brand-logo {
             position: relative;
             top: 0;
             margin-bottom: 20px;
             height: 90px;
         }
 
-        .hero-card .hero-tile-info h2 {
+        #${safeId} .hero-card .hero-tile-info h2 {
             font-size: 24px;
             margin: 0;
         }
 
-        .hero-card .hero-tile-info .hero-blurb {
+        #${safeId} .hero-card .hero-tile-info .hero-blurb {
             display: block;
             margin: 0;
         }
     }
  `}</style>
-      <div class="hero-card-container">
+      <div id={safeId} class="hero-card-container">
         <a href={link}
              data-element-type={dataElementType} data-promotion-index={datapromotionindex} data-promotion-name={datapromotionname}
              class={`hero-card ${flipped ? 'is-flipped' : ''}`}>
@@ -380,6 +393,12 @@ HalfSplitHero.propTypes = {
   tagline: PropTypes.string,
   link: PropTypes.string,
   linktext: PropTypes.string,
+  linkTextColor: PropTypes.string,
+  linkTextColorHover: PropTypes.string,
+  linkBackground: PropTypes.string,
+  linkBackgroundHover: PropTypes.string,
+  linkBorderColor: PropTypes.string,
+  linkBorderColorHover: PropTypes.string,
   termslink: PropTypes.string,
   termslinktext: PropTypes.string,
   dataElementType: PropTypes.string,

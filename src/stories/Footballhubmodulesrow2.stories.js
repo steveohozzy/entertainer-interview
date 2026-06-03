@@ -1,12 +1,12 @@
 import { db } from '../config/firebase';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { useEffect, useRef } from 'react';
-import { CategoryPanels } from './Elccategorypanels';
+import { FootballHubModulesrow2 } from './Footballhubmodulesrow2';
 import { useArgs } from 'storybook/preview-api';
 
 export default {
-  title: 'ELC/Category Panels',
-  component: CategoryPanels,
+  title: 'Football Hub/Story Modules Row 2',
+  component: FootballHubModulesrow2,
   parameters: {
     layout: 'fullscreen',
   },
@@ -18,49 +18,19 @@ export default {
   },
 };
 
-export const CategoryPanelsHero = {
+export const FootballHubModulesrow2Section = {
   args: {
     user: 'stories',
+    panel1video: 'https://www.thetoyshop.com/medias/screen-capture-2-.mp4?context=bWFzdGVyfHJvb3R8Njk5MjU1fHZpZGVvL3F1aWNrdGltZXxhR0ppTDJnd1pDOHhNamN4T1RVME16QXlOVFk1TkM5elkzSmxaVzR0WTJGd2RIVnlaU0FvTWlrdWJYQTB8ZjFjYjA1ZjZhMGE5ZjdlY2NhYWQ3NTU5NThjY2Q2OTEwZTExZDM5ZjZiMzRmZTliNzA4MjkzYTZjYjAzNDg5NQ',
     panel1image: '',
-    panel1imagealt: '',
-    panel1title: '',
-    panel1link: '',
-    panel2image: '',
-    panel2imagealt: '',
-    pane21title: '',
-    panel2link: '',
-    panel3image: '',
-    panel3imagealt: '',
-    pane31title: '',
-    panel3link: '',
-    panel4image: '',
-    panel4imagealt: '',
-    pane41title: '',
-    panel4link: '',
-    panel5image: '',
-    panel5imagealt: '',
-    pane51title: '',
-    panel5link: '',
-    panel6image: '',
-    panel6imagealt: '',
-    pane61title: '',
-    panel6link: '',
-    panel7image: '',
-    panel7imagealt: '',
-    pane71title: '',
-    panel7link: '',
-    panel8image: '',
-    panel8imagealt: '',
-    pane81title: '',
-    panel8link: '',
-    panel9image: '',
-    panel9imagealt: '',
-    pane91title: '',
-    panel9link: '',
-    panel10image: '',
-    panel10imagealt: '',
-    pane10title: '',
-    panel10link: '',
+    panel1imagealt: 'Sockers Football Figures',
+    panel1link: 'https://www.thetoyshop.com/penalty-game',
+    panel1buttontext: 'Play Our Game',
+    panel2video: '',
+    panel2image: 'https://www.thetoyshop.com/medias/Football-Hub-Digital-Assets-V4-Story-mod-Comp-560x318px.jpg?context=bWFzdGVyfHJvb3R8MjM3NjIzfGltYWdlL2pwZWd8YUdNeEwyZ3pNUzh4TWpjM05UWXdORFkxTURBeE5DOUdiMjkwWW1Gc2JDQklkV0lnUkdsbmFYUmhiQ0JCYzNObGRITmZWalJmVTNSdmNua2diVzlrWDBOdmJYQmZOVFl3ZURNeE9IQjRMbXB3Wnd8NWVmZjZkYmE2ZjVhMmM5NjYxYmM3NTVhZTdkZmRmNGJmNTRiYTQ2YjczZjM3ODg0OGI4NWRiMjhjMzA3M2Y5MA',
+    panel2imagealt: 'Comp Image',
+    panel2link: 'https://www.thetoyshop.com/football-hub-comp-download',
+    panel2buttontext: 'Enter Our Colouring Competition to WIN',
   },
 
   render: function Render(args) {
@@ -71,7 +41,7 @@ export const CategoryPanelsHero = {
     const lastSyncedData = useRef({});
 
     // -------------------------------------------------------
-    // LOAD FROM FIREBASE (USER COLLECTION → CategoryPanels DOC)
+    // LOAD FROM FIREBASE (USER COLLECTION → FootballHubModulesrow2 DOC)
     // -------------------------------------------------------
     useEffect(() => {
       const load = async () => {
@@ -79,7 +49,7 @@ export const CategoryPanelsHero = {
         lastUserRef.current = args.user;
 
         try {
-          const docRef = doc(db, args.user, "CategoryPanels");
+          const docRef = doc(db, args.user, "FootballHubModulesrow2");
           const snap = await getDoc(docRef);
 
           if (snap.exists()) {
@@ -125,7 +95,7 @@ export const CategoryPanelsHero = {
 
       const send = async () => {
         try {
-          const docRef = doc(db, selectedUser, "CategoryPanels");
+          const docRef = doc(db, selectedUser, "FootballHubModulesrow2");
 
           // ✅ THIS CREATES OR OVERWRITES ENTIRE DOCUMENT
           await setDoc(docRef, fields, { merge: false });
@@ -139,6 +109,6 @@ export const CategoryPanelsHero = {
       send();
     }, [currentArgs]);
 
-    return <CategoryPanels {...args} />;
+    return <FootballHubModulesrow2 {...args} />;
   },
 };

@@ -40,7 +40,7 @@ export const CategoryPanels = ({
   panel9link,
   panel10image,
   panel10imagealt,
-  pane101title,
+  pane10title,
   panel10link,
 }) => {
 
@@ -102,7 +102,7 @@ export const CategoryPanels = ({
   {
     image: panel10image,
     alt: panel10imagealt,
-    title: pane101title,
+    title: pane10title,
     link: panel10link,
   },
 ];
@@ -347,6 +347,6 @@ CategoryPanels.propTypes = {
   panel9link: PropTypes.string,
   panel10image: PropTypes.string,
   panel10imagealt: PropTypes.string,
-  pane101title: PropTypes.string,
+  pane10title: PropTypes.string,
   panel10link: PropTypes.string,
 };

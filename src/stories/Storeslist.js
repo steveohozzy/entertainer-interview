@@ -149,5 +149,6 @@ export const stores = [
   { short: "Aberdeen", full: "The Entertainer Aberdeen Union Square", url: "https://www.thetoyshop.com/store/aberdeen" },
   { short: "Dalton Park", full: "The Entertainer Dalton park", url: "https://www.thetoyshop.com/store/dalton-park" },
   { short: "O2", full: "The Entertainer at The O2 London", url: "https://www.thetoyshop.com/store/o2-arena" },
-  { short: "Gunwharf Quays", full: "The Entertainer Gunwharf Quays", url: "https://www.thetoyshop.com/store/gunwharf-quays" }
+  { short: "Gunwharf Quays", full: "The Entertainer Gunwharf Quays", url: "https://www.thetoyshop.com/store/gunwharf-quays" },
+  { name: "Hatfield", link: "https://www.thetoyshop.com/store/hatfield" },
 ];

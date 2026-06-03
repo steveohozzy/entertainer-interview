@@ -1,12 +1,12 @@
 import { db } from '../config/firebase';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { useEffect, useRef } from 'react';
-import { CategoryPanels } from './Elccategorypanels';
+import { GamingHubShopByConsole } from './Gaminghubshopbyconsole';
 import { useArgs } from 'storybook/preview-api';
 
 export default {
-  title: 'ELC/Category Panels',
-  component: CategoryPanels,
+  title: 'Gaming Hub/Shop By Console',
+  component: GamingHubShopByConsole,
   parameters: {
     layout: 'fullscreen',
   },
@@ -18,49 +18,22 @@ export default {
   },
 };
 
-export const CategoryPanelsHero = {
+export const GamingHubShopByConsoleSection = {
   args: {
     user: 'stories',
-    panel1image: '',
-    panel1imagealt: '',
-    panel1title: '',
-    panel1link: '',
-    panel2image: '',
-    panel2imagealt: '',
-    pane21title: '',
-    panel2link: '',
-    panel3image: '',
-    panel3imagealt: '',
-    pane31title: '',
-    panel3link: '',
-    panel4image: '',
-    panel4imagealt: '',
-    pane41title: '',
-    panel4link: '',
-    panel5image: '',
-    panel5imagealt: '',
-    pane51title: '',
-    panel5link: '',
-    panel6image: '',
-    panel6imagealt: '',
-    pane61title: '',
-    panel6link: '',
-    panel7image: '',
-    panel7imagealt: '',
-    pane71title: '',
-    panel7link: '',
-    panel8image: '',
-    panel8imagealt: '',
-    pane81title: '',
-    panel8link: '',
-    panel9image: '',
-    panel9imagealt: '',
-    pane91title: '',
-    panel9link: '',
-    panel10image: '',
-    panel10imagealt: '',
-    pane10title: '',
-    panel10link: '',
+    title: 'Shop By Console',
+    logo1image: 'https://www.thetoyshop.com/medias/playstaion-logo.svg?context=bWFzdGVyfHJvb3R8OTI2fGltYWdlL3N2Zyt4bWx8YURNMUwyZ3pOaTh4TWpZek5ESTVOREUxTnpNME1pOXdiR0Y1YzNSaGFXOXVMV3h2WjI4dWMzWm58NTQ2ZjY3YTczMzY1MmVjMDkzYzAzMDBhN2JhNjljMTE1ZTE0NzI4ODZlNTJkNWU5ZmVkNTgwNDg0MTczODMwMg',
+    logo1imagealt: 'Playatation',    
+    logo1link: 'https://www.thetoyshop.com/brands/sony-playstation',
+    logo1background: '#0070D1',
+    logo2image: 'https://www.thetoyshop.com/medias/nintendo.svg?context=bWFzdGVyfHJvb3R8NDUzNHxpbWFnZS9zdmcreG1sfGFERmtMMmd3TXk4eE1qWXlNVFk0TnpNMU56UTNNQzl1YVc1MFpXNWtieTV6ZG1jfDdmNDY4MDNkZGViMzNlYzA5ODIxMWJiOGViODk2ZGIwODYwNGVjMjA1NzgyMGI1MGY2NWY0MjA5OGU5OGE0ODk',
+    logo2imagealt: 'Nintendo',
+    logo2link: 'https://www.thetoyshop.com/brands/nintendo',
+    logo2background: '#E60012',
+    logo3image: 'https://www.thetoyshop.com/medias/RW4ESm.png?context=bWFzdGVyfHJvb3R8MTAyODF8aW1hZ2UvcG5nfGFHUTBMMmd3WVM4eE1qY3hPREk0TXpNMU9ESXpPQzlTVnpSRlUyMHVjRzVufDg1NDZjYTI1MTZkNjU3ZDg3NTg2YjExM2MwOWIzMGNmY2YwZDRjYzcxNWZiYmM5MTY4MTllMDUxMTY3YzFkYTY',
+    logo3imagealt: 'Xbox',
+    logo3link: 'https://www.thetoyshop.com/brands/xbox',
+    logo3background: '#107C10',
   },
 
   render: function Render(args) {
@@ -71,7 +44,7 @@ export const CategoryPanelsHero = {
     const lastSyncedData = useRef({});
 
     // -------------------------------------------------------
-    // LOAD FROM FIREBASE (USER COLLECTION → CategoryPanels DOC)
+    // LOAD FROM FIREBASE (USER COLLECTION → GamingHubShopByConsole DOC)
     // -------------------------------------------------------
     useEffect(() => {
       const load = async () => {
@@ -79,7 +52,7 @@ export const CategoryPanelsHero = {
         lastUserRef.current = args.user;
 
         try {
-          const docRef = doc(db, args.user, "CategoryPanels");
+          const docRef = doc(db, args.user, "GamingHubShopByConsole");
           const snap = await getDoc(docRef);
 
           if (snap.exists()) {
@@ -125,7 +98,7 @@ export const CategoryPanelsHero = {
 
       const send = async () => {
         try {
-          const docRef = doc(db, selectedUser, "CategoryPanels");
+          const docRef = doc(db, selectedUser, "GamingHubShopByConsole");
 
           // ✅ THIS CREATES OR OVERWRITES ENTIRE DOCUMENT
           await setDoc(docRef, fields, { merge: false });
@@ -139,6 +112,6 @@ export const CategoryPanelsHero = {
       send();
     }, [currentArgs]);
 
-    return <CategoryPanels {...args} />;
+    return <GamingHubShopByConsole {...args} />;
   },
 };
