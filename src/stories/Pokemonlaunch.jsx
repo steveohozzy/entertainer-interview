@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { stores } from "./Storeslist";
 import { useEffect } from "react";
 
-export const PokemonLaunch = ({ pageBackgroundColor, pageTitleColor, pageTitleStroke, introBlurbColor, panel1Stores = [], panel2Stores = [], panel3Stores = [], panel4Stores = [], panel5Stores = [], panel6Stores = [], pageTitle, introBlurb, secondaryTitle, secondaryTitleColor, panelsBackgroundColor, panelsBorderColor, panelsTextColor, panelsInputColor, panelsInputDetailsHoverColor, panelsInputActiveBorderColor, promoPanelsStoresListHoverBackgroundColor, panelsStoreslistColor, panelsStoresListBorderColor, panelsInputBorderColor, panel1Title, panel2Title, panel3Title, panel4Title, panel5Title, panel6Title, panel1Order, panel2Order, panel3Order, panel4Order, panel5Order, panel6Order, panel1ReleaseDate, panel2ReleaseDate, panel3ReleaseDate, panel4ReleaseDate, panel5ReleaseDate, panel6ReleaseDate, panel1Items, panel2Items, panel3Items, panel4Items, panel5Items, panel6Items, panel1Image, panel2Image, panel3Image, panel4Image, panel5Image, panel6Image, promoPanelsBorderColor, promoPanelsButtonBackgroundColor, promoPanelsButtonTextColor, promoPanelsButtonBorderColor, promoPanelsButtonHoverBackgroundColor, promoPanelsButtonHoverTextColor, promoPanelsButtonHoverBorderColor, promoPanel1Image, promoPanel2Image, promoPanel3Image, promoPanel1Link, promoPanel2Link, promoPanel3Link, promoPanel1LinkText, promoPanel2LinkText, promoPanel3LinkText, promoPanel1LinkHasIcons, promoPanel2LinkHasIcons, promoPanel3LinkHasIcons, panel1SmallPrint, panel2SmallPrint, panel3SmallPrint, panel4SmallPrint, panel5SmallPrint, panel6SmallPrint }) => {
+export const PokemonLaunch = ({ pageBackgroundColor, pageTitleColor, pageTitleStroke, introBlurbColor, panel1Stores = [], panel2Stores = [], panel3Stores = [], panel4Stores = [], panel5Stores = [], panel6Stores = [], panel7Stores = [], panel8Stores = [], pageTitle, introBlurb, secondaryTitle, secondaryTitleColor, panelsBackgroundColor, panelsBorderColor, panelsTextColor, panelsInputColor, panelsInputDetailsHoverColor, panelsInputActiveBorderColor, promoPanelsStoresListHoverBackgroundColor, panelsStoreslistColor, panelsStoresListBorderColor, panelsInputBorderColor, panel1Title, panel2Title, panel3Title, panel4Title, panel5Title, panel6Title, panel7Title, panel8Title, panel1Order, panel2Order, panel3Order, panel4Order, panel5Order, panel6Order, panel7Order, panel8Order, panel1ReleaseDate, panel2ReleaseDate, panel3ReleaseDate, panel4ReleaseDate, panel5ReleaseDate, panel6ReleaseDate, panel7ReleaseDate, panel8ReleaseDate, panel1Items, panel2Items, panel3Items, panel4Items, panel5Items, panel6Items, panel7Items, panel8Items, panel1Image, panel2Image, panel3Image, panel4Image, panel5Image, panel6Image, panel7Image, panel8Image, promoPanelsBorderColor, promoPanelsButtonBackgroundColor, promoPanelsButtonTextColor, promoPanelsButtonBorderColor, promoPanelsButtonHoverBackgroundColor, promoPanelsButtonHoverTextColor, promoPanelsButtonHoverBorderColor, promoPanel1Image, promoPanel2Image, promoPanel3Image, promoPanel1Link, promoPanel2Link, promoPanel3Link, promoPanel1LinkText, promoPanel2LinkText, promoPanel3LinkText, promoPanel1LinkHasIcons, promoPanel2LinkHasIcons, promoPanel3LinkHasIcons, panel1SmallPrint, panel2SmallPrint, panel3SmallPrint, panel4SmallPrint, panel5SmallPrint, panel6SmallPrint, panel7SmallPrint, panel8SmallPrint }) => {
   // Helper function to filter and sort stores alphabetically by short name
 const filterAndSortStores = (storeList) => 
   stores
@@ -16,6 +16,8 @@ const filteredStores3 = filterAndSortStores(panel3Stores);
 const filteredStores4 = filterAndSortStores(panel4Stores);
 const filteredStores5 = filterAndSortStores(panel5Stores);
 const filteredStores6 = filterAndSortStores(panel6Stores);
+const filteredStores7 = filterAndSortStores(panel7Stores);
+const filteredStores8 = filterAndSortStores(panel8Stores);
 
 useEffect(() => {
   document.querySelectorAll(".store-selector").forEach((selector) => {
@@ -70,7 +72,7 @@ useEffect(() => {
       });
     });
   });
-}, [stores]);
+}, []);
 
 
   return (
@@ -1091,6 +1093,144 @@ useEffect(() => {
           </div>
           }
 
+          {panel7Title &&
+          <div class="poke-panel" style={{ order: panel7Order }}>
+            <div class="poke-panel-content">
+              <div class="poke-panel-image">
+                <img
+                  src={panel7Image}
+                  alt={panel7Title}
+                />
+              </div>
+              <div class="poke-panel-details">
+                <h3>{panel7Title}</h3>
+                <p>{panel7ReleaseDate}</p>
+                <div class="poke-contains" dangerouslySetInnerHTML={{__html:panel7Items}} />
+              </div>
+            </div>
+            <div class="store-selector">
+              <div class="store-input-row">
+                <span class="store-search-icon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 14 14"
+                    fill="none"
+                  >
+                    <path
+                      d="M13.0393 11.4384C13.2716 11.6966 13.2716 12.0839 13.0134 12.3163L12.2905 13.0393C12.0581 13.2975 11.6708 13.2975 11.4126 13.0393L8.85637 10.4831C8.72727 10.354 8.67563 10.199 8.67563 10.0441V9.60516C7.74609 10.3281 6.61 10.7413 5.37063 10.7413C2.40129 10.7413 0 8.33997 0 5.37063C0 2.42711 2.40129 4.64916e-06 5.37063 4.64916e-06C8.31414 4.64916e-06 10.7413 2.42711 10.7413 5.37063C10.7413 6.63583 10.3023 7.77192 9.60516 8.67563H10.0183C10.1732 8.67563 10.3281 8.75309 10.4572 8.85637L13.0393 11.4384ZM5.37063 8.67563C7.17805 8.67563 8.67563 7.20387 8.67563 5.37063C8.67563 3.56321 7.17805 2.06563 5.37063 2.06563C3.53738 2.06563 2.06563 3.56321 2.06563 5.37063C2.06563 7.20387 3.53738 8.67563 5.37063 8.67563Z"
+                      fill={panelsInputColor}
+                    />
+                  </svg>
+                </span>
+                <span class="store-selected-icon" aria-hidden="true" hidden>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="10"
+                    height="14"
+                    viewBox="0 0 10 14"
+                    fill="none"
+                  >
+                    <path
+                      d="M4.44109 12.9618C0.671328 7.53954 0 6.97149 0 4.9575C0 2.22055 2.19473 4.64916e-06 4.9575 4.64916e-06C7.69445 4.64916e-06 9.915 2.22055 9.915 4.9575C9.915 6.97149 9.21785 7.53954 5.44809 12.9618C5.2157 13.3233 4.67348 13.3233 4.44109 12.9618ZM4.9575 7.02313C6.09359 7.02313 7.02313 6.11942 7.02313 4.9575C7.02313 3.82141 6.09359 2.89188 4.9575 2.89188C3.79559 2.89188 2.89188 3.82141 2.89188 4.9575C2.89188 6.11942 3.79559 7.02313 4.9575 7.02313Z"
+                      fill={panelsInputColor}
+                    />
+                  </svg>
+                </span>
+                <input
+                  type="text"
+                  class="store-input"
+                  placeholder="Check your local store"
+                  autocomplete="off"
+                />
+                <a class="store-details-selected" target="_blank" href="https://thetoyshop.com" rel="noreferrer" hidden>Details</a>
+              </div>
+              <div class="store-dropdown">
+                <div class="store-scroll-area">
+                  <ul className="store-list">
+                    {filteredStores6.map(store => (
+                      <li key={store.url} data-url={store.url}>
+                        {store.full}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+              <div style={{fontSize: '12px'}} dangerouslySetInnerHTML={{__html:panel7SmallPrint}}></div>
+            </div>
+          </div>
+          }
+
+          {panel8Title &&
+          <div class="poke-panel" style={{ order: panel8Order }}>
+            <div class="poke-panel-content">
+              <div class="poke-panel-image">
+                <img
+                  src={panel8Image}
+                  alt={panel8Title}
+                />
+              </div>
+              <div class="poke-panel-details">
+                <h3>{panel8Title}</h3>
+                <p>{panel8ReleaseDate}</p>
+                <div class="poke-contains" dangerouslySetInnerHTML={{__html:panel8Items}} />
+              </div>
+            </div>
+            <div class="store-selector">
+              <div class="store-input-row">
+                <span class="store-search-icon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 14 14"
+                    fill="none"
+                  >
+                    <path
+                      d="M13.0393 11.4384C13.2716 11.6966 13.2716 12.0839 13.0134 12.3163L12.2905 13.0393C12.0581 13.2975 11.6708 13.2975 11.4126 13.0393L8.85637 10.4831C8.72727 10.354 8.67563 10.199 8.67563 10.0441V9.60516C7.74609 10.3281 6.61 10.7413 5.37063 10.7413C2.40129 10.7413 0 8.33997 0 5.37063C0 2.42711 2.40129 4.64916e-06 5.37063 4.64916e-06C8.31414 4.64916e-06 10.7413 2.42711 10.7413 5.37063C10.7413 6.63583 10.3023 7.77192 9.60516 8.67563H10.0183C10.1732 8.67563 10.3281 8.75309 10.4572 8.85637L13.0393 11.4384ZM5.37063 8.67563C7.17805 8.67563 8.67563 7.20387 8.67563 5.37063C8.67563 3.56321 7.17805 2.06563 5.37063 2.06563C3.53738 2.06563 2.06563 3.56321 2.06563 5.37063C2.06563 7.20387 3.53738 8.67563 5.37063 8.67563Z"
+                      fill={panelsInputColor}
+                    />
+                  </svg>
+                </span>
+                <span class="store-selected-icon" aria-hidden="true" hidden>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="10"
+                    height="14"
+                    viewBox="0 0 10 14"
+                    fill="none"
+                  >
+                    <path
+                      d="M4.44109 12.9618C0.671328 7.53954 0 6.97149 0 4.9575C0 2.22055 2.19473 4.64916e-06 4.9575 4.64916e-06C7.69445 4.64916e-06 9.915 2.22055 9.915 4.9575C9.915 6.97149 9.21785 7.53954 5.44809 12.9618C5.2157 13.3233 4.67348 13.3233 4.44109 12.9618ZM4.9575 7.02313C6.09359 7.02313 7.02313 6.11942 7.02313 4.9575C7.02313 3.82141 6.09359 2.89188 4.9575 2.89188C3.79559 2.89188 2.89188 3.82141 2.89188 4.9575C2.89188 6.11942 3.79559 7.02313 4.9575 7.02313Z"
+                      fill={panelsInputColor}
+                    />
+                  </svg>
+                </span>
+                <input
+                  type="text"
+                  class="store-input"
+                  placeholder="Check your local store"
+                  autocomplete="off"
+                />
+                <a class="store-details-selected" target="_blank" href="https://thetoyshop.com" rel="noreferrer" hidden>Details</a>
+              </div>
+              <div class="store-dropdown">
+                <div class="store-scroll-area">
+                  <ul className="store-list">
+                    {filteredStores6.map(store => (
+                      <li key={store.url} data-url={store.url}>
+                        {store.full}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+              <div style={{fontSize: '12px'}} dangerouslySetInnerHTML={{__html:panel8SmallPrint}}></div>
+            </div>
+          </div>
+          }
+
           <div class="poke-promo-section" style={{order: 20}}>
             {promoPanel1Image &&
             <div class="poke-promo-tile">
@@ -1287,78 +1427,7 @@ useEffect(() => {
         </div>
       </div>
     </div>
-      
-    <script>{`
-
-      document.querySelectorAll(".store-selector").forEach((selector) => {
-    const input = selector.querySelector(".store-input");
-    const dropdown = selector.querySelector(".store-dropdown");
-    const list = selector.querySelector(".store-list");
-    const listItems = list.querySelectorAll("li");
-    const detailsLink = selector.querySelector(".store-details-selected");
-    const searchIcon = selector.querySelector(".store-search-icon");
-    const selectedIcon = selector.querySelector(".store-selected-icon");
-
-    // --- NEW: Sort list alphabetically ---
-    const sortedItems = Array.from(listItems).sort((a, b) => 
-      a.textContent.trim().localeCompare(b.textContent.trim())
-    );
-    sortedItems.forEach((item) => list.appendChild(item));
-
-    // Initialize icons
-    searchIcon.hidden = false;
-    selectedIcon.hidden = true;
-
-    // Handle input filtering
-    input.addEventListener("input", () => {
-      const query = input.value.toLowerCase();
-
-      list.querySelectorAll("li").forEach((item) => {
-        const text = item.textContent.toLowerCase();
-        item.style.display = text.includes(query) ? "" : "none";
-      });
-
-      // Optional: keep the first matching item in view
-      const firstVisible = Array.from(list.children).find(
-        (li) => li.style.display !== "none"
-      );
-      if (firstVisible) {
-        firstVisible.scrollIntoView({ block: "nearest" });
-      }
-    });
-
-    // Handle dropdown toggle
-    input.addEventListener("focus", () => {
-      dropdown.style.display = "block";
-    });
-
-    input.addEventListener("blur", () => {
-      setTimeout(() => {
-        dropdown.style.display = "none";
-      }, 100); // small delay to allow click on list items
-    });
-
-    // Handle selecting a store
-    listItems.forEach((item) => {
-      item.addEventListener("click", () => {
-        input.value = item.textContent.trim();
-        dropdown.style.display = "none";
-        searchIcon.hidden = true;
-        selectedIcon.hidden = false;
-
-        // --- NEW: show details button with correct URL ---
-        if (item.dataset.url) {
-          detailsLink.href = item.dataset.url;
-          detailsLink.hidden = false;
-        } else {
-          detailsLink.href = "#";
-          detailsLink.hidden = true;
-        }
-      });
-    });
-  });
-      `}
-    </script>
+    
   </>
   );
 };
@@ -1425,6 +1494,20 @@ PokemonLaunch.propTypes = {
   panel6ReleaseDate: PropTypes.string,
   panel6Items: PropTypes.string,
   panel6SmallPrint: PropTypes.string,
+  panel7Order: PropTypes.number,
+  panel7Title: PropTypes.string,
+  panel7Stores: PropTypes.arrayOf(PropTypes.string),
+  panel7Image: PropTypes.string,
+  panel7ReleaseDate: PropTypes.string,
+  panel7Items: PropTypes.string,
+  panel7SmallPrint: PropTypes.string,
+  panel8Order: PropTypes.number,
+  panel8Title: PropTypes.string,
+  panel8Stores: PropTypes.arrayOf(PropTypes.string),
+  panel8Image: PropTypes.string,
+  panel8ReleaseDate: PropTypes.string,
+  panel8Items: PropTypes.string,
+  panel8SmallPrint: PropTypes.string,
   promoPanel1Image: PropTypes.string,
   promoPanel1Link: PropTypes.string,
   promoPanel1LinkText: PropTypes.string,

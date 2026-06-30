@@ -15,6 +15,20 @@ export default {
       options: ['stories', 'hasina', 'shermin', 'sam'],
       control: { type: 'select' },
     },
+
+    panel1buttonIcon: {
+      options: ['basket', 'glasses', 'football', 'pencil'],
+      control: {
+        type: 'radio',
+      },
+    },
+
+    panel2buttonIcon: {
+      options: ['basket', 'glasses', 'football', 'pencil'],
+      control: {
+        type: 'radio',
+      },
+    },
   },
 };
 
@@ -26,11 +40,13 @@ export const FootballHubModulesrow2Section = {
     panel1imagealt: 'Sockers Football Figures',
     panel1link: 'https://www.thetoyshop.com/penalty-game',
     panel1buttontext: 'Play Our Game',
+    panel1buttonIcon: 'basket',
     panel2video: '',
     panel2image: 'https://www.thetoyshop.com/medias/Football-Hub-Digital-Assets-V4-Story-mod-Comp-560x318px.jpg?context=bWFzdGVyfHJvb3R8MjM3NjIzfGltYWdlL2pwZWd8YUdNeEwyZ3pNUzh4TWpjM05UWXdORFkxTURBeE5DOUdiMjkwWW1Gc2JDQklkV0lnUkdsbmFYUmhiQ0JCYzNObGRITmZWalJmVTNSdmNua2diVzlrWDBOdmJYQmZOVFl3ZURNeE9IQjRMbXB3Wnd8NWVmZjZkYmE2ZjVhMmM5NjYxYmM3NTVhZTdkZmRmNGJmNTRiYTQ2YjczZjM3ODg0OGI4NWRiMjhjMzA3M2Y5MA',
     panel2imagealt: 'Comp Image',
     panel2link: 'https://www.thetoyshop.com/football-hub-comp-download',
     panel2buttontext: 'Enter Our Colouring Competition to WIN',
+    panel2buttonIcon: 'basket',
   },
 
   render: function Render(args) {

@@ -3,7 +3,7 @@ import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { useEffect, useRef } from 'react';
 import { PokemonLaunch } from './Pokemonlaunch';
 import { useArgs } from 'storybook/preview-api';
-import { stores } from "./Storeslist";
+import { storeGroups } from "./Storeslist";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 export default {
@@ -18,42 +18,56 @@ export default {
       options: ['stories', 'hasina', 'shermin', 'sam'],
       control: { type: 'select' },
     },
-    panel1Stores: {
-      control: { type: 'check' },
-      options: stores.map(store => store.short),
-    },
-    panel2Stores: {
-      control: { type: 'check' },
-      options: stores.map(store => store.short),
-    },
-    panel3Stores: {
-      control: { type: 'check' },
-      options: stores.map(store => store.short),
-    },
-    panel4Stores: {
-      control: { type: 'check' },
-      options: stores.map(store => store.short),
-    },
-    panel5Stores: {
-      control: { type: 'check' },
-      options: stores.map(store => store.short),
-    },
-    panel6Stores: {
-      control: { type: 'check' },
-      options: stores.map(store => store.short),
-    },
+
+    panel1Group: {
+  control: { type: 'select' },
+  options: Object.keys(storeGroups),
+},
+panel2Group: {
+  control: { type: 'select' },
+  options: Object.keys(storeGroups),
+},
+panel3Group: {
+  control: { type: 'select' },
+  options: Object.keys(storeGroups),
+},
+panel4Group: {
+  control: { type: 'select' },
+  options: Object.keys(storeGroups),
+},
+panel5Group: {
+  control: { type: 'select' },
+  options: Object.keys(storeGroups),
+},
+panel6Group: {
+  control: { type: 'select' },
+  options: Object.keys(storeGroups),
+},
+panel7Group: {
+  control: { type: 'select' },
+  options: Object.keys(storeGroups),
+},
+panel8Group: {
+  control: { type: 'select' },
+  options: Object.keys(storeGroups),
+},
+    
     panel1ReleaseDate: { control: 'text' },
     panel2ReleaseDate: { control: 'text' },
     panel3ReleaseDate: { control: 'text' },
     panel4ReleaseDate: { control: 'text' },
     panel5ReleaseDate: { control: 'text' },
     panel6ReleaseDate: { control: 'text' },
+    panel7ReleaseDate: { control: 'text' },
+    panel8ReleaseDate: { control: 'text' },
     panel1Order: { control: 'number' },
     panel2Order: { control: 'number' },
     panel3Order: { control: 'number' },
     panel4Order: { control: 'number' },
     panel5Order: { control: 'number' },
     panel6Order: { control: 'number' },
+    panel7Order: { control: 'number' },
+    panel8Order: { control: 'number' },
   },
 };
 
@@ -82,11 +96,7 @@ export const PokemonLaunchContent = {
     panelsInputActiveBorderColor: '#34B597',
     panel1Order: 1,
     panel1Title: 'Pokémon TCG: Mega Evolution - Ascended Heroes 2 Pack Blister',
-    panel1Stores: [
-      "Amersham",
-      "Uxbridge",
-      "Camberley",
-    ],
+    panel1Group: 'POKEC',
     panel1Image: 'https://www.thetoyshop.com/medias/Group-45-1-.png?context=bWFzdGVyfHJvb3R8NzMzNTV8aW1hZ2UvcG5nfGFEZ3dMMmczTVM4eE1qWTVPREkzTXpjeE1ERXhNQzlIY205MWNDQTBOU0FvTVNrdWNHNW58MzRmY2E5ZTNlYjkwYjAzNTMyNmMwYTE0YTk3OGU2ODQ2ZDJhOTYwMGU1YjU5MzFjYjkyZmMyYzhmMGQ0MTZjYw',
     panel1ReleaseDate: '20th Feb 2026',
     panel1Items: `<span>Box contains:</span>
@@ -100,11 +110,7 @@ export const PokemonLaunchContent = {
     panel1SmallPrint: `Only stores listed may have stock`,
     panel2Order: 2,
     panel2Title: 'Pokémon TCG: Mega Evolution - Ascended Heroes Mini Tin',
-    panel2Stores: [
-      "Amersham",
-      "Uxbridge",
-      "Camberley",
-    ],
+    panel2Group: 'POKEC',
     panel2Image: 'https://www.thetoyshop.com/medias/Group-45-1-.png?context=bWFzdGVyfHJvb3R8NzMzNTV8aW1hZ2UvcG5nfGFHRXlMMmcwWVM4eE1qRXpPREU1T0RneU56QXpPQzlsYkdNdGFIQXRjMmh2Y0MxaWVTMWhaMlV0ZEhKaGFXNHRNQzB6TFcxdmJuUm9jeTV3Ym1jfDI2NjgyZjA2ZWMxMWY0NzZmYmVlNTMyZGY5MDFjMDg1YjQ4OTg2ZGI3MjViYjliZDg5YThjOTI3NTE0M2ZkODY',
     panel2ReleaseDate: '20th Feb 2026',
     panel2Items: `<span>Box contains:</span>
@@ -118,11 +124,7 @@ export const PokemonLaunchContent = {
     panel2SmallPrint: `Only stores listed may have stock`,
     panel3Order: 3,
     panel3Title: 'Pokémon TCG: Mega Evolution - Ascended Heroes Mini Tin',
-    panel3Stores: [
-      "Amersham",
-      "Uxbridge",
-      "Camberley",
-    ],
+    panel3Group: 'POKEC',
     panel3Image: 'https://www.thetoyshop.com/medias/Group-4.png?context=bWFzdGVyfHJvb3R8MTk2Nzh8aW1hZ2UvcG5nfGFEUmlMMmcwWVM4eE1qRXpPREU1T0RnMU9UZ3dOaTlsYkdNdGFIQXRjMmh2Y0MxaWVTMWhaMlV0ZEhKaGFXNHRNeTAyTFcxdmJuUm9jeTV3Ym1jfDI2NjgyZjA2ZWMxMWY0NzZmYmVlNTMyZGY5MDFjMDg1YjQ4OTg2ZGI3MjViYjliZDg5YThjOTI3NTE0M2ZkODY',
     panel3ReleaseDate: '20th Feb 2026',
     panel3Items: `<span>Box contains:</span>
@@ -136,11 +138,7 @@ export const PokemonLaunchContent = {
     panel3SmallPrint: `Only stores listed may have stock`,
     panel4Order: 4,
     panel4Title: 'Pokémon TCG: Mega Evolution - Ascended Heroes 2 Pack Blister',
-    panel4Stores: [
-      "Amersham",
-      "Uxbridge",
-      "Camberley",
-    ],
+    panel4Group: 'POKEC',
     panel4Image: 'https://www.thetoyshop.com/medias/Group-4.png?context=bWFzdGVyfHJvb3R8MTk1OTV8aW1hZ2UvcG5nfGFEUXdMMmd3Tnk4eE1qRXpPREU1T1RBeU16WTBOaTlsYkdNdGFIQXRjMmh2Y0MxaWVTMWhaMlV0ZEhKaGFXNHRNeTAwTFhsbFlYSnpMbkJ1Wnd8YjhhMzdmNzdlYzQxNzg4OTJiYzU4ZjFjMWRiZDI4YjgzNWU5MWQ3MTRlODAwNzIzZjRjZDJjYWU2MDYyN2FiMQ',
     panel4ReleaseDate: '20th Feb 2026',
     panel4Items: `<span>Box contains:</span>
@@ -154,11 +152,7 @@ export const PokemonLaunchContent = {
     panel4SmallPrint: `Only stores listed may have stock`,
     panel5Order: 5,
     panel5Title: 'Pokémon TCG: Mega Evolution - Ascended Heroes 2 Pack Blister',
-    panel5Stores: [
-      "Amersham",
-      "Uxbridge",
-      "Camberley",
-    ],
+    panel5Group: 'POKEC',
     panel5Image: 'https://www.thetoyshop.com/medias/Group-4.png?context=bWFzdGVyfHJvb3R8MTk1OTV8aW1hZ2UvcG5nfGFEUXdMMmd3Tnk4eE1qRXpPREU1T1RBeU16WTBOaTlsYkdNdGFIQXRjMmh2Y0MxaWVTMWhaMlV0ZEhKaGFXNHRNeTAwTFhsbFlYSnpMbkJ1Wnd8YjhhMzdmNzdlYzQxNzg4OTJiYzU4ZjFjMWRiZDI4YjgzNWU5MWQ3MTRlODAwNzIzZjRjZDJjYWU2MDYyN2FiMQ',
     panel5ReleaseDate: '20th Feb 2026',
     panel5Items: `<span>Box contains:</span>
@@ -172,11 +166,7 @@ export const PokemonLaunchContent = {
     panel5SmallPrint: `Only stores listed may have stock`,
     panel6Order: 6,
     panel6Title: 'Pokémon TCG: Mega Evolution - Ascended Heroes 2 Pack Blister',
-    panel6Stores: [
-      "Amersham",
-      "Uxbridge",
-      "Camberley",
-    ],
+    panel6Group: 'POKEC',
     panel6Image: 'https://www.thetoyshop.com/medias/Group-4.png?context=bWFzdGVyfHJvb3R8MTk1OTV8aW1hZ2UvcG5nfGFEUXdMMmd3Tnk4eE1qRXpPREU1T1RBeU16WTBOaTlsYkdNdGFIQXRjMmh2Y0MxaWVTMWhaMlV0ZEhKaGFXNHRNeTAwTFhsbFlYSnpMbkJ1Wnd8YjhhMzdmNzdlYzQxNzg4OTJiYzU4ZjFjMWRiZDI4YjgzNWU5MWQ3MTRlODAwNzIzZjRjZDJjYWU2MDYyN2FiMQ',
     panel6ReleaseDate: '20th Feb 2026',
     panel6Items: `<span>Box contains:</span>
@@ -189,6 +179,34 @@ export const PokemonLaunchContent = {
                   <span>Player’s guide</span>`,
     panel6SmallPrint: `Only stores listed may have stock`,
   },
+  panel7Order: 7,
+  panel7Title: 'Pokémon TCG: Mega Evolution - Ascended Heroes 2 Pack Blister',
+  panel7Group: 'POKEC',
+  panel7Image: 'https://www.thetoyshop.com/medias/Group-4.png?context=bWFzdGVyfHJvb3R8MTk1OTV8aW1hZ2UvcG5nfGFEUXdMMmd3Tnk4eE1qRXpPREU1T1RBeU16WTBOaTlsYkdNdGFIQXRjMmh2Y0MxaWVTMWhaMlV0ZEhKaGFXNHRNeTAwTFhsbFlYSnpMbkJ1Wnd8YjhhMzdmNzdlYzQxNzg4OTJiYzU4ZjFjMWRiZDI4YjgzNWU5MWQ3MTRlODAwNzIzZjRjZDJjYWU2MDYyN2FiMQ',
+  panel7ReleaseDate: '20th Feb 2026',
+  panel7Items: `<span>Box contains:</span>
+                <span>9 AH booster packs</span>
+                <span>Promo card featuring N’s Zekrom</span>
+                <span>65 card sleeves</span>
+                <span>40 Energy cards</span>
+                <span>1 Damage-counter dice</span>
+                <span>1 Coin-flip die1 Plastic coin</span>
+                <span>Player’s guide</span>`,
+  panel7SmallPrint: `Only stores listed may have stock`,
+  panel8Order: 8,
+  panel8Title: 'Pokémon TCG: Mega Evolution - Ascended Heroes 2 Pack Blister',
+  panel8Group: 'POKEC',
+  panel8Image: 'https://www.thetoyshop.com/medias/Group-4.png?context=bWFzdGVyfHJvb3R8MTk1OTV8aW1hZ2UvcG5nfGFEUXdMMmd3Tnk4eE1qRXpPREU1T1RBeU16WTBOaTlsYkdNdGFIQXRjMmh2Y0MxaWVTMWhaMlV0ZEhKaGFXNHRNeTAwTFhsbFlYSnpMbkJ1Wnd8YjhhMzdmNzdlYzQxNzg4OTJiYzU4ZjFjMWRiZDI4YjgzNWU5MWQ3MTRlODAwNzIzZjRjZDJjYWU2MDYyN2FiMQ',
+  panel8ReleaseDate: '20th Feb 2026',
+  panel8Items: `<span>Box contains:</span>
+                <span>9 AH booster packs</span>
+                <span>Promo card featuring N’s Zekrom</span>
+                <span>65 card sleeves</span>
+                <span>40 Energy cards</span>
+                <span>1 Damage-counter dice</span>
+                <span>1 Coin-flip die1 Plastic coin</span>
+                <span>Player’s guide</span>`,
+  panel8SmallPrint: `Only stores listed may have stock`,
   promoPanelsBorderColor: '#34B597',
   promoPanelsButtonBackgroundColor: '#EC7AAC',
   promoPanelsButtonTextColor: '#fff',
@@ -248,6 +266,17 @@ export const PokemonLaunchContent = {
     load();
   }, [args.user]);
 
+  const enrichedArgs = {
+  ...currentArgs,
+};
+
+for (let i = 1; i <= 8; i++) {
+  const groupKey = currentArgs[`panel${i}Group`];
+
+  enrichedArgs[`panel${i}Stores`] =
+    storeGroups[groupKey] || [];
+}
+
 
   // -------------------------------------------------------
   // 2. SYNC ONLY FIELD CHANGES (NOT USER CHANGE)
@@ -260,8 +289,18 @@ export const PokemonLaunchContent = {
     // Don't sync if this change is caused by selecting a new user
     if (currentArgs.user !== selectedUser) return;
 
-    // Remove user field before writing
-    const { user, ...fields } = currentArgs;
+    const {
+  user,
+  panel1Stores,
+  panel2Stores,
+  panel3Stores,
+  panel4Stores,
+  panel5Stores,
+  panel6Stores,
+  panel7Stores,
+  panel8Stores,
+  ...fields
+} = currentArgs;
 
     // Prevent re-writing unchanged data
     const prevFields = lastSyncedData.current;
@@ -285,6 +324,6 @@ export const PokemonLaunchContent = {
     send();
   }, [currentArgs]);
     
-        return <PokemonLaunch {...args} />;
+        return <PokemonLaunch {...enrichedArgs} />;
       },
 };

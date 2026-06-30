@@ -13,6 +13,7 @@ export default {
 export const HalfAndHalfHeroDynamic = {
   args: {
     version: 'v1',
+    saveVersion: false,
     flipped: false,
     image: '',
     imagealt: '',
@@ -36,19 +37,18 @@ export const HalfAndHalfHeroDynamic = {
   render: (args) => {
     const [currentArgs, updateArgs] = useArgs();
     const [allVersions, setAllVersions] = useState([]);
-    const [draft, setDraft] = useState(currentArgs);
 
-    const currentDocId = useRef(args.version || 'v1');
+    // ✅ FIX: base draft from args (prevents mismatch on load)
+    const [draft, setDraft] = useState(args);
+
+    const [selectedVersion, setSelectedVersion] = useState('');
+
     const isLoadingRef = useRef(false);
     const lastSyncedData = useRef({});
-    const saveTimeout = useRef(null);
 
-    // Sync version ref
-    useEffect(() => {
-      currentDocId.current = currentArgs.version || 'v1';
-    }, [currentArgs.version]);
-
-    // Fetch versions
+    // ----------------------------
+    // FETCH VERSIONS
+    // ----------------------------
     useEffect(() => {
       const fetchVersions = async () => {
         try {
@@ -61,108 +61,108 @@ export const HalfAndHalfHeroDynamic = {
       fetchVersions();
     }, []);
 
-    // Load / create doc
+    // ----------------------------
+    // LOAD VERSION (dropdown ONLY)
+    // ----------------------------
     useEffect(() => {
-      const loadDoc = async () => {
-        const version = currentDocId.current;
-        if (!version) return;
+      if (!selectedVersion) return;
 
+      const loadDoc = async () => {
         isLoadingRef.current = true;
 
         try {
-          const docRef = doc(db, 'halfsplitherodynamic', version);
+          const docRef = doc(db, 'halfsplitherodynamic', selectedVersion);
           const snap = await getDoc(docRef);
 
           if (snap.exists()) {
             const data = snap.data();
+
             lastSyncedData.current = data;
 
-            updateArgs({ ...data, version });
+            // ✅ sync BOTH states so everything stays aligned
+            setDraft({ ...data, version: selectedVersion });
 
-            // ✅ Sync draft ONLY when loading
-            setDraft({ ...data, version });
-          } else {
-            const initialData = { ...currentArgs, version };
-            await setDoc(docRef, initialData);
-            lastSyncedData.current = initialData;
-
-            setDraft(initialData);
+            updateArgs({
+              ...currentArgs,
+              ...data,
+              version: selectedVersion,
+            });
           }
+
         } catch (e) {
-          console.error('Firestore load/create error:', e);
+          console.error('Firestore load error:', e);
         }
 
         isLoadingRef.current = false;
       };
 
       loadDoc();
-    }, [currentArgs.version]);
+    }, [selectedVersion]);
 
-    // Auto-save (debounced)
+    // ----------------------------
+    // SAVE (toggle only)
+    // ----------------------------
     useEffect(() => {
-      if (isLoadingRef.current) return;
+      if (!currentArgs.saveVersion) return;
 
-      const version = currentDocId.current;
-      if (!version) return;
-
-      const { version: _, ...fields } = currentArgs;
-
-      const changed = Object.entries(fields).some(
-        ([k, v]) => lastSyncedData.current[k] !== v
-      );
-
-      if (!changed) return;
-
-      clearTimeout(saveTimeout.current);
-
-      saveTimeout.current = setTimeout(async () => {
+      const save = async () => {
         try {
-          const docRef = doc(db, 'halfsplitherodynamic', version);
-          await setDoc(docRef, fields, { merge: true });
+          const version = currentArgs.version;
+
+          if (!version) return;
+
+          const { version: _, saveVersion, ...fields } = currentArgs;
+
+          await setDoc(
+            doc(db, 'halfsplitherodynamic', version),
+            fields,
+            { merge: true }
+          );
+
           lastSyncedData.current = { ...fields };
-          console.log('Saved:', version, fields);
+
+          console.log('Saved:', version);
+
         } catch (e) {
-          console.error('Firestore save error:', e);
+          console.error('Save error:', e);
         }
-      }, 1500);
 
-      return () => clearTimeout(saveTimeout.current);
-    }, [currentArgs]);
+        updateArgs({
+          ...currentArgs,
+          saveVersion: false,
+        });
+      };
 
-    // ✅ Dirty check
-    const isDirty = () => {
-      const { version: _v1, ...draftFields } = draft;
-      const { version: _v2, ...currentFields } = currentArgs;
+      save();
+    }, [currentArgs.saveVersion]);
 
-      return Object.keys(draftFields).some(
-        (key) => draftFields[key] !== currentFields[key]
-      );
-    };
+    // ----------------------------
+    // SYNC EDITS → BOTH STATES
+    // ----------------------------
+    const syncField = (key, value) => {
+      const updated = { ...draft, [key]: value };
 
-    // ✅ Commit ONLY if dirty
-    const commitChanges = () => {
-      if (!isDirty()) {
-        console.log('No changes — skip save');
-        return;
-      }
+      setDraft(updated);
 
-      updateArgs((prev) => ({ ...prev, ...draft }));
+      updateArgs(prev => ({
+        ...prev,
+        [key]: value,
+      }));
     };
 
     return (
       <>
         {!currentArgs.forPreview && (
           <div style={{ marginBottom: 12 }}>
+
             <label>
               Select Existing Version:
               <select
-                value={currentDocId.current}
-                onChange={(e) => {
-                  currentDocId.current = e.target.value;
-                  updateArgs({ ...currentArgs, version: e.target.value });
-                }}
+                value={selectedVersion}
+                onChange={(e) => setSelectedVersion(e.target.value)}
                 style={{ marginLeft: 8 }}
               >
+                <option value="">-- select version --</option>
                 {allVersions.map((v) => (
                   <option key={v} value={v}>
                     {v}
@@ -171,46 +171,45 @@ export const HalfAndHalfHeroDynamic = {
               </select>
             </label>
 
+            {/* version input stays manual ONLY */}
             <div style={{ marginTop: 8 }}>
               <label>
                 Edit / Add Version:
                 <input
-                  value={currentDocId.current}
-                  onChange={(e) => (currentDocId.current = e.target.value)}
-                  onBlur={() =>
-                    updateArgs({ ...currentArgs, version: currentDocId.current })
+                  value={currentArgs.version || ''}
+                  onChange={(e) =>
+                    updateArgs({
+                      ...currentArgs,
+                      version: e.target.value
+                    })
                   }
                   style={{ marginLeft: 8 }}
                 />
               </label>
             </div>
 
-            {/* Editable fields (use draft) */}
+            {/* EDIT FIELDS (NOW PROPER SYNC) */}
             <div style={{ marginTop: 12 }}>
+
               <input
                 value={draft.headline || ''}
-                onChange={(e) =>
-                  setDraft({ ...draft, headline: e.target.value })
-                }
-                onBlur={commitChanges}
+                onChange={(e) => syncField('headline', e.target.value)}
                 placeholder="Headline"
               />
 
               <input
                 value={draft.tagline || ''}
-                onChange={(e) =>
-                  setDraft({ ...draft, tagline: e.target.value })
-                }
-                onBlur={commitChanges}
+                onChange={(e) => syncField('tagline', e.target.value)}
                 placeholder="Tagline"
                 style={{ marginLeft: 8 }}
               />
+
             </div>
+
           </div>
         )}
 
-        {/* Preview uses draft so typing is instant */}
-        <HalfSplitHeroDynamic {...draft} />
+        <HalfSplitHeroDynamic {...currentArgs} />
       </>
     );
   },

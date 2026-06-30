@@ -13,6 +13,10 @@ export const EventModule = ({
   forPreview = false,
 }) => {
 const stores = [
+  {
+    name: "All Stores",
+    link: "https://www.thetoyshop.com/store-finder"
+  },
   { name: "Aberdeen Union Square", link: "https://www.thetoyshop.com/store/aberdeen" },
   { name: "Altrincham", link: "https://www.thetoyshop.com/store/altrincham" },
   { name: "Amersham", link: "https://www.thetoyshop.com/store/amersham" },
@@ -75,6 +79,7 @@ const stores = [
   { name: "Eastleigh", link: "https://www.thetoyshop.com/store/eastleigh" },
   { name: "Edinburgh", link: "https://www.thetoyshop.com/store/edinburgh" },
   { name: "Exeter", link: "https://www.thetoyshop.com/store/exeter" },
+  { name: "Gateshead - Metro Centre", link: "https://www.thetoyshop.com/store/metro-centre" },
   { name: "Glasgow Silverburn", link: "https://www.thetoyshop.com/store/glasgow-silverburn" },
   { name: "Glasgow St Enoch", link: "https://www.thetoyshop.com/store/st-enoch" },
   { name: "Gloucester", link: "https://www.thetoyshop.com/store/gloucester" },

@@ -1,12 +1,12 @@
 import { db } from '../config/firebase';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { useEffect, useRef } from 'react';
-import { FootballHubModulesRow1 } from './Footballhubmodulesrow1';
+import { GamingHubVideoBanner } from './Gaminghubvideobanner';
 import { useArgs } from 'storybook/preview-api';
 
 export default {
-  title: 'Football Hub/Story Modules Row 1',
-  component: FootballHubModulesRow1,
+  title: 'Gaming Hub/Video Banner',
+  component: GamingHubVideoBanner,
   parameters: {
     layout: 'fullscreen',
   },
@@ -15,40 +15,17 @@ export default {
       options: ['stories', 'hasina', 'shermin', 'sam'],
       control: { type: 'select' },
     },
-
-    panel1buttonIcon: {
-      options: ['basket', 'glasses', 'football', 'pencil'],
-      control: {
-        type: 'radio',
-      },
-    },
-
-    panel2buttonIcon: {
-      options: ['basket', 'glasses', 'football', 'pencil'],
-      control: {
-        type: 'radio',
-      },
-    },
   },
 };
 
-export const FootballHubModulesRow1Section = {
+export const GamingHubVideoBannerSection = {
   args: {
     user: 'stories',
-    panel1video: 'https://www.thetoyshop.com/medias/Sockers-football-figures-vid-content.mp4?context=bWFzdGVyfHJvb3R8NDA5NzUxMXx2aWRlby9tcDR8YUdZekwyZzRaQzh4TWpjek1qQXhOemd6TmpBMk1pOVRiMk5yWlhKekxXWnZiM1JpWVd4c0xXWnBaM1Z5WlhNdGRtbGtMV052Ym5SbGJuUXViWEEwfDRkY2RlMjgwNjQ1NDQ0ODcyYjFmNDc4ODBhNjJlODA0ZDlmOThkMzM4YjI1ZWMwNDdhMDZjMTRmNjFiNDJhZWE',
-    panel1image: '',
-    panel1imagealt: 'Sockers Football Figures',
-    panel1title: 'Sockers Football Figures',
-    panel1link: 'https://www.thetoyshop.com/c/toys-for-grown-ups/display-figures?categories=Football%20Collectibles',
-    panel1buttontext: 'Shop Now',
-    panel1buttonIcon: 'basket',
-    panel2video: '',
-    panel2image: 'https://www.thetoyshop.com/medias/Blog-image.png?context=bWFzdGVyfHJvb3R8Mjg3Mjg4fGltYWdlL3BuZ3xhRFF5TDJnek9TOHhNamN4T1RVek9UUTFNems0TWk5Q2JHOW5JR2x0WVdkbExuQnVad3w1YzJlNmMwZmIzMjU5M2RiMDc1OTc0N2RlNmYyOTU5YTBmOTQ3MjFlOTJhMDIwNjkwMThiYTdmMzhjYmQxNWJh',
-    panel2imagealt: 'Football Fever is Here!',
-    panel2title: 'Football Fever is Here!',
-    panel2link: 'https://www.thetoyshop.com/childhood-adventures/football-fever-is-here',
-    panel2buttontext: 'Read',
-    panel2buttonIcon: 'basket',
+    link: 'https://www.thetoyshop.com/search?text=EA%20SPORTS%20FC26',
+    video: 'https://www.thetoyshop.com/medias/FC26-WC-RETAIL-CUSTOM-NoSubs-EditGlobal-1080p-16x9-29-97fps-30s-ENG-GB-1-1-.mp4?context=bWFzdGVyfHJvb3R8OTk0OTM1OXx2aWRlby9xdWlja3RpbWV8YUdZekwyZzBaaTh4TWpjNE5qYzVOVEU0TkRFMU9DOUdRekkyWDFkRFgxSkZWRUZKVEY5RFZWTlVUMDB0VG05VGRXSnpMVVZrYVhSSGJHOWlZV3hmTVRBNE1IQmZNVFo0T1Y4eU9TMDVOMlp3YzE4ek1ITmZSVTVIWDBkQ0lDZ3hLU0FvTVNrdWJYQTB8MDcwN2NiMjJjMGI1ZTc5MGMzOWJiMzMyNjNiM2U5NDMzZDY5OTczM2E3ZGI4Yjk3ZmVjNTk4NzdiZGUzYjNlMg',
+    image: '',
+    imagealt: '',
+    buttontext: 'Shop EA SPORTS FC26 Game Now',
   },
 
   render: function Render(args) {
@@ -59,7 +36,7 @@ export const FootballHubModulesRow1Section = {
     const lastSyncedData = useRef({});
 
     // -------------------------------------------------------
-    // LOAD FROM FIREBASE (USER COLLECTION → FootballHubModulesRow1 DOC)
+    // LOAD FROM FIREBASE (USER COLLECTION → GamingHubHero DOC)
     // -------------------------------------------------------
     useEffect(() => {
       const load = async () => {
@@ -67,7 +44,7 @@ export const FootballHubModulesRow1Section = {
         lastUserRef.current = args.user;
 
         try {
-          const docRef = doc(db, args.user, "FootballHubModulesRow1");
+          const docRef = doc(db, args.user, "GamingHubVideoBanner");
           const snap = await getDoc(docRef);
 
           if (snap.exists()) {
@@ -113,7 +90,7 @@ export const FootballHubModulesRow1Section = {
 
       const send = async () => {
         try {
-          const docRef = doc(db, selectedUser, "FootballHubModulesRow1");
+          const docRef = doc(db, selectedUser, "GamingHubVideoBanner");
 
           // ✅ THIS CREATES OR OVERWRITES ENTIRE DOCUMENT
           await setDoc(docRef, fields, { merge: false });
@@ -127,6 +104,6 @@ export const FootballHubModulesRow1Section = {
       send();
     }, [currentArgs]);
 
-    return <FootballHubModulesRow1 {...args} />;
+    return <GamingHubVideoBanner {...args} />;
   },
 };

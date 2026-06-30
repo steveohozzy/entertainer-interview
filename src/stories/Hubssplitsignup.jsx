@@ -1,13 +1,20 @@
 import PropTypes from "prop-types";
 
-export const GamingHubSplitHero = ({
+export const Hubssplitsignup = ({
   flipped,
   title,
   link,
   image,
   imagealt,
-  buttontext,
   background,
+  textColor,
+  buttontext,
+  buttonBgColor,
+  buttonTextColor,
+  buttonHoverBgColor,
+  buttonHoverTextColor,
+  buttonBorderColor,
+  buttonHoverBorderColor,
 }) => {
  
   return (
@@ -78,13 +85,13 @@ export const GamingHubSplitHero = ({
                     font-size: 20px;
                     font-family: "Nunito Bold", "Tahoma Bold", sans-serif;
                     font-weight: bold;
-                    color: white;
+                    color: ${textColor};
                     margin: 0x;
                     line-height: 24px;
                 }
 
                 .hero-card .hero-tile-info .hero-blurb {
-                    color: white;
+                    color: background,
                     font-size: 14px;
                     font-weight: 200;
                 }
@@ -96,7 +103,7 @@ export const GamingHubSplitHero = ({
                 }
 
                 .hero-card .hero-tile-info h3 {
-                      color: rgb(33, 33, 33);
+                      color: ${textColor};
                     }
 
                 @media (min-width: 768px) {
@@ -148,65 +155,30 @@ export const GamingHubSplitHero = ({
 
  
 
-  /* ---- BUTTON WITH SHIMMER ---- */
-  .gaming-banner-button {
+  .signup-banner-button {
     position: relative;
     display: inline-block;
     font-size: 16px;
     font-family: "Nunito Bold", "Tahoma Bold", sans-serif;
     padding: 12px 30px;
     border-radius: 30px;
-    color: #fff;
+    color: ${buttonTextColor};
+    background-color: ${buttonBgColor};
+    border: 3px solid ${buttonBorderColor};
     text-decoration: none;
     transition: all 0.3s;
     overflow: visible;
     cursor: pointer;
   }
 
-  .gaming-banner-button span {
+  .signup-banner-button span {
     position: relative;
     z-index: 2;
   }
 
-  .gaming-banner-button::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    border-radius: 30px;
-    background-color: #292929;
-    z-index: 1;
-    transition: all 0.3s;
-  }
-  .gaming-banner-button::after {
-    content: '';
-    position: absolute;
-    top: -3px; left: -3px; right: -3px; bottom: -3px;
-    border-radius: 34px;
-    background: linear-gradient(
-        270deg,
-        rgba(255,110,199,0.8),
-        rgba(0,255,255,0.8),
-        rgba(255,110,199,0.8)
-    );
-    background-size: 600% 600%;
-    z-index: 0;
-    animation: shimmer 3s linear infinite;
-  }
-
-  /* Button hover effect */
-  .gaming-banner-button:hover {
-    color: #292929;
-    background-color: #fff;
-  }
-
-  .gaming-banner-button:hover::before {
-    background-color: #fff;
-  }
-
-  @keyframes shimmer {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+  .signup-banner-button:hover {
+    color: ${buttonHoverTextColor};
+    background-color: ${buttonHoverBgColor};
   }
         `}
       </style>
@@ -217,7 +189,7 @@ export const GamingHubSplitHero = ({
           </div>
           <div class="hero-tile-info">
               <h3>{title}</h3>
-              <button class="gaming-banner-button"><span>{buttontext}</span></button>
+              <button class="signup-banner-button"><span>{buttontext}</span></button>
           </div>
         </a>
       </div>
@@ -225,7 +197,7 @@ export const GamingHubSplitHero = ({
   );
 };
 
-GamingHubSplitHero.propTypes = {
+Hubssplitsignup.propTypes = {
   flipped: PropTypes.bool,
   title: PropTypes.string,
   link: PropTypes.string,
@@ -233,4 +205,11 @@ GamingHubSplitHero.propTypes = {
   imagealt: PropTypes.string,
   buttontext: PropTypes.string,
   background: PropTypes.string,
+  textColor: PropTypes.string,
+  buttonBgColor: PropTypes.string,
+  buttonTextColor: PropTypes.string,
+  buttonHoverBgColor: PropTypes.string,
+  buttonHoverTextColor: PropTypes.string,
+  buttonBorderColor: PropTypes.string,
+  buttonHoverBorderColor: PropTypes.string,
 };

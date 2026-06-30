@@ -3,7 +3,6 @@ import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { useEffect, useRef } from 'react';
 import { GamingHubSplitHero } from './Gaminghubsplithero';
 import { useArgs } from 'storybook/preview-api';
-import { background } from 'storybook/internal/theming';
 
 export default {
   title: 'Gaming Hub/Split Hero',
@@ -22,6 +21,7 @@ export default {
 export const GamingHubSplitHeroSection = {
   args: {
     user: 'stories',
+    flipped: true,
     title: 'LEGO Batman Legacy of The Dark Knight',
     link: 'https://www.thetoyshop.com/search?text=LEGO%20Batman%20Legacy%20of%20The%20Dark%20Knight',
     image: 'https://www.thetoyshop.com/medias/edited-photo-49-.png?context=bWFzdGVyfHJvb3R8MzQ3NDgxfGltYWdlL3BuZ3xhREl6TDJnNE5TOHhNamMzTXpBd05UZzROVFEzTUM5bFpHbDBaV1F0Y0dodmRHOGdLRFE1S1M1d2JtY3wxNmJkYTc2YTg2ZjQ4Zjg0NjdhZDE0ZDAyMzg3NzZlODE0YTM0MTA3ODc4OTFhMDc0ZTljYjMxMDcwNDIxNjE4',
