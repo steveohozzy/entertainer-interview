@@ -15,12 +15,18 @@ export default {
       options: ['stories', 'hasina', 'shermin', 'sam'],
       control: { type: 'select' },
     },
+
+    saveModule: {
+      name: "Save Changes",
+      control: { type: "boolean" },
+    },
   },
 };
 
 export const EventsHeaderSection = {
   args: {
     user: 'stories',
+    saveModule: false,
     title: 'Store Events',
     intro: "Can’t decide what to do today? Here at The Entertainer, we have lots of free events and kids' activities for children of all ages. Scrollthrough our events below to find out when this is happening in your local store. We look forward to seeing you at one of our free family fun events with visits from your favourite characters, giveaways and more!",
     searchbytext: 'I want to search store events by…',
@@ -179,11 +185,11 @@ export const EventsHeaderSection = {
 events: [
   { value: "all", label: "All Events" },
 
-  { value: "football", label: "Football’s Coming …To The Entertainer" },
+  { value: "panini", label: "Panini Swap Shop" },
+
+  { value: "ballers", label: "Ballers Swap Shop" },
 
   { value: "lego-make", label: "LEGO Make & Take" },
-
-  { value: "star-wars", label: "LEGO Star Wars Make and Take" },
 
   { value: "lego-dino", label: "LEGO Dino" },
 
@@ -212,84 +218,207 @@ events: [
   },
 
   render: function Render(args) {
-    const [currentArgs, updateArgs] = useArgs();
+  const [currentArgs, updateArgs] = useArgs();
 
-    const isLoadingRef = useRef(false);
-    const lastUserRef = useRef(args.user);
-    const lastSyncedData = useRef({});
+  const isLoadingRef = useRef(false);
+  const lastUserRef = useRef(args.user);
+  const lastSyncedData = useRef(null);
 
-    // -------------------------------------------------------
-    // LOAD FROM FIREBASE (USER COLLECTION → EventsHeader DOC)
-    // -------------------------------------------------------
-    useEffect(() => {
-      const load = async () => {
-        isLoadingRef.current = true;
-        lastUserRef.current = args.user;
+  // -------------------------------------------------------
+  // LOAD FROM FIREBASE
+  // -------------------------------------------------------
+  useEffect(() => {
+    const load = async () => {
+      isLoadingRef.current = true;
+      lastUserRef.current = args.user;
 
-        try {
-          const docRef = doc(db, args.user, "EventsHeader");
-          const snap = await getDoc(docRef);
+      try {
+        const docRef = doc(db, args.user, "EventsHeader");
+        const snap = await getDoc(docRef);
 
-          if (snap.exists()) {
-            const firestoreData = snap.data();
+        if (snap.exists()) {
+  const firestoreData = snap.data();
 
-            const { stores, events, ...otherData } = firestoreData;
+  const mergedData = {
+    ...currentArgs,
+    ...firestoreData,
+  };
 
-            updateArgs({
-              ...currentArgs,
-              ...otherData,
-              stores: args.stores,
-              events: args.events,
-              user: args.user,
-            });
-          }
-        } catch (e) {
-          console.error("Firestore load error:", e);
+  lastSyncedData.current = JSON.parse(
+    JSON.stringify(mergedData)
+  );
+
+  updateArgs({
+    ...mergedData,
+    user: args.user,
+  });
+
+  // update Firebase with the new events array
+  await setDoc(
+    docRef,
+    {
+      ...firestoreData,
+      events: currentArgs.events,
+    },
+    {
+      merge: false,
+    }
+  );
+
+  console.log("Updated Firebase events list");
+} else {
+          // If no document exists, save the Storybook defaults
+          const { user, ...fields } = currentArgs;
+
+          await setDoc(docRef, fields, {
+            merge: false,
+          });
+
+          lastSyncedData.current = JSON.parse(
+            JSON.stringify(fields)
+          );
+
+          console.log("Created Firebase document");
         }
 
-        isLoadingRef.current = false;
-      };
+      } catch (e) {
+        console.error("Firestore load error:", e);
+      }
 
-      load();
-    }, [args.user]);
+      isLoadingRef.current = false;
+    };
 
-    // -------------------------------------------------------
-    // SAVE TO FIREBASE (FULL OVERWRITE)
-    // -------------------------------------------------------
-    useEffect(() => {
-      if (isLoadingRef.current) return;
+    load();
 
-      const selectedUser = lastUserRef.current;
-      if (currentArgs.user !== selectedUser) return;
+  }, [args.user]);
 
-      const { user, ...fields } = currentArgs;
 
-      const prevFields = lastSyncedData.current;
+  // -------------------------------------------------------
+  // SAVE CHANGES TO FIREBASE
+  // -------------------------------------------------------
+  useEffect(() => {
 
-      const changed = Object.entries(fields).some(
-        ([k, v]) => prevFields[k] !== v
+    if (isLoadingRef.current) return;
+
+    const selectedUser = lastUserRef.current;
+
+    if (currentArgs.user !== selectedUser) return;
+
+
+    const { user, ...fields } = currentArgs;
+
+
+    const changed =
+      JSON.stringify(fields) !==
+      JSON.stringify(lastSyncedData.current);
+
+
+    if (!changed) return;
+
+
+    const save = async () => {
+
+      try {
+
+        const docRef = doc(
+          db,
+          selectedUser,
+          "EventsHeader"
+        );
+
+
+        await setDoc(
+          docRef,
+          fields,
+          {
+            merge: false
+          }
+        );
+
+
+        lastSyncedData.current =
+          JSON.parse(JSON.stringify(fields));
+
+
+        console.log(
+          "UPDATED FIREBASE:",
+          fields
+        );
+
+
+      } catch (e) {
+
+        console.error(
+          "Firestore save error:",
+          e
+        );
+
+      }
+
+    };
+
+
+    save();
+
+
+  }, [currentArgs]);
+
+
+  useEffect(() => {
+
+  if (!currentArgs.saveModule) return;
+
+  const saveEvents = async () => {
+
+    try {
+
+      const { user, saveModule, ...fields } = currentArgs;
+
+      const docRef = doc(
+        db,
+        user,
+        "EventsHeader"
       );
 
-      if (!changed) return;
-
-      lastSyncedData.current = fields;
-
-      const send = async () => {
-        try {
-          const docRef = doc(db, selectedUser, "EventsHeader");
-
-          // ✅ THIS CREATES OR OVERWRITES ENTIRE DOCUMENT
-          await setDoc(docRef, fields, { merge: false });
-
-          console.log("CREATED / OVERWRITTEN:", selectedUser, fields);
-        } catch (e) {
-          console.error("Firestore save error:", e);
+      await setDoc(
+        docRef,
+        fields,
+        {
+          merge: false
         }
-      };
+      );
 
-      send();
-    }, [currentArgs]);
+      lastSyncedData.current =
+        JSON.parse(JSON.stringify(fields));
 
-    return <EventsHeader {...currentArgs} />;
-  },
+
+      // reset toggle
+      updateArgs({
+        saveModule: false
+      });
+
+
+      console.log(
+        "MANUAL SAVE COMPLETE",
+        fields
+      );
+
+
+    } catch (e) {
+      console.error(
+        "Manual save failed",
+        e
+      );
+    }
+
+  };
+
+
+  saveEvents();
+
+}, [currentArgs.saveModule]);
+
+
+  return <EventsHeader {...currentArgs} />;
+},
 };

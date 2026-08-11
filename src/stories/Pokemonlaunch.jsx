@@ -2,12 +2,19 @@ import PropTypes from "prop-types";
 import { stores } from "./Storeslist";
 import { useEffect } from "react";
 
-export const PokemonLaunch = ({ pageBackgroundColor, pageTitleColor, pageTitleStroke, introBlurbColor, panel1Stores = [], panel2Stores = [], panel3Stores = [], panel4Stores = [], panel5Stores = [], panel6Stores = [], panel7Stores = [], panel8Stores = [], pageTitle, introBlurb, secondaryTitle, secondaryTitleColor, panelsBackgroundColor, panelsBorderColor, panelsTextColor, panelsInputColor, panelsInputDetailsHoverColor, panelsInputActiveBorderColor, promoPanelsStoresListHoverBackgroundColor, panelsStoreslistColor, panelsStoresListBorderColor, panelsInputBorderColor, panel1Title, panel2Title, panel3Title, panel4Title, panel5Title, panel6Title, panel7Title, panel8Title, panel1Order, panel2Order, panel3Order, panel4Order, panel5Order, panel6Order, panel7Order, panel8Order, panel1ReleaseDate, panel2ReleaseDate, panel3ReleaseDate, panel4ReleaseDate, panel5ReleaseDate, panel6ReleaseDate, panel7ReleaseDate, panel8ReleaseDate, panel1Items, panel2Items, panel3Items, panel4Items, panel5Items, panel6Items, panel7Items, panel8Items, panel1Image, panel2Image, panel3Image, panel4Image, panel5Image, panel6Image, panel7Image, panel8Image, promoPanelsBorderColor, promoPanelsButtonBackgroundColor, promoPanelsButtonTextColor, promoPanelsButtonBorderColor, promoPanelsButtonHoverBackgroundColor, promoPanelsButtonHoverTextColor, promoPanelsButtonHoverBorderColor, promoPanel1Image, promoPanel2Image, promoPanel3Image, promoPanel1Link, promoPanel2Link, promoPanel3Link, promoPanel1LinkText, promoPanel2LinkText, promoPanel3LinkText, promoPanel1LinkHasIcons, promoPanel2LinkHasIcons, promoPanel3LinkHasIcons, panel1SmallPrint, panel2SmallPrint, panel3SmallPrint, panel4SmallPrint, panel5SmallPrint, panel6SmallPrint, panel7SmallPrint, panel8SmallPrint }) => {
-  // Helper function to filter and sort stores alphabetically by short name
-const filterAndSortStores = (storeList) => 
-  stores
+export const PokemonLaunch = ({ pageBackgroundColor, pageTitleColor, pageTitleStroke, introBlurbColor, panel1Stores = [], panel2Stores = [], panel3Stores = [], panel4Stores = [], panel5Stores = [], panel6Stores = [], panel7Stores = [], panel8Stores = [], pageTitle, introBlurb, secondaryTitle, secondaryTitleColor, panelsBackgroundColor, panelsBorderColor, panelsTextColor, panelsInputColor, panelsInputDetailsHoverColor, panelsInputActiveBorderColor, promoPanelsStoresListHoverBackgroundColor, panelsStoreslistColor, panelsStoresListBorderColor, panelsInputBorderColor, panel1Title, panel2Title, panel3Title, panel4Title, panel5Title, panel6Title, panel7Title, panel8Title, panel1Order, panel2Order, panel3Order, panel4Order, panel5Order, panel6Order, panel7Order, panel8Order, panel1ReleaseDate, panel2ReleaseDate, panel3ReleaseDate, panel4ReleaseDate, panel5ReleaseDate, panel6ReleaseDate, panel7ReleaseDate, panel8ReleaseDate, panel1Items, panel2Items, panel3Items, panel4Items, panel5Items, panel6Items, panel7Items, panel8Items, panel1Image, panel2Image, panel3Image, panel4Image, panel5Image, panel6Image, panel7Image, panel8Image, promoPanelsBorderColor, promoPanelsButtonBackgroundColor, promoPanelsButtonTextColor, promoPanelsButtonBorderColor, promoPanelsButtonHoverBackgroundColor, promoPanelsButtonHoverTextColor, promoPanelsButtonHoverBorderColor, promoPanel1Image, promoPanel2Image, promoPanel3Image, promoPanel1Link, promoPanel2Link, promoPanel3Link, promoPanel1LinkText, promoPanel2LinkText, promoPanel3LinkText, promoPanel1LinkHasIcons, promoPanel2LinkHasIcons, promoPanel3LinkHasIcons, panel1SmallPrint, panel2SmallPrint, panel3SmallPrint, panel4SmallPrint, panel5SmallPrint, panel6SmallPrint, panel7SmallPrint, panel8SmallPrint, allStores = [] }) => {
+
+// Add 'allStores = []' to your component props at the top, then update this function:
+const filterAndSortStores = (storeList) => {
+  if (!storeList || !Array.isArray(storeList)) return [];
+  
+  // Use the live database stores if available; fallback to static file if not
+  const activeStores = allStores.length > 0 ? allStores : (stores || []); 
+
+  return activeStores
     .filter(store => storeList.includes(store.short))
-    .sort((a, b) => a.short.localeCompare(b.short));
+    .sort((a, b) => a.full.localeCompare(b.full));
+};
 
 // Filter and sort the stores
 const filteredStores1 = filterAndSortStores(panel1Stores);
@@ -142,8 +149,6 @@ useEffect(() => {
   .poke-panels {
     margin: 0 auto;
     max-width: 980px;
-    display: flex;
-    flex-direction: column;
     gap: 20px;
     padding: 20px;
   }
@@ -672,7 +677,7 @@ useEffect(() => {
         </div>
 }
 
-        <div class="poke-panels">
+        <div class="poke-panels" style={{display: 'flex', flexDirection: 'column'}}>
           {panel1Title &&
           <div class="poke-panel" style={{ order: panel1Order }}>
             <div class="poke-panel-content">
@@ -1427,6 +1432,78 @@ useEffect(() => {
         </div>
       </div>
     </div>
+
+    <script>{`
+
+      document.querySelectorAll(".store-selector").forEach((selector) => {
+    const input = selector.querySelector(".store-input");
+    const dropdown = selector.querySelector(".store-dropdown");
+    const list = selector.querySelector(".store-list");
+    const listItems = list.querySelectorAll("li");
+    const detailsLink = selector.querySelector(".store-details-selected");
+    const searchIcon = selector.querySelector(".store-search-icon");
+    const selectedIcon = selector.querySelector(".store-selected-icon");
+
+    // --- NEW: Sort list alphabetically ---
+    const sortedItems = Array.from(listItems).sort((a, b) => 
+      a.textContent.trim().localeCompare(b.textContent.trim())
+    );
+    sortedItems.forEach((item) => list.appendChild(item));
+
+    // Initialize icons
+    searchIcon.hidden = false;
+    selectedIcon.hidden = true;
+
+    // Handle input filtering
+    input.addEventListener("input", () => {
+      const query = input.value.toLowerCase();
+
+      list.querySelectorAll("li").forEach((item) => {
+        const text = item.textContent.toLowerCase();
+        item.style.display = text.includes(query) ? "" : "none";
+      });
+
+      // Optional: keep the first matching item in view
+      const firstVisible = Array.from(list.children).find(
+        (li) => li.style.display !== "none"
+      );
+      if (firstVisible) {
+        firstVisible.scrollIntoView({ block: "nearest" });
+      }
+    });
+
+    // Handle dropdown toggle
+    input.addEventListener("focus", () => {
+      dropdown.style.display = "block";
+    });
+
+    input.addEventListener("blur", () => {
+      setTimeout(() => {
+        dropdown.style.display = "none";
+      }, 100); // small delay to allow click on list items
+    });
+
+    // Handle selecting a store
+    listItems.forEach((item) => {
+      item.addEventListener("click", () => {
+        input.value = item.textContent.trim();
+        dropdown.style.display = "none";
+        searchIcon.hidden = true;
+        selectedIcon.hidden = false;
+
+        // --- NEW: show details button with correct URL ---
+        if (item.dataset.url) {
+          detailsLink.href = item.dataset.url;
+          detailsLink.hidden = false;
+        } else {
+          detailsLink.href = "#";
+          detailsLink.hidden = true;
+        }
+      });
+    });
+  });
+      `}
+    </script>
     
   </>
   );
@@ -1526,4 +1603,5 @@ PokemonLaunch.propTypes = {
   promoPanelsButtonHoverBackgroundColor: PropTypes.string,
   promoPanelsButtonHoverTextColor: PropTypes.string,
   promoPanelsButtonHoverBorderColor: PropTypes.string,
+  allStores: PropTypes.array
 };

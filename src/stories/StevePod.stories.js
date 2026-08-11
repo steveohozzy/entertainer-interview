@@ -1,59 +1,50 @@
 import { db } from '../config/firebase';
-import { doc, getDoc, updateDoc } from 'firebase/firestore';
+import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { useEffect, useCallback, useRef } from 'react';
-import { ShopByAgeElc } from './Shopbyageelc';
+import { StevePod } from './StevePod';
 import { useArgs } from 'storybook/preview-api';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 export default {
-  title: 'ELC/Shop By Age',
-  component: ShopByAgeElc,
-  parameters: {
-    // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
-    layout: 'fullscreen',
-  },
+  title: 'Steve Ideas/Pod',
+  component: StevePod,
   argTypes: {
+    position: {
+      options: ['center', 'left', 'right'],
+      control: { type: 'radio' },
+      defaultValue: 'center',
+    },
     user: {
       options: ['stories', 'hasina', 'shermin', 'sam'],
       control: { type: 'select' },
     },
   },
+  parameters: {
+    // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
+    layout: 'centered',
+  },
 };
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
-export const ShopByAgeElcContainer = {
+export const StevePodItem = {
   args: {
     user: 'stories',
-    item1age: '',
-    item1textunderage: '',
-    item1image: '',
-    item1imagealt: '',
-    item1link: '',
-    item2age: '',
-    item2textunderage: '',
-    item2image: '',
-    item2imagealt: '',
-    item2link: '',
-    item3age: '',
-    item3textunderage: '',
-    item3image: '',
-    item3imagealt: '',
-    item3link: '',
-    item4age: '',
-    item4textunderage: '',
-    item4image: '',
-    item4imagealt: '',
-    item4link: '',
-    item5age: '',
-    item5textunderage: '',
-    item5image: '',
-    item5imagealt: '',
-    item5link: '',
-    item6age: '',
-    item6textunderage: '',
-    item6image: '',
-    item6imagealt: '',
-    item6link: '',
+    image: '',
+    imagealt: '',
+    tagline: '',
+    backgroundcolor: '',
+    textcolor: '',
+    link: '',
+    linktext: '',
+    buttonbackgroundcolor: '',
+    buttontextcolor: '',
+    logoimage: '',
+    logoimagealt: '',
+    logoheight: '',
+    position: '',
+    dataElementType: '',
+    dataPromotionName: '',
+    dataPromotionIndex: '',
   },
   render: function Render(args) {
   const [currentArgs, updateArgs] = useArgs();
@@ -71,7 +62,7 @@ export const ShopByAgeElcContainer = {
       lastUserRef.current = args.user;
 
       try {
-        const docRef = doc(db, args.user, "elcshopbyage");
+        const docRef = doc(db, args.user, "StevePod");
         const snap = await getDoc(docRef);
 
         if (snap.exists()) {
@@ -121,17 +112,19 @@ export const ShopByAgeElcContainer = {
 
     const send = async () => {
       try {
-        const docRef = doc(db, selectedUser, "elcshopbyage");
-        await updateDoc(docRef, fields);
-        console.log("UPDATED:", selectedUser, fields);
+        const docRef = doc(db, selectedUser, "StevePod");
+
+        await setDoc(docRef, fields, { merge: true });
+
+        console.log("WRITTEN:", selectedUser, fields);
       } catch (e) {
-        console.error("Firestore update error:", e);
+        console.error("Firestore write error:", e);
       }
     };
 
     send();
   }, [currentArgs]);
-    
-        return <ShopByAgeElc {...args} />;
-      },
+  
+      return <StevePod {...args} />;
+    },
 };

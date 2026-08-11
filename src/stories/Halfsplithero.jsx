@@ -131,7 +131,7 @@ export const HalfSplitHero = ({
         font-family: "Nunito Bold","Tahoma Bold",sans-serif;
         font-weight: bold;
         color: ${textColor || '#fff'};
-        margin: 0x;
+        margin: 0;
         line-height: 24px;
     }
 

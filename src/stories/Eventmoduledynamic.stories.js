@@ -9,6 +9,10 @@ export default {
   component: EventModule,
   parameters: { layout: 'fullscreen' },
   argTypes: {
+    saveModule: {
+      control: "boolean",
+      description: "Save this event to Firestore",
+    },
     id: '',
     image: '',
     imagealt: '',
@@ -24,78 +28,142 @@ export default {
 export const EventModuleComponent = (args) => {
   const [currentArgs, updateArgs] = useArgs();
   const [allDocs, setAllDocs] = useState([]);
-  const [localTitle, setLocalTitle] = useState(currentArgs.title || '');
+  const [localTitle, setLocalTitle] = useState(currentArgs.title || 'steve test');
   const isLoadingRef = useRef(false);
   const lastSyncedData = useRef({});
   const saveTimeout = useRef(null);
-  const currentDocId = useRef(currentArgs.title || 'untitled');
+  const currentDocId = useRef(currentArgs.id || 'stevetest');
 
   useEffect(() => setLocalTitle(currentArgs.title || ''), [currentArgs.title]);
 
-  // Fetch all docs for dropdown
+const fetchDocs = async () => {
+  const colRef = collection(db, "eventModuleDynamic");
+  const snapshot = await getDocs(colRef);
+
+  const docs = snapshot.docs.map((d) => ({
+    id: d.id,
+    ...d.data(),
+  }));
+
+  setAllDocs(docs.map((d) => d.id));
+};
+
+
   useEffect(() => {
-    const fetchDocs = async () => {
-      const colRef = collection(db, 'eventModuleDynamic');
-      const snapshot = await getDocs(colRef);
-      setAllDocs(snapshot.docs.map(d => d.id));
-    };
     fetchDocs();
   }, []);
 
-  // Load Firestore doc for currentDocId
   useEffect(() => {
-    const loadDoc = async () => {
-      const title = currentDocId.current || 'untitled';
-      if (!title) return;
+  if (allDocs.length > 0 && !currentArgs.id) {
+    currentDocId.current = 'stevetest';
 
-      isLoadingRef.current = true;
+    loadDoc('stevetest');
 
-      try {
-        const docRef = doc(db, 'eventModuleDynamic', title);
-        const snap = await getDoc(docRef);
+    updateArgs({
+      ...currentArgs,
+      id: 'stevetest'
+    });
+  }
+}, [allDocs]);
 
-        if (snap.exists()) {
-          const data = snap.data();
-          lastSyncedData.current = data;
-          updateArgs({ ...data, title });
-        } else {
-          await setDoc(docRef, { title, rows: [] });
-        }
-      } catch (e) {
-        console.error(e);
-      }
+ // Load Firestore doc
+const loadDoc = async (docId = currentDocId.current) => {
+  const id = docId || 'untitled';
 
-      isLoadingRef.current = false;
-    };
-    loadDoc();
-  }, [currentDocId.current]);
+  if (!id) return;
 
-  // Auto-save to Firestore
-  useEffect(() => {
-    if (isLoadingRef.current) return;
+  isLoadingRef.current = true;
 
-    const title = currentDocId.current;
-    if (!title) return;
+  try {
+    const docRef = doc(db, 'eventModuleDynamic', id);
+    const snap = await getDoc(docRef);
 
-    const changed = Object.entries(currentArgs).some(
-      ([k, v]) => lastSyncedData.current[k] !== v
-    );
-    if (!changed) return;
+    if (snap.exists()) {
+      const data = snap.data();
 
-    clearTimeout(saveTimeout.current);
-    saveTimeout.current = setTimeout(async () => {
-      try {
-        const docRef = doc(db, 'eventModuleDynamic', title);
-        await setDoc(docRef, currentArgs, { merge: true });
-        lastSyncedData.current = { ...currentArgs };
-        console.log('Saved to Firestore:', currentArgs);
-      } catch (e) {
-        console.error('Firestore save error:', e);
-      }
-    }, 1500);
+      lastSyncedData.current = data;
 
-    return () => clearTimeout(saveTimeout.current);
-  }, [currentArgs]);
+      updateArgs({
+        ...data,
+        id: id
+      });
+
+      console.log("Loaded event:", id, data);
+    } else {
+      await setDoc(docRef, {
+        id,
+        title: id,
+        rows: []
+      });
+    }
+
+  } catch (e) {
+    console.error("Load error:", e);
+  }
+
+  isLoadingRef.current = false;
+};
+
+
+// Initial load
+useEffect(() => {
+  loadDoc();
+}, []);
+
+  // Manual save to Firestore
+// Manual save to Firestore
+useEffect(() => {
+
+  if (isLoadingRef.current) {
+    return;
+  }
+
+  if (!currentArgs.saveModule) {
+    return;
+  }
+
+  const saveDoc = async () => {
+    try {
+      const docId =
+        currentArgs.id ||
+        (currentArgs.title || "untitled")
+          .toLowerCase()
+          .replace(/[^\w\s-]/g, "")
+          .trim()
+          .replace(/\s+/g, "-");
+
+      const dataToSave = {
+        ...currentArgs,
+      };
+
+      delete dataToSave.saveModule;
+
+      const docRef = doc(db, "eventModuleDynamic", docId);
+
+      await setDoc(docRef, dataToSave, { merge: true });
+
+      await fetchDocs();
+
+      lastSyncedData.current = dataToSave;
+
+      updateArgs({
+        ...currentArgs,
+        saveModule: false,
+      });
+
+
+    } catch (e) {
+      console.error("❌ Firestore save error:", e);
+
+      updateArgs({
+        ...currentArgs,
+        saveModule: false,
+      });
+    }
+  };
+
+  saveDoc();
+}, [currentArgs.saveModule]);
 
   // Add new row
   const addRow = () => {
@@ -137,10 +205,18 @@ export const EventModuleComponent = (args) => {
           <label>
             Select Existing Event:
             <select
-              value={currentArgs.title || ''}
+              value={currentArgs.id || 'stevetest'}
               onChange={e => {
-                currentDocId.current = e.target.value;
-                updateArgs({ ...currentArgs, title: e.target.value });
+                const selectedId = e.target.value;
+
+                currentDocId.current = selectedId;
+
+                loadDoc(selectedId);
+
+                updateArgs({
+                  ...currentArgs,
+                  id: selectedId,
+                });
               }}
               style={{ marginLeft: 8 }}
             >
@@ -219,6 +295,7 @@ export const EventModuleComponent = (args) => {
 };
 
 EventModuleComponent.args = {
+  saveModule: false,
   title: 'untitled',
   id: '',
   image: '',

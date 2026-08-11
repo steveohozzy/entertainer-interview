@@ -9,22 +9,20 @@ import {
 
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { HubsVideoBanner } from './Hubsvideobanner';
+import { Storepushbanner } from './_Storepushbanner';
 import { useArgs } from 'storybook/preview-api';
 
 export default {
-  title: 'Hubs/Video Banner',
-  component: HubsVideoBanner,
+  title: 'Modules/Store Push Banner',
+  component: Storepushbanner,
+
+  tags: ["!dev"],
 
   parameters: {
     layout: 'fullscreen',
   },
 
   argTypes: {
-    user: {
-      options: ['stories', 'hasina', 'shermin', 'sam'],
-      control: { type: 'select' },
-    },
 
     moduleName: {
       control: 'text',
@@ -39,11 +37,30 @@ export default {
     saveModule: {
       control: 'boolean',
     },
+
+    ctaposition: {
+      options: [
+        "left",
+        "center",
+        "right",
+      ],
+      control: "radio",
+    },
+
+    ctaIcon: {
+      options: [
+        "basket",
+        "glasses",
+        "football",
+        "pencil",
+        "plane",
+      ],
+      control: "radio",
+    },
   },
 
   decorators: [
     (Story) => {
-
       const [currentArgs, updateArgs] = useArgs();
 
       const [modules, setModules] = useState([]);
@@ -64,13 +81,14 @@ export default {
             const snap = await getDocs(
               collection(
                 db,
-                'hubs-video-banner'
+                'storepushbanner-modules'
               )
             );
 
-            setModules(
-              snap.docs.map(d => d.id)
-            );
+            const list =
+              snap.docs.map(d => d.id);
+
+            setModules(list);
 
           } catch(e){
 
@@ -108,7 +126,7 @@ export default {
 
             const ref = doc(
               db,
-              'hubs-video-banner',
+              'storepushbanner-modules',
               currentArgs.selectedModule
             );
 
@@ -122,9 +140,12 @@ export default {
 
               updateArgs({
                 ...currentArgs,
+
                 moduleName:
                   currentArgs.selectedModule,
+
                 saveModule:false,
+
                 ...snap.data(),
               });
 
@@ -173,7 +194,7 @@ export default {
             await setDoc(
               doc(
                 db,
-                'hubs-video-banner',
+                'storepushbanner-modules',
                 moduleName
               ),
               fields,
@@ -183,7 +204,6 @@ export default {
             );
 
             updateArgs({
-              ...currentArgs,
               saveModule:false,
               selectedModule:moduleName
             });
@@ -266,7 +286,6 @@ export default {
                   ))}
 
                 </select>
-
               </div>
             </div>,
             document.body
@@ -275,32 +294,32 @@ export default {
           <Story />
         </>
       );
-
     },
   ],
 };
 
-export const HubsVideoBannerSection = {
+export const StorepushbannerSection = {
   args: {
-    user:'stories',
 
     moduleName:'',
     selectedModule:'',
     saveModule:false,
 
-    link:'https://www.thetoyshop.com/search?text=EA%20SPORTS%20FC26',
-
-    video:'https://www.thetoyshop.com/medias/FC26-WC-RETAIL-CUSTOM-NoSubs-EditGlobal-1080p-16x9-29-97fps-30s-ENG-GB-1-1-.mp4?context=bWFzdGVyfHJvb3R8OTk0OTM1OXx2aWRlby9xdWlja3RpbWV8YUdZekwyZzBaaTh4TWpjNE5qYzVOVEU0TkRFMU9DOUdRekkyWDFkRFgxSkZWRUZKVEY5RFZWTlVUMDB0VG05VGRXSnpMVVZrYVhSSGJHOWlZV3hmTVRBNE1IQmZNVFo0T1Y4eU9TMDVOMlp3YzE4ek1ITmZSVTVIWDBkQ0lDZ3hLU0FvTVNrdWJYQTB8MDcwN2NiMjJjMGI1ZTc5MGMzOWJiMzMyNjNiM2U5NDMzZDY5OTczM2E3ZGI4Yjk3ZmVjNTk4NzdiZGUzYjNlMg',
-
-    image:'',
-    imagealt:'',
-
-    buttontext:'Shop EA SPORTS FC26 Game Now',
-    buttonbackgroundcolor:'#009e44',
-    buttonhoverbackgroundcolor:'#1f2b91',
-    buttontextcolor:'#fff',
-    buttonhovertextcolor:'#fff',
-    buttonbordercolor:'#dbe3ff',
-    buttonborderhovercolor:'#dbe3ff',
+    flipped: true,
+    title: 'LEGO Batman Legacy of The Dark Knight',
+    link: 'https://www.thetoyshop.com/search?text=LEGO%20Batman%20Legacy%20of%20The%20Dark%20Knight',
+    image: 'https://www.thetoyshop.com/medias/edited-photo-49-.png?context=bWFzdGVyfHJvb3R8MzQ3NDgxfGltYWdlL3BuZ3xhREl6TDJnNE5TOHhNamMzTXpBd05UZzROVFEzTUM5bFpHbDBaV1F0Y0dodmRHOGdLRFE1S1M1d2JtY3wxNmJkYTc2YTg2ZjQ4Zjg0NjdhZDE0ZDAyMzg3NzZlODE0YTM0MTA3ODc4OTFhMDc0ZTljYjMxMDcwNDIxNjE4',
+    imagealt:'LEGO Batman Legacy of The Dark Knight',
+    buttontext:'Pre-Order Now',
+    ctaIcon: 'basket',
+    ctaposition: 'center',
+    background:'linear-gradient(180deg, rgba(200,200,200,.9) 0%, rgba(180,180,180,.95) 50%, rgba(160,160,160,1) 100%)',
+    textColor:'rgb(33,33,33)',
+    buttonBgColor:'#009e44',
+    buttonTextColor:'#fff',
+    buttonHoverBgColor:'#1f2b91',
+    buttonHoverTextColor:'#fff',
+    buttonBorderColor:'#dbe3ff',
+    buttonHoverBorderColor:'#dbe3ff',
   },
 };

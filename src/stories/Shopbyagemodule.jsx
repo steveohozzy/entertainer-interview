@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import "./consistency.css";
 
 /** Primary UI component for user interaction */
-export const ShopByAge = ({
+export const ShopByAgeModule = ({
   images,
   modulebackgroundcolor,
   roundal1image,
@@ -47,24 +47,7 @@ export const ShopByAge = ({
   roundal6age,
   roundal6textunderage,
   roundal6link,
-  rounbdal1dataelementtype,
-  rounbdal1datapromotionindex,
-  roundal1datapromotionname,
-  roundal2dataelementtype,
-  roundal2datapromotionindex,
-  roundal2datapromotionname,
-  roundal3dataelementtype,
-  roundal3datapromotionindex,
-  roundal3datapromotionname,
-  roundal4dataelementtype,
-  roundal4datapromotionindex,
-  roundal4datapromotionname,
-  roundal5dataelementtype,
-  roundal5datapromotionindex,
-  roundal5datapromotionname,
-  roundal6dataelementtype,
-  roundal6datapromotionindex,
-  roundal6datapromotionname,
+
 }) => {
   return (
     <>
@@ -205,9 +188,6 @@ box-shadow: none;
           <a
             href={roundal1link}
             title={roundal1alt}
-            data-element-type={rounbdal1dataelementtype}
-            data-promotion-index={rounbdal1datapromotionindex}
-            data-promotion-name={roundal1datapromotionname}
             style={{background: images ? 'transparent' : roundal1background, color: roundal1color}}
           >
             {images && <img
@@ -229,9 +209,6 @@ box-shadow: none;
           <a
             href={roundal2link}
             title={roundal2alt}
-            data-element-type={roundal2dataelementtype}
-            data-promotion-index={roundal2datapromotionindex}
-            data-promotion-name={roundal2datapromotionname}
             style={{background: images ? 'transparent' : roundal2background, color: roundal2color}}
           >
              {images && <img
@@ -252,9 +229,6 @@ box-shadow: none;
           <a
             href={roundal3link}
             title={roundal3alt}
-            data-element-type={roundal3dataelementtype}
-            data-promotion-index={roundal3datapromotionindex}
-            data-promotion-name={roundal3datapromotionname}
             style={{background: images ? 'transparent' : roundal3background, color: roundal3color}}
           >
             {images && <img
@@ -276,9 +250,6 @@ box-shadow: none;
             <a
               href={roundal4link}
               title={roundal4alt}
-              data-element-type={roundal4dataelementtype}
-              data-promotion-index={roundal4datapromotionindex}
-              data-promotion-name={roundal4datapromotionname}
               style={{background: images ? 'transparent' : roundal4background, color: roundal4color}}
             >
               {images && <img
@@ -299,9 +270,6 @@ box-shadow: none;
             <a
               href={roundal5link}
               title={roundal5alt}
-              data-element-type={roundal5dataelementtype}
-              data-promotion-index={roundal5datapromotionindex}
-              data-promotion-name={roundal5datapromotionname}
               style={{background: images ? 'transparent' : roundal5background, color: roundal5color}}
             >
               {images && 
@@ -325,9 +293,6 @@ box-shadow: none;
             <a
               href={roundal6link}
               title={roundal6alt}
-              data-element-type={roundal6dataelementtype}
-              data-promotion-index={roundal6datapromotionindex}
-              data-promotion-name={roundal6datapromotionname}
               style={{background: images ? 'transparent' : roundal6background, color: roundal6color}}
             >
               {images && 
@@ -352,7 +317,7 @@ box-shadow: none;
   );
 };
 
-ShopByAge.propTypes = {
+ShopByAgeModule.propTypes = {
   /** contents */
   images: PropTypes.bool,
   modulebackgroundcolor: PropTypes.string,
@@ -398,22 +363,4 @@ ShopByAge.propTypes = {
   roundal6age: PropTypes.string,
   roundal6textunderage: PropTypes.string,
   roundal6link: PropTypes.string,
-  rounbdal1dataelementtype: PropTypes.string,
-  rounbdal1datapromotionindex: PropTypes.string,
-  roundal1datapromotionname: PropTypes.string,
-  roundal2dataelementtype: PropTypes.string,
-  roundal2datapromotionindex: PropTypes.string,
-  roundal2datapromotionname: PropTypes.string,
-  roundal3dataelementtype: PropTypes.string,
-  roundal3datapromotionindex: PropTypes.string,
-  roundal3datapromotionname: PropTypes.string,
-  roundal4dataelementtype: PropTypes.string,
-  roundal4datapromotionindex: PropTypes.string,
-  roundal4datapromotionname: PropTypes.string,
-  roundal5dataelementtype: PropTypes.string,
-  roundal5datapromotionindex: PropTypes.string,
-  roundal5datapromotionname: PropTypes.string,
-  roundal6dataelementtype: PropTypes.string,
-  roundal6datapromotionindex: PropTypes.string,
-  roundal6datapromotionname: PropTypes.string,
 };

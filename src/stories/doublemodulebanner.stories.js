@@ -9,13 +9,11 @@ import {
 } from "firebase/firestore";
 
 import { useArgs } from "storybook/preview-api";
-import { StoryModule } from "./StoryModule";
+import { doublemodulebanner as DoubleModuleBanner } from "./doublemodulebanner";
 
 export default {
-  title: "Modules/Story Modules",
-  component: StoryModule,
-
-  tags: ["!dev"],
+  title: "Modules/Double Module Banner",
+  component: DoubleModuleBanner,
 
   parameters: {
     layout: "fullscreen",
@@ -36,6 +34,14 @@ export default {
     control: "boolean",
   },
 
+  bordercolor: {
+    control: "color",
+  },
+
+  backgroundcolor: {
+    control: "color",
+  },
+
   panel1video: {
     control: "text",
   },
@@ -48,7 +54,7 @@ export default {
     control: "text",
   },
 
-  panel1title: {
+  panel1bodyText: {
     control: "text",
   },
 
@@ -56,67 +62,19 @@ export default {
     control: "text",
   },
 
-  panel1buttontext: {
-    control: "text",
-  },
-
-  panel1buttonIcon: {
-    options: [
-      "basket",
-      "glasses",
-      "football",
-      "pencil",
-      "plane",
+  panel1buttonStyle: {
+      options: [
+      'none',
+      'shop-now',
+      'pre-order-now',
+      'store-events',
+      'store-locator',
+      'enter',
+      'download',
+      'read',
+      'sign-up',
     ],
-    control: "radio",
-  },
-
-  panel1textcolor: {
-    control: "color",
-  },
-
-  panel1texthovercolor: {
-    control: "color",
-  },
-
-  panel1backgorundcolor: {
-    control: "color",
-  },
-
-  panel1hoverbackgroundcolor: {
-    control: "color",
-  },
-
-  panel1buttonbackgroundcolor: {
-    control: "color",
-  },
-
-  panel1buttonhoverbackgroundcolor: {
-    control: "color",
-  },
-
-  panel1buttontextcolor: {
-    control: "color",
-  },
-
-  panel1buttontexthovercolor: {
-    control: "color",
-  },
-
-  panel1buttonbordercolor: {
-    control: "color",
-  },
-
-  panel1buttonhoverbordercolor: {
-    control: "color",
-  },
-
-  panel1bordercolor: {
-    control: "color",
-  },
-
-  panel1borderhovercolor: {
-    control: "color",
+    control: 'radio',
   },
 
   panel2video: {
@@ -131,7 +89,7 @@ export default {
     control: "text",
   },
 
-  panel2title: {
+  panel2bodyText: {
     control: "text",
   },
 
@@ -139,68 +97,20 @@ export default {
     control: "text",
   },
 
-  panel2buttontext: {
-    control: "text",
-  },
-
-  panel2buttonIcon: {
+  panel2buttonStyle: {
     options: [
-      "basket",
-      "glasses",
-      "football",
-      "pencil",
-      "plane",
+      'none',
+      'shop-now',
+      'pre-order-now',
+      'store-events',
+      'store-locator',
+      'enter',
+      'download',
+      'read',
+      'sign-up',
     ],
-    control: "radio",
+    control: 'radio',
   },
-
-  panel2textcolor: {
-    control: "color",
-  },
-
-  panel2texthovercolor: {
-    control: "color",
-  },
-
-  panel2backgorundcolor: {
-    control: "color",
-  },
-
-  panel2buttonbackgroundcolor: {
-    control: "color",
-  },
-
-  panel2hoverbackgroundcolor: {
-    control: "color",
-  },
-
-  panel2buttonhoverbackgroundcolor: {
-    control: "color",
-  },
-
-  panel2buttontextcolor: {
-    control: "color",
-    },
-
-   panel2buttontexthovercolor: {
-     control: "color",
-     },
-
-   panel2buttonbordercolor: {
-    control: "color",
-    },
-
-   panel2buttonhoverbordercolor: {
-    control: "color",
-    },
-    
-     panel2bordercolor: {
-    control: "color",
-    },
-
-    panel2borderhovercolor: {
-    control: "color",
-    },
   },
 };
 
@@ -210,45 +120,22 @@ export const Default = {
   selectedModule: "",
   saveModule: false,
 
+  bordercolor: "#000",
+  backgroundcolor: "#fff",
+
   panel1video: "",
   panel1image: "",
   panel1imagealt: "",
-  panel1title: "",
+  panel1bodyText: "",
   panel1link: "",
-  panel1buttontext: "Shop Now",
-  panel1buttonIcon: "basket",
-  panel1textcolor: "#1f2b91",
-  panel1texthovercolor: "#1f2b91",
-  panel1backgorundcolor: "#fff",
-  panel1hoverbackgroundcolor: "#fff",
-  panel1buttonbackgroundcolor: "#009e44",
-  panel1buttonhoverbackgroundcolor: "#1f2b91",
-  panel1buttontextcolor: "#fff",
-  panel1buttontexthovercolor: "#fff",
-  panel1buttonbordercolor: "",
-  panel1buttonhoverbordercolor: "",
-  panel1bordercolor: "",
-  panel1borderhovercolor: "",
+  panel1buttonStyle: 'shop-now',
 
   panel2video: "",
   panel2image: "",
   panel2imagealt: "",
-  panel2title: "",
+  panel2bodyText: "",
   panel2link: "",
-  panel2buttontext: "Shop Now",
-  panel2buttonIcon: "basket",
-  panel2textcolor: "#1f2b91",
-  panel2texthovercolor: "#1f2b91",
-  panel2backgorundcolor: "#fff",
-  panel2hoverbackgroundcolor: "#fff",
-  panel2buttonbackgroundcolor: "#009e44",
-  panel2buttonhoverbackgroundcolor: "#1f2b91",
-  panel2buttontextcolor: "#fff",
-  panel2buttontexthovercolor: "#fff",
-  panel2buttonbordercolor: "",
-  panel2buttonhoverbordercolor: "",
-  panel2bordercolor: "",
-  panel2borderhovercolor: "",
+  panel2buttonStyle: 'shop-now',
 },
 
   render: function Render() {
@@ -280,7 +167,7 @@ export const Default = {
 
           const ref = doc(
             db,
-            "stories-modules",
+            "doublemodulebanner",
             currentArgs.selectedModule
           );
 
@@ -295,18 +182,6 @@ export const Default = {
               ...currentArgs,
 
               moduleName: currentArgs.selectedModule,
-
-              panel1textcolor: "#1f2b91",
-              panel1buttonbackgroundcolor: "#009e44",
-              panel1buttonhoverbackgroundcolor: "#1f2b91",
-              panel1buttontextcolor: "#fff",
-              panel1buttontexthovercolor: "#fff",
-
-              panel2textcolor: "#1f2b91",
-              panel2buttonbackgroundcolor: "#009e44",
-              panel2buttonhoverbackgroundcolor: "#1f2b91",
-              panel2buttontextcolor: "#fff",
-              panel2buttontexthovercolor: "#fff",
 
               ...snap.data(),
             });
@@ -356,7 +231,7 @@ export const Default = {
           await setDoc(
             doc(
               db,
-              "stories-modules",
+              "doublemodulebanner",
               moduleName
             ),
             fields,
@@ -394,7 +269,7 @@ export const Default = {
   const loadModules = async () => {
     try {
       const snap = await getDocs(
-        collection(db, "stories-modules")
+        collection(db, "doublemodulebanner")
       );
 
       const list = snap.docs.map((d) => d.id);
@@ -465,7 +340,7 @@ export const Default = {
       document.body
     )}
 
-    <StoryModule {...componentArgs} />
+    <DoubleModuleBanner {...componentArgs} />
   </>
 );
   }

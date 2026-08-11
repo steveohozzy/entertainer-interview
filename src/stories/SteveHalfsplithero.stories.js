@@ -1,18 +1,19 @@
 import { db } from '../config/firebase';
-import { doc, getDoc, updateDoc } from 'firebase/firestore';
-import { useEffect, useCallback, useRef } from 'react';
-import { ShopByAgeElc } from './Shopbyageelc';
+import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { useEffect, useRef } from 'react';
+import { SteveHalfsplithero } from './SteveHalfsplithero';
 import { useArgs } from 'storybook/preview-api';
 
-// More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 export default {
-  title: 'ELC/Shop By Age',
-  component: ShopByAgeElc,
+  title: 'Steve Ideas/Halfsplithero',
+  component: SteveHalfsplithero,
   parameters: {
-    // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
-    layout: 'fullscreen',
+    layout: 'centered',
   },
   argTypes: {
+    background: {
+      control: 'color',
+    },
     user: {
       options: ['stories', 'hasina', 'shermin', 'sam'],
       control: { type: 'select' },
@@ -20,42 +21,36 @@ export default {
   },
 };
 
-// More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
-export const ShopByAgeElcContainer = {
+export const SteveHalfAndHalfHero = {
   args: {
-    user: 'stories',
-    item1age: '',
-    item1textunderage: '',
-    item1image: '',
-    item1imagealt: '',
-    item1link: '',
-    item2age: '',
-    item2textunderage: '',
-    item2image: '',
-    item2imagealt: '',
-    item2link: '',
-    item3age: '',
-    item3textunderage: '',
-    item3image: '',
-    item3imagealt: '',
-    item3link: '',
-    item4age: '',
-    item4textunderage: '',
-    item4image: '',
-    item4imagealt: '',
-    item4link: '',
-    item5age: '',
-    item5textunderage: '',
-    item5image: '',
-    item5imagealt: '',
-    item5link: '',
-    item6age: '',
-    item6textunderage: '',
-    item6image: '',
-    item6imagealt: '',
-    item6link: '',
+    user: "stories",
+    flipped: false,
+    image: '',
+    imagealt: '',
+    videosrc: '',
+    background: '',
+    textColor: '#FFFFFF',
+    logo: '',
+    logoalt: '',
+    headline: 'New Toniebox 2 with Tonieplay',
+    tagline: 'Get ready for screen-free stories, songs and more!',
+    link: 'https://www.thetoyshop.com/brands/tonies',
+    linktext: 'Pre-order',
+    linkTextColor: '#fff',
+    linkTextColorHover: '#fff',
+    linkBackground: '#009E44',
+    linkBackgroundHover: '#AFCB17',
+    linkBorderColor: '#DBE3FF',
+    linkBorderColorHover: '#DBE3FF',
+    termslink: 'https://www.thetoyshop.com/brands/tonies',
+    termslinktext: 'terms and conditions',
+    dataElementType: 'hp-hero-area',
+    datapromotionindex: '3',
+    datapromotionname: 'Hero-3-Huffy',
   },
-  render: function Render(args) {
+
+  
+render: function Render(args) {
   const [currentArgs, updateArgs] = useArgs();
 
   const isLoadingRef = useRef(false);       // prevents writing during load
@@ -71,7 +66,7 @@ export const ShopByAgeElcContainer = {
       lastUserRef.current = args.user;
 
       try {
-        const docRef = doc(db, args.user, "elcshopbyage");
+        const docRef = doc(db, args.user, "SteveHalfsplithero");
         const snap = await getDoc(docRef);
 
         if (snap.exists()) {
@@ -121,17 +116,22 @@ export const ShopByAgeElcContainer = {
 
     const send = async () => {
       try {
-        const docRef = doc(db, selectedUser, "elcshopbyage");
-        await updateDoc(docRef, fields);
-        console.log("UPDATED:", selectedUser, fields);
+        const docRef = doc(db, selectedUser, "SteveHalfsplithero");
+
+        await setDoc(docRef, fields, { merge: true });
+
+        console.log("WRITTEN:", selectedUser, fields);
       } catch (e) {
-        console.error("Firestore update error:", e);
+        console.error("Firestore write error:", e);
       }
     };
 
     send();
   }, [currentArgs]);
-    
-        return <ShopByAgeElc {...args} />;
-      },
+
+
+  return <SteveHalfsplithero {...currentArgs} />;
+}
+
+
 };

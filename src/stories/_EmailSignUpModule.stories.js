@@ -9,11 +9,11 @@ import {
 } from "firebase/firestore";
 
 import { useArgs } from "storybook/preview-api";
-import { StoryModule } from "./StoryModule";
+import { EmailSignUpModule } from "./_EmailSignUpModule";
 
 export default {
-  title: "Modules/Story Modules",
-  component: StoryModule,
+  title: "Modules/Email Sign Up",
+  component: EmailSignUpModule,
 
   tags: ["!dev"],
 
@@ -36,31 +36,19 @@ export default {
     control: "boolean",
   },
 
-  panel1video: {
+  signuptitle: {
     control: "text",
   },
 
-  panel1image: {
+  signuplink: {
     control: "text",
   },
 
-  panel1imagealt: {
+  signupbuttontext: {
     control: "text",
   },
 
-  panel1title: {
-    control: "text",
-  },
-
-  panel1link: {
-    control: "text",
-  },
-
-  panel1buttontext: {
-    control: "text",
-  },
-
-  panel1buttonIcon: {
+  signupbuttonIcon: {
     options: [
       "basket",
       "glasses",
@@ -71,136 +59,52 @@ export default {
     control: "radio",
   },
 
-  panel1textcolor: {
-    control: "color",
-  },
-
-  panel1texthovercolor: {
-    control: "color",
-  },
-
-  panel1backgorundcolor: {
-    control: "color",
-  },
-
-  panel1hoverbackgroundcolor: {
-    control: "color",
-  },
-
-  panel1buttonbackgroundcolor: {
-    control: "color",
-  },
-
-  panel1buttonhoverbackgroundcolor: {
-    control: "color",
-  },
-
-  panel1buttontextcolor: {
-    control: "color",
-  },
-
-  panel1buttontexthovercolor: {
-    control: "color",
-  },
-
-  panel1buttonbordercolor: {
-    control: "color",
-  },
-
-  panel1buttonhoverbordercolor: {
-    control: "color",
-  },
-
-  panel1bordercolor: {
-    control: "color",
-  },
-
-  panel1borderhovercolor: {
-    control: "color",
-  },
-
-  panel2video: {
-    control: "text",
-  },
-
-  panel2image: {
-    control: "text",
-  },
-
-  panel2imagealt: {
-    control: "text",
-  },
-
-  panel2title: {
-    control: "text",
-  },
-
-  panel2link: {
-    control: "text",
-  },
-
-  panel2buttontext: {
-    control: "text",
-  },
-
-  panel2buttonIcon: {
+  ctaposition: {
     options: [
-      "basket",
-      "glasses",
-      "football",
-      "pencil",
-      "plane",
+      "center",
+      "left",
+      "right",
     ],
     control: "radio",
+    defaultValue: "center",
   },
 
-  panel2textcolor: {
-    control: "color",
-  },
-
-  panel2texthovercolor: {
+  signuptextcolor: {
     control: "color",
   },
 
-  panel2backgorundcolor: {
+  signupbuttonbackgroundcolor: {
     control: "color",
   },
 
-  panel2buttonbackgroundcolor: {
+  signupbuttonhoverbackgroundcolor: {
     control: "color",
   },
 
-  panel2hoverbackgroundcolor: {
+  signupbuttontextcolor: {
     control: "color",
   },
 
-  panel2buttonhoverbackgroundcolor: {
+  signupbuttontexthovercolor: {
     control: "color",
   },
 
-  panel2buttontextcolor: {
+  signupbuttonbordercolor: {
     control: "color",
-    },
+  },
 
-   panel2buttontexthovercolor: {
-     control: "color",
-     },
+  signupbuttonhoverbordercolor: {
+    control: "color",
+  },
 
-   panel2buttonbordercolor: {
+  signupbordercolor: {
     control: "color",
-    },
+  },
 
-   panel2buttonhoverbordercolor: {
+  signupbackgroundcolor: {
     control: "color",
-    },
-    
-     panel2bordercolor: {
-    control: "color",
-    },
+  }
 
-    panel2borderhovercolor: {
-    control: "color",
-    },
   },
 };
 
@@ -210,45 +114,20 @@ export const Default = {
   selectedModule: "",
   saveModule: false,
 
-  panel1video: "",
-  panel1image: "",
-  panel1imagealt: "",
-  panel1title: "",
-  panel1link: "",
-  panel1buttontext: "Shop Now",
-  panel1buttonIcon: "basket",
-  panel1textcolor: "#1f2b91",
-  panel1texthovercolor: "#1f2b91",
-  panel1backgorundcolor: "#fff",
-  panel1hoverbackgroundcolor: "#fff",
-  panel1buttonbackgroundcolor: "#009e44",
-  panel1buttonhoverbackgroundcolor: "#1f2b91",
-  panel1buttontextcolor: "#fff",
-  panel1buttontexthovercolor: "#fff",
-  panel1buttonbordercolor: "",
-  panel1buttonhoverbordercolor: "",
-  panel1bordercolor: "",
-  panel1borderhovercolor: "",
-
-  panel2video: "",
-  panel2image: "",
-  panel2imagealt: "",
-  panel2title: "",
-  panel2link: "",
-  panel2buttontext: "Shop Now",
-  panel2buttonIcon: "basket",
-  panel2textcolor: "#1f2b91",
-  panel2texthovercolor: "#1f2b91",
-  panel2backgorundcolor: "#fff",
-  panel2hoverbackgroundcolor: "#fff",
-  panel2buttonbackgroundcolor: "#009e44",
-  panel2buttonhoverbackgroundcolor: "#1f2b91",
-  panel2buttontextcolor: "#fff",
-  panel2buttontexthovercolor: "#fff",
-  panel2buttonbordercolor: "",
-  panel2buttonhoverbordercolor: "",
-  panel2bordercolor: "",
-  panel2borderhovercolor: "",
+  signuptitle: "",
+  signuplink: "",
+  signupbuttontext: "Shop Now",
+  signupbuttonIcon: "basket",
+  ctaposition: "center",
+  signuptextcolor: "#1f2b91",
+  signupbuttonbackgroundcolor: "#009e44",
+  signupbuttonhoverbackgroundcolor: "#1f2b91",
+  signupbuttontextcolor: "#fff",
+  signupbuttontexthovercolor: "#fff",
+  signupbuttonbordercolor: "",
+  signupbuttonhoverbordercolor: "",
+  signupbordercolor: "",
+  signupbackgroundcolor: "",
 },
 
   render: function Render() {
@@ -280,7 +159,7 @@ export const Default = {
 
           const ref = doc(
             db,
-            "stories-modules",
+            "email-sign-up-module",
             currentArgs.selectedModule
           );
 
@@ -296,17 +175,13 @@ export const Default = {
 
               moduleName: currentArgs.selectedModule,
 
-              panel1textcolor: "#1f2b91",
-              panel1buttonbackgroundcolor: "#009e44",
-              panel1buttonhoverbackgroundcolor: "#1f2b91",
-              panel1buttontextcolor: "#fff",
-              panel1buttontexthovercolor: "#fff",
-
-              panel2textcolor: "#1f2b91",
-              panel2buttonbackgroundcolor: "#009e44",
-              panel2buttonhoverbackgroundcolor: "#1f2b91",
-              panel2buttontextcolor: "#fff",
-              panel2buttontexthovercolor: "#fff",
+              signuptextcolor: "#1f2b91",
+              signupbuttonbackgroundcolor: "#009e44",
+              signupbuttonhoverbackgroundcolor: "#1f2b91",
+              signupbuttontextcolor: "#fff",
+              signupbuttontexthovercolor: "#fff",
+              signupbuttonbordercolor: "#dbe3ff",
+              signupbuttonhoverbordercolor: "#dbe3ff",
 
               ...snap.data(),
             });
@@ -356,7 +231,7 @@ export const Default = {
           await setDoc(
             doc(
               db,
-              "stories-modules",
+              "email-sign-up-module",
               moduleName
             ),
             fields,
@@ -394,7 +269,7 @@ export const Default = {
   const loadModules = async () => {
     try {
       const snap = await getDocs(
-        collection(db, "stories-modules")
+        collection(db, "email-sign-up-module")
       );
 
       const list = snap.docs.map((d) => d.id);
@@ -465,7 +340,7 @@ export const Default = {
       document.body
     )}
 
-    <StoryModule {...componentArgs} />
+    <EmailSignUpModule {...componentArgs} />
   </>
 );
   }

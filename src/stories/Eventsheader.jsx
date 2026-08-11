@@ -155,6 +155,10 @@ const defaultStores = [
 const defaultEvents = [
   { value: "all", label: "All Events" },
 
+  { value: "panini", label: "Panini Swap Shop" },
+
+  { value: "ballers", label: "Ballers Swap Shop" },
+
   { value: "football", label: "Football’s Coming …To The Entertainer" },
 
   { value: "lego-make", label: "LEGO Make & Take" },

@@ -26,6 +26,8 @@ export const GamingHubVideoBannerSection = {
     image: '',
     imagealt: '',
     buttontext: 'Shop EA SPORTS FC26 Game Now',
+    bordercolor: '',
+    borderhovercolor: '',
   },
 
   render: function Render(args) {
@@ -76,17 +78,34 @@ export const GamingHubVideoBannerSection = {
       const selectedUser = lastUserRef.current;
       if (currentArgs.user !== selectedUser) return;
 
-      const { user, ...fields } = currentArgs;
+      const { user, ...defaultFields } = GamingHubVideoBannerSection.args;
 
-      const prevFields = lastSyncedData.current;
+      const fields = Object.fromEntries(
+        Object.entries({
+          ...defaultFields,
+          ...currentArgs
+        })
+          .filter(([k]) => k !== "user")
+          .map(([k, v]) => [
+            k,
+            v ?? ""
+          ])
+      );
 
-      const changed = Object.entries(fields).some(
-        ([k, v]) => prevFields[k] !== v
+      const prevFields = Object.fromEntries(
+        Object.entries(lastSyncedData.current || {}).map(([k, v]) => [
+          k,
+          v ?? ""
+        ])
+      );
+
+      const changed = Object.keys(fields).some(
+        key => fields[key] !== prevFields[key]
       );
 
       if (!changed) return;
 
-      lastSyncedData.current = fields;
+      lastSyncedData.current = { ...fields };
 
       const send = async () => {
         try {

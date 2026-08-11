@@ -1,6 +1,27 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
+import "./consistency.css";
 
-import './pod.css';
+export const EmailSignUpModule = ({
+  signupvideo,
+  signupimage,
+  signupimagealt,
+  signuptitle,
+  signuplink,
+  signupbuttontext,
+  signupbuttonIcon,
+  ctaposition,
+  signuptextcolor,
+  signupbuttonbackgroundcolor,
+  signupbuttonhoverbackgroundcolor,
+  signupbackgroundcolor,
+  signupbuttontextcolor,
+  signupbuttontexthovercolor,
+  signupbuttonbordercolor,
+  signupbuttonhoverbordercolor,
+  signupbordercolor,
+  signupborderhovercolor,
+
+}) => {
 
 const buttonIcons = {
   basket: (
@@ -32,78 +53,103 @@ const buttonIcons = {
   ),
 };
 
-/** Primary UI component for user interaction */
-export const Pod = ({
-  image,
-  imagealt,
-  backgroundcolor,
-  textcolor,
-  tagline,
-  link,
-  linktext,
-  buttonbackgroundcolor,
-  buttontextcolor,
-  buttonicon,
-  logoimage,
-  logoimagealt,
-  logoheight,
-  position,
-  dataElementType,
-  dataPromotionName,
-  dataPromotionIndex,
-}) => {
-  return (
-    <>
-     <a class={`pod ${tagline && 'has-tagline'}`} style={{background: backgroundcolor, color: textcolor}} href={link} data-element-type={dataElementType} data-promotion-name={dataPromotionName} data-promotion-index={dataPromotionIndex}>
-        <div className='pod-image-container'>
-          <img class="item" src={image} alt={imagealt} title={imagealt} />
-          {logoimage &&
-          <div class={`logo ${position}`}>
-            <img src={logoimage} alt={logoimagealt} title={logoimagealt} style={{height: logoheight}} />
-          </div>
-          }
-        </div>
-        {tagline && <span>{tagline}</span> }
-        <button class="hero-button" href={link}  style={{background: buttonbackgroundcolor, color: buttontextcolor}} data-element-type={dataElementType} data-promotion-name={dataPromotionName} data-promotion-index={dataPromotionIndex} >
-          <span class="swoosh-container">
-            <span class="star-start">
-              <svg fill="currentColor" height="11" viewBox="0 0 11 11" width="11" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4.23539 2.16758C4.31585 1.75612 4.83196 1.6292 5.09362 1.92958L6.64272 3.65653L8.92869 3.36308C9.33686 3.31475 9.62105 3.7548 9.41431 4.12022L8.26344 6.1095L9.24532 8.18833C9.41411 8.56311 9.07604 8.98116 8.67962 8.89652L6.43413 8.40043L4.74982 9.98635C4.45362 10.2631 3.94852 10.0788 3.90018 9.67067L3.67114 7.38306L1.6601 6.27065C1.29468 6.06391 1.31163 5.54034 1.6864 5.37155L3.81205 4.44154L4.23539 2.16758Z" fill-opacity="0.5"></path>
-              </svg>
+return (
+<>
+<style>{`
+
+  .email-signup-banner-wrapper {
+    width: 100%;
+    max-width: 1140px;
+    padding: 0 20px;
+    margin: 0 auto;
+  }
+
+  .email-signup-banner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border-radius: 8px;
+  }
+
+  .email-signup-banner .banner-text {
+    text-align: center;
+  }
+
+  .email-signup-banner .sign-up-title {
+    font-size: 16px;
+    margin: 0 0 15px;
+  }
+
+  ${signupbordercolor ? `
+    .email-signup-banner{
+      border: 3px solid ${signupbordercolor};
+    }
+  ` : ""}
+
+`}</style>
+
+<div class="email-signup-banner-wrapper">
+<div class="email-signup-banner"
+  style={{
+    backgroundColor: signupbackgroundcolor,
+  }}
+>
+  <div class="banner-text">
+    <div class="sign-up-title"
+      style={{
+        color: signuptextcolor,
+      }}
+    >
+      {signuptitle}
+    </div>
+  </div>
+  <div class="cta-button"
+    style={{
+        marginLeft: ctaposition === 'right' ? 'auto' : '0',
+        marginRight: ctaposition === 'left' ? 'auto' : '0',
+    }}
+    >
+    <a href={signuplink} class="primary-cta-button"
+      style={{
+        "--primary-cta-button-bg-color": signupbuttonbackgroundcolor,
+        "--primary-cta-button-hover-bg-color": signupbuttonhoverbackgroundcolor,
+        "--primary-cta-button-text-color": signupbuttontextcolor,
+        "--primary-cta-button-hover-text-color": signupbuttontexthovercolor,
+        "--primary-cta-button-border-color": signupbuttonbordercolor,
+        "--primary-cta-button-hover-border-color": signupbuttonhoverbordercolor
+      }}
+    >
+      <span class="swoosh-container"><span class="star-start"><svg width="11" height="11" viewBox="0 0 11 11" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4.23539 2.16758C4.31585 1.75612 4.83196 1.6292 5.09362 1.92958L6.64272 3.65653L8.92869 3.36308C9.33686 3.31475 9.62105 3.7548 9.41431 4.12022L8.26344 6.1095L9.24532 8.18833C9.41411 8.56311 9.07604 8.98116 8.67962 8.89652L6.43413 8.40043L4.74982 9.98635C4.45362 10.2631 3.94852 10.0788 3.90018 9.67067L3.67114 7.38306L1.6601 6.27065C1.29468 6.06391 1.31163 5.54034 1.6864 5.37155L3.81205 4.44154L4.23539 2.16758Z" fill-opacity="0.5"></path></svg></span><span class="swoosh">&nbsp;</span></span>{signupbuttontext}
+            <span class="basket-icon">
+              {buttonIcons[signupbuttonIcon] || buttonIcons.basket}
             </span>
-            <span class="swoosh"> </span>
-          </span>
-          {linktext}
-          <span class="basket-icon">
-            {buttonIcons[buttonicon] || buttonIcons.basket}
-          </span>
-          <span class="star-end">
-            <svg fill="currentColor" height="11" viewBox="0 0 11 11" width="11" xmlns="http://www.w3.org/2000/svg">
-              <path d="M4.23539 2.16758C4.31585 1.75612 4.83196 1.6292 5.09362 1.92958L6.64272 3.65653L8.92869 3.36308C9.33686 3.31475 9.62105 3.7548 9.41431 4.12022L8.26344 6.1095L9.24532 8.18833C9.41411 8.56311 9.07604 8.98116 8.67962 8.89652L6.43413 8.40043L4.74982 9.98635C4.45362 10.2631 3.94852 10.0788 3.90018 9.67067L3.67114 7.38306L1.6601 6.27065C1.29468 6.06391 1.31163 5.54034 1.6864 5.37155L3.81205 4.44154L4.23539 2.16758Z" fill-opacity="0.5"></path>
-            </svg>
-          </span>
-        </button>
-      </a>
-    </>
-  );
+            <span class="star-end"><svg width="11" height="11" viewBox="0 0 11 11" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4.23539 2.16758C4.31585 1.75612 4.83196 1.6292 5.09362 1.92958L6.64272 3.65653L8.92869 3.36308C9.33686 3.31475 9.62105 3.7548 9.41431 4.12022L8.26344 6.1095L9.24532 8.18833C9.41411 8.56311 9.07604 8.98116 8.67962 8.89652L6.43413 8.40043L4.74982 9.98635C4.45362 10.2631 3.94852 10.0788 3.90018 9.67067L3.67114 7.38306L1.6601 6.27065C1.29468 6.06391 1.31163 5.54034 1.6864 5.37155L3.81205 4.44154L4.23539 2.16758Z" fill-opacity="0.5"></path></svg></span>
+    </a>
+  </div>
+</div>
+</div>
+
+</>
+);
+
 };
 
-Pod.propTypes = {
-  /** Pod contents */
-  backgroundcolor: PropTypes.string, 
-  textcolor: PropTypes.string, 
-  image: PropTypes.string.isRequired,
-  imagealt: PropTypes.string.isRequired,
-  tagline: PropTypes.string,
-  link: PropTypes.string.isRequired,
-  linktext: PropTypes.string.isRequired,
-  buttonbackgroundcolor: PropTypes.string,
-  buttontextcolor: PropTypes.string,
-  buttonicon: PropTypes.string,
-  logoimage: PropTypes.string,
-  logoimagealt: PropTypes.string,
-  logoheight: PropTypes.string,
-  dataElementType: PropTypes.string,
-  dataPromotionName: PropTypes.string,
-  dataPromotionIndex: PropTypes.string,
+EmailSignUpModule.propTypes = {
+signuptitle:PropTypes.string,
+signuplink:PropTypes.string,
+signupbuttontext:PropTypes.string,
+signupbuttonIcon:PropTypes.string,
+ctaposition:PropTypes.string,
+signuptextcolor:PropTypes.string,
+signupbuttonbackgroundcolor:PropTypes.string,
+signupbuttonhoverbackgroundcolor:PropTypes.string,
+signupbuttontextcolor:PropTypes.string,
+signupbuttontexthovercolor:PropTypes.string,
+signupbuttonbordercolor:PropTypes.string,
+signupbuttonhoverbordercolor:PropTypes.string,
+signupbordercolor:PropTypes.string,
+signupbackgroundcolor:PropTypes.string,
 };

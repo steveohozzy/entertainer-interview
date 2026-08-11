@@ -9,23 +9,18 @@ import {
 
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { Hubssplitsignup } from './Hubssplitsignup';
+import { Brandmodules } from './Brandmodules';
 import { useArgs } from 'storybook/preview-api';
 
 export default {
-  title: 'Hubs/Split Sign Up',
-  component: Hubssplitsignup,
+  title: 'Modules/Brand Modules',
+  component: Brandmodules,
 
   parameters: {
     layout: 'fullscreen',
   },
 
   argTypes: {
-    user: {
-      options: ['stories', 'hasina', 'shermin', 'sam'],
-      control: { type: 'select' },
-    },
-
     moduleName: {
       control: 'text',
     },
@@ -39,12 +34,23 @@ export default {
     saveModule: {
       control: 'boolean',
     },
+
+    lozengetextcolor: {
+      control: {
+        type: 'select',
+      },
+      options: ['#000000', '#FFFFFF'],
+      labels: {
+        '#000000': 'Black',
+        '#FFFFFF': 'White',
+      },
+    },
   },
 
   decorators: [
     (Story) => {
-      const [currentArgs, updateArgs] = useArgs();
 
+      const [currentArgs, updateArgs] = useArgs();
       const [modules, setModules] = useState([]);
 
       const loadingRef = useRef(false);
@@ -63,14 +69,13 @@ export default {
             const snap = await getDocs(
               collection(
                 db,
-                'hubsplitsignup-modules'
+                'hubs-brand-modules'
               )
             );
 
-            const list =
-              snap.docs.map(d => d.id);
-
-            setModules(list);
+            setModules(
+              snap.docs.map(d => d.id)
+            );
 
           } catch(e){
 
@@ -108,7 +113,7 @@ export default {
 
             const ref = doc(
               db,
-              'hubsplitsignup-modules',
+              'hubs-brand-modules',
               currentArgs.selectedModule
             );
 
@@ -122,12 +127,9 @@ export default {
 
               updateArgs({
                 ...currentArgs,
-
                 moduleName:
                   currentArgs.selectedModule,
-
                 saveModule:false,
-
                 ...snap.data(),
               });
 
@@ -176,7 +178,7 @@ export default {
             await setDoc(
               doc(
                 db,
-                'hubsplitsignup-modules',
+                'hubs-brand-modules',
                 moduleName
               ),
               fields,
@@ -186,6 +188,7 @@ export default {
             );
 
             updateArgs({
+              ...currentArgs,
               saveModule:false,
               selectedModule:moduleName
             });
@@ -268,6 +271,7 @@ export default {
                   ))}
 
                 </select>
+
               </div>
             </div>,
             document.body
@@ -276,31 +280,84 @@ export default {
           <Story />
         </>
       );
+
     },
   ],
 };
 
-export const HubssplitsignupSection = {
+export const BrandmodulesContent = {
   args: {
-    user: 'stories',
-
     moduleName:'',
     selectedModule:'',
     saveModule:false,
 
-    flipped: true,
-    title: 'LEGO Batman Legacy of The Dark Knight',
-    link: 'https://www.thetoyshop.com/search?text=LEGO%20Batman%20Legacy%20of%20The%20Dark%20Knight',
-    image: 'https://www.thetoyshop.com/medias/edited-photo-49-.png?context=bWFzdGVyfHJvb3R8MzQ3NDgxfGltYWdlL3BuZ3xhREl6TDJnNE5TOHhNamMzTXpBd05UZzROVFEzTUM5bFpHbDBaV1F0Y0dodmRHOGdLRFE1S1M1d2JtY3wxNmJkYTc2YTg2ZjQ4Zjg0NjdhZDE0ZDAyMzg3NzZlODE0YTM0MTA3ODc4OTFhMDc0ZTljYjMxMDcwNDIxNjE4',
-    imagealt:'LEGO Batman Legacy of The Dark Knight',
-    buttontext:'Pre-Order Now',
-    background:'linear-gradient(180deg, rgba(200,200,200,.9) 0%, rgba(180,180,180,.95) 50%, rgba(160,160,160,1) 100%)',
-    textColor:'rgb(33,33,33)',
-    buttonBgColor:'#009e44',
-    buttonTextColor:'#fff',
-    buttonHoverBgColor:'#1f2b91',
-    buttonHoverTextColor:'#fff',
-    buttonBorderColor:'#dbe3ff',
-    buttonHoverBorderColor:'#dbe3ff',
+    roundelbackgroundcolor:'',
+    roundelborerhovercolor:'',
+    roundeltextcolor:'',
+
+    lozengebackgroundcolor: '',
+    lozengetextcolor: '#000000',
+    
+    lozengetitle: '',
+
+    roundel1image:'',
+    roundel1alt:'',
+    roundel1link:'',
+    roundel1text:'',
+
+    roundel2image:'',
+    roundel2alt:'',
+    roundel2link:'',
+    roundel2text:'',
+
+    roundel3image:'',
+    roundel3alt:'',
+    roundel3link:'',
+    roundel3text:'',
+
+    roundel4image:'',
+    roundel4alt:'',
+    roundel4link:'',
+    roundel4text:'',
+
+    roundel5image:'',
+    roundel5alt:'',
+    roundel5link:'',
+    roundel5text:'',
+
+    roundel6image:'',
+    roundel6alt:'',
+    roundel6link:'',
+    roundel6text:'',
+
+    roundel7image:'',
+    roundel7alt:'',
+    roundel7link:'',
+    roundel7text:'',
+
+    roundel8image:'',
+    roundel8alt:'',
+    roundel8link:'',
+    roundel8text:'',
+
+    roundel9image:'',
+    roundel9alt:'',
+    roundel9link:'',
+    roundel9text:'',
+
+    roundel10image:'',
+    roundel10alt:'',
+    roundel10link:'',
+    roundel10text:'',
+
+    roundel11image:'',
+    roundel11alt:'',
+    roundel11link:'',
+    roundel11text:'',
+
+    roundel12image:'',
+    roundel12alt:'',
+    roundel12link:'',
+    roundel12text:'',
   },
 };

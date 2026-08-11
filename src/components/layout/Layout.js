@@ -28,6 +28,21 @@ const Layout = () => {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [showBackToTop, setShowBackToTop] = useState(false);
 
+  const isMaintenance = import.meta.env 
+    ? import.meta.env.VITE_MAINTENANCE_MODE 
+    : process.env.REACT_APP_MAINTENANCE_MODE;
+
+  if (isMaintenance === 'true') {
+    return (
+      <div className="flex flex-col items-center justify-center h-screen bg-brandBlue text-white font-sans px-4 text-center">
+        <img src="/text-logo.svg" alt="The Entertainer" className="w-[200px] mb-6" />
+        <h1 className="text-3xl font-bold mb-2">Under Maintenance</h1>
+        <p className="text-gray-200 max-w-md">
+          This preview environment is locked. We will be back online shortly.
+        </p>
+      </div>
+    );
+
   const cartCount = useSelector(selectCartCount);
   const cartTotal = useSelector(selectCartTotal);
 

@@ -1,18 +1,22 @@
 import PropTypes from "prop-types";
 
-export const HubsVideoBanner = ({
+export const GamingHubVideoBanner = ({
   link,
   video,
   image,
   imagealt,
   buttontext,
+  bordercolor,
+  borderhovercolor,
 }) => {
- 
+
+  const hasCustomBorder = bordercolor?.trim();
+
   return (
     <>
       <style>
         {`
-    .gaming-video-banner {
+.gaming-video-banner {
     position: relative;
     margin: 0 auto;
     width: 100%;
@@ -23,29 +27,34 @@ export const HubsVideoBanner = ({
     display: block;
 }
 
-/* Animated border */
+/* Border */
 .gaming-video-banner::before {
     content: "";
     position: absolute;
     inset: 0;
     border-radius: 8px;
     padding: 3px;
-    background: linear-gradient(
-        270deg,
-        rgba(255,110,199,0.8),
-        rgba(0,255,255,0.8),
-        rgba(255,110,199,0.8)
-    );
-    background-size: 600% 600%;
-    animation: shimmer 3s linear infinite;
     pointer-events: none;
     z-index: 2;
+
+    background: var(--banner-border);
+    background-size: var(--banner-background-size);
+    animation: var(--banner-animation);
+
+    transition: background .3s ease;
 
     -webkit-mask:
         linear-gradient(#fff 0 0) content-box,
         linear-gradient(#fff 0 0);
+
     -webkit-mask-composite: xor;
             mask-composite: exclude;
+}
+
+.gaming-video-banner:hover::before {
+    background: var(--banner-hover-border, var(--banner-border));
+    background-size: var(--banner-hover-background-size, var(--banner-background-size));
+    animation: var(--banner-hover-animation, var(--banner-animation));
 }
 
 .gaming-video-banner video,
@@ -148,42 +157,74 @@ export const HubsVideoBanner = ({
         font-size: 14px;
     }
 }
-        `}
+`}
       </style>
+
       <a
-        href={link}
-        class="gaming-video-banner"
-    >
-      {image && image !== ' ' &&
-        <img src={image} alt={imagealt} />
-      }
-      {video && video !== ' ' &&
-        <video
-            autoplay
-            muted
-            loop
-            playsinline
-        >
+  href={link}
+  className="gaming-video-banner"
+  style={{
+  "--banner-border": bordercolor?.trim()
+    ? bordercolor
+    : `linear-gradient(
+        270deg,
+        rgba(255,110,199,.8),
+        rgba(0,255,255,.8),
+        rgba(255,110,199,.8)
+      )`,
+
+  "--banner-hover-border":
+    borderhovercolor?.trim() || undefined,
+
+  "--banner-background-size":
+    bordercolor?.trim()
+      ? "100% 100%"
+      : "600% 600%",
+
+  "--banner-animation":
+    bordercolor?.trim()
+      ? "none"
+      : "shimmer 3s linear infinite",
+
+  "--banner-hover-background-size":
+    borderhovercolor?.trim()
+      ? "100% 100%"
+      : undefined,
+
+  "--banner-hover-animation":
+    borderhovercolor?.trim()
+      ? "none"
+      : undefined,
+}}
+>
+        {image && image !== " " && (
+          <img src={image} alt={imagealt} />
+        )}
+
+        {video && video !== " " && (
+          <video autoPlay muted loop playsInline>
             <source src={video} type="video/mp4" />
-        </video>
-        }
+          </video>
+        )}
 
         {buttontext && (
-        <div class="gaming-video-banner-content">
-            <button class="gaming-video-banner-button">
-                <span>{buttontext}</span>
+          <div className="gaming-video-banner-content">
+            <button className="gaming-video-banner-button">
+              <span>{buttontext}</span>
             </button>
-        </div>
+          </div>
         )}
       </a>
     </>
   );
 };
 
-HubsVideoBanner.propTypes = {
+GamingHubVideoBanner.propTypes = {
   link: PropTypes.string,
   video: PropTypes.string,
   image: PropTypes.string,
   imagealt: PropTypes.string,
   buttontext: PropTypes.string,
+  bordercolor: PropTypes.string,
+  borderhovercolor: PropTypes.string,
 };

@@ -18,6 +18,16 @@ export default {
       options: ['stories', 'hasina', 'shermin', 'sam'],
       control: { type: 'select' },
     },
+    buttonicon: {
+      options: [
+        "basket",
+        "glasses",
+        "football",
+        "pencil",
+        "plane",
+      ],
+      control: "radio",
+    },
   },
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
@@ -38,6 +48,7 @@ export const PodItem = {
     linktext: '',
     buttonbackgroundcolor: '',
     buttontextcolor: '',
+    buttonicon: 'basket',
     logoimage: '',
     logoimagealt: '',
     logoheight: '',

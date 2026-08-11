@@ -2,12 +2,12 @@ import { collection, getDocs, getDoc, doc, setDoc } from 'firebase/firestore';
 import { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { db } from '../config/firebase';
-import { ShopByAge } from './Shopbyage';
+import { ShopByAgeModule } from './Shopbyagemodule';
 import { useArgs } from 'storybook/preview-api';
 
 export default {
-title: 'Home/Shop By Age',
-component: ShopByAge,
+title: 'Modules/Shop By Age',
+component: ShopByAgeModule,
 parameters: {
 layout: 'fullscreen',
 },
@@ -109,7 +109,7 @@ argTypes: {
 },
 };
 
-export const ShopByAgeRoundals = {
+export const ShopByAgeModuleRoundals = {
 args: {
 moduleName: '',
 selectedModule: '',
@@ -218,7 +218,7 @@ useEffect(() => {
     loadingRef.current = true;
 
     try {
-      const ref = doc(db, 'shopbyage', currentArgs.selectedModule);
+      const ref = doc(db, 'ShopByAgeModule', currentArgs.selectedModule);
       const snap = await getDoc(ref);
 
       if (snap.exists()) {
@@ -261,7 +261,7 @@ useEffect(() => {
       } = currentArgs;
 
       await setDoc(
-        doc(db, 'shopbyage', moduleName),
+        doc(db, 'ShopByAgeModule', moduleName),
         fields,
         {
           merge: false,
@@ -289,7 +289,7 @@ useEffect(() => {
   const loadModules = async () => {
     try {
       const snap = await getDocs(
-        collection(db, 'shopbyage')
+        collection(db, 'ShopByAgeModule')
       );
 
       const list = snap.docs.map((d) => d.id);
@@ -356,7 +356,7 @@ return (
       document.body
     )}
 
-    <ShopByAge {...componentArgs} />
+    <ShopByAgeModule {...componentArgs} />
   </>
 );
 
