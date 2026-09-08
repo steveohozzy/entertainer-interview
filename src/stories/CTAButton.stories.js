@@ -15,6 +15,7 @@ export default {
         "download",
         "read",
         "sign-up",
+        "play",
       ],
     },
     href: {

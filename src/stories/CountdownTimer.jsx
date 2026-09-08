@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import { CTAButton } from "./CTAButton";
+import "./consistency.css";
 
 export const CountdownTimer = ({
   logoImage,
@@ -27,6 +28,7 @@ export const CountdownTimer = ({
   download: { text: 'Download', icon: 'pencil' },
   read: { text: 'Read', icon: 'glasses' },
   'sign-up': { text: 'Sign Up', icon: 'plane' },
+  play: { text: 'Play', icon: 'play' },
 };
 
 const cta =
@@ -306,12 +308,10 @@ const cta =
         {cta && (
         <div className="cta-button">
                 <CTAButton
-                    text={cta.text}
-                    icon={cta.icon}
-                    variant={buttonStyle}
-                    href={buttonLink}
-                    as="a"
-                  />
+                  buttonStyle={buttonStyle}
+                  href={buttonLink}
+                  as="a"
+                />
               </div>
             )}
 

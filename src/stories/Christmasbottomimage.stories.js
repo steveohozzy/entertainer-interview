@@ -9,19 +9,18 @@ import {
 
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { singlemodulebanner } from './singlemodulebanner';
+import { Christmasbottomimage } from './Christmasbottomimage';
 import { useArgs } from 'storybook/preview-api';
 
 export default {
-  title: 'Modules/Single Module Banner',
-  component: singlemodulebanner,
+  title: 'Christmas/Bottom Image',
+  component: Christmasbottomimage,
 
   parameters: {
     layout: 'fullscreen',
   },
 
   argTypes: {
-
     moduleName: {
       control: 'text',
     },
@@ -35,28 +34,11 @@ export default {
     saveModule: {
       control: 'boolean',
     },
-
-    buttonStyle: {
-      options: [
-        'none',
-        'shop-now',
-        'pre-order-now',
-        'store-events',
-        'store-locator',
-        'enter',
-        'download',
-        'read',
-        'sign-up',
-        'play',
-      ],
-      control: {
-        type: 'radio',
-      },
-    },
   },
 
   decorators: [
     (Story) => {
+
       const [currentArgs, updateArgs] = useArgs();
 
       const [modules, setModules] = useState([]);
@@ -77,14 +59,13 @@ export default {
             const snap = await getDocs(
               collection(
                 db,
-                'singlemodulebanner-modules'
+                'christmas-bottom-image'
               )
             );
 
-            const list =
-              snap.docs.map(d => d.id);
-
-            setModules(list);
+            setModules(
+              snap.docs.map(d => d.id)
+            );
 
           } catch(e){
 
@@ -122,7 +103,7 @@ export default {
 
             const ref = doc(
               db,
-              'singlemodulebanner-modules',
+              'christmas-bottom-image',
               currentArgs.selectedModule
             );
 
@@ -136,12 +117,9 @@ export default {
 
               updateArgs({
                 ...currentArgs,
-
                 moduleName:
                   currentArgs.selectedModule,
-
                 saveModule:false,
-
                 ...snap.data(),
               });
 
@@ -190,7 +168,7 @@ export default {
             await setDoc(
               doc(
                 db,
-                'singlemodulebanner-modules',
+                'christmas-bottom-image',
                 moduleName
               ),
               fields,
@@ -200,6 +178,7 @@ export default {
             );
 
             updateArgs({
+              ...currentArgs,
               saveModule:false,
               selectedModule:moduleName
             });
@@ -230,7 +209,7 @@ export default {
             <div
               style={{
                 position:'fixed',
-                top:10,
+                bottom:10,
                 right:10,
                 zIndex:9999,
                 padding:12,
@@ -282,6 +261,7 @@ export default {
                   ))}
 
                 </select>
+
               </div>
             </div>,
             document.body
@@ -290,24 +270,19 @@ export default {
           <Story />
         </>
       );
+
     },
   ],
 };
 
-export const SinglemodulebannerSection = {
+export const ChristmasbottomimageSection = {
   args: {
-
     moduleName:'',
     selectedModule:'',
     saveModule:false,
 
-    bodyText: 'LEGO Batman Legacy of The Dark Knight',
-    link: 'https://www.thetoyshop.com/search?text=LEGO%20Batman%20Legacy%20of%20The%20Dark%20Knight',
-    image: 'https://www.thetoyshop.com/medias/edited-photo-49-.png?context=bWFzdGVyfHJvb3R8MzQ3NDgxfGltYWdlL3BuZ3xhREl6TDJnNE5TOHhNamMzTXpBd05UZzROVFEzTUM5bFpHbDBaV1F0Y0dodmRHOGdLRFE1S1M1d2JtY3wxNmJkYTc2YTg2ZjQ4Zjg0NjdhZDE0ZDAyMzg3NzZlODE0YTM0MTA3ODc4OTFhMDc0ZTljYjMxMDcwNDIxNjE4',
-    imagealt:'LEGO Batman Legacy of The Dark Knight',
-    video: '',
-    buttonStyle: 'shop-now',
-    background:'linear-gradient(180deg, rgba(200,200,200,.9) 0%, rgba(180,180,180,.95) 50%, rgba(160,160,160,1) 100%)',
-    borderColor: '#000',
+    image:'https://thetoyshop.com/medias/Xmas-Hub-Header-2800x470px.jpg?context=bWFzdGVyfHJvb3R8NDI5MTc4fGltYWdlL2pwZWd8YURJNUwyZzJOaTh4TWpnek5qWTRORFUyTWpRMk1pOVliV0Z6WDBoMVlsOUlaV0ZrWlhKZk1qZ3dNSGcwTnpCd2VDNXFjR2N8NmJiYjBkYmY2MTlkYzA5ZTBkYzA5ZjY0OTkxMGE3OTAzNWQ5MWEwZjgzNmM0NmFjN2Q1YzVhYWNjYTljZjNlZA',
+    mobileImage:'https://thetoyshop.com/medias/Xmas-Hub-Header-2800x470px.jpg?context=bWFzdGVyfHJvb3R8NDI5MTc4fGltYWdlL2pwZWd8YURJNUwyZzJOaTh4TWpnek5qWTRORFUyTWpRMk1pOVliV0Z6WDBoMVlsOUlaV0ZrWlhKZk1qZ3dNSGcwTnpCd2VDNXFjR2N8NmJiYjBkYmY2MTlkYzA5ZTBkYzA5ZjY0OTkxMGE3OTAzNWQ5MWEwZjgzNmM0NmFjN2Q1YzVhYWNjYTljZjNlZA',
+    imagealt:''
   },
 };

@@ -1,13 +1,15 @@
 import PropTypes from "prop-types";
 import { CTAButton } from "./CTAButton";
 
-export const HubsMediaBanner = ({
+export const ChristmasMediaBanner = ({
+  modulebackgroundcolor,
   link,
   video,
   image,
   imagealt,
   buttonStyle,
   buttonLink,
+  linkTarget,
   ctaposition,
 }) => {
 
@@ -17,7 +19,7 @@ export const HubsMediaBanner = ({
         {`
           .media-module-banner-wrapper {
             margin: 0 auto;
-            max-width: 1140px;
+            max-width: 1440px;
             padding: 20px;
             position: relative;
           }
@@ -56,12 +58,13 @@ export const HubsMediaBanner = ({
           }
         `}
       </style>
-
+      <div className="media-module-banner-wrapper-outer" style={{ backgroundColor: modulebackgroundcolor }}>
       <div className="media-module-banner-wrapper">
 
         <a
           href={link}
           className="media-module-banner"
+          target={linkTarget}
         >
 
           {image && image !== " " && (
@@ -117,11 +120,13 @@ export const HubsMediaBanner = ({
         </a>
 
       </div>
+      </div>
     </>
   );
 };
 
-HubsMediaBanner.propTypes = {
+ChristmasMediaBanner.propTypes = {
+  modulebackgroundcolor: PropTypes.string,
   link: PropTypes.string,
   video: PropTypes.string,
   image: PropTypes.string,
@@ -129,6 +134,7 @@ HubsMediaBanner.propTypes = {
 
   buttonStyle: PropTypes.string,
   buttonLink: PropTypes.string,
+  linkTarget: PropTypes.string,
 
   ctaposition: PropTypes.string,
 };

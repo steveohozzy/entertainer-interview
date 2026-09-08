@@ -9,13 +9,13 @@ import {
   setDoc,
 } from "firebase/firestore";
 
-import { CountdownTimer } from "./CountdownTimer";
+import { ChristmasHeroText } from "./ChristmasHeroText";
 import { useArgs } from "storybook/preview-api";
-import { control } from "leaflet";
+import { color } from "storybook/internal/theming";
 
 export default {
-  title: "Modules/Countdown Timer",
-  component: CountdownTimer,
+  title: "Christmas/Hero Text",
+  component: ChristmasHeroText,
 
   parameters: {
     layout: "fullscreen",
@@ -36,106 +36,49 @@ export default {
       control: "boolean",
     },
 
-    logoImage: {
-      control: "text",
-    },
-
-    logoAlt: {
-      control: "text",
-    },
-
     title: {
       control: "text",
     },
 
-    tagline: {
+    text: {
       control: "text",
     },
 
-    targetDate: {
-      control: "date",
-    },
-
-    targetTime: {
-      control: "text",
-    },
-
-    expiredText: {
-      control: "text",
-    },
-
-    backgroundColor: {
+    modulebackgroundcolor: {
       control: "color",
     },
 
-    titleColor: {
+    stripbackgroundcolor: {
       control: "color",
     },
 
-    textColor: {
+    striptextcolor: {
       control: "color",
     },
 
-    numberColor: {
+    textcolor: {
       control: "color",
-    },
-
-    labelColor: {
-      control: "color",
-    },
-
-    buttonStyle: {
-      options: [
-        'none',
-        'shop-now',
-        'pre-order-now',
-        'store-events',
-        'store-locator',
-        'enter',
-        'download',
-        'read',
-        'sign-up',
-        'play',
-      ],
-      control: {
-        type: 'radio',
-      },
-    },
-    buttonLink: {
-      control: 'text',
     },
   },
 };
 
-export const Countdown = {
-
+export const ChristmasHeroTextSection = {
   args: {
 
     moduleName: "",
     selectedModule: "",
     saveModule: false,
 
-    logoImage: "",
-    logoAlt: "",
+    title: "Hub",
 
-    title: "Coming Soon",
+    text:
+      "Get closer to the world’s most popular sport with quality collectibles and merch. Whether its club or country find your favourite football teams and players in cards, figures, games and more. Bring the atmosphere of the stadium home and get closer to the game than ever before!",
 
-    tagline: "The Entertainer is coming soon!",
+    modulebackgroundcolor: "#fff",
 
-    targetDate: new Date("2026-12-25").getTime(),
-
-    targetTime: "09:00",
-
-    expiredText: "This event has started!",
-
-    backgroundColor: "#1f2b91",
-    titleColor: "#ffffff",
-    textColor: "#ffffff",
-    numberColor: "#1f2b91",
-    labelColor: "#444444",
-    buttonStyle: 'none',
-    buttonLink: '',
-
+    stripbackgroundcolor: "#1f2b91",
+    striptextcolor: "#fff",
+    textcolor: "#1f2b91",
   },
 
   render: function Render() {
@@ -146,12 +89,15 @@ export const Countdown = {
     const loadingRef = useRef(false);
     const previousModule = useRef("");
 
+    // LOAD MODULE
+
     useEffect(() => {
 
       if (
         !currentArgs.selectedModule ||
         loadingRef.current ||
-        previousModule.current === currentArgs.selectedModule
+        previousModule.current ===
+        currentArgs.selectedModule
       ) return;
 
       const load = async () => {
@@ -162,7 +108,7 @@ export const Countdown = {
 
           const ref = doc(
             db,
-            "countdown-modules",
+            "ChristmasHeroText-modules",
             currentArgs.selectedModule
           );
 
@@ -184,7 +130,7 @@ export const Countdown = {
 
           }
 
-        } catch (e) {
+        } catch(e){
 
           console.log(
             "load error",
@@ -201,7 +147,8 @@ export const Countdown = {
 
     }, [currentArgs.selectedModule]);
 
-        // SAVE MODULE
+
+    // SAVE MODULE
 
     useEffect(() => {
 
@@ -225,21 +172,21 @@ export const Countdown = {
           await setDoc(
             doc(
               db,
-              "countdown-modules",
+              "ChristmasHeroText-modules",
               moduleName
             ),
             fields,
             {
-              merge: false
+              merge:false
             }
           );
 
           updateArgs({
-            saveModule: false,
-            selectedModule: moduleName
+            saveModule:false,
+            selectedModule:moduleName
           });
 
-        } catch (e) {
+        } catch(e){
 
           console.log(
             "save error",
@@ -266,7 +213,7 @@ export const Countdown = {
           const snap = await getDocs(
             collection(
               db,
-              "countdown-modules"
+              "ChristmasHeroText-modules"
             )
           );
 
@@ -276,7 +223,7 @@ export const Countdown = {
             )
           );
 
-        } catch (e) {
+        } catch(e){
 
           console.log(
             "module list error",
@@ -299,22 +246,25 @@ export const Countdown = {
       ...componentArgs
     } = currentArgs;
 
-        return (
+
+    return (
       <>
         {createPortal(
           <div
             style={{
-              position: "fixed",
-              top: 10,
-              right: 10,
-              zIndex: 9999,
-              padding: 12,
-              background: "#111",
-              color: "#fff",
-              borderRadius: "4px",
+              position:"fixed",
+              top:10,
+              right:10,
+              zIndex:9999,
+              padding:12,
+              background:"#111",
+              color:"#fff",
+              borderRadius:"4px"
             }}
           >
+
             <div>
+
               <label>
                 Load existing module:
               </label>
@@ -324,20 +274,21 @@ export const Countdown = {
                   currentArgs.selectedModule || ""
                 }
                 style={{
-                  color: "#000",
+                  color: '#000'
                 }}
-                onChange={(e) => {
+                onChange={(e)=>{
                   updateArgs({
                     ...currentArgs,
-                    selectedModule: e.target.value,
+                    selectedModule:e.target.value
                   });
                 }}
               >
+
                 <option value="">
                   -- select saved module --
                 </option>
 
-                {modules.map((m) => (
+                {modules.map((m)=>(
                   <option
                     key={m}
                     value={m}
@@ -345,6 +296,7 @@ export const Countdown = {
                     {m}
                   </option>
                 ))}
+
               </select>
 
             </div>
@@ -353,7 +305,7 @@ export const Countdown = {
           document.body
         )}
 
-        <CountdownTimer
+        <ChristmasHeroText
           {...componentArgs}
         />
 

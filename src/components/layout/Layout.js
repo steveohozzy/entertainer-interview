@@ -92,27 +92,27 @@ const Layout = () => {
     navigate('/account');
   }
 
-  const isMaintenance = process.env.REACT_APP_MAINTENANCE_MODE === "true";
+  // const isMaintenance = process.env.REACT_APP_MAINTENANCE_MODE === "true";
 
-  if (isMaintenance) {
-    return (
-      <div className="flex flex-col items-center justify-center h-screen bg-brandBlue text-white font-sans px-4 text-center">
-        <img
-          src="/text-logo.svg"
-          alt="The Entertainer"
-          className="w-[200px] mb-6"
-        />
+  // if (isMaintenance) {
+  //   return (
+  //     <div className="flex flex-col items-center justify-center h-screen bg-brandBlue text-white font-sans px-4 text-center">
+  //       <img
+  //         src="/text-logo.svg"
+  //         alt="The Entertainer"
+  //         className="w-[200px] mb-6"
+  //       />
 
-        <h1 className="text-3xl font-bold mb-2">
-          Under Maintenance
-        </h1>
+  //       <h1 className="text-3xl font-bold mb-2">
+  //         Under Maintenance
+  //       </h1>
 
-        <p className="text-gray-200 max-w-md">
-          This preview environment is locked. We will be back online shortly.
-        </p>
-      </div>
-    );
-  }
+  //       <p className="text-gray-200 max-w-md">
+  //         This preview environment is locked. We will be back online shortly.
+  //       </p>
+  //     </div>
+  //   );
+  // }
 
   return (
     <>

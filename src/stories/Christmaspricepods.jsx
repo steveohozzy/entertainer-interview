@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 
 /** Primary UI component for user interaction */
 export const ChristmasPricePods = ({
+  modulebackgroundcolor,
   pod1image,
   pod1alt,
   pod1link,
@@ -23,9 +24,14 @@ export const ChristmasPricePods = ({
      
   <style>
     {`
+    .christmas-hub .price-carousel {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 10px;
+    }
 .christmas-hub .price-carousel .carousel-cell {
   width: 33.333%;
-  padding: 0 10px;
+  padding: 20px 10px;
 }
 
 .christmas-hub .price-carousel .carousel-cell a {
@@ -37,7 +43,7 @@ export const ChristmasPricePods = ({
 }
 
 .christmas-hub .price-carousel .carousel-cell a:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .christmas-hub .price-carousel .carousel-cell img {
@@ -65,6 +71,10 @@ export const ChristmasPricePods = ({
 
 @media (min-width: 768px) {
   .christmas-hub .price-carousel .carousel-cell {
+    width: 25%;
+  }
+
+  .christmas-hub .price-carousel:has(.carousel-cell:nth-child(5)) .carousel-cell {
     width: 20%;
   }
 }
@@ -90,7 +100,7 @@ export const ChristmasPricePods = ({
 
 </style>
 
-<div class="christmas-hub">
+<div class="christmas-hub" style={{ backgroundColor: modulebackgroundcolor }}>
   <div
     class="carousel price-carousel js-flickity flickity-enabled is-draggable"
     data-flickity='{ "autoPlay": true, "wrapAround": true, "cellAlign": "left"}'
@@ -127,13 +137,15 @@ export const ChristmasPricePods = ({
       </div>
     </div>
 
-    <div class="carousel-cell">
-      <div class="price-pod">
-        <a href={pod5link} title={pod5alt}>
-            <img alt={pod5alt} src={pod5image} title={pod5alt} />
-          </a>
+    {pod5image &&
+      <div class="carousel-cell">
+        <div class="price-pod">
+          <a href={pod5link} title={pod5alt}>
+              <img alt={pod5alt} src={pod5image} title={pod5alt} />
+            </a>
+        </div>
       </div>
-    </div>
+    }
 
   </div>
 </div>
@@ -143,20 +155,20 @@ export const ChristmasPricePods = ({
 };
 
 ChristmasPricePods.propTypes = {
-  /** Christmas Pods contents */
-  pod1image: PropTypes.string.isRequired,
+  modulebackgroundcolor: PropTypes.string,
+  pod1image: PropTypes.string,
   pod1alt: PropTypes.string,
-  pod1link: PropTypes.string.isRequired,
-  pod2image: PropTypes.string.isRequired,
+  pod1link: PropTypes.string,
+  pod2image: PropTypes.string,
   pod2alt: PropTypes.string,
-  pod2link: PropTypes.string.isRequired,
-  pod3image: PropTypes.string.isRequired,
+  pod2link: PropTypes.string,
+  pod3image: PropTypes.string,
   pod3alt: PropTypes.string,
-  pod3link: PropTypes.string.isRequired,
-  pod4image: PropTypes.string.isRequired,
+  pod3link: PropTypes.string,
+  pod4image: PropTypes.string,
   pod4alt: PropTypes.string,
-  pod4link: PropTypes.string.isRequired,
-  pod5image: PropTypes.string.isRequired,
+  pod4link: PropTypes.string,
+  pod5image: PropTypes.string,
   pod5alt: PropTypes.string,
-  pod5link: PropTypes.string.isRequired,
+  pod5link: PropTypes.string,
 };

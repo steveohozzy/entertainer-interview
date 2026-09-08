@@ -44,6 +44,10 @@ export default {
       control: "text",
     },
 
+    modulebackgroundcolor: {
+      control: "color",
+    },
+
     stripbackgroundcolor: {
       control: "color",
     },
@@ -69,6 +73,8 @@ export const HubHeroSection = {
 
     text:
       "Get closer to the world’s most popular sport with quality collectibles and merch. Whether its club or country find your favourite football teams and players in cards, figures, games and more. Bring the atmosphere of the stadium home and get closer to the game than ever before!",
+
+    modulebackgroundcolor: "#fff",
 
     stripbackgroundcolor: "#1f2b91",
     striptextcolor: "#fff",

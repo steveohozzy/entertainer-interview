@@ -191,9 +191,11 @@
     background-color: var(--consistent-hub-header-bg-color);
     color: var(--consistent-hub-header-text-color);
     font-family: "Nunito Bold", "Tahoma Bold", sans-serif;
-    font-size: 24px;
+    font-size: 18px;
     border-radius: 8px;
+    margin: 0;
     margin-bottom: 20px;
+    padding: 5px 0;
   }
 
   .consistent-hub-header-content p {
@@ -249,7 +251,7 @@
 
   .consistent-hub-promotional-banner {
     width: 100%;
-    max-width: 980px;
+    max-width: 1140px;
     margin: 10px auto;
   }
 
@@ -293,7 +295,7 @@
     text-align: center;
   }
 
-  .consistent-hubs-guides-area .consistent-hubs-guides-content h2 {
+  .consistent-hubs-guides-area .consistent-hubs-guides-content .title {
     text-transform: uppercase;
     background: linear-gradient(
         180deg, 
@@ -315,7 +317,7 @@
 /* Carousel */
 .consistent-hubs-guides-area .blog-carousel .carousel {
       margin: 0 auto;
-      max-width: 940px;
+      max-width: 1140px;
       padding: 0 20px;
     }
 
@@ -479,10 +481,13 @@
   transition: all 0.3s;
   box-shadow: 0 0 0 4px rgba(255,255,255,0);
   background: var(--shop-by-category-pod-bg);
+  overflow: hidden;
 }
 
 .consistent-hub-shop-by-category-categories-item .consistent-hub-shop-by-category-categories-item-link img {
   transition: all 0.3s;
+  max-width: 100%;
+  height: auto;
 }
 
 .consistent-hub-shop-by-category-categories-item:hover {

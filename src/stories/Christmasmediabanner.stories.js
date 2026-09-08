@@ -9,19 +9,18 @@ import {
 
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { singlemodulebanner } from './singlemodulebanner';
+import { ChristmasMediaBanner } from './Christmasmediabanner';
 import { useArgs } from 'storybook/preview-api';
 
 export default {
-  title: 'Modules/Single Module Banner',
-  component: singlemodulebanner,
+  title: 'Christmas/Media Banner',
+  component: ChristmasMediaBanner,
 
   parameters: {
     layout: 'fullscreen',
   },
 
   argTypes: {
-
     moduleName: {
       control: 'text',
     },
@@ -34,6 +33,17 @@ export default {
 
     saveModule: {
       control: 'boolean',
+    },
+
+    ctaposition: {
+      options: [
+        'left',
+        'center',
+        'right',
+      ],
+      control: {
+        type: 'radio',
+      },
     },
 
     buttonStyle: {
@@ -53,10 +63,22 @@ export default {
         type: 'radio',
       },
     },
+
+    buttonLink: {
+      control: 'text',
+    },
+
+    linkTarget: {
+      options: ['_blank', '_self', '_parent', '_top'],
+      control: {
+        type: 'select',
+      },
+    },
   },
 
   decorators: [
     (Story) => {
+
       const [currentArgs, updateArgs] = useArgs();
 
       const [modules, setModules] = useState([]);
@@ -77,14 +99,13 @@ export default {
             const snap = await getDocs(
               collection(
                 db,
-                'singlemodulebanner-modules'
+                'Christmas-video-banner'
               )
             );
 
-            const list =
-              snap.docs.map(d => d.id);
-
-            setModules(list);
+            setModules(
+              snap.docs.map(d => d.id)
+            );
 
           } catch(e){
 
@@ -122,7 +143,7 @@ export default {
 
             const ref = doc(
               db,
-              'singlemodulebanner-modules',
+              'Christmas-video-banner',
               currentArgs.selectedModule
             );
 
@@ -136,12 +157,9 @@ export default {
 
               updateArgs({
                 ...currentArgs,
-
                 moduleName:
                   currentArgs.selectedModule,
-
-                saveModule:false,
-
+                saveModule: false,
                 ...snap.data(),
               });
 
@@ -190,18 +208,19 @@ export default {
             await setDoc(
               doc(
                 db,
-                'singlemodulebanner-modules',
+                'Christmas-video-banner',
                 moduleName
               ),
               fields,
               {
-                merge:false
+                merge: false
               }
             );
 
             updateArgs({
-              saveModule:false,
-              selectedModule:moduleName
+              ...currentArgs,
+              saveModule: false,
+              selectedModule: moduleName
             });
 
             console.log(
@@ -229,19 +248,19 @@ export default {
           {createPortal(
             <div
               style={{
-                position:'fixed',
-                top:10,
-                right:10,
-                zIndex:9999,
-                padding:12,
-                background:'#111',
-                color:'#fff',
-                borderRadius:'4px',
+                position: 'fixed',
+                top: 10,
+                right: 10,
+                zIndex: 9999,
+                padding: 12,
+                background: '#111',
+                color: '#fff',
+                borderRadius: '4px',
               }}
             >
               <div
                 style={{
-                  marginBottom:8
+                  marginBottom: 8
                 }}
               >
                 <label>
@@ -253,9 +272,9 @@ export default {
                     currentArgs.selectedModule || ""
                   }
                   style={{
-                    color:'#000'
+                    color: '#000'
                   }}
-                  onChange={(e)=>{
+                  onChange={(e) => {
 
                     updateArgs({
                       ...currentArgs,
@@ -270,7 +289,7 @@ export default {
                     -- select module --
                   </option>
 
-                  {modules.map((m)=>(
+                  {modules.map((m) => (
 
                     <option
                       key={m}
@@ -282,6 +301,7 @@ export default {
                   ))}
 
                 </select>
+
               </div>
             </div>,
             document.body
@@ -290,24 +310,31 @@ export default {
           <Story />
         </>
       );
+
     },
   ],
 };
 
-export const SinglemodulebannerSection = {
+export const ChristmasMediaBannerSection = {
   args: {
+    moduleName: '',
+    selectedModule: '',
+    saveModule: false,
 
-    moduleName:'',
-    selectedModule:'',
-    saveModule:false,
+    modulebackgroundcolor:'',
 
-    bodyText: 'LEGO Batman Legacy of The Dark Knight',
-    link: 'https://www.thetoyshop.com/search?text=LEGO%20Batman%20Legacy%20of%20The%20Dark%20Knight',
-    image: 'https://www.thetoyshop.com/medias/edited-photo-49-.png?context=bWFzdGVyfHJvb3R8MzQ3NDgxfGltYWdlL3BuZ3xhREl6TDJnNE5TOHhNamMzTXpBd05UZzROVFEzTUM5bFpHbDBaV1F0Y0dodmRHOGdLRFE1S1M1d2JtY3wxNmJkYTc2YTg2ZjQ4Zjg0NjdhZDE0ZDAyMzg3NzZlODE0YTM0MTA3ODc4OTFhMDc0ZTljYjMxMDcwNDIxNjE4',
-    imagealt:'LEGO Batman Legacy of The Dark Knight',
-    video: '',
+    link: 'https://www.thetoyshop.com/search?text=EA%20SPORTS%20FC26',
+
+    video: 'https://www.thetoyshop.com/medias/FC26-WC-RETAIL-CUSTOM-NoSubs-EditGlobal-1080p-16x9-29-97fps-30s-ENG-GB-1-1-.mp4?context=bWFzdGVyfHJvb3R8OTk0OTM1OXx2aWRlby9xdWlja3RpbWV8YUdZekwyZzBaaTh4TWpjNE5qYzVOVEU0TkRFMU9DOUdRekkyWDFkRFgxSkZWRUZKVEY5RFZWTlVUMDB0VG05VGRXSnpMVVZrYVhSSGJHOWlZV3hmTVRBNE1IQmZNVFo0T1Y4eU9TMDVOMlp3YzE4ek1ITmZSVTVIWDBkQ0lDZ3hLU0FvTVNrdWJYQTB8MDcwN2NiMjJjMGI1ZTc5MGMzOWJiMzMyNjNiM2U5NDMzZDY5OTczM2E3ZGI4Yjk3ZmVjNTk4NzdiZGUzYjNlMg',
+
+    image: '',
+    imagealt: '',
+
     buttonStyle: 'shop-now',
-    background:'linear-gradient(180deg, rgba(200,200,200,.9) 0%, rgba(180,180,180,.95) 50%, rgba(160,160,160,1) 100%)',
-    borderColor: '#000',
+    buttonLink: 'https://www.thetoyshop.com/search?text=EA%20SPORTS%20FC26',
+
+    linkTarget: '_self',
+
+    ctaposition: 'center',
   },
 };

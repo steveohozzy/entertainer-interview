@@ -9,12 +9,12 @@ import {
 
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { HubsGuides } from './Hubsblogs';
+import { ChristmasGuides } from './Christmasblogs';
 import { useArgs } from "storybook/preview-api";
 
 export default {
-  title: 'Modules/Blogs',
-  component: HubsGuides,
+  title: 'Christmas/Blogs',
+  component: ChristmasGuides,
   parameters: {
     layout: 'fullscreen',
   },
@@ -23,16 +23,6 @@ export default {
     moduleName: { control: 'text' },
     selectedModule: { control: 'text' },
     saveModule: { control: 'boolean' },
-    lozengetextcolor: {
-      control: {
-        type: 'select',
-      },
-      options: ['#000000', '#FFFFFF'],
-      labels: {
-        '#000000': 'Black',
-        '#FFFFFF': 'White',
-      },
-    },
 
     panel1buttonStyle: {
       options: [
@@ -138,7 +128,7 @@ export default {
       useEffect(() => {
         const loadModules = async () => {
           try {
-            const snap = await getDocs(collection(db, 'hubs-guides-modules'));
+            const snap = await getDocs(collection(db, 'Christmas-guides-modules'));
             setModules(snap.docs.map(d => d.id));
           } catch (e) {
             console.log('module list error', e);
@@ -164,7 +154,7 @@ export default {
           try {
             const ref = doc(
               db,
-              'hubs-guides-modules',
+              'Christmas-guides-modules',
               currentArgs.selectedModule
             );
 
@@ -210,7 +200,7 @@ export default {
             } = currentArgs;
 
             await setDoc(
-              doc(db, 'hubs-guides-modules', moduleName),
+              doc(db, 'Christmas-guides-modules', moduleName),
               fields,
               { merge: false }
             );
@@ -275,14 +265,15 @@ export default {
   ],
 };
 
-export const HubsGuidesContent = {
+export const ChristmasGuidesContent = {
   args: {
-    user: 'stories',
 
     moduleName: '',
     selectedModule: '',
     saveModule: false,
+    modulebackgroundcolor:'',
     title: 'Gaming Guides',
+    titlelink: '',
     lozengebackgroundcolor: '',
     lozengetextcolor: '#000000',
 

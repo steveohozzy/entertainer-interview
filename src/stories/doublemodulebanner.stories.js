@@ -73,6 +73,7 @@ export default {
       'download',
       'read',
       'sign-up',
+      'play',
     ],
     control: 'radio',
   },

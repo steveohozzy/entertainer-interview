@@ -56,6 +56,11 @@ export const singlemodulebanner = ({
       icon: 'plane',
       className: 'cta-sign-up',
     },
+    play: {
+      text: 'Play',
+      icon: 'play',
+      className: 'cta-play',
+    },
   };
  
   return (

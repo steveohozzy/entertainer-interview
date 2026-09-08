@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 export const HubHeroText = ({
   title,
   text,
+  modulebackgroundcolor,
   stripbackgroundcolor,
   striptextcolor,
   textcolor,
@@ -15,9 +16,6 @@ export const HubHeroText = ({
     .category-title {
     display: none;
   }
-  #consistent-hub-header-area {
-    background-color: #fff;
-  }
   .consistent-hub-header-content {
     margin: 0 auto;
     width: 100%;
@@ -26,14 +24,16 @@ export const HubHeroText = ({
     text-align: center;
   }
 
-  .consistent-hub-header-content h2 {
+  .consistent-hub-header-content .title {
     text-transform: uppercase;
     background-color: #1f2b91;
     color: #fff;
     font-family: "Nunito Bold", "Tahoma Bold", sans-serif;
-    font-size: 24px;
+    font-size: 18px;
     border-radius: 8px;
+    magin: 0;
     margin-bottom: 20px;
+    padding: 5px 0;
   }
 
   .consistent-hub-header-content p {
@@ -44,9 +44,9 @@ export const HubHeroText = ({
   }
         `}
       </style>
-      <div id="consistent-hub-header-area">
+      <div id="consistent-hub-header-area" style={{backgroundColor: modulebackgroundcolor}}>
         <div class="consistent-hub-header-content">
-          <h2 style={{backgroundColor: stripbackgroundcolor, color: striptextcolor}}>{title}</h2>
+          <div className="title" style={{backgroundColor: stripbackgroundcolor, color: striptextcolor}}>{title}</div>
           {text && <p style={{color: textcolor}}>{text}</p>}
         </div>
       </div>

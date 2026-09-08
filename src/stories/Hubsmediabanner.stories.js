@@ -37,22 +37,35 @@ export default {
 
     ctaposition: {
       options: [
-        "left",
-        "center",
-        "right",
+        'left',
+        'center',
+        'right',
       ],
-      control: "radio",
+      control: {
+        type: 'radio',
+      },
     },
 
-    ctaIcon: {
+    buttonStyle: {
       options: [
-        "basket",
-        "glasses",
-        "football",
-        "pencil",
-        "plane",
+        'none',
+        'shop-now',
+        'pre-order-now',
+        'store-events',
+        'store-locator',
+        'enter',
+        'download',
+        'read',
+        'sign-up',
+        'play',
       ],
-      control: "radio",
+      control: {
+        type: 'radio',
+      },
+    },
+
+    buttonLink: {
+      control: 'text',
     },
   },
 
@@ -139,7 +152,7 @@ export default {
                 ...currentArgs,
                 moduleName:
                   currentArgs.selectedModule,
-                saveModule:false,
+                saveModule: false,
                 ...snap.data(),
               });
 
@@ -193,14 +206,14 @@ export default {
               ),
               fields,
               {
-                merge:false
+                merge: false
               }
             );
 
             updateArgs({
               ...currentArgs,
-              saveModule:false,
-              selectedModule:moduleName
+              saveModule: false,
+              selectedModule: moduleName
             });
 
             console.log(
@@ -228,19 +241,19 @@ export default {
           {createPortal(
             <div
               style={{
-                position:'fixed',
-                top:10,
-                right:10,
-                zIndex:9999,
-                padding:12,
-                background:'#111',
-                color:'#fff',
-                borderRadius:'4px',
+                position: 'fixed',
+                top: 10,
+                right: 10,
+                zIndex: 9999,
+                padding: 12,
+                background: '#111',
+                color: '#fff',
+                borderRadius: '4px',
               }}
             >
               <div
                 style={{
-                  marginBottom:8
+                  marginBottom: 8
                 }}
               >
                 <label>
@@ -252,9 +265,9 @@ export default {
                     currentArgs.selectedModule || ""
                   }
                   style={{
-                    color:'#000'
+                    color: '#000'
                   }}
-                  onChange={(e)=>{
+                  onChange={(e) => {
 
                     updateArgs({
                       ...currentArgs,
@@ -269,7 +282,7 @@ export default {
                     -- select module --
                   </option>
 
-                  {modules.map((m)=>(
+                  {modules.map((m) => (
 
                     <option
                       key={m}
@@ -297,25 +310,20 @@ export default {
 
 export const HubsMediaBannerSection = {
   args: {
-    moduleName:'',
-    selectedModule:'',
-    saveModule:false,
+    moduleName: '',
+    selectedModule: '',
+    saveModule: false,
 
-    link:'https://www.thetoyshop.com/search?text=EA%20SPORTS%20FC26',
+    link: 'https://www.thetoyshop.com/search?text=EA%20SPORTS%20FC26',
 
-    video:'https://www.thetoyshop.com/medias/FC26-WC-RETAIL-CUSTOM-NoSubs-EditGlobal-1080p-16x9-29-97fps-30s-ENG-GB-1-1-.mp4?context=bWFzdGVyfHJvb3R8OTk0OTM1OXx2aWRlby9xdWlja3RpbWV8YUdZekwyZzBaaTh4TWpjNE5qYzVOVEU0TkRFMU9DOUdRekkyWDFkRFgxSkZWRUZKVEY5RFZWTlVUMDB0VG05VGRXSnpMVVZrYVhSSGJHOWlZV3hmTVRBNE1IQmZNVFo0T1Y4eU9TMDVOMlp3YzE4ek1ITmZSVTVIWDBkQ0lDZ3hLU0FvTVNrdWJYQTB8MDcwN2NiMjJjMGI1ZTc5MGMzOWJiMzMyNjNiM2U5NDMzZDY5OTczM2E3ZGI4Yjk3ZmVjNTk4NzdiZGUzYjNlMg',
+    video: 'https://www.thetoyshop.com/medias/FC26-WC-RETAIL-CUSTOM-NoSubs-EditGlobal-1080p-16x9-29-97fps-30s-ENG-GB-1-1-.mp4?context=bWFzdGVyfHJvb3R8OTk0OTM1OXx2aWRlby9xdWlja3RpbWV8YUdZekwyZzBaaTh4TWpjNE5qYzVOVEU0TkRFMU9DOUdRekkyWDFkRFgxSkZWRUZKVEY5RFZWTlVUMDB0VG05VGRXSnpMVVZrYVhSSGJHOWlZV3hmTVRBNE1IQmZNVFo0T1Y4eU9TMDVOMlp3YzE4ek1ITmZSVTVIWDBkQ0lDZ3hLU0FvTVNrdWJYQTB8MDcwN2NiMjJjMGI1ZTc5MGMzOWJiMzMyNjNiM2U5NDMzZDY5OTczM2E3ZGI4Yjk3ZmVjNTk4NzdiZGUzYjNlMg',
 
-    image:'',
-    imagealt:'',
+    image: '',
+    imagealt: '',
 
-    buttontext:'Shop EA SPORTS FC26 Game Now',
-    ctaIcon: 'basket',
+    buttonStyle: 'shop-now',
+    buttonLink: 'https://www.thetoyshop.com/search?text=EA%20SPORTS%20FC26',
+
     ctaposition: 'center',
-    buttonbackgroundcolor:'#009e44',
-    buttonhoverbackgroundcolor:'#1f2b91',
-    buttontextcolor:'#fff',
-    buttonhovertextcolor:'#fff',
-    buttonbordercolor:'#dbe3ff',
-    buttonborderhovercolor:'#dbe3ff',
   },
 };

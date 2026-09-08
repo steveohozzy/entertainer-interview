@@ -1,8 +1,11 @@
 import PropTypes from "prop-types";
 import "./consistency.css";
 
-export const HubCategoryPods = ({
+export const ChristmasCategoryPods = ({
+  modulebackgroundcolor,
+
   podbackgroundcolor,
+  podtextcolor,
 
   lozengebackgroundcolor,
   lozengetextcolor,
@@ -208,7 +211,23 @@ const validCatpods = catpods.filter(
  
   return (
     <>
-      <div class="consistent-hub-shop-by-category-wrapper"
+      <style>
+        {`
+          .christmas.consistent-hub-shop-by-category-wrapper .consistent-hub-shop-by-category-area-header,
+          .christmas.consistent-hub-shop-by-category-wrapper .consistent-hub-shop-by-category-area,
+          .christmas.consistent-hub-shop-by-category-wrapper .consistent-hub-shop-by-category-categories {
+            padding: 0 20px;
+            max-width: 1440px;
+          }
+
+          .christmas.consistent-hub-shop-by-category-wrapper .consistent-hub-shop-by-category-categories {
+            padding: 0 0 20px;
+            max-width: calc(100% + 20px);
+            margin: 20px -10px 0;
+          }
+        `}
+      </style>
+      <div class="consistent-hub-shop-by-category-wrapper christmas"
       
           style={{
             "--shop-by-category-module-bg": '#fff',
@@ -216,6 +235,7 @@ const validCatpods = catpods.filter(
             "--shop-by-category-lozenge-bg": lozengebackgroundcolor,
             "--shop-by-category-lozenge-text-color": lozengetextcolor,
             "--shop-by-category-lozenge-title": lozengetitle,
+            backgroundColor: modulebackgroundcolor,
           }}
       
       >
@@ -240,7 +260,7 @@ const validCatpods = catpods.filter(
                 </a>
 
                 {pod.title && (
-                  <a href={pod.link} className="text-link">
+                  <a href={pod.link} className="text-link" style={{color: podtextcolor}}>
                     {pod.title}
                   </a>
                 )}
@@ -254,9 +274,12 @@ const validCatpods = catpods.filter(
   );
 };
 
-HubCategoryPods.propTypes = {
+ChristmasCategoryPods.propTypes = {
+
+  modulebackgroundcolor: PropTypes.string,
   
   podbackgroundcolor: PropTypes.string,
+  podtextcolor: PropTypes.string,
 
   lozengebackgroundcolor: PropTypes.string,
   lozengetextcolor: PropTypes.string,

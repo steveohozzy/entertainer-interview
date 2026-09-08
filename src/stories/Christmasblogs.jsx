@@ -2,8 +2,10 @@ import PropTypes from "prop-types";
 import { CTAButton } from "./CTAButton";
 import "./consistency.css";
 
-export const HubsGuides= ({
+export const ChristmasGuides= ({
+  modulebackgroundcolor,
   title,
+  titlelink,
   lozengebackgroundcolor,
   lozengetextcolor,
 
@@ -108,7 +110,16 @@ const validBlogPanels = catpanels.filter(
  
   return (
     <>
-<div class="consistent-hubs-guides-area"
+      <style>
+        {`
+          .consistent-hubs-guides-area.christmas .consistent-hubs-guides-content,
+          .consistent-hubs-guides-area.christmas .blog-carousel .carousel {
+            padding: 0 20px;
+            max-width: 1440px;
+          }
+        `}
+        </style>
+<div class="consistent-hubs-guides-area christmas"
 
 style={{
 "--consistent-guides-module-bg": '#fff',
@@ -118,11 +129,17 @@ style={{
 "--consistent-guides-panel-border-color": panelbordercolor,
 "--consistent-guides-panel-border-hover-color": panelbordercolor,
 "--consistent-guides-panel-hover-color": '#000',
+backgroundColor: modulebackgroundcolor,
 }}
 
 >
   <div class="consistent-hubs-guides-content">
+    {titlelink ? 
+      <a href={titlelink}><div className="title" style={{color: lozengetextcolor, background: lozengebackgroundcolor}}>{title}</div></a>
+    :
     <div className="title" style={{color: lozengetextcolor, background: lozengebackgroundcolor}}>{title}</div>
+    }
+    
   </div>
   <div class="blog-carousel">
     <div
@@ -161,106 +178,94 @@ style={{
 document.addEventListener("DOMContentLoaded", function () {
   setTimeout(function () {
 
-    function equalizeCarouselHeights() {
-      const carousels = document.querySelectorAll(".blog-carousel .js-flickity");
+  function equalizeCarouselHeights() {
+    const carousels = document.querySelectorAll(".blog-carousel .js-flickity");
 
-      carousels.forEach((carousel) => {
+    carousels.forEach((carousel) => {
 
-        const cards = carousel.querySelectorAll(".carousel-cell .carousel-cell-content");
+      const cards = carousel.querySelectorAll(".blog-carousel .carousel-cell .carousel-cell-content");
 
-        if (!cards.length) return;
+      if (!cards.length) return;
 
-        cards.forEach(card => {
-          card.style.height = "auto";
-        });
+      // reset heights first
+      cards.forEach(card => {
+        card.style.height = "auto";
+      });
 
-        let tallest = 0;
+      // find tallest
+      let tallest = 0;
 
-        cards.forEach(card => {
-          const height = card.offsetHeight;
+      cards.forEach(card => {
+        const height = card.offsetHeight;
 
-          if (height > tallest) {
-            tallest = height;
-          }
-        });
-
-        cards.forEach(card => {
-          card.style.height = tallest + "px";
-        });
-
-        const flkty = Flickity.data(carousel);
-
-        if (flkty) {
-          flkty.resize();
+        if (height > tallest) {
+          tallest = height;
         }
       });
-    }
 
-    function updateCarouselAlignment() {
+      // apply tallest height
+      cards.forEach(card => {
+        card.style.height = tallest + "px";
+      });
 
-      const carousels = document.querySelectorAll(".blog-carousel .js-flickity");
+      // tell Flickity to recalc sizes
+      const flkty = Flickity.data(carousel);
 
-      carousels.forEach((carousel) => {
-
-        const cells = carousel.querySelectorAll(".carousel-cell");
-
-        if (!cells.length) return;
-
-        const firstCell = cells[0];
-
-        const cellWidth = firstCell.offsetWidth;
-        const containerWidth = carousel.offsetWidth;
-
-        if (!cellWidth || !containerWidth) return;
-
-        const slidesFit = Math.floor(containerWidth / cellWidth);
-
-        const flkty = Flickity.data(carousel);
-
-        if (!flkty) return;
-
-        /*
-         * If all tiles fit, centre them.
-         * If they don't fit, keep the carousel left aligned.
-         */
-        if (cells.length <= slidesFit) {
-
-          flkty.options.cellAlign = "center";
-          flkty.options.contain = true;
-
-          carousel.classList.add("blog-carousel-static");
-
-        } else {
-
-          flkty.options.cellAlign = "left";
-          flkty.options.contain = true;
-
-          carousel.classList.remove("blog-carousel-static");
-        }
-
-        flkty.reloadCells();
+      if (flkty) {
         flkty.resize();
-        flkty.reposition();
-      });
-    }
-
-    // Wait for the existing Flickity initialisation
-    setTimeout(function () {
-      updateCarouselAlignment();
-      equalizeCarouselHeights();
-    }, 100);
-
-    // Recalculate on resize
-    window.addEventListener("resize", function () {
-
-      setTimeout(function () {
-        updateCarouselAlignment();
-        equalizeCarouselHeights();
-      }, 100);
-
+      }
     });
+  }
 
-  }, 2000);
+  const carousels = document.querySelectorAll(".js-flickity");
+
+  carousels.forEach((carousel) => {
+
+    const cells = carousel.querySelectorAll(".blog-carousel .carousel-cell .carousel-cell").length;
+
+    const firstCell = carousel.querySelector(".blog-carousel .carousel-cell .carousel-cell");
+
+    if (!firstCell) return;
+
+    const cellWidth = firstCell.offsetWidth;
+
+    const containerWidth = carousel.offsetWidth;
+
+    const slidesFit = Math.floor(containerWidth / cellWidth);
+
+    // init Flickity only if needed
+    if (cells > slidesFit) {
+
+      const flkty = new Flickity(carousel, {
+        autoPlay: true,
+        wrapAround: true,
+        contain: true,
+        cellAlign: "left"
+      });
+
+      // wait for Flickity layout
+      flkty.on("ready", function () {
+        equalizeCarouselHeights();
+      });
+
+      flkty.on("settle", function () {
+        equalizeCarouselHeights();
+      });
+
+    } else {
+      equalizeCarouselHeights();
+    }
+  });
+
+  // rerun on resize
+  window.addEventListener("resize", function () {
+    equalizeCarouselHeights();
+  });
+
+  equalizeCarouselHeights();
+
+   }, 2000);
+
 });
 `}
 </script>
@@ -268,8 +273,10 @@ document.addEventListener("DOMContentLoaded", function () {
   );
 };
 
-HubsGuides.propTypes = {
+ChristmasGuides.propTypes = {
+  modulebackgroundcolor: PropTypes.string,
   title: PropTypes.string,
+  titlelink: PropTypes.string,
   lozengebackgroundcolor: PropTypes.string,
   lozengetextcolor: PropTypes.string,
 

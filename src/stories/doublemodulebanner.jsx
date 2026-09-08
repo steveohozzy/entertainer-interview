@@ -61,6 +61,11 @@ const CTA_STYLES = {
     icon: 'plane',
     className: 'cta-sign-up',
   },
+  play: {
+    text: 'Play',
+    icon: 'play',
+    className: 'cta-play',
+  },
 };
 
 const panel1cta =

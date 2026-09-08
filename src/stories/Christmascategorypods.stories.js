@@ -14,12 +14,12 @@ import {
 } from "react";
 
 import { createPortal } from "react-dom";
-import { HubCategoryPods } from './Hubcategorypods';
+import { ChristmasCategoryPods } from './Christmascategorypods';
 import { useArgs } from 'storybook/preview-api';
 
 export default {
-  title: 'Modules/Category Pods',
-  component: HubCategoryPods,
+  title: 'Christmas/Category Pods',
+  component: ChristmasCategoryPods,
   parameters: {
     layout: 'fullscreen',
   },
@@ -34,16 +34,6 @@ export default {
     },
     saveModule: {
       control: 'boolean',
-    },
-    lozengetextcolor: {
-      control: {
-        type: 'select',
-      },
-      options: ['#000000', '#FFFFFF'],
-      labels: {
-        '#000000': 'Black',
-        '#FFFFFF': 'White',
-      },
     },
   },
 
@@ -68,7 +58,7 @@ export default {
           try {
             const ref = doc(
               db,
-              "hub-category-pods-modules",
+              "Christmas-category-pods-modules",
               currentArgs.selectedModule
             );
 
@@ -111,7 +101,7 @@ export default {
             } = currentArgs;
 
             await setDoc(
-              doc(db, "hub-category-pods-modules", moduleName),
+              doc(db, "Christmas-category-pods-modules", moduleName),
               fields,
               { merge: false }
             );
@@ -133,7 +123,7 @@ export default {
         const loadModules = async () => {
           try {
             const snap = await getDocs(
-              collection(db, "hub-category-pods-modules")
+              collection(db, "Christmas-category-pods-modules")
             );
             setModules(snap.docs.map(d => d.id));
           } catch (e) {
@@ -198,7 +188,10 @@ export const CategoryPodsHero = {
     selectedModule: "",
     saveModule: false,
 
+    modulebackgroundcolor:'',
+
     podbackgroundcolor:'',
+    podtextcolor:'',
 
     lozengebackgroundcolor: '',
     lozengetextcolor: '#000000',

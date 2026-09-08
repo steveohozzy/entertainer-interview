@@ -2,7 +2,10 @@ import PropTypes from "prop-types";
 import "./consistency.css";
 
 /** Primary UI component for user interaction */
-export const ShopByAgeModule = ({
+export const ShopByAgeChristmas = ({
+  lozengetitle,
+  lozengebackgroundcolor,
+  lozengetextcolor,
   images,
   modulebackgroundcolor,
   roundal1image,
@@ -57,7 +60,7 @@ export const ShopByAgeModule = ({
         background-color: var(--shop-by-age-bg);
     }
     .shop-by-age {
-      max-width: 1200px;
+      max-width: 1440px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -138,8 +141,8 @@ export const ShopByAgeModule = ({
 
     @media (min-width: 768px) {
       .shop-by-age .carousel-cell {
-        width: calc(100% / 7);
-        padding: 40px 10px 20px;
+        width: calc(100% / 6);
+        padding: 20px 10px 20px;
     }
         .shop-by-age a {
             font-size: 28px;
@@ -180,13 +183,54 @@ export const ShopByAgeModule = ({
 .shop-by-age.images a {
 box-shadow: none;
 }
+
+.chsristmas-hub-area {
+      width: 100%;
+      max-width: 1140px;
+      padding: 10px 20px;
+      margin: 0 auto;
+  }
+  .chsristmas-hub-area-header {
+    width: 100%;
+    max-width: 1440px;
+    padding: 10px 20px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .chsristmas-hub-area-header .chsristmas-hub-area-header-title {
+    text-transform: uppercase;
+    background: var(--shop-by-category-lozenge-bg);
+    color: var(--shop-by-category-lozenge-text-color);
+    font-family: "Nunito Bold", "Tahoma Bold", sans-serif;
+    font-size: 18px;
+    border-radius: 8px;
+    margin: 0;
+    box-shadow: inset 0 4px 10px rgba(255,255,255,0.1); /* subtle inner highlight */
+    backdrop-filter: blur(2px); /* optional slight blur for glass effect */
+    -webkit-backdrop-filter: blur(2px);
+    padding: 5px 0;
+}
         `}
       </style>
       <div class="shop-by-age-container"
         style={{
           backgroundColor: modulebackgroundcolor,
-        }}
+          }}
+      
       >
+        {lozengetitle &&
+        <div class="chsristmas-hub-area-header">
+          <div class="chsristmas-hub-area-header-title"
+            style={{
+              backgroundColor: lozengebackgroundcolor,
+              color: lozengetextcolor,
+            }}
+          >
+            {lozengetitle}
+          </div>
+        </div>
+        }
         <div class={`shop-by-age js-flickity flickity-enabled is-draggable ${images && 'images'}`} 
     data-flickity='{ "autoPlay": true, "wrapAround": true, "cellAlign": "left", "watchCSS": true }'>
           {roundal1link &&
@@ -323,8 +367,11 @@ box-shadow: none;
   );
 };
 
-ShopByAgeModule.propTypes = {
+ShopByAgeChristmas.propTypes = {
   /** contents */
+  lozengetitle: PropTypes.string,
+  lozengebackgroundcolor: PropTypes.string,
+  lozengetextcolor: PropTypes.string,
   images: PropTypes.bool,
   modulebackgroundcolor: PropTypes.string,
   roundal1image: PropTypes.string,
