@@ -20,20 +20,33 @@ import { useArgs } from 'storybook/preview-api';
 export default {
   title: 'Christmas/Category Pods',
   component: ChristmasCategoryPods,
+
   parameters: {
     layout: 'fullscreen',
   },
+
   argTypes: {
     selectedModule: {
       table: {
         disable: true,
       },
     },
+
     moduleName: {
       control: 'text',
     },
+
     saveModule: {
       control: 'boolean',
+    },
+
+    desktopcolumns: {
+      name: 'Desktop columns',
+      control: {
+        type: 'select',
+      },
+      options: [3, 4],
+      description: 'Number of category pods displayed per row on desktop. Mobile always displays 2 per row.',
     },
   },
 
@@ -125,6 +138,7 @@ export default {
             const snap = await getDocs(
               collection(db, "Christmas-category-pods-modules")
             );
+
             setModules(snap.docs.map(d => d.id));
           } catch (e) {
             console.log("module list error", e);
@@ -188,14 +202,18 @@ export const CategoryPodsHero = {
     selectedModule: "",
     saveModule: false,
 
-    modulebackgroundcolor:'',
+    // 3 or 4 pods per row on desktop
+    // Mobile automatically switches to 2
+    desktopcolumns: 3,
 
-    podbackgroundcolor:'',
-    podtextcolor:'',
+    modulebackgroundcolor: '',
+
+    podbackgroundcolor: '',
+    podtextcolor: '',
 
     lozengebackgroundcolor: '',
     lozengetextcolor: '#000000',
-    
+
     lozengetitle: '',
 
     pod1image: '',

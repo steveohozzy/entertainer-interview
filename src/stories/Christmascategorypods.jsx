@@ -10,6 +10,9 @@ export const ChristmasCategoryPods = ({
   lozengebackgroundcolor,
   lozengetextcolor,
   lozengetitle,
+
+  desktopcolumns = 3,
+
   pod1image,
   pod1imagealt,
   pod1title,
@@ -127,127 +130,147 @@ export const ChristmasCategoryPods = ({
 
   pod24image,
   pod24imagealt,
-  pod24title,
   pod24link,
 }) => {
 
-const catpods = [
-  {
-    image: pod1image,
-    alt: pod1imagealt,
-    title: pod1title,
-    link: pod1link,
-  },
-  {
-    image: pod2image,
-    alt: pod2imagealt,
-    title: pod2title,
-    link: pod2link,
-  },
-  {
-    image: pod3image,
-    alt: pod3imagealt,
-    title: pod3title,
-    link: pod3link,
-  },
-  {
-    image: pod4image,
-    alt: pod4imagealt,
-    title: pod4title,
-    link: pod4link,
-  },
-  {
-    image: pod5image,
-    alt: pod5imagealt,
-    title: pod5title,
-    link: pod5link,
-  },
-  {
-    image: pod6image,
-    alt: pod6imagealt,
-    title: pod6title,
-    link: pod6link,
-  },
-  {
-    image: pod7image,
-    alt: pod7imagealt,
-    title: pod7title,
-    link: pod7link,
-  },
-  {
-    image: pod8image,
-    alt: pod8imagealt,
-    title: pod8title,
-    link: pod8link,
-  },
-  {
-    image: pod9image,
-    alt: pod9imagealt,
-    title: pod9title,
-    link: pod9link,
-  },
-  {
-    image: pod10image,
-    alt: pod10imagealt,
-    title: pod10title,
-    link: pod10link,
-  },
-  {
-    image: pod11image,
-    alt: pod11imagealt,
-    title: pod11title,
-    link: pod11link,
-  },
-  {
-    image: pod12image,
-    alt: pod12imagealt,
-    title: pod12title,
-    link: pod12link,
-  },
-];
-const validCatpods = catpods.filter(
-  (p) => p.image && p.link
-);
- 
+  const catpods = [
+    {
+      image: pod1image,
+      alt: pod1imagealt,
+      title: pod1title,
+      link: pod1link,
+    },
+    {
+      image: pod2image,
+      alt: pod2imagealt,
+      title: pod2title,
+      link: pod2link,
+    },
+    {
+      image: pod3image,
+      alt: pod3imagealt,
+      title: pod3title,
+      link: pod3link,
+    },
+    {
+      image: pod4image,
+      alt: pod4imagealt,
+      title: pod4title,
+      link: pod4link,
+    },
+    {
+      image: pod5image,
+      alt: pod5imagealt,
+      title: pod5title,
+      link: pod5link,
+    },
+    {
+      image: pod6image,
+      alt: pod6imagealt,
+      title: pod6title,
+      link: pod6link,
+    },
+    {
+      image: pod7image,
+      alt: pod7imagealt,
+      title: pod7title,
+      link: pod7link,
+    },
+    {
+      image: pod8image,
+      alt: pod8imagealt,
+      title: pod8title,
+      link: pod8link,
+    },
+    {
+      image: pod9image,
+      alt: pod9imagealt,
+      title: pod9title,
+      link: pod9link,
+    },
+    {
+      image: pod10image,
+      alt: pod10imagealt,
+      title: pod10title,
+      link: pod10link,
+    },
+    {
+      image: pod11image,
+      alt: pod11imagealt,
+      title: pod11title,
+      link: pod11link,
+    },
+    {
+      image: pod12image,
+      alt: pod12imagealt,
+      title: pod12title,
+      link: pod12link,
+    },
+  ];
+
+  const validCatpods = catpods.filter(
+    (p) => p.image && p.link
+  );
+
   return (
     <>
       <style>
         {`
-          .christmas.consistent-hub-shop-by-category-wrapper .consistent-hub-shop-by-category-area-header,
-          .christmas.consistent-hub-shop-by-category-wrapper .consistent-hub-shop-by-category-area,
-          .christmas.consistent-hub-shop-by-category-wrapper .consistent-hub-shop-by-category-categories {
+          .consistent-hub-shop-by-category-categories {
+            --category-columns: ${desktopcolumns};
+          }
+
+          .consistent-hub-shop-by-category-categories-item {
+            width: calc(
+              (100% / var(--category-columns)) - 20px
+            );
+          }
+
+          .christmas.consistent-hub-shop-by-category-wrapper
+          .consistent-hub-shop-by-category-area-header,
+          .christmas.consistent-hub-shop-by-category-wrapper
+          .consistent-hub-shop-by-category-area,
+          .christmas.consistent-hub-shop-by-category-wrapper
+          .consistent-hub-shop-by-category-categories {
             padding: 0 20px;
             max-width: 1440px;
           }
 
-          .christmas.consistent-hub-shop-by-category-wrapper .consistent-hub-shop-by-category-categories {
+          .christmas.consistent-hub-shop-by-category-wrapper
+          .consistent-hub-shop-by-category-categories {
             padding: 0 0 20px;
             max-width: calc(100% + 20px);
             margin: 20px -10px 0;
           }
+
+          @media (max-width: 767px) {
+            .consistent-hub-shop-by-category-categories {
+              --category-columns: 2;
+            }
+          }
         `}
       </style>
-      <div class="consistent-hub-shop-by-category-wrapper christmas"
-      
-          style={{
-            "--shop-by-category-module-bg": '#fff',
-            "--shop-by-category-pod-bg": podbackgroundcolor,
-            "--shop-by-category-lozenge-bg": lozengebackgroundcolor,
-            "--shop-by-category-lozenge-text-color": lozengetextcolor,
-            "--shop-by-category-lozenge-title": lozengetitle,
-            backgroundColor: modulebackgroundcolor,
-          }}
-      
+
+      <div
+        className="consistent-hub-shop-by-category-wrapper christmas"
+        style={{
+          "--shop-by-category-module-bg": "#fff",
+          "--shop-by-category-pod-bg": podbackgroundcolor,
+          "--shop-by-category-lozenge-bg": lozengebackgroundcolor,
+          "--shop-by-category-lozenge-text-color": lozengetextcolor,
+          "--shop-by-category-lozenge-title": lozengetitle,
+          backgroundColor: modulebackgroundcolor,
+        }}
       >
-        <div class="consistent-hub-shop-by-category-area-header">
-          <div class="consistent-hub-shop-by-category-area-header-title">
+        <div className="consistent-hub-shop-by-category-area-header">
+          <div className="consistent-hub-shop-by-category-area-header-title">
             {lozengetitle}
           </div>
         </div>
-        <div class="consistent-hub-shop-by-category-area">
+
+        <div className="consistent-hub-shop-by-category-area">
           <div className="consistent-hub-shop-by-category-categories">
             {validCatpods.map((pod, index) => (
-
               <div
                 className="consistent-hub-shop-by-category-categories-item"
                 key={index}
@@ -256,15 +279,21 @@ const validCatpods = catpods.filter(
                   href={pod.link}
                   className="consistent-hub-shop-by-category-categories-item-link"
                 >
-                  <img alt={pod.alt} src={pod.image} />
+                  <img
+                    alt={pod.alt}
+                    src={pod.image}
+                  />
                 </a>
 
                 {pod.title && (
-                  <a href={pod.link} className="text-link" style={{color: podtextcolor}}>
+                  <a
+                    href={pod.link}
+                    className="text-link"
+                    style={{ color: podtextcolor }}
+                  >
                     {pod.title}
                   </a>
                 )}
-
               </div>
             ))}
           </div>
@@ -275,15 +304,16 @@ const validCatpods = catpods.filter(
 };
 
 ChristmasCategoryPods.propTypes = {
-
   modulebackgroundcolor: PropTypes.string,
-  
+
   podbackgroundcolor: PropTypes.string,
   podtextcolor: PropTypes.string,
 
   lozengebackgroundcolor: PropTypes.string,
   lozengetextcolor: PropTypes.string,
   lozengetitle: PropTypes.string,
+
+  desktopcolumns: PropTypes.oneOf([3, 4]),
 
   pod1image: PropTypes.string,
   pod1imagealt: PropTypes.string,
@@ -344,4 +374,65 @@ ChristmasCategoryPods.propTypes = {
   pod12imagealt: PropTypes.string,
   pod12title: PropTypes.string,
   pod12link: PropTypes.string,
+
+  pod13image: PropTypes.string,
+  pod13imagealt: PropTypes.string,
+  pod13title: PropTypes.string,
+  pod13link: PropTypes.string,
+
+  pod14image: PropTypes.string,
+  pod14imagealt: PropTypes.string,
+  pod14title: PropTypes.string,
+  pod14link: PropTypes.string,
+
+  pod15image: PropTypes.string,
+  pod15imagealt: PropTypes.string,
+  pod15title: PropTypes.string,
+  pod15link: PropTypes.string,
+
+  pod16image: PropTypes.string,
+  pod16imagealt: PropTypes.string,
+  pod16title: PropTypes.string,
+  pod16link: PropTypes.string,
+
+  pod17image: PropTypes.string,
+  pod17imagealt: PropTypes.string,
+  pod17title: PropTypes.string,
+  pod17link: PropTypes.string,
+
+  pod18image: PropTypes.string,
+  pod18imagealt: PropTypes.string,
+  pod18title: PropTypes.string,
+  pod18link: PropTypes.string,
+
+  pod19image: PropTypes.string,
+  pod19imagealt: PropTypes.string,
+  pod19title: PropTypes.string,
+  pod19link: PropTypes.string,
+
+  pod20image: PropTypes.string,
+  pod20imagealt: PropTypes.string,
+  pod20title: PropTypes.string,
+  pod20link: PropTypes.string,
+
+  pod21image: PropTypes.string,
+  pod21imagealt: PropTypes.string,
+  pod21title: PropTypes.string,
+  pod21link: PropTypes.string,
+
+  pod22image: PropTypes.string,
+  pod22imagealt: PropTypes.string,
+  pod22title: PropTypes.string,
+  pod22link: PropTypes.string,
+
+  pod23image: PropTypes.string,
+  pod23imagealt: PropTypes.string,
+  pod23title: PropTypes.string,
+  pod23link: PropTypes.string,
+
+  pod24image: PropTypes.string,
+  pod24imagealt: PropTypes.string,
+  pod24title: PropTypes.string,
+  pod24link: PropTypes.string,
 };
+

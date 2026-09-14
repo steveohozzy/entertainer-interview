@@ -17,18 +17,23 @@ export const TopTenToys = ({
   evenRankColor,
   panelTitle,
   panelBlurb,
-  headerTitle,
-  headerBlurb,
+  headerType,
+  headerImage,
+  headerImageMobile,
+  headerImageAlt,
+  headerTitle = '',
+  headerBlurb = '',
   footerTitle,
   footerBlurb,
   footerSecondTitle,
   footerSecondBlurb,
   ...props
 }) => {
-  // Construct the 10 toys from props dynamically
-  const toys = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => ({
+  const toys = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  .map((num) => ({
     id: `toy-${num}`,
     name: props[`toy${num}Title`] || `Toy ${num}`,
+    rank: parseInt(props[`toy${num}Rank`], 10) || 999,
     blurb: props[`toy${num}Blurb`] || '',
     love: props[`toy${num}Love`] || '',
     loveCharacter: props[`toy${num}LoveCharacter`] || 'sheep',
@@ -43,7 +48,9 @@ export const TopTenToys = ({
     btn: props[`toy${num}Button`] || 'shop-now',
     reviewName: props[`toy${num}ReviewName`] || '',
     reviewText: props[`toy${num}ReviewText`] || '',
-  })).filter(t => t.name);
+  }))
+  .filter(t => t.name)
+  .sort((a, b) => a.rank - b.rank);
 
   // Script effect for scrollspy, IntersectionObserver, and smooth scrolling inside iframe
   useEffect(() => {
@@ -166,7 +173,6 @@ body.smartedit-preview .reveal,
 }
 
           .top-ten-wrapper {
-            font-family: "Nunito Bold", "Tahoma Bold", sans-serif;
             color:#fff;
             background: rgb(39, 87, 159);
             min-height: 100vh;
@@ -189,19 +195,21 @@ body.smartedit-preview .reveal,
             font-family: "Nunito Bold", "Tahoma Bold", sans-serif;
             font-size: 18px;
             border-radius: 8px;
-            margin: 0;
+            margin: 0 auto;
             box-shadow: inset 0 4px 10px rgba(255,255,255,0.1); /* subtle inner highlight */
             backdrop-filter: blur(2px); /* optional slight blur for glass effect */
             -webkit-backdrop-filter: blur(2px);
             padding: 5px 0;
             text-align: center;
             margin-bottom: 20px;
+            max-width: 1200px;
+            font-family: "Nunito Bold", "Tahoma Bold", sans-serif;
           }
           .full-width-section div {
             font-size: 18px;
             line-height: 1.6;
-            margin: 0;
-            color: var(--text-color);
+            margin: 0 auto;
+            color: #fff;
             max-width: 1200px;
             text-align: center;
           }
@@ -234,6 +242,7 @@ body.smartedit-preview .reveal,
           .toc li { margin: 2px 0; }
           .toc a {
             counter-increment: toc; display: flex; align-items: center; gap: 12px;
+            font-family: "Nunito Bold", "Tahoma Bold", sans-serif;
             padding: 9px 10px; border-radius: 12px; color: var(--text-color); font-weight: 700; font-size: 15px;
             transition: background .18s, transform .18s, color .18s; position: relative; text-decoration: none;
           }
@@ -263,15 +272,18 @@ body.smartedit-preview .reveal,
             display: grid; 
             place-items: center;
             font-weight: 800; 
-            font-size: 22px; 
-            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-            transform: rotate(-5deg);
+            font-size: 28px; 
+            background-image: url("https://www.thetoyshop.com/medias/star-topten-grey.png?context=bWFzdGVyfHJvb3R8ODEzOXxpbWFnZS9wbmd8YURjeEwyZ3lOaTh4TWpnMU1UazJNemMxTmpVM05DOXpkR0Z5TFhSdmNIUmxiaTFuY21WNUxuQnVad3xjNGZjMjUyZDFkYWM1YmE0Y2M4YzNkMjVlODQyYzRkZDQ2ZmY0MWQxMWIyMjJjNTFmOWU3MDMzMzI4NmVhMTFi");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: transparent;
             box-shadow: none;
+            color: #29527a;
+            font-family: "Nunito Bold", "Tahoma Bold", sans-serif;
           }
-          .toy:nth-child(odd) .rank { background: ${oddRankBg || '#3b8ea5'}; color: ${oddRankColor || '#ffffff'}; }
-          .toy:nth-child(even) .rank { background: ${evenRankBg || '#29527a'}; color: ${evenRankColor || '#ffffff'}; }
           
-          .toy-head h2 { font-family: "Nunito Bold", "Tahoma Bold", sans-serif; font-size: clamp(26px, 4.4vw, 40px); margin: 0; }
+          .toy-head h2 { font-family: "Nunito Bold", "Tahoma Bold", sans-serif; font-size: clamp(26px, 4.4vw, 40px); margin: 0; line-height: 1.1;}
 
           .showcase { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: center; }
           .showcase .blurb p { margin: 0 0 16px; font-size: 18px; line-height: 1.5; }
@@ -319,11 +331,11 @@ body.smartedit-preview .reveal,
           @media (max-width: 1200px) {
             .layout { display: block; gap: 0; padding-top: 0; }
             .toc-wrapper {
-              position: sticky; top: 160px; z-index: 55; margin: 0 -20px 22px;
+              position: sticky; top: 170px; z-index: 55; margin: 0 -20px 22px;
             }
             .toc {
               border-radius: 0;
-              padding: 10px 0; box-shadow: 0 8px 16px -12px rgba(0,0,0,.4); border: 0; border-bottom: 1px solid var(--line);
+              padding: 10px 0 10px 20px; box-shadow: 0 8px 16px -12px rgba(0,0,0,.4); border: 0; border-bottom: 1px solid var(--line);
               background: rgba(242,247,252,.94); backdrop-filter: blur(8px); overflow: hidden;
             }
             .toc h2, .toc .sub { display: none; }
@@ -475,37 +487,53 @@ body.smartedit-preview .reveal,
   line-height: 1.5;
 }
 
-@media (max-width: 720px) {
-  .character-panel, .character-panel.reverse {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  .character-mascot {
-    width: 85px;
-    margin-bottom: -12px;
-  }
-  .speech-bubble::after, .character-panel.reverse .speech-bubble::after {
-    display: none;
-  }
+.full-width-section .header-image {
+  width: 100%;
+  height: auto;
+}
+
+.top-full {
+  padding: 0;
 }
         `}
       </style>
 
       <div className="top-ten-wrapper">
-        {(headerTitle || headerBlurb) && (
-              <div className="full-width-section">
-                <img src="https://www.thetoyshop.com/medias/Top-Ten-Toys-Editorial-Header-2000x300px-V2-01.jpg?context=bWFzdGVyfHJvb3R8MTY5NTk5fGltYWdlL2pwZWd8YUdVMUwyaG1OaTh4TWpnME9UTTJNelExTVRrek5DOVViM0FnVkdWdUlGUnZlWE1nUldScGRHOXlhV0ZzSUVobFlXUmxjaUF5TURBd2VETXdNSEI0WDFZeUxUQXhMbXB3Wnd8MTRkMWY4ZTQ3NWU2MWE2NmI0NzViMDY0NjQ4MTU2YTRhMGI4NTk4MDllNDIwMDFjNWI5NGMyMzliODRhODc2MA" alt="Top Ten Toys" />
-                {/* {headerTitle && <h2>{headerTitle}</h2>}
-                {headerBlurb && (
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: formatParagraphs(headerBlurb),
-                    }}
-                  />
-                )} */}
-              </div>
+        {headerType === 'image' && headerImage && (
+          <div className="full-width-section top-full">
+            <picture>
+              {headerImageMobile && (
+                <source
+                  media="(max-width: 767px)"
+                  srcSet={headerImageMobile}
+                />
+              )}
+              <img src={headerImage} className="header-image" alt={headerImageAlt || 'Top Ten Toys'} />
+            </picture>
+
+            {headerBlurb && (
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: formatParagraphs(headerBlurb),
+                }}
+              />
             )}
+          </div>
+        )}
+
+        {headerType === 'text' && (headerTitle) && (
+          <div className="full-width-section">
+            {headerTitle && <h2>{headerTitle}</h2>}
+
+            {headerBlurb && (
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: formatParagraphs(headerBlurb),
+                }}
+              />
+            )}
+          </div>
+        )}
         <div className="wrap">
           <div className="layout-container">
             
@@ -651,224 +679,102 @@ body.smartedit-preview .reveal,
         </div>
       </div>
       <script
-        dangerouslySetInnerHTML={{
-          __html: `
-            const TOYS = [
-              {
-                id: "toy-1", name: "Mega Build Space Rover", category: "Construction", age: "6–12 yrs",
-                url: "#",
-                hero: "/images/toy1-hero.png", heroalt: "Action view", life: "/images/toy1-life.png", lifealt: "Action view", life2: "/images/toy1-life2.png", life2alt: "Detail view",
-                blurb: "A 480-piece buildable Mars rover with working suspension, snap-on solar panels and a posable astronaut.",
-                love: "It nails that sweet spot between challenge and reward.",
-                loveCharacter: "sheep",
-                tip: "Sort the pieces into a muffin tin before you start.",
-                tipCharacter: "fox",
-              },
-              {
-                id: "toy-2", name: "Rainbow Unicorn Plush Friend", category: "Plush", age: "0–6 yrs",
-                url: "#",
-                hero: "/images/toy2-hero.png", heroalt: "Action view", life: "/images/toy2-life.png", lifealt: "Action view", life2: "/images/toy2-life2.png", life2alt: "Detail view",
-                blurb: "Impossibly soft, gently weighted and topped with a shimmery horn.",
-                love: "The weighted body is quietly brilliant.",
-                tip: "Give it a name together on day one.",
-              },
-              {
-                id: "toy-3", name: "Turbo RC Stunt Racer", category: "Remote Control", age: "6–12 yrs",
-                url: "#",
-                hero: "/images/toy3-hero.png", heroalt: "Action view", life: "/images/toy3-life.png", lifealt: "Action view", life2: "/images/toy3-life2.png", life2alt: "Detail view",
-                blurb: "360° flips, wall-climbing grip and a genuinely tough shell.",
-                love: "It's fast enough to thrill big kids yet forgiving enough for little hands.",
-                tip: "Charge the controller too, not just the car.",
-              },
-              {
-                id: "toy-4", name: "Little Chef Deluxe Kitchen", category: "Role Play", age: "3–7 yrs",
-                url: "#",
-                hero: "/images/toy4-hero.png", heroalt: "Action view", life: "/images/toy4-life.png", lifealt: "Action view", life2: "/images/toy4-life2.png", life2alt: "Detail view",
-                blurb: "Clicky knobs, a hob that lights up, a chattering microwave.",
-                love: "The role play it unlocks is endless.",
-                tip: "Add a few real, safe kitchen bits.",
-              },
-              {
-                id: "toy-5", name: "Galaxy Explorer Telescope", category: "STEM", age: "8–12 yrs",
-                url: "#",
-                hero: "/images/toy5-hero.png", heroalt: "Action view", life: "/images/toy5-life.png", lifealt: "Action view", life2: "/images/toy5-life2.png", life2alt: "Detail view",
-                blurb: "A properly capable starter scope that shows real craters on the Moon.",
-                love: "It turns a normal winter evening into an event.",
-                tip: "Start with the Moon, not the stars.",
-              },
-              {
-                id: "toy-6", name: "Dino World Interactive T-Rex", category: "Electronic", age: "4–9 yrs",
-                url: "#",
-                hero: "/images/toy6-hero.png", heroalt: "Action view", life: "/images/toy6-life.png", lifealt: "Action view", life2: "/images/toy6-life2.png", life2alt: "Detail view",
-                blurb: "He walks, roars, blinks his light-up eyes and reacts to claps.",
-                love: "The touch and sound sensors make him feel genuinely alive.",
-                tip: "Pop him on 'sleep mode' at bedtime.",
-              },
-              {
-                id: "toy-7", name: "Sparkle Art Studio Craft Kit", category: "Arts & Crafts", age: "5–10 yrs",
-                url: "#",
-                hero: "/images/toy7-hero.png", heroalt: "Action view", life: "/images/toy7-life.png", lifealt: "Action view", life2: "/images/toy7-life2.png", life2alt: "Detail view",
-                blurb: "Over 150 pieces of paints, gems, glitter glue and blank canvases.",
-                love: "Everything lives in one clip-shut case.",
-                tip: "Lay down an old shower curtain as a craft mat.",
-              },
-              {
-                id: "toy-8", name: "Bounce & Giggle Activity Gym", category: "Baby", age: "0–12 mo",
-                url: "#",
-                hero: "/images/toy8-hero.png", heroalt: "Action view", life: "/images/toy8-life.png", lifealt: "Action view", life2: "/images/toy8-life2.png", life2alt: "Detail view",
-                blurb: "A plush play mat with adjustable arches, crinkly leaves, and a baby-safe mirror.",
-                love: "Every element is there for a reason.",
-                tip: "Rotate just one or two toys on the arches each week.",
-              },
-              {
-                id: "toy-9", name: "Code & Play Robot Buddy", category: "STEM", age: "6–11 yrs",
-                url: "#",
-                hero: "/images/toy9-hero.png", heroalt: "Action view", life: "/images/toy9-life.png", lifealt: "Action view", life2: "/images/toy9-life2.png", life2alt: "Detail view",
-                blurb: "A friendly robot that teaches real coding logic through a colourful app.",
-                love: "It sneaks genuine problem-solving and sequencing skills into play.",
-                tip: "Set a 'mission of the day'.",
-              },
-              {
-                id: "toy-10", name: "Mega Splash Water Blaster Set", category: "Outdoor", age: "6–12 yrs",
-                url: "#",
-                hero: "/images/toy10-hero.png", heroalt: "Action view", life: "/images/toy10-life.png", lifealt: "Action view", life2: "/images/toy10-life2.png", life2alt: "Detail view",
-                blurb: "A two-pack of lightweight, long-range blasters with big tanks.",
-                love: "They fill fast, fire far and don't leak.",
-                tip: "Freeze the water for ten minutes first on a scorcher.",
-              }
-            ];
+  dangerouslySetInnerHTML={{
+    __html: `
+      document.addEventListener("DOMContentLoaded", () => {
 
-            const REVIEW_POOL = [
-              { name: "Sarah M.", text: "Bought it on a whim and it's now the most-played-with toy in the house. Worth every penny." },
-              { name: "Dev P.", text: "My two fight over whose turn it is — the highest praise a toy can get in this family!" },
-              { name: "Grandad Joe", text: "Grandkids were glued to it all weekend and so, if I'm honest, was I." },
-              { name: "Amina K.", text: "Brilliant quality, feels really sturdy and survived week one with a toddler. Impressed." },
-              { name: "Tom R.", text: "Kept the kids entertained on a long snowy half term. That alone deserves five stars." },
-              { name: "Priya S.", text: "Great value and arrived beautifully packaged — made a lovely winter gift." }
-            ];
+        // Bind Smooth Scrolling & Active State Highlighting
+        const sections = document.querySelectorAll(".toy");
+        const tocLinks = document.querySelectorAll(".toc a");
 
-            function pickReview(i) {
-              return REVIEW_POOL[i % REVIEW_POOL.length];
+        tocLinks.forEach(link => {
+          link.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute("href");
+            const targetSection = document.querySelector(targetId);
+
+            if (targetSection) {
+              const topPos =
+                targetSection.getBoundingClientRect().top +
+                window.pageYOffset -
+                84;
+
+              window.scrollTo({
+                top: topPos,
+                behavior: "smooth"
+              });
             }
+          });
+        });
 
-            document.addEventListener("DOMContentLoaded", () => {
-              // 1. Render TOC
-              const tocList = document.getElementById("tocList");
-              if (tocList) {
-                tocList.innerHTML = TOYS.map(t => \`
-                  <li><a href="#\${t.id}" data-target="\${t.id}"><span class="t">\${t.name}</span></a></li>
-                \`).join("");
-              }
+        // Scrollspy
+        const observerOptions = {
+          root: null,
+          rootMargin: "-20% 0px -60% 0px",
+          threshold: 0
+        };
 
-              // 2. Render Toy Content Sections
-              const content = document.getElementById("content");
-              if (content && !content.children.length) {
-                content.innerHTML = TOYS.map((t, i) => {
-                  const rank = i + 1;
-                  const rev = pickReview(i);
-                  return \`
-                    <section class="toy" id="\${t.id}" aria-labelledby="\${t.id}-title">
-                      <div class="toy-head reveal">
-                        <div class="rank" aria-hidden="true">\${rank}</div>
-                        <div><h2 id="\${t.id}-title">\${t.name}</h2></div>
-                      </div>
-                      <div class="showcase reveal">
-                        <div class="blurb">
-                          <p>\${t.blurb}</p>
-                          <a class="btn" href="\${t.url}">View product <span class="arrow" aria-hidden="true">→</span></a>
-                        </div>
-                        <div class="photo">
-                          <img src="\${t.hero}" alt="\${t.heroalt}" loading="lazy" width="800" height="600" />
-                        </div>
-                      </div>
-                      <div class="panels">
-                        <div class="panel love reveal">
-                          <h3><span class="ico" aria-hidden="true">★</span> Why we love it</h3>
-                          <p>\${t.love}</p>
-                        </div>
-                        <div class="panel tip reveal">
-                          <h3><span class="ico" aria-hidden="true">✦</span> Top tip</h3>
-                          <p>\${t.tip}</p>
-                        </div>
-                      </div>
-                      <div class="reviews reveal">
-                        <div class="rev">
-                          <div class="top">
-                            <div class="name">\${rev.name}</div>
-                            <div class="stars" aria-label="5 out of 5">★★★★★</div>
-                          </div>
-                          <p>&ldquo;\${rev.text}&rdquo;</p>
-                        </div>
-                      </div>
-                    </section>
-                  \`;
-                }).join("");
-              }
+        const observerCallback = (entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
 
-              // 3. Bind Smooth Scrolling & Active State Highlighting for TOC
-              const sections = document.querySelectorAll(".toy");
-              const tocLinks = document.querySelectorAll(".toc a");
+              const id = entry.target.getAttribute("id");
 
               tocLinks.forEach(link => {
-                link.addEventListener("click", function (e) {
-                  e.preventDefault();
-                  const targetId = this.getAttribute("href");
-                  const targetSection = document.querySelector(targetId);
-                  
-                  if (targetSection) {
-                    const topPos = targetSection.getBoundingClientRect().top + window.pageYOffset - 84;
-                    window.scrollTo({
-                      top: topPos,
-                      behavior: "smooth"
+
+                if (link.getAttribute("href") === "#" + id) {
+                  link.classList.add("active");
+
+                  // On tablet/mobile, keep active item visible
+                  if (window.matchMedia("(max-width: 1200px)").matches) {
+                    link.scrollIntoView({
+                      behavior: "smooth",
+                      inline: "center",
+                      block: "nearest"
                     });
                   }
-                });
+
+                } else {
+                  link.classList.remove("active");
+                }
+
               });
+            }
+          });
+        };
 
-              const observerOptions = {
-                root: null,
-                rootMargin: "-20% 0px -60% 0px",
-                threshold: 0
-              };
+        const observer = new IntersectionObserver(
+          observerCallback,
+          observerOptions
+        );
 
-              const observerCallback = (entries) => {
-                entries.forEach(entry => {
-                  if (entry.isIntersecting) {
-                    const id = entry.target.getAttribute("id");
-                    tocLinks.forEach(link => {
-                      if (link.getAttribute("href") === \`#\${id}\`) {
-                        link.classList.add("active");
-                        link.scrollIntoView({
-                          behavior: "smooth",
-                          inline: "nearest",
-                          block: "nearest"
-                        });
-                      } else {
-                        link.classList.remove("active");
-                      }
-                    });
-                  }
-                });
-              };
+        sections.forEach(section => observer.observe(section));
 
-              const observer = new IntersectionObserver(observerCallback, observerOptions);
-              sections.forEach(section => observer.observe(section));
-
-              // 4. Reveal Animations Observer
-              const revealObs = new IntersectionObserver((entries) => {
-                entries.forEach(e => { 
-                  if (e.isIntersecting) { 
-                    e.target.classList.add("in"); 
-                    revealObs.unobserve(e.target); 
-                  } 
-                });
-              }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
-              
-              document.querySelectorAll(".reveal").forEach(el => revealObs.observe(el));
+        // Reveal animations
+        const revealObs = new IntersectionObserver(
+          (entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("in");
+                revealObs.unobserve(entry.target);
+              }
             });
-          `
-        }}
-      />
+          },
+          {
+            threshold: 0.12,
+            rootMargin: "0px 0px -8% 0px"
+          }
+        );
+
+        document
+          .querySelectorAll(".reveal")
+          .forEach(el => revealObs.observe(el));
+
+      });
+    `
+  }}
+/>
     </>
   );
 };
@@ -889,27 +795,35 @@ TopTenToys.propTypes = {
   panelBlurb: PropTypes.string,
   headerTitle: PropTypes.string,
   headerBlurb: PropTypes.string,
+  headerType: PropTypes.oneOf(['text', 'image']),
+  headerImage: PropTypes.string,
+  headerImageMobile: PropTypes.string,
+  headerImageAlt: PropTypes.string,
   footerTitle: PropTypes.string,
   footerBlurb: PropTypes.string,
   footerSecondTitle: PropTypes.string,
   footerSecondBlurb: PropTypes.string,
   ...[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].reduce((acc, num) => {
-    acc[`toy${num}Title`] = PropTypes.string;
-    acc[`toy${num}Blurb`] = PropTypes.string;
-    acc[`toy${num}Love`] = PropTypes.string;
-    acc[`toy${num}Tip`] = PropTypes.string;
-    acc[`toy${num}LoveCharacter`] = PropTypes.string;
-    acc[`toy${num}TipCharacter`] = PropTypes.string;
-    acc[`toy${num}Link`] = PropTypes.string;
-    acc[`toy${num}Hero`] = PropTypes.string;
-    acc[`toy${num}Heroalt`] = PropTypes.string;
-    acc[`toy${num}Life`] = PropTypes.string;
-    acc[`toy${num}Lifealt`] = PropTypes.string;
-    acc[`toy${num}Life2`] = PropTypes.string;
-    acc[`toy${num}Life2alt`] = PropTypes.string;
-    acc[`toy${num}Button`] = PropTypes.string;
-    acc[`toy${num}ReviewName`] = PropTypes.string;
-    acc[`toy${num}ReviewText`] = PropTypes.string;
-    return acc;
-  }, {})
+  acc[`toy${num}Title`] = PropTypes.string;
+  acc[`toy${num}Rank`] = PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]);
+  acc[`toy${num}Blurb`] = PropTypes.string;
+  acc[`toy${num}Love`] = PropTypes.string;
+  acc[`toy${num}Tip`] = PropTypes.string;
+  acc[`toy${num}LoveCharacter`] = PropTypes.string;
+  acc[`toy${num}TipCharacter`] = PropTypes.string;
+  acc[`toy${num}Link`] = PropTypes.string;
+  acc[`toy${num}Hero`] = PropTypes.string;
+  acc[`toy${num}Heroalt`] = PropTypes.string;
+  acc[`toy${num}Life`] = PropTypes.string;
+  acc[`toy${num}Lifealt`] = PropTypes.string;
+  acc[`toy${num}Life2`] = PropTypes.string;
+  acc[`toy${num}Life2alt`] = PropTypes.string;
+  acc[`toy${num}Button`] = PropTypes.string;
+  acc[`toy${num}ReviewName`] = PropTypes.string;
+  acc[`toy${num}ReviewText`] = PropTypes.string;
+  return acc;
+}, {})
 };

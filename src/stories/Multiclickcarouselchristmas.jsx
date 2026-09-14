@@ -386,6 +386,12 @@ export const Multiclickcarouselchristmas = (props) => {
     -webkit-user-drag: none;
     -webkit-tap-highlight-color: transparent;
   }
+  
+  @media (max-width: 1024px) {
+    .carousel-wrapper-component .primary-cta-button.cta-shop-now {
+      font-size: 12px;      
+    }
+  }
 
   .masonry img {
     pointer-events: auto;
@@ -419,6 +425,12 @@ export const Multiclickcarouselchristmas = (props) => {
     line-height: 1.1;
     font-family: "Nunito Bold", "Tahoma Bold", sans-serif;
     flex-grow: 1;
+  }
+
+  @media (max-width: 768px) {
+    .carousel-wrapper-component .panel-title {
+      font-size: 28px;
+    }
   }
   
   .carousel-wrapper-component p {

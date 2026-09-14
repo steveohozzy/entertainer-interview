@@ -488,6 +488,7 @@
   transition: all 0.3s;
   max-width: 100%;
   height: auto;
+  width: 100%;
 }
 
 .consistent-hub-shop-by-category-categories-item:hover {

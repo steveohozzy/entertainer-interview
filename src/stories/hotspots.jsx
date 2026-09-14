@@ -478,7 +478,7 @@ const buildCMSHTML = (props) => {
       calc(100vw - 30px);
 
     max-width:
-      340px;
+      260px;
   }
 
 }
@@ -1266,7 +1266,7 @@ export const Hotspots = (props) => {
             .storybook-hotspot-card {
               width:
                 calc(100vw - 30px);
-              max-width: 340px;
+              max-width: 240px;
             }
 
           }

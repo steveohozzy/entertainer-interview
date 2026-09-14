@@ -33,8 +33,14 @@ export default {
     panelBlurb: { control: 'text' },
 
     // Added controls for the header and footer sections
+    headerType: {
+      options: ['text', 'image'],
+      control: { type: 'radio' },
+    },
     headerTitle: { control: 'text' },
     headerBlurb: { control: 'text' },
+    headerImage: { control: 'text' },
+    headerImageAlt: { control: 'text' },
     footerTitle: { control: 'text' },
     footerBlurb: { control: 'text' },
     footerSecondTitle: { control: 'text' },
@@ -42,6 +48,10 @@ export default {
 
     ...[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].reduce((acc, num) => {
       acc[`toy${num}Title`] = { control: 'text' };
+      acc[`toy${num}Title`] = { control: 'text' };
+      acc[`toy${num}Rank`] = {
+        control: { type: 'number', min: 1, max: 10, step: 1 },
+      };
       acc[`toy${num}Blurb`] = { control: 'text' };
       acc[`toy${num}Love`] = { control: 'text' };
       acc[`toy${num}LoveCharacter`] = {
@@ -195,9 +205,14 @@ export const TopTenToysSection = {
     panelTitle: 'Top 10 Toys',
     panelBlurb: 'Tap a toy to jump straight to it',
 
-    // Initial defaults for the new header/footer text areas
+    headerType: 'image',
+
     headerTitle: 'Our Top Ten Toys',
     headerBlurb: 'Explore the ultimate collection of must-have toys for this festive season, tried and tested by families.',
+
+    headerImage: 'https://www.thetoyshop.com/medias/Top-Ten-Toys-Editorial-Header-2000x300px-V2-01.jpg?context=bWFzdGVyfHJvb3R8MTY5NTk5fGltYWdlL2pwZWd8YUdVMUwyaG1OaTh4TWpnME9UTTJNelExTVRrek5DOVViM0FnVkdWdUlGUnZlWE1nUldScGRHOXlhV0ZzSUVobFlXUmxjaUF5TURBd2VETXdNSEI0WDFZeUxUQXhMbXB3Wnd8MTRkMWY4ZTQ3NWU2MWE2NmI0NzViMDY0NjQ4MTU2YTRhMGI4NTk4MDllNDIwMDFjNWI5NGMyMzliODRhODc2MA',
+    headerImageMobile: 'https://www.thetoyshop.com/medias/Top-Ten-Toys-Editorial-Header-2000x300px-V2-01.jpg?context=bWFzdGVyfHJvb3R8MTY5NTk5fGltYWdlL2pwZWd8YUdVMUwyaG1OaTh4TWpnME9UTTJNelExTVRrek5DOVViM0FnVkdWdUlGUnZlWE1nUldScGRHOXlhV0ZzSUVobFlXUmxjaUF5TURBd2VETXdNSEI0WDFZeUxUQXhMbXB3Wnd8MTRkMWY4ZTQ3NWU2MWE2NmI0NzViMDY0NjQ4MTU2YTRhMGI4NTk4MDllNDIwMDFjNWI5NGMyMzliODRhODc2MA',
+    headerImageAlt: 'Top Ten Toys',
     footerTitle: 'Top Tips for Chritmas Gifts',
     footerBlurb: 'Check out our full holiday gift guide and check off everyone on your list.',
     footerSecondTitle: '',
@@ -205,6 +220,7 @@ export const TopTenToysSection = {
 
     // Toy 1
     toy1Title: 'Mega Build Space Rover',
+    toy1Rank: 1,
     toy1Blurb: 'A 480-piece buildable Mars rover with working suspension, snap-on solar panels and a posable astronaut.',
     toy1Love: 'It nails that sweet spot between challenge and reward — detailed enough to feel grown-up.',
     toy1LoveCharacter: 'sheep',
@@ -224,6 +240,7 @@ export const TopTenToysSection = {
 
     // Toy 2
     toy2Title: 'Mega Build Space Rover',
+    toy2Rank: 2,
     toy2Blurb: 'A 480-piece buildable Mars rover with working suspension, snap-on solar panels and a posable astronaut.',
     toy2Love: 'It nails that sweet spot between challenge and reward — detailed enough to feel grown-up.',
     toy2LoveCharacter: 'sheep',
@@ -244,6 +261,7 @@ export const TopTenToysSection = {
     // Toys 3 through 10 initialized with baseline structure
     ...[3, 4, 5, 6, 7, 8, 9, 10].reduce((acc, num) => {
       acc[`toy${num}Title`] = `Toy Item Number ${num}`;
+      acc[`toy${num}Rank`] = num;
       acc[`toy${num}Blurb`] = `This is the descriptive text block for item number ${num} in the top ten selection list.`;
 
       acc[`toy${num}Love`] = 'A wonderful addition that brings endless fun and incredible quality value to playtime.';
