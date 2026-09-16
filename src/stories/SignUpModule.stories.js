@@ -1,13 +1,7 @@
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, getDoc, doc, setDoc, deleteDoc } from "firebase/firestore";
 import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { db } from "../config/firebase";
-import {
-  getDoc,
-  doc,
-  setDoc,
-} from "firebase/firestore";
-
 import { useArgs } from "storybook/preview-api";
 import { SignUpModule } from "./SignUpModule";
 
@@ -20,149 +14,141 @@ export default {
   },
 
   argTypes: {
-  selectedModule: {
-    table: {
-      disable: true,
+    selectedModule: {
+      table: {
+        disable: true,
+      },
     },
-  },
 
-  moduleName: {
-    control: "text",
-  },
+    moduleName: {
+      control: "text",
+    },
 
-  saveModule: {
-    control: "boolean",
-  },
+    saveModule: {
+      control: "boolean",
+    },
 
-  signupvideo: {
-    control: "text",
-  },
+    signupvideo: {
+      control: "text",
+    },
 
-  signupimage: {
-    control: "text",
-  },
+    signupimage: {
+      control: "text",
+    },
 
-  signupimagealt: {
-    control: "text",
-  },
+    signupimagealt: {
+      control: "text",
+    },
 
-  signuptitle: {
-    control: "text",
-  },
+    signuptitle: {
+      control: "text",
+    },
 
-  signuplink: {
-    control: "text",
-  },
+    signuplink: {
+      control: "text",
+    },
 
-  signupbuttontext: {
-    control: "text",
-  },
+    signupbuttontext: {
+      control: "text",
+    },
 
-  signupbuttonIcon: {
-    options: [
-      "basket",
-      "glasses",
-      "football",
-      "pencil",
-      "plane",
-    ],
-    control: "radio",
-  },
+    signupbuttonIcon: {
+      options: [
+        "basket",
+        "glasses",
+        "football",
+        "pencil",
+        "plane",
+      ],
+      control: "radio",
+    },
 
-  signuptextcolor: {
-    control: "color",
-  },
+    signuptextcolor: {
+      control: "color",
+    },
 
-  signuptexthovercolor: {
-    control: "color",
-  },
+    signuptexthovercolor: {
+      control: "color",
+    },
 
-  signupbuttonbackgroundcolor: {
-    control: "color",
-  },
+    signupbuttonbackgroundcolor: {
+      control: "color",
+    },
 
-  signupbuttonhoverbackgroundcolor: {
-    control: "color",
-  },
+    signupbuttonhoverbackgroundcolor: {
+      control: "color",
+    },
 
-  signupbuttontextcolor: {
-    control: "color",
-  },
+    signupbuttontextcolor: {
+      control: "color",
+    },
 
-  signupbuttontexthovercolor: {
-    control: "color",
-  },
+    signupbuttontexthovercolor: {
+      control: "color",
+    },
 
-  signupbuttonbordercolor: {
-    control: "color",
-  },
+    signupbuttonbordercolor: {
+      control: "color",
+    },
 
-  signupbuttonhoverbordercolor: {
-    control: "color",
-  },
+    signupbuttonhoverbordercolor: {
+      control: "color",
+    },
 
-  signupbordercolor: {
-    control: "color",
-  },
+    signupbordercolor: {
+      control: "color",
+    },
 
-  signupborderhovercolor: {
-    control: "color",
-  },
+    signupborderhovercolor: {
+      control: "color",
+    },
   },
 };
 
 export const Default = {
   args: {
-  moduleName: "",
-  selectedModule: "",
-  saveModule: false,
+    moduleName: "",
+    selectedModule: "",
+    saveModule: false,
 
-  signupvideo: "",
-  signupimage: "",
-  signupimagealt: "",
-  signuptitle: "",
-  signuplink: "",
-  signupbuttontext: "Shop Now",
-  signupbuttonIcon: "basket",
-  signuptextcolor: "#1f2b91",
-  signuptexthovercolor: "#1f2b91",
-  signupbuttonbackgroundcolor: "#009e44",
-  signupbuttonhoverbackgroundcolor: "#1f2b91",
-  signupbuttontextcolor: "#fff",
-  signupbuttontexthovercolor: "#fff",
-  signupbuttonbordercolor: "",
-  signupbuttonhoverbordercolor: "",
-  signupbordercolor: "",
-  signupborderhovercolor: "",
-},
+    signupvideo: "",
+    signupimage: "",
+    signupimagealt: "",
+    signuptitle: "",
+    signuplink: "",
+    signupbuttontext: "Shop Now",
+    signupbuttonIcon: "basket",
+    signuptextcolor: "#1f2b91",
+    signuptexthovercolor: "#1f2b91",
+    signupbuttonbackgroundcolor: "#009e44",
+    signupbuttonhoverbackgroundcolor: "#1f2b91",
+    signupbuttontextcolor: "#fff",
+    signupbuttontexthovercolor: "#fff",
+    signupbuttonbordercolor: "",
+    signupbuttonhoverbordercolor: "",
+    signupbordercolor: "",
+    signupborderhovercolor: "",
+  },
 
   render: function Render() {
-
     const [currentArgs, updateArgs] = useArgs();
     const [modules, setModules] = useState([]);
 
     const loadingRef = useRef(false);
     const previousModule = useRef("");
 
-    // -------------------------
-    // LOAD MODULE
-    // -------------------------
-
     useEffect(() => {
-
       if (
         !currentArgs.selectedModule ||
         loadingRef.current ||
         previousModule.current ===
-        currentArgs.selectedModule
+          currentArgs.selectedModule
       ) return;
 
       const load = async () => {
-
         loadingRef.current = true;
 
         try {
-
           const ref = doc(
             db,
             "sign-up-modules",
@@ -172,7 +158,6 @@ export const Default = {
           const snap = await getDoc(ref);
 
           if (snap.exists()) {
-
             previousModule.current =
               currentArgs.selectedModule;
 
@@ -191,32 +176,21 @@ export const Default = {
 
               ...snap.data(),
             });
-
           }
-
-        } catch(e){
-
+        } catch (e) {
           console.log(
             "load error",
             e
           );
-
         }
 
         loadingRef.current = false;
-
       };
 
       load();
-
     }, [currentArgs.selectedModule]);
 
-    // -------------------------
-    // SAVE MODULE
-    // -------------------------
-
     useEffect(() => {
-
       if (
         loadingRef.current ||
         !currentArgs.saveModule ||
@@ -224,9 +198,7 @@ export const Default = {
       ) return;
 
       const save = async () => {
-
         try {
-
           const {
             moduleName,
             selectedModule,
@@ -242,54 +214,95 @@ export const Default = {
             ),
             fields,
             {
-              merge:false
+              merge: false,
             }
           );
 
+          setModules((prev) =>
+            prev.includes(moduleName)
+              ? prev
+              : [...prev, moduleName]
+          );
+
           updateArgs({
-            saveModule:false,
-            selectedModule:moduleName
+            saveModule: false,
+            selectedModule: moduleName,
           });
 
           console.log(
             "saved:",
             moduleName
           );
-
-        } catch(e){
-
+        } catch (e) {
           console.log(
             "save error",
             e
           );
-
         }
-
       };
 
       save();
-
     }, [currentArgs.saveModule]);
 
     useEffect(() => {
-  const loadModules = async () => {
-    try {
-      const snap = await getDocs(
-        collection(db, "sign-up-modules")
+      const loadModules = async () => {
+        try {
+          const snap = await getDocs(
+            collection(db, "sign-up-modules")
+          );
+
+          const list = snap.docs.map((d) => d.id);
+
+          setModules(list);
+        } catch (e) {
+          console.log(
+            "module list error",
+            e
+          );
+        }
+      };
+
+      loadModules();
+    }, []);
+
+    const deleteSelectedModule = async () => {
+      const moduleName = currentArgs.selectedModule;
+
+      if (!moduleName) return;
+
+      const confirmed = window.confirm(
+        `Are you sure you want to delete "${moduleName}"?`
       );
 
-      const list = snap.docs.map((d) => d.id);
+      if (!confirmed) return;
 
-      setModules(list);
+      try {
+        await deleteDoc(
+          doc(
+            db,
+            "sign-up-modules",
+            moduleName
+          )
+        );
 
+        setModules((prev) =>
+          prev.filter((m) => m !== moduleName)
+        );
 
-    } catch (e) {
-      console.log("module list error", e);
-    }
-  };
+        previousModule.current = "";
 
-  loadModules();
-}, []);
+        updateArgs({
+          moduleName: "",
+          selectedModule: "",
+          saveModule: false,
+        });
+      } catch (e) {
+        console.log(
+          "delete error",
+          e
+        );
+      }
+    };
 
     const {
       moduleName,
@@ -298,56 +311,65 @@ export const Default = {
       ...componentArgs
     } = currentArgs;
 
-   return (
-  <>
-    {createPortal(
-      <div
-        style={{
-          position: "fixed",
-          top: 10,
-          right: 10,
-          zIndex: 9999,
-          padding: 12,
-          background: "#111",
-          color: "#fff",
-          borderRadius: "4px",
-        }}
-      >
-        <div style={{ marginBottom: 8 }}>
-          <label>Load existing module: </label>
-
-          <select
-            value={currentArgs.selectedModule || ""}
+    return (
+      <>
+        {createPortal(
+          <div
             style={{
-                  color: '#000'
-                }}
-            onChange={(e) => {
-              updateArgs({
-                ...currentArgs,
-                selectedModule: e.target.value,
-              });
+              position: "fixed",
+              top: 10,
+              right: 10,
+              zIndex: 9999,
+              padding: 12,
+              background: "#111",
+              color: "#fff",
+              borderRadius: "4px",
             }}
           >
-            <option value="">
-              -- select saved module --
-            </option>
+            <div style={{ marginBottom: 8 }}>
+              <label>Load existing module: </label>
 
-            {modules.map((m) => (
-              <option
-                key={m}
-                value={m}
+              <select
+                value={currentArgs.selectedModule || ""}
+                style={{
+                  color: "#000",
+                }}
+                onChange={(e) => {
+                  updateArgs({
+                    ...currentArgs,
+                    selectedModule: e.target.value,
+                  });
+                }}
               >
-                {m}
-              </option>
-            ))}
-          </select>
-        </div>
-      </div>,
-      document.body
-    )}
+                <option value="">
+                  -- select saved module --
+                </option>
 
-    <SignUpModule {...componentArgs} />
-  </>
-);
-  }
+                {modules.map((m) => (
+                  <option
+                    key={m}
+                    value={m}
+                  >
+                    {m}
+                  </option>
+                ))}
+              </select>
+
+              <button
+                type="button"
+                disabled={!currentArgs.selectedModule}
+                onClick={deleteSelectedModule}
+                style={{ marginLeft: 8 }}
+              >
+                Delete
+              </button>
+            </div>
+          </div>,
+          document.body
+        )}
+
+        <SignUpModule {...componentArgs} />
+      </>
+    );
+  },
 };

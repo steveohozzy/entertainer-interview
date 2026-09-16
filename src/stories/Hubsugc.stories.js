@@ -3,6 +3,7 @@ import {
   doc,
   getDoc,
   setDoc,
+  deleteDoc,
   collection,
   getDocs
 } from 'firebase/firestore';
@@ -21,67 +22,64 @@ export default {
   },
 
   argTypes: {
-  user: {
-    options: ['stories', 'hasina', 'shermin', 'sam'],
-    control: { type: 'select' },
-  },
+    user: {
+      options: ['stories', 'hasina', 'shermin', 'sam'],
+      control: { type: 'select' },
+    },
 
-  moduleName: {
-    control: 'text',
-  },
+    moduleName: {
+      control: 'text',
+    },
 
-  selectedModule: {
-    table: {
-      disable: true,
+    selectedModule: {
+      table: {
+        disable: true,
+      },
+    },
+
+    saveModule: {
+      control: 'boolean',
+    },
+
+    panel1linkicon: {
+      options: [
+        "basket",
+        "glasses",
+        "football",
+        "pencil",
+        "plane",
+      ],
+      control: {
+        type: "radio",
+      },
+    },
+
+    panel2linkicon: {
+      options: [
+        "basket",
+        "glasses",
+        "football",
+        "pencil",
+        "plane",
+      ],
+      control: {
+        type: "radio",
+      },
+    },
+
+    panel3linkicon: {
+      options: [
+        "basket",
+        "glasses",
+        "football",
+        "pencil",
+        "plane",
+      ],
+      control: {
+        type: "radio",
+      },
     },
   },
-
-  saveModule: {
-    control: 'boolean',
-  },
-
-  // PANEL 1
-  panel1linkicon: {
-    options: [
-      "basket",
-      "glasses",
-      "football",
-      "pencil",
-      "plane",
-    ],
-    control: {
-      type: "radio", // or "select"
-    },
-  },
-
-  // PANEL 2
-  panel2linkicon: {
-    options: [
-      "basket",
-      "glasses",
-      "football",
-      "pencil",
-      "plane",
-    ],
-    control: {
-      type: "radio",
-    },
-  },
-
-  // PANEL 3
-  panel3linkicon: {
-    options: [
-      "basket",
-      "glasses",
-      "football",
-      "pencil",
-      "plane",
-    ],
-    control: {
-      type: "radio",
-    },
-  },
-},
 
   decorators: [
     (Story) => {
@@ -92,10 +90,6 @@ export default {
 
       const loadingRef = useRef(false);
       const previousModule = useRef('');
-
-      // -------------------------
-      // LOAD MODULE LIST
-      // -------------------------
 
       useEffect(() => {
 
@@ -128,10 +122,6 @@ export default {
         loadModules();
 
       }, []);
-
-      // -------------------------
-      // LOAD MODULE
-      // -------------------------
 
       useEffect(() => {
 
@@ -189,10 +179,6 @@ export default {
 
       }, [currentArgs.selectedModule]);
 
-      // -------------------------
-      // SAVE MODULE
-      // -------------------------
-
       useEffect(() => {
 
         if (
@@ -224,6 +210,12 @@ export default {
               }
             );
 
+            setModules(prev =>
+              prev.includes(moduleName)
+                ? prev
+                : [...prev, moduleName]
+            );
+
             updateArgs({
               ...currentArgs,
               saveModule:false,
@@ -249,6 +241,57 @@ export default {
         save();
 
       }, [currentArgs.saveModule]);
+
+      const deleteSelectedModule = async () => {
+
+        if (!currentArgs.selectedModule) {
+          return;
+        }
+
+        const moduleName =
+          currentArgs.selectedModule;
+
+        const confirmed = window.confirm(
+          `Are you sure you want to delete "${moduleName}"?`
+        );
+
+        if (!confirmed) {
+          return;
+        }
+
+        try {
+
+          await deleteDoc(
+            doc(
+              db,
+              'hubs-ugc-carousel',
+              moduleName
+            )
+          );
+
+          setModules(prev =>
+            prev.filter(m => m !== moduleName)
+          );
+
+          previousModule.current = '';
+
+          updateArgs({
+            ...currentArgs,
+            moduleName:'',
+            selectedModule:'',
+            saveModule:false
+          });
+
+        } catch(e){
+
+          console.log(
+            'delete error',
+            e
+          );
+
+        }
+
+      };
 
       return (
         <>
@@ -308,6 +351,17 @@ export default {
                   ))}
 
                 </select>
+
+                <button
+                  type="button"
+                  disabled={!currentArgs.selectedModule}
+                  onClick={deleteSelectedModule}
+                  style={{
+                    marginLeft:8
+                  }}
+                >
+                  Delete
+                </button>
 
               </div>
             </div>,

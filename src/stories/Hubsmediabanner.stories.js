@@ -3,6 +3,7 @@ import {
   doc,
   getDoc,
   setDoc,
+  deleteDoc,
   collection,
   getDocs
 } from 'firebase/firestore';
@@ -210,6 +211,12 @@ export default {
               }
             );
 
+            setModules((prev) =>
+              prev.includes(moduleName)
+                ? prev
+                : [...prev, moduleName]
+            );
+
             updateArgs({
               ...currentArgs,
               saveModule: false,
@@ -235,6 +242,55 @@ export default {
         save();
 
       }, [currentArgs.saveModule]);
+
+      const deleteSelectedModule = async () => {
+
+        const moduleName =
+          currentArgs.selectedModule;
+
+        if (!moduleName) return;
+
+        if (
+          !window.confirm(
+            `Delete module "${moduleName}"?`
+          )
+        ) return;
+
+        try {
+
+          await deleteDoc(
+            doc(
+              db,
+              'hubs-video-banner',
+              moduleName
+            )
+          );
+
+          setModules((prev) =>
+            prev.filter(
+              (m) => m !== moduleName
+            )
+          );
+
+          previousModule.current = '';
+
+          updateArgs({
+            ...currentArgs,
+            moduleName: '',
+            selectedModule: '',
+            saveModule: false
+          });
+
+        } catch(e){
+
+          console.log(
+            'delete error',
+            e
+          );
+
+        }
+
+      };
 
       return (
         <>
@@ -294,6 +350,17 @@ export default {
                   ))}
 
                 </select>
+
+                <button
+                  type="button"
+                  onClick={deleteSelectedModule}
+                  disabled={!currentArgs.selectedModule}
+                  style={{
+                    marginLeft: 8
+                  }}
+                >
+                  Delete
+                </button>
 
               </div>
             </div>,

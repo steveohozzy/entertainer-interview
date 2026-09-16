@@ -4,360 +4,468 @@ import { createPortal } from "react-dom";
 
 import { db } from "../config/firebase";
 import {
-  getDoc,
-  doc,
-  setDoc,
+getDoc,
+doc,
+setDoc,
+deleteDoc,
 } from "firebase/firestore";
 
 import { CountdownTimer } from "./CountdownTimer";
 import { useArgs } from "storybook/preview-api";
-import { control } from "leaflet";
 
 export default {
-  title: "Modules/Countdown Timer",
-  component: CountdownTimer,
+title: "Modules/Countdown Timer",
+component: CountdownTimer,
 
-  parameters: {
-    layout: "fullscreen",
+parameters: {
+layout: "fullscreen",
+},
+
+argTypes: {
+selectedModule: {
+table: {
+disable: true,
+},
+},
+
+
+moduleName: {
+  control: "text",
+},
+
+saveModule: {
+  control: "boolean",
+},
+
+logoImage: {
+  control: "text",
+},
+
+logoAlt: {
+  control: "text",
+},
+
+title: {
+  control: "text",
+},
+
+tagline: {
+  control: "text",
+},
+
+targetDate: {
+  control: "date",
+},
+
+targetTime: {
+  control: "text",
+},
+
+expiredText: {
+  control: "text",
+},
+
+backgroundColor: {
+  control: "color",
+},
+
+titleColor: {
+  control: "color",
+},
+
+textColor: {
+  control: "color",
+},
+
+numberColor: {
+  control: "color",
+},
+
+labelColor: {
+  control: "color",
+},
+
+buttonStyle: {
+  options: [
+    'none',
+    'shop-now',
+    'pre-order-now',
+    'store-events',
+    'store-locator',
+    'enter',
+    'download',
+    'read',
+    'sign-up',
+    'play',
+  ],
+  control: {
+    type: 'radio',
   },
+},
 
-  argTypes: {
-    selectedModule: {
-      table: {
-        disable: true,
-      },
-    },
+buttonLink: {
+  control: 'text',
+},
 
-    moduleName: {
-      control: "text",
-    },
 
-    saveModule: {
-      control: "boolean",
-    },
-
-    logoImage: {
-      control: "text",
-    },
-
-    logoAlt: {
-      control: "text",
-    },
-
-    title: {
-      control: "text",
-    },
-
-    tagline: {
-      control: "text",
-    },
-
-    targetDate: {
-      control: "date",
-    },
-
-    targetTime: {
-      control: "text",
-    },
-
-    expiredText: {
-      control: "text",
-    },
-
-    backgroundColor: {
-      control: "color",
-    },
-
-    titleColor: {
-      control: "color",
-    },
-
-    textColor: {
-      control: "color",
-    },
-
-    numberColor: {
-      control: "color",
-    },
-
-    labelColor: {
-      control: "color",
-    },
-
-    buttonStyle: {
-      options: [
-        'none',
-        'shop-now',
-        'pre-order-now',
-        'store-events',
-        'store-locator',
-        'enter',
-        'download',
-        'read',
-        'sign-up',
-        'play',
-      ],
-      control: {
-        type: 'radio',
-      },
-    },
-    buttonLink: {
-      control: 'text',
-    },
-  },
+},
 };
 
 export const Countdown = {
 
-  args: {
+args: {
 
-    moduleName: "",
-    selectedModule: "",
-    saveModule: false,
 
-    logoImage: "",
-    logoAlt: "",
+moduleName: "",
+selectedModule: "",
+saveModule: false,
 
-    title: "Coming Soon",
+logoImage: "",
+logoAlt: "",
 
-    tagline: "The Entertainer is coming soon!",
+title: "Coming Soon",
 
-    targetDate: new Date("2026-12-25").getTime(),
+tagline: "The Entertainer is coming soon!",
 
-    targetTime: "09:00",
+targetDate: new Date("2026-12-25").getTime(),
 
-    expiredText: "This event has started!",
+targetTime: "09:00",
 
-    backgroundColor: "#1f2b91",
-    titleColor: "#ffffff",
-    textColor: "#ffffff",
-    numberColor: "#1f2b91",
-    labelColor: "#444444",
-    buttonStyle: 'none',
-    buttonLink: '',
+expiredText: "This event has started!",
 
-  },
+backgroundColor: "#1f2b91",
+titleColor: "#ffffff",
+textColor: "#ffffff",
+numberColor: "#1f2b91",
+labelColor: "#444444",
 
-  render: function Render() {
+buttonStyle: 'none',
+buttonLink: '',
 
-    const [currentArgs, updateArgs] = useArgs();
-    const [modules, setModules] = useState([]);
 
-    const loadingRef = useRef(false);
-    const previousModule = useRef("");
+},
 
-    useEffect(() => {
+render: function Render() {
 
-      if (
-        !currentArgs.selectedModule ||
-        loadingRef.current ||
-        previousModule.current === currentArgs.selectedModule
-      ) return;
 
-      const load = async () => {
+const [currentArgs, updateArgs] = useArgs();
+const [modules, setModules] = useState([]);
 
-        loadingRef.current = true;
+const loadingRef = useRef(false);
+const previousModule = useRef("");
 
-        try {
+useEffect(() => {
 
-          const ref = doc(
-            db,
-            "countdown-modules",
-            currentArgs.selectedModule
-          );
+  if (
+    !currentArgs.selectedModule ||
+    loadingRef.current ||
+    previousModule.current === currentArgs.selectedModule
+  ) {
+    return;
+  }
 
-          const snap = await getDoc(ref);
+  const load = async () => {
 
-          if (snap.exists()) {
+    loadingRef.current = true;
 
-            previousModule.current =
-              currentArgs.selectedModule;
+    try {
 
-            updateArgs({
-              ...currentArgs,
+      const ref = doc(
+        db,
+        "countdown-modules",
+        currentArgs.selectedModule
+      );
 
-              moduleName:
-                currentArgs.selectedModule,
+      const snap = await getDoc(ref);
 
-              ...snap.data(),
-            });
+      if (snap.exists()) {
 
-          }
+        previousModule.current =
+          currentArgs.selectedModule;
 
-        } catch (e) {
+        updateArgs({
+          ...currentArgs,
 
-          console.log(
-            "load error",
-            e
-          );
+          moduleName:
+            currentArgs.selectedModule,
 
+          ...snap.data(),
+        });
+
+      }
+
+    } catch (e) {
+
+      console.log(
+        "load error",
+        e
+      );
+
+    }
+
+    loadingRef.current = false;
+
+  };
+
+  load();
+
+}, [currentArgs.selectedModule]);
+
+
+// SAVE MODULE
+
+useEffect(() => {
+
+  if (
+    loadingRef.current ||
+    !currentArgs.saveModule ||
+    !currentArgs.moduleName
+  ) {
+    return;
+  }
+
+  const save = async () => {
+
+    try {
+
+      const {
+        moduleName,
+        selectedModule,
+        saveModule,
+        ...fields
+      } = currentArgs;
+
+      await setDoc(
+        doc(
+          db,
+          "countdown-modules",
+          moduleName
+        ),
+        fields,
+        {
+          merge: false
+        }
+      );
+
+      updateArgs({
+        saveModule: false,
+        selectedModule: moduleName
+      });
+
+      setModules((prev) => {
+
+        if (prev.includes(moduleName)) {
+          return prev;
         }
 
-        loadingRef.current = false;
+        return [
+          ...prev,
+          moduleName
+        ];
 
-      };
+      });
 
-      load();
+    } catch (e) {
 
-    }, [currentArgs.selectedModule]);
+      console.log(
+        "save error",
+        e
+      );
 
-        // SAVE MODULE
+    }
 
-    useEffect(() => {
+  };
 
-      if (
-        loadingRef.current ||
-        !currentArgs.saveModule ||
-        !currentArgs.moduleName
-      ) return;
+  save();
 
-      const save = async () => {
+}, [currentArgs.saveModule]);
 
-        try {
 
-          const {
-            moduleName,
-            selectedModule,
-            saveModule,
-            ...fields
-          } = currentArgs;
+// LOAD DROPDOWN
 
-          await setDoc(
-            doc(
-              db,
-              "countdown-modules",
-              moduleName
-            ),
-            fields,
-            {
-              merge: false
+useEffect(() => {
+
+  const loadModules = async () => {
+
+    try {
+
+      const snap = await getDocs(
+        collection(
+          db,
+          "countdown-modules"
+        )
+      );
+
+      setModules(
+        snap.docs.map(
+          d => d.id
+        )
+      );
+
+    } catch (e) {
+
+      console.log(
+        "module list error",
+        e
+      );
+
+    }
+
+  };
+
+  loadModules();
+
+}, []);
+
+
+// DELETE MODULE
+
+const deleteSelectedModule = async () => {
+
+  if (!currentArgs.selectedModule) {
+    return;
+  }
+
+  const confirmed = window.confirm(
+    `Are you sure you want to delete "${currentArgs.selectedModule}"?`
+  );
+
+  if (!confirmed) {
+    return;
+  }
+
+  try {
+
+    await deleteDoc(
+      doc(
+        db,
+        "countdown-modules",
+        currentArgs.selectedModule
+      )
+    );
+
+    setModules((prev) =>
+      prev.filter(
+        (m) => m !== currentArgs.selectedModule
+      )
+    );
+
+    previousModule.current = "";
+
+    updateArgs({
+      moduleName: "",
+      selectedModule: "",
+      saveModule: false,
+    });
+
+  } catch (e) {
+
+    console.log(
+      "delete error",
+      e
+    );
+
+  }
+
+};
+
+
+const {
+  moduleName,
+  selectedModule,
+  saveModule,
+  ...componentArgs
+} = currentArgs;
+
+
+return (
+  <>
+
+    {createPortal(
+
+      <div
+        style={{
+          position: "fixed",
+          top: 10,
+          right: 10,
+          zIndex: 9999,
+          padding: 12,
+          background: "#111",
+          color: "#fff",
+          borderRadius: "4px",
+        }}
+      >
+
+        <div>
+
+          <label>
+            Load existing module:
+          </label>
+
+          <select
+            value={
+              currentArgs.selectedModule || ""
             }
-          );
-
-          updateArgs({
-            saveModule: false,
-            selectedModule: moduleName
-          });
-
-        } catch (e) {
-
-          console.log(
-            "save error",
-            e
-          );
-
-        }
-
-      };
-
-      save();
-
-    }, [currentArgs.saveModule]);
-
-
-    // LOAD DROPDOWN
-
-    useEffect(() => {
-
-      const loadModules = async () => {
-
-        try {
-
-          const snap = await getDocs(
-            collection(
-              db,
-              "countdown-modules"
-            )
-          );
-
-          setModules(
-            snap.docs.map(
-              d => d.id
-            )
-          );
-
-        } catch (e) {
-
-          console.log(
-            "module list error",
-            e
-          );
-
-        }
-
-      };
-
-      loadModules();
-
-    }, []);
-
-
-    const {
-      moduleName,
-      selectedModule,
-      saveModule,
-      ...componentArgs
-    } = currentArgs;
-
-        return (
-      <>
-        {createPortal(
-          <div
             style={{
-              position: "fixed",
-              top: 10,
-              right: 10,
-              zIndex: 9999,
-              padding: 12,
-              background: "#111",
-              color: "#fff",
-              borderRadius: "4px",
+              color: "#000",
+            }}
+            onChange={(e) => {
+
+              updateArgs({
+                ...currentArgs,
+                selectedModule: e.target.value,
+              });
+
             }}
           >
-            <div>
-              <label>
-                Load existing module:
-              </label>
 
-              <select
-                value={
-                  currentArgs.selectedModule || ""
-                }
-                style={{
-                  color: "#000",
-                }}
-                onChange={(e) => {
-                  updateArgs({
-                    ...currentArgs,
-                    selectedModule: e.target.value,
-                  });
-                }}
+            <option value="">
+              -- select saved module --
+            </option>
+
+            {modules.map((m) => (
+
+              <option
+                key={m}
+                value={m}
               >
-                <option value="">
-                  -- select saved module --
-                </option>
+                {m}
+              </option>
 
-                {modules.map((m) => (
-                  <option
-                    key={m}
-                    value={m}
-                  >
-                    {m}
-                  </option>
-                ))}
-              </select>
+            ))}
 
-            </div>
+          </select>
 
-          </div>,
-          document.body
-        )}
+          <button
+            type="button"
+            disabled={!currentArgs.selectedModule}
+            onClick={deleteSelectedModule}
+            style={{
+              marginLeft: 8,
+              padding: "5px 10px",
+              cursor: currentArgs.selectedModule
+                ? "pointer"
+                : "not-allowed",
+            }}
+          >
+            Delete Selected
+          </button>
 
-        <CountdownTimer
-          {...componentArgs}
-        />
+        </div>
 
-      </>
-    );
-  },
+      </div>,
+
+      document.body
+
+    )}
+
+    <CountdownTimer
+      {...componentArgs}
+    />
+
+  </>
+);
+
+
+},
 };

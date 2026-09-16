@@ -1,4 +1,4 @@
-import { collection, getDocs, getDoc, doc, setDoc } from 'firebase/firestore';
+import { collection, getDocs, getDoc, doc, setDoc, deleteDoc } from 'firebase/firestore';
 import { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { db } from '../config/firebase';
@@ -115,7 +115,6 @@ moduleName: '',
 selectedModule: '',
 saveModule: false,
 
-
 images: false,
 
 modulebackgroundcolor: '#dbe3ff',
@@ -191,14 +190,11 @@ roundal5datapromotionname: '',
 roundal6dataelementtype: '',
 roundal6datapromotionindex: '',
 roundal6datapromotionname: '',
-
-
 },
 
 render: function Render() {
 const [currentArgs, updateArgs] = useArgs();
 const [modules, setModules] = useState([]);
-
 
 const loadingRef = useRef(false);
 const previousModule = useRef('');
@@ -268,6 +264,10 @@ useEffect(() => {
         }
       );
 
+      setModules((prev) =>
+        prev.includes(moduleName) ? prev : [...prev, moduleName]
+      );
+
       updateArgs({
         saveModule: false,
         selectedModule: moduleName,
@@ -302,6 +302,30 @@ useEffect(() => {
 
   loadModules();
 }, []);
+
+const deleteSelectedModule = async () => {
+  const moduleName = currentArgs.selectedModule;
+
+  if (!moduleName) return;
+
+  if (!window.confirm(`Delete module "${moduleName}"?`)) return;
+
+  try {
+    await deleteDoc(doc(db, 'ShopByAgeModule', moduleName));
+
+    setModules((prev) => prev.filter((m) => m !== moduleName));
+    previousModule.current = '';
+
+    updateArgs({
+      ...currentArgs,
+      moduleName: '',
+      selectedModule: '',
+      saveModule: false,
+    });
+  } catch (e) {
+    console.log('delete error', e);
+  }
+};
 
 const {
   moduleName,
@@ -351,6 +375,15 @@ return (
               </option>
             ))}
           </select>
+
+          <button
+            type="button"
+            onClick={deleteSelectedModule}
+            disabled={!currentArgs.selectedModule}
+            style={{ marginLeft: 8 }}
+          >
+            Delete
+          </button>
         </div>
       </div>,
       document.body
@@ -359,7 +392,6 @@ return (
     <ShopByAgeModule {...componentArgs} />
   </>
 );
-
 
 },
 };

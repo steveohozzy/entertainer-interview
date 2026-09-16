@@ -158,7 +158,7 @@ return (
       }
 
       .double-module-banner-tile .hero-tile-info p {
-          color: #000,
+          color: #000;
           font-size: 14px;
           font-weight: normal;
           text-transform: capitalize;

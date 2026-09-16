@@ -3,225 +3,314 @@ import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { db } from "../config/firebase";
 import {
-  getDoc,
-  doc,
-  setDoc,
+getDoc,
+doc,
+setDoc,
+deleteDoc,
 } from "firebase/firestore";
 
 import { useArgs } from "storybook/preview-api";
 import { DYCarousel } from "./DYCarousel";
 
 export default {
-  title: "Modules/DY Carousel",
-  component: DYCarousel,
+title: "Modules/DY Carousel",
+component: DYCarousel,
 
-  parameters: {
-    layout: "fullscreen",
-    html: {
-      root: "#dy-css-output",
-    },
-  },
+parameters: {
+layout: "fullscreen",
+html: {
+root: "#dy-css-output",
+},
+},
 
-  argTypes: {
-    preview: {
-      table: {
-        disable: true,
-      },
-    },
-  selectedModule: {
-    table: {
-      disable: true,
-    },
-  },
+argTypes: {
+preview: {
+table: {
+disable: true,
+},
+},
 
-  moduleName: {
-    control: "text",
-  },
 
-  saveModule: {
-    control: "boolean",
+selectedModule: {
+  table: {
+    disable: true,
   },
+},
 
-  lozengebackgroundcolor: {
-    control: "color",
-  },
+moduleName: {
+  control: "text",
+},
 
-  lozengetextcolor: {
-    control: "color",
-  },
+saveModule: {
+  control: "boolean",
+},
 
-  bordercolor: {
-    control: "color",
-  },
+lozengebackgroundcolor: {
+  control: "color",
+},
+
+lozengetextcolor: {
+  control: "color",
+},
+
+bordercolor: {
+  control: "color",
+},
+
+
 },
 };
 
 export const Default = {
-  args: {
-  moduleName: "",
-  selectedModule: "",
-  saveModule: false,
-  lozengebackgroundcolor: "#000",
-  lozengetextcolor: "#fff",
-  bordercolor: '#000'
-
+args: {
+moduleName: "",
+selectedModule: "",
+saveModule: false,
+lozengebackgroundcolor: "#000",
+lozengetextcolor: "#fff",
+bordercolor: '#000'
 },
 
-  render: function Render() {
+render: function Render() {
 
-    const [currentArgs, updateArgs] = useArgs();
-    const [modules, setModules] = useState([]);
 
-    const loadingRef = useRef(false);
-    const previousModule = useRef("");
+const [currentArgs, updateArgs] = useArgs();
+const [modules, setModules] = useState([]);
 
-    // -------------------------
-    // LOAD MODULE
-    // -------------------------
+const loadingRef = useRef(false);
+const previousModule = useRef("");
 
-    useEffect(() => {
+// -------------------------
+// LOAD MODULE
+// -------------------------
 
-      if (
-        !currentArgs.selectedModule ||
-        loadingRef.current ||
-        previousModule.current ===
-        currentArgs.selectedModule
-      ) return;
+useEffect(() => {
 
-      const load = async () => {
+  if (
+    !currentArgs.selectedModule ||
+    loadingRef.current ||
+    previousModule.current ===
+    currentArgs.selectedModule
+  ) return;
 
-        loadingRef.current = true;
+  const load = async () => {
 
-        try {
+    loadingRef.current = true;
 
-          const ref = doc(
-            db,
-            "dy-carousel-module",
-            currentArgs.selectedModule
-          );
-
-          const snap = await getDoc(ref);
-
-          if (snap.exists()) {
-
-            previousModule.current =
-              currentArgs.selectedModule;
-
-            updateArgs({
-              ...currentArgs,
-
-              moduleName: currentArgs.selectedModule,
-
-              ...snap.data(),
-            });
-
-          }
-
-        } catch(e){
-
-          console.log(
-            "load error",
-            e
-          );
-
-        }
-
-        loadingRef.current = false;
-
-      };
-
-      load();
-
-    }, [currentArgs.selectedModule]);
-
-    // -------------------------
-    // SAVE MODULE
-    // -------------------------
-
-    useEffect(() => {
-
-      if (
-        loadingRef.current ||
-        !currentArgs.saveModule ||
-        !currentArgs.moduleName
-      ) return;
-
-      const save = async () => {
-
-        try {
-
-          const {
-            moduleName,
-            selectedModule,
-            saveModule,
-            ...fields
-          } = currentArgs;
-
-          await setDoc(
-            doc(
-              db,
-              "dy-carousel-module",
-              moduleName
-            ),
-            fields,
-            {
-              merge:false
-            }
-          );
-
-          updateArgs({
-            saveModule:false,
-            selectedModule:moduleName
-          });
-
-          console.log(
-            "saved:",
-            moduleName
-          );
-
-        } catch(e){
-
-          console.log(
-            "save error",
-            e
-          );
-
-        }
-
-      };
-
-      save();
-
-    }, [currentArgs.saveModule]);
-
-    useEffect(() => {
-  const loadModules = async () => {
     try {
-      const snap = await getDocs(
-        collection(db, "dy-carousel-module")
+
+      const ref = doc(
+        db,
+        "dy-carousel-module",
+        currentArgs.selectedModule
       );
 
-      const list = snap.docs.map((d) => d.id);
+      const snap = await getDoc(ref);
+
+      if (snap.exists()) {
+
+        previousModule.current =
+          currentArgs.selectedModule;
+
+        updateArgs({
+          ...currentArgs,
+
+          moduleName: currentArgs.selectedModule,
+
+          ...snap.data(),
+        });
+
+      }
+
+    } catch(e){
+
+      console.log(
+        "load error",
+        e
+      );
+
+    }
+
+    loadingRef.current = false;
+
+  };
+
+  load();
+
+}, [currentArgs.selectedModule]);
+
+// -------------------------
+// SAVE MODULE
+// -------------------------
+
+useEffect(() => {
+
+  if (
+    loadingRef.current ||
+    !currentArgs.saveModule ||
+    !currentArgs.moduleName
+  ) return;
+
+  const save = async () => {
+
+    try {
+
+      const {
+        moduleName,
+        selectedModule,
+        saveModule,
+        ...fields
+      } = currentArgs;
+
+      await setDoc(
+        doc(
+          db,
+          "dy-carousel-module",
+          moduleName
+        ),
+        fields,
+        {
+          merge:false
+        }
+      );
+
+      setModules((prev) => {
+
+        if (prev.includes(moduleName)) {
+          return prev;
+        }
+
+        return [...prev, moduleName];
+
+      });
+
+      updateArgs({
+        saveModule:false,
+        selectedModule:moduleName
+      });
+
+      console.log(
+        "saved:",
+        moduleName
+      );
+
+    } catch(e){
+
+      console.log(
+        "save error",
+        e
+      );
+
+    }
+
+  };
+
+  save();
+
+}, [currentArgs.saveModule]);
+
+// -------------------------
+// LOAD MODULE LIST
+// -------------------------
+
+useEffect(() => {
+
+  const loadModules = async () => {
+
+    try {
+
+      const snap = await getDocs(
+        collection(
+          db,
+          "dy-carousel-module"
+        )
+      );
+
+      const list = snap.docs.map(
+        (d) => d.id
+      );
 
       setModules(list);
 
-
     } catch (e) {
-      console.log("module list error", e);
+
+      console.log(
+        "module list error",
+        e
+      );
+
     }
+
   };
 
   loadModules();
+
 }, []);
 
-    const {
-      moduleName,
-      selectedModule,
-      saveModule,
-      ...componentArgs
-    } = currentArgs;
+// -------------------------
+// DELETE SELECTED MODULE
+// -------------------------
 
-   return (
+const deleteSelectedModule = async () => {
+
+  if (!currentArgs.selectedModule) return;
+
+  const confirmed = window.confirm(
+    `Are you sure you want to delete "${currentArgs.selectedModule}"?`
+  );
+
+  if (!confirmed) return;
+
+  try {
+
+    await deleteDoc(
+      doc(
+        db,
+        "dy-carousel-module",
+        currentArgs.selectedModule
+      )
+    );
+
+    setModules((prev) =>
+      prev.filter(
+        (m) =>
+          m !== currentArgs.selectedModule
+      )
+    );
+
+    previousModule.current = "";
+
+    updateArgs({
+      ...currentArgs,
+      moduleName:"",
+      selectedModule:"",
+      saveModule:false,
+    });
+
+    console.log(
+      "deleted:",
+      currentArgs.selectedModule
+    );
+
+  } catch(e){
+
+    console.log(
+      "delete error",
+      e
+    );
+
+  }
+
+};
+
+const {
+  moduleName,
+  selectedModule,
+  saveModule,
+  ...componentArgs
+} = currentArgs;
+
+return (
   <>
     {createPortal(
       <div
@@ -237,40 +326,79 @@ export const Default = {
         }}
       >
         <div style={{ marginBottom: 8 }}>
-          <label>Load existing module: </label>
+
+          <label>
+            Load existing module:
+          </label>
 
           <select
-            value={currentArgs.selectedModule || ""}
+            value={
+              currentArgs.selectedModule || ""
+            }
             style={{
-                  color: '#000'
-                }}
+              color: '#000'
+            }}
             onChange={(e) => {
+
+              previousModule.current = "";
+
               updateArgs({
                 ...currentArgs,
-                selectedModule: e.target.value,
+                selectedModule:
+                  e.target.value,
               });
+
             }}
           >
+
             <option value="">
               -- select saved module --
             </option>
 
             {modules.map((m) => (
+
               <option
                 key={m}
                 value={m}
               >
                 {m}
               </option>
+
             ))}
+
           </select>
+
+          <button
+            type="button"
+            disabled={
+              !currentArgs.selectedModule
+            }
+            onClick={
+              deleteSelectedModule
+            }
+            style={{
+              marginLeft: 8,
+              padding: "5px 10px",
+              cursor:
+                currentArgs.selectedModule
+                  ? "pointer"
+                  : "not-allowed",
+            }}
+          >
+            Delete Selected
+          </button>
+
         </div>
       </div>,
       document.body
     )}
 
-    <DYCarousel {...componentArgs} />
+    <DYCarousel
+      {...componentArgs}
+    />
   </>
 );
-  }
+
+
+}
 };

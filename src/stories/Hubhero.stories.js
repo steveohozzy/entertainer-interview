@@ -4,312 +4,388 @@ import { createPortal } from "react-dom";
 
 import { db } from "../config/firebase";
 import {
-  getDoc,
-  doc,
-  setDoc,
+getDoc,
+doc,
+setDoc,
+deleteDoc,
 } from "firebase/firestore";
 
 import { HubHeroText } from "./HubheroText";
 import { useArgs } from "storybook/preview-api";
-import { color } from "storybook/internal/theming";
 
 export default {
-  title: "Hubs/Hero Text",
-  component: HubHeroText,
+title: "Hubs/Hero Text",
+component: HubHeroText,
 
-  parameters: {
-    layout: "fullscreen",
-  },
+parameters: {
+layout: "fullscreen",
+},
 
-  argTypes: {
-    selectedModule: {
-      table: {
-        disable: true,
-      },
-    },
+argTypes: {
+selectedModule: {
+table: {
+disable: true,
+},
+},
 
-    moduleName: {
-      control: "text",
-    },
 
-    saveModule: {
-      control: "boolean",
-    },
+moduleName: {
+  control: "text",
+},
 
-    title: {
-      control: "text",
-    },
+saveModule: {
+  control: "boolean",
+},
 
-    text: {
-      control: "text",
-    },
+title: {
+  control: "text",
+},
 
-    modulebackgroundcolor: {
-      control: "color",
-    },
+text: {
+  control: "text",
+},
 
-    stripbackgroundcolor: {
-      control: "color",
-    },
+modulebackgroundcolor: {
+  control: "color",
+},
 
-    striptextcolor: {
-      control: "color",
-    },
+stripbackgroundcolor: {
+  control: "color",
+},
 
-    textcolor: {
-      control: "color",
-    },
-  },
+striptextcolor: {
+  control: "select",
+  options: ["#fff", "#000"],
+},
+
+textcolor: {
+  control: "color",
+},
+
+
+},
 };
 
 export const HubHeroSection = {
-  args: {
+args: {
 
-    moduleName: "",
-    selectedModule: "",
-    saveModule: false,
 
-    title: "Hub",
+moduleName: "",
+selectedModule: "",
+saveModule: false,
 
-    text:
-      "Get closer to the world’s most popular sport with quality collectibles and merch. Whether its club or country find your favourite football teams and players in cards, figures, games and more. Bring the atmosphere of the stadium home and get closer to the game than ever before!",
+title: "Hub",
 
-    modulebackgroundcolor: "#fff",
+text:
+  "Get closer to the world’s most popular sport with quality collectibles and merch. Whether its club or country find your favourite football teams and players in cards, figures, games and more. Bring the atmosphere of the stadium home and get closer to the game than ever before!",
 
-    stripbackgroundcolor: "#1f2b91",
-    striptextcolor: "#fff",
-    textcolor: "#1f2b91",
-  },
+modulebackgroundcolor: "#fff",
 
-  render: function Render() {
+stripbackgroundcolor: "#1f2b91",
+striptextcolor: "#fff",
+textcolor: "#1f2b91",
 
-    const [currentArgs, updateArgs] = useArgs();
-    const [modules, setModules] = useState([]);
 
-    const loadingRef = useRef(false);
-    const previousModule = useRef("");
+},
 
-    // LOAD MODULE
+render: function Render() {
 
-    useEffect(() => {
 
-      if (
-        !currentArgs.selectedModule ||
-        loadingRef.current ||
-        previousModule.current ===
+const [currentArgs, updateArgs] = useArgs();
+const [modules, setModules] = useState([]);
+
+const loadingRef = useRef(false);
+const previousModule = useRef("");
+
+// LOAD MODULE
+
+useEffect(() => {
+
+  if (
+    !currentArgs.selectedModule ||
+    loadingRef.current ||
+    previousModule.current ===
+    currentArgs.selectedModule
+  ) return;
+
+  const load = async () => {
+
+    loadingRef.current = true;
+
+    try {
+
+      const ref = doc(
+        db,
+        "hub-hero-text-modules",
         currentArgs.selectedModule
-      ) return;
+      );
 
-      const load = async () => {
+      const snap = await getDoc(ref);
 
-        loadingRef.current = true;
+      if (snap.exists()) {
 
-        try {
+        previousModule.current =
+          currentArgs.selectedModule;
 
-          const ref = doc(
-            db,
-            "hub-hero-text-modules",
-            currentArgs.selectedModule
-          );
+        updateArgs({
+          ...currentArgs,
 
-          const snap = await getDoc(ref);
+          moduleName:
+            currentArgs.selectedModule,
 
-          if (snap.exists()) {
+          ...snap.data(),
+        });
 
-            previousModule.current =
-              currentArgs.selectedModule;
+      }
 
-            updateArgs({
-              ...currentArgs,
+    } catch(e){
 
-              moduleName:
-                currentArgs.selectedModule,
+      console.log(
+        "load error",
+        e
+      );
 
-              ...snap.data(),
-            });
+    }
 
-          }
+    loadingRef.current = false;
 
-        } catch(e){
+  };
 
-          console.log(
-            "load error",
-            e
-          );
+  load();
 
+}, [currentArgs.selectedModule]);
+
+
+// SAVE MODULE
+
+useEffect(() => {
+
+  if (
+    loadingRef.current ||
+    !currentArgs.saveModule ||
+    !currentArgs.moduleName
+  ) return;
+
+  const save = async () => {
+
+    try {
+
+      const {
+        moduleName,
+        selectedModule,
+        saveModule,
+        ...fields
+      } = currentArgs;
+
+      await setDoc(
+        doc(
+          db,
+          "hub-hero-text-modules",
+          moduleName
+        ),
+        fields,
+        {
+          merge:false
         }
+      );
 
-        loadingRef.current = false;
+      setModules(prev =>
+        prev.includes(moduleName)
+          ? prev
+          : [...prev, moduleName]
+      );
 
-      };
+      updateArgs({
+        saveModule:false,
+        selectedModule:moduleName
+      });
 
-      load();
+    } catch(e){
 
-    }, [currentArgs.selectedModule]);
+      console.log(
+        "save error",
+        e
+      );
+
+    }
+
+  };
+
+  save();
+
+}, [currentArgs.saveModule]);
 
 
-    // SAVE MODULE
+// LOAD DROPDOWN
 
-    useEffect(() => {
+useEffect(() => {
 
-      if (
-        loadingRef.current ||
-        !currentArgs.saveModule ||
-        !currentArgs.moduleName
-      ) return;
+  const loadModules = async () => {
 
-      const save = async () => {
+    try {
 
-        try {
+      const snap = await getDocs(
+        collection(
+          db,
+          "hub-hero-text-modules"
+        )
+      );
 
-          const {
-            moduleName,
-            selectedModule,
-            saveModule,
-            ...fields
-          } = currentArgs;
+      setModules(
+        snap.docs.map(
+          d => d.id
+        )
+      );
 
-          await setDoc(
-            doc(
-              db,
-              "hub-hero-text-modules",
-              moduleName
-            ),
-            fields,
-            {
-              merge:false
+    } catch(e){
+
+      console.log(
+        "module list error",
+        e
+      );
+
+    }
+
+  };
+
+  loadModules();
+
+}, []);
+
+
+const deleteSelectedModule = async () => {
+
+  const selectedModule = currentArgs.selectedModule;
+
+  if (!selectedModule) return;
+
+  const confirmed = window.confirm(
+    `Are you sure you want to delete "${selectedModule}"?`
+  );
+
+  if (!confirmed) return;
+
+  try {
+
+    await deleteDoc(
+      doc(
+        db,
+        "hub-hero-text-modules",
+        selectedModule
+      )
+    );
+
+    setModules(prev =>
+      prev.filter(
+        module => module !== selectedModule
+      )
+    );
+
+    previousModule.current = "";
+
+    updateArgs({
+      ...currentArgs,
+      moduleName: "",
+      selectedModule: "",
+      saveModule: false,
+    });
+
+  } catch(e){
+
+    console.log(
+      "delete error",
+      e
+    );
+
+  }
+
+};
+
+
+const {
+  moduleName,
+  selectedModule,
+  saveModule,
+  ...componentArgs
+} = currentArgs;
+
+
+return (
+  <>
+    {createPortal(
+      <div
+        style={{
+          position:"fixed",
+          top:10,
+          right:10,
+          zIndex:9999,
+          padding:12,
+          background:"#111",
+          color:"#fff",
+          borderRadius:"4px"
+        }}
+      >
+
+        <div>
+
+          <label>
+            Load existing module:
+          </label>
+
+          <select
+            value={
+              currentArgs.selectedModule || ""
             }
-          );
-
-          updateArgs({
-            saveModule:false,
-            selectedModule:moduleName
-          });
-
-        } catch(e){
-
-          console.log(
-            "save error",
-            e
-          );
-
-        }
-
-      };
-
-      save();
-
-    }, [currentArgs.saveModule]);
-
-
-    // LOAD DROPDOWN
-
-    useEffect(() => {
-
-      const loadModules = async () => {
-
-        try {
-
-          const snap = await getDocs(
-            collection(
-              db,
-              "hub-hero-text-modules"
-            )
-          );
-
-          setModules(
-            snap.docs.map(
-              d => d.id
-            )
-          );
-
-        } catch(e){
-
-          console.log(
-            "module list error",
-            e
-          );
-
-        }
-
-      };
-
-      loadModules();
-
-    }, []);
-
-
-    const {
-      moduleName,
-      selectedModule,
-      saveModule,
-      ...componentArgs
-    } = currentArgs;
-
-
-    return (
-      <>
-        {createPortal(
-          <div
             style={{
-              position:"fixed",
-              top:10,
-              right:10,
-              zIndex:9999,
-              padding:12,
-              background:"#111",
-              color:"#fff",
-              borderRadius:"4px"
+              color: '#000'
+            }}
+            onChange={(e)=>{
+              updateArgs({
+                ...currentArgs,
+                selectedModule:e.target.value
+              });
             }}
           >
 
-            <div>
+            <option value="">
+              -- select saved module --
+            </option>
 
-              <label>
-                Load existing module:
-              </label>
-
-              <select
-                value={
-                  currentArgs.selectedModule || ""
-                }
-                style={{
-                  color: '#000'
-                }}
-                onChange={(e)=>{
-                  updateArgs({
-                    ...currentArgs,
-                    selectedModule:e.target.value
-                  });
-                }}
+            {modules.map((m)=>(
+              <option
+                key={m}
+                value={m}
               >
+                {m}
+              </option>
+            ))}
 
-                <option value="">
-                  -- select saved module --
-                </option>
+          </select>
 
-                {modules.map((m)=>(
-                  <option
-                    key={m}
-                    value={m}
-                  >
-                    {m}
-                  </option>
-                ))}
+          <button
+            type="button"
+            disabled={!currentArgs.selectedModule}
+            onClick={deleteSelectedModule}
+            style={{
+              marginLeft: 8
+            }}
+          >
+            Delete
+          </button>
 
-              </select>
+        </div>
 
-            </div>
+      </div>,
+      document.body
+    )}
 
-          </div>,
-          document.body
-        )}
+    <HubHeroText
+      {...componentArgs}
+    />
 
-        <HubHeroText
-          {...componentArgs}
-        />
+  </>
+);
 
-      </>
-    );
-  },
+
+},
 };

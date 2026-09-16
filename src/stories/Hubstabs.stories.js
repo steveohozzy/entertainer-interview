@@ -1,10 +1,11 @@
 import { db } from '../config/firebase';
 import {
-  doc,
-  getDoc,
-  setDoc,
-  collection,
-  getDocs
+doc,
+getDoc,
+setDoc,
+deleteDoc,
+collection,
+getDocs
 } from 'firebase/firestore';
 
 import { useEffect, useRef, useState } from 'react';
@@ -13,326 +14,401 @@ import { HubsTabs } from './Hubstabs';
 import { useArgs } from 'storybook/preview-api';
 
 export default {
-  title: 'Hubs/Tabs',
-  component: HubsTabs,
+title: 'Hubs/Tabs',
+component: HubsTabs,
 
-  parameters: {
-    layout: 'fullscreen',
+parameters: {
+layout: 'fullscreen',
+},
+
+argTypes: {
+user: {
+options: ['stories', 'hasina', 'shermin', 'sam'],
+control: { type: 'select' },
+},
+
+
+moduleName: {
+  control: 'text',
+},
+
+selectedModule: {
+  table: {
+    disable: true,
   },
+},
 
-  argTypes: {
-    user: {
-      options: ['stories', 'hasina', 'shermin', 'sam'],
-      control: { type: 'select' },
-    },
+saveModule: {
+  control: 'boolean',
+},
 
-    moduleName: {
-      control: 'text',
-    },
 
-    selectedModule: {
-      table: {
-        disable: true,
-      },
-    },
+},
 
-    saveModule: {
-      control: 'boolean',
-    },
-  },
+decorators: [
+(Story) => {
 
-  decorators: [
-    (Story) => {
 
-      const [currentArgs, updateArgs] = useArgs();
+  const [currentArgs, updateArgs] = useArgs();
 
-      const [modules, setModules] = useState([]);
+  const [modules, setModules] = useState([]);
 
-      const loadingRef = useRef(false);
-      const previousModule = useRef('');
+  const loadingRef = useRef(false);
+  const previousModule = useRef('');
 
-      // -------------------------
-      // LOAD MODULE LIST
-      // -------------------------
+  // -------------------------
+  // LOAD MODULE LIST
+  // -------------------------
 
-      useEffect(() => {
+  useEffect(() => {
 
-        const loadModules = async () => {
+    const loadModules = async () => {
 
-          try {
+      try {
 
-            const snap = await getDocs(
-              collection(
-                db,
-                'hubs-tabs-stories'
-              )
-            );
+        const snap = await getDocs(
+          collection(
+            db,
+            'hubs-tabs-stories'
+          )
+        );
 
-            const list =
-              snap.docs.map(d => d.id);
+        const list =
+          snap.docs.map(d => d.id);
 
-            setModules(list);
+        setModules(list);
 
-          } catch(e){
+      } catch(e){
 
-            console.log(
-              'module list error',
-              e
-            );
+        console.log(
+          'module list error',
+          e
+        );
 
-          }
+      }
 
-        };
+    };
 
-        loadModules();
+    loadModules();
 
-      }, []);
+  }, []);
 
-      // -------------------------
-      // LOAD MODULE
-      // -------------------------
+  // -------------------------
+  // LOAD MODULE
+  // -------------------------
 
-      useEffect(() => {
+  useEffect(() => {
 
-        if (
-          !currentArgs.selectedModule ||
-          loadingRef.current ||
-          previousModule.current ===
+    if (
+      !currentArgs.selectedModule ||
+      loadingRef.current ||
+      previousModule.current ===
+      currentArgs.selectedModule
+    ) return;
+
+    const load = async () => {
+
+      loadingRef.current = true;
+
+      try {
+
+        const ref = doc(
+          db,
+          'hubs-tabs-stories',
           currentArgs.selectedModule
-        ) return;
+        );
 
-        const load = async () => {
+        const snap =
+          await getDoc(ref);
 
-          loadingRef.current = true;
+        if (snap.exists()) {
 
-          try {
+          previousModule.current =
+            currentArgs.selectedModule;
 
-            const ref = doc(
-              db,
-              'hubs-tabs-stories',
-              currentArgs.selectedModule
-            );
+          updateArgs({
+            ...currentArgs,
 
-            const snap =
-              await getDoc(ref);
+            moduleName:
+              currentArgs.selectedModule,
 
-            if (snap.exists()) {
+            saveModule:false,
 
-              previousModule.current =
-                currentArgs.selectedModule;
+            ...snap.data(),
+          });
 
-              updateArgs({
-                ...currentArgs,
+        }
 
-                moduleName:
-                  currentArgs.selectedModule,
+      } catch(e){
 
-                saveModule:false,
+        console.log(
+          'load error',
+          e
+        );
 
-                ...snap.data(),
-              });
+      }
 
-            }
+      loadingRef.current = false;
 
-          } catch(e){
+    };
 
-            console.log(
-              'load error',
-              e
-            );
+    load();
 
+  }, [currentArgs.selectedModule]);
+
+  // -------------------------
+  // SAVE MODULE
+  // -------------------------
+
+  useEffect(() => {
+
+    if (
+      loadingRef.current ||
+      !currentArgs.saveModule ||
+      !currentArgs.moduleName
+    ) return;
+
+    const save = async () => {
+
+      try {
+
+        const {
+          moduleName,
+          selectedModule,
+          saveModule,
+          ...fields
+        } = currentArgs;
+
+        await setDoc(
+          doc(
+            db,
+            'hubs-tabs-stories',
+            moduleName
+          ),
+          fields,
+          {
+            merge:false
           }
+        );
 
-          loadingRef.current = false;
+        setModules(prev =>
+          prev.includes(moduleName)
+            ? prev
+            : [...prev, moduleName]
+        );
 
-        };
+        updateArgs({
+          saveModule:false,
+          selectedModule:moduleName
+        });
 
-        load();
+        console.log(
+          'saved:',
+          moduleName
+        );
 
-      }, [currentArgs.selectedModule]);
+      } catch(e){
 
-      // -------------------------
-      // SAVE MODULE
-      // -------------------------
+        console.log(
+          'save error',
+          e
+        );
 
-      useEffect(() => {
+      }
 
-        if (
-          loadingRef.current ||
-          !currentArgs.saveModule ||
-          !currentArgs.moduleName
-        ) return;
+    };
 
-        const save = async () => {
+    save();
 
-          try {
+  }, [currentArgs.saveModule]);
 
-            const {
-              moduleName,
-              selectedModule,
-              saveModule,
-              ...fields
-            } = currentArgs;
+  const deleteSelectedModule = async () => {
 
-            await setDoc(
-              doc(
-                db,
-                'hubs-tabs-stories',
-                moduleName
-              ),
-              fields,
-              {
-                merge:false
-              }
-            );
+    const selectedModule =
+      currentArgs.selectedModule;
 
-            updateArgs({
-              saveModule:false,
-              selectedModule:moduleName
-            });
+    if (!selectedModule) return;
 
-            console.log(
-              'saved:',
-              moduleName
-            );
+    const confirmed = window.confirm(
+      `Are you sure you want to delete "${selectedModule}"?`
+    );
 
-          } catch(e){
+    if (!confirmed) return;
 
-            console.log(
-              'save error',
-              e
-            );
+    try {
 
-          }
-
-        };
-
-        save();
-
-      }, [currentArgs.saveModule]);
-
-      return (
-        <>
-          {createPortal(
-            <div
-              style={{
-                position:'fixed',
-                top:10,
-                right:10,
-                zIndex:9999,
-                padding:12,
-                background:'#111',
-                color:'#fff',
-                borderRadius:'4px',
-              }}
-            >
-              <div
-                style={{
-                  marginBottom:8
-                }}
-              >
-                <label>
-                  Load module:
-                </label>
-
-                <select
-                  value={
-                    currentArgs.selectedModule || ""
-                  }
-                  style={{
-                    color:'#000'
-                  }}
-                  onChange={(e)=>{
-
-                    updateArgs({
-                      ...currentArgs,
-                      selectedModule:
-                        e.target.value
-                    });
-
-                  }}
-                >
-
-                  <option value="">
-                    -- select module --
-                  </option>
-
-                  {modules.map((m)=>(
-
-                    <option
-                      key={m}
-                      value={m}
-                    >
-                      {m}
-                    </option>
-
-                  ))}
-
-                </select>
-
-              </div>
-            </div>,
-            document.body
-          )}
-
-          <Story />
-        </>
+      await deleteDoc(
+        doc(
+          db,
+          'hubs-tabs-stories',
+          selectedModule
+        )
       );
 
-    },
-  ],
+      setModules(prev =>
+        prev.filter(
+          module => module !== selectedModule
+        )
+      );
+
+      previousModule.current = '';
+
+      updateArgs({
+        ...currentArgs,
+        moduleName: '',
+        selectedModule: '',
+        saveModule: false,
+      });
+
+    } catch(e){
+
+      console.log(
+        'delete error',
+        e
+      );
+
+    }
+
+  };
+
+  return (
+    <>
+      {createPortal(
+        <div
+          style={{
+            position:'fixed',
+            top:10,
+            right:10,
+            zIndex:9999,
+            padding:12,
+            background:'#111',
+            color:'#fff',
+            borderRadius:'4px',
+          }}
+        >
+          <div
+            style={{
+              marginBottom:8
+            }}
+          >
+            <label>
+              Load module:
+            </label>
+
+            <select
+              value={
+                currentArgs.selectedModule || ""
+              }
+              style={{
+                color:'#000'
+              }}
+              onChange={(e)=>{
+
+                updateArgs({
+                  ...currentArgs,
+                  selectedModule:
+                    e.target.value
+                });
+
+              }}
+            >
+
+              <option value="">
+                -- select module --
+              </option>
+
+              {modules.map((m)=>(
+
+                <option
+                  key={m}
+                  value={m}
+                >
+                  {m}
+                </option>
+
+              ))}
+
+            </select>
+
+            <button
+              type="button"
+              disabled={!currentArgs.selectedModule}
+              onClick={deleteSelectedModule}
+              style={{
+                marginLeft:8
+              }}
+            >
+              Delete
+            </button>
+
+          </div>
+        </div>,
+        document.body
+      )}
+
+      <Story />
+    </>
+  );
+
+},
+
+
+],
 };
 
 export const HubsTabsContainer = {
-  args:{
-    user:'stories',
+args:{
+user:'stories',
 
-    moduleName:'',
-    selectedModule:'',
-    saveModule:false,
 
-    tabareabackgroundcolor:'',
-    tabcontentbackgroundcolor:'',
+moduleName:'',
+selectedModule:'',
+saveModule:false,
 
-    tab1order:1,
-    tab1title:'',
-    tab1titlecolor:'',
-    tab1titlehovercolor:'',
-    tab1titleactivecolor:'',
-    tab1titlebackgroundcolor:'',
-    tab1hoverbackgroundcolor:'',
-    tab1activebackgroundcolor:'',
+tabareabackgroundcolor:'',
+tabcontentbackgroundcolor:'',
 
-    tab2order:2,
-    tab2title:'',
-    tab2titlecolor:'',
-    tab2titlehovercolor:'',
-    tab2titleactivecolor:'',
-    tab2titlebackgroundcolor:'',
-    tab2hoverbackgroundcolor:'',
-    tab2activebackgroundcolor:'',
+tab1order:1,
+tab1title:'',
+tab1titlecolor:'',
+tab1titlehovercolor:'',
+tab1titleactivecolor:'',
+tab1titlebackgroundcolor:'',
+tab1hoverbackgroundcolor:'',
+tab1activebackgroundcolor:'',
 
-    tab3order:3,
-    tab3title:'',
-    tab3titlecolor:'',
-    tab3titlehovercolor:'',
-    tab3titleactivecolor:'',
-    tab3titlebackgroundcolor:'',
-    tab3hoverbackgroundcolor:'',
-    tab3activebackgroundcolor:'',
+tab2order:2,
+tab2title:'',
+tab2titlecolor:'',
+tab2titlehovercolor:'',
+tab2titleactivecolor:'',
+tab2titlebackgroundcolor:'',
+tab2hoverbackgroundcolor:'',
+tab2activebackgroundcolor:'',
 
-    tab4order:4,
-    tab4title:'',
-    tab4titlecolor:'',
-    tab4titlehovercolor:'',
-    tab4titleactivecolor:'',
-    tab4titlebackgroundcolor:'',
-    tab4hoverbackgroundcolor:'',
-    tab4activebackgroundcolor:'',
+tab3order:3,
+tab3title:'',
+tab3titlecolor:'',
+tab3titlehovercolor:'',
+tab3titleactivecolor:'',
+tab3titlebackgroundcolor:'',
+tab3hoverbackgroundcolor:'',
+tab3activebackgroundcolor:'',
 
-    tab1content:'',
-    tab2content:'',
-    tab3content:'',
-    tab4content:'',
-  },
+tab4order:4,
+tab4title:'',
+tab4titlecolor:'',
+tab4titlehovercolor:'',
+tab4titleactivecolor:'',
+tab4titlebackgroundcolor:'',
+tab4hoverbackgroundcolor:'',
+tab4activebackgroundcolor:'',
+
+tab1content:'',
+tab2content:'',
+tab3content:'',
+tab4content:'',
+
+
+},
 };

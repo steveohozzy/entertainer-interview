@@ -4,6 +4,7 @@ import {
   doc,
   getDoc,
   setDoc,
+  deleteDoc,
   collection,
   getDocs
 } from 'firebase/firestore';
@@ -338,6 +339,13 @@ export default {
             );
 
 
+            setModules(prev =>
+              prev.includes(moduleName)
+                ? prev
+                : [...prev, moduleName]
+            );
+
+
             updateArgs({
 
               ...currentArgs,
@@ -372,6 +380,72 @@ export default {
       }, [
         currentArgs.saveModule
       ]);
+
+
+      const deleteSelectedModule = async () => {
+
+        if (!currentArgs.selectedModule) {
+          return;
+        }
+
+
+        const moduleName =
+          currentArgs.selectedModule;
+
+
+        const confirmed = window.confirm(
+          `Are you sure you want to delete "${moduleName}"?`
+        );
+
+
+        if (!confirmed) {
+          return;
+        }
+
+
+        try {
+
+          await deleteDoc(
+            doc(
+              db,
+              'instagram-carousel-modules',
+              moduleName
+            )
+          );
+
+
+          setModules(prev =>
+            prev.filter(
+              m => m !== moduleName
+            )
+          );
+
+
+          previousModule.current = '';
+
+
+          updateArgs({
+
+            ...currentArgs,
+
+            moduleName: '',
+
+            selectedModule: '',
+
+            saveModule: false,
+
+          });
+
+        } catch (e) {
+
+          console.log(
+            'delete error',
+            e
+          );
+
+        }
+
+      };
 
 
       return (
@@ -444,6 +518,22 @@ export default {
                   ))}
 
                 </select>
+
+
+                <button
+                  type="button"
+                  disabled={
+                    !currentArgs.selectedModule
+                  }
+                  onClick={
+                    deleteSelectedModule
+                  }
+                  style={{
+                    marginLeft: 8,
+                  }}
+                >
+                  Delete
+                </button>
 
               </div>
 

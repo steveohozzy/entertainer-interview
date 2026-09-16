@@ -1,308 +1,440 @@
 import { db } from '../config/firebase';
-import { doc, getDoc, setDoc, collection, getDocs } from 'firebase/firestore';
+import {
+doc,
+getDoc,
+setDoc,
+collection,
+getDocs,
+deleteDoc
+} from 'firebase/firestore';
 import { useEffect, useRef, useState } from 'react';
 import { EventModule } from './Eventmoduledynamic';
 import { useArgs } from 'storybook/preview-api';
 
 export default {
-  title: 'Components/Event Module Dynamic',
-  component: EventModule,
-  parameters: { layout: 'fullscreen' },
-  argTypes: {
-    saveModule: {
-      control: "boolean",
-      description: "Save this event to Firestore",
-    },
-    id: '',
-    image: '',
-    imagealt: '',
-    title: { control: 'text' },
-    rows: { control: 'object' },
-    forPreview: { control: 'boolean' },
-    buttontext: { control: 'text' },
-    buttonlink: { control: 'text' },
-    blurb: { control: 'text' },
-  },
+title: 'Components/Event Module Dynamic',
+component: EventModule,
+parameters: { layout: 'fullscreen' },
+argTypes: {
+saveModule: {
+control: "boolean",
+description: "Save this event to Firestore",
+},
+id: '',
+image: '',
+imagealt: '',
+title: { control: 'text' },
+rows: { control: 'object' },
+forPreview: { control: 'boolean' },
+buttontext: { control: 'text' },
+buttonlink: { control: 'text' },
+blurb: { control: 'text' },
+},
 };
 
 export const EventModuleComponent = (args) => {
-  const [currentArgs, updateArgs] = useArgs();
-  const [allDocs, setAllDocs] = useState([]);
-  const [localTitle, setLocalTitle] = useState(currentArgs.title || 'steve test');
-  const isLoadingRef = useRef(false);
-  const lastSyncedData = useRef({});
-  const saveTimeout = useRef(null);
-  const currentDocId = useRef(currentArgs.id || 'stevetest');
+const [currentArgs, updateArgs] = useArgs();
+const [allDocs, setAllDocs] = useState([]);
+const [localTitle, setLocalTitle] = useState(currentArgs.title || 'steve test');
+const isLoadingRef = useRef(false);
+const lastSyncedData = useRef({});
+const saveTimeout = useRef(null);
+const currentDocId = useRef(currentArgs.id || 'stevetest');
 
-  useEffect(() => setLocalTitle(currentArgs.title || ''), [currentArgs.title]);
+useEffect(() => setLocalTitle(currentArgs.title || ''), [currentArgs.title]);
 
 const fetchDocs = async () => {
-  const colRef = collection(db, "eventModuleDynamic");
-  const snapshot = await getDocs(colRef);
+const colRef = collection(db, "eventModuleDynamic");
+const snapshot = await getDocs(colRef);
 
-  const docs = snapshot.docs.map((d) => ({
-    id: d.id,
-    ...d.data(),
-  }));
 
-  setAllDocs(docs.map((d) => d.id));
+const docs = snapshot.docs.map((d) => ({
+  id: d.id,
+  ...d.data(),
+}));
+
+setAllDocs(docs.map((d) => d.id));
+
+
 };
 
+useEffect(() => {
+fetchDocs();
+}, []);
 
-  useEffect(() => {
-    fetchDocs();
-  }, []);
+useEffect(() => {
+if (allDocs.length > 0 && !currentArgs.id) {
+currentDocId.current = 'stevetest';
 
-  useEffect(() => {
-  if (allDocs.length > 0 && !currentArgs.id) {
-    currentDocId.current = 'stevetest';
 
-    loadDoc('stevetest');
+  loadDoc('stevetest');
 
-    updateArgs({
-      ...currentArgs,
-      id: 'stevetest'
-    });
-  }
+  updateArgs({
+    ...currentArgs,
+    id: 'stevetest'
+  });
+}
+
+
 }, [allDocs]);
 
- // Load Firestore doc
+// Load Firestore doc
 const loadDoc = async (docId = currentDocId.current) => {
-  const id = docId || 'untitled';
+const id = docId || 'untitled';
 
-  if (!id) return;
 
-  isLoadingRef.current = true;
+if (!id) return;
 
-  try {
-    const docRef = doc(db, 'eventModuleDynamic', id);
-    const snap = await getDoc(docRef);
+isLoadingRef.current = true;
 
-    if (snap.exists()) {
-      const data = snap.data();
+try {
+  const docRef = doc(db, 'eventModuleDynamic', id);
+  const snap = await getDoc(docRef);
 
-      lastSyncedData.current = data;
+  if (snap.exists()) {
+    const data = snap.data();
 
-      updateArgs({
-        ...data,
-        id: id
-      });
+    lastSyncedData.current = data;
 
-      console.log("Loaded event:", id, data);
-    } else {
-      await setDoc(docRef, {
-        id,
-        title: id,
-        rows: []
-      });
-    }
+    updateArgs({
+      ...data,
+      id: id
+    });
 
-  } catch (e) {
-    console.error("Load error:", e);
+    console.log("Loaded event:", id, data);
+  } else {
+    await setDoc(docRef, {
+      id,
+      title: id,
+      rows: []
+    });
   }
 
-  isLoadingRef.current = false;
-};
+} catch (e) {
+  console.error("Load error:", e);
+}
 
+isLoadingRef.current = false;
+
+
+};
 
 // Initial load
 useEffect(() => {
-  loadDoc();
+loadDoc();
 }, []);
 
-  // Manual save to Firestore
 // Manual save to Firestore
 useEffect(() => {
 
-  if (isLoadingRef.current) {
-    return;
-  }
 
-  if (!currentArgs.saveModule) {
-    return;
-  }
+if (isLoadingRef.current) {
+  return;
+}
 
-  const saveDoc = async () => {
-    try {
-      const docId =
-        currentArgs.id ||
-        (currentArgs.title || "untitled")
-          .toLowerCase()
-          .replace(/[^\w\s-]/g, "")
-          .trim()
-          .replace(/\s+/g, "-");
+if (!currentArgs.saveModule) {
+  return;
+}
 
-      const dataToSave = {
-        ...currentArgs,
-      };
+const saveDoc = async () => {
+  try {
+    const docId =
+      currentArgs.id ||
+      (currentArgs.title || "untitled")
+        .toLowerCase()
+        .replace(/[^\w\s-]/g, "")
+        .trim()
+        .replace(/\s+/g, "-");
 
-      delete dataToSave.saveModule;
+    const dataToSave = {
+      ...currentArgs,
+    };
 
-      const docRef = doc(db, "eventModuleDynamic", docId);
+    delete dataToSave.saveModule;
 
-      await setDoc(docRef, dataToSave, { merge: true });
+    const docRef = doc(db, "eventModuleDynamic", docId);
 
-      await fetchDocs();
+    await setDoc(docRef, dataToSave, { merge: true });
 
-      lastSyncedData.current = dataToSave;
+    await fetchDocs();
 
-      updateArgs({
-        ...currentArgs,
-        saveModule: false,
-      });
+    lastSyncedData.current = dataToSave;
 
-
-    } catch (e) {
-      console.error("❌ Firestore save error:", e);
-
-      updateArgs({
-        ...currentArgs,
-        saveModule: false,
-      });
-    }
-  };
-
-  saveDoc();
-}, [currentArgs.saveModule]);
-
-  // Add new row
-  const addRow = () => {
     updateArgs({
       ...currentArgs,
-      rows: [
-        ...(currentArgs.rows || []),
-        {
-          type: 'single', // default type
-          date: '',
-          times: [],
-          startDate: '',
-          endDate: '',
-          store: '',
-          storeLink: '',
-          price: ''
-        }
-      ],
+      saveModule: false,
     });
-  };
 
-  // Update a single row
-  const updateRow = (index, newRow) => {
-    const updatedRows = [...currentArgs.rows];
-    updatedRows[index] = { ...updatedRows[index], ...newRow };
-    updateArgs({ ...currentArgs, rows: updatedRows });
-  };
+  } catch (e) {
+    console.error("❌ Firestore save error:", e);
 
-  // Remove a row
-  const removeRow = (index) => {
-    const updatedRows = currentArgs.rows.filter((_, i) => i !== index);
-    updateArgs({ ...currentArgs, rows: updatedRows });
-  };
+    updateArgs({
+      ...currentArgs,
+      saveModule: false,
+    });
+  }
+};
 
-  return (
-    <>
-      {!args.forPreview && (
-        <div style={{ marginBottom: 12 }}>
-          <label>
-            Select Existing Event:
-            <select
-              value={currentArgs.id || 'stevetest'}
-              onChange={e => {
-                const selectedId = e.target.value;
+saveDoc();
 
-                currentDocId.current = selectedId;
 
-                loadDoc(selectedId);
+}, [currentArgs.saveModule]);
 
-                updateArgs({
-                  ...currentArgs,
-                  id: selectedId,
-                });
-              }}
-              style={{ marginLeft: 8 }}
-            >
-              {allDocs.map(id => (
-                <option key={id} value={id}>{id}</option>
-              ))}
-            </select>
-          </label>
+// Delete selected event
+const deleteSelectedEvent = async () => {
 
-          <div style={{ marginTop: 8 }}>
-            <label>
-              Edit Title:
-              <input
-                value={localTitle}
-                onChange={e => setLocalTitle(e.target.value)}
-                onBlur={() => {
-                  currentDocId.current = localTitle || 'untitled';
-                  updateArgs({ ...currentArgs, title: localTitle });
-                }}
-                style={{ marginLeft: 8 }}
-              />
-            </label>
-          </div>
-        </div>
-      )}
 
-      <EventModule
-        {...args}
-        rows={currentArgs.rows}
-        updateRows={newRows => updateArgs({ ...currentArgs, rows: newRows })}
-      />
+const selectedId = currentArgs.id;
 
-      {!args.forPreview && (
-        <>
-          {currentArgs.rows && currentArgs.rows.length > 0 && (
-            <div style={{ marginTop: 12 }}>
-              {currentArgs.rows.map((row, index) => (
-                <div
-                  key={index}
-                  style={{
-                    marginBottom: 8,
-                    display: 'flex',
-                    gap: 8,
-                    alignItems: 'center',
-                  }}
-                >
-                  <span>Row {index + 1}:</span>
+if (!selectedId) return;
 
-                  <select
-                    value={row.type || 'single'}
-                    onChange={(e) =>
-                      updateRow(index, { type: e.target.value })
-                    }
-                  >
-                    <option value="single">Single Date</option>
-                    <option value="times">Date with Times</option>
-                    <option value="range">Date Range</option>
-                  </select>
+const confirmed = window.confirm(
+  `Are you sure you want to delete "${selectedId}"?`
+);
 
-                  <button onClick={() => removeRow(index)}>Delete</button>
-                </div>
-              ))}
-            </div>
-          )}
+if (!confirmed) return;
 
-          <button
-            onClick={addRow}
-            style={{ marginTop: 12, padding: '6px 12px' }}
-          >
-            Add Row
-          </button>
-        </>
-      )}
-    </>
+try {
+
+  await deleteDoc(
+    doc(
+      db,
+      "eventModuleDynamic",
+      selectedId
+    )
   );
+
+  setAllDocs((prev) =>
+    prev.filter(
+      (id) => id !== selectedId
+    )
+  );
+
+  currentDocId.current = '';
+
+  updateArgs({
+    ...currentArgs,
+    id: '',
+    title: 'untitled',
+    rows: [],
+    saveModule: false,
+  });
+
+  setLocalTitle('');
+
+  console.log(
+    "Deleted event:",
+    selectedId
+  );
+
+} catch (e) {
+
+  console.error(
+    "❌ Firestore delete error:",
+    e
+  );
+
+}
+
+
+};
+
+// Add new row
+const addRow = () => {
+updateArgs({
+...currentArgs,
+rows: [
+...(currentArgs.rows || []),
+{
+type: 'single',
+date: '',
+times: [],
+startDate: '',
+endDate: '',
+store: '',
+storeLink: '',
+price: ''
+}
+],
+});
+};
+
+// Update a single row
+const updateRow = (index, newRow) => {
+const updatedRows = [...currentArgs.rows];
+updatedRows[index] = { ...updatedRows[index], ...newRow };
+updateArgs({ ...currentArgs, rows: updatedRows });
+};
+
+// Remove a row
+const removeRow = (index) => {
+const updatedRows = currentArgs.rows.filter((_, i) => i !== index);
+updateArgs({ ...currentArgs, rows: updatedRows });
+};
+
+return (
+<>
+{!args.forPreview && (
+<div style={{ marginBottom: 12 }}> <label>
+Select Existing Event:
+
+
+        <select
+          value={currentArgs.id || 'stevetest'}
+          onChange={e => {
+            const selectedId = e.target.value;
+
+            currentDocId.current = selectedId;
+
+            loadDoc(selectedId);
+
+            updateArgs({
+              ...currentArgs,
+              id: selectedId,
+            });
+          }}
+          style={{ marginLeft: 8 }}
+        >
+          {allDocs.map(id => (
+            <option key={id} value={id}>
+              {id}
+            </option>
+          ))}
+        </select>
+      </label>
+
+      <button
+        type="button"
+        disabled={!currentArgs.id}
+        onClick={deleteSelectedEvent}
+        style={{
+          marginLeft: 8,
+          padding: '5px 10px',
+          cursor: currentArgs.id
+            ? 'pointer'
+            : 'not-allowed',
+        }}
+      >
+        Delete Selected
+      </button>
+
+      <div style={{ marginTop: 8 }}>
+        <label>
+          Edit Title:
+
+          <input
+            value={localTitle}
+            onChange={e => setLocalTitle(e.target.value)}
+            onBlur={() => {
+              currentDocId.current =
+                localTitle || 'untitled';
+
+              updateArgs({
+                ...currentArgs,
+                title: localTitle
+              });
+            }}
+            style={{ marginLeft: 8 }}
+          />
+        </label>
+      </div>
+    </div>
+  )}
+
+  <EventModule
+    {...args}
+    rows={currentArgs.rows}
+    updateRows={newRows =>
+      updateArgs({
+        ...currentArgs,
+        rows: newRows
+      })
+    }
+  />
+
+  {!args.forPreview && (
+    <>
+      {currentArgs.rows &&
+        currentArgs.rows.length > 0 && (
+          <div style={{ marginTop: 12 }}>
+            {currentArgs.rows.map((row, index) => (
+              <div
+                key={index}
+                style={{
+                  marginBottom: 8,
+                  display: 'flex',
+                  gap: 8,
+                  alignItems: 'center',
+                }}
+              >
+                <span>
+                  Row {index + 1}:
+                </span>
+
+                <select
+                  value={
+                    row.type || 'single'
+                  }
+                  onChange={(e) =>
+                    updateRow(
+                      index,
+                      {
+                        type: e.target.value
+                      }
+                    )
+                  }
+                >
+                  <option value="single">
+                    Single Date
+                  </option>
+
+                  <option value="times">
+                    Date with Times
+                  </option>
+
+                  <option value="range">
+                    Date Range
+                  </option>
+                </select>
+
+                <button
+                  onClick={() =>
+                    removeRow(index)
+                  }
+                >
+                  Delete
+                </button>
+              </div>
+            ))}
+          </div>
+        )}
+
+      <button
+        onClick={addRow}
+        style={{
+          marginTop: 12,
+          padding: '6px 12px'
+        }}
+      >
+        Add Row
+      </button>
+    </>
+  )}
+</>
+
+
+);
 };
 
 EventModuleComponent.args = {
-  saveModule: false,
-  title: 'untitled',
-  id: '',
-  image: '',
-  imagealt: '',
-  buttontext: '',
-  buttonlink: '',
-  blurb: '',
-  rows: [],
-  forPreview: false,
+saveModule: false,
+title: 'untitled',
+id: '',
+image: '',
+imagealt: '',
+buttontext: '',
+buttonlink: '',
+blurb: '',
+rows: [],
+forPreview: false,
 };

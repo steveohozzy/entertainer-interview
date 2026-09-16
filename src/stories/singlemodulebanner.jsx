@@ -142,7 +142,7 @@ export const singlemodulebanner = ({
             }
 
             .single-module-banner .hero-tile-info p {
-                color: #000,
+                color: #000;
                 font-size: 14px;
                 font-weight: normal;
                 text-transform: capitalize;

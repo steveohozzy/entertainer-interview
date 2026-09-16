@@ -1,10 +1,11 @@
 import { db } from '../config/firebase';
 import {
-  doc,
-  getDoc,
-  setDoc,
-  collection,
-  getDocs
+doc,
+getDoc,
+setDoc,
+collection,
+getDocs,
+deleteDoc
 } from 'firebase/firestore';
 
 import { useEffect, useRef, useState } from 'react';
@@ -13,351 +14,441 @@ import { Brandmodules } from './Brandmodules';
 import { useArgs } from 'storybook/preview-api';
 
 export default {
-  title: 'Modules/Brand Modules',
-  component: Brandmodules,
+title: 'Modules/Brand Modules',
+component: Brandmodules,
 
-  parameters: {
-    layout: 'fullscreen',
+parameters: {
+layout: 'fullscreen',
+},
+
+argTypes: {
+moduleName: {
+control: 'text',
+},
+
+
+selectedModule: {
+  table: {
+    disable: true,
   },
+},
 
-  argTypes: {
-    moduleName: {
-      control: 'text',
-    },
+saveModule: {
+  control: 'boolean',
+},
 
-    selectedModule: {
-      table: {
-        disable: true,
-      },
-    },
-
-    saveModule: {
-      control: 'boolean',
-    },
-
-    lozengetextcolor: {
-      control: {
-        type: 'select',
-      },
-      options: ['#000000', '#FFFFFF'],
-      labels: {
-        '#000000': 'Black',
-        '#FFFFFF': 'White',
-      },
-    },
+lozengetextcolor: {
+  control: {
+    type: 'select',
   },
+  options: ['#000000', '#FFFFFF'],
+  labels: {
+    '#000000': 'Black',
+    '#FFFFFF': 'White',
+  },
+},
 
-  decorators: [
-    (Story) => {
 
-      const [currentArgs, updateArgs] = useArgs();
-      const [modules, setModules] = useState([]);
+},
 
-      const loadingRef = useRef(false);
-      const previousModule = useRef('');
+decorators: [
+(Story) => {
 
-      // -------------------------
-      // LOAD MODULE LIST
-      // -------------------------
 
-      useEffect(() => {
+  const [currentArgs, updateArgs] = useArgs();
+  const [modules, setModules] = useState([]);
 
-        const loadModules = async () => {
+  const loadingRef = useRef(false);
+  const previousModule = useRef('');
 
-          try {
+  // -------------------------
+  // LOAD MODULE LIST
+  // -------------------------
 
-            const snap = await getDocs(
-              collection(
-                db,
-                'hubs-brand-modules'
-              )
-            );
+  useEffect(() => {
 
-            setModules(
-              snap.docs.map(d => d.id)
-            );
+    const loadModules = async () => {
 
-          } catch(e){
+      try {
 
-            console.log(
-              'module list error',
-              e
-            );
+        const snap = await getDocs(
+          collection(
+            db,
+            'hubs-brand-modules'
+          )
+        );
 
-          }
+        setModules(
+          snap.docs.map(d => d.id)
+        );
 
-        };
+      } catch(e){
 
-        loadModules();
+        console.log(
+          'module list error',
+          e
+        );
 
-      }, []);
+      }
 
-      // -------------------------
-      // LOAD MODULE
-      // -------------------------
+    };
 
-      useEffect(() => {
+    loadModules();
 
-        if (
-          !currentArgs.selectedModule ||
-          loadingRef.current ||
-          previousModule.current ===
+  }, []);
+
+  // -------------------------
+  // LOAD MODULE
+  // -------------------------
+
+  useEffect(() => {
+
+    if (
+      !currentArgs.selectedModule ||
+      loadingRef.current ||
+      previousModule.current ===
+      currentArgs.selectedModule
+    ) return;
+
+    const load = async () => {
+
+      loadingRef.current = true;
+
+      try {
+
+        const ref = doc(
+          db,
+          'hubs-brand-modules',
           currentArgs.selectedModule
-        ) return;
+        );
 
-        const load = async () => {
+        const snap =
+          await getDoc(ref);
 
-          loadingRef.current = true;
+        if (snap.exists()) {
 
-          try {
+          previousModule.current =
+            currentArgs.selectedModule;
 
-            const ref = doc(
-              db,
-              'hubs-brand-modules',
-              currentArgs.selectedModule
-            );
+          updateArgs({
+            ...currentArgs,
+            moduleName:
+              currentArgs.selectedModule,
+            saveModule:false,
+            ...snap.data(),
+          });
 
-            const snap =
-              await getDoc(ref);
+        }
 
-            if (snap.exists()) {
+      } catch(e){
 
-              previousModule.current =
-                currentArgs.selectedModule;
+        console.log(
+          'load error',
+          e
+        );
 
-              updateArgs({
-                ...currentArgs,
-                moduleName:
-                  currentArgs.selectedModule,
-                saveModule:false,
-                ...snap.data(),
-              });
+      }
 
-            }
+      loadingRef.current = false;
 
-          } catch(e){
+    };
 
-            console.log(
-              'load error',
-              e
-            );
+    load();
 
+  }, [currentArgs.selectedModule]);
+
+  // -------------------------
+  // SAVE MODULE
+  // -------------------------
+
+  useEffect(() => {
+
+    if (
+      loadingRef.current ||
+      !currentArgs.saveModule ||
+      !currentArgs.moduleName
+    ) return;
+
+    const save = async () => {
+
+      try {
+
+        const {
+          moduleName,
+          selectedModule,
+          saveModule,
+          ...fields
+        } = currentArgs;
+
+        await setDoc(
+          doc(
+            db,
+            'hubs-brand-modules',
+            moduleName
+          ),
+          fields,
+          {
+            merge:false
+          }
+        );
+
+        setModules((prev) => {
+
+          if (prev.includes(moduleName)) {
+            return prev;
           }
 
-          loadingRef.current = false;
+          return [...prev, moduleName];
 
-        };
+        });
 
-        load();
+        updateArgs({
+          ...currentArgs,
+          saveModule:false,
+          selectedModule:moduleName
+        });
 
-      }, [currentArgs.selectedModule]);
+        console.log(
+          'saved:',
+          moduleName
+        );
 
-      // -------------------------
-      // SAVE MODULE
-      // -------------------------
+      } catch(e){
 
-      useEffect(() => {
+        console.log(
+          'save error',
+          e
+        );
 
-        if (
-          loadingRef.current ||
-          !currentArgs.saveModule ||
-          !currentArgs.moduleName
-        ) return;
+      }
 
-        const save = async () => {
+    };
 
-          try {
+    save();
 
-            const {
-              moduleName,
-              selectedModule,
-              saveModule,
-              ...fields
-            } = currentArgs;
+  }, [currentArgs.saveModule]);
 
-            await setDoc(
-              doc(
-                db,
-                'hubs-brand-modules',
-                moduleName
-              ),
-              fields,
-              {
-                merge:false
-              }
-            );
+  // -------------------------
+  // DELETE SELECTED MODULE
+  // -------------------------
 
-            updateArgs({
-              ...currentArgs,
-              saveModule:false,
-              selectedModule:moduleName
-            });
+  const deleteSelectedModule = async () => {
 
-            console.log(
-              'saved:',
-              moduleName
-            );
+    if (!currentArgs.selectedModule) return;
 
-          } catch(e){
+    const confirmed = window.confirm(
+      `Are you sure you want to delete "${currentArgs.selectedModule}"?`
+    );
 
-            console.log(
-              'save error',
-              e
-            );
+    if (!confirmed) return;
 
-          }
+    try {
 
-        };
-
-        save();
-
-      }, [currentArgs.saveModule]);
-
-      return (
-        <>
-          {createPortal(
-            <div
-              style={{
-                position:'fixed',
-                top:10,
-                right:10,
-                zIndex:9999,
-                padding:12,
-                background:'#111',
-                color:'#fff',
-                borderRadius:'4px',
-              }}
-            >
-              <div
-                style={{
-                  marginBottom:8
-                }}
-              >
-                <label>
-                  Load module:
-                </label>
-
-                <select
-                  value={
-                    currentArgs.selectedModule || ""
-                  }
-                  style={{
-                    color:'#000'
-                  }}
-                  onChange={(e)=>{
-
-                    updateArgs({
-                      ...currentArgs,
-                      selectedModule:
-                        e.target.value
-                    });
-
-                  }}
-                >
-
-                  <option value="">
-                    -- select module --
-                  </option>
-
-                  {modules.map((m)=>(
-
-                    <option
-                      key={m}
-                      value={m}
-                    >
-                      {m}
-                    </option>
-
-                  ))}
-
-                </select>
-
-              </div>
-            </div>,
-            document.body
-          )}
-
-          <Story />
-        </>
+      await deleteDoc(
+        doc(
+          db,
+          'hubs-brand-modules',
+          currentArgs.selectedModule
+        )
       );
 
-    },
-  ],
+      setModules((prev) =>
+        prev.filter(
+          (m) =>
+            m !== currentArgs.selectedModule
+        )
+      );
+
+      previousModule.current = '';
+
+      updateArgs({
+        ...currentArgs,
+        moduleName:'',
+        selectedModule:'',
+        saveModule:false,
+      });
+
+      console.log(
+        'deleted:',
+        currentArgs.selectedModule
+      );
+
+    } catch(e){
+
+      console.log(
+        'delete error',
+        e
+      );
+
+    }
+
+  };
+
+  return (
+    <>
+      {createPortal(
+        <div
+          style={{
+            position:'fixed',
+            top:10,
+            right:10,
+            zIndex:9999,
+            padding:12,
+            background:'#111',
+            color:'#fff',
+            borderRadius:'4px',
+          }}
+        >
+          <div
+            style={{
+              marginBottom:8
+            }}
+          >
+            <label>
+              Load module:
+            </label>
+
+            <select
+              value={
+                currentArgs.selectedModule || ""
+              }
+              style={{
+                color:'#000'
+              }}
+              onChange={(e)=>{
+
+                updateArgs({
+                  ...currentArgs,
+                  selectedModule:
+                    e.target.value
+                });
+
+              }}
+            >
+
+              <option value="">
+                -- select module --
+              </option>
+
+              {modules.map((m)=>(
+
+                <option
+                  key={m}
+                  value={m}
+                >
+                  {m}
+                </option>
+
+              ))}
+
+            </select>
+
+            <button
+              type="button"
+              disabled={!currentArgs.selectedModule}
+              onClick={deleteSelectedModule}
+              style={{
+                marginLeft:8,
+                padding:'5px 10px',
+                cursor:
+                  currentArgs.selectedModule
+                    ? 'pointer'
+                    : 'not-allowed',
+              }}
+            >
+              Delete Selected
+            </button>
+
+          </div>
+        </div>,
+        document.body
+      )}
+
+      <Story />
+    </>
+  );
+
+},
+
+
+],
 };
 
 export const BrandmodulesContent = {
-  args: {
-    moduleName:'',
-    selectedModule:'',
-    saveModule:false,
+args: {
+moduleName:'',
+selectedModule:'',
+saveModule:false,
 
-    roundelbackgroundcolor:'',
-    roundelborerhovercolor:'',
-    roundeltextcolor:'',
 
-    lozengebackgroundcolor: '',
-    lozengetextcolor: '#000000',
-    
-    lozengetitle: '',
+roundelbackgroundcolor:'',
+roundeltextcolor:'',
 
-    roundel1image:'',
-    roundel1alt:'',
-    roundel1link:'',
-    roundel1text:'',
+lozengebackgroundcolor: '',
+lozengetextcolor: '#000000',
 
-    roundel2image:'',
-    roundel2alt:'',
-    roundel2link:'',
-    roundel2text:'',
+lozengetitle: '',
 
-    roundel3image:'',
-    roundel3alt:'',
-    roundel3link:'',
-    roundel3text:'',
+roundel1image:'',
+roundel1alt:'',
+roundel1link:'',
+roundel1text:'',
 
-    roundel4image:'',
-    roundel4alt:'',
-    roundel4link:'',
-    roundel4text:'',
+roundel2image:'',
+roundel2alt:'',
+roundel2link:'',
+roundel2text:'',
 
-    roundel5image:'',
-    roundel5alt:'',
-    roundel5link:'',
-    roundel5text:'',
+roundel3image:'',
+roundel3alt:'',
+roundel3link:'',
+roundel3text:'',
 
-    roundel6image:'',
-    roundel6alt:'',
-    roundel6link:'',
-    roundel6text:'',
+roundel4image:'',
+roundel4alt:'',
+roundel4link:'',
+roundel4text:'',
 
-    roundel7image:'',
-    roundel7alt:'',
-    roundel7link:'',
-    roundel7text:'',
+roundel5image:'',
+roundel5alt:'',
+roundel5link:'',
+roundel5text:'',
 
-    roundel8image:'',
-    roundel8alt:'',
-    roundel8link:'',
-    roundel8text:'',
+roundel6image:'',
+roundel6alt:'',
+roundel6link:'',
+roundel6text:'',
 
-    roundel9image:'',
-    roundel9alt:'',
-    roundel9link:'',
-    roundel9text:'',
+roundel7image:'',
+roundel7alt:'',
+roundel7link:'',
+roundel7text:'',
 
-    roundel10image:'',
-    roundel10alt:'',
-    roundel10link:'',
-    roundel10text:'',
+roundel8image:'',
+roundel8alt:'',
+roundel8link:'',
+roundel8text:'',
 
-    roundel11image:'',
-    roundel11alt:'',
-    roundel11link:'',
-    roundel11text:'',
+roundel9image:'',
+roundel9alt:'',
+roundel9link:'',
+roundel9text:'',
 
-    roundel12image:'',
-    roundel12alt:'',
-    roundel12link:'',
-    roundel12text:'',
-  },
+roundel10image:'',
+roundel10alt:'',
+roundel10link:'',
+roundel10text:'',
+
+roundel11image:'',
+roundel11alt:'',
+roundel11link:'',
+roundel11text:'',
+
+roundel12image:'',
+roundel12alt:'',
+roundel12link:'',
+roundel12text:'',
+
+
+},
 };

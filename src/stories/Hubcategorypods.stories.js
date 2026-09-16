@@ -1,16 +1,17 @@
 import { db } from '../config/firebase';
 import {
-  collection,
-  getDocs,
-  doc,
-  getDoc,
-  setDoc
+collection,
+getDocs,
+doc,
+getDoc,
+setDoc,
+deleteDoc
 } from "firebase/firestore";
 
 import {
-  useEffect,
-  useRef,
-  useState
+useEffect,
+useRef,
+useState
 } from "react";
 
 import { createPortal } from "react-dom";
@@ -18,251 +19,318 @@ import { HubCategoryPods } from './Hubcategorypods';
 import { useArgs } from 'storybook/preview-api';
 
 export default {
-  title: 'Modules/Category Pods',
-  component: HubCategoryPods,
-  parameters: {
-    layout: 'fullscreen',
-  },
-  argTypes: {
-    selectedModule: {
-      table: {
-        disable: true,
-      },
-    },
-    moduleName: {
-      control: 'text',
-    },
-    saveModule: {
-      control: 'boolean',
-    },
-    lozengetextcolor: {
-      control: {
-        type: 'select',
-      },
-      options: ['#000000', '#FFFFFF'],
-      labels: {
-        '#000000': 'Black',
-        '#FFFFFF': 'White',
-      },
-    },
-  },
+title: 'Modules/Category Pods',
+component: HubCategoryPods,
+parameters: {
+layout: 'fullscreen',
+},
+argTypes: {
+selectedModule: {
+table: {
+disable: true,
+},
+},
+moduleName: {
+control: 'text',
+},
+saveModule: {
+control: 'boolean',
+},
+lozengetextcolor: {
+control: {
+type: 'select',
+},
+options: ['#000000', '#FFFFFF'],
+labels: {
+'#000000': 'Black',
+'#FFFFFF': 'White',
+},
+},
+},
 
-  decorators: [
-    (Story) => {
-      const [currentArgs, updateArgs] = useArgs();
-      const [modules, setModules] = useState([]);
-      const loadingRef = useRef(false);
-      const previousModule = useRef("");
+decorators: [
+(Story) => {
+const [currentArgs, updateArgs] = useArgs();
+const [modules, setModules] = useState([]);
+const loadingRef = useRef(false);
+const previousModule = useRef("");
 
-      // LOAD MODULE
-      useEffect(() => {
-        if (
-          !currentArgs.selectedModule ||
-          loadingRef.current ||
-          previousModule.current === currentArgs.selectedModule
-        ) return;
 
-        const load = async () => {
-          loadingRef.current = true;
+  // LOAD MODULE
+  useEffect(() => {
+    if (
+      !currentArgs.selectedModule ||
+      loadingRef.current ||
+      previousModule.current === currentArgs.selectedModule
+    ) return;
 
-          try {
-            const ref = doc(
-              db,
-              "hub-category-pods-modules",
-              currentArgs.selectedModule
-            );
+    const load = async () => {
+      loadingRef.current = true;
 
-            const snap = await getDoc(ref);
+      try {
+        const ref = doc(
+          db,
+          "hub-category-pods-modules",
+          currentArgs.selectedModule
+        );
 
-            if (snap.exists()) {
-              previousModule.current = currentArgs.selectedModule;
+        const snap = await getDoc(ref);
 
-              updateArgs({
-                ...currentArgs,
-                moduleName: currentArgs.selectedModule,
-                ...snap.data(),
-              });
-            }
-          } catch (e) {
-            console.log("load error", e);
-          }
+        if (snap.exists()) {
+          previousModule.current = currentArgs.selectedModule;
 
-          loadingRef.current = false;
-        };
+          updateArgs({
+            ...currentArgs,
+            moduleName: currentArgs.selectedModule,
+            ...snap.data(),
+          });
+        }
+      } catch (e) {
+        console.log("load error", e);
+      }
 
-        load();
-      }, [currentArgs.selectedModule]);
+      loadingRef.current = false;
+    };
 
-      // SAVE MODULE
-      useEffect(() => {
-        if (
-          loadingRef.current ||
-          !currentArgs.saveModule ||
-          !currentArgs.moduleName
-        ) return;
+    load();
+  }, [currentArgs.selectedModule]);
 
-        const save = async () => {
-          try {
-            const {
-              moduleName,
-              selectedModule,
-              saveModule,
-              ...fields
-            } = currentArgs;
+  // SAVE MODULE
+  useEffect(() => {
+    if (
+      loadingRef.current ||
+      !currentArgs.saveModule ||
+      !currentArgs.moduleName
+    ) return;
 
-            await setDoc(
-              doc(db, "hub-category-pods-modules", moduleName),
-              fields,
-              { merge: false }
-            );
+    const save = async () => {
+      try {
+        const {
+          moduleName,
+          selectedModule,
+          saveModule,
+          ...fields
+        } = currentArgs;
 
-            updateArgs({
-              saveModule: false,
-              selectedModule: moduleName,
-            });
-          } catch (e) {
-            console.log("save error", e);
-          }
-        };
+        await setDoc(
+          doc(db, "hub-category-pods-modules", moduleName),
+          fields,
+          { merge: false }
+        );
 
-        save();
-      }, [currentArgs.saveModule]);
+        setModules(prev =>
+          prev.includes(moduleName)
+            ? prev
+            : [...prev, moduleName]
+        );
 
-      // LOAD DROPDOWN
-      useEffect(() => {
-        const loadModules = async () => {
-          try {
-            const snap = await getDocs(
-              collection(db, "hub-category-pods-modules")
-            );
-            setModules(snap.docs.map(d => d.id));
-          } catch (e) {
-            console.log("module list error", e);
-          }
-        };
+        updateArgs({
+          saveModule: false,
+          selectedModule: moduleName,
+        });
+      } catch (e) {
+        console.log("save error", e);
+      }
+    };
 
-        loadModules();
-      }, []);
+    save();
+  }, [currentArgs.saveModule]);
 
-      return (
-        <>
-          {createPortal(
-            <div
-              style={{
-                position: "fixed",
-                top: 10,
-                right: 10,
-                zIndex: 9999,
-                padding: 12,
-                background: "#111",
-                color: "#fff",
-                borderRadius: "4px",
+  // LOAD DROPDOWN
+  useEffect(() => {
+    const loadModules = async () => {
+      try {
+        const snap = await getDocs(
+          collection(db, "hub-category-pods-modules")
+        );
+        setModules(snap.docs.map(d => d.id));
+      } catch (e) {
+        console.log("module list error", e);
+      }
+    };
+
+    loadModules();
+  }, []);
+
+  const deleteSelectedModule = async () => {
+    const selectedModule = currentArgs.selectedModule;
+
+    if (!selectedModule) return;
+
+    const confirmed = window.confirm(
+      `Are you sure you want to delete "${selectedModule}"?`
+    );
+
+    if (!confirmed) return;
+
+    try {
+      await deleteDoc(
+        doc(
+          db,
+          "hub-category-pods-modules",
+          selectedModule
+        )
+      );
+
+      setModules(prev =>
+        prev.filter(
+          module => module !== selectedModule
+        )
+      );
+
+      previousModule.current = "";
+
+      updateArgs({
+        ...currentArgs,
+        moduleName: "",
+        selectedModule: "",
+        saveModule: false,
+      });
+
+      console.log(
+        "Category Pods module deleted:",
+        selectedModule
+      );
+    } catch (e) {
+      console.log("delete error", e);
+    }
+  };
+
+  return (
+    <>
+      {createPortal(
+        <div
+          style={{
+            position: "fixed",
+            top: 10,
+            right: 10,
+            zIndex: 9999,
+            padding: 12,
+            background: "#111",
+            color: "#fff",
+            borderRadius: "4px",
+          }}
+        >
+          <div>
+            <label>Load existing module:</label>
+
+            <select
+              value={currentArgs.selectedModule || ""}
+              style={{ color: '#000' }}
+              onChange={(e) => {
+                updateArgs({
+                  ...currentArgs,
+                  selectedModule: e.target.value,
+                });
               }}
             >
-              <div>
-                <label>Load existing module:</label>
+              <option value="">-- select saved module --</option>
 
-                <select
-                  value={currentArgs.selectedModule || ""}
-                  style={{ color: '#000' }}
-                  onChange={(e) => {
-                    updateArgs({
-                      ...currentArgs,
-                      selectedModule: e.target.value,
-                    });
-                  }}
-                >
-                  <option value="">-- select saved module --</option>
+              {modules.map((m) => (
+                <option key={m} value={m}>
+                  {m}
+                </option>
+              ))}
+            </select>
 
-                  {modules.map((m) => (
-                    <option key={m} value={m}>
-                      {m}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </div>,
-            document.body
-          )}
+            <button
+              type="button"
+              disabled={!currentArgs.selectedModule}
+              onClick={deleteSelectedModule}
+              style={{
+                marginLeft: 8,
+              }}
+            >
+              Delete
+            </button>
+          </div>
+        </div>,
+        document.body
+      )}
 
-          <Story />
-        </>
-      );
-    },
-  ],
+      <Story />
+    </>
+  );
+},
+
+
+],
 };
 
 export const CategoryPodsHero = {
-  args: {
-    moduleName: "",
-    selectedModule: "",
-    saveModule: false,
+args: {
+moduleName: "",
+selectedModule: "",
+saveModule: false,
 
-    podbackgroundcolor:'',
 
-    lozengebackgroundcolor: '',
-    lozengetextcolor: '#000000',
-    
-    lozengetitle: '',
+podbackgroundcolor:'',
 
-    pod1image: '',
-    pod1imagealt: '',
-    pod1title: '',
-    pod1link: '',
+lozengebackgroundcolor: '',
+lozengetextcolor: '#000000',
 
-    pod2image: '',
-    pod2imagealt: '',
-    pod2title: '',
-    pod2link: '',
+lozengetitle: '',
 
-    pod3image: '',
-    pod3imagealt: '',
-    pod3title: '',
-    pod3link: '',
+pod1image: '',
+pod1imagealt: '',
+pod1title: '',
+pod1link: '',
 
-    pod4image: '',
-    pod4imagealt: '',
-    pod4title: '',
-    pod4link: '',
+pod2image: '',
+pod2imagealt: '',
+pod2title: '',
+pod2link: '',
 
-    pod5image: '',
-    pod5imagealt: '',
-    pod5title: '',
-    pod5link: '',
+pod3image: '',
+pod3imagealt: '',
+pod3title: '',
+pod3link: '',
 
-    pod6image: '',
-    pod6imagealt: '',
-    pod6title: '',
-    pod6link: '',
+pod4image: '',
+pod4imagealt: '',
+pod4title: '',
+pod4link: '',
 
-    pod7image: '',
-    pod7imagealt: '',
-    pod7title: '',
-    pod7link: '',
+pod5image: '',
+pod5imagealt: '',
+pod5title: '',
+pod5link: '',
 
-    pod8image: '',
-    pod8imagealt: '',
-    pod8title: '',
-    pod8link: '',
+pod6image: '',
+pod6imagealt: '',
+pod6title: '',
+pod6link: '',
 
-    pod9image: '',
-    pod9imagealt: '',
-    pod9title: '',
-    pod9link: '',
+pod7image: '',
+pod7imagealt: '',
+pod7title: '',
+pod7link: '',
 
-    pod10image: '',
-    pod10imagealt: '',
-    pod10title: '',
-    pod10link: '',
+pod8image: '',
+pod8imagealt: '',
+pod8title: '',
+pod8link: '',
 
-    pod11image: '',
-    pod11imagealt: '',
-    pod11title: '',
-    pod11link: '',
+pod9image: '',
+pod9imagealt: '',
+pod9title: '',
+pod9link: '',
 
-    pod12image: '',
-    pod12imagealt: '',
-    pod12title: '',
-    pod12link: '',
-  },
+pod10image: '',
+pod10imagealt: '',
+pod10title: '',
+pod10link: '',
+
+pod11image: '',
+pod11imagealt: '',
+pod11title: '',
+pod11link: '',
+
+pod12image: '',
+pod12imagealt: '',
+pod12title: '',
+pod12link: '',
+
+
+},
 };

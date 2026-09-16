@@ -1,15 +1,13 @@
 import { db } from '../config/firebase';
-import { doc, getDoc, updateDoc } from 'firebase/firestore';
-import { useEffect, useCallback, useRef } from 'react';
+import { doc, getDoc, updateDoc, deleteDoc } from 'firebase/firestore';
+import { useEffect, useRef } from 'react';
 import { VideoModule } from './Videomodule';
 import { useArgs } from 'storybook/preview-api';
 
-// More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 export default {
   title: 'Components/Video Module',
   component: VideoModule,
   parameters: {
-    // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
     layout: 'centered',
   },
   argTypes: {
@@ -20,7 +18,6 @@ export default {
   },
 };
 
-// More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const VideoModuleHero = {
   args: {
     user: 'stories',
@@ -37,82 +34,127 @@ export const VideoModuleHero = {
     link: '',
   },
   render: function Render(args) {
-  const [currentArgs, updateArgs] = useArgs();
+    const [currentArgs, updateArgs] = useArgs();
 
-  const isLoadingRef = useRef(false);       // prevents writing during load
-  const lastUserRef = useRef(args.user);    // track selected user
-  const lastSyncedData = useRef({});        // prevent write loops
+    const isLoadingRef = useRef(false);
+    const lastUserRef = useRef(args.user);
+    const lastSyncedData = useRef({});
 
-  // -------------------------------------------------------
-  // 1. LOAD DATA FROM SELECTED USER
-  // -------------------------------------------------------
-  useEffect(() => {
-    const load = async () => {
-      isLoadingRef.current = true;  // BLOCK updates
-      lastUserRef.current = args.user;
+    useEffect(() => {
+      const load = async () => {
+        isLoadingRef.current = true;
+        lastUserRef.current = args.user;
 
-      try {
-        const docRef = doc(db, args.user, "videomodule");
-        const snap = await getDoc(docRef);
+        try {
+          const docRef = doc(db, args.user, "videomodule");
+          const snap = await getDoc(docRef);
 
-        if (snap.exists()) {
-          const firestoreData = snap.data();
-          lastSyncedData.current = firestoreData;
+          if (snap.exists()) {
+            const firestoreData = snap.data();
+            lastSyncedData.current = firestoreData;
 
-          // Replace storybook args with loaded data
-          updateArgs({
-            ...currentArgs,
-            ...firestoreData,
-            user: args.user,
-          });
+            updateArgs({
+              ...currentArgs,
+              ...firestoreData,
+              user: args.user,
+            });
+          }
+        } catch (e) {
+          console.error("Firestore load error:", e);
         }
-      } catch (e) {
-        console.error("Firestore load error:", e);
-      }
 
-      isLoadingRef.current = false; // allow updates again
-    };
+        isLoadingRef.current = false;
+      };
 
-    load();
-  }, [args.user]);
+      load();
+    }, [args.user]);
 
+    useEffect(() => {
+      if (isLoadingRef.current) return;
 
-  // -------------------------------------------------------
-  // 2. SYNC ONLY FIELD CHANGES (NOT USER CHANGE)
-  // -------------------------------------------------------
-  useEffect(() => {
-    if (isLoadingRef.current) return; // Don't sync during load
+      const selectedUser = lastUserRef.current;
 
-    const selectedUser = lastUserRef.current;
+      if (currentArgs.user !== selectedUser) return;
 
-    // Don't sync if this change is caused by selecting a new user
-    if (currentArgs.user !== selectedUser) return;
+      const { user, ...fields } = currentArgs;
 
-    // Remove user field before writing
-    const { user, ...fields } = currentArgs;
+      const prevFields = lastSyncedData.current;
+      const changed = Object.entries(fields).some(
+        ([k, v]) => prevFields[k] !== v
+      );
 
-    // Prevent re-writing unchanged data
-    const prevFields = lastSyncedData.current;
-    const changed = Object.entries(fields).some(
-      ([k, v]) => prevFields[k] !== v
-    );
-    if (!changed) return;
+      if (!changed) return;
 
-    lastSyncedData.current = fields;
+      lastSyncedData.current = fields;
 
-    const send = async () => {
+      const send = async () => {
+        try {
+          const docRef = doc(db, selectedUser, "videomodule");
+          await updateDoc(docRef, fields);
+          console.log("UPDATED:", selectedUser, fields);
+        } catch (e) {
+          console.error("Firestore update error:", e);
+        }
+      };
+
+      send();
+    }, [currentArgs]);
+
+    const deleteVideoModule = async () => {
+      const selectedUser = currentArgs.user;
+
+      if (!selectedUser) return;
+
+      if (!window.confirm(`Delete the Video Module for "${selectedUser}"?`)) return;
+
       try {
-        const docRef = doc(db, selectedUser, "videomodule");
-        await updateDoc(docRef, fields);
-        console.log("UPDATED:", selectedUser, fields);
+        await deleteDoc(doc(db, selectedUser, "videomodule"));
+
+        lastSyncedData.current = {};
+
+        updateArgs({
+          user: selectedUser,
+          videosrc: '',
+          background: '',
+          titlecolor: '',
+          textcolor: '',
+          buttonbackground: '',
+          buttontextcolor: '',
+          buttonbackgroundhover: '',
+          title: '',
+          blurb: '',
+          buttontext: '',
+          link: '',
+        });
       } catch (e) {
-        console.error("Firestore update error:", e);
+        console.error("Firestore delete error:", e);
       }
     };
 
-    send();
-  }, [currentArgs]);
-    
-        return <VideoModule {...args} />;
-      },
+    return (
+      <>
+        <div
+          style={{
+            position: 'fixed',
+            top: 10,
+            right: 10,
+            zIndex: 9999,
+            padding: 12,
+            background: '#111',
+            color: '#fff',
+            borderRadius: '4px',
+          }}
+        >
+          <button
+            type="button"
+            onClick={deleteVideoModule}
+          >
+            Delete {currentArgs.user} Video Module
+          </button>
+        </div>
+
+        <VideoModule {...args} />
+      </>
+    );
+  },
 };

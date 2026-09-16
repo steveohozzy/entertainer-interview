@@ -29,7 +29,7 @@ export const HubHeroText = ({
     background-color: #1f2b91;
     color: #fff;
     font-family: "Nunito Bold", "Tahoma Bold", sans-serif;
-    font-size: 18px;
+    font-size: 24px;
     border-radius: 8px;
     magin: 0;
     margin-bottom: 20px;
@@ -46,7 +46,7 @@ export const HubHeroText = ({
       </style>
       <div id="consistent-hub-header-area" style={{backgroundColor: modulebackgroundcolor}}>
         <div class="consistent-hub-header-content">
-          <div className="title" style={{backgroundColor: stripbackgroundcolor, color: striptextcolor}}>{title}</div>
+          <h1 className="title" style={{backgroundColor: stripbackgroundcolor, color: striptextcolor}}>{title}</h1>
           {text && <p style={{color: textcolor}}>{text}</p>}
         </div>
       </div>

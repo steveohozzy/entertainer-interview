@@ -5,7 +5,6 @@ import "./consistency.css";
 export const Brandmodules = ({
   modulebackgroundcolor,
   roundelbackgroundcolor,
-  roundelborerhovercolor,
   roundeltextcolor,
   lozengetitle,
   lozengebackgroundcolor,
@@ -214,7 +213,6 @@ const validBrandModules= roundels.filter(
                 style={{
                   "--consistent-brand-modules-roundel-bg": roundelbackgroundcolor,
                   "--consistent-brand-modules-roundel-text-color": roundeltextcolor,
-                  "--consistent-brand-modules-roundel-border-hover-color": roundelborerhovercolor,
                 }}
               >
                 <a href={roundel.link} className="outer-link">
