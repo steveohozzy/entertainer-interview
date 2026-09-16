@@ -94,8 +94,6 @@ const Layout = () => {
 
   const isMaintenance = process.env.REACT_APP_MAINTENANCE_MODE === "true";
 
-console.log("MAINTENANCE MODE:", process.env.REACT_APP_MAINTENANCE_MODE);
-
   if (isMaintenance) {
     return (
       <div className="flex flex-col items-center justify-center h-screen bg-brandBlue text-white font-sans px-4 text-center">
