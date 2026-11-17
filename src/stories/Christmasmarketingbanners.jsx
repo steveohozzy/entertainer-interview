@@ -3,12 +3,19 @@ import PropTypes from "prop-types";
 /** Primary UI component for user interaction */
 export const Christmasmarketingbanners = ({
   modulebackgroundcolor,
+  id,
   banner1image,
   banner1alt,
   banner1link,
+  banner1dataElementType,
+  banner1dataPromotionIndex,
+  banner1dataPromotionName,
   banner2image,
   banner2alt,
   banner2link,
+  banner2dataElementType,
+  banner2dataPromotionIndex,
+  banner2dataPromotionName,
 }) => {
   return (
     <>
@@ -71,12 +78,23 @@ export const Christmasmarketingbanners = ({
     }
     `}
       </style>
-      <div class="christmas-banners" style={{backgroundColor: modulebackgroundcolor}}>
+      <div class="christmas-banners" id={id} style={{backgroundColor: modulebackgroundcolor}}>
         <ul>
           <li>
             <a
               href={banner1link}
               title={banner1alt}
+              {...(
+                banner1dataElementType &&
+                banner1dataPromotionIndex &&
+                banner1dataPromotionName
+                  ? {
+                      "data-element-type": banner1dataElementType,
+                      "data-promotion-index": banner1dataPromotionIndex,
+                      "data-promotion-name": banner1dataPromotionName,
+                    }
+                  : {}
+              )}
             >
               <img alt={banner1alt} src={banner1image} title={banner1alt} />
             </a>
@@ -86,6 +104,17 @@ export const Christmasmarketingbanners = ({
             <a
               href={banner2link}
               title={banner2alt}
+              {...(
+                banner2dataElementType &&
+                banner2dataPromotionIndex &&
+                banner2dataPromotionName
+                  ? {
+                      "data-element-type": banner2dataElementType,
+                      "data-promotion-index": banner2dataPromotionIndex,
+                      "data-promotion-name": banner2dataPromotionName,
+                    }
+                  : {}
+              )}
             >
               <img alt={banner2alt} src={banner2image} title={banner2alt} />
             </a>
@@ -99,10 +128,17 @@ export const Christmasmarketingbanners = ({
 Christmasmarketingbanners.propTypes = {
   /** Button contents */
   modulebackgroundcolor: PropTypes.string,
+  id: PropTypes.string,
   banner1image: PropTypes.string.isRequired,
   banner1alt: PropTypes.string.isRequired,
   banner1link: PropTypes.string.isRequired,
+  banner1dataElementType: PropTypes.string,
+  banner1dataPromotionIndex: PropTypes.string,
+  banner1dataPromotionName: PropTypes.string,
   banner2image: PropTypes.string.isRequired,
   banner2alt: PropTypes.string.isRequired,
   banner2link: PropTypes.string.isRequired,
+  banner2dataElementType: PropTypes.string,
+  banner2dataPromotionIndex: PropTypes.string,
+  banner2dataPromotionName: PropTypes.string,
 };

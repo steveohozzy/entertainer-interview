@@ -28,7 +28,19 @@ lozengetextcolor: {
 control: {
 type: 'select',
 },
-options: ['#000000', '#FFFFFF'],
+options: ['#000000', '#FFFFFF', '#1f2b91'],
+labels: {
+'#000000': 'Black',
+'#FFFFFF': 'White',
+'#1f2b91': 'Blue',
+},
+},
+
+paneltextcolor: {
+control: {
+type: 'select',
+},
+options: ['#000000', '#FFFFFF', '#1f2b91'],
 labels: {
 '#000000': 'Black',
 '#FFFFFF': 'White',
@@ -345,6 +357,7 @@ saveModule: false,
 title: 'Gaming Guides',
 lozengebackgroundcolor: '',
 lozengetextcolor: '#000000',
+paneltextcolor: '#000000',
 
 panelbordercolor: '#fff',
 

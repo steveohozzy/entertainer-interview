@@ -9,6 +9,8 @@ export default {
   title: "Hubs/Sign Up Module",
   component: SignUpModule,
 
+  tags: ["!dev"],
+
   parameters: {
     layout: "fullscreen",
   },

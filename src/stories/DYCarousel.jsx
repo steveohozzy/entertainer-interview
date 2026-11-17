@@ -20,8 +20,8 @@ export const DYCarousel = ({
 		  \${Font};
 		  box-sizing: border-box;
 		  margin: 0 20px;
-		  padding: 40px 0 20px;
-		  max-width: 944px;
+		  padding: 20px 20px 40px;
+		  max-width: 1140px;
 		  border-radius: 20px;
 		}
 
@@ -236,7 +236,7 @@ export const DYCarousel = ({
 
 		  #dy-recommendations-\${dyVariationId} {
 		  margin: 0 auto;
-		  padding: 40px 0 20px;
+		  padding: 20px 20px 40px;
 		}
 
 		  #dy-recommendations-\${dyVariationId} .dy-recommendation-product { 
@@ -290,13 +290,13 @@ return (
 
 	#dy-recommendations-TEST {
 	    position: relative;
-	    top: 40px;
+	    top: 0;
 		  width: calc(100% - 40px);
 		  \${Font};
 		  box-sizing: border-box;
 		  margin: 0 20px;
-		  padding: 20px 0 20px;
-		  max-width: 944px;
+		  padding: 20px 20px 60px;
+		  max-width: 1140px;
 		  border-radius: 20px;
 		}
 
@@ -437,7 +437,7 @@ return (
 
 		#dy-recommendations-TEST .dy-recommendations-slider-pagination {
 		  margin: 4px 0;
-		  text-align: \${Dots Position};  
+		  text-align: \${Dots Position};      
 		}
 
 		#dy-recommendations-TEST .dy-recommendations-slider-pagination-bullet {

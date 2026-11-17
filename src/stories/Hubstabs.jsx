@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { useMemo } from "react";
-
+import "./consistency.css";
 const tabinit = (instanceId) => {
   setTimeout(function () {
     const wrapper = document.querySelector(
@@ -49,43 +49,37 @@ const tabinit = (instanceId) => {
 
 /** Primary UI component for user interaction */
 export const HubsTabs = ({
-  tabareabackgroundcolor,
-  tabcontentbackgroundcolor,
+
+  lozengetitle,
+  lozengebackgroundcolor,
+  lozengetextcolor,
 
   tab1order,
   tab1title,
   tab1titlecolor,
-  tab1titlehovercolor,
   tab1titleactivecolor,
   tab1titlebackgroundcolor,
-  tab1hoverbackgroundcolor,
   tab1activebackgroundcolor,
 
   tab2order,
   tab2title,
   tab2titlecolor,
-  tab2titlehovercolor,
   tab2titleactivecolor,
   tab2titlebackgroundcolor,
-  tab2hoverbackgroundcolor,
   tab2activebackgroundcolor,
 
   tab3order,
   tab3title,
   tab3titlecolor,
-  tab3titlehovercolor,
   tab3titleactivecolor,
   tab3titlebackgroundcolor,
-  tab3hoverbackgroundcolor,
   tab3activebackgroundcolor,
 
   tab4order,
   tab4title,
   tab4titlecolor,
-  tab4titlehovercolor,
   tab4titleactivecolor,
   tab4titlebackgroundcolor,
-  tab4hoverbackgroundcolor,
   tab4activebackgroundcolor,
 
   tab1content,
@@ -104,10 +98,8 @@ export const HubsTabs = ({
     order:tab1order || 1,
     title: tab1title,
     titleColor: tab1titlecolor,
-    titleHoverColor: tab1titlehovercolor,
     titleActiveColor: tab1titleactivecolor,
     background: tab1titlebackgroundcolor,
-    hoverBackground: tab1hoverbackgroundcolor,
     activeBackground: tab1activebackgroundcolor,
     content: tab1content,
   },
@@ -115,10 +107,8 @@ export const HubsTabs = ({
     order:tab2order || 2,
     title: tab2title,
     titleColor: tab2titlecolor,
-    titleHoverColor: tab2titlehovercolor,
     titleActiveColor: tab2titleactivecolor,
     background: tab2titlebackgroundcolor,
-    hoverBackground: tab2hoverbackgroundcolor,
     activeBackground: tab2activebackgroundcolor,
     content: tab2content,
   },
@@ -126,10 +116,8 @@ export const HubsTabs = ({
     order:tab3order || 3,
     title: tab3title,
     titleColor: tab3titlecolor,
-    titleHoverColor: tab3titlehovercolor,
     titleActiveColor: tab3titleactivecolor,
     background: tab3titlebackgroundcolor,
-    hoverBackground: tab3hoverbackgroundcolor,
     activeBackground: tab3activebackgroundcolor,
     content: tab3content,
   },
@@ -137,10 +125,8 @@ export const HubsTabs = ({
     order:tab4order || 4,
     title: tab4title,
     titleColor: tab4titlecolor,
-    titleHoverColor: tab4titlehovercolor,
     titleActiveColor: tab4titleactivecolor,
     background: tab4titlebackgroundcolor,
-    hoverBackground: tab4hoverbackgroundcolor,
     activeBackground: tab4activebackgroundcolor,
     content: tab4content,
   },
@@ -280,6 +266,19 @@ export const HubsTabs = ({
     }
 
   }
+
+  .tabs-container .title{
+    text-transform: uppercase;
+    background : var(--consistent-brand-modules-header-background);
+    color : var(--consistent-brand-modules-header-text-color);
+    font-family: "Nunito Bold", "Tahoma Bold", sans-serif;
+    font-size: 18px;
+    border-radius: 8px;
+    margin: 0 0 20px;
+    padding: 5px 0;
+    width: 100%;
+    max-width: 1140px;
+  }
 `}
       </style>
 
@@ -294,10 +293,17 @@ export const HubsTabs = ({
               className="tab-content-inner"
               style={{
                 background:
-                tabareabackgroundcolor
+                '#fff'
               }}
             >
               <div className="tabs-container">
+              {lozengetitle && (
+                      <div class="title" style={{
+                        "textAlign": "center",
+                        "background": lozengebackgroundcolor,
+                        "color": lozengetextcolor,
+                        }}>{lozengetitle}</div>
+                )}
 
                 <div className="tabs">
 
@@ -306,8 +312,8 @@ export const HubsTabs = ({
                     <style>
                     {`
                     [data-tabs-instance="${instanceId}"] .tab-${index}:hover{
-                      background:${tab.hoverBackground || tab.background};
-                      color:${tab.titleHoverColor || tab.titleColor};
+                      background:${tab.activeBackground || tab.background};
+                      color:${tab.titleactiveColor || tab.titleColor};
                     }
 
                     [data-tabs-instance="${instanceId}"] .tab-${index}.active{
@@ -329,12 +335,12 @@ export const HubsTabs = ({
                         ? "active"
                         : ""
                       }`}
-                      data-tab={`tab${index+1}`}
+                      data-tab={`tab-${index+1}`}
                       style={{
                         "--tab-bg": tab.background,
-                        "--tab-hover-bg": tab.hoverbackground,
+                        "--tab-hover-bg": tab.activeBackgroundbackground,
                         "--tab-text": tab.titleColor,
-                        "--tab-hover-text": tab.titleHoverColor,
+                        "--tab-hover-text": tab.titleactiveColor,
                       }}
                     >
                       <span>
@@ -349,7 +355,7 @@ export const HubsTabs = ({
                 {tabs.map((tab,index)=>(
                   <div
                     key={index}
-                    id={`${instanceId}-tab${index+1}`}
+                    id={`${instanceId}-tab-${index+1}`}
                     className={`tab-content ${
                       index===0
                         ? "active"
@@ -357,7 +363,7 @@ export const HubsTabs = ({
                     }`}
                     style={{
                       background:
-                      tabcontentbackgroundcolor
+                      '#fff'
                     }}
                     dangerouslySetInnerHTML={{
                       __html: tab.content
@@ -372,73 +378,75 @@ export const HubsTabs = ({
         </div>
       </div>
       <script>
-        {`
-  window.onload = function() {
-    document.querySelector('.category-title').remove();
+  {`
+  window.addEventListener("load", function() {
+    var wrapper = document.querySelector('[data-tabs-instance="${instanceId}"]');
 
-    const tabButtons = document.querySelectorAll(".tabs .tab");
-    const tabContents = document.querySelectorAll(".tab-content");
+    if (!wrapper) {
+      return;
+    }
 
-  if (tabButtons && tabContents) {
-    tabButtons.forEach((tabBtn) => {
-      tabBtn.addEventListener("click", () => {
-        const tabId = tabBtn.getAttribute("data-tab");
+    var categoryTitle = document.querySelector('.category-title');
 
-        tabButtons.forEach((btn) => btn.classList.remove("active"));
-        tabBtn.classList.add("active");
+    if (categoryTitle) {
+      categoryTitle.remove();
+    }
 
-        tabContents.forEach((content) => {
-          content.classList.remove("active");
+    var tabButtons = wrapper.querySelectorAll(".tabs .tab");
+    var tabContents = wrapper.querySelectorAll(".tab-content");
 
-          if (content.id === tabId) {
-            content.classList.add("active");
+    for (var i = 0; i < tabButtons.length; i++) {
+      tabButtons[i].addEventListener("click", function() {
+        var tabId = this.getAttribute("data-tab");
+
+        for (var j = 0; j < tabButtons.length; j++) {
+          tabButtons[j].classList.remove("active");
+        }
+
+        for (var k = 0; k < tabContents.length; k++) {
+          tabContents[k].classList.remove("active");
+
+          if (tabContents[k].id === "${instanceId}-" + tabId) {
+            tabContents[k].classList.add("active");
           }
-        });
-        
-      });
-    });
-  }
+        }
 
-  };
-`}
-      </script>
+        this.classList.add("active");
+      });
+    }
+  });
+  `}
+</script>
     </>
   );
 };
 
 HubsTabs.propTypes = {
-  tabareabackgroundcolor:PropTypes.string,
-  tabcontentbackgroundcolor:PropTypes.string,
+  lozengetitle:PropTypes.string,
+  lozengebackgroundcolor:PropTypes.string,
+  lozengetextcolor:PropTypes.string,
   tab1title:PropTypes.string,
   tab1titlecolor:PropTypes.string,
-  tab1titlehovercolor:PropTypes.string,
   tab1titleactivecolor:PropTypes.string,
   tab1titlebackgroundcolor:PropTypes.string,
-  tab1hoverbackgroundcolor:PropTypes.string,
   tab1activebackgroundcolor:PropTypes.string,
 
   tab2title:PropTypes.string,
   tab2titlecolor:PropTypes.string,
-  tab2titlehovercolor:PropTypes.string,
   tab2titleactivecolor:PropTypes.string,
   tab2titlebackgroundcolor:PropTypes.string,
-  tab2hoverbackgroundcolor:PropTypes.string,
   tab2activebackgroundcolor:PropTypes.string,
 
   tab3title:PropTypes.string,
   tab3titlecolor:PropTypes.string,
-  tab3titlehovercolor:PropTypes.string,
   tab3titleactivecolor:PropTypes.string,
   tab3titlebackgroundcolor:PropTypes.string,
-  tab3hoverbackgroundcolor:PropTypes.string,
   tab3activebackgroundcolor:PropTypes.string,
 
   tab4title:PropTypes.string,
   tab4titlecolor:PropTypes.string,
-  tab4titlehovercolor:PropTypes.string,
   tab4titleactivecolor:PropTypes.string,
   tab4titlebackgroundcolor:PropTypes.string,
-  tab4hoverbackgroundcolor:PropTypes.string,
   tab4activebackgroundcolor:PropTypes.string,
 
   tab1content:PropTypes.string,

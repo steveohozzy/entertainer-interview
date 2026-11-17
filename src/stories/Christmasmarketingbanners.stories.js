@@ -251,12 +251,20 @@ export const ChristmasmarketingbannersHome = {
 
     modulebackgroundcolor: '#dbe3ff',
 
+    id: 'christmas-banners',
+
     banner1image: '',
     banner1alt: '',
     banner1link: '',
+    banner1dataElementType: '',
+    banner1dataPromotionIndex: '',
+    banner1dataPromotionName: '',
 
     banner2image: '',
     banner2alt: '',
     banner2link: '',
+    banner2dataElementType: '',
+    banner2dataPromotionIndex: '',
+    banner2dataPromotionName: '',
   },
 };

@@ -8,6 +8,7 @@ export const HubsGuides= ({
   lozengetextcolor,
 
   panelbordercolor,
+  paneltextcolor,
 
   panel1image,
   panel1imagealt,
@@ -112,12 +113,13 @@ const validBlogPanels = catpanels.filter(
 
 style={{
 "--consistent-guides-module-bg": '#fff',
-"--consistent-guides-panel-text-color": '#000',
+"--consistent-guides-panel-text-color": paneltextcolor,
 "--consistent-guides-panel-bg-color": '#fff',
 "--consistent-guides-panel-hover-bg": '#fff',
 "--consistent-guides-panel-border-color": panelbordercolor,
 "--consistent-guides-panel-border-hover-color": panelbordercolor,
-"--consistent-guides-panel-hover-color": '#000',
+"--consistent-guides-panel-hover-color": paneltextcolor,
+"width":"100%",
 }}
 
 >
@@ -274,6 +276,7 @@ HubsGuides.propTypes = {
   lozengetextcolor: PropTypes.string,
 
   panelbordercolor: PropTypes.string,
+  paneltextcolor: PropTypes.string,
 
   panel1image: PropTypes.string,
   panel1imagealt: PropTypes.string,

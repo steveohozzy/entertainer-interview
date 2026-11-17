@@ -309,6 +309,8 @@ export const MulticlickcarouselchristmasImages = {
     selectedModule: '',
     saveModule: false,
 
+    id: 'gift-guide',
+
     title: 'Featured Products',
     blurb: 'Shop our latest deals',
     mainImage: "",

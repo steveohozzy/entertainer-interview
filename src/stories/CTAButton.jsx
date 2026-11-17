@@ -58,14 +58,23 @@ export function CTAButton({
   buttonStyle = "shop-now",
   href = "#",
   as = "a",
+  dataElementType,
+  dataPromotionIndex,
+  dataPromotionName,
 }) {
   const cta = CTA_STYLES[buttonStyle];
   const Component = as;
 
-  const props =
-    as === "a"
-      ? { href }
-      : { type: "button" };
+  const props = {
+    ...(as === "a" ? { href } : { type: "button" }),
+    ...(dataElementType && dataPromotionIndex && dataPromotionName
+      ? {
+          "data-element-type": dataElementType,
+          "data-promotion-index": dataPromotionIndex,
+          "data-promotion-name": dataPromotionName,
+        }
+      : {}),
+  };
 
   return (
     <Component

@@ -18,6 +18,9 @@ const buildItems = (props) => {
       alt: props[`image${i}alt`] || "",
       link: props[`image${i}link`] || "",
       title: props[`image${i}title`] || "",
+      dataElementType: props[`image${i}dataElementType`] || "",
+      datapromotionindex: props[`image${i}datapromotionindex`] || "",
+      datapromotionname: props[`image${i}datapromotionname`] || "",
     });
   }
 
@@ -304,6 +307,7 @@ export const Multiclickcarouselchristmas = (props) => {
     itemsPerRow = 3,
     itemsPerRowMobile = 2,
     background,
+    id,
     title,
     blurb,
     mainImage,
@@ -760,7 +764,7 @@ export const Multiclickcarouselchristmas = (props) => {
   }
         `}
       </style>
-      <div className="carousel-wrapper-outer" style={{ backgroundColor: modulebackgroundcolor }}>
+      <div className="carousel-wrapper-outer" id={id} style={{ backgroundColor: modulebackgroundcolor }}>
     <div className="carousel-container">
     <div
       ref={wrapperRef}
@@ -813,9 +817,17 @@ export const Multiclickcarouselchristmas = (props) => {
                       {item.link ? (
                         <a
                           href={item.link}
-                          data-element-type={item.dataElementType}
-                          data-promotion-index={item.datapromotionindex}
-                          data-promotion-name={item.datapromotionname}
+                          {...(
+                            item.dataElementType &&
+                            item.datapromotionindex &&
+                            item.datapromotionname
+                              ? {
+                                  "data-element-type": item.dataElementType,
+                                  "data-promotion-index": item.datapromotionindex,
+                                  "data-promotion-name": item.datapromotionname,
+                                }
+                              : {}
+                          )}
                           className="masonryLink"
                         >
                           <div className="tileImage">
@@ -1061,6 +1073,8 @@ Multiclickcarouselchristmas.propTypes = {
   itemsPerSlide: PropTypes.number,
   itemsPerRow: PropTypes.number,
   itemsPerRowMobile: PropTypes.number,
+
+  id: PropTypes.string,
 
   /** Images */
   image1: PropTypes.string,

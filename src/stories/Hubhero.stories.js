@@ -14,7 +14,7 @@ import { HubHeroText } from "./HubheroText";
 import { useArgs } from "storybook/preview-api";
 
 export default {
-title: "Hubs/Hero Text",
+title: "Modules/Hero Text",
 component: HubHeroText,
 
 parameters: {
@@ -55,11 +55,12 @@ stripbackgroundcolor: {
 
 striptextcolor: {
   control: "select",
-  options: ["#fff", "#000"],
+  options: ["#fff", "#000", "#1f2b91"],
 },
 
 textcolor: {
-  control: "color",
+  control: "select",
+  options: ["#fff", "#000", "#1f2b91"],
 },
 
 

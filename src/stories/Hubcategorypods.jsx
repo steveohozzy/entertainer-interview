@@ -3,6 +3,7 @@ import "./consistency.css";
 
 export const HubCategoryPods = ({
   podbackgroundcolor,
+  podtextcolor,
 
   lozengebackgroundcolor,
   lozengetextcolor,
@@ -66,66 +67,6 @@ export const HubCategoryPods = ({
   pod12imagealt,
   pod12title,
   pod12link,
-
-  pod13image,
-  pod13imagealt,
-  pod13title,
-  pod13link,
-
-  pod14image,
-  pod14imagealt,
-  pod14title,
-  pod14link,
-
-  pod15image,
-  pod15imagealt,
-  pod15title,
-  pod15link,
-
-  pod16image,
-  pod16imagealt,
-  pod16title,
-  pod16link,
-
-  pod17image,
-  pod17imagealt,
-  pod17title,
-  pod17link,
-
-  pod18image,
-  pod18imagealt,
-  pod18title,
-  pod18link,
-
-  pod19image,
-  pod19imagealt,
-  pod19title,
-  pod19link,
-
-  pod20image,
-  pod20imagealt,
-  pod20title,
-  pod20link,
-
-  pod21image,
-  pod21imagealt,
-  pod21title,
-  pod21link,
-
-  pod22image,
-  pod22imagealt,
-  pod22title,
-  pod22link,
-
-  pod23image,
-  pod23imagealt,
-  pod23title,
-  pod23link,
-
-  pod24image,
-  pod24imagealt,
-  pod24title,
-  pod24link,
 }) => {
 
 const catpods = [
@@ -219,11 +160,13 @@ const validCatpods = catpods.filter(
           }}
       
       >
+        {lozengetitle && (
         <div class="consistent-hub-shop-by-category-area-header">
           <div class="consistent-hub-shop-by-category-area-header-title">
             {lozengetitle}
           </div>
         </div>
+        )}
         <div class="consistent-hub-shop-by-category-area">
           <div className="consistent-hub-shop-by-category-categories">
             {validCatpods.map((pod, index) => (
@@ -240,7 +183,7 @@ const validCatpods = catpods.filter(
                 </a>
 
                 {pod.title && (
-                  <a href={pod.link} className="text-link">
+                  <a href={pod.link} className="text-link" style={{"color": podtextcolor}}>
                     {pod.title}
                   </a>
                 )}
@@ -257,6 +200,7 @@ const validCatpods = catpods.filter(
 HubCategoryPods.propTypes = {
   
   podbackgroundcolor: PropTypes.string,
+  podtextcolor: PropTypes.string,
 
   lozengebackgroundcolor: PropTypes.string,
   lozengetextcolor: PropTypes.string,

@@ -1,3 +1,4 @@
+
 import { db } from '../config/firebase';
 import {
   doc,
@@ -36,6 +37,24 @@ export default {
       control: 'boolean',
     },
 
+    // -------------------------
+    // MEDIA LINKS
+    // -------------------------
+
+    link: {
+      control: 'text',
+      description: 'Destination when clicking the media image or banner',
+    },
+
+    buttonLink: {
+      control: 'text',
+      description: 'CTA destination. If empty, the main link is used',
+    },
+
+    // -------------------------
+    // CTA BUTTON
+    // -------------------------
+
     ctaposition: {
       options: [
         'left',
@@ -44,6 +63,21 @@ export default {
       ],
       control: {
         type: 'radio',
+      },
+    },
+
+    buttonPosition: {
+      options: [
+        'overlay',
+        'below',
+      ],
+      control: {
+        type: 'radio',
+      },
+      description: 'Display the CTA over the media or underneath the blurb',
+      labels: {
+        overlay: 'Overlay',
+        below: 'Below blurb',
       },
     },
 
@@ -65,8 +99,79 @@ export default {
       },
     },
 
-    buttonLink: {
+    // -------------------------
+    // MODULE BACKGROUND
+    // -------------------------
+
+    backgroundColor: {
+      control: 'color',
+    },
+
+    // -------------------------
+    // LOZENGE TITLE
+    // -------------------------
+
+    lozengeTitle: {
       control: 'text',
+      description: 'Optional title displayed over the media',
+    },
+
+    lozengeBackgroundColor: {
+      control: 'color',
+      description: 'Lozenge background colour',
+    },
+
+    lozengeTextColor: {
+      control: 'color',
+      description: 'Lozenge text colour',
+    },
+
+    // -------------------------
+    // HEADER LOGO
+    // -------------------------
+
+    headerLogo: {
+      control: 'text',
+      description: 'Logo image URL displayed instead of the lozenge',
+    },
+
+    headerLogoAlt: {
+      control: 'text',
+      description: 'Alternative text for the header logo',
+    },
+
+    headerLogoMaxHeight: {
+      control: {
+        type: 'range',
+        min: 50,
+        max: 300,
+        step: 10,
+      },
+      description: 'Maximum logo height in pixels',
+    },
+
+    headerLogoBackgroundColor: {
+      control: 'color',
+      description: 'Full-width background colour behind the header logo',
+    },
+
+    // -------------------------
+    // BLURB TEXT
+    // -------------------------
+
+    blurbText: {
+      control: 'text',
+      description: 'Text displayed underneath the media',
+    },
+
+    blurbTextColor: {
+      control: 'color',
+      description: 'Blurb text colour',
+    },
+
+    blurbBackgroundColor: {
+      control: 'color',
+      description: 'Blurb background colour',
     },
   },
 
@@ -243,6 +348,10 @@ export default {
 
       }, [currentArgs.saveModule]);
 
+      // -------------------------
+      // DELETE MODULE
+      // -------------------------
+
       const deleteSelectedModule = async () => {
 
         const moduleName =
@@ -381,6 +490,10 @@ export const HubsMediaBannerSection = {
     selectedModule: '',
     saveModule: false,
 
+    // -------------------------
+    // MEDIA
+    // -------------------------
+
     link: 'https://www.thetoyshop.com/search?text=EA%20SPORTS%20FC26',
 
     video: 'https://www.thetoyshop.com/medias/FC26-WC-RETAIL-CUSTOM-NoSubs-EditGlobal-1080p-16x9-29-97fps-30s-ENG-GB-1-1-.mp4?context=bWFzdGVyfHJvb3R8OTk0OTM1OXx2aWRlby9xdWlja3RpbWV8YUdZekwyZzBaaTh4TWpjNE5qYzVOVEU0TkRFMU9DOUdRekkyWDFkRFgxSkZWRUZKVEY5RFZWTlVUMDB0VG05VGRXSnpMVVZrYVhSSGJHOWlZV3hmTVRBNE1IQmZNVFo0T1Y4eU9TMDVOMlp3YzE4ek1ITmZSVTVIWDBkQ0lDZ3hLU0FvTVNrdWJYQTB8MDcwN2NiMjJjMGI1ZTc5MGMzOWJiMzMyNjNiM2U5NDMzZDY5OTczM2E3ZGI4Yjk3ZmVjNTk4NzdiZGUzYjNlMg',
@@ -388,9 +501,54 @@ export const HubsMediaBannerSection = {
     image: '',
     imagealt: '',
 
+    // -------------------------
+    // CTA BUTTON
+    // -------------------------
+
     buttonStyle: 'shop-now',
+
     buttonLink: 'https://www.thetoyshop.com/search?text=EA%20SPORTS%20FC26',
 
     ctaposition: 'center',
+
+    buttonPosition: 'overlay',
+
+    // -------------------------
+    // MODULE BACKGROUND
+    // -------------------------
+
+    backgroundColor: '#ffffff',
+
+    // -------------------------
+    // LOZENGE TITLE
+    // -------------------------
+
+    lozengeTitle: '',
+
+    lozengeBackgroundColor: '#ffffff',
+
+    lozengeTextColor: '#000000',
+
+    // -------------------------
+    // HEADER LOGO
+    // -------------------------
+
+    headerLogo: '',
+
+    headerLogoAlt: '',
+
+    headerLogoMaxHeight: 300,
+
+    headerLogoBackgroundColor: 'transparent',
+
+    // -------------------------
+    // BLURB TEXT
+    // -------------------------
+
+    blurbText: '',
+
+    blurbTextColor: '#000000',
+
+    blurbBackgroundColor: 'transparent',
   },
 };

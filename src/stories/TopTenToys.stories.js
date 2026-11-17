@@ -11,6 +11,7 @@ import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { TopTenToys } from './TopTenToys';
 import { useArgs } from 'storybook/preview-api';
+import { control } from 'leaflet';
 
 export default {
   title: 'Christmas/Top Ten Toys',
@@ -29,6 +30,7 @@ export default {
     textColor: { control: 'color' },
     oddRankBg: { control: 'color' },
     evenRankBg: { control: 'color' },
+    id: {control: 'text'},
     panelTitle: { control: 'text' },
     panelBlurb: { control: 'text' },
 
@@ -64,6 +66,9 @@ export default {
         control: { type: 'select' },
       };
       acc[`toy${num}Link`] = { control: 'text' };
+      acc[`toy${num}DataElementType`] = { control: 'text' };
+      acc[`toy${num}DataPromotionIndex`] = { control: 'text' };
+      acc[`toy${num}DataPromotionName`] = { control: 'text' };
       acc[`toy${num}Hero`] = { control: 'text' };
       acc[`toy${num}Heroalt`] = { control: 'text' };
       acc[`toy${num}Life`] = { control: 'text' };
@@ -202,6 +207,7 @@ export const TopTenToysSection = {
     lozengeColor: '#ffffff',
     lozengeBg: '#29527a',
     footerTextColor: '#ffffff',
+    id: 'top-10-toys',
     panelTitle: 'Top 10 Toys',
     panelBlurb: 'Tap a toy to jump straight to it',
 
@@ -228,6 +234,9 @@ export const TopTenToysSection = {
     toy1TipCharacter: 'fox',
 
     toy1Link: '#',
+    toy1DataElementType: '',
+    toy1DataPromotionIndex: '',
+    toy1DataPromotionName: '',
     toy1Hero: 'https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?auto=format&fit=crop&w=800&q=80',
     toy1Heroalt: 'Action view',
     toy1Life: 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=640&q=80',
@@ -248,6 +257,9 @@ export const TopTenToysSection = {
     toy2TipCharacter: 'fox',
 
     toy2Link: '#',
+    toy2DataElementType: '',
+    toy2DataPromotionIndex: '',
+    toy2DataPromotionName: '',
     toy2Hero: 'https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?auto=format&fit=crop&w=800&q=80',
     toy2Heroalt: 'Action view',
     toy2Life: 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=640&q=80',
@@ -271,6 +283,9 @@ export const TopTenToysSection = {
       acc[`toy${num}TipCharacter`] = 'fox';
 
       acc[`toy${num}Link`] = '#';
+      acc[`toy${num}DataElementType`] = '';
+      acc[`toy${num}DataPromotionIndex`] = '';
+      acc[`toy${num}DataPromotionName`] = '';
       acc[`toy${num}Hero`] = 'https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=800&q=80';
       acc[`toy${num}Heroalt`] = 'Action view';
       acc[`toy${num}Life`] = 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=640&q=80';

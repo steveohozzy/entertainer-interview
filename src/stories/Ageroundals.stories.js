@@ -17,6 +17,8 @@ export default {
 title: "Hubs/Age Roundals",
 component: Ageroundals,
 
+tags: ["!dev"],
+
 parameters: {
 layout: "fullscreen",
 },

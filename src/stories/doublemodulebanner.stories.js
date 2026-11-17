@@ -27,7 +27,6 @@ disable: true,
 },
 },
 
-
 moduleName: {
   control: "text",
 },
@@ -58,6 +57,17 @@ panel1imagealt: {
 
 panel1bodyText: {
   control: "text",
+},
+
+panel1bodyTextColor: {
+  options: [
+    "#000000",
+    "#ffffff",
+    "#1f2b91",
+  ],
+  control: {
+    type: "select",
+  },
 },
 
 panel1link: {
@@ -96,6 +106,17 @@ panel2bodyText: {
   control: "text",
 },
 
+panel2bodyTextColor: {
+  options: [
+    "#000000",
+    "#ffffff",
+    "#1f2b91",
+  ],
+  control: {
+    type: "select",
+  },
+},
+
 panel2link: {
   control: "text",
 },
@@ -111,10 +132,10 @@ panel2buttonStyle: {
     'download',
     'read',
     'sign-up',
+    'play',
   ],
   control: 'radio',
 },
-
 
 },
 };
@@ -125,7 +146,6 @@ moduleName: "",
 selectedModule: "",
 saveModule: false,
 
-
 bordercolor: "#000",
 backgroundcolor: "#fff",
 
@@ -133,6 +153,7 @@ panel1video: "",
 panel1image: "",
 panel1imagealt: "",
 panel1bodyText: "",
+panel1bodyTextColor: "#000000",
 panel1link: "",
 panel1buttonStyle: 'shop-now',
 
@@ -140,14 +161,13 @@ panel2video: "",
 panel2image: "",
 panel2imagealt: "",
 panel2bodyText: "",
+panel2bodyTextColor: "#000000",
 panel2link: "",
 panel2buttonStyle: 'shop-now',
-
 
 },
 
 render: function Render() {
-
 
 const [currentArgs, updateArgs] = useArgs();
 const [modules, setModules] = useState([]);
@@ -473,7 +493,6 @@ return (
     />
   </>
 );
-
 
 }
 };

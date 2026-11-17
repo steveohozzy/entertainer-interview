@@ -124,6 +124,24 @@ hotspotPanel1InfoLink: {
     "Info link for hotspot 1.",
 },
 
+hotspotPanel1DataElementType: {
+  control: "text",
+  description:
+    "Data element type for hotspot 1.",
+},
+
+hotspotPanel1DataPromotionName: {
+  control: "text",
+  description:
+    "Data promotion name for hotspot 1.",
+},
+
+hotspotPanel1DataPromotionIndex: {
+  control: "text",
+  description:
+    "Data promotion index for hotspot 1.",
+},
+
 hotspotPanel2Title: {
   control: "text",
   description:
@@ -140,6 +158,24 @@ hotspotPanel2InfoLink: {
   control: "text",
   description:
     "Info link for hotspot 2.",
+},
+
+hotspotPanel2DataElementType: {
+  control: "text",
+  description:
+    "Data element type for hotspot 2.",
+},
+
+hotspotPanel2DataPromotionName: {
+  control: "text",
+  description:
+    "Data promotion name for hotspot 2.",
+},
+
+hotspotPanel2DataPromotionIndex: {
+  control: "text",
+  description:
+    "Data promotion index for hotspot 2.",
 },
 
 hotspotPanel3Title: {
@@ -160,6 +196,24 @@ hotspotPanel3InfoLink: {
     "Info link for hotspot 3.",
 },
 
+hotspotPanel3DataElementType: {
+  control: "text",
+  description:
+    "Data element type for hotspot 3.",
+},
+
+hotspotPanel3DataPromotionName: {
+  control: "text",
+  description:
+    "Data promotion name for hotspot 3.",
+},
+
+hotspotPanel3DataPromotionIndex: {
+  control: "text",
+  description:
+    "Data promotion index for hotspot 3.",
+},
+
 hotspotPanel4Title: {
   control: "text",
   description:
@@ -176,6 +230,24 @@ hotspotPanel4InfoLink: {
   control: "text",
   description:
     "Info link for hotspot 4.",
+},
+
+hotspotPanel4DataElementType: {
+  control: "text",
+  description:
+    "Data element type for hotspot 4.",
+},
+
+hotspotPanel4DataPromotionName: {
+  control: "text",
+  description:
+    "Data promotion name for hotspot 4.",
+},
+
+hotspotPanel4DataPromotionIndex: {
+  control: "text",
+  description:
+    "Data promotion index for hotspot 4.",
 },
 
 hotspotPanel5Title: {
@@ -196,6 +268,24 @@ hotspotPanel5InfoLink: {
     "Info link for hotspot 5.",
 },
 
+hotspotPanel5DataElementType: {
+  control: "text",
+  description:
+    "Data element type for hotspot 5.",
+},
+
+hotspotPanel5DataPromotionName: {
+  control: "text",
+  description:
+    "Data promotion name for hotspot 5.",
+},
+
+hotspotPanel5DataPromotionIndex: {
+  control: "text",
+  description:
+    "Data promotion index for hotspot 5.",
+},
+
 hotspotPanel6Title: {
   control: "text",
   description:
@@ -212,6 +302,24 @@ hotspotPanel6InfoLink: {
   control: "text",
   description:
     "Info link for hotspot 6.",
+},
+
+hotspotPanel6DataElementType: {
+  control: "text",
+  description:
+    "Data element type for hotspot 6.",
+},
+
+hotspotPanel6DataPromotionName: {
+  control: "text",
+  description:
+    "Data promotion name for hotspot 6.",
+},
+
+hotspotPanel6DataPromotionIndex: {
+  control: "text",
+  description:
+    "Data promotion index for hotspot 6.",
 },
 
 hotspotPanel7Title: {
@@ -232,6 +340,24 @@ hotspotPanel7InfoLink: {
     "Info link for hotspot 7.",
 },
 
+hotspotPanel7DataElementType: {
+  control: "text",
+  description:
+    "Data element type for hotspot 7.",
+},
+
+hotspotPanel7DataPromotionName: {
+  control: "text",
+  description:
+    "Data promotion name for hotspot 7.",
+},
+
+hotspotPanel7DataPromotionIndex: {
+  control: "text",
+  description:
+    "Data promotion index for hotspot 7.",
+},
+
 hotspotPanel8Title: {
   control: "text",
   description:
@@ -248,6 +374,24 @@ hotspotPanel8InfoLink: {
   control: "text",
   description:
     "Info link for hotspot 8.",
+},
+
+hotspotPanel8DataElementType: {
+  control: "text",
+  description:
+    "Data element type for hotspot 8.",
+},
+
+hotspotPanel8DataPromotionName: {
+  control: "text",
+  description:
+    "Data promotion name for hotspot 8.",
+},
+
+hotspotPanel8DataPromotionIndex: {
+  control: "text",
+  description:
+    "Data promotion index for hotspot 8.",
 },
 
 hotspotPanel9Title: {
@@ -268,6 +412,24 @@ hotspotPanel9InfoLink: {
     "Info link for hotspot 9.",
 },
 
+hotspotPanel9DataElementType: {
+  control: "text",
+  description:
+    "Data element type for hotspot 9.",
+},
+
+hotspotPanel9DataPromotionName: {
+  control: "text",
+  description:
+    "Data promotion name for hotspot 9.",
+},
+
+hotspotPanel9DataPromotionIndex: {
+  control: "text",
+  description:
+    "Data promotion index for hotspot 9.",
+},
+
 hotspotPanel10Title: {
   control: "text",
   description:
@@ -284,6 +446,24 @@ hotspotPanel10InfoLink: {
   control: "text",
   description:
     "Info link for hotspot 10.",
+},
+
+hotspotPanel10DataElementType: {
+  control: "text",
+  description:
+    "Data element type for hotspot 10.",
+},
+
+hotspotPanel10DataPromotionName: {
+  control: "text",
+  description:
+    "Data promotion name for hotspot 10.",
+},
+
+hotspotPanel10DataPromotionIndex: {
+  control: "text",
+  description:
+    "Data promotion index for hotspot 10.",
 },
 
 
@@ -1351,6 +1531,15 @@ hotspotPanel1ShopLink:
 hotspotPanel1InfoLink:
   "https://www.thetoyshop.com",
 
+hotspotPanel1DataElementType:
+  "",
+
+hotspotPanel1DataPromotionName:
+  "",
+
+hotspotPanel1DataPromotionIndex:
+  "",
+
 hotspotPanel2Title:
   "Trending Electronic Companion",
 
@@ -1359,6 +1548,15 @@ hotspotPanel2ShopLink:
 
 hotspotPanel2InfoLink:
   "https://www.thetoyshop.com",
+
+hotspotPanel2DataElementType:
+  "",
+
+hotspotPanel2DataPromotionName:
+  "",
+
+hotspotPanel2DataPromotionIndex:
+  "",
 
 hotspotPanel3Title:
   "Action & Adventure Playset",
@@ -1369,6 +1567,15 @@ hotspotPanel3ShopLink:
 hotspotPanel3InfoLink:
   "https://www.thetoyshop.com",
 
+hotspotPanel3DataElementType:
+  "",
+
+hotspotPanel3DataPromotionName:
+  "",
+
+hotspotPanel3DataPromotionIndex:
+  "",
+
 hotspotPanel4Title:
   "Creative Building Set",
 
@@ -1377,6 +1584,15 @@ hotspotPanel4ShopLink:
 
 hotspotPanel4InfoLink:
   "https://www.thetoyshop.com",
+
+hotspotPanel4DataElementType:
+  "",
+
+hotspotPanel4DataPromotionName:
+  "",
+
+hotspotPanel4DataPromotionIndex:
+  "",
 
 hotspotPanel5Title:
   "Collectible Character Plush",
@@ -1387,6 +1603,15 @@ hotspotPanel5ShopLink:
 hotspotPanel5InfoLink:
   "https://www.thetoyshop.com",
 
+hotspotPanel5DataElementType:
+  "",
+
+hotspotPanel5DataPromotionName:
+  "",
+
+hotspotPanel5DataPromotionIndex:
+  "",
+
 hotspotPanel6Title:
   "High-Speed Vehicle Track",
 
@@ -1395,6 +1620,15 @@ hotspotPanel6ShopLink:
 
 hotspotPanel6InfoLink:
   "https://www.thetoyshop.com",
+
+hotspotPanel6DataElementType:
+  "",
+
+hotspotPanel6DataPromotionName:
+  "",
+
+hotspotPanel6DataPromotionIndex:
+  "",
 
 hotspotPanel7Title:
   "Interactive Tech Toy",
@@ -1405,6 +1639,15 @@ hotspotPanel7ShopLink:
 hotspotPanel7InfoLink:
   "https://www.thetoyshop.com",
 
+hotspotPanel7DataElementType:
+  "",
+
+hotspotPanel7DataPromotionName:
+  "",
+
+hotspotPanel7DataPromotionIndex:
+  "",
+
 hotspotPanel8Title:
   "Classic Family Favorite",
 
@@ -1413,6 +1656,15 @@ hotspotPanel8ShopLink:
 
 hotspotPanel8InfoLink:
   "https://www.thetoyshop.com",
+
+hotspotPanel8DataElementType:
+  "",
+
+hotspotPanel8DataPromotionName:
+  "",
+
+hotspotPanel8DataPromotionIndex:
+  "",
 
 hotspotPanel9Title:
   "Imaginative Roleplay Set",
@@ -1423,6 +1675,15 @@ hotspotPanel9ShopLink:
 hotspotPanel9InfoLink:
   "https://www.thetoyshop.com",
 
+hotspotPanel9DataElementType:
+  "",
+
+hotspotPanel9DataPromotionName:
+  "",
+
+hotspotPanel9DataPromotionIndex:
+  "",
+
 hotspotPanel10Title:
   "Must-Have Holiday Hit",
 
@@ -1431,6 +1692,15 @@ hotspotPanel10ShopLink:
 
 hotspotPanel10InfoLink:
   "https://www.thetoyshop.com",
+
+hotspotPanel10DataElementType:
+  "",
+
+hotspotPanel10DataPromotionName:
+  "",
+
+hotspotPanel10DataPromotionIndex:
+  "",
 
 
 },

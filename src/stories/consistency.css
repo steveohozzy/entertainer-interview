@@ -295,7 +295,8 @@
     text-align: center;
   }
 
-  .consistent-hubs-guides-area .consistent-hubs-guides-content .title {
+  .consistent-hubs-guides-area .consistent-hubs-guides-content .title,
+  .consistent-hubs-guides-area .consistent-hubs-guides-content h2 {
     text-transform: uppercase;
     background: linear-gradient(
         180deg, 
@@ -326,10 +327,11 @@
     }
 
     .consistent-hubs-guides-area .blog-carousel .carousel-cell {
-      margin: 20px 10px 20px 0;
+      margin: 20px 0;
       text-align: center;
-      width: calc(47% - 10px);
+      width: 47%;
       counter-increment: carousel-cell;
+      padding: 0 10px;
     }
 
     .consistent-hubs-guides-area .blog-carousel .carousel-cell img {
@@ -354,7 +356,7 @@
 
     @media (min-width: 768px) {
       .consistent-hubs-guides-area .blog-carousel .carousel-cell {
-        width: calc(25% - 10px)
+        width: 25%;
       }
     }
 
@@ -529,6 +531,7 @@
       text-align: center;
     }
 
+    .consistent-brand-modules-header-content .title,
     .consistent-brand-modules-header-content h2 {
       text-transform: uppercase;
       background : var(--consistent-brand-modules-header-background);
@@ -536,7 +539,6 @@
       font-family: "Nunito Bold", "Tahoma Bold", sans-serif;
       font-size: 18px;
       border-radius: 8px;
-      margin-bottom: 20px;
       margin: 0 0 20px;
       padding: 5px 0;
     }

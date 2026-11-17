@@ -4,6 +4,7 @@ import "./consistency.css";
 
 export const ChristmasGuides= ({
   modulebackgroundcolor,
+  id,
   title,
   titlelink,
   lozengebackgroundcolor,
@@ -16,36 +17,54 @@ export const ChristmasGuides= ({
   panel1title,
   panel1link,
   panel1buttonStyle,
+  panel1dataElementType,
+  panel1dataPromotionIndex,
+  panel1dataPromotionName,
 
   panel2image,
   panel2imagealt,
   panel2title,
   panel2link,
   panel2buttonStyle,
+  panel2dataElementType,
+  panel2dataPromotionIndex, 
+  panel2dataPromotionName,
 
   panel3image,
   panel3imagealt,
   panel3title,
   panel3link,
   panel3buttonStyle,
+  panel3dataElementType,
+  panel3dataPromotionIndex,
+  panel3dataPromotionName,
 
   panel4image,
   panel4imagealt,
   panel4title,
   panel4link,
   panel4buttonStyle,
+  panel4dataElementType,
+  panel4dataPromotionIndex,
+  panel4dataPromotionName,
 
   panel5image,
   panel5imagealt,
   panel5title,
   panel5link,
   panel5buttonStyle,
+  panel5dataElementType,
+  panel5dataPromotionIndex,
+  panel5dataPromotionName,
 
   panel6image,
   panel6imagealt,
   panel6title,
   panel6link,
   panel6buttonStyle,
+  panel6dataElementType,
+  panel6dataPromotionIndex,
+  panel6dataPromotionName,
 }) => {
 
   const catpanels = [
@@ -55,6 +74,9 @@ export const ChristmasGuides= ({
     title: panel1title,
     link: panel1link,
     buttonStyle: panel1buttonStyle,
+    dataElementType: panel1dataElementType,
+    dataPromotionIndex: panel1dataPromotionIndex,
+    dataPromotionName: panel1dataPromotionName,
   },
   {
     image: panel2image,
@@ -62,6 +84,9 @@ export const ChristmasGuides= ({
     title: panel2title,
     link: panel2link,
     buttonStyle: panel2buttonStyle,
+    dataElementType: panel2dataElementType,
+    dataPromotionIndex: panel2dataPromotionIndex,
+    dataPromotionName: panel2dataPromotionName,
   },
   {
     image: panel3image,
@@ -69,6 +94,9 @@ export const ChristmasGuides= ({
     title: panel3title,
     link: panel3link,
     buttonStyle: panel3buttonStyle,
+    dataElementType: panel3dataElementType,
+    dataPromotionIndex: panel3dataPromotionIndex,
+    dataPromotionName: panel3dataPromotionName,
   },
   {
     image: panel4image,
@@ -76,6 +104,9 @@ export const ChristmasGuides= ({
     title: panel4title,
     link: panel4link,
     buttonStyle: panel4buttonStyle,
+    dataElementType: panel4dataElementType,
+    dataPromotionIndex: panel4dataPromotionIndex,
+    dataPromotionName: panel4dataPromotionName,
   },
   {
     image: panel5image,
@@ -83,6 +114,9 @@ export const ChristmasGuides= ({
     title: panel5title,
     link: panel5link,
     buttonStyle: panel5buttonStyle,
+    dataElementType: panel5dataElementType,
+    dataPromotionIndex: panel5dataPromotionIndex,
+    dataPromotionName: panel5dataPromotionName,
   },
   {
     image: panel6image,
@@ -90,6 +124,9 @@ export const ChristmasGuides= ({
     title: panel6title,
     link: panel6link,
     buttonStyle: panel6buttonStyle,
+    dataElementType: panel6dataElementType,
+    dataPromotionIndex: panel6dataPromotionIndex,
+    dataPromotionName: panel6dataPromotionName,
   },
 ];
 
@@ -120,6 +157,7 @@ const validBlogPanels = catpanels.filter(
         `}
         </style>
 <div class="consistent-hubs-guides-area christmas"
+id={id}
 
 style={{
 "--consistent-guides-module-bg": '#fff',
@@ -151,7 +189,19 @@ backgroundColor: modulebackgroundcolor,
 
       return (
         <div className="carousel-cell" key={index}>
-          <a href={panel.link} title={panel.title}>
+          <a href={panel.link} title={panel.title}
+            {...(
+              panel.dataElementType &&
+              panel.dataPromotionIndex &&
+              panel.dataPromotionName
+                ? {
+                    "data-element-type": panel.dataElementType,
+                    "data-promotion-index": panel.dataPromotionIndex,
+                    "data-promotion-name": panel.dataPromotionName,
+                  }
+                : {}
+            )}
+          >
             <span className="carousel-cell-content">
               <img src={panel.image} alt={panel.alt} />
               <p>{panel.title}</p>
@@ -275,6 +325,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 ChristmasGuides.propTypes = {
   modulebackgroundcolor: PropTypes.string,
+  id: PropTypes.string,
   title: PropTypes.string,
   titlelink: PropTypes.string,
   lozengebackgroundcolor: PropTypes.string,
@@ -286,30 +337,48 @@ ChristmasGuides.propTypes = {
   panel1imagealt: PropTypes.string,
   panel1title: PropTypes.string,
   panel1link: PropTypes.string,
+  panel1dataElementType: PropTypes.string,
+  panel1dataPromotionIndex: PropTypes.string,
+  panel1dataPromotionName: PropTypes.string,
 
   panel2image: PropTypes.string,
   panel2imagealt: PropTypes.string,
   panel2title: PropTypes.string,
   panel2link: PropTypes.string,
+  panel2dataElementType: PropTypes.string,
+  panel2dataPromotionIndex: PropTypes.string,
+  panel2dataPromotionName: PropTypes.string,
 
   panel3image: PropTypes.string,
   panel3imagealt: PropTypes.string,
   panel3title: PropTypes.string,
   panel3link: PropTypes.string,
+  panel3dataElementType: PropTypes.string,
+  panel3dataPromotionIndex: PropTypes.string,
+  panel3dataPromotionName: PropTypes.string,
 
   panel4image: PropTypes.string,
   panel4imagealt: PropTypes.string,
   panel4title: PropTypes.string,
   panel4link: PropTypes.string,
+  panel4dataElementType: PropTypes.string,
+  panel4dataPromotionIndex: PropTypes.string,
+  panel4dataPromotionName: PropTypes.string,
 
   panel5image: PropTypes.string,
   panel5imagealt: PropTypes.string,
   panel5title: PropTypes.string,
   panel5link: PropTypes.string,
+  panel5dataElementType: PropTypes.string,
+  panel5dataPromotionIndex: PropTypes.string,
+  panel5dataPromotionName: PropTypes.string,
 
   panel6image: PropTypes.string,
   panel6imagealt: PropTypes.string,
   panel6title: PropTypes.string,
   panel6link: PropTypes.string,
+  panel6dataElementType: PropTypes.string,
+  panel6dataPromotionIndex: PropTypes.string,
+  panel6dataPromotionName: PropTypes.string,
 
 };

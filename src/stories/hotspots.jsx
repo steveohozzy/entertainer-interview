@@ -29,6 +29,9 @@ const getPanels = (props) => {
       title: props[`hotspotPanel${i}Title`] || "",
       shopLink: props[`hotspotPanel${i}ShopLink`] || "",
       infoLink: props[`hotspotPanel${i}InfoLink`] || "",
+      dataElementType: props[`hotspotPanel${i}DataElementType`] || "",
+      dataPromotionName: props[`hotspotPanel${i}DataPromotionName`] || "",
+      dataPromotionIndex: props[`hotspotPanel${i}DataPromotionIndex`] || "",
     };
   }
 
@@ -61,7 +64,10 @@ const buildToysData = (hotspots, panels) => {
         ${hotspot.id}: {
           title: ${JSON.stringify(panel.title || `Toy ${hotspot.id}`)},
           shopLink: ${JSON.stringify(panel.shopLink || "")},
-          infoLink: ${JSON.stringify(panel.infoLink || "")}
+          infoLink: ${JSON.stringify(panel.infoLink || "")},
+          dataElementType: ${JSON.stringify(panel.dataElementType || "")},
+          dataPromotionName: ${JSON.stringify(panel.dataPromotionName || "")},
+          dataPromotionIndex: ${JSON.stringify(panel.dataPromotionIndex || "")}
         }
       `;
     })
@@ -465,10 +471,12 @@ const buildCMSHTML = (props) => {
 .hotspots-card-button:hover {
   transform: scale(1.1);
   background: #AFCB17;
+  color: #fff;
 }
 
 .hotspots-card-button.info:hover {
   background: #ee3224;
+  color: #fff;
 }
 
 @media (max-width: 600px) {
@@ -711,18 +719,46 @@ const buildCMSHTML = (props) => {
     }
 
     if (shopLink) {
+      shopLink.removeAttribute('data-element-type');
+      shopLink.removeAttribute('data-promotion-name');
+      shopLink.removeAttribute('data-promotion-index');
+
       if (data.shopLink) {
         shopLink.href = data.shopLink;
         shopLink.style.display = 'block';
+
+        if (
+          data.dataElementType &&
+          data.dataPromotionName &&
+          data.dataPromotionIndex
+        ) {
+          shopLink.setAttribute('data-element-type', data.dataElementType);
+          shopLink.setAttribute('data-promotion-name', data.dataPromotionName);
+          shopLink.setAttribute('data-promotion-index', data.dataPromotionIndex);
+        }
       } else {
         shopLink.style.display = 'none';
       }
     }
 
     if (infoLink) {
+      infoLink.removeAttribute('data-element-type');
+      infoLink.removeAttribute('data-promotion-name');
+      infoLink.removeAttribute('data-promotion-index');
+
       if (data.infoLink) {
         infoLink.href = data.infoLink;
         infoLink.style.display = 'block';
+
+        if (
+          data.dataElementType &&
+          data.dataPromotionName &&
+          data.dataPromotionIndex
+        ) {
+          infoLink.setAttribute('data-element-type', data.dataElementType);
+          infoLink.setAttribute('data-promotion-name', data.dataPromotionName);
+          infoLink.setAttribute('data-promotion-index', data.dataPromotionIndex);
+        }
       } else {
         infoLink.style.display = 'none';
       }
@@ -1254,10 +1290,12 @@ export const Hotspots = (props) => {
           .storybook-hotspot-card-link:hover {
             background: #AFCB17;
             transform: scale(1.1);
+            color: #fff;
           }
 
           .storybook-hotspot-card-link.info:hover {
             background: #ee3224;
+            color: #fff;
           }
 
 
@@ -1397,6 +1435,17 @@ export const Hotspots = (props) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="storybook-hotspot-card-link"
+                  {...(
+                    activePanel.dataElementType &&
+                    activePanel.dataPromotionName &&
+                    activePanel.dataPromotionIndex
+                      ? {
+                          "data-element-type": activePanel.dataElementType,
+                          "data-promotion-name": activePanel.dataPromotionName,
+                          "data-promotion-index": activePanel.dataPromotionIndex,
+                        }
+                      : {}
+                  )}
                 >
                   Shop
                 </a>
@@ -1408,6 +1457,17 @@ export const Hotspots = (props) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="storybook-hotspot-card-link info"
+                  {...(
+                    activePanel.dataElementType &&
+                    activePanel.dataPromotionName &&
+                    activePanel.dataPromotionIndex
+                      ? {
+                          "data-element-type": activePanel.dataElementType,
+                          "data-promotion-name": activePanel.dataPromotionName,
+                          "data-promotion-index": activePanel.dataPromotionIndex,
+                        }
+                      : {}
+                  )}
                 >
                   Info
                 </a>
@@ -1458,11 +1518,23 @@ Hotspots.propTypes = {
 
   hotspotPanel1InfoLink: PropTypes.string,
 
+  hotspotPanel1DataElementType: PropTypes.string,
+
+  hotspotPanel1DataPromotionName: PropTypes.string,
+
+  hotspotPanel1DataPromotionIndex: PropTypes.string,
+
   hotspotPanel2Title: PropTypes.string,
 
   hotspotPanel2ShopLink: PropTypes.string,
 
   hotspotPanel2InfoLink: PropTypes.string,
+
+  hotspotPanel2DataElementType: PropTypes.string,
+
+  hotspotPanel2DataPromotionName: PropTypes.string,
+
+  hotspotPanel2DataPromotionIndex: PropTypes.string,
 
   hotspotPanel3Title: PropTypes.string,
 
@@ -1470,11 +1542,23 @@ Hotspots.propTypes = {
 
   hotspotPanel3InfoLink: PropTypes.string,
 
+  hotspotPanel3DataElementType: PropTypes.string,
+
+  hotspotPanel3DataPromotionName: PropTypes.string,
+
+  hotspotPanel3DataPromotionIndex: PropTypes.string,
+
   hotspotPanel4Title: PropTypes.string,
 
   hotspotPanel4ShopLink: PropTypes.string,
 
   hotspotPanel4InfoLink: PropTypes.string,
+
+  hotspotPanel4DataElementType: PropTypes.string,
+
+  hotspotPanel4DataPromotionName: PropTypes.string,
+
+  hotspotPanel4DataPromotionIndex: PropTypes.string,
 
   hotspotPanel5Title: PropTypes.string,
 
@@ -1482,11 +1566,23 @@ Hotspots.propTypes = {
 
   hotspotPanel5InfoLink: PropTypes.string,
 
+  hotspotPanel5DataElementType: PropTypes.string,
+
+  hotspotPanel5DataPromotionName: PropTypes.string,
+
+  hotspotPanel5DataPromotionIndex: PropTypes.string,
+
   hotspotPanel6Title: PropTypes.string,
 
   hotspotPanel6ShopLink: PropTypes.string,
 
   hotspotPanel6InfoLink: PropTypes.string,
+
+  hotspotPanel6DataElementType: PropTypes.string,
+
+  hotspotPanel6DataPromotionName: PropTypes.string,
+
+  hotspotPanel6DataPromotionIndex: PropTypes.string,
 
   hotspotPanel7Title: PropTypes.string,
 
@@ -1494,11 +1590,23 @@ Hotspots.propTypes = {
 
   hotspotPanel7InfoLink: PropTypes.string,
 
+  hotspotPanel7DataElementType: PropTypes.string,
+
+  hotspotPanel7DataPromotionName: PropTypes.string,
+
+  hotspotPanel7DataPromotionIndex: PropTypes.string,
+
   hotspotPanel8Title: PropTypes.string,
 
   hotspotPanel8ShopLink: PropTypes.string,
 
   hotspotPanel8InfoLink: PropTypes.string,
+
+  hotspotPanel8DataElementType: PropTypes.string,
+
+  hotspotPanel8DataPromotionName: PropTypes.string,
+
+  hotspotPanel8DataPromotionIndex: PropTypes.string,
 
   hotspotPanel9Title: PropTypes.string,
 
@@ -1506,9 +1614,21 @@ Hotspots.propTypes = {
 
   hotspotPanel9InfoLink: PropTypes.string,
 
+  hotspotPanel9DataElementType: PropTypes.string,
+
+  hotspotPanel9DataPromotionName: PropTypes.string,
+
+  hotspotPanel9DataPromotionIndex: PropTypes.string,
+
   hotspotPanel10Title: PropTypes.string,
 
   hotspotPanel10ShopLink: PropTypes.string,
 
   hotspotPanel10InfoLink: PropTypes.string,
+
+  hotspotPanel10DataElementType: PropTypes.string,
+
+  hotspotPanel10DataPromotionName: PropTypes.string,
+
+  hotspotPanel10DataPromotionIndex: PropTypes.string,
 };

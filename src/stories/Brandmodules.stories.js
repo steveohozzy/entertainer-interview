@@ -41,10 +41,34 @@ lozengetextcolor: {
   control: {
     type: 'select',
   },
-  options: ['#000000', '#FFFFFF'],
+  options: ['#000000', '#FFFFFF', '#1f2b91'],
   labels: {
     '#000000': 'Black',
     '#FFFFFF': 'White',
+    '#1f2b91': 'Blue',
+  },
+},
+
+moduleType: {
+  control: {
+    type: 'select',
+  },
+  options: ['lifestyle', 'logo'],
+  labels: {
+    lifestyle: 'Lifestyle',
+    logo: 'Logo',
+  },
+},
+
+roundeltextcolor: {
+  control: {
+    type: 'select',
+  },
+  options: ['#000000', '#FFFFFF', '#1f2b91'],
+  labels: {
+    '#000000': 'Black',
+    '#FFFFFF': 'White',
+    '#1f2b91': 'Blue',
   },
 },
 
@@ -380,9 +404,9 @@ moduleName:'',
 selectedModule:'',
 saveModule:false,
 
-
+moduleType:'logo',
 roundelbackgroundcolor:'',
-roundeltextcolor:'',
+roundeltextcolor:'#000000',
 
 lozengebackgroundcolor: '',
 lozengetextcolor: '#000000',

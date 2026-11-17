@@ -40,11 +40,23 @@ lozengetextcolor: {
 control: {
 type: 'select',
 },
-options: ['#000000', '#FFFFFF'],
+options: ['#000000', '#FFFFFF', '#1f2b91'],
 labels: {
 '#000000': 'Black',
 '#FFFFFF': 'White',
+'#1f2b91': 'Blue',
 },
+},
+podtextcolor: {
+  control: {
+    type: 'select',
+  },
+  options: ['#000000', '#FFFFFF', '#1f2b91'],
+  labels: {
+    '#000000': 'Black',
+    '#FFFFFF': 'White',
+    '#1f2b91': 'Blue',
+  },
 },
 },
 
@@ -265,6 +277,7 @@ saveModule: false,
 
 
 podbackgroundcolor:'',
+podtextcolor: '#000000',
 
 lozengebackgroundcolor: '',
 lozengetextcolor: '#000000',

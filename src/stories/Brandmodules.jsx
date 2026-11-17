@@ -3,6 +3,7 @@ import "./consistency.css";
 
 /** Primary UI component for user interaction */
 export const Brandmodules = ({
+  moduleType,
   modulebackgroundcolor,
   roundelbackgroundcolor,
   roundeltextcolor,
@@ -195,16 +196,18 @@ const validBrandModules= roundels.filter(
 );
   return (
      <>
-    <div class="consistent-brand-modules-wrapper">
+    <div class={`consistent-brand-modules-wrapper ${moduleType}`}>
       <div class="consistent-brand-modules-container">
+        {lozengetitle && (
         <div id="consistent-brand-modules-header-area">
             <div class="consistent-brand-modules-header-content">
-              <h2 style={{
+              <div class="title" style={{
                 "--consistent-brand-modules-header-background": lozengebackgroundcolor,
                 "--consistent-brand-modules-header-text-color": lozengetextcolor,
-                }}>{lozengetitle}</h2>
+                }}>{lozengetitle}</div>
             </div>
           </div>
+          )}
           <div className="roundels-container">
             {validBrandModules.map((roundel, index) => (
               <div
@@ -217,10 +220,16 @@ const validBrandModules= roundels.filter(
               >
                 <a href={roundel.link} className="outer-link">
                   <div className="roundel-image">
-                    <img src={roundel.image} alt={roundel.alt} />
+                    <img
+                      src={roundel.image}
+                      alt={roundel.alt}
+                      style={{
+                        margin: moduleType === 'lifestyle' ? '0' : undefined,
+                      }}
+                    />
                   </div>
 
-                  <div className="roundel-text">
+                  <div className="roundel-text" style={{"color": roundeltextcolor}}>
                     {roundel.text}
                   </div>
                 </a>
@@ -237,6 +246,8 @@ Brandmodules.propTypes = {
   lozengebackgroundcolor: PropTypes.string,
   lozengetextcolor: PropTypes.string,
   lozengetitle: PropTypes.string,
+  moduleType: PropTypes.string,
+  roundeltextcolor: PropTypes.string,
 
   roundel1image: PropTypes.string.isRequired,
   roundel1alt: PropTypes.string.isRequired,

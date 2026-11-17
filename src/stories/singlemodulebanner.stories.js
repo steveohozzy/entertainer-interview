@@ -3,6 +3,7 @@ import {
   doc,
   getDoc,
   setDoc,
+  deleteDoc,
   collection,
   getDocs
 } from 'firebase/firestore';
@@ -34,6 +35,17 @@ export default {
 
     saveModule: {
       control: 'boolean',
+    },
+
+    bodyTextColor: {
+      options: [
+        '#000000',
+        '#ffffff',
+        '#1f2b91',
+      ],
+      control: {
+        type: 'select',
+      },
     },
 
     buttonStyle: {
@@ -204,6 +216,19 @@ export default {
               selectedModule:moduleName
             });
 
+            setModules((prev) => {
+
+              if (prev.includes(moduleName)) {
+                return prev;
+              }
+
+              return [
+                ...prev,
+                moduleName
+              ];
+
+            });
+
             console.log(
               'saved:',
               moduleName
@@ -223,6 +248,60 @@ export default {
         save();
 
       }, [currentArgs.saveModule]);
+
+      // -------------------------
+      // DELETE MODULE
+      // -------------------------
+
+      const deleteSelectedModule = async () => {
+
+        if (!currentArgs.selectedModule) {
+          return;
+        }
+
+        const confirmed = window.confirm(
+          `Are you sure you want to delete "${currentArgs.selectedModule}"?`
+        );
+
+        if (!confirmed) {
+          return;
+        }
+
+        try {
+
+          await deleteDoc(
+            doc(
+              db,
+              'singlemodulebanner-modules',
+              currentArgs.selectedModule
+            )
+          );
+
+          setModules((prev) =>
+            prev.filter(
+              (m) =>
+                m !== currentArgs.selectedModule
+            )
+          );
+
+          previousModule.current = '';
+
+          updateArgs({
+            moduleName: '',
+            selectedModule: '',
+            saveModule: false,
+          });
+
+        } catch(e){
+
+          console.log(
+            'delete error',
+            e
+          );
+
+        }
+
+      };
 
       return (
         <>
@@ -282,6 +361,27 @@ export default {
                   ))}
 
                 </select>
+
+                <button
+                  type="button"
+                  disabled={
+                    !currentArgs.selectedModule
+                  }
+                  onClick={
+                    deleteSelectedModule
+                  }
+                  style={{
+                    marginLeft:8,
+                    padding:'5px 10px',
+                    cursor:
+                      currentArgs.selectedModule
+                        ? 'pointer'
+                        : 'not-allowed',
+                  }}
+                >
+                  Delete Selected
+                </button>
+
               </div>
             </div>,
             document.body
@@ -302,6 +402,7 @@ export const SinglemodulebannerSection = {
     saveModule:false,
 
     bodyText: 'LEGO Batman Legacy of The Dark Knight',
+    bodyTextColor: '#000000',
     link: 'https://www.thetoyshop.com/search?text=LEGO%20Batman%20Legacy%20of%20The%20Dark%20Knight',
     image: 'https://www.thetoyshop.com/medias/edited-photo-49-.png?context=bWFzdGVyfHJvb3R8MzQ3NDgxfGltYWdlL3BuZ3xhREl6TDJnNE5TOHhNamMzTXpBd05UZzROVFEzTUM5bFpHbDBaV1F0Y0dodmRHOGdLRFE1S1M1d2JtY3wxNmJkYTc2YTg2ZjQ4Zjg0NjdhZDE0ZDAyMzg3NzZlODE0YTM0MTA3ODc4OTFhMDc0ZTljYjMxMDcwNDIxNjE4',
     imagealt:'LEGO Batman Legacy of The Dark Knight',

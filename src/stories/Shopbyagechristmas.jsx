@@ -3,6 +3,7 @@ import "./consistency.css";
 
 /** Primary UI component for user interaction */
 export const ShopByAgeChristmas = ({
+  id,
   lozengetitle,
   lozengebackgroundcolor,
   lozengetextcolor,
@@ -15,6 +16,9 @@ export const ShopByAgeChristmas = ({
   roundal1age,
   roundal1textunderage,
   roundal1link,
+  roundal1dataElementType,
+  roundal1dataPromotionIndex,
+  roundal1dataPromotionName,
   roundal2image,
   roundal2background,
   roundal2color,
@@ -22,6 +26,9 @@ export const ShopByAgeChristmas = ({
   roundal2age,
   roundal2textunderage,
   roundal2link,
+  roundal2dataElementType,
+  roundal2dataPromotionIndex,
+  roundal2dataPromotionName,
   roundal3image,
   roundal3background,
   roundal3color,
@@ -29,6 +36,9 @@ export const ShopByAgeChristmas = ({
   roundal3age,
   roundal3textunderage,
   roundal3link,
+  roundal3dataElementType,
+  roundal3dataPromotionIndex,
+  roundal3dataPromotionName,
   roundal4image,
   roundal4background,
   roundal4color,
@@ -36,6 +46,9 @@ export const ShopByAgeChristmas = ({
   roundal4age,
   roundal4textunderage,
   roundal4link,
+  roundal4dataElementType,
+  roundal4dataPromotionIndex,
+  roundal4dataPromotionName,
   roundal5image,
   roundal5background,
   roundal5color,
@@ -43,6 +56,9 @@ export const ShopByAgeChristmas = ({
   roundal5age,
   roundal5textunderage,
   roundal5link,
+  roundal5dataElementType,
+  roundal5dataPromotionIndex,
+  roundal5dataPromotionName,
   roundal6image,
   roundal6background,
   roundal6color,
@@ -50,6 +66,9 @@ export const ShopByAgeChristmas = ({
   roundal6age,
   roundal6textunderage,
   roundal6link,
+  roundal6dataElementType,
+  roundal6dataPromotionIndex,
+  roundal6dataPromotionName,
 
 }) => {
   return (
@@ -214,6 +233,7 @@ box-shadow: none;
         `}
       </style>
       <div class="shop-by-age-container"
+        id={id}
         style={{
           backgroundColor: modulebackgroundcolor,
           }}
@@ -239,6 +259,17 @@ box-shadow: none;
             href={roundal1link}
             title={roundal1alt}
             style={{background: images ? 'transparent' : roundal1background, color: roundal1color}}
+            {...(
+              roundal1dataElementType &&
+              roundal1dataPromotionIndex &&
+              roundal1dataPromotionName
+                ? {
+                    "data-element-type": roundal1dataElementType,
+                    "data-promotion-index": roundal1dataPromotionIndex,
+                    "data-promotion-name": roundal1dataPromotionName,
+                  }
+                : {}
+            )}
           >
             {images && <img
               src={roundal1image}
@@ -259,6 +290,17 @@ box-shadow: none;
           <a
             href={roundal2link}
             title={roundal2alt}
+            {...(
+              roundal2dataElementType &&
+              roundal2dataPromotionIndex &&
+              roundal2dataPromotionName
+                ? {
+                    "data-element-type": roundal2dataElementType,
+                    "data-promotion-index": roundal2dataPromotionIndex,
+                    "data-promotion-name": roundal2dataPromotionName,
+                  }
+                : {}
+            )}
             style={{background: images ? 'transparent' : roundal2background, color: roundal2color}}
           >
              {images && <img
@@ -279,6 +321,17 @@ box-shadow: none;
           <a
             href={roundal3link}
             title={roundal3alt}
+            {...(
+              roundal3dataElementType &&
+              roundal3dataPromotionIndex &&
+              roundal3dataPromotionName
+                ? {
+                    "data-element-type": roundal3dataElementType,
+                    "data-promotion-index": roundal3dataPromotionIndex,
+                    "data-promotion-name": roundal3dataPromotionName,
+                  }
+                : {}
+            )}
             style={{background: images ? 'transparent' : roundal3background, color: roundal3color}}
           >
             {images && <img
@@ -300,6 +353,17 @@ box-shadow: none;
             <a
               href={roundal4link}
               title={roundal4alt}
+              {...(
+                roundal4dataElementType &&
+                roundal4dataPromotionIndex &&
+                roundal4dataPromotionName
+                  ? {
+                      "data-element-type": roundal4dataElementType,
+                      "data-promotion-index": roundal4dataPromotionIndex,
+                      "data-promotion-name": roundal4dataPromotionName,
+                    }
+                  : {}
+              )}
               style={{background: images ? 'transparent' : roundal4background, color: roundal4color}}
             >
               {images && <img
@@ -320,6 +384,17 @@ box-shadow: none;
             <a
               href={roundal5link}
               title={roundal5alt}
+              {...(
+                roundal5dataElementType &&
+                roundal5dataPromotionIndex &&
+                roundal5dataPromotionName
+                  ? {
+                      "data-element-type": roundal5dataElementType,
+                      "data-promotion-index": roundal5dataPromotionIndex,
+                      "data-promotion-name": roundal5dataPromotionName,
+                    }
+                  : {}
+              )}
               style={{background: images ? 'transparent' : roundal5background, color: roundal5color}}
             >
               {images && 
@@ -343,6 +418,17 @@ box-shadow: none;
             <a
               href={roundal6link}
               title={roundal6alt}
+              {...(
+                roundal6dataElementType &&
+                roundal6dataPromotionIndex &&
+                roundal6dataPromotionName
+                  ? {
+                      "data-element-type": roundal6dataElementType,
+                      "data-promotion-index": roundal6dataPromotionIndex,
+                      "data-promotion-name": roundal6dataPromotionName,
+                    }
+                  : {}
+              )}
               style={{background: images ? 'transparent' : roundal6background, color: roundal6color}}
             >
               {images && 
@@ -369,6 +455,7 @@ box-shadow: none;
 
 ShopByAgeChristmas.propTypes = {
   /** contents */
+  id: PropTypes.string,
   lozengetitle: PropTypes.string,
   lozengebackgroundcolor: PropTypes.string,
   lozengetextcolor: PropTypes.string,

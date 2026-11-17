@@ -15,6 +15,7 @@ export const TopTenToys = ({
   evenRankBg,
   oddRankColor,
   evenRankColor,
+  id,
   panelTitle,
   panelBlurb,
   headerType,
@@ -40,6 +41,9 @@ export const TopTenToys = ({
     tip: props[`toy${num}Tip`] || '',
     tipCharacter: props[`toy${num}TipCharacter`] || 'fox',
     link: props[`toy${num}Link`] || '#',
+    dataElementType: props[`toy${num}DataElementType`] || '',
+    dataPromotionIndex: props[`toy${num}DataPromotionIndex`] || '',
+    dataPromotionName: props[`toy${num}DataPromotionName`] || '',
     hero: props[`toy${num}Hero`] || '',
     life: props[`toy${num}Life`] || '',
     lifealt: props[`toy${num}Lifealt`] || '',
@@ -183,6 +187,10 @@ body.smartedit-preview .reveal,
           /* --- Full Width Header / Footer Sections --- */
           .full-width-section div.footer-blurb {
             color: var(--footer-text-color);
+          }
+
+          .full-width-section div.footer-blurb a {
+            color: var(--yellow);
           }
           .full-width-section {
             padding: 40px 0 20px;
@@ -498,7 +506,7 @@ body.smartedit-preview .reveal,
         `}
       </style>
 
-      <div className="top-ten-wrapper">
+      <div className="top-ten-wrapper" id={id}>
         {headerType === 'image' && headerImage && (
           <div className="full-width-section top-full">
             <picture>
@@ -573,7 +581,14 @@ body.smartedit-preview .reveal,
                           <p>{t.blurb}</p>
                           {t.btn && t.btn !== "none" && (
                             <div style={{ marginTop: '16px' }}>
-                              <CTAButton buttonStyle={t.btn} as="a" href={`${t.link}`} />
+                              <CTAButton
+                                buttonStyle={t.btn}
+                                as="a"
+                                href={`${t.link}`}
+                                dataElementType={t.dataElementType}
+                                dataPromotionIndex={t.dataPromotionIndex}
+                                dataPromotionName={t.dataPromotionName}
+                              />
                             </div>
                           )}
                         </div>
@@ -791,6 +806,7 @@ TopTenToys.propTypes = {
   lozengeColor: PropTypes.string,
   lozengeBg: PropTypes.string,
   footerTextColor: PropTypes.string,
+  id: PropTypes.string,
   panelTitle: PropTypes.string,
   panelBlurb: PropTypes.string,
   headerTitle: PropTypes.string,

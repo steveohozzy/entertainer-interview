@@ -441,17 +441,17 @@ export const PodsCarousel = ({
 }
 
 .christmas-lights .bulb::after {
-content: '';
-display: block;
-      border-radius: 100%;
-      width: 65%;
-      height: 65%;
-      position: absolute;
-      z-index: 2;
-      left: 2px;
-      top: 2px;
-      background: #fdc985;
-       filter: blur(1px);
+  content: '';
+  display: block;
+  border-radius: 100%;
+  width: 65%;
+  height: 65%;
+  position: absolute;
+  z-index: 2;
+  left: 2px;
+  top: 2px;
+  background: #fdc985;
+  filter: blur(1px);
 }
 
 .christmas-lights .bulb-1 {
@@ -492,6 +492,81 @@ display: block;
 .christmas-lights .bulb-8 {
   left: calc(100% - 28px);
   top: 38px;
+}
+
+@media (max-width: 767px) {
+  .christmas-lights {
+    top: calc(100% - 55px);
+    height: 75px;
+  }
+
+  .christmas-lights::before {
+    top: -45px;
+    height: 85px;
+    border-bottom-width: 2px;
+  }
+
+  .christmas-lights .bulb {
+    position: absolute;
+    display: block;
+    width: 18px;
+    min-width: 18px;
+    max-width: 18px;
+    height: 18px;
+    min-height: 18px;
+    max-height: 18px;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    border: 1px solid #e6a653;
+    border-radius: 50%;
+    flex: none;
+  }
+
+  .christmas-lights .bulb-1 {
+    left: 0;
+    top: 32px;
+  }
+
+  .christmas-lights .bulb-2 {
+    left: calc((100% - 10px) * 0.142857);
+    top: 38px;
+  }
+
+  .christmas-lights .bulb-3 {
+    left: calc((100% - 10px) * 0.285714);
+    top: 40px;
+  }
+
+  .christmas-lights .bulb-4 {
+    left: calc((100% - 10px) * 0.428571);
+    top: 40px;
+  }
+
+  .christmas-lights .bulb-5 {
+    left: calc((100% - 10px) * 0.571429);
+    top: 40px;
+  }
+
+  .christmas-lights .bulb-6 {
+    left: calc((100% - 10px) * 0.714286);
+    top: 40px;
+  }
+
+  .christmas-lights .bulb-7 {
+    left: calc((100% - 10px) * 0.857143);
+    top: 38px;
+  }
+
+  .christmas-lights .bulb-8 {
+    left: calc(100% - 10px);
+    top: 32px;
+  }
+
+  .christmas-lights .bulb::after {
+    left: 1px;
+    top: 1px;
+  }
 }
 `}
 </style>

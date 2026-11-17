@@ -142,6 +142,12 @@ export const ShopByAge = ({
         scale: 1.05;
     }
 
+    .shop-by-age a img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
     .shop-by-age span {
         display: block;
         font-size: 10px;

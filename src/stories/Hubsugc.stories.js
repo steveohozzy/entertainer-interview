@@ -14,7 +14,7 @@ import { Hubsugc } from './Hubsugc';
 import { useArgs } from 'storybook/preview-api';
 
 export default {
-  title: 'Hubs/UGC Carousel',
+  title: 'Modules/UGC Carousel',
   component: Hubsugc,
 
   parameters: {
@@ -22,10 +22,6 @@ export default {
   },
 
   argTypes: {
-    user: {
-      options: ['stories', 'hasina', 'shermin', 'sam'],
-      control: { type: 'select' },
-    },
 
     moduleName: {
       control: 'text',
@@ -40,6 +36,18 @@ export default {
     saveModule: {
       control: 'boolean',
     },
+
+    titlecolor: {
+      options: [
+      '#000000',
+      '#ffffff',
+      '#1f2b91',
+      ],
+      control: {
+      type: 'select',
+      },
+    },
+
 
     panel1linkicon: {
       options: [

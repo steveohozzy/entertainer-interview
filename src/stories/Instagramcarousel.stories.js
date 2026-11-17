@@ -53,6 +53,22 @@ export default {
       control: 'text',
     },
 
+    lozengebackgroundcolor: {
+      control: 'color',
+    },
+
+    lozengetextcolor: {
+      control: {
+        type: 'select',
+      },
+      options: ['#000000', '#FFFFFF', '#1f2b91'],
+      labels: {
+        '#000000': 'Black',
+        '#FFFFFF': 'White',
+        '#1f2b91': 'Blue',
+      },
+    },
+
 
     post1Platform: {
       control: 'select',
@@ -60,6 +76,7 @@ export default {
       options: [
         'instagram',
         'tiktok',
+        'facebook',
       ],
 
       name: 'Post 1 Platform',
@@ -68,7 +85,7 @@ export default {
     post1: {
       control: 'text',
 
-      name: 'Instagram / TikTok Post 1',
+      name: 'Instagram / TikTok / Facebook Post 1',
     },
 
 
@@ -78,6 +95,7 @@ export default {
       options: [
         'instagram',
         'tiktok',
+        'facebook',
       ],
 
       name: 'Post 2 Platform',
@@ -86,25 +104,24 @@ export default {
     post2: {
       control: 'text',
 
-      name: 'Instagram / TikTok Post 2',
+      name: 'Instagram / TikTok / Facebook Post 2',
     },
 
 
     post3Platform: {
       control: 'select',
-
       options: [
         'instagram',
         'tiktok',
+        'facebook',
       ],
-
       name: 'Post 3 Platform',
     },
 
     post3: {
       control: 'text',
 
-      name: 'Instagram / TikTok Post 3',
+      name: 'Instagram / TikTok / Facebook Post 3',
     },
 
 
@@ -114,6 +131,7 @@ export default {
       options: [
         'instagram',
         'tiktok',
+        'facebook',
       ],
 
       name: 'Post 4 Platform',
@@ -122,7 +140,7 @@ export default {
     post4: {
       control: 'text',
 
-      name: 'Instagram / TikTok Post 4',
+      name: 'Instagram / TikTok / Facebook Post 4',
     },
 
 
@@ -132,6 +150,7 @@ export default {
       options: [
         'instagram',
         'tiktok',
+        'facebook',
       ],
 
       name: 'Post 5 Platform',
@@ -140,7 +159,7 @@ export default {
     post5: {
       control: 'text',
 
-      name: 'Instagram / TikTok Post 5',
+      name: 'Instagram / TikTok / Facebook Post 5',
     },
 
 
@@ -150,6 +169,7 @@ export default {
       options: [
         'instagram',
         'tiktok',
+        'facebook',
       ],
 
       name: 'Post 6 Platform',
@@ -158,7 +178,7 @@ export default {
     post6: {
       control: 'text',
 
-      name: 'Instagram / TikTok Post 6',
+      name: 'Instagram / TikTok / Facebook Post 6',
     },
 
   },
@@ -264,12 +284,11 @@ export default {
 
               updateArgs({
 
-                ...currentArgs,
-
                 ...snap.data(),
 
-                moduleName:
-                  currentArgs.selectedModule,
+                moduleName: currentArgs.selectedModule,
+
+                selectedModule: currentArgs.selectedModule,
 
                 saveModule: false,
 
@@ -299,7 +318,7 @@ export default {
       ]);
 
 
-      useEffect(() => {
+            useEffect(() => {
 
         if (
           loadingRef.current ||
@@ -309,11 +328,8 @@ export default {
           return;
         }
 
-
         const save = async () => {
-
           try {
-
             const {
               moduleName,
               selectedModule,
@@ -321,23 +337,17 @@ export default {
               ...fields
             } = currentArgs;
 
-
             await setDoc(
-
               doc(
                 db,
                 'instagram-carousel-modules',
                 moduleName
               ),
-
               fields,
-
               {
                 merge: false,
               }
-
             );
-
 
             setModules(prev =>
               prev.includes(moduleName)
@@ -345,35 +355,19 @@ export default {
                 : [...prev, moduleName]
             );
 
+            previousModule.current = moduleName;
 
             updateArgs({
-
-              ...currentArgs,
-
               saveModule: false,
-
-              selectedModule:
-                moduleName,
-
+              selectedModule: moduleName,
             });
 
-
-            console.log(
-              'saved:',
-              moduleName
-            );
+            console.log('saved:', moduleName);
 
           } catch (e) {
-
-            console.log(
-              'save error',
-              e
-            );
-
+            console.log('save error', e);
           }
-
         };
-
 
         save();
 
@@ -569,7 +563,10 @@ export const InstagramCarouselContent = {
 
 
     title:
-      'Follow us on Instagram & TikTok',
+      'Follow us on Instagram, TikTok & Facebook',
+
+    lozengebackgroundcolor: '',
+    lozengetextcolor: '#ffffff',
 
 
     post1Platform:

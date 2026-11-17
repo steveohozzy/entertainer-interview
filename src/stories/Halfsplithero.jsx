@@ -1,5 +1,19 @@
+
 import PropTypes from "prop-types";
 import { useEffect, useRef } from "react";
+
+/** Convert supported YouTube URLs into embed URLs */
+const getYouTubeEmbedUrl = (url) => {
+  if (!url || typeof url !== "string") return null;
+
+  const match = url.match(
+    /(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/
+  );
+
+  return match
+    ? `https://www.youtube.com/embed/${match[1]}?autoplay=1&mute=1&loop=1&playlist=${match[1]}&controls=0&rel=0&playsinline=1`
+    : null;
+};
 
 /** Primary UI component for user interaction */
 export const HalfSplitHero = ({
@@ -29,289 +43,346 @@ export const HalfSplitHero = ({
   src,
   isMuted,
 }) => {
+
   const refVideo = useRef(null);
+
+  const youtubeVideo = getYouTubeEmbedUrl(videosrc);
+
   const safeId =
-  (headline || "hero")
-    .toLowerCase()
-    .trim()
-    .replace(/\s+/g, "-")
-    .replace(/[^a-z0-9-_]/g, "");
+    (headline || "hero")
+      .toLowerCase()
+      .trim()
+      .replace(/\s+/g, "-")
+      .replace(/[^a-z0-9-_]/g, "");
 
   useEffect(() => {
-    if (videosrc && videosrc !== ' ') {
-        refVideo.current.defaultMuted = true;
-        refVideo.current.muted = true;
+    if (videosrc && videosrc !== ' ' && !youtubeVideo && refVideo.current) {
+      refVideo.current.defaultMuted = true;
+      refVideo.current.muted = true;
 
-        refVideo.current.srcObject = src;
-        refVideo.current?.load();
+      refVideo.current.srcObject = src;
+      refVideo.current.load();
     }
-    }, [isMuted, src, videosrc]);
+  }, [isMuted, src, videosrc, youtubeVideo]);
 
   useEffect(() => {
-  if (!termslink) return;
+    if (!termslink) return;
 
-  const handler = (e) => {
-    const el = e.target.closest(".terms-link");
-    if (!el) return;
+    const handler = (e) => {
+      const el = e.target.closest(".terms-link");
+      if (!el) return;
 
-    e.preventDefault();
-    e.stopPropagation();
-    window.open(termslink, "_blank");
-  };
+      e.preventDefault();
+      e.stopPropagation();
 
-  document.addEventListener("click", handler);
+      window.open(termslink, "_blank");
+    };
 
-  return () => document.removeEventListener("click", handler);
-}, [termslink]);
+    document.addEventListener("click", handler);
+
+    return () => document.removeEventListener("click", handler);
+  }, [termslink]);
 
   return (
     <>
       <style>{`
-    #${safeId}.hero-card-container {
-        padding: 0 20px 0px 20px;
-        background-color: #dbe3ff;
-        height: 100%;
-    }
 
-    #${safeId} .hero-card {
-        max-width: 1400px;
-        margin: 0 auto;
-        display: flex;
-        flex-flow: column;
-        flex-direction: column;
-        height: 100%;
-    }
-
-    #${safeId} .hero-card .media {
-        aspect-ratio: 16/9;
-        border-radius: 8px;
-        overflow: hidden;
-    }
-
-    #${safeId} .hero-card .media img,
-    #${safeId} .hero-card .media iframe,
-    #${safeId} .hero-card .media video {
-        object-fit: cover;
-        width: 100%;
-        height: 100%;
-        position: relative;
-        z-index: 2;
-    }
-
-    #${safeId} .hero-card .hero-tile-info {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 20px;
-        text-align: center;
-        background: ${background};
-        border-radius: 8px;
-        position: relative;
-        margin-top: -20px;
-        padding: 40px 20px 20px 20px;
-        flex-grow: 1;
-    }
-
-    #${safeId} .hero-card .hero-tile-info .brand-logo {
-        position: absolute;
-        top: -32px;
-        height: 40px;
-        z-index: 2;
-    }
-
-    #${safeId} .hero-card .hero-tile-info .brand-logo img,
-    #${safeId} .hero-card .hero-tile-info .brand-logo svg {
-        height: 100%;
-        width: auto;
-    }
-
-    #${safeId} .hero-card .hero-tile-info h2 {
-        font-size: 20px;
-        font-family: "Nunito Bold","Tahoma Bold",sans-serif;
-        font-weight: bold;
-        color: ${textColor || '#fff'};
-        margin: 0;
-        line-height: 24px;
-    }
-
-    #${safeId} .hero-card .hero-tile-info .hero-blurb {
-        color: ${textColor || '#fff'};
-        font-size: 14px;
-        font-weight: 200;
-    }
-
-    #${safeId} .hero-card .flickity-viewport {
-        aspect-ratio: 335/307;
-    }
-
-    #${safeId} .hero-card .hero-button {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50px;
-        background-color: ${linkBackground};
-        color: ${linkTextColor};
-        font-size: 16px;
-        font-weight: bold;
-        text-decoration: none;
-        padding: 10px 30px 10px 10px;
-        height: 40px;
-        box-shadow: 0 0 5px rgba(3,33,33,.3);
-        border: 3px solid ${linkBorderColor};
-        transition: all 0.3s;
-    }
-
-    #${safeId} .hero-card .hero-button:hover {
-        background-color: ${linkBackgroundHover};
-        scale: 1.05;
-        box-shadow: 0 0 18px rgba(3,33,33,.3);
-        color: ${linkTextColorHover};
-        border: 3px solid ${linkBorderColorHover};
-    }
-
-    #${safeId} .hero-card .hero-button .basket-icon {
-        transition: all 0.3s;
-        transform: rotate(15deg);
-        margin-left: 5px;
-    }
-
-    #${safeId} .hero-card .hero-button:hover .basket-icon {
-        transform: rotate(-10deg)
-    }
-
-    #${safeId} .hero-card .hero-button .star-start {
-        position: relative;
-        top: -3px;
-    }
-
-    #${safeId} .hero-card .hero-button .swoosh-container {
-        display: flex;
-        align-items: center;
-        justify-content: end;
-        margin-right: 5px;
-        width: 25px;
-    }
-
-    #${safeId} .hero-card .hero-button .swoosh {
-        display: block;
-        width: 0;
-        height: 3px;
-        margin-top: -3px;
-        margin-left: -2px;
-        transform: rotate(15deg);
-        background-color: rgba(255, 255, 255, 0.7);
-        transition: all 0.3s;
-    }
-
-    #${safeId} .hero-card .hero-button:hover .swoosh {
-        width: 7px;
-    }
-
-    #${safeId} .hero-card .hero-button .star-end {
-        position: relative;
-        bottom: -5px;
-        transition: all 0.3s;
-    }
-
-    #${safeId} .hero-card .hero-button:hover .star-end {
-        scale: 1.1;
-        transform: rotate(30deg);
-    }
-
-    #${safeId} .hero-card .hero-logo {
-        width: auto;
-        max-height: 80px;
-        max-width: 100%;
-    }
-
-    @media (min-width: 768px) {
-        #${safeId} .hero-card {
-            flex-flow: row-reverse;
-            align-items: stretch;
-            height: auto;
+        #${safeId}.hero-card-container {
+            padding: 0 20px 0px 20px;
+            background-color: #dbe3ff;
+            height: 100%;
         }
 
-        #${safeId} .hero-card.is-flipped {
-            flex-flow: row;
+        #${safeId} .hero-card {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            flex-flow: column;
+            flex-direction: column;
+            height: 100%;
         }
 
         #${safeId} .hero-card .media {
-            width: 50%;
             aspect-ratio: 16/9;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        #${safeId} .hero-card .media img,
+        #${safeId} .hero-card .media iframe,
+        #${safeId} .hero-card .media video {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            z-index: 2;
+        }
+
+        #${safeId} .hero-card .media iframe {
+            border: 0;
+            display: block;
         }
 
         #${safeId} .hero-card .hero-tile-info {
-            padding: 20px 30px 20px 20px;
-            margin-top: 0;
-            margin-right: -20px;
-            width: calc(50% + 20px);
-        }
-
-        #${safeId} .hero-card.is-flipped .hero-tile-info {
-            margin-right: 0px;
-            margin-left: -20px;
-            width: calc(50% + 20px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            text-align: center;
+            background: ${background};
+            border-radius: 8px;
+            position: relative;
+            margin-top: -20px;
+            padding: 40px 20px 20px 20px;
+            flex-grow: 1;
         }
 
         #${safeId} .hero-card .hero-tile-info .brand-logo {
-            position: relative;
-            top: 0;
-            margin-bottom: 20px;
-            height: 90px;
+            position: absolute;
+            top: -32px;
+            height: 40px;
+            z-index: 2;
+        }
+
+        #${safeId} .hero-card .hero-tile-info .brand-logo img,
+        #${safeId} .hero-card .hero-tile-info .brand-logo svg {
+            height: 100%;
+            width: auto;
         }
 
         #${safeId} .hero-card .hero-tile-info h2 {
-            font-size: 24px;
+            font-size: 20px;
+            font-family: "Nunito Bold","Tahoma Bold",sans-serif;
+            font-weight: bold;
+            color: ${textColor || '#fff'};
             margin: 0;
+            line-height: 24px;
         }
 
         #${safeId} .hero-card .hero-tile-info .hero-blurb {
-            display: block;
-            margin: 0;
+            color: ${textColor || '#fff'};
+            font-size: 14px;
+            font-weight: 200;
         }
-    }
- `}</style>
-      <div id={safeId} class="hero-card-container">
-        <a href={link}
-             data-element-type={dataElementType} data-promotion-index={datapromotionindex} data-promotion-name={datapromotionname}
-             class={`hero-card ${flipped ? 'is-flipped' : ''}`}>
-          <div class="media">
-            {image && image !== ' ' &&
-              <img
-                src={image}
-                alt={imagealt || 'Hero image'}
-              />
+
+        #${safeId} .hero-card .flickity-viewport {
+            aspect-ratio: 335/307;
+        }
+
+        #${safeId} .hero-card .hero-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50px;
+            background-color: ${linkBackground};
+            color: ${linkTextColor};
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 10px 30px 10px 10px;
+            height: 40px;
+            box-shadow: 0 0 5px rgba(3,33,33,.3);
+            border: 3px solid ${linkBorderColor};
+            transition: all 0.3s;
+        }
+
+        #${safeId} .hero-card .hero-button:hover {
+            background-color: ${linkBackgroundHover};
+            scale: 1.05;
+            box-shadow: 0 0 18px rgba(3,33,33,.3);
+            color: ${linkTextColorHover};
+            border: 3px solid ${linkBorderColorHover};
+        }
+
+        #${safeId} .hero-card .hero-button .basket-icon {
+            transition: all 0.3s;
+            transform: rotate(15deg);
+            margin-left: 5px;
+        }
+
+        #${safeId} .hero-card .hero-button:hover .basket-icon {
+            transform: rotate(-10deg)
+        }
+
+        #${safeId} .hero-card .hero-button .star-start {
+            position: relative;
+            top: -3px;
+        }
+
+        #${safeId} .hero-card .hero-button .swoosh-container {
+            display: flex;
+            align-items: center;
+            justify-content: end;
+            margin-right: 5px;
+            width: 25px;
+        }
+
+        #${safeId} .hero-card .hero-button .swoosh {
+            display: block;
+            width: 0;
+            height: 3px;
+            margin-top: -3px;
+            margin-left: -2px;
+            transform: rotate(15deg);
+            background-color: rgba(255, 255, 255, 0.7);
+            transition: all 0.3s;
+        }
+
+        #${safeId} .hero-card .hero-button:hover .swoosh {
+            width: 7px;
+        }
+
+        #${safeId} .hero-card .hero-button .star-end {
+            position: relative;
+            bottom: -5px;
+            transition: all 0.3s;
+        }
+
+        #${safeId} .hero-card .hero-button:hover .star-end {
+            scale: 1.1;
+            transform: rotate(30deg);
+        }
+
+        #${safeId} .hero-card .hero-logo {
+            width: auto;
+            max-height: 80px;
+            max-width: 100%;
+        }
+
+        @media (min-width: 768px) {
+
+            #${safeId} .hero-card {
+                flex-flow: row-reverse;
+                align-items: stretch;
+                height: auto;
             }
-            {videosrc && videosrc !== ' ' &&
-              <video ref={refVideo} autoPlay loop playsInline>
+
+            #${safeId} .hero-card.is-flipped {
+                flex-flow: row;
+            }
+
+            #${safeId} .hero-card .media {
+                width: 50%;
+                aspect-ratio: 16/9;
+            }
+
+            #${safeId} .hero-card .hero-tile-info {
+                padding: 20px 30px 20px 20px;
+                margin-top: 0;
+                margin-right: -20px;
+                width: calc(50% + 20px);
+            }
+
+            #${safeId} .hero-card.is-flipped .hero-tile-info {
+                margin-right: 0px;
+                margin-left: -20px;
+                width: calc(50% + 20px);
+            }
+
+            #${safeId} .hero-card .hero-tile-info .brand-logo {
+                position: relative;
+                top: 0;
+                margin-bottom: 20px;
+                height: 90px;
+            }
+
+            #${safeId} .hero-card .hero-tile-info h2 {
+                font-size: 24px;
+                margin: 0;
+            }
+
+            #${safeId} .hero-card .hero-tile-info .hero-blurb {
+                display: block;
+                margin: 0;
+            }
+        }
+
+      `}</style>
+
+      <div id={safeId} class="hero-card-container">
+
+        <a
+          href={link}
+          data-element-type={dataElementType}
+          data-promotion-index={datapromotionindex}
+          data-promotion-name={datapromotionname}
+          class={`hero-card ${flipped ? 'is-flipped' : ''}`}
+        >
+
+          <div class="media">
+
+            {youtubeVideo ? (
+              <iframe
+                src={youtubeVideo}
+                title={headline || "YouTube hero video"}
+                frameBorder="0"
+                allow="autoplay; encrypted-media; picture-in-picture"
+                allowFullScreen
+              />
+            ) : videosrc && videosrc !== ' ' ? (
+              <video
+                ref={refVideo}
+                autoPlay
+                loop
+                playsInline
+                muted
+              >
                 <source
                   src={videosrc}
                   type="video/mp4"
                 />
               </video>
-          }
+            ) : image && image !== ' ' ? (
+              <img
+                src={image}
+                alt={imagealt || 'Hero image'}
+              />
+            ) : null}
+
           </div>
-          <div class="hero-tile-info" style={{background : background, color: textColor}}>
-            {logo && logo !== ' ' &&
+
+          <div
+            class="hero-tile-info"
+            style={{
+              background: background,
+              color: textColor
+            }}
+          >
+
+            {logo && logo !== ' ' && (
               <img
                 src={logo}
                 alt={logoalt}
                 class="hero-logo"
               />
-            }
-            {headline && headline !== ' ' &&
-              <h2 style={{color: textColor}}>{headline}</h2>
-            }
-            {tagline && tagline !== ' ' &&
-              <div class="hero-blurb" style={{color: textColor}}>
+            )}
+
+            {headline && headline !== ' ' && (
+              <h2 style={{ color: textColor }}>
+                {headline}
+              </h2>
+            )}
+
+            {tagline && tagline !== ' ' && (
+              <div
+                class="hero-blurb"
+                style={{ color: textColor }}
+              >
                 {tagline}
               </div>
-            }
+            )}
+
             <button
               class="hero-button"
+              style={{
+                backgroundColor: linkBackground,
+                color: linkTextColor,
+                borderColor: linkBorderColor
+              }}
             >
               <span class="swoosh-container">
+
                 <span class="star-start">
                   <svg
                     width="11"
@@ -326,9 +397,13 @@ export const HalfSplitHero = ({
                     ></path>
                   </svg>
                 </span>
+
                 <span class="swoosh">&nbsp;</span>
+
               </span>
+
               {linktext}
+
               <span class="basket-icon">
                 <svg
                   width="22"
@@ -340,6 +415,7 @@ export const HalfSplitHero = ({
                   <path d="M21.2401 7.57V8.14C21.2401 8.38 21.1601 8.58 20.9901 8.75C20.8201 8.92 20.6201 9 20.3801 9H20.0901L19.1601 15.57C19.0901 16 18.8901 16.35 18.5701 16.63C18.2501 16.9 17.8701 17.04 17.4401 17.04H4.36006C3.93006 17.04 3.55006 16.9 3.23006 16.63C2.91006 16.35 2.71006 16 2.64006 15.57L1.71006 9H1.42006C1.18006 9 0.980059 8.92 0.810059 8.75C0.640059 8.58 0.560059 8.38 0.560059 8.14V7.57C0.560059 7.33 0.640059 7.13 0.810059 6.96C0.980059 6.79 1.18006 6.71 1.42006 6.71H3.83006L7.67006 1.43C7.86006 1.17 8.11006 1.01 8.42006 0.960001C8.73006 0.910001 9.02006 0.980002 9.28006 1.18C9.54006 1.37 9.70006 1.62 9.75006 1.93C9.80006 2.24 9.73006 2.53 9.53006 2.79L6.66006 6.71H15.1401L12.2701 2.79C12.0801 2.53 12.0101 2.24 12.0501 1.93C12.1001 1.62 12.2501 1.37 12.5201 1.18C12.7801 0.990002 13.0701 0.920001 13.3801 0.960001C13.6901 1.01 13.9401 1.16 14.1301 1.43L17.9701 6.71H20.3801C20.6201 6.71 20.8201 6.79 20.9901 6.96C21.1601 7.13 21.2401 7.33 21.2401 7.57ZM7.73006 13.89V9.87C7.73006 9.63 7.65006 9.43 7.48006 9.26C7.31006 9.09 7.11006 9.01 6.87006 9.01C6.63006 9.01 6.43006 9.09 6.26006 9.26C6.09006 9.43 6.01006 9.63 6.01006 9.87V13.89C6.01006 14.13 6.09006 14.33 6.26006 14.5C6.43006 14.67 6.63006 14.75 6.87006 14.75C7.11006 14.75 7.31006 14.67 7.48006 14.5C7.65006 14.33 7.73006 14.13 7.73006 13.89ZM11.7501 13.89V9.87C11.7501 9.63 11.6701 9.43 11.5001 9.26C11.3301 9.09 11.1301 9.01 10.8901 9.01C10.6501 9.01 10.4501 9.09 10.2801 9.26C10.1101 9.43 10.0301 9.63 10.0301 9.87V13.89C10.0301 14.13 10.1101 14.33 10.2801 14.5C10.4501 14.67 10.6501 14.75 10.8901 14.75C11.1301 14.75 11.3301 14.67 11.5001 14.5C11.6701 14.33 11.7501 14.13 11.7501 13.89ZM15.7701 13.89V9.87C15.7701 9.63 15.6901 9.43 15.5201 9.26C15.3501 9.09 15.1501 9.01 14.9101 9.01C14.6701 9.01 14.4701 9.09 14.3001 9.26C14.1301 9.43 14.0501 9.63 14.0501 9.87V13.89C14.0501 14.13 14.1301 14.33 14.3001 14.5C14.4701 14.67 14.6701 14.75 14.9101 14.75C15.1501 14.75 15.3501 14.67 15.5201 14.5C15.6901 14.33 15.7701 14.13 15.7701 13.89Z"></path>
                 </svg>
               </span>
+
               <span class="star-end">
                 <svg
                   width="11"
@@ -355,26 +431,20 @@ export const HalfSplitHero = ({
                 </svg>
               </span>
             </button>
-            {termslinktext && termslinktext !== ' ' &&
-            <span
-              className="terms-link"
-              role="link"
-              tabIndex={0}
-            >
-              {termslinktext}
-            </span>
-            }
+
+            {termslinktext && termslinktext !== ' ' && (
+              <span
+                className="terms-link"
+                role="link"
+                tabIndex={0}
+              >
+                {termslinktext}
+              </span>
+            )}
+
           </div>
         </a>
       </div>
-<script>{`
- document.querySelectorAll('.terms-link').forEach(el => {
-   el.addEventListener('click', e => {
-     e.preventDefault();
-     window.open('${termslink}', '_blank');
-   });
- });
- `}</script>
     </>
   );
 };
@@ -404,4 +474,6 @@ HalfSplitHero.propTypes = {
   dataElementType: PropTypes.string,
   datapromotionindex: PropTypes.string,
   datapromotionname: PropTypes.string,
+  src: PropTypes.object,
+  isMuted: PropTypes.bool,
 };

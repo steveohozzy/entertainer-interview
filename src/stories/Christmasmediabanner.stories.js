@@ -323,6 +323,8 @@ export const ChristmasMediaBannerSection = {
 
     modulebackgroundcolor:'',
 
+    id: 'game',
+
     link: 'https://www.thetoyshop.com/search?text=EA%20SPORTS%20FC26',
 
     video: 'https://www.thetoyshop.com/medias/FC26-WC-RETAIL-CUSTOM-NoSubs-EditGlobal-1080p-16x9-29-97fps-30s-ENG-GB-1-1-.mp4?context=bWFzdGVyfHJvb3R8OTk0OTM1OXx2aWRlby9xdWlja3RpbWV8YUdZekwyZzBaaTh4TWpjNE5qYzVOVEU0TkRFMU9DOUdRekkyWDFkRFgxSkZWRUZKVEY5RFZWTlVUMDB0VG05VGRXSnpMVVZrYVhSSGJHOWlZV3hmTVRBNE1IQmZNVFo0T1Y4eU9TMDVOMlp3YzE4ek1ITmZSVTVIWDBkQ0lDZ3hLU0FvTVNrdWJYQTB8MDcwN2NiMjJjMGI1ZTc5MGMzOWJiMzMyNjNiM2U5NDMzZDY5OTczM2E3ZGI4Yjk3ZmVjNTk4NzdiZGUzYjNlMg',
@@ -334,6 +336,10 @@ export const ChristmasMediaBannerSection = {
     buttonLink: 'https://www.thetoyshop.com/search?text=EA%20SPORTS%20FC26',
 
     linkTarget: '_self',
+
+    dataElementType: '',
+    dataPromotionIndex: '',
+    dataPromotionName: '',
 
     ctaposition: 'center',
   },

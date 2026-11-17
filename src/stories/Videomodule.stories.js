@@ -1,7 +1,7 @@
 import { db } from '../config/firebase';
 import { doc, getDoc, updateDoc, deleteDoc } from 'firebase/firestore';
 import { useEffect, useRef } from 'react';
-import { VideoModule } from './Videomodule';
+import {VideoModule} from './Videomodule';
 import { useArgs } from 'storybook/preview-api';
 
 export default {
@@ -10,6 +10,9 @@ export default {
   parameters: {
     layout: 'centered',
   },
+
+  tags: ["!dev"],
+
   argTypes: {
     user: {
       options: ['stories', 'hasina', 'shermin', 'sam'],
@@ -153,7 +156,7 @@ export const VideoModuleHero = {
           </button>
         </div>
 
-        <VideoModule {...args} />
+        <VideoModule {...currentArgs} />
       </>
     );
   },

@@ -37,7 +37,16 @@ argTypes: {
 
   roundal1image: { control: 'text' },
   roundal1background: { control: 'color' },
-  roundal1color: { control: 'color' },
+  roundal1color: {
+    options: [
+      '#000000',
+      '#ffffff',
+      '#1f2b91',
+    ],
+    control: {
+      type: 'select',
+    },
+  },
   roundal1alt: { control: 'text' },
   roundal1age: { control: 'text' },
   roundal1textunderage: { control: 'text' },
@@ -45,7 +54,16 @@ argTypes: {
 
   roundal2image: { control: 'text' },
   roundal2background: { control: 'color' },
-  roundal2color: { control: 'color' },
+  roundal2color: {
+    options: [
+      '#000000',
+      '#ffffff',
+      '#1f2b91',
+    ],
+    control: {
+      type: 'select',
+    },
+  },
   roundal2alt: { control: 'text' },
   roundal2age: { control: 'text' },
   roundal2textunderage: { control: 'text' },
@@ -53,7 +71,16 @@ argTypes: {
 
   roundal3image: { control: 'text' },
   roundal3background: { control: 'color' },
-  roundal3color: { control: 'color' },
+  roundal3color: {
+    options: [
+      '#000000',
+      '#ffffff',
+      '#1f2b91',
+    ],
+    control: {
+      type: 'select',
+    },
+  },
   roundal3alt: { control: 'text' },
   roundal3age: { control: 'text' },
   roundal3textunderage: { control: 'text' },
@@ -61,7 +88,16 @@ argTypes: {
 
   roundal4image: { control: 'text' },
   roundal4background: { control: 'color' },
-  roundal4color: { control: 'color' },
+  roundal4color: {
+    options: [
+      '#000000',
+      '#ffffff',
+      '#1f2b91',
+    ],
+    control: {
+      type: 'select',
+    },
+  },
   roundal4alt: { control: 'text' },
   roundal4age: { control: 'text' },
   roundal4textunderage: { control: 'text' },
@@ -69,7 +105,16 @@ argTypes: {
 
   roundal5image: { control: 'text' },
   roundal5background: { control: 'color' },
-  roundal5color: { control: 'color' },
+  roundal5color: {
+    options: [
+      '#000000',
+      '#ffffff',
+      '#1f2b91',
+    ],
+    control: {
+      type: 'select',
+    },
+  },
   roundal5alt: { control: 'text' },
   roundal5age: { control: 'text' },
   roundal5textunderage: { control: 'text' },
@@ -77,7 +122,16 @@ argTypes: {
 
   roundal6image: { control: 'text' },
   roundal6background: { control: 'color' },
-  roundal6color: { control: 'color' },
+  roundal6color: {
+    options: [
+      '#000000',
+      '#ffffff',
+      '#1f2b91',
+    ],
+    control: {
+      type: 'select',
+    },
+  },
   roundal6alt: { control: 'text' },
   roundal6age: { control: 'text' },
   roundal6textunderage: { control: 'text' },
@@ -199,9 +253,6 @@ const [modules, setModules] = useState([]);
 const loadingRef = useRef(false);
 const previousModule = useRef('');
 
-// -------------------------
-// LOAD MODULE
-// -------------------------
 useEffect(() => {
   if (
     !currentArgs.selectedModule ||
@@ -236,9 +287,6 @@ useEffect(() => {
   load();
 }, [currentArgs.selectedModule]);
 
-// -------------------------
-// SAVE MODULE
-// -------------------------
 useEffect(() => {
   if (
     loadingRef.current ||
@@ -282,9 +330,6 @@ useEffect(() => {
   save();
 }, [currentArgs.saveModule]);
 
-// -------------------------
-// LOAD MODULE LIST
-// -------------------------
 useEffect(() => {
   const loadModules = async () => {
     try {

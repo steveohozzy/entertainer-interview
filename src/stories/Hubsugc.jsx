@@ -177,14 +177,15 @@ const validugcpanels = ugcpanels.filter(
     text-align: center;
   }
 
-  .hubs-ugc-content h2 {
+  .hubs-ugc-content .title {
     text-transform: uppercase;
     background-color: #1f2b91;
     color: #fff;
     font-family: "Nunito Bold", "Tahoma Bold", sans-serif;
-    font-size: 24px;
+    font-size: 18px;
     border-radius: 8px;
     margin-bottom: 20px;
+    padding: 5px 0;
   }
 
   @media (max-width: 768px) {
@@ -364,12 +365,12 @@ transform:rotate(30deg) scale(1.1);
 
 <div class="hubs-ugc-content">
   {title &&
-  <h2
+  <div class="title"
     style={{
       color: titlecolor,
       background: titlebackgroundcolor
     }}
-  >{title}</h2>
+  >{title}</div>
   }
   <div class="ugc-pods">
     <div

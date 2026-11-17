@@ -17,6 +17,8 @@ export default {
 title: 'Modules/Stacked Carousel',
 component: HubStackedCarousel,
 
+tags: ["!dev"],
+
 parameters: {
 layout: 'fullscreen',
 },

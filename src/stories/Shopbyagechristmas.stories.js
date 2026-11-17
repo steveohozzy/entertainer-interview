@@ -61,6 +61,9 @@ export default {
     roundal1age: { control: 'text' },
     roundal1textunderage: { control: 'text' },
     roundal1link: { control: 'text' },
+    roundal1dataElementType: { control: 'text' },
+    roundal1dataPromotionIndex: { control: 'text' },
+    roundal1dataPromotionName: { control: 'text' },
 
     roundal2image: { control: 'text' },
     roundal2background: { control: 'color' },
@@ -69,6 +72,9 @@ export default {
     roundal2age: { control: 'text' },
     roundal2textunderage: { control: 'text' },
     roundal2link: { control: 'text' },
+    roundal2dataElementType: { control: 'text' },
+    roundal2dataPromotionIndex: { control: 'text' },
+    roundal2dataPromotionName: { control: 'text' },
 
     roundal3image: { control: 'text' },
     roundal3background: { control: 'color' },
@@ -77,6 +83,9 @@ export default {
     roundal3age: { control: 'text' },
     roundal3textunderage: { control: 'text' },
     roundal3link: { control: 'text' },
+    roundal3dataElementType: { control: 'text' },
+    roundal3dataPromotionIndex: { control: 'text' },
+    roundal3dataPromotionName: { control: 'text' },
 
     roundal4image: { control: 'text' },
     roundal4background: { control: 'color' },
@@ -85,6 +94,9 @@ export default {
     roundal4age: { control: 'text' },
     roundal4textunderage: { control: 'text' },
     roundal4link: { control: 'text' },
+    roundal4dataElementType: { control: 'text' },
+    roundal4dataPromotionIndex: { control: 'text' },
+    roundal4dataPromotionName: { control: 'text' },
 
     roundal5image: { control: 'text' },
     roundal5background: { control: 'color' },
@@ -93,6 +105,9 @@ export default {
     roundal5age: { control: 'text' },
     roundal5textunderage: { control: 'text' },
     roundal5link: { control: 'text' },
+    roundal5dataElementType: { control: 'text' },
+    roundal5dataPromotionIndex: { control: 'text' },
+    roundal5dataPromotionName: { control: 'text' },
 
     roundal6image: { control: 'text' },
     roundal6background: { control: 'color' },
@@ -101,30 +116,9 @@ export default {
     roundal6age: { control: 'text' },
     roundal6textunderage: { control: 'text' },
     roundal6link: { control: 'text' },
-
-    rounbdal1dataelementtype: { control: 'text' },
-    rounbdal1datapromotionindex: { control: 'text' },
-    roundal1datapromotionname: { control: 'text' },
-
-    roundal2dataelementtype: { control: 'text' },
-    roundal2datapromotionindex: { control: 'text' },
-    roundal2datapromotionname: { control: 'text' },
-
-    roundal3dataelementtype: { control: 'text' },
-    roundal3datapromotionindex: { control: 'text' },
-    roundal3datapromotionname: { control: 'text' },
-
-    roundal4dataelementtype: { control: 'text' },
-    roundal4datapromotionindex: { control: 'text' },
-    roundal4datapromotionname: { control: 'text' },
-
-    roundal5dataelementtype: { control: 'text' },
-    roundal5datapromotionindex: { control: 'text' },
-    roundal5datapromotionname: { control: 'text' },
-
-    roundal6dataelementtype: { control: 'text' },
-    roundal6datapromotionindex: { control: 'text' },
-    roundal6datapromotionname: { control: 'text' },
+    roundal6dataElementType: { control: 'text' },
+    roundal6dataPromotionIndex: { control: 'text' },
+    roundal6dataPromotionName: { control: 'text' },
   },
 };
 
@@ -134,6 +128,7 @@ export const ShopByAgeModuleRoundals = {
     selectedModule: '',
     saveModule: false,
 
+    id: 'gift-by-age',
     lozengetitle: '',
     lozengebackgroundcolor: '',
     lozengetextcolor: '',
@@ -149,6 +144,9 @@ export const ShopByAgeModuleRoundals = {
     roundal1age: '',
     roundal1textunderage: '',
     roundal1link: '',
+    roundal1dataElementType: '',
+    roundal1dataPromotionIndex: '',
+    roundal1dataPromotionName: '',
 
     roundal2image: '',
     roundal2background: '',
@@ -157,6 +155,9 @@ export const ShopByAgeModuleRoundals = {
     roundal2age: '',
     roundal2textunderage: '',
     roundal2link: '',
+    roundal2dataElementType: '',
+    roundal2dataPromotionIndex: '',
+    roundal2dataPromotionName: '',
 
     roundal3image: '',
     roundal3background: '',
@@ -165,6 +166,9 @@ export const ShopByAgeModuleRoundals = {
     roundal3age: '',
     roundal3textunderage: '',
     roundal3link: '',
+    roundal3dataElementType: '',
+    roundal3dataPromotionIndex: '',
+    roundal3dataPromotionName: '',
 
     roundal4image: '',
     roundal4background: '',
@@ -173,6 +177,9 @@ export const ShopByAgeModuleRoundals = {
     roundal4age: '',
     roundal4textunderage: '',
     roundal4link: '',
+    roundal4dataElementType: '',
+    roundal4dataPromotionIndex: '',
+    roundal4dataPromotionName: '',
 
     roundal5image: '',
     roundal5background: '',
@@ -181,6 +188,9 @@ export const ShopByAgeModuleRoundals = {
     roundal5age: '',
     roundal5textunderage: '',
     roundal5link: '',
+    roundal5dataElementType: '',
+    roundal5dataPromotionIndex: '', 
+    roundal5dataPromotionName: '',
 
     roundal6image: '',
     roundal6background: '',
@@ -189,30 +199,9 @@ export const ShopByAgeModuleRoundals = {
     roundal6age: '',
     roundal6textunderage: '',
     roundal6link: '',
-
-    rounbdal1dataelementtype: '',
-    rounbdal1datapromotionindex: '',
-    roundal1datapromotionname: '',
-
-    roundal2dataelementtype: '',
-    roundal2datapromotionindex: '',
-    roundal2datapromotionname: '',
-
-    roundal3dataelementtype: '',
-    roundal3datapromotionindex: '',
-    roundal3datapromotionname: '',
-
-    roundal4dataelementtype: '',
-    roundal4datapromotionindex: '',
-    roundal4datapromotionname: '',
-
-    roundal5dataelementtype: '',
-    roundal5datapromotionindex: '',
-    roundal5datapromotionname: '',
-
-    roundal6dataelementtype: '',
-    roundal6datapromotionindex: '',
-    roundal6datapromotionname: '',
+    roundal6dataElementType: '',
+    roundal6dataPromotionIndex: '',
+    roundal6dataPromotionName: '',
   },
 
   render: function Render() {

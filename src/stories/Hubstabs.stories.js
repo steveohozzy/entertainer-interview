@@ -14,7 +14,7 @@ import { HubsTabs } from './Hubstabs';
 import { useArgs } from 'storybook/preview-api';
 
 export default {
-title: 'Hubs/Tabs',
+title: 'Modules/Tabs',
 component: HubsTabs,
 
 parameters: {
@@ -22,32 +22,136 @@ layout: 'fullscreen',
 },
 
 argTypes: {
-user: {
-options: ['stories', 'hasina', 'shermin', 'sam'],
-control: { type: 'select' },
-},
 
-
-moduleName: {
-  control: 'text',
-},
-
-selectedModule: {
-  table: {
-    disable: true,
+  lozengetextcolor: {
+  control: {
+    type: 'select',
+  },
+  options: ['#000000', '#FFFFFF', '#1f2b91'],
+  labels: {
+    '#000000': 'Black',
+    '#FFFFFF': 'White',
+    '#1f2b91': 'Blue',
   },
 },
 
-saveModule: {
-  control: 'boolean',
+tab1titlecolor: {
+control: {
+type: 'select',
+},
+options: ['#000000', '#FFFFFF', '#1f2b91'],
+labels: {
+'#000000': 'Black',
+'#FFFFFF': 'White',
+'#1f2b91': 'Blue',
+},
 },
 
+tab1titleactivecolor: {
+control: {
+type: 'select',
+},
+options: ['#000000', '#FFFFFF', '#1f2b91'],
+labels: {
+'#000000': 'Black',
+'#FFFFFF': 'White',
+'#1f2b91': 'Blue',
+},
+},
+
+
+
+tab2titlecolor: {
+control: {
+type: 'select',
+},
+options: ['#000000', '#FFFFFF', '#1f2b91'],
+labels: {
+'#000000': 'Black',
+'#FFFFFF': 'White',
+'#1f2b91': 'Blue',
+},
+},
+
+tab2titleactivecolor: {
+control: {
+type: 'select',
+},
+options: ['#000000', '#FFFFFF', '#1f2b91'],
+labels: {
+'#000000': 'Black',
+'#FFFFFF': 'White',
+'#1f2b91': 'Blue',
+},
+},
+
+
+tab3titlecolor: {
+control: {
+type: 'select',
+},
+options: ['#000000', '#FFFFFF', '#1f2b91'],
+labels: {
+'#000000': 'Black',
+'#FFFFFF': 'White',
+'#1f2b91': 'Blue',
+},
+},
+
+tab3titleactivecolor: {
+control: {
+type: 'select',
+},
+options: ['#000000', '#FFFFFF', '#1f2b91'],
+labels: {
+'#000000': 'Black',
+'#FFFFFF': 'White',
+'#1f2b91': 'Blue',
+},
+},
+
+tab4titlecolor: {
+control: {
+type: 'select',
+},
+options: ['#000000', '#FFFFFF', '#1f2b91'],
+labels: {
+'#000000': 'Black',
+'#FFFFFF': 'White',
+'#1f2b91': 'Blue',
+},
+},
+
+tab4titleactivecolor: {
+control: {
+type: 'select',
+},
+options: ['#000000', '#FFFFFF', '#1f2b91'],
+labels: {
+'#000000': 'Black',
+'#FFFFFF': 'White',
+'#1f2b91': 'Blue',
+},
+},
+
+moduleName: {
+control: 'text',
+},
+
+selectedModule: {
+table: {
+disable: true,
+},
+},
+
+saveModule: {
+control: 'boolean',
+},
 
 },
 
 decorators: [
 (Story) => {
-
 
   const [currentArgs, updateArgs] = useArgs();
 
@@ -55,10 +159,6 @@ decorators: [
 
   const loadingRef = useRef(false);
   const previousModule = useRef('');
-
-  // -------------------------
-  // LOAD MODULE LIST
-  // -------------------------
 
   useEffect(() => {
 
@@ -92,10 +192,6 @@ decorators: [
     loadModules();
 
   }, []);
-
-  // -------------------------
-  // LOAD MODULE
-  // -------------------------
 
   useEffect(() => {
 
@@ -155,10 +251,6 @@ decorators: [
     load();
 
   }, [currentArgs.selectedModule]);
-
-  // -------------------------
-  // SAVE MODULE
-  // -------------------------
 
   useEffect(() => {
 
@@ -352,63 +444,55 @@ decorators: [
 
 },
 
-
 ],
 };
 
 export const HubsTabsContainer = {
 args:{
-user:'stories',
-
 
 moduleName:'',
 selectedModule:'',
 saveModule:false,
 
-tabareabackgroundcolor:'',
-tabcontentbackgroundcolor:'',
+lozengetitle: '',
+lozengebackgroundcolor: '',
+lozengetextcolor: '#000000',
+
+
 
 tab1order:1,
 tab1title:'',
-tab1titlecolor:'',
-tab1titlehovercolor:'',
+tab1titlecolor:'#000000',
 tab1titleactivecolor:'',
-tab1titlebackgroundcolor:'',
-tab1hoverbackgroundcolor:'',
-tab1activebackgroundcolor:'',
+tab1titlebackgroundcolor:'#FFFFFF',
+tab1activebackgroundcolor:'#1f2b91',
 
 tab2order:2,
 tab2title:'',
-tab2titlecolor:'',
-tab2titlehovercolor:'',
+tab2titlecolor:'#000000',
 tab2titleactivecolor:'',
-tab2titlebackgroundcolor:'',
+tab2titlebackgroundcolor:'#FFFFFF',
 tab2hoverbackgroundcolor:'',
-tab2activebackgroundcolor:'',
+tab2activebackgroundcolor:'#1f2b91',
 
 tab3order:3,
 tab3title:'',
-tab3titlecolor:'',
-tab3titlehovercolor:'',
+tab3titlecolor:'#000000',
 tab3titleactivecolor:'',
-tab3titlebackgroundcolor:'',
-tab3hoverbackgroundcolor:'',
-tab3activebackgroundcolor:'',
+tab3titlebackgroundcolor:'#FFFFFF',
+tab3activebackgroundcolor:'#1f2b91',
 
 tab4order:4,
 tab4title:'',
-tab4titlecolor:'',
-tab4titlehovercolor:'',
+tab4titlecolor:'#000000',
 tab4titleactivecolor:'',
-tab4titlebackgroundcolor:'',
-tab4hoverbackgroundcolor:'',
-tab4activebackgroundcolor:'',
+tab4titlebackgroundcolor:'#FFFFFF',
+tab4activebackgroundcolor:'#1f2b91',
 
 tab1content:'',
 tab2content:'',
 tab3content:'',
 tab4content:'',
-
 
 },
 };

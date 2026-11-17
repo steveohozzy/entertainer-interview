@@ -282,25 +282,42 @@ export const ChristmasPricePodsSection = {
     saveModule: false,
 
     modulebackgroundcolor:'',
+    id: 'shop-by-price',
 
     pod1image: '',
     pod1alt: '',
     pod1link: '',
+     pod1dataElementType: '',
+    pod1dataPromotionIndex: '',
+    pod1dataPromotionName: '',
+
 
     pod2image: '',
     pod2alt: '',
     pod2link: '',
+     pod2dataElementType: '',
+    pod2dataPromotionIndex: '',
+    pod2dataPromotionName: '',
 
     pod3image: '',
     pod3alt: '',
     pod3link: '',
+    pod3dataElementType: '',
+    pod3dataPromotionIndex: '',
+    pod3dataPromotionName: '',
 
     pod4image: '',
     pod4alt: '',
     pod4link: '',
+    pod4dataElementType: '',
+    pod4dataPromotionIndex: '',
+    pod4dataPromotionName: '',
 
     pod5image: '',
     pod5alt: '',
     pod5link: '',
+    pod5dataElementType: '',
+    pod5dataPromotionIndex: '',
+    pod5dataPromotionName: '',
   },
 };

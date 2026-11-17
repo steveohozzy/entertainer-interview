@@ -50,7 +50,15 @@ lozengebackgroundcolor: {
 },
 
 lozengetextcolor: {
-  control: "color",
+  control: {
+    type: 'select',
+  },
+  options: ['#000000', '#FFFFFF', '#1f2b91'],
+  labels: {
+    '#000000': 'Black',
+    '#FFFFFF': 'White',
+    '#1f2b91': 'Blue',
+  },
 },
 
 bordercolor: {
