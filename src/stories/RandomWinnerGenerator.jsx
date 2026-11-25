@@ -58,7 +58,7 @@ const downloadCsv = (headers, rows, filename) => {
   URL.revokeObjectURL(url);
 };
 
-export const RandomWinnerGenerator = ({ title, description }) => {
+export const RandomWinnerGenerator = ({ title, description, termsText, termsLink }) => {
   const inputRef = useRef(null);
   const [fileName, setFileName] = useState("");
   const [headers, setHeaders] = useState([]);
@@ -285,6 +285,10 @@ export const RandomWinnerGenerator = ({ title, description }) => {
           <button type="button" className="rwg__reset" onClick={handleReset}>Clear results and start again</button>
         </div>
       )}
+
+      {termsText && (
+        <p className="rwg__terms"><a href={termsLink}>{termsText}</a></p>
+      )}
     </section>
   );
 };
@@ -292,9 +296,13 @@ export const RandomWinnerGenerator = ({ title, description }) => {
 RandomWinnerGenerator.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
+  termsText: PropTypes.string,
+  termsLink: PropTypes.string,
 };
 
 RandomWinnerGenerator.defaultProps = {
   title: "Random Winner Generator",
   description: "Select winners fairly from your entrant list in just a few clicks.",
+  termsText: "Ts & Cs Apply",
+  termsLink: "#",
 };
