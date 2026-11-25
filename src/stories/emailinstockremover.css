@@ -1,0 +1,59 @@
+.eisr {
+  width: 100%;
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 28px;
+  color: #202b36;
+  background: #fff;
+  border: 1px solid #e2e8ee;
+  border-radius: 16px;
+  box-shadow: 0 8px 28px rgba(20, 42, 62, .07);
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+}
+.eisr *, .eisr *::before, .eisr *::after { box-sizing: border-box; }
+.eisr__header { display: flex; align-items: center; gap: 15px; margin-bottom: 26px; }
+.eisr__icon { display: grid; place-items: center; flex: 0 0 auto; width: 48px; height: 48px; border-radius: 12px; background: #e8f1f8; color: #174d75; }
+.eisr__icon svg, .eisr__copy svg { width: 23px; height: 23px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.eisr__header h2 { margin: 0 0 5px; font-size: 24px; line-height: 1.2; color: #172b3d; }
+.eisr__header p { margin: 0; color: #687786; font-size: 14px; }
+.eisr__input-section { padding: 20px; background: #f8fafc; border: 1px solid #e5ebf0; border-radius: 11px; }
+.eisr__label-row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 10px; }
+.eisr__label-row label { color: #203548; font-size: 14px; font-weight: 700; }
+.eisr__label-row span, .eisr__input-footer { color: #71808d; font-size: 12px; }
+.eisr__input-section textarea { display: block; width: 100%; min-height: 150px; padding: 13px 14px; border: 1px solid #cbd6df; border-radius: 8px; color: #203548; background: #fff; font: 14px/1.6 Consolas, Monaco, monospace; resize: vertical; outline: none; }
+.eisr__input-section textarea:focus { border-color: #2874a6; box-shadow: 0 0 0 3px rgba(40,116,166,.12); }
+.eisr__input-footer { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 9px; }
+.eisr__clear { padding: 0; border: 0; color: #174d75; background: transparent; font: inherit; text-decoration: underline; cursor: pointer; }
+.eisr__clear:disabled { opacity: .4; cursor: not-allowed; }
+.eisr__warning { margin: 12px 0 0; padding: 10px 12px; color: #8a4b08; background: #fff6e8; border: 1px solid #f2dfbd; border-radius: 7px; font-size: 12px; overflow-wrap: anywhere; }
+.eisr__summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 18px 0 24px; }
+.eisr__summary > div { display: flex; flex-direction: column; gap: 7px; padding: 15px; background: #f3f6f8; border-radius: 9px; }
+.eisr__summary span { color: #697987; font-size: 12px; }
+.eisr__summary strong { color: #203548; font-size: 22px; line-height: 1.1; overflow-wrap: anywhere; }
+.eisr__output { padding-top: 22px; border-top: 1px solid #e5ebf0; }
+.eisr__output-heading { display: flex; justify-content: space-between; align-items: center; gap: 15px; margin-bottom: 12px; }
+.eisr__output-heading h3 { margin: 0 0 5px; color: #203548; font-size: 16px; }
+.eisr__output-heading p { margin: 0; color: #71808d; font-size: 12px; }
+.eisr__copy { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 40px; padding: 9px 14px; border: 0; border-radius: 7px; color: #fff; background: #176b45; font-size: 13px; font-weight: 700; cursor: pointer; white-space: nowrap; }
+.eisr__copy:hover:not(:disabled) { background: #105838; }
+.eisr__copy:disabled { opacity: .45; cursor: not-allowed; }
+.eisr__copy svg { width: 17px; height: 17px; }
+.eisr__code { max-height: 480px; overflow: auto; margin: 0; padding: 17px; border-radius: 8px; color: #dce7f1; background: #172b3d; font: 12px/1.6 Consolas, Monaco, monospace; white-space: pre; }
+.eisr__instructions { margin-top: 22px; padding: 17px 19px; border: 1px solid #e5ebf0; border-radius: 9px; color: #526474; font-size: 13px; line-height: 1.6; }
+.eisr__instructions > strong { color: #203548; font-size: 14px; }
+.eisr__instructions ol { margin: 9px 0 12px; padding-left: 21px; }
+.eisr__instructions p { margin: 0; color: #71808d; font-size: 12px; }
+@media (max-width: 600px) {
+  .eisr { padding: 18px 14px; border-radius: 11px; }
+  .eisr__header h2 { font-size: 20px; }
+  .eisr__input-section { padding: 14px; }
+  .eisr__label-row { align-items: flex-start; flex-direction: column; gap: 4px; }
+  .eisr__summary { gap: 7px; }
+  .eisr__summary > div { padding: 11px 9px; }
+  .eisr__summary span { font-size: 11px; }
+  .eisr__summary strong { font-size: 18px; }
+  .eisr__output-heading { align-items: flex-start; flex-direction: column; }
+  .eisr__copy { width: 100%; }
+  .eisr__code { font-size: 11px; }
+}
