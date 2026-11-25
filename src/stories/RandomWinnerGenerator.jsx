@@ -68,6 +68,7 @@ export const RandomWinnerGenerator = ({ title, description }) => {
   const [remaining, setRemaining] = useState(null);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
 
   const handleFile = async (file) => {
     if (!file) return;
@@ -172,7 +173,7 @@ export const RandomWinnerGenerator = ({ title, description }) => {
         </div>
       </div>
 
-      <div className="rwg__upload">
+      <div\n        className={"rwg__upload" + (isDragging ? " rwg__upload--dragging" : "")}\n        onDragOver={(event) => { event.preventDefault(); setIsDragging(true); }}\n        onDragLeave={() => setIsDragging(false)}\n        onDrop={(event) => { event.preventDefault(); setIsDragging(false); handleFile(event.dataTransfer.files && event.dataTransfer.files[0]); }}\n      >
         <input
           ref={inputRef}
           className="rwg__file-input"
