@@ -67,7 +67,7 @@ export const EmailInStockRemover = ({
   const [copied, setCopied] = useState(false);
 
   const parsed = useMemo(() => {
-    var tokens = skuInput.split(/[\\s,;]+/).filter(Boolean);
+    var tokens = skuInput.split(/[\s,;]+/).filter(Boolean);
     var valid = [];
     var invalid = [];
 
@@ -164,7 +164,7 @@ export const EmailInStockRemover = ({
         </div>
         <div>
           <span>Duplicates removed</span>
-          <strong>{Math.max(0, skuInput.split(/[\\s,;]+/).filter(Boolean).length - parsed.skus.length - parsed.invalid.length).toLocaleString()}</strong>
+          <strong>{Math.max(0, skuInput.split(/[\s,;]+/).filter(Boolean).length - parsed.skus.length - parsed.invalid.length).toLocaleString()}</strong>
         </div>
         <div>
           <span>GTM tag</span>
