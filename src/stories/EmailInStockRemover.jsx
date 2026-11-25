@@ -33,11 +33,20 @@ const buildGtmTag = (skus) => {
       var buttonProductId = buttons[j].getAttribute('data-productcode');
 
       if (pageProductIds.indexOf(buttonProductId) !== -1) {
-        var wrapper = buttons[j].closest(
-          '.AddToCart-EmailWhenInStockAction'
-        );
+        var wrapper = buttons[j].parentNode;
 
-        if (wrapper && wrapper.parentNode) {
+        while (
+          wrapper &&
+          wrapper !== document &&
+          (
+            typeof wrapper.className !== 'string' ||
+            (' ' + wrapper.className + ' ').indexOf(' AddToCart-EmailWhenInStockAction ') === -1
+          )
+        ) {
+          wrapper = wrapper.parentNode;
+        }
+
+        if (wrapper && wrapper !== document && wrapper.parentNode) {
           wrapper.parentNode.removeChild(wrapper);
         }
       }
