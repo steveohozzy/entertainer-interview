@@ -1,0 +1,77 @@
+.rwg {
+  width: 100%;
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 28px;
+  color: #202b36;
+  background: #fff;
+  border: 1px solid #e2e8ee;
+  border-radius: 16px;
+  box-shadow: 0 8px 28px rgba(20, 42, 62, .07);
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+}
+.rwg *, .rwg *::before, .rwg *::after { box-sizing: border-box; }
+.rwg__header { display: flex; align-items: center; gap: 15px; margin-bottom: 26px; }
+.rwg__heading-icon, .rwg__upload-icon {
+  display: grid; place-items: center; flex: 0 0 auto;
+  width: 48px; height: 48px; border-radius: 12px; background: #fff3df; color: #a96808;
+}
+.rwg__heading-icon svg, .rwg__upload-icon svg { width: 25px; height: 25px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.rwg__header h2 { margin: 0 0 5px; font-size: 24px; line-height: 1.2; color: #172b3d; }
+.rwg__header p { margin: 0; color: #687786; font-size: 14px; }
+.rwg__upload { display: flex; flex-direction: column; align-items: center; padding: 30px 20px; border: 2px dashed #cbd6df; border-radius: 13px; background: #f8fafc; text-align: center; }
+.rwg__file-input { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
+.rwg__upload-icon { width: 54px; height: 54px; margin-bottom: 12px; background: #e8f5ed; color: #277448; }
+.rwg__upload h3 { margin: 0 0 6px; font-size: 18px; color: #203548; }
+.rwg__upload p { margin: 0 0 16px; color: #687786; font-size: 14px; overflow-wrap: anywhere; }
+.rwg__hint { display: block; margin-top: 10px; color: #71808d; font-size: 12px; line-height: 1.5; }
+.rwg__button { display: inline-flex; justify-content: center; align-items: center; gap: 8px; min-height: 42px; padding: 10px 16px; border: 0; border-radius: 7px; font-size: 14px; font-weight: 700; cursor: pointer; transition: background .15s ease, transform .15s ease; }
+.rwg__button:disabled { opacity: .55; cursor: not-allowed; }
+.rwg__button:not(:disabled):active { transform: translateY(1px); }
+.rwg__button svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.rwg__button--secondary { color: #174d75; background: #e8f1f8; }
+.rwg__button--secondary:hover { background: #dbeaf5; }
+.rwg__button--primary { color: #fff; background: #176b45; }
+.rwg__button--primary:hover { background: #105838; }
+.rwg__button--download { min-height: 36px; padding: 8px 12px; color: #176b45; background: #e8f5ed; font-size: 13px; }
+.rwg__button--download:hover { background: #d8eddf; }
+.rwg__error { margin-top: 16px; padding: 12px 14px; color: #9e2e2e; background: #fff0f0; border: 1px solid #f3cccc; border-radius: 8px; font-size: 13px; }
+.rwg__summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 20px 0; }
+.rwg__summary > div { display: flex; flex-direction: column; gap: 7px; padding: 15px; background: #f3f6f8; border-radius: 9px; }
+.rwg__summary span { color: #697987; font-size: 12px; }
+.rwg__summary strong { color: #203548; font-size: 23px; line-height: 1; }
+.rwg__draw { margin: 22px 0; padding: 20px; background: #f8fafc; border: 1px solid #e5ebf0; border-radius: 11px; }
+.rwg__draw label { display: block; margin-bottom: 10px; color: #203548; font-size: 14px; font-weight: 700; }
+.rwg__draw-controls { display: flex; gap: 10px; }
+.rwg__draw-controls input { width: 110px; min-width: 0; padding: 10px 12px; border: 1px solid #cbd5df; border-radius: 7px; color: #203548; background: #fff; font-size: 16px; }
+.rwg__draw-controls .rwg__button { flex: 1; }
+.rwg__draw .rwg__hint { margin-top: 10px; }
+.rwg__section-heading, .rwg__remaining { display: flex; justify-content: space-between; align-items: center; gap: 14px; margin: 22px 0 12px; }
+.rwg__section-heading h3, .rwg__remaining h3 { margin: 0 0 4px; color: #203548; font-size: 16px; }
+.rwg__section-heading span, .rwg__remaining p { margin: 0; color: #71808d; font-size: 12px; }
+.rwg__table-wrap { width: 100%; overflow-x: auto; border: 1px solid #e5ebf0; border-radius: 8px; }
+.rwg__table-wrap table { width: 100%; border-collapse: collapse; text-align: left; font-size: 13px; }
+.rwg__table-wrap th { padding: 11px 13px; color: #526474; background: #f3f6f8; font-weight: 700; white-space: nowrap; }
+.rwg__table-wrap td { max-width: 260px; padding: 10px 13px; color: #34495a; border-top: 1px solid #edf0f3; overflow-wrap: anywhere; }
+.rwg__table-note { margin: 0; padding: 9px 12px; color: #71808d; background: #fafbfd; border-top: 1px solid #edf0f3; font-size: 11px; }
+.rwg__results { margin-top: 28px; padding-top: 22px; border-top: 1px solid #e5ebf0; }
+.rwg__results-heading { display: flex; align-items: center; gap: 13px; margin-bottom: 20px; padding: 16px; background: #eff8f1; border: 1px solid #d7eadb; border-radius: 10px; }
+.rwg__trophy { display: grid; place-items: center; width: 42px; height: 42px; flex: 0 0 auto; background: #fff; border-radius: 50%; font-size: 22px; }
+.rwg__results-heading h3 { margin: 0 0 5px; color: #1d603b; font-size: 17px; }
+.rwg__results-heading p { margin: 0; color: #52745e; font-size: 13px; }
+.rwg__remaining { margin-top: 24px; padding-top: 20px; border-top: 1px solid #e5ebf0; }
+.rwg__reset { display: block; margin: 20px auto 0; padding: 8px 12px; color: #536779; background: transparent; border: 0; text-decoration: underline; font-size: 13px; cursor: pointer; }
+@media (max-width: 600px) {
+  .rwg { padding: 18px 14px; border-radius: 11px; }
+  .rwg__header h2 { font-size: 20px; }
+  .rwg__summary { gap: 7px; }
+  .rwg__summary > div { padding: 11px 9px; }
+  .rwg__summary span { font-size: 11px; }
+  .rwg__summary strong { font-size: 19px; }
+  .rwg__draw { padding: 15px; }
+  .rwg__draw-controls { flex-direction: column; }
+  .rwg__draw-controls input { width: 100%; }
+  .rwg__section-heading, .rwg__remaining { align-items: flex-start; flex-direction: column; }
+  .rwg__button--download { width: 100%; }
+}
