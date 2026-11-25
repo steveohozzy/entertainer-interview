@@ -46,7 +46,7 @@ const downloadCsv = (headers, rows, filename) => {
   const content = [headers, ...rows]
     .map((row) => row.map(escapeCsvValue).join(","))
     .join("\r\n");
-  const blob = new Blob(["\\uFEFF", content], { type: "text/csv;charset=utf-8;" });
+  const blob = new Blob(["\uFEFF", content], { type: "text/csv;charset=utf-8;" });
   const url = URL.createObjectURL(blob);
   const link = document.createElement("a");
 
